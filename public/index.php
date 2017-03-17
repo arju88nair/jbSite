@@ -21,6 +21,13 @@ $app->get('/',function(Request $request, Response $response){
     $response = $this->view->render($response, 'home.mustache');
     return $response;
 });
+
+
+$app->get('/author-details',function(Request $request, Response $response){
+
+    $response = $this->view->render($response, 'author-details.mustache');
+    return $response;
+});
 $app->run();
 
 ?>

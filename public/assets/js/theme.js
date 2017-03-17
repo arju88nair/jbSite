@@ -7,7 +7,10 @@
 // });
 
 
+$(document).on('click', 'a', function(e) {
+    ga('send', 'event', 'Navigation', $(this).attr('href'), 'First Screen');
 
+});
 
 
 $(document).on('click', 'a[href^="#"]', function(e) {
@@ -20,6 +23,7 @@ $(document).on('click', 'a[href^="#"]', function(e) {
 
     // target element
     var $id = $(id);
+
     if ($id.length === 0) {
         return;
     }
