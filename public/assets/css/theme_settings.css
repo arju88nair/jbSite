@@ -158,7 +158,7 @@ header ul.menu > li > a {
 	font-size: 20px;
 	color: #464D52;
 	border-bottom: none;
-	text-transform: uppercase; 
+	text-transform: none;
 	font-family: 'Playfair Display';
 	font-weight: none;
 }

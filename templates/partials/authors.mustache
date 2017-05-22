@@ -1,93 +1,33 @@
 <div class="row-fluid">
-    <div class="span12 module_cont module_teamslider">
-        <div class="bg_title"><h4 class="headInModule">MEET OUR POPULAR AUTHORS</h4></div>
-        <div class="team_slider">
-            <div class="carouselslider carouselslider_team teamslider items4" data-count="4">
-                <ul class="item_list">
-                    <li>
-                        <a href="author-details">
-                            <div class="item">
-                                <div class="img_block"><img src="../assets/img/pictures/team1.jpg" alt="Tom"></div>
-                                <div class="carousel_body_author">
-                                    <div class="carousel_title_book">
-                                        <h5>Tom Simpson</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="author-details"><div class="item">
-                            <div class="img_block"><img src="../assets/img/pictures/team2.jpg" alt="Anna"></div>
-                            <div class="carousel_body_author">
-                                <div class="carousel_title_book">
-                                    <h5>Anna Smith</h5>
+    <div class="span12 module_cont module_bookslider">
+        <div class="bg_title"><h4 class="headInModule">POPULAR AUTHORS</h4></div>
 
-                                </div>
+        <div class="container" >
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="authorCarousel" class="carousel slide multi-item-carousel">
+                        <div class="carousel-inner carouselslider" id="authorCarousel1"  style="padding: 0px 0px 20px 0px; margin-left: 60px; margin-right: 60px;">
+                        </div>
 
+                        <div id="frame_authorCarousel1" class="loader_fram">
+                            <div id="loader" style="display: block">
+                                <img src="../assets/img/loader.gif" id="loader_image">
                             </div>
-                        </div></a>
-                    </li>
-                    <li>
-                        <a href="author-details">
-                            <div class="item">
-                                <div class="img_block"><img src="../assets/img/pictures/team3.jpg" alt="John"></div>
-                                <div class="carousel_body_author">
-                                    <div class="carousel_title_book">
-                                        <h5>John Doe</h5>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="author-details"><div class="item">
-                            <div class="img_block"><img src="../assets/img/pictures/team4.jpg" alt="Anna"></div>
-                            <div class="carousel_body_author">
-                                <div class="carousel_title_book">
-                                    <h5>Bella White</h5>
+                        </div>
 
-                                </div>
-
-                            </div>
-                        </div></a>
-                    </li>
-                    <li>
-                        <a href="author-details"><div class="item">
-                            <div class="img_block"><img src="../assets/img/pictures/team5.jpg" alt="John"></div>
-                            <div class="carousel_body_author">
-                                <div class="carousel_title_book">
-                                    <h5>Chris Redfield</h5>
-
-                                </div>
-
-                            </div>
-                        </div></a>
-                    </li>
-                    <li>
-                        <a href=""><div class="item">
-                            <div class="img_block"><img src="../assets/img/pictures/team6.jpg" alt="Tom"></div>
-                            <div class="carousel_body_author">
-                                <div class="carousel_title_book">
-                                    <h5>Ada Wong</h5>
-                                </div>
-                            </div>
-                        </div></a>
-                    </li>
-                    <li>
-                        <a href="author-details"><div class="item">
-                            <div class="img_block"><img src="../assets/img/pictures/hiring.jpg" alt="Tom"></div>
-                            <div class="carousel_body_author">
-                                <div class="carousel_title_book">
-                                    <h5>Hiring</h5>
-                                </div>
-                            </div>
-                        </div></a>
-                    </li>
-                </ul>
+                        <a class="left carousel-control" href="#authorCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+                        <a class="right carousel-control" href="#authorCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+                    </div>
+                </div>
             </div>
-            <div class="clear"></div>
-        </div><!-- .team_slider -->
+        </div>
+
         <a id="anchor8"></a>
     </div>
 </div>
+<!--<script>-->
+    <!--$('.multi-item-carousel').carousel({-->
+        <!--interval: false-->
+    <!--});-->
+<!--</script>-->
+<!--<script src="assets/js/home_page_Api.js"></script>-->

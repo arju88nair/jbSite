@@ -1,0 +1,45 @@
+{{> header}}
+
+<!-- C O N T E N T -->
+        <div class="content_wrapper background_color_gray">
+            <!--<div class="page_title_block">
+                <div class="container">
+                    <h2 class="title">Portfolio. 4 Columns</h2>
+                    <div class="breadcrumbs"><a href="home.html">Home</a><a href="#">Portfolio</a><span>4 Columns</span></div>
+                </div>
+            </div>-->
+            <style type="text/css">
+                .col-lg-3 h5{
+                    margin:10px 0 10px 0;
+                }
+            </style>
+            <div class="container">
+                <div class="">
+                    <div class="fl-container span12">
+                        <div class="row">
+
+                            <div class="col-lg-12">
+                                <h4 class="page-header"><small>You searched for  </small> <b>" {{query}} " </b></h4>
+                            </div>
+                            {{# data}}
+
+                            {{# result}}
+                            <div class="col-lg-3 col-md-4 col-xs-12 thumb">
+                                <a class="thumbnail" href="/book_details/{{id}}"  style="height: 320px;">
+                                    <img class="img-responsive" src="{{image_url}}" onerror="this.src='https://www.safetybasics.com/v/vspfiles/photos/003-C-4L-Cover-0.jpg'" >
+                                    <h5 class="gallery_title">{{title}}</h5>
+                                    <p>{{summary}}</p>
+                                </a>
+                            </div>
+                            {{/result}}
+                            <!--{{/data}}-->
+
+                        </div>
+                    </div><!-- .contentarea -->
+                </div>
+            </div>
+            <div class="clear"><!-- ClearFix --></div>
+         </div><!-- .fl-container -->
+                    
+        <div class="clear"><!-- ClearFix --></div>
+        {{> footer}}

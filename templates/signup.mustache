@@ -1,0 +1,728 @@
+{{> header}}
+
+<!-- C O N T E N T -->
+<div class="content_wrapper background_color_gray">
+    <!--<div class="page_title_block">
+        <div class="container">
+            <h2 class="title">Portfolio. 4 Columns</h2>
+            <div class="breadcrumbs"><a href="home.html">Home</a><a href="#">Portfolio</a><span>4 Columns</span></div>
+        </div>
+    </div>-->
+    <style>
+        .contentarea .row-fluid .module_padding{
+            background-color:#347AB6;
+            margin-top:40px;
+            margin-bottom:40px;
+            padding-top:40px;
+            padding-bottom:40px;
+            border-radius:5px;
+
+
+        }
+
+        .contentarea .row-fluid .module_padding .center_div{
+            margin: 0 auto;
+            width:80% /* value of your choice which suits your alignment */
+        }
+        .contentarea .row-fluid .module_padding .center_div h4{
+            padding-top:0px!important;
+            color:#fff;
+        }
+        .contentarea .row-fluid .module_padding_active{
+            background-color:#EFAC54;
+            margin-top:40px;
+            margin-bottom:40px;
+            padding-top:40px;
+            padding-bottom:40px;
+            border-radius:5px;
+
+
+        }
+
+        .contentarea .row-fluid .module_padding_active .center_div{
+            margin: 0 auto;
+            width:80% /* value of your choice which suits your alignment */
+        }
+        .contentarea .row-fluid .module_padding_active .center_div h4{
+            padding-top:0px!important;
+            color:#fff;
+        }
+
+        #border{
+            margin-top:15px;
+            padding-top:15px;
+            border: 3px solid #fff!important;
+        }
+        #border h5{
+            color:#fff;
+            font-family: Arial;
+        }
+        #border_bottom{
+            margin-top:15px;
+            padding-top:15px;
+            border-bottom: 1px solid #b2b2b2!important;
+        }
+        #border_bottom h5{
+            color:#000;
+            font-family: Arial;
+        }
+        #border_none{
+            margin-top:15px;
+            padding-top:15px;
+        }
+        #border_none h5{
+            color:#000;
+            font-family: Arial;
+        }
+        .form-horizontal label{
+            text-align:left!important;
+            float:left;
+            color:#999999;
+        }
+        .form-horizontal h4{
+            font-family: 'Arial';
+            text-align:left;
+        }
+
+
+
+
+        .square {
+            float:right;
+            position: relative;
+            width: 35%;
+            padding-bottom : 35%; /* = width for a 1:1 aspect ratio */
+            margin:3%;
+            background: transparent linear-gradient(135deg, rgb(54, 209, 220), rgb(91, 134, 229)) repeat scroll 0% 0%;
+            overflow:hidden;
+            border: solid 1px #BEBEBE;
+            border-radius:5px;
+            box-shadow: 5px 5px 5px #A0A0A0;
+            /*box-shadow: 10px -10px rgba(0,0,0,0.6);*/
+            /*transition: 0.3s;
+
+            box-shadow: 20px -16px rgba(0,0,0,0.6);*/
+
+        }
+
+
+        .square:hover {
+
+            box-shadow: 8px 8px 5px #A0A0A0;
+
+        }
+
+        .title_text{
+
+            font-size:30px;
+            line-height: 30px;
+            color:#fff;
+            font-family: Century;
+        }
+
+        .content1 {
+            position:absolute;
+            height:90%; /* = 100% - 2*5% padding */
+            width:90%; /* = 100% - 2*5% padding */
+            padding: 5%;
+
+        }
+        .table{
+            display:table;
+            width:100%;
+            height:100%;
+        }
+        .table-cell{
+            display:table-cell;
+            vertical-align:middle;
+        }
+
+
+        /*  For responsive images */
+
+        .content1 .rs{
+            width:auto;
+            height:auto;
+            max-height:90%;
+            max-width:100%;
+        }
+
+        }
+
+
+
+
+
+    </style>
+    <div class="container">
+        <div class="spinner"  style='display: none;z-index: 100;opacity:0.55;background-color: grey'>
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+        <div class="content_block no-sidebar row">
+            <div class="fl-container span12">
+                <div id="{{planid}}" class="planid"></div>
+
+                <div class="contentarea">
+                    <div class="module_line_trigger" data-option="" data-background="#323232 url(img/) no-repeat center"
+                         data-top-padding="top_padding_normal">
+
+                        <div class="row-fluid">
+                            <div class="span12 module_cont module_price_table">
+                                <div class="bg_title bg_title_price" style="text-align: center;">
+                                    <h4 class="headInModule">YOUR PLAN DETAILS</h4>
+                                </div>
+                                <div class="row">
+                                    <div class="span6 module_cont module_text_area module_medium_padding">
+                                        <!-- 1st row verticaly centered text in the square columns -->
+
+                                        {{# plan_data}}
+
+                                            {{# web_signup_plan}}
+                                                <a href="/signup?planid={{plan_id}}&planname={{promo_code}}">
+                                                    <div class="square box-shadow" id="box_{{plan_id}}">
+                                                        <div class="content1">
+                                                            <div class="table">
+                                                                <div class="table-cell title_text">
+                                                                    {{promo_code}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            {{/web_signup_plan}}
+                                        {{/plan_data}}
+                                    </div>
+                                    <div class="span6 r_content">
+                                        <div class="col-sm-11">
+                                            <div class="col-sm-6">
+                                                <select class="form-control" id="books">
+                                                    <option value="">Select No of Books:</option>
+                                                    {{# plan_books}}
+                                                        <option value="{{.}}">{{.}}</option>
+                                                    {{/plan_books}}
+                                                </select></br>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <select class="form-control" id="months" >
+                                                    <option value="">Select No of Months:</option>
+
+                                                </select></br>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-11" id="border_bottom">
+                                            <div class="col-sm-6">
+                                                <h5>One Time Registration Fee:</h5>
+                                            </div>
+                                            <div class="col-sm-4" id="reg_fee">
+                                                <h5></h5>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-11" id="border_bottom">
+                                            <div class="col-sm-6">
+                                                <h5>Security Deposit:</h5>
+                                            </div>
+                                            <div class="col-sm-4" id="sec_deposit_fee">
+                                                <h5></h5>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-11" id="border_bottom">
+                                            <div class="col-sm-6">
+                                                <h5>Reading Fee:</h5>
+                                            </div>
+                                            <div class="col-sm-4" id="reading_fee">
+                                                <h5></h5>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-11" id="border_none">
+                                            <div class="col-sm-6">
+                                                <h5>Total:</h5>
+                                            </div>
+                                            <div class="col-sm-4" id="total_fee">
+                                                <h5></h5>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-11">
+                                            <div class="col-sm-offset-2 col-sm-8">
+                                                <a href="#anchor2" class="btn btn-success btn-block" id="plan_submit">Sign
+                                                    up Now</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div><!-- .module_cont -->
+                        </div><!-- .row-fluid -->
+                    </div>
+                </div>
+                <div class="row" style="background-color:#fff; margin-top:20px; margin-bottom:20px; border-radius:5px;">
+                    <a id="anchor2"></a>
+                    <div class="span12 module_cont module_text_area"></br>
+                        <h2>Fill Your Personal Details Here</h2>
+                        <hr>
+                        <form class="form-horizontal" id="signup_form">
+
+                            <h4 class="dark-grey">Account Information</h4>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="col-sm-6">
+                                        <label>First Name:</label>
+                                        <input type="text" class="form-control" id="firstname" name="firstname"
+                                               required>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Last Name:</label>
+                                        <input type="text" class="form-control" id="lastname" name="lastname">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <label>Address:</label>
+                                        <input type="text" class="form-control" id="address" name="address" required>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="col-sm-6">
+                                        <label>Date Of Birth:</label>
+                                        <!--<input type="text" class="form-control" id="dob" name="dob">-->
+                                        <input class="form-control" type="text" id="dob" readonly required="required" name="dob" required>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Gender:</label>
+                                        <select class="form-control" id="gender" name="gender">
+                                            <option value="M">Male</option>
+                                            <option value="F">Female</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-4">
+                                        <label>City:</label>
+                                        <select class="form-control" id="city" name="city">
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label>State:</label>
+                                        <select class="form-control" id="state" name="state">
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label>Zip/Post:</label>
+                                        <input type="text" class="form-control" id="zip" name="zip" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <!----------/////////////////////END/////////////////////////-------------------->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="col-sm-6">
+                                        <label>Email:</label>
+                                        <input type="email" class="form-control" id="email" name="email" required>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Mobile:</label>
+                                        <input type="number" class="form-control" id="mobile" required name="mobile"
+                                               maxlength="10" minlength="10">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="col-sm-6">
+                                        <label>Create Password:</label>
+                                        <input type="password" class="form-control" id="password" name="password"
+                                               required>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <label>Confirm Password:</label>
+                                        <input type="password" class="form-control" id="Cpassword" name="password1"
+                                               required oninput="passwordval()">
+                                    </div>
+                                </div>
+                            </div>
+                            <!----------/////////////////////END/////////////////////////-------------------->
+
+
+                            <h4 class="dark-grey">Coupon Information</h4>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="col-sm-5">
+                                        <label>Apply Referral code, if any:</label>
+                                        <input type="text" class="form-control" id="referral code"
+                                               placeholder="Member Card No." name="referral_code">
+                                    </div>
+                                    <div class="col-sm-5">
+                                        <label>Apply coupon code, if any:</label>
+                                        <input type="text" class="form-control" id="coupon_code"
+                                               placeholder="Coupon Code" name="coupon_code">
+                                    </div>
+                                    <div class="col-sm-2" style="padding-top:22px;">
+                                        <button type="submit" class="btn btn-warning" id="coupon_submit">Apply</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="col-sm-5">
+                                        <label>Apply gift card, if any:</label>
+                                        <input type="text" class="form-control" id="gift_card"
+                                               placeholder="Gift Card No." name="gift_card">
+                                    </div>
+                                    <div class="col-sm-5" style="padding-top:22px;">
+                                        <input type="text" class="form-control" id="gift_card_pin" placeholder="PIN"
+                                               name="gift_card_pin">
+                                    </div>
+                                    <div class="col-sm-2" style="padding-top:22px;">
+                                        <button type="submit" class="btn btn-warning" id="gift_card_submit">Apply
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+
+                                </div>
+                                <div class="form-group">
+
+                                </div>
+                            </div>
+                            <!----------/////////////////////END/////////////////////////-------------------->
+
+
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox" id="checkbox">I accept <a href="#">Terms & Conditions</a>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div> <!-- /.form-group -->
+
+                            </div>
+                            <span id="error" style="color :red;display: none;margin-right: 10%;float:right"></span>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="col-sm-6">
+                                        <button type="submit"  class="btn btn-success btn-block" id="signup" disabled>Register
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div><!-- .contentarea -->
+    </div>
+</div>
+<div class="clear"><!-- ClearFix --></div>
+
+<div class="clear"><!-- ClearFix --></div>
+<script type="application/javascript">
+
+
+    function passwordval() {
+
+        if ($("#Cpassword").val() !== $("#password").val()) {
+            $("#error").text("Passwords doesnot match!");
+            $("#error").show();
+            return false;
+        }
+        else {
+            $("#error").hide();
+        }
+    }
+
+    var reg_fee;
+    var secDeposit;
+    $(document).ready(function () {
+        $('#checkbox').click(function(){
+            $("#signup").attr("disabled", !this.checked);
+        });
+        var planname = "{{planname}}";
+        var planid = "{{planid}}";
+
+
+        var planid = $('.planid').attr('id');
+
+        $("#dob").datepicker({
+            dateFormat: 'dd-mm-yy',
+            changeMonth: true
+        }).val();
+    });
+
+    var planid = $('.planid').attr('id');
+    var mon = '';
+    var book = '';
+    $('#box_' + planid).attr('style', 'background-color:#FF6861');
+    $('#months').on('change', function () {
+$(".spinner").show();
+        mon = this.value;
+        book = $("#books").val();
+
+        updateFees();
+    });
+    $('#books').on('change', function () {
+        $("#months").hide();
+        $(".spinner").show();
+        $("#months").empty();
+        book = this.value;
+        $.ajax({
+            type: "GET",
+            url: "/getPlanYears?book=" + book + "&planname=" + "{{planname}}",
+            success: function (data_new) {
+                $(".spinner").hide();
+                $("#months").show();
+                console.log(data_new);
+                console.log(JSON.parse(data_new));
+                data_new = JSON.parse(data_new);
+                if (data_new['status'] === "2nd") {
+                    data_new = data_new['data'];
+
+                    if (data_new.length != 0 || data_new != [] || data_new != '[]') {
+                        for (var i = 0; i < data_new.length; i++) {
+
+                            $("#months").append('<option value="' + data_new[i] + '">' + data_new[i] + '</option>')
+
+                        }
+                        $("#months").prepend("<option value=''>Select months</option>").val('');
+
+                    }
+                }
+                else {
+                    $("#months").append('<option value="' + data_new['month'] + '">' + data_new['month'] + ' month(s)</option>')
+
+                    $('#reg_fee h5').html(data_new['reg_fee']);
+                    $('#sec_deposit_fee h5').html(data_new['sec_deposit']);
+                    $('#reading_fee h5').html(data_new['reading_fee']);
+                    $('#total_fee h5').html(data_new['total']);
+
+                }
+
+
+            },
+            error: function (err) {
+                $(".spinner").hide();
+
+                console.log(err.responseText)
+            }
+
+        });
+
+
+        //        updateFees();
+    });
+    function updateFees() {
+        console.log(planid + "assas" + mon + "aasass" + book);
+        if (mon != '' && book != '') {
+            $.ajax({
+                type: "GET",
+                url: "/getPlanFees?book=" + book + "&months=" + mon + "&planname=" + "{{planname}}",
+                success: function (data_new) {
+                    $(".spinner").hide();
+                    console.log(data_new);
+                    data_new = JSON.parse(data_new);
+                    console.log(data_new);
+//                        console.log(data_new['reg_fee']);
+                    $('#reg_fee h5').html(data_new['reg_fee']);
+                    $('#sec_deposit_fee h5').html(data_new['sec_deposit']);
+                    $('#reading_fee h5').html(data_new['reading_fee']);
+                    $('#total_fee h5').html(data_new['total']);
+                },
+                error: function (err) {
+                    $(".spinner").hide();
+                    console.log(err.responseText)
+                }
+
+            });
+        }
+    }
+
+
+    $.ajax({
+        type: "GET",
+        url: "/getCitiesAndState",
+        success: function (data_new) {
+            data_new = JSON.parse(data_new);
+            console.log(data_new);
+            console.log(data_new[0]['city']);
+            data_new[0]['city'].forEach(function (arr) {
+                $('#city').append("<option value=" + arr['CITYID'] + ">" + arr['CITYNAME'] + "</option>");
+            });
+            data_new[0]['state'].forEach(function (arr) {
+                $('#state').append("<option value=" + arr['STATEID'] + ">" + arr['STATENAME'] + "</option>");
+            });
+        },
+
+    });
+
+    $('#signup').click(function (e) {
+
+        e.preventDefault();
+        if ($("#gender").val() == "") {
+            $("#error").text("Please specify a gender");
+            $("#error").show();
+            return false;
+        }
+
+
+        if ($("#firstname").val() == "") {
+            $("#error").text("Please enter a proper first name");
+            $("#error").show();
+            return false;
+        }
+        if ($("#lastname").val() == "") {
+            $("#error").text("Please enter a proper last name");
+            $("#error").show();
+            return false;
+        }
+        if ($("#address").val() == "") {
+            $("#error").text("Please enter a proper address");
+            $("#error").show();
+            return false;
+        }
+        if ($("#dob").val() == "") {
+            $("#error").text("Please enter a DOB");
+            $("#error").show();
+            return false;
+        }
+
+        if ($("#zip").val().length < 6) {
+            $("#error").text("Please enter a valid zip code");
+            $("#error").show();
+            return false;
+        }
+        if ($("#email").val() == "") {
+            $("#error").text("Please enter an E-mail address");
+            $("#error").show();
+            return false;
+        }
+        if ($("#mobile").val().length < 10) {
+            $("#error").text("Please enter a proper mobile number");
+            $("#error").show();
+            return false;
+        }
+        if ($("#password").val() !== $("#Cpassword").val()) {
+            $("#error").text("Passwords doens't match");
+            $("#error").show();
+            return false;
+        }
+        $("#error").hide();
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-93821751-1', 'none');
+        var username=$("#email").val()
+        ga('send', 'event', 'Clicks', 'Signup of user '+username+'', 'First Screen');
+
+
+        var signup_data = $('#signup_form').serialize();
+        signup_data += '&reg_fee=' + $('#reg_fee h5').html() + '&reading_fee=' + $('#reading_fee h5').html() + '&security_deposit=' + $('#sec_deposit_fee h5').html() + '&plan_id=' + {{planid}}+'&duration=' + $('#months').val();
+        $.ajax({
+            type: "POST",
+            url: "/insertSignup",
+            data: {'signup_data': JSON.stringify(signup_data)},
+            success: function (data_new) {
+                console.log(data_new)
+                console.log(JSON.parse(data_new));
+                console.log(data_new['success'])
+                data_new = JSON.parse(data_new);
+                logClick("Sign up click")
+                if (data_new['success'] == true) {
+
+
+//
+
+
+                    window.location.href = "/PaytmKit/pgRedirect.php"
+
+                }
+                else {
+
+                    $("#error").text(data_new['errors'][0]);
+                    $("#error").show();
+
+                }
+            },
+
+        });
+    });
+
+    $('#coupon_submit').click(function (e) {
+        e.preventDefault();
+        var coupon = $('#coupon_code').val();
+        $.ajax({
+            type: "POST",
+            url: "/couponValidate",
+            data: {'coupon': coupon, 'planid': planid, 'months': mon},
+            success: function (data_new) {
+                data_new = JSON.parse(data_new);
+                console.log(data_new);
+                if (data_new['success'] == true) {
+                    toastr.success('Coupon accepted !');
+                }
+                else {
+
+                    $("#error").text(data_new['errors']);
+                    $("#error").show();
+
+                }
+
+
+            },
+
+        });
+    });
+
+    $('#gift_card_submit').click(function (e) {
+        e.preventDefault();
+        var gift_card = $('#gift_card').val();
+        var gift_card_pin = $('#gift_card_pin').val();
+        var total_amnt = $('#total_fee h5').html();
+        $.ajax({
+            type: "POST",
+            url: "/giftcardValidate",
+            data: {'gift_card': gift_card, 'gift_card_pin': gift_card_pin, 'total_amnt': total_amnt},
+            success: function (data_new) {
+                data_new = JSON.parse(data_new);
+                console.log(data_new);
+                if (data_new['success'] == true) {
+                    toastr.success('Gift card accepted !');
+                }
+                else {
+
+                    $("#error").text(data_new['errors']);
+                    $("#error").show();
+
+                }
+
+            },
+
+        });
+    });
+
+
+    function planFees() {
+        var readingFee = $("#months").val();
+        $('#reg_fee h5').html(reg_fee);
+        $('#sec_deposit_fee h5').html(secDeposit);
+        $('#reading_fee h5').html(readingFee);
+        $('#total_fee h5').html(parseFloat(reg_fee) + parseFloat(secDeposit) + parseFloat(readingFee));
+    }
+
+</script>
+{{> footer}}

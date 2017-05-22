@@ -14,8 +14,8 @@ function init(){
         ]);
         return $view;
     };
-//    $container['db'] = function(){
-////        $conn = oci_connect("memp", "memp", "localdboracle.com");
+    $container['db'] = function(){
+        $conn = oci_connect("memp", "memp", "stagingdb.justbooksclc.com");
 //        $conn = oci_connect('memp', 'Dragon$32Sushi', ' (DESCRIPTION =
 //            (ADDRESS_LIST =
 //              (ADDRESS = (PROTOCOL = TCP)(HOST = db1.csvm47svs5ut.us-east-1.rds.amazonaws.com)(PORT = 1521))
@@ -24,8 +24,8 @@ function init(){
 //              (SERVICE_NAME = db4)
 //            )
 //          )');
-//        return $conn;
-//    };
+        return $conn;
+    };
     return $app;
 }
 
