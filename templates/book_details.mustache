@@ -119,22 +119,22 @@
                                         <div class="row-fluid">
                                             <div class="span12 module_cont module_bookslider">
                                                 <div class="bg_title"><h4 class="headInModule" style="color: #464D52;">RELATED BOOKS</h4></div>
-                                                <div class="team_slider">
+                                                <div class="team_slider" style="">
                                                     <div class="carouselslider teamslider items5" data-count="5">
                                                         <ul class="item_list" id="items5">
                                                             {{# related_books}}
                                                             <li>
-                                                                <div class="item item_shadow" id="{{related_book.id}}">
-                                                                    <div class="img_block_books"><img src="{{related_book.image}}" alt="Tom" onerror="this.src='http://cdn2.justbooksclc.com/title/0.jpg';"></div>
+                                                                <div class="item item_shadow" id="{{id}}">
+                                                                    <div class="img_block_books"><img src="{{image}}" alt="Tom" onerror="this.src='http://cdn2.justbooksclc.com/title/0.jpg';"></div>
                                                                     <div class="carousel_body_book">
                                                                         <div class="carousel_title_book">
-                                                                            <h5>{{related_book.title}}</h5>
+                                                                            <h5>{{title}}</h5>
                                                                         </div>
                                                                         <div class="carousel_desc">
                                                                             <div class="smallproflinks">
-                                                                                <a href="javascript:void(0)"  title="Wishlist" onclick="wishlistAdd({{related_book.id}});">Wishlist</a>
-                                                                                <a href="javascript:void(0)" title="Rent" onclick="placeOrder({{related_book.id}});">Rent</a>
-                                                                                <a href="/book_details/{{related_book.id}}"  title="Read" >Read</a>
+                                                                                <a href="javascript:void(0)"  title="Wishlist" onclick="wishlistAdd({{id}});">Wishlist</a>
+                                                                                <a href="javascript:void(0)" title="Rent" onclick="placeOrder({{id}});">Rent</a>
+                                                                                <a href="/book_details/{{id}}"  title="Read" >Read</a>
                                                                                 <div class="clear"></div>
                                                                             </div>
                                                                         </div>

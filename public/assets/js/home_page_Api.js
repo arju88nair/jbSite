@@ -213,7 +213,7 @@ data=JSON.parse(data);
                     '<div class="price_item_wrapper">' +
                     '<div class="price_item_title"><h5>' + arr['web_signup_plan']['promo_code'].toUpperCase() + '</h5></div>' +
                     '<div class="item_cost_wrapper" style="background-color: ' + colors[i] + ';">' +
-                    '<div class="price_item_title" style="background-color: ' + colors[i] + ';"><h4>' + arr['web_signup_plan']['annual_membership_fee'] + '</h4></div>' +
+                    '<div class="price_item_title" style="background-color: ' + colors[i] + '; padding: 10px 10px 10px 10px;"><h4>' + arr['web_signup_plan']['annual_membership_fee'] + '</h4></div>' +
                     '</div>' +
                     '<div class="price_item_text">3 months plan</div>' +
                     '<div class="price_item_text" id="price_item_text">Books - ' + arr['web_signup_plan']['books'] + '</div>' +

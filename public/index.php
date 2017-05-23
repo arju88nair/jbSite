@@ -875,40 +875,79 @@ $app->post('/insertPushNotification', function (Request $request, Response $resp
 
 $app->get('/sendPush', function (Request $request, Response $response) {
 #API access key from Google API's Console
-    define('API_ACCESS_KEY', 'AIzaSyDxLuyoM-T8v5SKF2z_5cUKNjhTOJ90_PI');
-    $registrationIds =
-#prep the bundle
-    $msg = array
-    (
-        'body' => 'Body  Of Notification',
-        'title' => 'Title Of Notification',
-        'id' => 24323,
-        'action' => 'Navigation'
-    );
-    $fields = array
-    (
-        'to' => (string)$registrationIds,
-        'notification' => $msg
+//    define('API_ACCESS_KEY', 'AIzaSyDxLuyoM-T8v5SKF2z_5cUKNjhTOJ90_PI');
+//    $registrationIds ="cKWaI8ESqig:APA91bG3s_SxKVzRWctLjslrAeOqxkqSlUxJTzFVLrtFa6HfhdpynfCulfQuyqm4OPX5K3OcapxkKfU3geq-wFJj8vKVz-VYPGtVIRSZjgE4yVgmF-ooyHoXRpTD42emtPzZjcx4tZFh";
+//#prep the bundle
+//    $msg = array
+//    (
+//        'body' => 'Body  Of Notification',
+//        'title' => 'Title Of Notification',
+//        'id' => 24323,
+//        'action' => 'Navigation'
+//    );
+//    $fields = array
+//    (
+//        'to' => (string)$registrationIds,
+//        'notification' => $msg
+//    );
+//
+//
+//    $headers = array
+//    (
+//        'Authorization: key=' . API_ACCESS_KEY,
+//        'Content-Type: application/json'
+//    );
+//#Send Reponse To FireBase Server
+//    $ch = curl_init();
+//    curl_setopt($ch, CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send');
+//    curl_setopt($ch, CURLOPT_POST, true);
+//    curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+//    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+//    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+//    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fields));
+//    $result = curl_exec($ch);
+//    curl_close($ch);
+//#Echo Result Of FireBase Server
+//    echo $result;
+
+    $data = array('Title'=>'Just Books','Body'=>'A harmless test body','Id'=> 666,'Action'=>'Navigation','Url'=>"");
+    $target=array('cKWaI8ESqig:APA91bG3s_SxKVzRWctLjslrAeOqxkqSlUxJTzFVLrtFa6HfhdpynfCulfQuyqm4OPX5K3OcapxkKfU3geq-wFJj8vKVz-VYPGtVIRSZjgE4yVgmF-ooyHoXRpTD42emtPzZjcx4tZFh');
+
+    $url = 'https://fcm.googleapis.com/fcm/send';
+//api_key available in Firebase Console -> Project Settings -> CLOUD MESSAGING -> Server key
+    $server_key = 'AIzaSyDxLuyoM-T8v5SKF2z_5cUKNjhTOJ90_PI';
+
+    $fields = array();
+    $fields['data'] = $data;
+    if(is_array($target)){
+        $fields['registration_ids'] = $target;
+    }else{
+        $fields['to'] = $target;
+    }
+//header with content_type api key
+    $headers = array(
+        'Content-Type:application/json',
+        'Authorization:key='.$server_key
     );
 
-
-    $headers = array
-    (
-        'Authorization: key=' . API_ACCESS_KEY,
-        'Content-Type: application/json'
-    );
-#Send Reponse To FireBase Server
     $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, 'https://fcm.googleapis.com/fcm/send');
+    curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fields));
     $result = curl_exec($ch);
+    if ($result === FALSE) {
+        die('FCM Send Error: ' . curl_error($ch));
+    }
     curl_close($ch);
-#Echo Result Of FireBase Server
-    echo $result;
+    return $result;
+
+
+
+
 });
 
 

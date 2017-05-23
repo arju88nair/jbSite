@@ -3708,7 +3708,7 @@ hr.respond_seperator {
 		color:#8e8e8e;
 		text-align:center;
 		margin:0;
-		font-family: 'Cabin', sans-serif;
+		font-family: 'Playfair Display';
 		font-size: 23px;
 		padding-top: 10px;
 		padding-bottom: 10px;
@@ -3718,6 +3718,7 @@ hr.respond_seperator {
 		color:#fff;
 		text-align:center;
 		margin:0;
+		font-family: arial, sans-serif;
 	}
 
 	#price_item_text{
@@ -3735,6 +3736,8 @@ hr.respond_seperator {
 		text-align:center;
 		color:#8e8e8e;
 		padding:11px 15px;
+		font-size: medium;
+		font-family: arial, sans-serif;
 	}
 	.most_popular .price_item_text {
 		border-right:#818c94 1px solid;
@@ -6497,5 +6500,16 @@ transition: 500ms ease-in-out left;
 
 }
 
+.contact-us p{
+	font-family: arial, sans-serif;
+	line-height: 20px;
+	font-size: 16px;
+
+}
+
+.contact-us h3{
+	font-family: 'Playfair Display';
+	margin:0px 0 5px 0;
+}
 
 
