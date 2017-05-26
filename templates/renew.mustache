@@ -98,6 +98,8 @@
 
 <script type="application/javascript">
     $(document).ready(function () {
+        var email=localStorage.getItem("email");
+        var membership=localStorage.getItem("membership");
         $.ajax({
             type: "GET",
             url: "http://staging.justbooksclc.com:8990/api/v1/get_renewal_terms.json?email=ravi@freenet.zone&membercard=M103604",
@@ -108,13 +110,13 @@
                 var plans = data_new.result;
                 var colors = ['#EFAC54','#347AB6','#5BB85D','#59C0E1'];
                 plans.forEach(function(arr){
-                    response += '<div class="price_item" style="width:20%">'+
+                    response += '<div class="price_item" style="width:20%;padding-bottom: 4%">'+
                             '<div class="price_item_wrapper">'+
                             '<div class="item_cost_wrapper" style="background-color: '+colors[i]+';">'+
                             '<div class="price_item_title" style="background-color: '+colors[i]+';"><h4>'+arr['renewal_month']['term_description']+'</h4></div>'+
                             '</div>'+
                             '<div class="price_item_text">Expires on - '+arr['renewal_month']['expiry_date']+'</div>'+
-                            '<div class="price_item_text" id="price_item_text">Renewal Amount - '+arr['renewal_month']['renewal_amount']+'</div>'+
+                            '<div class="price_item_text" id="price_item_text">Renewal Amount - '+arr['renewal_month']['renewal_amount']+' Rs</div>'+
                             '<div class="price_item_btn" id="btn" style="background-color: '+colors[i]+'" onclick="getRenewed('+arr['renewal_month']['signup_months']+','+arr['renewal_month']['delivery_fees']+')"><a href="javascript:void(0)">Get It Now !</a></div>'+
                             '</div></div>';
                     i++;
@@ -145,12 +147,14 @@
     {
         var email=localStorage.getItem("email");
         var membership=localStorage.getItem("membership");
+        console.log("http://staging.justbooksclc.com:8990/api/v1/renewal_payment.json?email="+email+"&membercard="+membership+"&term="+termMonth+"&delivery_option=null&delivery_fees="+fee+"&coupon_code=null&gift_card_no=null&pin=null")
         $.ajax({
             type: "GET",
             dataType: "json",
-            url: "http://staging.justbooksclc.com:8990/api/v1/renewal_payment.json?email=r"+email+"&membercard="+membership+"&term="+termMonth+"&delivery_option=null&delivery_fees="+fee+"&coupon_code=null&gift_card_no=null&pin=null",
+            url: "http://staging.justbooksclc.com:8990/api/v1/renewal_payment.json?email="+email+"&membercard="+membership+"&term="+termMonth+"&delivery_option=null&delivery_fees="+fee+"&coupon_code=null&gift_card_no=null&pin=null",
             success: function (data_new) {
                 console.log(data_new);
+
 
                 if(data_new.success == true)
                 {
@@ -165,7 +169,8 @@
                             {
                                 var orderNumber = data.result.transaction.transaction.order_number;
                                 var amount = data.result.transaction.transaction.amount;
-
+console.log(orderNumber);
+console.log(amount);
                                 saveSession(orderNumber,amount);
                             }
 
@@ -207,4 +212,13 @@
 
         });
     }
+</script>
+<script>
+    $(document).ready(function()
+    {
+        $('#home').addClass('current-menu-parent');
+
+    })
+
+
 </script>

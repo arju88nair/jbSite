@@ -19,8 +19,11 @@
                         <div class="row">
 
                             <div class="col-lg-12">
-                                <h4 class="page-header"><small>You searched for  </small> <b>" {{query}} " </b></h4>
+                                <h4 class="page-header"><small>You searched for  </small> <b>" {{query}} " </b><small>which have {{count}} results</small></h4>
                             </div>
+                            <br>
+                            <br>
+                            <br>
                             {{# data}}
 
                             {{# result}}
@@ -43,3 +46,13 @@
                     
         <div class="clear"><!-- ClearFix --></div>
         {{> footer}}
+<script>
+    $(document).ready(function()
+    {
+        $('#home').addClass('current-menu-parent');
+        <!--$("#count").text(" which have" {{result}}.length);-->
+
+    })
+
+
+</script>

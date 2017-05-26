@@ -74,8 +74,11 @@
 
     </script>
     <style>
-        /*Rating style*/
 
+        /*Rating style*/
+        a:hover{
+            color: #37878d;
+        }
         .animated {
             -webkit-transition: height 0.2s;
             -moz-transition: height 0.2s;
@@ -183,6 +186,7 @@
 
     <script type="text/javascript">
 
+
         function logClick(type) {
 //            $.ajax({
 //                type: "GET",
@@ -215,6 +219,25 @@
 
         }
         $(document).ready(function () {
+            $('#srch-term').keypress(function(e) {
+                var key = e.which;
+                if (key == 13) // the enter key code
+                {
+                    searchClick();
+                    return false;
+                }
+            });
+
+
+
+//            $('header nav ul.menu > li > a').click(function(e) {
+//                alert("FG")
+//                var $this = $(this);
+//                $this.parent().siblings().removeClass('current-menu-parent').end().addClass('current-menu-parent');
+//                e.preventDefault();
+//            })
+//
+
             $.ajax({
                 type: "GET",
                 url: "/getSessions",
@@ -239,16 +262,19 @@
                     data = JSON.parse(data);
                     console.log(data['name'])
                     $("#firstname").text(" Welcome " + data['name']);
-                    $("ul.menu").append("<li><a href=\"/shelf\">Your Shelf</a></li>");
+                    $("ul#menuHeader").append("<li id=\"shelfMenu\"><a href=\"/shelf\">Your Shelf</a></li>");
                     $("nav").show()
                     $(".userTile").show();
 
                     $("#first").hide();
                     $("#main").hide();
+                    localStorage.setItem("flag",true)
 
                     return false;
                 }
                 else {
+                    localStorage.setItem("flag",false)
+
                     $("nav").show();
 
                     $(".userTile").hide();
@@ -282,14 +308,15 @@
          </div>
          <div class="clear"></div>
      </section> -->
-    <div class="header_wrapper container">
 
-        <div class="userTile" style="float: right; padding-top: 30px;display: none;">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><span class="glyphicon glyphicon-user"></span><span id="firstname"></span> </a></li>
-                <li><a href="/logout/"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-            </ul>
-        </div>
+    <div class="userTile" style="float: right; padding-top: -6px;display: none;">
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#"><span class="glyphicon glyphicon-user"></span><span id="firstname"></span> </a></li>
+            <li><a href="/logout/"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+        </ul>
+    </div>
+
+    <div class="header_wrapper container">
 
         {{> header_logo}}
 

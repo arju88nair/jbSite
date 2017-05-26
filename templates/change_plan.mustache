@@ -217,7 +217,7 @@
                                                 <select class="form-control" id="books">
                                                     <option value="">Select No of Books:</option>
                                                     {{# plan_books}}
-                                                        <option value="{{.}}">{{.}}</option>
+                                                        <option value="{{.}}">{{.}} month(s)</option>
                                                     {{/plan_books}}
                                                 </select></br>
                                             </div>
@@ -231,7 +231,7 @@
 
                                         <div class="col-sm-11" id="border_bottom">
                                             <div class="col-sm-6">
-                                                <h5>One Time Registration Fee:</h5>
+                                                <h5 style="float: left">One Time Registration Fee:</h5>
                                             </div>
                                             <div class="col-sm-4" id="reg_fee">
                                                 <h5></h5>
@@ -239,7 +239,7 @@
                                         </div>
                                         <div class="col-sm-11" id="border_bottom">
                                             <div class="col-sm-6">
-                                                <h5>Security Deposit:</h5>
+                                                <h5 style="float: left"> Security Deposit:</h5>
                                             </div>
                                             <div class="col-sm-4" id="sec_deposit_fee">
                                                 <h5></h5>
@@ -247,7 +247,7 @@
                                         </div>
                                         <div class="col-sm-11" id="border_bottom">
                                             <div class="col-sm-6">
-                                                <h5>Reading Fee:</h5>
+                                                <h5 style="float: left">Reading Fee:</h5>
                                             </div>
                                             <div class="col-sm-4" id="reading_fee">
                                                 <h5></h5>
@@ -255,7 +255,7 @@
                                         </div>
                                         <div class="col-sm-11" id="border_none">
                                             <div class="col-sm-6">
-                                                <h5>Total:</h5>
+                                                <h5 style="float: left">Total:</h5>
                                             </div>
                                             <div class="col-sm-4" id="total_fee">
                                                 <h5></h5>
@@ -441,7 +441,11 @@
 
 <div class="clear"><!-- ClearFix --></div>
 <script type="application/javascript">
+    $(document).ready(function()
+    {
+        $('#plansHeader').addClass('current-menu-parent');
 
+    })
     function passwordval() {
 
         if ($("#Cpassword").val() !== $("#password").val()) {
@@ -523,7 +527,7 @@
 //                        $('.planid').attr(data_new['planID']);
                         for (var i = 0; i < data_new.length; i++) {
 
-                            $("#months").append('<option value="' + data_new[i] + '">' + data_new[i] + '</option>')
+                            $("#months").append('<option value="' + data_new[i] + '">' + data_new[i] + ' months(s)</option>')
 
                         }
                         $("#months").prepend("<option value=''>Select months</option>").val('');

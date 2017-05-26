@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <link rel="apple-touch-icon" sizes="76x76" href="../../assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="../assets/img/favicon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+
+    <title>Justbooks Admin</title>
+
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
+    <meta name="viewport" content="width=device-width"/>
+
+
+    <!-- Bootstrap core CSS     -->
+    <link href="../assets/css/bootstrap.min.css" rel="stylesheet"/>
+
+    <!-- Animation library for notifications   -->
+    <link href="../assets/css/animate.min.css" rel="stylesheet"/>
+
+    <!--  Paper Dashboard core CSS    -->
+    <link href="../assets/css/paper-dashboard.css" rel="stylesheet"/>
+
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="../assets/css/demo.css" rel="stylesheet"/>
+
+
+    <!--  Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
+    <link href="../assets/css/themify-icons.css" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="sidebar" data-background-color="white" data-active-color="danger">
+
+        <!--
+            Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
+            Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
+        -->
+
+        <div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="http://www.creative-tim.com" class="simple-text">
+                    Website Admin
+                </a>
+            </div>
+
+            <ul class="nav">
+                <li>
+                    <a href="dashboard.html">
+                        <i class="ti-panel"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="/adminCardsView">
+                        <i class="ti-text"></i>
+                        <p>Offer Cards</p>
+                    </a>
+                </li>
+                <!--<li>-->
+                <!--<a href="table.html">-->
+                <!--<i class="ti-view-list-alt"></i>-->
+                <!--<p>Table List</p>-->
+                <!--</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                <!--<a href="typography.html">-->
+                <!--<i class="ti-text"></i>-->
+                <!--<p>Typography</p>-->
+                <!--</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                <!--<a href="icons.html">-->
+                <!--<i class="ti-pencil-alt2"></i>-->
+                <!--<p>Icons</p>-->
+                <!--</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                <!--<a href="maps.html">-->
+                <!--<i class="ti-map"></i>-->
+                <!--<p>Maps</p>-->
+                <!--</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                <!--<a href="notifications.html">-->
+                <!--<i class="ti-bell"></i>-->
+                <!--<p>Notifications</p>-->
+                <!--</a>-->
+                <!--</li>-->
+                <!--<li class="active-pro">-->
+                <!--<a href="upgrade.html">-->
+                <!--<i class="ti-export"></i>-->
+                <!--<p>Upgrade to PRO</p>-->
+                <!--</a>-->
+                <!--</li>-->
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar bar1"></span>
+                        <span class="icon-bar bar2"></span>
+                        <span class="icon-bar bar3"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Offer Cards</a>
+                </div>
+
+            </div>
+        </nav>
+
+
+        <div class="content">
+            <div class="container-fluid">
+
+                <div class="spinner" style='display: none'>
+                    <div class="double-bounce1"></div>
+                    <div class="double-bounce2"></div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="header">
+                            <h4 class="title">Active offers</h4>
+                        </div>
+                        <div class="content table-responsive table-full-width">
+
+
+                            <table id="expand-table" class="table table-striped table-bordered" width="100%" cellspacing="0">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Category</th>
+                                    <th>Registration Fee</th>
+                                    <th>Reading Fee</th>
+                                    <th>Security Deposit</th>
+                                    <th>No of books</th>
+                                    <th>No of months</th>
+                                    <th>Promo</th>
+                                    <th>Delete</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                    {{#data}}
+                                        <tr>
+                                        <td align="center">{{ID}}</td>
+                                        <td align="center">{{PLAN_NAME}}</td>
+                                        <td align="center">{{CATEGORY}}</td>
+                                        <td align="center">{{REGISTRATION_FEE}}</td>
+                                        <td align="center">{{READING_FEE}}</td>
+                                        <td align="center">{{SECURITY_DEPOSIT}}</td>
+                                        <td align="center">{{NO_OF_BOOKS}}</td>
+                                        <td align="center">{{NO_OF_MONTHS}}</td>
+                                        <td align="center">{{PROMO}}</td>
+                                        <td align="center"><span style="cursor: pointer; cursor: hand; " id="deleteTrash" class="glyphicon glyphicon-trash" onclick="deleteBID(this,{{ID}});"></span></td>
+                                        </tr>
+
+                                    {{/data}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <button  data-toggle="collapse"  class="btn btn-info" data-target="#demo" style="float: right;" >Add new plan</button>
+
+                <div id="demo" class="collapse col-md-12">
+                    <form class="form" >
+                        <div class="form-group" style="margin-top:5%;margin-right: 2%">
+                            <label for="email">Plan name:</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter plan name" name="plan" required>
+                        </div>
+                        <div class="form-group" style="margin-top:5%;margin-right: 2%">
+                            <label for="email">Plan Category:</label>
+                            <input type="text" class="form-control" id="category" placeholder="Enter plan category" name="category" required>
+                        </div>
+                        <div class="form-group" style="margin-top:5%;margin-right: 2%">
+                            <label for="email">Plan registration fee:</label>
+                            <input type="text" class="form-control" id="registration" placeholder="Enter plan registration fee" name="registration" required>
+                        </div>
+                        <div class="form-group" style="margin-top:5%;margin-right: 2%">
+                            <label for="email">Plan reading fee:</label>
+                            <input type="text" class="form-control" id="reading" placeholder="Enter plan reading fee" name="reading" required>
+                        </div>
+                        <div class="form-group" style="margin-top:5%;margin-right: 2%">
+                            <label for="email">Plan security fee:</label>
+                            <input type="text" class="form-control" id="security" placeholder="Enter security fee" name="security" required>
+                        </div>
+                        <div class="form-group" style="margin-top:5%;margin-right: 2%">
+                            <label for="email">Number of books:</label>
+                            <input type="text" class="form-control" id="books" placeholder="Enter number of books" name="books" required>
+                        </div>
+                        <div class="form-group" style="margin-top:5%;margin-right: 2%">
+                            <label for="email">Number of months:</label>
+                            <input type="text" class="form-control" id="months" placeholder="Enter number of months" name="months" required>
+                        </div>
+                        <div class="form-group" style="margin-top:5%;margin-right: 2%">
+                            <label for="email">Promo name:</label>
+                            <input type="text" class="form-control" id="Promo" placeholder="Enter Promo name" name="Promo" required>
+                        </div>
+
+
+                        <button id="buttonSubmit"  class="btn btn-default" style="margin-top:5%;margin-right: 2%">Submit</button>
+                    </form>                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <nav class="pull-left">
+                    <!-- <ul>
+
+                        <li>
+                            <a href="http://www.creative-tim.com">
+                                Creative Tim
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://blog.creative-tim.com">
+                               Blog
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://www.creative-tim.com/license">
+                                Licenses
+                            </a>
+                        </li>
+                    </ul> -->
+                </nav>
+                <div class="copyright pull-right">
+                    &copy;
+                    <script>document.write(new Date().getFullYear())</script>        , Justbooks Website Admin </i>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+</div>
+
+
+</body>
+
+<!--   Core JS Files   -->
+<script src="../assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+<script src="../assets/js/bootstrap.min.js" type="text/javascript"></script>
+
+<!--  Checkbox, Radio & Switch Plugins -->
+<script src="../assets/js/bootstrap-checkbox-radio.js"></script>
+
+<!--  Charts Plugin -->
+<script src="../assets/js/chartist.min.js"></script>
+
+<!--  Notifications Plugin    -->
+<script src="../assets/js/bootstrap-notify.js"></script>
+
+<!--  Google Maps Plugin    -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+
+<!-- Paper Dashboard Core javascript and methods for Demo purpose -->
+<script src="../assets/js/paper-dashboard.js"></script>
+
+<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
+<script src="../assets/js/demo.js"></script>
+<style>
+    input[type="text"], textarea {
+
+        background-color : dimgrey !important;
+        color:white !important;
+
+    }
+    .spinner {
+
+        /*width: 40px;*/
+        /*height: 40px;*/
+
+        /*position: relative;*/
+        margin: 100px auto;
+        position: fixed;
+        z-index: 999;
+        height: 2em;
+        width: 2em;
+        overflow: show;
+        margin: auto;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
+
+    .spinner:before {
+        content: '';
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+
+    .double-bounce1, .double-bounce2 {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background-color: #333;
+        opacity: 0.6;
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+        animation: sk-bounce 2.0s infinite ease-in-out;
+    }
+
+    .double-bounce2 {
+        -webkit-animation-delay: -1.0s;
+        animation-delay: -1.0s;
+    }
+
+    @-webkit-keyframes sk-bounce {
+        0%, 100% {
+            -webkit-transform: scale(0.0)
+        }
+        50% {
+            -webkit-transform: scale(1.0)
+        }
+    }
+
+    @keyframes sk-bounce {
+        0%, 100% {
+            transform: scale(0.0);
+            -webkit-transform: scale(0.0);
+        }
+        50% {
+            transform: scale(1.0);
+            -webkit-transform: scale(1.0);
+        }
+    }
+</style>
+<script>
+
+$(document).ready(function()
+{
+    $('form').submit(function(e){
+$(".spinner").show();
+        $.ajax({
+            type: "POST",
+            url: "/submitAdminOffer",
+            data: {'name':$("#name").val(),'category':$("#category").val(),'category':$("#category").val(),'registration':$("#registration").val(),'reading':$("#reading").val(),'security':$("#security").val(),'books':$("#books").val(),'months':$("#months").val(),'promo':$("#Promo").val() },
+            async: true,
+            dataType: 'json',
+            enctype: 'multipart/form-data',
+            cache: false,
+            success: function (data) {
+                $(".spinner").hide();
+                console.log(data);
+                if(data=="success") {
+                    demo.showNotification('top','left','Successfully updated !');
+                    location.reload();
+                    return false;
+
+                }
+                else{
+                    demo.showNotification('top','left','Something went wrong !');
+                    return false;
+
+                }
+              return false;
+
+            },
+            error: function (err) {
+                $(".spinner").hide();
+
+                console.log(err.responseText);
+                return false;
+
+            }
+        });
+
+        return false;
+
+
+
+    });
+
+
+})
+
+
+
+
+
+
+
+    function deleteBID(row,BID) // Deleting the row from the modal
+    {
+
+        var answer = confirm ("Are you sure you want to delete from the database?");
+
+        if (answer)
+        {
+            $(".spinner").show();
+
+
+            $.ajax({
+                type: "POST",
+                url: "/deleteBID",
+                data: {'id':BID },
+                async: true,
+                dataType: 'json',
+                enctype: 'multipart/form-data',
+                cache: false,
+                success: function (data) {
+                    $(".spinner").hide();
+                    console.log(data);
+                    if(data=="success") {
+                        demo.showNotification('top','left','Successfully updated !');
+                        var i = row.parentNode.parentNode.rowIndex;
+                        document.getElementById("expand-table").deleteRow(i);
+                    }else{
+                        demo.showNotification('top','left','Something went wrong !');
+
+                    }
+
+                },
+                error: function (err) {
+
+                    console.log(err.responseText);
+
+                }
+            });
+
+
+        }
+        $(".spinner").hide();
+
+
+    }
+
+</script>
+
+<!-- <script type="text/javascript">
+    $(document).ready(function(){
+
+        demo.initChartist();
+
+        $.notify({
+            icon: 'ti-gift',
+            message: "Welcome to <b>Kiosk Dashboard</b> - a beautiful Bootstrap freebie for your next project."
+
+        },{
+            type: 'success',
+            timer: 4000
+        });
+
+    });
+</script> -->
+
+</html>

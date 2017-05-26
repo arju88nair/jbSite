@@ -199,7 +199,7 @@
                                                 <select class="form-control" id="books">
                                                     <option value="">Select No of Books:</option>
                                                     {{# plan_books}}
-                                                        <option value="{{.}}">{{.}}</option>
+                                                        <option value="{{.}}">{{.}}  book(s)</option>
                                                     {{/plan_books}}
                                                 </select></br>
                                             </div>
@@ -213,7 +213,7 @@
 
                                         <div class="col-sm-11" id="border_bottom">
                                             <div class="col-sm-6">
-                                                <h5>One Time Registration Fee:</h5>
+                                                <h5 style="float: left">One Time Registration Fee:</h5>
                                             </div>
                                             <div class="col-sm-4" id="reg_fee">
                                                 <h5></h5>
@@ -221,7 +221,7 @@
                                         </div>
                                         <div class="col-sm-11" id="border_bottom">
                                             <div class="col-sm-6">
-                                                <h5>Security Deposit:</h5>
+                                                <h5 style="float: left">Security Deposit:</h5>
                                             </div>
                                             <div class="col-sm-4" id="sec_deposit_fee">
                                                 <h5></h5>
@@ -229,7 +229,7 @@
                                         </div>
                                         <div class="col-sm-11" id="border_bottom">
                                             <div class="col-sm-6">
-                                                <h5>Reading Fee:</h5>
+                                                <h5 style="float: left">Reading Fee:</h5>
                                             </div>
                                             <div class="col-sm-4" id="reading_fee">
                                                 <h5></h5>
@@ -237,7 +237,7 @@
                                         </div>
                                         <div class="col-sm-11" id="border_none">
                                             <div class="col-sm-6">
-                                                <h5>Total:</h5>
+                                                <h5 style="float: left">Total:</h5>
                                             </div>
                                             <div class="col-sm-4" id="total_fee">
                                                 <h5></h5>
@@ -269,7 +269,7 @@
                                 <div class="form-group">
                                     <div class="col-sm-6">
                                         <label>First Name:</label>
-                                        <input type="text" class="form-control" id="firstname" name="firstname"
+                                        <input type="text" class="form-control" id="firstnameForm" name="firstname"
                                                required>
                                     </div>
                                     <div class="col-sm-6">
@@ -346,6 +346,8 @@
                                                required oninput="passwordval()">
                                     </div>
                                 </div>
+                                <span id="error" style="color :red;display: block;margin-right: 10%;float:right"></span>
+
                             </div>
                             <!----------/////////////////////END/////////////////////////-------------------->
 
@@ -408,7 +410,6 @@
                                 </div> <!-- /.form-group -->
 
                             </div>
-                            <span id="error" style="color :red;display: none;margin-right: 10%;float:right"></span>
 
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -432,6 +433,13 @@
 <div class="clear"><!-- ClearFix --></div>
 <script type="application/javascript">
 
+    $(document).ready(function()
+    {
+        $('#plansHeader').addClass('current-menu-parent');
+
+    })
+
+
 
     function passwordval() {
 
@@ -448,6 +456,11 @@
     var reg_fee;
     var secDeposit;
     $(document).ready(function () {
+
+        $('header nav ul.menu > li #plans').addClass('current-menu-parent');
+
+
+
         $('#checkbox').click(function(){
             $("#signup").attr("disabled", !this.checked);
         });
@@ -494,7 +507,7 @@ $(".spinner").show();
                     if (data_new.length != 0 || data_new != [] || data_new != '[]') {
                         for (var i = 0; i < data_new.length; i++) {
 
-                            $("#months").append('<option value="' + data_new[i] + '">' + data_new[i] + '</option>')
+                            $("#months").append('<option value="' + data_new[i] + '">' + data_new[i] + '  month(s)</option>')
 
                         }
                         $("#months").prepend("<option value=''>Select months</option>").val('');
@@ -572,51 +585,40 @@ $(".spinner").show();
 
         e.preventDefault();
         if ($("#gender").val() == "") {
-            $("#error").text("Please specify a gender");
-            $("#error").show();
+            toastr.error("Please specify a gender");
             return false;
         }
-
-
-        if ($("#firstname").val() == "") {
-            $("#error").text("Please enter a proper first name");
-            $("#error").show();
+        if ($("#firstnameForm").val() == "") {
+            toastr.error("Please enter a proper first name");
             return false;
         }
         if ($("#lastname").val() == "") {
-            $("#error").text("Please enter a proper last name");
-            $("#error").show();
+            toastr.error("Please enter a proper last name");
             return false;
         }
         if ($("#address").val() == "") {
-            $("#error").text("Please enter a proper address");
-            $("#error").show();
+            toastr.error("Please enter a proper address");
             return false;
         }
         if ($("#dob").val() == "") {
-            $("#error").text("Please enter a DOB");
-            $("#error").show();
+            toastr.error("Please enter a DOB");
             return false;
         }
 
         if ($("#zip").val().length < 6) {
-            $("#error").text("Please enter a valid zip code");
-            $("#error").show();
+            toastr.error("Please enter a valid zip code");
             return false;
         }
         if ($("#email").val() == "") {
-            $("#error").text("Please enter an E-mail address");
-            $("#error").show();
+            toastr.error("Please enter an E-mail address");
             return false;
         }
         if ($("#mobile").val().length < 10) {
-            $("#error").text("Please enter a proper mobile number");
-            $("#error").show();
+            toastr.error("Please enter a proper mobile number");
             return false;
         }
         if ($("#password").val() !== $("#Cpassword").val()) {
-            $("#error").text("Passwords doens't match");
-            $("#error").show();
+            toastr.error("Passwords doens't match");
             return false;
         }
         $("#error").hide();
@@ -632,11 +634,13 @@ $(".spinner").show();
 
         var signup_data = $('#signup_form').serialize();
         signup_data += '&reg_fee=' + $('#reg_fee h5').html() + '&reading_fee=' + $('#reading_fee h5').html() + '&security_deposit=' + $('#sec_deposit_fee h5').html() + '&plan_id=' + {{planid}}+'&duration=' + $('#months').val();
+        $(".spinner").show();
         $.ajax({
             type: "POST",
             url: "/insertSignup",
             data: {'signup_data': JSON.stringify(signup_data)},
             success: function (data_new) {
+                $(".spinner").hide();
                 console.log(data_new)
                 console.log(JSON.parse(data_new));
                 console.log(data_new['success'])

@@ -1,7 +1,7 @@
 
 <footer>
     <div class="footer_line container">
-        <figure class="btn2top-wrapper">
+        <figure class="btn2top-wrapper" onclick="toTop()">
             <svg class="btn2top" viewBox="0 0 1000 1000">
                 <rect width="1000" height="1000" />
             </svg>
@@ -9,15 +9,15 @@
 
         <div class="row-fluid tab" id="">
             <div class="span4 module_text_area module_none_padding">
-                <p><a href="">About Us</a></p>
+                <p><a href="" id="aboutus">About Us</a></p>
 
             </div><!-- .module_cont -->
             <div class="span4 module_text_area module_none_padding">
-                <p><a href="">Privacy Policy</a></p>
+                <p><a href="" id="privacypolicy">Privacy Policy</a></p>
 
             </div><!-- .module_cont -->
             <div class="span4 module_text_area module_none_padding">
-                <p><a href="">Terms and Conditions</a></p>
+                <p><a href="" id="termsandc">Terms and Conditions</a></p>
 
             </div><!-- .module_cont -->
         </div><!-- .row-fluid -->
@@ -64,7 +64,17 @@
             $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
         });
     });
+
+
+    function toTop()
+    {
+
+            $("html, body").animate({ scrollTop: 0 }, 600);
+            return false;
+
+    }
 </script>
+
 
 <!-- END -->
 </body>

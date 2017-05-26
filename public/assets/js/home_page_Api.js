@@ -66,8 +66,8 @@ function getCardMostRead(data, visibleCardCount) {
             '<div class="carousel_title_book"><h5 title="' + data[i].NAME + '">' + data[i].NAME + '</h5></div>' +
             '<div class="carousel_desc">' +
             '<div class="smallproflinks">' +
-            '<a href="#" class="tiptip" title="Wishlist" onclick=\'wishlistAdd(' + data[i].id + ');\'>Wishlist</a>' +
-            '<a href="Rent" class="tiptip" title="Rent" onclick=\'placeOrder(' + data[i].id + ');\'>Rent</a>' +
+            '<a href="javascript:void(0)" class="tiptip" title="Wishlist" onclick=\'wishlistAdd(' + data[i].id + ');\'>Wishlist</a>' +
+            '<a href="javascript:void(0)" class="tiptip" title="Rent" onclick=\'placeOrder(' + data[i].id + ');\'>Rent</a>' +
             '<a href="/book_details/' + data[i].TITLEID + '" id="' + data[i].TITLEID + '" class="tiptip" title="Read">Read</a>' +
             '<div class="clear"></div>' +
             '</div></div></div></div></div>';
@@ -211,15 +211,15 @@ data=JSON.parse(data);
             plans.forEach(function (arr) {
                 response += '<div class="price_item" style="width:33.33%">' +
                     '<div class="price_item_wrapper">' +
-                    '<div class="price_item_title"><h5>' + arr['web_signup_plan']['promo_code'].toUpperCase() + '</h5></div>' +
+                    '<div class="price_item_title"><h5>' + arr['PLAN_NAME'].toUpperCase() + '</h5></div>' +
                     '<div class="item_cost_wrapper" style="background-color: ' + colors[i] + ';">' +
-                    '<div class="price_item_title" style="background-color: ' + colors[i] + '; padding: 10px 10px 10px 10px;"><h4>' + arr['web_signup_plan']['annual_membership_fee'] + '</h4></div>' +
+                    '<div class="price_item_title" style="background-color: ' + colors[i] + '; padding: 10px 10px 10px 10px;"><h4>Reading fee - Rs ' + Math.round(parseFloat(arr['READING_FEE'])) + ' </h4></div>' +
                     '</div>' +
-                    '<div class="price_item_text">3 months plan</div>' +
-                    '<div class="price_item_text" id="price_item_text">Books - ' + arr['web_signup_plan']['books'] + '</div>' +
-                    '<div class="price_item_text">Regestration Fee - ' + arr['web_signup_plan']['registration_fee'] + '</div>' +
-                    '<div class="price_item_text" id="price_item_text">Security Deposit - ' + arr['web_signup_plan']['security_deposit'] + '</div>' +
-                    '<div class="price_item_btn" id="btn" style="background-color: ' + colors[i] + '"><a href="/signup?planname=' + arr['web_signup_plan']['promo_code'] + '&planid=' + arr['web_signup_plan']['plan_id'] + '">Get It Now !</a></div>' +
+                    '<div class="price_item_text">'+ arr['NO_OF_MONTHS'] +' months plan</div>' +
+                    '<div class="price_item_text" id="price_item_text">Books - Rs  ' + arr['NO_OF_BOOKS'] + '</div>' +
+                    '<div class="price_item_text">Regestration Fee - Rs ' + Math.round(parseFloat(arr['REGISTRATION_FEE'])) + ' </div>' +
+                    '<div class="price_item_text" id="price_item_text">Security Deposit - Rs ' + Math.round(parseFloat(arr['SECURITY_DEPOSIT'])) + ' </div>' +
+                    '<div class="price_item_btn" id="btn" style="background-color: ' + colors[i] + '"><a href="/signup?planname=' + arr['PROMO'] + '&books=' + arr['NO_OF_BOOKS'] + '">Get It Now !</a></div>' +
                     '</div></div>';
                 i++;
                 if (i >= colors.length) {
@@ -313,8 +313,9 @@ function signupClick() {
                 data = JSON.parse(data)
                 $("#firstname").text(" Welcome " + data['name']);
                 $(".userTile").show();
-                $("ul.menu").append("<li><a href=\"/shelf\">Your Shelf</a></li>");
+                $("ul#menuHeader").append("<li><a href=\"/shelf\">Your Shelf</a></li>");
                 toastr.success('Successfully signed in !');
+                localStorage.setItem("flag",true)
                 $("#first").hide();
                 $("#main").hide();
                 logClick("Log in click");

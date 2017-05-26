@@ -24,7 +24,7 @@ $authenticate = function ($request, $response, $next) {
 
 $adminAuthenticate = function ($request, $response, $next) {
     if (!isset($_SESSION['adminUser'])) {
-        $response = $this->view->render($response, 'home.mustache', array('loggedIn' => "false", 'session' => 'null'));
+        $response = $this->view->render($response, 'login.mustache', array('loggedIn' => "false", 'session' => 'null'));
         return $response;
     } else {
         return $next($request, $response);
@@ -61,9 +61,9 @@ $app->get('/', function (Request $request, Response $response) {
 $app->get('/book_details/{titleid}', function (Request $request, Response $response, $args) {
     $titleid = $args['titleid'];
     $result1 = curlFunction("8990/api/v1/title_info.json?title_id=$titleid");
-    $result1=str_replace("NaN",0,$result1);
+    $result1 = str_replace("NaN", 0, $result1);
 //    echo json_encode($result1);die;
-    $result= json_decode($result1,true)['result'];
+    $result = json_decode($result1, true)['result'];
 //    echo json_encode($result);die;
 //    echo json_decode($result1, true);die;
 //    print_r(json_encode(json_decode($result1, true))) ;die;
@@ -72,7 +72,7 @@ $app->get('/book_details/{titleid}', function (Request $request, Response $respo
 //    $authorid = json_decode($result1)->authorid;
 //    $result = curlFunction("8990/api/v1/author_info.json?id=$authorid");
 
-    $response = $this->view->render($response, 'book_details.mustache', array('data' => $result,'titleid'=>$titleid));
+    $response = $this->view->render($response, 'book_details.mustache', array('data' => $result, 'titleid' => $titleid));
     return $response;
 });
 
@@ -95,8 +95,8 @@ $app->get('/search', function (Request $request, Response $response) {
 
     $query = $_GET['q'];
     $result = curlFunction("8990/api/v1/search.json?q=$query&page_no=1&per_page=40");
-
-    $response = $this->view->render($response, 'search.mustache', array('data' => json_decode($result, true), 'query' => ucfirst($query)));
+    $count = count(json_decode($result)->result);
+    $response = $this->view->render($response, 'search.mustache', array('data' => json_decode($result, true), 'query' => ucfirst($query), 'count' => $count));
     return $response;
 
 });
@@ -104,7 +104,7 @@ $app->get('/search', function (Request $request, Response $response) {
 $app->get('/shelf', function (Request $request, Response $response) {
     $response = $this->view->render($response, 'shelf.mustache');
     return $response;
-});
+})->add($authenticate);
 
 $app->get('/signup/{planid}', function (Request $request, Response $response, $args) {
     $planid = $args['planid'];
@@ -183,13 +183,22 @@ $app->get('/signup', function (Request $request, Response $response) {
     $array_data = array_values($temp_array_main);
 
 
-    $planid = $allGetVars['planid'];
+    $books = $allGetVars['books'];
+    $months = $allGetVars['months'];
     $planname = $allGetVars['planname'];
 
 
     $temp_array = array();
     foreach ($data as $v) {
-        if ($v['web_signup_plan']['promo_code'] === $planname) {
+        if (strtoupper($v['web_signup_plan']['promo_code']) === strtoupper($planname) && $v['web_signup_plan']['books'] === (int)$books) {
+            $planid=$v['web_signup_plan']['plan_id'];
+        }
+
+    }
+
+
+    foreach ($data as $v) {
+        if ($v['web_signup_plan']['promo_code'] === $planname ) {
             array_push($temp_array, $v);
         }
 
@@ -249,23 +258,34 @@ $app->get('/getAuthor', function (Request $request, Response $response) {
 });
 
 $app->get('/getPlan', function (Request $request, Response $response) {
-    $raw_data = curlFunction('8990/api/v1/get_all_plans.json');
-    $data = json_decode($raw_data);
-    $data = $data->result;
+//    $raw_data = curlFunction('8990/api/v1/get_all_plans.json');
+//    $data = json_decode($raw_data);
+//    $data = $data->result;
+//
+//    $data = json_decode(json_encode($data), True);
+//
+//    $temp_array = array();
+//    foreach ($data as &$v) {
+//
+//        if (!isset($temp_array[$v['web_signup_plan']['promo_code']]))
+//            $temp_array[$v['web_signup_plan']['promo_code']] =& $v;
+//    }
+//
+//    $array = array_values($temp_array);
 
-    $data = json_decode(json_encode($data), True);
 
-    $temp_array = array();
-    foreach ($data as &$v) {
-
-        if (!isset($temp_array[$v['web_signup_plan']['promo_code']]))
-            $temp_array[$v['web_signup_plan']['promo_code']] =& $v;
+    $con = $this->db;
+    $query_city = "SELECT *  FROM memp.FN_HOME_PAGE_PLANS where active = 1";
+    $result_city = oci_parse($con, $query_city);
+    oci_execute($result_city);
+    while ($row = oci_fetch_assoc($result_city)) {
+        $data[] = $row;
     }
 
-    $array = array_values($temp_array);
 
 
-    echo json_encode($array);
+
+    echo json_encode($data);
 
 });
 
@@ -276,9 +296,9 @@ $app->get('/updateWishlist', function (Request $request, Response $response, $ar
         return json_encode("failure");
     }
     $api_key = $_SESSION['api_key'];
-    $email=$_SESSION['email'];
-$result = curlFunction("8990/api/v1/wishlists/create.json?email=$email&membership_no=$membership_no&api_key=$api_key&title_id=$titleid");
-echo $result;
+    $email = $_SESSION['email'];
+    $result = curlFunction("8990/api/v1/wishlists/create.json?email=$email&membership_no=$membership_no&api_key=$api_key&title_id=$titleid");
+    echo $result;
 });
 
 $app->get('/getCitiesAndState', function (Request $request, Response $response) {
@@ -396,7 +416,7 @@ $app->post('/giftcardValidate', function (Request $request, Response $response) 
 $app->get('/getWishList', function (Request $request, Response $response) {
     $membership_no = $_SESSION['membership_no'];
     $api_key = $_SESSION['api_key'];
-    $mail=$_SESSION['email'];
+    $mail = $_SESSION['email'];
     $result = curlFunction("8990/api/v1/wishlists.json?email=$mail&membership_no=$membership_no&api_key=$api_key");
     echo $result;
 
@@ -407,15 +427,15 @@ $app->post('/removeWishList', function (Request $request, Response $response) {
     $membership_no = $_SESSION['membership_no'];
     $titleid = $data['titleid'];
     $api_key = $_SESSION['api_key'];
-    $email=$_SESSION['email'];
-    $result = curlFunction("8990/api/v1/wishlists/destroy.json?email=$email&membership_no=$membership_no&api_key=$api_key&title_id=$titleid");
-    echo 'success';
+    $email = $_SESSION['email'];
+    $result = curlFunction("8990/api/v1/wishlists/destroy.json?email=$email&membership_no=$membership_no&api_key=$api_key&id=$titleid");
+    echo json_encode($result);
 });
 
 $app->get('/getOrderList', function (Request $request, Response $response) {
     $membership_no = $_SESSION['membership_no'];
     $api_key = $_SESSION['api_key'];
-    $email=$_SESSION['email'];
+    $email = $_SESSION['email'];
     $result = curlFunction("8990/api/v1/pending_delivery_order.json?email=$email&membership_no=$membership_no&api_key=$api_key");
     echo $result;
 });
@@ -423,7 +443,7 @@ $app->get('/getOrderList', function (Request $request, Response $response) {
 $app->get('/getCurrentReading', function (Request $request, Response $response) {
     $membership_no = $_SESSION['membership_no'];
     $api_key = $_SESSION['api_key'];
-    $email=$_SESSION['email'];
+    $email = $_SESSION['email'];
     $result = curlFunction("8990/api/v1/books_at_home.json?membership_no=$membership_no&api_key=$api_key&email=$email");
     echo $result;
 });
@@ -431,10 +451,10 @@ $app->get('/getCurrentReading', function (Request $request, Response $response) 
 $app->post('/placePickup', function (Request $request, Response $response) {
     $data = $request->getParsedBody();
     $rental_id = $data['rental_id'];
-    $title=$data['title'];
+    $title = $data['title'];
     $membership_no = $_SESSION['membership_no'];
     $api_key = $_SESSION['api_key'];
-    $email=$_SESSION['email'];
+    $email = $_SESSION['email'];
     $result = curlFunction("8990/api/v1/orders/place_pickup.json?email=$email&membership_no=$membership_no&api_key=$api_key&rental_id=$rental_id&title_id=$title");
     echo $result;
 });
@@ -442,7 +462,7 @@ $app->post('/placePickup', function (Request $request, Response $response) {
 $app->get('/getPickupList', function (Request $request, Response $response) {
     $membership_no = $_SESSION['membership_no'];
     $api_key = $_SESSION['api_key'];
-    $email=$_SESSION['email'];
+    $email = $_SESSION['email'];
 //    echo "8787/api/v3/pending_pickup_order.json?membership_no=$membership_no&api_key=$api_key";
 //    die;
     $result = curlFunction("8990/api/v1/pending_pickup_order.json?email=$email&membership_no=$membership_no&api_key=$api_key");
@@ -452,16 +472,20 @@ $app->get('/getPickupList', function (Request $request, Response $response) {
 $app->post('/cancelOrder', function (Request $request, Response $response) {
     $data = $request->getParsedBody();
     $id = $data['id'];
-    echo json_encode($id);die;
+    $cancelId = $data['cancelId'];
+
     $idName = '';
     if (strlen($id) > 10) {
         $idName = 'rental_id';
+        $status='pickup';
     } else {
-        $idName = 'delivery_order_id';
+        $idName = 'order_id';
+        $status='delivery';
     }
+    $email = $_SESSION['email'];
     $membership_no = $_SESSION['membership_no'];
     $api_key = $_SESSION['api_key'];
-    $result = curlFunction("8787/api/v3/orders/order_cancel.json?membership_no=$membership_no&api_key=$api_key&$idName=$id");
+   $result = curlFunction("8990/api/v1/orders/order_cancel.json?email=$email&membership_no=$membership_no&api_key=$api_key&$idName=$cancelId&title_id=$id&order_status=$status");
     echo $result;
 });
 
@@ -475,12 +499,24 @@ $app->get('/getMyProfile', function (Request $request, Response $response) {
 $app->get('/getSubscription', function (Request $request, Response $response) {
     $membership_no = $_SESSION['membership_no'];
     $api_key = $_SESSION['api_key'];
-    $mail=$_SESSION['email'];
-    $result = curlFunction("8990/api/v1/subscription_details.json?membership_no=$membership_no&api_key=$api_key&email=$mail");
+    $mail = $_SESSION['email'];
+        $result = curlFunction("8990/api/v1/subscription_details.json?membership_no=$membership_no&api_key=$api_key&email=$mail");
     $final_result['curent_plan'] = json_decode($result, true);
     $email = $_SESSION['email'];
     $result1 = curlFunction("8990/api/v1/get_change_plan_terms.json?email=$email&membercard=M103604&for_mobile=true");
+    $terms=curlFunction("8990/api/v1/get_renewal_terms.json?email=$email&membercard=$membership_no");
     $final_result['change_plan'] = json_decode($result1, true);
+    $termData=json_decode($terms,true);
+    $main=array();
+    foreach ($termData['result'] as $data)
+    {
+       $main[]=array("months"=>$data['renewal_month']['term_description'],'fee'=>$data['renewal_month']['renewal_amount'],'term'=>$data['renewal_month']['signup_months']);
+    }
+
+    $final_result['terms']=$main;
+
+
+
     echo json_encode($final_result);
 });
 
@@ -500,7 +536,7 @@ $app->get('/placeOrder', function (Request $request, Response $response, $args) 
         return json_encode("failure");
     }
     $api_key = $_SESSION['api_key'];
-    $email=$_SESSION['email'];
+    $email = $_SESSION['email'];
     $result = curlFunction("8990/api/v1/orders/place_delivery.json?email=$email&membership_no=$membership_no&api_key=$api_key&title_id=$titleid");
     echo $result;
 });
@@ -536,10 +572,9 @@ $app->post('/cancelPickup', function (Request $request, Response $response, $arg
     $membership = $_SESSION['membership_no'];
     $email = $_SESSION['email'];
     $api_key = $_SESSION['api_key'];
-
+echo "8990/api/v1/orders/order_cancel.json?email=$email&api_key=$api_key&membership_no=$membership&order_status=pickup&order_id=$id&title_id=$titleId";
     $result = curlFunction("8990/api/v1/orders/order_cancel.json?email=$email&api_key=$api_key&membership_no=$membership&order_status=pickup&order_id=$id&title_id=$titleId");
-    echo 'success';
-
+    echo $result;
 
 
 });
@@ -909,9 +944,8 @@ $app->get('/sendPush', function (Request $request, Response $response) {
 //    curl_close($ch);
 //#Echo Result Of FireBase Server
 //    echo $result;
-
-    $data = array('Title'=>'Just Books','Body'=>'A harmless test body','Id'=> 666,'Action'=>'Navigation','Url'=>"");
-    $target=array('cKWaI8ESqig:APA91bG3s_SxKVzRWctLjslrAeOqxkqSlUxJTzFVLrtFa6HfhdpynfCulfQuyqm4OPX5K3OcapxkKfU3geq-wFJj8vKVz-VYPGtVIRSZjgE4yVgmF-ooyHoXRpTD42emtPzZjcx4tZFh');
+    $data = array('Title' => 'Just Books', 'Body' => 'A harmless test body', 'Id' => 666, 'Action' => 'Navigation', 'Image' => null, 'Author' => null);
+    $target = array('cKWaI8ESqig:APA91bG3s_SxKVzRWctLjslrAeOqxkqSlUxJTzFVLrtFa6HfhdpynfCulfQuyqm4OPX5K3OcapxkKfU3geq-wFJj8vKVz-VYPGtVIRSZjgE4yVgmF-ooyHoXRpTD42emtPzZjcx4tZFh');
 
     $url = 'https://fcm.googleapis.com/fcm/send';
 //api_key available in Firebase Console -> Project Settings -> CLOUD MESSAGING -> Server key
@@ -919,15 +953,15 @@ $app->get('/sendPush', function (Request $request, Response $response) {
 
     $fields = array();
     $fields['data'] = $data;
-    if(is_array($target)){
+    if (is_array($target)) {
         $fields['registration_ids'] = $target;
-    }else{
+    } else {
         $fields['to'] = $target;
     }
 //header with content_type api key
     $headers = array(
         'Content-Type:application/json',
-        'Authorization:key='.$server_key
+        'Authorization:key=' . $server_key
     );
 
     $ch = curl_init();
@@ -944,8 +978,6 @@ $app->get('/sendPush', function (Request $request, Response $response) {
     }
     curl_close($ch);
     return $result;
-
-
 
 
 });
@@ -973,7 +1005,8 @@ $app->get('/checkAvailability', function (Request $request, Response $response) 
     $mail = $_SESSION['email'];
     $membership_no = $_SESSION['membership_no'];
     if ($membership_no == "" && empty($membership_no) || !isset($_SESSION['membership_no'])) {
-        echo json_encode(array("success" =>'failure'));die;
+        echo json_encode(array("success" => 'failure'));
+        die;
     }
     $api_key = $_SESSION['api_key'];
     $result = curlFunction("8990/api/v1/check_title_availability.json?email=$mail&api_key=$api_key&membership_no=$membership_no&title_id=$titleid");
@@ -982,8 +1015,8 @@ $app->get('/checkAvailability', function (Request $request, Response $response) 
 
 $app->post('/submitReview', function (Request $request, Response $response) {
     $stars = $_POST['rate'];
-    $title=$_POST['title'];
-    $review=$_POST['review'];
+    $title = $_POST['title'];
+    $review = $_POST['review'];
     $mail = $_SESSION['email'];
     $membership_no = $_SESSION['membership_no'];
     if ($membership_no == "" && empty($membership_no) || !isset($_SESSION['membership_no'])) {
@@ -991,8 +1024,8 @@ $app->post('/submitReview', function (Request $request, Response $response) {
     }
     $api_key = $_SESSION['api_key'];
     $result = curlFunction("8990/api/v1/rate_title.json?email=$mail&api_key=$api_key&membership_no=$membership_no&stars=$stars&title_id=$title");
-    $resultReview=curlFunction("8990/api/v1/reviews/create.json?email=$mail&api_key=$api_key&membership_no=$membership_no&title_id=$title&header=hello&content=$review");
-    echo json_encode(array('result'=>$result,'review'=>$resultReview));
+    $resultReview = curlFunction("8990/api/v1/reviews/create.json?email=$mail&api_key=$api_key&membership_no=$membership_no&title_id=$title&header=hello&content=$review");
+    echo json_encode(array('result' => $result, 'review' => $resultReview));
 });
 
 
@@ -1006,6 +1039,60 @@ $app->get('/rentalHistory', function (Request $request, Response $response) {
     $result = curlFunction("8990/api/v1/rental_history.json?email=$mail&api_key=$api_key&membership_no=$membership_no");
     echo $result;
 });
+
+
+$app->get('/adminCardsView', function (Request $request, Response $response) {
+    $con = $this->db;
+    $query_city = "SELECT *  FROM memp.FN_HOME_PAGE_PLANS where active = 1";
+    $result_city = oci_parse($con, $query_city);
+    oci_execute($result_city);
+    while ($row = oci_fetch_assoc($result_city)) {
+        $data[] = $row;
+    }
+
+
+    return $this->view->render($response, 'adminCards.mustache', array('data'=>$data));
+
+})->add($adminAuthenticate);
+
+
+
+$app->post('/deleteBID', function (Request $request, Response $response) {
+    $id=$_POST['id'];
+    $con = $this->db;
+    $query = "update memp.FN_HOME_PAGE_PLANS set active=0 where id =$id";
+    $compiled = oci_parse($con, $query);
+    oci_execute($compiled);
+    echo json_encode("success");
+
+
+})->add($adminAuthenticate);
+
+
+$app->post('/submitAdminOffer', function (Request $request, Response $response) {
+    $name=$_POST['name'];
+    $category=$_POST['category'];
+    $registraiton=(int)$_POST['registration'];
+    $reading=(int)$_POST['reading'];
+    $security=(int)$_POST['security'];
+    $books=(int)$_POST['books'];
+    $months=(int)$_POST['months'];
+    $promo=$_POST['promo'];
+
+
+
+    $con = $this->db;
+    $query = "insert into  memp.FN_HOME_PAGE_PLANS(PLAN_NAME,CATEGORY,REGISTRATION_FEE,READING_FEE,SECURITY_DEPOSIT,NO_OF_BOOKS,NO_OF_MONTHS,PROMO) values ('$name','$category',$registraiton,$reading,$security,$books,$months,'$promo') ";
+    $compiled = oci_parse($con, $query);
+    oci_execute($compiled);
+    echo json_encode("success");
+
+
+})->add($adminAuthenticate);
+
+
+
+
 
 
 $app->run();

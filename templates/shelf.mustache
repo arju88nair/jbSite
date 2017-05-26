@@ -31,6 +31,10 @@
 
                     <div class="row">
                         <div class="contentarea">
+                            <p id="emptyResult" style="margin-left: 27%;
+font-size: 170%;
+margin-top: 16%;
+font-family: Playfair Display;display: none"></p>
                             <div class="row-fluid" id="shelf_data">
 
 
@@ -252,6 +256,8 @@
 <script type="application/javascript">
 
     $(document).ready(function () {
+        $('#change_plan').html('');
+
         $(".spinner").show();
         $.ajax({
             type: "GET",
@@ -260,8 +266,19 @@
                 console.log(data)
                 $(".spinner").hide();
                 var new_data = JSON.parse(data);
+                console.log(new_data);
+                if(new_data['result'].length== 0)
+                {
+                    $('#shelf_data').html('');
+
+                    $("#emptyResult").show();
+                    $("#emptyResult").text("No books to show !");
+                    return false;
+                }
+                $("#emptyResult").hide();
+
                 new_data = new_data['result']
-                var final_response = generateDIV(new_data, 'placePickup', 'rental_id', 'Pickup');
+                var final_response = generateDIV(new_data, 'placePickup', 'rental_id', 'Return','none');
                 $('#shelf_data').html('');
                 $('#shelf_data').append(final_response);
             },
@@ -270,26 +287,29 @@
     })
 
 
-    function generateDIV(arr, funcName, idName, btnTxt) {
+    function generateDIV(arr, funcName, idName, btnTxt,style) {
+        $('#change_plan').html('');
+
         var response = '';
         arr.forEach(function (arr_data) {
             response += '<div class="col-md-6 col-xs-12 module_cont module_shelf shadow1">' +
                     '<div class="col-md-5 col-xs-5">' +
+                   '<a href="/book_details/'+arr_data['id']+'">' +
                     '<img src="' + arr_data['image_url'] + '" class="img-responsive" alt="..." style="margin-top: -20px;">' +
+                    '</a>' +
                     '</div>' +
                     '<div class="col-md-7 col-xs-7" id="module_shelf">' +
-                    '<h4>' + arr_data['author'] + '</h4>' +
-                    '<p>' + arr_data['title'] + '</p>' +
+                    '<h4>' + arr_data['title'] + '</h4>' +
+                    '<p>' + arr_data['author'] + '</p>' +
                     '<div class="rating" id="rating1">' +
                     '</div>' +
                     '<p><a href="">Rate/Review</a></p>' +
-                    '<h6>Return Date:<span>12/03/2017</span></h6>' +
                     '<div class="shelf_sicial">' +
-                    '<div class="col-md-4 col-xs-2">' +
-                    '<a href="javascript:void(0)"><img src="../assets/img/icons/engage.png"></a>' +
-                    '</div>' +
-                    '<div class="col-md-4 col-xs-5">' +
+                    '<div class="col-md-4 col-xs-2" style="margin-right: 15%;margin-top: 4%">' +
                     '<a href="javascript:void(0)" class="shortcode_button btn_small btn_type10" onclick="' + funcName + '(this,' + arr_data['id'] + ')"  id="' + arr_data[idName] + '">' + btnTxt + '</a>' +
+                    '</div>' +
+                    '<div class="col-md-4 col-xs-5" style="display: '+style+';margin-top: 4%">' +
+                    '<a href="javascript:void(0)"  class="shortcode_button btn_small btn_type10" onclick="addWishlist(' + arr_data['id'] + ')"  id="' + arr_data[idName] + '">Wishlist</a>' +
                     '</div></div></div></div>';
         });
         return response;
@@ -306,10 +326,20 @@
                 $(".spinner").hide();
                 var new_data = JSON.parse(data);
                 console.log(new_data['result']);
+                if(new_data['result'].length== 0)
+                {
+                    $('#shelf_data').html('');
+
+                    $("#emptyResult").show();
+                    $("#emptyResult").text("No books to show !");
+                    return false;
+                }
+                $("#emptyResult").hide();
                 new_data = new_data['result'];
+
                 var response = '';
                 var i = 0;
-                var final_response = generateDIV(new_data, 'removeWishlist', 'title_id', 'Remove');
+                var final_response = generateDIV(new_data, 'removeWishlist', 'title_id', 'Remove','block');
                 $('#shelf_data').html('');
                 $('#shelf_data').append(final_response);
             },
@@ -328,6 +358,15 @@
 
                 $('#shelf_data').html('');
                 var new_data = JSON.parse(data);
+                if(new_data['result'].length== 0)
+                {
+                    $('#shelf_data').html('');
+
+                    $("#emptyResult").show();
+                    $("#emptyResult").text("No books to show !");
+                    return false;
+                }
+                $("#emptyResult").hide();
                 console.log(new_data);
                 new_data = new_data['result']
                 if (new_data[0]['delivery_order_id'] == null) {
@@ -336,7 +375,7 @@
                     var id = 'delivery_order_id';
                 }
                 console.log(id);
-                var final_response = generateDIV(new_data, 'cancelOrder', id, 'Cancel');
+                var final_response = generateDIV(new_data, 'cancelOrder', 'delivery_order_id', 'Cancel','block');
                 $('#shelf_data').append(final_response);
             },
 
@@ -356,8 +395,17 @@
                 $(".spinner").hide();
 
                 var new_data = JSON.parse(data);
+                if(new_data['result'].length== 0)
+                {
+                    $('#shelf_data').html('');
+
+                    $("#emptyResult").show();
+                    $("#emptyResult").text("No books to show !");
+                    return false;
+                }
+                $("#emptyResult").hide();
                 new_data = new_data['result']
-                var final_response = generateDIV(new_data, 'placePickup', 'rental_id', 'Pickup');
+                var final_response = generateDIV(new_data, 'placePickup', 'rental_id', 'Return','none');
                 $('#shelf_data').html('');
                 $('#shelf_data').append(final_response);
             },
@@ -377,9 +425,20 @@
 
                 console.log(data)
                 var new_data = JSON.parse(data);
+                if(new_data['result'].length== 0)
+                {
+                    $('#shelf_data').html('');
+
+                    $("#emptyResult").show();
+                    $("#emptyResult").text("No pickup requests !");
+                    return false;
+                }
+                $("#emptyResult").hide();
+
+
                 new_data = new_data['result']
 
-                var final_response = generateDIV(new_data, 'cancelPickup', 'rental_id', 'Cancel');
+                var final_response = generateDIV(new_data, 'cancelPickup', 'rental_id', 'Cancel','block');
                 $('#shelf_data').html('');
                 $('#shelf_data').append(final_response);
             },
@@ -431,21 +490,7 @@
                         '<div class="panel-body">' +
                         '<button type="button" class="btn btn-warning">Edit Profile</button>' +
                         '</div>' +
-                        '</div></div><div class="col-sm-6">' +
-                        '<h3 class="text-left">Notifications</h3><br>' +
-                        '<div class="row col-sm-12">' +
-                        '<div class="alert alert-warning fade in">' +
-                        '<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>' +
-                        '<p><span class="glyphicon glyphicon-book"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Ey! People are looking at your profile. Find out who.</strong></p>' +
-                        '</div>' +
-                        '<div class="alert alert-success fade in">' +
-                        '<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>' +
-                        '<p><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Ey! People are looking at your profile. Find out who.</strong></p>' +
-                        '</div>' +
-                        '<div class="alert alert-danger fade in">' +
-                        '<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>' +
-                        '<p><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Ey! People are looking at your profile. Find out who.</strong></p>' +
-                        '</div></div></div>');
+                        '</div></div>');
             }
 
         });
@@ -460,19 +505,19 @@
             url: "/getSubscription",
             success: function (data) {
                 $(".spinner").hide();
-
                 $('#shelf_data').html('');
                 var data_new = JSON.parse(data);
                 var current_plan = data_new['curent_plan'];
-                var change_plan = data_new['change_plan'];
+                var change_plan = data_new['change_plan']
+                var terms=data_new['terms'];
 
-                console.log(change_plan);
-
+                console.log(data_new);
+                $('#change_plan').html('');
                 var response = '';
                 var i = 0;
                 var colors = ['#EFAC54', '#347AB6', '#5BB85D', '#59C0E1'];
                 change_plan['result'].forEach(function (arr) {
-                    response += '<div class="price_item" style="width:20%">' +
+                    response += '<h4>Upgrade your current plan</h4><div class="price_item" style="width:20%">' +
                             '<div class="price_item_wrapper">' +
                             '<div class="price_item_title"><h5>' + arr["change_plan_detail"]['plan_name'] + '</h5></div>' +
                             '<div class="item_cost_wrapper" style="background-color: ' + colors[i] + ';">' +
@@ -493,27 +538,55 @@
 
 
 //
+                console.log(current_plan['result']['member_cross_reference'])
                 $('#shelf_data').append('<br><div class="row">' +
                         '<div class="col-sm-3">' +
                         '<div class="well">' +
                         '<h4>Current Plan</h4>' +
-                        '<p>' + current_plan['plan_name'] + '</p>' +
+                        '<p>' + current_plan['result']['member_cross_reference']['plan_name'] + '</p>' +
                         '</div>' +
                         '</div><div class="col-sm-3">' +
                         '<div class="well">' +
                         '<h4>Duration</h4>' +
-                        '<p>' + current_plan['term'] + '</p>' +
+                        '<p>' + Math.round(parseFloat(current_plan['result']['member_cross_reference']['term'])) + ' months</p>' +
                         '</div></div>' +
                         '<div class="col-sm-3">' +
                         '<div class="well">' +
                         '<h4>Renewal Date</h4>' +
-                        '<p>' + current_plan['expiry_date'] + '</p>' +
+                        '<p>' + current_plan['result']['member_cross_reference']['expiry_date'] + '</p>' +
                         '</div></div>' +
                         '<div class="col-sm-3">' +
                         '<div class=""><br><br>' +
-                        '<a href="/renewView" class="btn btn-info" role="button">Renew Plan</a>' +
+                        '<button data-toggle="collapse" data-target="#demo"   class="btn btn-info" role="button">Renew Plan</button>' +
                         '</div></div></div><hr>');
-//                +
+                var response2='';
+               terms.forEach(function (arr) {
+                    response2 += '<option value='+arr['fee']+' id='+arr['term']+'>'+arr['months']+'</option>';
+
+                })
+//                console.log(response2);
+//                $('#shelf_data').append('<br> <div class="collapse form-group" id=\"demo\" >' +
+//                        '<label for="sel1">Select list:</label>' +
+//                        '<select class="form-control" id="sel1" onchange="textChange()">'+response2+'' +
+//                        '</select> </div><br><div ><span id="textSpan"></span></div> ')
+ $('#shelf_data').append('<br> <div class="row">' +
+         '<div class="col-sm-3">' +
+ '<div class="form-group collapse" id=\"demo\">' +
+         '<label for="sel1">Select a month :</label>' +
+         '<select class="form-control" id="sel1" onchange="textChange()">' +
+
+         ''+response2+'' +
+         '</select> ' +
+         '<br>' +
+         '</div>' +
+         ' </div>' +
+         '<div class="col-sm-6" style="margin-top: 3%" >' +
+         ' <div ><span id="textSpan" style="font-size: 23px;font-family: Playfair Display;"></span></div>' +
+         ' <button id="renewBUtton" style="display: none;float: right;margin-top: -7%" type="button" class="btn btn-info" onclick="proceedRenew()">Proceed</button></div><br>')
+
+
+
+                //                +
 //                        '<div class="row">'+
 //                '<h3>UPGRADE NOW</h3>'+
 //                '<div class="columns">'+
@@ -552,15 +625,16 @@
         });
     })
 
-    function removeWishlist(elem) {
+    function removeWishlist(elem,id) {
         $(".spinner").show();
 
-        var id = $(elem).attr('id');
+        var id = id;
         $.ajax({
             type: "POST",
             url: "/removeWishList",
             data: {'titleid': id},
             success: function (data) {
+                console.log(data)
                 $(".spinner").hide();
 toastr.success("Successfully removed");
                 if (data == 'success') {
@@ -598,20 +672,19 @@ toastr.success("Successfully removed");
 
         });
     }
-    function cancelOrder(elem) {
+    function cancelOrder(elem,id) {
         $(".spinner").show();
 
-        var id = $(elem).attr('id');
+        var cancel = $(elem).attr('id');
         $.ajax({
             type: "POST",
             url: "/cancelOrder",
-            data: {'id': id},
+            data: {'id': id,'cancelId':cancel},
             success: function (data) {
                 $(".spinner").hide();
                 console.log(data);
                 if (data == 'success') {
-//                    $('#'+id).closest('.module_shelf').remove();
-                }
+toastr.success("Succesfully canceled !")                }
             },
 
         });
@@ -662,6 +735,136 @@ data=JSON.parse(data);
         });
     }
 
+
+
+    function addWishlist(id)
+    {
+        $(".spinner").show();
+
+        $.ajax({
+            type: "GET",
+            url: "/updateWishlist?id="+id,
+            success: function (data) {
+                console.log(data);
+                console.log(JSON.parse(data));
+                $(".spinner").hide();
+                if (JSON.parse(data) === "failure" ) {
+                    toastr.error('Please sign in to update your wish list !');
+                    $(window).scrollTop($('#anchor2').offset().top);
+
+                }
+                else {
+                    toastr.success('Successfully added into your wish list !');
+                }
+            },
+            error:function(err)
+            {
+                console.log(err);
+                toastr.error("Something went wrong.Please try again !")
+            }
+
+        });    }
+
+
+
+
+        function textChange()
+        {
+            $("#textSpan").text("Renewal fee is rupees " + $("#sel1").val());
+            $("#renewBUtton").show();
+        }
+
+
+
+
+        function proceedRenew()
+        {
+
+            $(".spinner").show();
+            var termSelected=$('#sel1 option:selected').attr('id');
+            if(termSelected === 0 || termSelected === null)
+            {
+                toastr.error("Please select a month to renew !");
+                return false;
+            }
+            var fee=$("#sel1").val();
+            var email=localStorage.getItem("email");
+            var membership=localStorage.getItem("membership");
+            console.log("http://staging.justbooksclc.com:8990/api/v1/renewal_payment.json?email="+email+"&membercard="+membership+"&term="+termSelected+"&delivery_option=null&delivery_fees="+fee+"&coupon_code=null&gift_card_no=null&pin=null")
+            $.ajax({
+                type: "GET",
+                dataType: "json",
+                url: "http://staging.justbooksclc.com:8990/api/v1/renewal_payment.json?email="+email+"&membercard="+membership+"&term="+termSelected+"&delivery_option=null&delivery_fees="+fee+"&coupon_code=null&gift_card_no=null&pin=null",
+                success: function (data_new) {
+                    console.log(data_new);
+
+
+                    if(data_new.success == true)
+                    {
+                        $.ajax({
+                            type: "GET",
+                            dataType: "json",
+                            url: "http://staging.justbooksclc.com:8990/api/v1/confirm_renewal.json?email="+email+"&membercard="+membership+"&payable_amount="+data_new.result.payable_amount+"&convenience_fee="+data_new.result.convenience_fee+"&renewal_payment_type="+data_new.result.renewal_payment_type+"&plan_id="+data_new.result.plan_id+"&card_number="+data_new.result.card_number+"&member_id="+data_new.result.member_id+"&delivery_fees="+data_new.result.delivery_fees+"&delivery_fees_dormant="+data_new.result.delivery_fees_dormant+"&delivery_option="+data_new.result.delivery_option+"&term="+data_new.result.term+"&member_branch_id="+data_new.result.term+"&member_branch_id="+data_new.result.member_branch_id+"&overdue_adjustment="+data_new.result.overdue_adjustment+"&reward_points="+data_new.result.reward_points+"&gift_card_no="+data_new.result.gift_card_no+"&qc_flag="+data_new.result.qc_flag+"&redeemed_amount="+data_new.result.redeemed_amount+"&pin="+data_new.result.pin+"&coupon_no=null&coupon_id=null&coupon_amount=null",
+                            success: function (data) {
+                                console.log(data);
+
+                                if(data.success == true)
+                                {
+                                    var orderNumber = data.result.transaction.transaction.order_number;
+                                    var amount = data.result.transaction.transaction.amount;
+                                    console.log(orderNumber);
+                                    console.log(amount);
+                                    saveSession(orderNumber,amount);
+                                }
+
+
+
+                            },
+
+                        });
+
+                    }
+
+
+
+                },
+
+            });
+
+
+
+        }
+
+    function saveSession(order,amount)
+    {
+        $.ajax({
+            type: "GET",
+            url: "/saveSession?orderNumber="+order+"&amount="+amount,
+            success: function (data_new) {
+                console.log(data_new);
+                if(data_new === "success")
+                {
+                    window.location.href="/PaytmKit/pgRedirect.php";
+                    return false;
+                }
+
+                window.location.href="/PaytmKit/pgRedirect.php"
+
+
+            },
+
+        });
+    }
 </script>
 
 {{> footer}}
+
+<script>
+    $(document).ready(function()
+    {
+        $('#shelfMenu').addClass('current-menu-parent');
+
+    })
+
+
+</script>
