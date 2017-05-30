@@ -14,8 +14,10 @@ $app = init();
 
 $authenticate = function ($request, $response, $next) {
     if (!isset($_SESSION['username'])) {
-        $response = $this->view->render($response, 'home.mustache', array('loggedIn' => "false", 'session' => 'null'));
-        return $response;
+//        $response = $this->view->render($response, 'home.mustache', array('loggedIn' => "false", 'session' => 'null'));
+//        return $response;
+        return $response->withRedirect('/');
+
     } else {
         return $next($request, $response);
     }
@@ -24,8 +26,10 @@ $authenticate = function ($request, $response, $next) {
 
 $adminAuthenticate = function ($request, $response, $next) {
     if (!isset($_SESSION['adminUser'])) {
-        $response = $this->view->render($response, 'login.mustache', array('loggedIn' => "false", 'session' => 'null'));
-        return $response;
+//        $response = $this->view->render($response, 'login.mustache', array('loggedIn' => "false", 'session' => 'null'));
+//        return $response;
+        return $response->withRedirect('/adminLogin/');
+
     } else {
         return $next($request, $response);
     }
@@ -198,7 +202,7 @@ $app->get('/signup', function (Request $request, Response $response) {
 
 
     foreach ($data as $v) {
-        if ($v['web_signup_plan']['promo_code'] === $planname ) {
+        if (strtoupper($v['web_signup_plan']['promo_code']) === strtoupper($planname) ) {
             array_push($temp_array, $v);
         }
 
@@ -217,14 +221,35 @@ $app->get('/signup', function (Request $request, Response $response) {
     }
 
     $count = array_unique($count);
+//    echo json_encode($count);die;
+$monthsArray=[];
+    foreach ($array as $item) {
+        if ($item['web_signup_plan']['books'] == $books) {
+            foreach ($item['web_signup_plan']['plan_durations'] as $plans) {
 
-//    $plan_months = [];
-//    $plan_books = [];
-//
+                                    array_push($monthsArray,$plans['plan_duration']['signup_months']);
+
+            }
+        }
+    }
+    foreach ($array as $item) {
+        if ($item['web_signup_plan']['books'] == $books) {
+            foreach ($item['web_signup_plan']['plan_durations'] as $plans) {
+
+                if ($plans['plan_duration']['signup_months'] == $months) {
+
+                    $response = $this->view->render($response, 'signup.mustache', array('plan_data' => $array_data, 'planid' => $planid, 'plan_books' => $count, 'planname' => $planname, 'planid' => $planid,"total" => $plans['plan_duration']['totalAmount_with_convenience_fee'], 'reading_fee' => $plans['plan_duration']['reading_fee_for_term'], 'reg_fee' => $item['web_signup_plan']['registration_fee'], 'sec_deposit' => $item['web_signup_plan']['security_deposit'],'months'=>$monthsArray,'book'=>$books,'month'=>$months));
+                    return $response;
+
+                }
+            }
+        }
+    }
+    
 
 
-    $response = $this->view->render($response, 'signup.mustache', array('plan_data' => $array_data, 'planid' => $planid, 'plan_books' => $count, 'planname' => $planname, 'planid' => $planid));
-    return $response;
+
+
 })->setName('signup');
 
 $app->get('/newArrivals', function (Request $request, Response $response) {
@@ -1069,6 +1094,19 @@ $app->post('/deleteBID', function (Request $request, Response $response) {
 })->add($adminAuthenticate);
 
 
+
+$app->post('/deleteBlog', function (Request $request, Response $response) {
+    $id=$_POST['id'];
+    $con = $this->db;
+    $query = "update memp.ADMIN_BLOG_PARAMETERS set active=0 where id =$id";
+    $compiled = oci_parse($con, $query);
+    oci_execute($compiled);
+    echo json_encode("success");
+
+
+})->add($adminAuthenticate);
+
+
 $app->post('/submitAdminOffer', function (Request $request, Response $response) {
     $name=$_POST['name'];
     $category=$_POST['category'];
@@ -1092,6 +1130,66 @@ $app->post('/submitAdminOffer', function (Request $request, Response $response) 
 
 
 
+$app->post('/submitAdminBlog', function (Request $request, Response $response) {
+    $name=$_POST['name'];
+    $image=$_POST['image'];
+    $description=$_POST['description'];
+    $link=$_POST['link'];
+
+
+
+
+    $con = $this->db;
+    $query = "insert into  memp.ADMIN_BLOG_PARAMETERS(NAME,DESCRIPTION,IMAGE,LINK) values ('$name','$description','$image','$link') ";
+
+    $compiled = oci_parse($con, $query);
+    oci_execute($compiled);
+    echo json_encode("success");
+
+
+})->add($adminAuthenticate);
+
+$app->get('/adminBlogs', function (Request $request, Response $response) {
+    $con = $this->db;
+    $query_city = "SELECT *  FROM memp.ADMIN_BLOG_PARAMETERS where active = 1";
+    $result_city = oci_parse($con, $query_city);
+    oci_execute($result_city);
+    while ($row = oci_fetch_assoc($result_city)) {
+        $data[] = $row;
+    }
+
+    return $this->view->render($response, 'adminBlog.mustache', array('data'=>$data));
+
+
+})->add($adminAuthenticate);
+
+
+$app->get('/getBlog', function (Request $request, Response $response) {
+    $con = $this->db;
+    $query = "SELECT *  FROM memp.ADMIN_BLOG_PARAMETERS where active = 1";
+    $result = oci_parse($con, $query);
+    oci_execute($result);
+    while ($row = oci_fetch_assoc($result)) {
+        $final_data[] = $row;
+    }
+    echo json_encode($final_data);
+});
+$app->post('/updateProfile', function (Request $request, Response $response) {
+    $address=$_POST['address'];
+    $pincode=$_POST['pincode'];
+    $city=$_POST['city'];
+    $state=$_POST['state'];
+    $phone=$_POST['phone'];
+    $mail=$_SESSION['email'];
+    $api_key=$_SESSION['api_key'];
+    $membership_no=$_SESSION['membership_no'];
+
+
+
+
+    $result = curlFunction("8990/api/v1/update_personal_info.json?email=$mail&api_key=$api_key&membership_no=$membership_no&address1=$address&address2=&address3=&city=$city&state=$state&pincode=$pincode&lphone=$phone");
+    echo $result;
+});
 
 
 

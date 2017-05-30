@@ -153,7 +153,7 @@ $(document).ready(function () {
         success: function (data) {
             $("#frame_new_arr").hide();
             $("#loader").hide();
-data=JSON.parse(data);
+            data=JSON.parse(data);
             var final_response = getCard(data['result'], 5);
             $('#newArrivals').append(final_response);
             $('.item').first().addClass('active');
@@ -215,11 +215,11 @@ data=JSON.parse(data);
                     '<div class="item_cost_wrapper" style="background-color: ' + colors[i] + ';">' +
                     '<div class="price_item_title" style="background-color: ' + colors[i] + '; padding: 10px 10px 10px 10px;"><h4>Reading fee - Rs ' + Math.round(parseFloat(arr['READING_FEE'])) + ' </h4></div>' +
                     '</div>' +
-                    '<div class="price_item_text">'+ arr['NO_OF_MONTHS'] +' months plan</div>' +
-                    '<div class="price_item_text" id="price_item_text">Books - Rs  ' + arr['NO_OF_BOOKS'] + '</div>' +
+                    '<div class="price_item_text">Number of months - '+ arr['NO_OF_MONTHS'] +' </div>' +
+                    '<div class="price_item_text" id="price_item_text">No of books -   ' + arr['NO_OF_BOOKS'] + '</div>' +
                     '<div class="price_item_text">Regestration Fee - Rs ' + Math.round(parseFloat(arr['REGISTRATION_FEE'])) + ' </div>' +
                     '<div class="price_item_text" id="price_item_text">Security Deposit - Rs ' + Math.round(parseFloat(arr['SECURITY_DEPOSIT'])) + ' </div>' +
-                    '<div class="price_item_btn" id="btn" style="background-color: ' + colors[i] + '"><a href="/signup?planname=' + arr['PROMO'] + '&books=' + arr['NO_OF_BOOKS'] + '">Get It Now !</a></div>' +
+                    '<div class="price_item_btn" id="btn" style="background-color: ' + colors[i] + '"><a href="/signup?planname=' + arr['PROMO'] + '&books=' + arr['NO_OF_BOOKS'] + '&months=' + arr['NO_OF_MONTHS'] + '">Get It Now !</a></div>' +
                     '</div></div>';
                 i++;
                 if (i >= colors.length) {
@@ -230,6 +230,40 @@ data=JSON.parse(data);
             $('#plansCard').append(response);
         },
 
+    });
+
+    $.ajax({
+        type: "GET",
+        url: "/getBlog",
+        success: function (data) {
+            $("#frame_blog").hide();
+            $("#loader_blog").hide();
+            data = JSON.parse(data);
+            console.log(data['IMAGE']);
+            console.log(data)
+            for(var i=0;i<data.length;i++)
+            {
+                $("#blogDiv").append('<li>  ' +
+                    '<div class="item">' +
+                    '<div class="img_block wrapped_img"><img style="width: 100%;height: 17em;" src="'+data[i]['IMAGE']+'" alt="" width="270" height="170"></div>' +
+                    '<div class="carousel_body">' +
+                    '<div class="carousel_title">' +
+                    '<h5><a href="#">'+data[i]['NAME']+'</a></h5>' +
+                    '</div>' +
+                    '<div class="carousel_desc">' +
+                    '<div class="exc">'+data[i]['DESCRIPTION']+'</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '<a href="'+data[i]['LINK']+'" class="shortcode_button btn_small btn_type1">Read More</a>' +
+                    '</div>' +
+                    '</li>')
+            }
+
+        },
+        error:function(err)
+        {
+            console.log(err)
+        }
     });
 
 });

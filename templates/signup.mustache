@@ -206,7 +206,9 @@
                                             <div class="col-sm-6">
                                                 <select class="form-control" id="months" >
                                                     <option value="">Select No of Months:</option>
-
+                                                    {{# months}}
+                                                        <option value="{{.}}">{{.}}  month(s)</option>
+                                                    {{/months}}
                                                 </select></br>
                                             </div>
                                         </div>
@@ -216,7 +218,7 @@
                                                 <h5 style="float: left">One Time Registration Fee:</h5>
                                             </div>
                                             <div class="col-sm-4" id="reg_fee">
-                                                <h5></h5>
+                                                <h5>{{reg_fee}}</h5>
                                             </div>
                                         </div>
                                         <div class="col-sm-11" id="border_bottom">
@@ -224,7 +226,7 @@
                                                 <h5 style="float: left">Security Deposit:</h5>
                                             </div>
                                             <div class="col-sm-4" id="sec_deposit_fee">
-                                                <h5></h5>
+                                                <h5>{{sec_deposit}}</h5>
                                             </div>
                                         </div>
                                         <div class="col-sm-11" id="border_bottom">
@@ -232,7 +234,7 @@
                                                 <h5 style="float: left">Reading Fee:</h5>
                                             </div>
                                             <div class="col-sm-4" id="reading_fee">
-                                                <h5></h5>
+                                                <h5>{{reading_fee}}</h5>
                                             </div>
                                         </div>
                                         <div class="col-sm-11" id="border_none">
@@ -240,7 +242,7 @@
                                                 <h5 style="float: left">Total:</h5>
                                             </div>
                                             <div class="col-sm-4" id="total_fee">
-                                                <h5></h5>
+                                                <h5>{{total}}</h5>
                                             </div>
                                         </div>
                                         <div class="col-sm-11">
@@ -435,6 +437,11 @@
 
     $(document).ready(function()
     {
+
+        $("#books").val("{{book}}");
+        $("#months ").val("{{month}}");
+
+
         $('#plansHeader').addClass('current-menu-parent');
 
     })
