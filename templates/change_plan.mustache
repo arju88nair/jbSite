@@ -179,7 +179,7 @@
         </div>
         <div class="content_block no-sidebar row">
             <div class="fl-container span12">
-                <div id="{{planid}}" class="planid"></div>
+                <div id="{{planname}}" class="planid"></div>
 
                 <div class="contentarea">
                     <div class="module_line_trigger" data-option="" data-background="#323232 url(img/) no-repeat center"
@@ -194,22 +194,62 @@
                                     <div class="span6 module_cont module_text_area module_medium_padding">
                                         <!-- 1st row verticaly centered text in the square columns -->
 
-                                        {{# plan_data}}
+                                        <!--{{# plan_data}}-->
 
-                                            {{# web_signup_plan}}
-                                                <a href="/signup?planid={{plan_id}}&planname={{promo_code}}">
-                                                    <div class="square box-shadow" id="box_{{plan_id}}">
-                                                        <div class="content1">
-                                                            <div class="table">
-                                                                <div class="table-cell title_text">
-                                                                    {{promo_code}}
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            {{/web_signup_plan}}
+                                            <!--{{# web_signup_plan}}-->
+                                                <!--<a href="/signup?planid={{plan_id}}&planname={{promo_code}}">-->
+                                                    <!--<div class="square box-shadow" id="box_{{plan_id}}">-->
+                                                        <!--<div class="content1">-->
+                                                            <!--<div class="table">-->
+                                                                <!--<div class="table-cell title_text">-->
+                                                                    <!--{{promo_code}}-->
+                                                                <!--</div>-->
+                                                            <!--</div>-->
+                                                        <!--</div>-->
+                                                    <!--</div>-->
+                                                <!--</a>-->
+                                            <!--{{/web_signup_plan}}-->
+                                        <!--{{/plan_data}}-->
+                                        <style>
+                                            h3{
+                                                color:white;
+
+                                            }
+                                            .card{
+                                                margin: 5px;
+                                                box-shadow: 1px 0px 4px 2px grey;
+
+                                            }
+
+
+                                            .card-active{
+
+                                                padding-top: 20px;
+                                                padding-bottom: 6px;
+
+                                                margin-bottom: 15px;
+                                                box-shadow: 1px 0px 4px 2px grey;
+                                            }
+                                            .PLATINUM{
+                                                background-color: #EDAB53;
+                                            } .STARTER{
+                                                  background-color: #3379B4;
+                                              } .DEFAULT{
+                                                    background-color: #58B75B;
+                                                }
+                                        </style>
+
+                                        {{# plan_data}}
+                                            <a href="/signup?planname={{PROMO}}&books={{NO_OF_BOOKS}}&months={{NO_OF_MONTHS}}"><div class="col-md-7 col-md-offset-2"><div class="card {{PLAN_NAME}}" id="box_{{PLAN_NAME}}"  ><h3 class="htag_{{PLAN_NAME}}">{{PLAN_NAME}}</h3></div></div></a>
                                         {{/plan_data}}
+
+
+
+
+
+
+
+
                                     </div>
                                     <div class="span6 r_content">
                                         <div class="col-sm-11">
@@ -217,7 +257,7 @@
                                                 <select class="form-control" id="books">
                                                     <option value="">Select No of Books:</option>
                                                     {{# plan_books}}
-                                                        <option value="{{.}}">{{.}} month(s)</option>
+                                                        <option value="{{.}}">{{.}} books(s)</option>
                                                     {{/plan_books}}
                                                 </select></br>
                                             </div>
@@ -262,10 +302,10 @@
                                             </div>
                                         </div>
                                         <div class="col-sm-11">
-                                            <div class="col-sm-offset-2 col-sm-8">
-                                                <a href="#anchor2" class="btn btn-success btn-block" id="plan_submit"
-                                                   onclick="changePlan()">Change Plan</a>
-                                            </div>
+                                            <!--<div class="col-sm-offset-2 col-sm-8">-->
+                                                <!--<a href="#anchor2" class="btn btn-success btn-block" id="plan_submit"-->
+                                                   <!-->Change Plan</a>-->
+                                            <!--</div>-->
                                         </div>
                                     </div>
                                 </div>
@@ -274,164 +314,68 @@
                         </div><!-- .row-fluid -->
                     </div>
                 </div>
-                <!--<div class="row" style="background-color:#fff; margin-top:20px; margin-bottom:20px; border-radius:5px;">-->
-                <!--<a id="anchor2"></a>-->
-                <!--<div class="span12 module_cont module_text_area"></br>-->
-                <!--<h2>Fill Your Personal Details Here</h2>-->
-                <!--<hr>-->
-                <!--<form class="form-horizontal" id="signup_form">-->
+                <div class="row" style="background-color:#fff; margin-top:20px; margin-bottom:20px; border-radius:5px;">
+                <a id="anchor2"></a>
+                <div class="span12 module_cont module_text_area"></br>
+                <form class="form-horizontal" id="signup_form">
 
-                <!--<h4 class="dark-grey">Account Information</h4>-->
+                <h4 class="dark-grey">Coupon Information</h4>
 
-                <!--<div class="col-md-6">-->
-                <!--<div class="form-group">-->
-                <!--<div class="col-sm-6">-->
-                <!--<label>First Name:</label>-->
-                <!--<input type="text" class="form-control" id="firstname" name="firstname" required>-->
-                <!--</div>-->
-                <!--<div class="col-sm-6">-->
-                <!--<label>Last Name:</label>-->
-                <!--<input type="text" class="form-control" id="lastname" name="lastname" >-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--<div class="form-group">-->
-                <!--<div class="col-sm-12">-->
-                <!--<label>Address:</label>-->
-                <!--<input type="text" class="form-control" id="address" name="address" required>-->
-                <!--</div>-->
+                <div class="col-md-6">
+                <div class="form-group">
+                <div class="col-sm-5">
+                <label>Apply Referral code, if any:</label>
+                <input type="text" class="form-control" id="referral code"
+                placeholder="Member Card No." name="referral_code">
+                </div>
+                <div class="col-sm-5">
+                <label>Apply coupon code, if any:</label>
+                <input type="text" class="form-control" id="coupon_code"
+                placeholder="Coupon Code" name="coupon_code">
+                </div>
+                <div class="col-sm-2" style="padding-top:22px;">
+                <button type="submit" class="btn btn-warning" id="coupon_submit">Apply</button>
+                </div>
+                </div>
+                </div>
 
-                <!--</div>-->
+                <div class="col-md-6">
+                <div class="form-group">
+                <div class="col-sm-5">
+                <label>Apply gift card, if any:</label>
+                <input type="text" class="form-control" id="gift_card"
+                placeholder="Gift Card No." name="gift_card">
+                </div>
+                <div class="col-sm-5" style="padding-top:22px;">
+                <input type="text" class="form-control" id="gift_card_pin" placeholder="PIN"
+                name="gift_card_pin">
+                </div>
+                <div class="col-sm-2" style="padding-top:22px;">
+                <button type="submit" class="btn btn-warning" id="gift_card_submit">Apply
+                </button>
+                </div>
+                </div>
+                <div class="form-group">
 
-                <!--</div>-->
+                </div>
+                <div class="form-group">
 
-                <!--<div class="col-md-6">-->
-                <!--<div class="form-group">-->
-                <!--<div class="col-sm-6">-->
-                <!--<label>Date Of Birth:</label>-->
-                <!--&lt;!&ndash;<input type="text" class="form-control" id="dob" name="dob">&ndash;&gt;-->
-                <!--<input type="text" id="dob" readonly required="required" name="dob" required>-->
-                <!--</div>-->
-                <!--<div class="col-sm-6">-->
-                <!--<label>Gender:</label>-->
-                <!--<input type="gender" class="form-control" id="gender" name="gender" required>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--<div class="form-group">-->
-                <!--<div class="col-sm-4">-->
-                <!--<label>City:</label>-->
-                <!--<select class="form-control" id="city" name="city">-->
-                <!--</select>-->
-                <!--</div>-->
-                <!--<div class="col-sm-4">-->
-                <!--<label>State:</label>-->
-                <!--<select class="form-control" id="state" name="state">-->
-                <!--</select>-->
-                <!--</div>-->
-                <!--<div class="col-sm-4">-->
-                <!--<label>Zip/Post:</label>-->
-                <!--<input type="text" class="form-control" id="zip" name="zip" required>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--&lt;!&ndash;--------/////////////////////END/////////////////////////------------------&ndash;&gt;-->
-                <!--<div class="col-md-6">-->
-                <!--<div class="form-group">-->
-                <!--<div class="col-sm-6">-->
-                <!--<label>Email:</label>-->
-                <!--<input type="email" class="form-control" id="email" name="email" required>-->
-                <!--</div>-->
-                <!--<div class="col-sm-6">-->
-                <!--<label>Mobile:</label>-->
-                <!--<input type="number" class="form-control" id="mobile" required name="mobile" maxlength="10" minlength="10">-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--<div class="col-md-6">-->
-                <!--<div class="form-group">-->
-                <!--<div class="col-sm-6">-->
-                <!--<label>Create Password:</label>-->
-                <!--<input type="password" class="form-control" id="password" name="password" required>-->
-                <!--</div>-->
-                <!--<div class="col-sm-6">-->
-                <!--<label>Confirm Password:</label>-->
-                <!--<input type="password" class="form-control" id="Cpassword" name="password1" required oninput="passwordval()">-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--&lt;!&ndash;--------/////////////////////END/////////////////////////------------------&ndash;&gt;-->
+                </div>
+                </div>
+                <!----------/////////////////////END/////////////////////////-------------------->
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="col-sm-6">
+                                <button type="button"  onclick="changePlan()" class="btn btn-success btn-block" id="signup" >Change Plan
+                                </button>
+                            </div>
+                        </div>
+                    </div>
 
 
-                <!--<h4 class="dark-grey">Coupon Information</h4>-->
-
-                <!--<div class="col-md-6">-->
-                <!--<div class="form-group">-->
-                <!--<div class="col-sm-5">-->
-                <!--<label>Apply Referral code, if any:</label>-->
-                <!--<input type="text" class="form-control" id="referral code"-->
-                <!--placeholder="Member Card No." name="referral_code">-->
-                <!--</div>-->
-                <!--<div class="col-sm-5">-->
-                <!--<label>Apply coupon code, if any:</label>-->
-                <!--<input type="text" class="form-control" id="coupon_code"-->
-                <!--placeholder="Coupon Code" name="coupon_code">-->
-                <!--</div>-->
-                <!--<div class="col-sm-2" style="padding-top:22px;">-->
-                <!--<button type="submit" class="btn btn-warning" id="coupon_submit">Apply</button>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--</div>-->
-
-                <!--<div class="col-md-6">-->
-                <!--<div class="form-group">-->
-                <!--<div class="col-sm-5">-->
-                <!--<label>Apply gift card, if any:</label>-->
-                <!--<input type="text" class="form-control" id="gift_card"-->
-                <!--placeholder="Gift Card No." name="gift_card">-->
-                <!--</div>-->
-                <!--<div class="col-sm-5" style="padding-top:22px;">-->
-                <!--<input type="text" class="form-control" id="gift_card_pin" placeholder="PIN"-->
-                <!--name="gift_card_pin">-->
-                <!--</div>-->
-                <!--<div class="col-sm-2" style="padding-top:22px;">-->
-                <!--<button type="submit" class="btn btn-warning" id="gift_card_submit">Apply-->
-                <!--</button>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--<div class="form-group">-->
-
-                <!--</div>-->
-                <!--<div class="form-group">-->
-
-                <!--</div>-->
-                <!--</div>-->
-                <!--&lt;!&ndash;--------/////////////////////END/////////////////////////------------------&ndash;&gt;-->
-
-
-                <!--<div class="col-md-12">-->
-                <!--<div class="form-group">-->
-                <!--<div class="col-sm-12">-->
-                <!--<div class="checkbox">-->
-                <!--<label>-->
-                <!--<input type="checkbox">I accept <a href="#">Terms & Conditions</a>-->
-                <!--</label>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--</div> &lt;!&ndash; /.form-group &ndash;&gt;-->
-
-                <!--</div>-->
-                <!--<div class="col-md-6">-->
-                <!--<span id="error" style="color :red;display: none;"></span>-->
-                <!--<div class="form-group">-->
-                <!--<div class="col-sm-6">-->
-                <!--<button type="submit" class="btn btn-success btn-block" id="signup">Register-->
-                <!--</button>-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--</div>-->
-
-
-                <!--</form>-->
-                <!--</div>-->
+                </form>
+                </div>
                 <!--</div>-->
             </div>
         </div><!-- .contentarea -->
@@ -443,6 +387,16 @@
 <script type="application/javascript">
     $(document).ready(function()
     {
+        var planid = $('.planid').attr('id');
+
+        $('#box_' + planid).css({
+            'padding-top': '20px',
+            'padding-bottom' : '6px',
+            'border-radius': '8px',
+            'margin-bottom': '15px',
+            'box-shadow': '1px 4px 4px 2px grey'
+        });
+
         $('#plansHeader').addClass('current-menu-parent');
 
     })
@@ -522,6 +476,7 @@
                 data_new = JSON.parse(data_new);
                 if (data_new['status'] === "2nd") {
                     data_new = data_new['data'];
+                    console.log(data_new)
 
                     if (data_new.length != 0 || data_new != [] || data_new != '[]') {
 //                        $('.planid').attr(data_new['planID']);
@@ -532,16 +487,18 @@
                         }
                         $("#months").prepend("<option value=''>Select months</option>").val('');
 
+                        $("#months").show();
                     }
                 }
                 else {
 //                    $('.planid').attr(data_new['planID']);
+                    $("#months").show();
 
                     $("#months").append('<option value="' + data_new['month'] + '">' + data_new['month'] + ' month(s)</option>')
-                    $('#reg_fee h5').html(data_new['reg_fee']);
-                    $('#sec_deposit_fee h5').html(data_new['sec_deposit']);
-                    $('#reading_fee h5').html(data_new['reading_fee']);
-                    $('#total_fee h5').html(data_new['total']);
+                    $('#reg_fee h5').html("₹ "+data_new['reg_fee']);
+                    $('#sec_deposit_fee h5').html("₹ "+data_new['sec_deposit']);
+                    $('#reading_fee h5').html("₹ "+data_new['reading_fee']);
+                    $('#total_fee h5').html("₹ "+data_new['total']);
 
                 }
 
@@ -569,10 +526,10 @@
                     data_new = JSON.parse(data_new);
                     console.log(data_new);
 //                        console.log(data_new['reg_fee']);
-                    $('#reg_fee h5').html(data_new['reg_fee']);
-                    $('#sec_deposit_fee h5').html(data_new['sec_deposit']);
-                    $('#reading_fee h5').html(data_new['reading_fee']);
-                    $('#total_fee h5').html(data_new['total']);
+                    $('#reg_fee h5').html("₹ "+data_new['reg_fee']);
+                    $('#sec_deposit_fee h5').html("₹ "+data_new['sec_deposit']);
+                    $('#reading_fee h5').html("₹ "+data_new['reading_fee']);
+                    $('#total_fee h5').html("₹ "+data_new['total']);
                 },
                 error: function (err) {
                     $(".spinner").hide();
@@ -604,6 +561,7 @@
 
 
     $('#coupon_submit').click(function (e) {
+        $(".spinner").show();
         e.preventDefault();
         var coupon = $('#coupon_code').val();
         $.ajax({
@@ -611,6 +569,7 @@
             url: "/couponValidate",
             data: {'coupon': coupon, 'planid': planid, 'months': mon},
             success: function (data_new) {
+                $(".spinner").hide();
                 data_new = JSON.parse(data_new);
                 console.log(data_new);
                 if (data_new['success'] == true) {
@@ -630,6 +589,7 @@
     });
 
     $('#gift_card_submit').click(function (e) {
+        $(".spinner").show();
         e.preventDefault();
         var gift_card = $('#gift_card').val();
         var gift_card_pin = $('#gift_card_pin').val();
@@ -639,6 +599,7 @@
             url: "/giftcardValidate",
             data: {'gift_card': gift_card, 'gift_card_pin': gift_card_pin, 'total_amnt': total_amnt},
             success: function (data_new) {
+                $(".spinner").hide();
                 data_new = JSON.parse(data_new);
                 console.log(data_new);
                 if (data_new['success'] == true) {
@@ -667,25 +628,42 @@
 
 
     function changePlan() {
-        logClick("changePlan");
+        $(".spinner").show();
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
                 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
         ga('create', 'UA-93821751-1', 'none');
-    ga('send', 'event', 'Clicks', 'Change Plan', 'First Screen');
+        ga('send', 'event', 'Clicks', 'Change Plan', 'First Screen');
         var planid = $('.planid').attr('id');
         var email=localStorage.getItem("email");
         ga('send', 'event', 'Clicks', 'Change plan of user '+email+'', 'First Screen');
         var terms=$("#months").val();
+        var coupon=$("#coupon_code").val();
+        var gift=$("#gift_card").val();
+        if(coupon == "")
+        {
+            coupon="null";
+        }
+
+        if(gift == "")
+        {
+            gift="null";
+        }
+        if(terms == null ||terms == "")
+        {
+           toastr.error("Please select a plan duration") ;
+            $(".spinner").hide();
+            return false;
+        }
+
         var membership=localStorage.getItem("membership");
-        console.log(membership);
-        console.log("http://staging.justbooksclc.com:8990/api/v1/change_plan_payment.json?email="+email+"&membercard="+membership+"&term="+terms+"&new_plan_id="+planid+"&coupon_code=null&gift_card_no=null&pin=null")
 
         $.ajax({
             type: "GET",
-            url: "http://staging.justbooksclc.com:8990/api/v1/change_plan_payment.json?email="+email+"&membercard="+membership+"&term="+terms+"&new_plan_id="+planid+"&coupon_code=null&gift_card_no=null&pin=null",
+            url: "http://staging.justbooksclc.com:8990/api/v1/change_plan_payment.json?email="+email+"&membercard="+membership+"&term="+terms+"&new_plan_id="+planid+"&coupon_code="+coupon+"&gift_card_no="+gift+"&pin=null",
+            crossDomain:true,
             success: function (data_new) {
                 console.log(data_new);
                 console.log(data_new.success);
@@ -702,6 +680,7 @@
 
                     $.ajax({
                         type: "GET",
+                        crossDomain:true,
                         url: "http://staging.justbooksclc.com:8990/api/v1/confirm_change_plan.json?email="+email+"&membercard="+membership+"&member_id="+data_new.result.member_id+"&membership_no="+data_new.result.membership_no+"&amount="+data_new.result.amount+"&old_plan_id="+data_new.result.old_plan_id+"&new_plan_id="+data_new.result.new_plan_id+"&term="+data_new.result.term+"&created_in="+data_new.result.created_in+"&member_branch_id="+data_new.result.member_branch_id+"&old_expiry_date="+data_new.result.member_branch_id+"&new_expiry_date="+data_new.result.new_expiry_date+"&old_security_deposit="+data_new.result.old_security_deposit+"&new_security_deposit="+data_new.result.new_security_deposit+"&old_reading_fee_balance="+data_new.result.old_reading_fee_balance+"&convenience_fee="+data_new.result.convenience_fee+"&delivery_fees="+data_new.result.delivery_fees+"&delivery_option="+data_new.result.delivery_option+"&overdue_adjustment="+data_new.result.overdue_adjustment+"&adjustment_narration="+data_new.result.adjustment_narration+"&reward_points="+data_new.result.reward_points+"&coupon_no="+data_new.result.coupon_no+"&coupon_id="+data_new.result.coupon_id+"&coupon_amount="+data_new.result.coupon_amount+"&change_plan_payment_type="+data_new.result.change_plan_payment_type+"",
                         success: function (data_new) {
                             console.log(data_new+" 2nd");
@@ -712,7 +691,7 @@
 
                                 var orderNumber = data_new.result.transaction.transaction.order_number;
                                 var amount = data_new.result.transaction.transaction.amount;
-amount=Math.abs(parseFloat(amount))
+                            amount=Math.abs(parseFloat(amount))
                                 saveSession(orderNumber,amount);
                             }
 

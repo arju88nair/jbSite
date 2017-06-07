@@ -185,4 +185,17 @@ header ul.menu > li > a {
 }
 .item_shadow{
 	box-shadow: 6px 8px 11px #7f7f7f;
+	border:thin solid #e1e1e1;
+}
+
+.fram_btn{
+	margin-left:16%; 
+	margin-top:10px;
+}
+
+.wishlist_btn{
+	color:red; 
+	font-size:20px!important; 
+	margin-left:40px; 
+	margin-top:3px;
 }

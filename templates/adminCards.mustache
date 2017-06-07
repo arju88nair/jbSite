@@ -209,6 +209,18 @@
                             <input type="text" class="form-control" id="months" placeholder="Enter number of months" name="months" required>
                         </div>
                         <div class="form-group" style="margin-top:5%;margin-right: 2%">
+                            <label for="email">Months tag</label>
+                            <input type="text" class="form-control" id="monthsTag" placeholder="Enter months tag" name="monthsTag" required>
+                        </div>
+                        <div class="form-group" style="margin-top:5%;margin-right: 2%">
+                            <label for="email">Books Tag:</label>
+                            <input type="text" class="form-control" id="booksTag" placeholder="Enter books tag" name="booksTag" required>
+                        </div>
+                        <div class="form-group" style="margin-top:5%;margin-right: 2%">
+                            <label for="email">Suitable for Tag:</label>
+                            <input type="text" class="form-control" id="suitable" placeholder="Enter suitable for tag" name="suitTag" required>
+                        </div>
+                        <div class="form-group" style="margin-top:5%;margin-right: 2%">
                             <label for="email">Promo name:</label>
                             <input type="text" class="form-control" id="Promo" placeholder="Enter Promo name" name="Promo" required>
                         </div>
@@ -365,7 +377,7 @@ $(".spinner").show();
         $.ajax({
             type: "POST",
             url: "/submitAdminOffer",
-            data: {'name':$("#name").val(),'category':$("#category").val(),'category':$("#category").val(),'registration':$("#registration").val(),'reading':$("#reading").val(),'security':$("#security").val(),'books':$("#books").val(),'months':$("#months").val(),'promo':$("#Promo").val() },
+            data: {'name':$("#name").val(),'category':$("#category").val(),'category':$("#category").val(),'registration':$("#registration").val(),'reading':$("#reading").val(),'security':$("#security").val(),'books':$("#books").val(),'months':$("#months").val(),'promo':$("#Promo").val(),'monthTag':$("#monthsTag").val(),'bookTag':$("#booksTag").val(),'suitable':$("#suitable").val() },
             async: true,
             dataType: 'json',
             enctype: 'multipart/form-data',

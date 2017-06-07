@@ -56,9 +56,14 @@ $app->get('/', function (Request $request, Response $response) {
     while ($row = oci_fetch_assoc($result)) {
         $final_data[] = $row;
     }
-    $image = $final_data[0]['IMAGE_URL_1'];
+    $image1 = $final_data[0]['IMAGE_URL_1'];
+    $image2 = $final_data[0]['IMAGE_URL_2'];
+    $image3 = $final_data[0]['IMAGE_URL_3'];
+    $action1=final_data[0]['ACTION_1"'];
+    $action2=final_data[0]['ACTI0N_2"'];
+    $action3=final_data[0]['ACTION_3"'];
     $address = $final_data[0]['ADDRESS'];;
-    $response = $this->view->render($response, 'home.mustache', array('loggedIn' => "true", 'session' => $_SESSION['username'], 'image' => $image, 'address' => $address));
+    $response = $this->view->render($response, 'home.mustache', array('loggedIn' => "true", 'session' => $_SESSION['username'], 'image1' => $image1, 'image2' => $image2, 'image3' => $image3,'action1'=>$action1,'action2'=>$action2,'action3'=>$action3, 'address' => $address));
     return $response;
 });
 
@@ -543,7 +548,7 @@ $app->get('/getSubscription', function (Request $request, Response $response) {
         $result = curlFunction("8990/api/v1/subscription_details.json?membership_no=$membership_no&api_key=$api_key&email=$mail");
     $final_result['curent_plan'] = json_decode($result, true);
     $email = $_SESSION['email'];
-    $result1 = curlFunction("8990/api/v1/get_change_plan_terms.json?email=$email&membercard=M103604&for_mobile=true");
+    $result1 = curlFunction("8990/api/v1/get_change_plan_terms.json?email=$email&membercard=$membership_no&for_mobile=true");
     $terms=curlFunction("8990/api/v1/get_renewal_terms.json?email=$email&membercard=$membership_no");
     $final_result['change_plan'] = json_decode($result1, true);
     $termData=json_decode($terms,true);
@@ -636,6 +641,13 @@ $app->get('/change_plan', function (Request $request, Response $response, $args)
 
 
     $allGetVars = $request->getQueryParams();
+    $con = $this->db;
+    $query_city = "SELECT *  FROM memp.FN_HOME_PAGE_PLANS where active = 1";
+    $result_city = oci_parse($con, $query_city);
+    oci_execute($result_city);
+    while ($row = oci_fetch_assoc($result_city)) {
+        $planData[] = $row;
+    }
 
     $plan_data_curl = curlFunction('8990/api/v1/get_all_plans.json');
     $plan_data = json_decode($plan_data_curl);
@@ -681,7 +693,7 @@ $app->get('/change_plan', function (Request $request, Response $response, $args)
     $count = array_unique($count);
 
 
-    $response = $this->view->render($response, 'change_plan.mustache', array('plan_data' => $array_data, 'planid' => $planid, 'plan_books' => $count, 'planname' => $planname, 'planid' => $planid));
+    $response = $this->view->render($response, 'change_plan.mustache', array('plan_data' => $planData, 'planid' => $planid, 'plan_books' => $count, 'planname' => $planname, 'planid' => $planid));
     return $response;
 })->add($authenticate);
 
@@ -856,6 +868,16 @@ $app->post('/updateURL/', function (Request $request, Response $response) {
 $app->post('/file_Upload/', function (Request $request, Response $response) {
 
     $option = $_POST['select'];
+    if($option == 'IMAGE_URL_1')
+    {
+        $url_option='ACTION_1';
+    }if($option == 'IMAGE_URL_2')
+    {
+        $url_option='ACTION_2';
+    }if($option == 'IMAGE_URL_3')
+    {
+        $url_option='ACTION_3';
+    }
     $target_dir = "uploads/";
     $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 
@@ -896,13 +918,15 @@ $app->post('/file_Upload/', function (Request $request, Response $response) {
     } else {
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
             $con = $this->db;
-            $query = "update website_parameters set $option = '$target_file'  where id = 1 ";
+            $url=$_POST['url'];
+            $query = "update website_parameters set $option = '$target_file',$url_option = '$url'  where id = 1 ";
             $compiled = oci_parse($con, $query);
             oci_execute($compiled);
+            echo "The file " . basename($_FILES["fileToUpload"]["name"]) . " has been uploaded.";
+
             return $response->withRedirect('/AdminHome/');
 
 
-            echo "The file " . basename($_FILES["fileToUpload"]["name"]) . " has been uploaded.";
         } else {
             echo "Sorry, there was an error uploading your file.";
         }
@@ -1132,11 +1156,14 @@ $app->post('/submitAdminOffer', function (Request $request, Response $response) 
     $books=(int)$_POST['books'];
     $months=(int)$_POST['months'];
     $promo=$_POST['promo'];
+    $montTag=$_POST['monthTag'];
+    $bookTag=$_POST['bookTag'];
+    $suitable=$_POST['suitable'];
 
 
 
     $con = $this->db;
-    $query = "insert into  memp.FN_HOME_PAGE_PLANS(PLAN_NAME,CATEGORY,REGISTRATION_FEE,READING_FEE,SECURITY_DEPOSIT,NO_OF_BOOKS,NO_OF_MONTHS,PROMO) values ('$name','$category',$registraiton,$reading,$security,$books,$months,'$promo') ";
+    $query = "insert into  memp.FN_HOME_PAGE_PLANS(PLAN_NAME,CATEGORY,REGISTRATION_FEE,READING_FEE,SECURITY_DEPOSIT,NO_OF_BOOKS,NO_OF_MONTHS,PROMO,MONTH_TAG,BOOK_TAG,SUITABLE_TAG) values ('$name','$category',$registraiton,$reading,$security,$books,$months,'$promo','$montTag','$bookTag','$suitable') ";
     $compiled = oci_parse($con, $query);
     oci_execute($compiled);
     echo json_encode("success");
@@ -1200,11 +1227,7 @@ $app->post('/updateProfile', function (Request $request, Response $response) {
     $api_key=$_SESSION['api_key'];
     $membership_no=$_SESSION['membership_no'];
 
-
-
-
     $result = curlFunction("8990/api/v1/update_personal_info.json?email=$mail&api_key=$api_key&membership_no=$membership_no&address1=$address&address2=&address3=&city=$city&state=$state&pincode=$pincode&lphone=$phone");
-    echo $result;
 });
 
 

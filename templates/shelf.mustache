@@ -1,4 +1,37 @@
 {{> header}}
+<style>
+    h3 {
+        color: white;
+
+    }
+
+    .card {
+        margin: 5px;
+        box-shadow: 1px 0px 4px 2px grey;
+
+    }
+
+    .card-active {
+
+        padding-top: 20px;
+        padding-bottom: 6px;
+
+        margin-bottom: 15px;
+        box-shadow: 1px 0px 4px 2px grey;
+    }
+
+    .PLATINUM {
+        background-color: #EDAB53;
+    }
+
+    .STARTER {
+        background-color: #3379B4;
+    }
+
+    .DEFAULT {
+        background-color: #58B75B;
+    }
+</style>
 
 <div class="main_wrapper">
 
@@ -23,7 +56,7 @@
 
                     <hr>
 
-                    {{> left_recmend_book}}
+
 
                 </div><!-- .right-sidebar -->
 
@@ -48,34 +81,190 @@ font-family: Playfair Display;display: none"></p>
                                             <form>
                                                 <div class="form-group">
                                                     <label for="email">Address:</label>
-                                                    <textarea type="text" class="form-control" id="address" required></textarea>
+                                                    <textarea type="text" class="form-control" id="address"
+                                                              required></textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>City:</label>
 
                                                     <select class="form-control" id="city" name="city">
-                                                    <option value="1">Agra</option><option value="5">Chennai</option><option value="7">Ernakulam</option><option value="9">Hyderabad</option><option value="10">Indore</option><option value="14">Mangalore</option><option value="17">Nagpur</option><option value="18">New Delhi</option><option value="26">Bangalore</option><option value="2">Ahmedabad</option><option value="3">Allahabad</option><option value="11">Jaipur</option><option value="12">Kanpur</option><option value="15">Mumbai</option><option value="19">Patna</option><option value="20">Pune</option><option value="23">Trivandrum</option><option value="24">Vadodara</option><option value="25">Vizag</option><option value="4">Bhubaneswar</option><option value="6">Coimbatore</option><option value="8">Gurgaon</option><option value="13">Kolkata</option><option value="16">Mysore</option><option value="21">Rajkot</option><option value="22">Ranchi</option><option value="27">Mohali</option><option value="119">Shimoga</option><option value="120">Calicut</option><option value="28"> Agartala  </option><option value="29"> Aizawl  </option><option value="30"> Ajmer </option><option value="31"> Akola </option><option value="32"> Aligarh </option><option value="33"> Amravati  </option><option value="34"> Amritsar  </option><option value="35"> Asansol </option><option value="36"> Aurangabad  </option><option value="37"> Bareilly  </option><option value="38"> Belgaum </option><option value="39"> Bellary </option><option value="40"> Bhagalpur </option><option value="41"> Bhavnagar </option><option value="42"> Bhiwandi  </option><option value="43"> Bhopal  </option><option value="44"> Bikaner </option><option value="45"> Bokaro  </option><option value="46"> Chandigarh  </option><option value="47"> Chandrapur  </option><option value="48"> Cuttack </option><option value="49"> Davanagere  </option><option value="50"> Dehradun  </option><option value="51"> Dhanbad </option><option value="52"> Dhule </option><option value="53"> Durgapur  </option><option value="54"> Faridabad </option><option value="55"> Firozabad </option><option value="56"> Gandhidham  </option><option value="57"> Gaya  </option><option value="58"> Ghaziabad </option><option value="59"> Gorakhpur </option><option value="60"> Gulbarga  </option><option value="61"> Guntur  </option><option value="62"> Guwahati  </option><option value="63"> Gwalior </option><option value="64"> Imphal  </option><option value="65"> Jabalpur  </option><option value="66"> Jalandhar </option><option value="67"> Jalgaon </option><option value="68"> Jammu </option><option value="69"> Jamnagar  </option><option value="70"> Jamshedpur  </option><option value="71"> Jhansi  </option><option value="72"> Jodhpur </option><option value="73"> Kalyan-dombivali  </option><option value="74"> Kolhapur  </option><option value="75"> Korba </option><option value="76"> Kota  </option><option value="77"> Kurnool </option><option value="78"> Latur </option><option value="79"> Loni  </option><option value="80"> Lucknow </option><option value="81"> Ludhiana  </option><option value="82"> Madurai </option><option value="83"> Malegaon  </option><option value="84"> Meerut  </option><option value="85"> Mira-bhayandar  </option><option value="86"> Moradabad </option><option value="87"> Muzaffarnagar </option><option value="88"> Nashik  </option><option value="89"> Navi Mumbai </option><option value="90"> Nellore </option><option value="91"> Nizamabad </option><option value="92"> Noida </option><option value="93"> Panaji  </option><option value="94"> Patiala </option><option value="95"> Puducherry  </option><option value="96"> Raipur  </option><option value="97"> Rajahmundry </option><option value="98"> Rampur  </option><option value="99"> Rohtak  </option><option value="100">  Salem </option><option value="101">  Siliguri  </option><option value="102">  Solapur </option><option value="103">  Srinagar  </option><option value="104">  Surat </option><option value="105">  Thane </option><option value="106">  Thrissur  </option><option value="107">  Tiruchirappalli </option><option value="108">  Tirunelveli </option><option value="109">  Tirupati  </option><option value="110">  Tumkur  </option><option value="111">  Udaipur </option><option value="112">  Ujjain  </option><option value="113">  Ulhasnagar  </option><option value="114">  Varanasi  </option><option value="115">  Vijayawada  </option><option value="116">  Vizianagaram  </option><option value="117">  Warangal  </option><option value="118">Hubli</option></select>
+                                                        <option value="1">Agra</option>
+                                                        <option value="5">Chennai</option>
+                                                        <option value="7">Ernakulam</option>
+                                                        <option value="9">Hyderabad</option>
+                                                        <option value="10">Indore</option>
+                                                        <option value="14">Mangalore</option>
+                                                        <option value="17">Nagpur</option>
+                                                        <option value="18">New Delhi</option>
+                                                        <option value="26">Bangalore</option>
+                                                        <option value="2">Ahmedabad</option>
+                                                        <option value="3">Allahabad</option>
+                                                        <option value="11">Jaipur</option>
+                                                        <option value="12">Kanpur</option>
+                                                        <option value="15">Mumbai</option>
+                                                        <option value="19">Patna</option>
+                                                        <option value="20">Pune</option>
+                                                        <option value="23">Trivandrum</option>
+                                                        <option value="24">Vadodara</option>
+                                                        <option value="25">Vizag</option>
+                                                        <option value="4">Bhubaneswar</option>
+                                                        <option value="6">Coimbatore</option>
+                                                        <option value="8">Gurgaon</option>
+                                                        <option value="13">Kolkata</option>
+                                                        <option value="16">Mysore</option>
+                                                        <option value="21">Rajkot</option>
+                                                        <option value="22">Ranchi</option>
+                                                        <option value="27">Mohali</option>
+                                                        <option value="119">Shimoga</option>
+                                                        <option value="120">Calicut</option>
+                                                        <option value="28"> Agartala</option>
+                                                        <option value="29"> Aizawl</option>
+                                                        <option value="30"> Ajmer</option>
+                                                        <option value="31"> Akola</option>
+                                                        <option value="32"> Aligarh</option>
+                                                        <option value="33"> Amravati</option>
+                                                        <option value="34"> Amritsar</option>
+                                                        <option value="35"> Asansol</option>
+                                                        <option value="36"> Aurangabad</option>
+                                                        <option value="37"> Bareilly</option>
+                                                        <option value="38"> Belgaum</option>
+                                                        <option value="39"> Bellary</option>
+                                                        <option value="40"> Bhagalpur</option>
+                                                        <option value="41"> Bhavnagar</option>
+                                                        <option value="42"> Bhiwandi</option>
+                                                        <option value="43"> Bhopal</option>
+                                                        <option value="44"> Bikaner</option>
+                                                        <option value="45"> Bokaro</option>
+                                                        <option value="46"> Chandigarh</option>
+                                                        <option value="47"> Chandrapur</option>
+                                                        <option value="48"> Cuttack</option>
+                                                        <option value="49"> Davanagere</option>
+                                                        <option value="50"> Dehradun</option>
+                                                        <option value="51"> Dhanbad</option>
+                                                        <option value="52"> Dhule</option>
+                                                        <option value="53"> Durgapur</option>
+                                                        <option value="54"> Faridabad</option>
+                                                        <option value="55"> Firozabad</option>
+                                                        <option value="56"> Gandhidham</option>
+                                                        <option value="57"> Gaya</option>
+                                                        <option value="58"> Ghaziabad</option>
+                                                        <option value="59"> Gorakhpur</option>
+                                                        <option value="60"> Gulbarga</option>
+                                                        <option value="61"> Guntur</option>
+                                                        <option value="62"> Guwahati</option>
+                                                        <option value="63"> Gwalior</option>
+                                                        <option value="64"> Imphal</option>
+                                                        <option value="65"> Jabalpur</option>
+                                                        <option value="66"> Jalandhar</option>
+                                                        <option value="67"> Jalgaon</option>
+                                                        <option value="68"> Jammu</option>
+                                                        <option value="69"> Jamnagar</option>
+                                                        <option value="70"> Jamshedpur</option>
+                                                        <option value="71"> Jhansi</option>
+                                                        <option value="72"> Jodhpur</option>
+                                                        <option value="73"> Kalyan-dombivali</option>
+                                                        <option value="74"> Kolhapur</option>
+                                                        <option value="75"> Korba</option>
+                                                        <option value="76"> Kota</option>
+                                                        <option value="77"> Kurnool</option>
+                                                        <option value="78"> Latur</option>
+                                                        <option value="79"> Loni</option>
+                                                        <option value="80"> Lucknow</option>
+                                                        <option value="81"> Ludhiana</option>
+                                                        <option value="82"> Madurai</option>
+                                                        <option value="83"> Malegaon</option>
+                                                        <option value="84"> Meerut</option>
+                                                        <option value="85"> Mira-bhayandar</option>
+                                                        <option value="86"> Moradabad</option>
+                                                        <option value="87"> Muzaffarnagar</option>
+                                                        <option value="88"> Nashik</option>
+                                                        <option value="89"> Navi Mumbai</option>
+                                                        <option value="90"> Nellore</option>
+                                                        <option value="91"> Nizamabad</option>
+                                                        <option value="92"> Noida</option>
+                                                        <option value="93"> Panaji</option>
+                                                        <option value="94"> Patiala</option>
+                                                        <option value="95"> Puducherry</option>
+                                                        <option value="96"> Raipur</option>
+                                                        <option value="97"> Rajahmundry</option>
+                                                        <option value="98"> Rampur</option>
+                                                        <option value="99"> Rohtak</option>
+                                                        <option value="100"> Salem</option>
+                                                        <option value="101"> Siliguri</option>
+                                                        <option value="102"> Solapur</option>
+                                                        <option value="103"> Srinagar</option>
+                                                        <option value="104"> Surat</option>
+                                                        <option value="105"> Thane</option>
+                                                        <option value="106"> Thrissur</option>
+                                                        <option value="107"> Tiruchirappalli</option>
+                                                        <option value="108"> Tirunelveli</option>
+                                                        <option value="109"> Tirupati</option>
+                                                        <option value="110"> Tumkur</option>
+                                                        <option value="111"> Udaipur</option>
+                                                        <option value="112"> Ujjain</option>
+                                                        <option value="113"> Ulhasnagar</option>
+                                                        <option value="114"> Varanasi</option>
+                                                        <option value="115"> Vijayawada</option>
+                                                        <option value="116"> Vizianagaram</option>
+                                                        <option value="117"> Warangal</option>
+                                                        <option value="118">Hubli</option>
+                                                    </select>
 
-                                                </div> <div class="form-group">
+                                                </div>
+                                                <div class="form-group">
 
-                                                <label>State:</label>
-                                                <select class="form-control" id="state" name="state">
-                                                    <option value="1">Andhra Pradesh</option><option value="2">Arunachal Pradesh</option><option value="3">Assam</option><option value="4">Bihar</option><option value="5">Chhattisgarh</option><option value="6">Goa</option><option value="7">Gujarat</option><option value="8">Haryana</option><option value="9">Himachal Pradesh</option><option value="10">Jammu and Kashmir</option><option value="11">Jharkhand</option><option value="12">Karnataka</option><option value="13">Kerala</option><option value="14">Madhya Pradesh</option><option value="15">Maharashtra</option><option value="16">Manipur</option><option value="17">Meghalaya</option><option value="18">Mizoram</option><option value="19">Nagaland</option><option value="20">Orissa</option><option value="21">Punjab</option><option value="22">Rajasthan</option><option value="23">Sikkim</option><option value="24">Tamil Nadu</option><option value="25">Tripura</option><option value="26">Uttar Pradesh</option><option value="27">Uttarakhand</option><option value="28">West Bengal</option><option value="29">Telengana</option><option value="30">Union territory</option></select>
+                                                    <label>State:</label>
+                                                    <select class="form-control" id="state" name="state">
+                                                        <option value="1">Andhra Pradesh</option>
+                                                        <option value="2">Arunachal Pradesh</option>
+                                                        <option value="3">Assam</option>
+                                                        <option value="4">Bihar</option>
+                                                        <option value="5">Chhattisgarh</option>
+                                                        <option value="6">Goa</option>
+                                                        <option value="7">Gujarat</option>
+                                                        <option value="8">Haryana</option>
+                                                        <option value="9">Himachal Pradesh</option>
+                                                        <option value="10">Jammu and Kashmir</option>
+                                                        <option value="11">Jharkhand</option>
+                                                        <option value="12">Karnataka</option>
+                                                        <option value="13">Kerala</option>
+                                                        <option value="14">Madhya Pradesh</option>
+                                                        <option value="15">Maharashtra</option>
+                                                        <option value="16">Manipur</option>
+                                                        <option value="17">Meghalaya</option>
+                                                        <option value="18">Mizoram</option>
+                                                        <option value="19">Nagaland</option>
+                                                        <option value="20">Orissa</option>
+                                                        <option value="21">Punjab</option>
+                                                        <option value="22">Rajasthan</option>
+                                                        <option value="23">Sikkim</option>
+                                                        <option value="24">Tamil Nadu</option>
+                                                        <option value="25">Tripura</option>
+                                                        <option value="26">Uttar Pradesh</option>
+                                                        <option value="27">Uttarakhand</option>
+                                                        <option value="28">West Bengal</option>
+                                                        <option value="29">Telengana</option>
+                                                        <option value="30">Union territory</option>
+                                                    </select>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="email">Pin code:</label>
-                                                    <input type="text" minlength="6" maxlength="6" class="form-control" id="pincode" required>
-                                                </div> <div class="form-group">
+                                                    <input type="text" minlength="6" maxlength="6" class="form-control"
+                                                           id="pincode" required>
+                                                </div>
+                                                <div class="form-group">
                                                     <label for="email">Phone Number:</label>
-                                                    <input type="text" class="form-control" maxlength="10"  id="phone" required>
+                                                    <input type="text" class="form-control" maxlength="10" id="phone"
+                                                           required>
                                                 </div>
 
 
-
                                                 <button type="submit" class="btn btn-default">Submit</button>
-                                            </form>                                         </div>
+                                            </form>
+                                        </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close
+                                            </button>
                                         </div>
                                     </div>
 
@@ -158,6 +347,8 @@ font-family: Playfair Display;display: none"></p>
                             <div class="row-fluid" id="change_plan">
 
                             </div>
+                            {{> left_recmend_book}}
+
 
                             <!--<div class="row-fluid">-->
                             <!--<div class="col-md-6 col-xs-12 module_cont module_shelf shadow1">-->
@@ -303,12 +494,18 @@ font-family: Playfair Display;display: none"></p>
 
     $(document).ready(function () {
 
-        $('form').submit(function(e){
+        $('form').submit(function (e) {
             $(".spinner").show();
             $.ajax({
                 type: "POST",
                 url: "/updateProfile",
-                data: {'address':$("#address").val(),'state':$("#state").val(),'city':$("#city").val(),'pincode':$("#pincode").val(),'phone':$("#phone").val()},
+                data: {
+                    'address': $("#address").val(),
+                    'state': $("#state").val(),
+                    'city': $("#city").val(),
+                    'pincode': $("#pincode").val(),
+                    'phone': $("#phone").val()
+                },
                 async: true,
                 dataType: 'json',
                 enctype: 'multipart/form-data',
@@ -316,13 +513,12 @@ font-family: Playfair Display;display: none"></p>
                 success: function (data) {
                     $(".spinner").hide();
                     ;
-                    if(data['success'] === true)
-                    {
+                    if (data['success'] === true) {
                         toastr.success("Updated successfully !");
                         location.reload();
                         return false;
                     }
-                    else{
+                    else {
                         toastr.error("Something went wrong.Please try again. !");
                         return false;
                     }
@@ -342,10 +538,7 @@ font-family: Playfair Display;display: none"></p>
             return false;
 
 
-
         });
-
-
 
 
         $('#change_plan').html('');
@@ -355,37 +548,38 @@ font-family: Playfair Display;display: none"></p>
             type: "GET",
             url: "/getCurrentReading",
             success: function (data) {
-                
+
                 $(".spinner").hide();
                 var new_data = JSON.parse(data);
-                if(new_data['result'].length== 0)
-                {
+                if (new_data['result'].length == 0) {
                     $('#shelf_data').html('');
+                    $("#left_menu_recommend").show();
 
                     $("#emptyResult").show();
                     $("#emptyResult").text("No books to show !");
                     return false;
                 }
                 $("#emptyResult").hide();
-
+                $("#left_menu_recommend").show();
                 new_data = new_data['result']
-                var final_response = generateDIV(new_data, 'placePickup', 'rental_id', 'Return','none');
+                var final_response = generateDIV(new_data, 'placePickup', 'rental_id', 'Return', 'none');
                 $('#shelf_data').html('');
                 $('#shelf_data').append(final_response);
+
             },
 
         });
     })
 
 
-    function generateDIV(arr, funcName, idName, btnTxt,style) {
+    function generateDIV(arr, funcName, idName, btnTxt, style) {
         $('#change_plan').html('');
 
         var response = '';
         arr.forEach(function (arr_data) {
             response += '<div class="col-md-6 col-xs-12 module_cont module_shelf shadow1">' +
                     '<div class="col-md-5 col-xs-5">' +
-                   '<a href="/book_details/'+arr_data['id']+'">' +
+                    '<a href="/book_details/' + arr_data['id'] + '">' +
                     '<img src="' + arr_data['image_url'] + '" class="img-responsive" alt="..." style="margin-top: -20px;">' +
                     '</a>' +
                     '</div>' +
@@ -399,7 +593,7 @@ font-family: Playfair Display;display: none"></p>
                     '<div class="col-md-4 col-xs-2" style="margin-right: 15%;margin-top: 4%">' +
                     '<a href="javascript:void(0)" class="shortcode_button btn_small btn_type10" onclick="' + funcName + '(this,' + arr_data['id'] + ')"  id="' + arr_data[idName] + '">' + btnTxt + '</a>' +
                     '</div>' +
-                    '<div class="col-md-4 col-xs-5" style="display: '+style+';margin-top: 4%">' +
+                    '<div class="col-md-4 col-xs-5" style="display: ' + style + ';margin-top: 4%">' +
                     '<a href="javascript:void(0)"  class="shortcode_button btn_small btn_type10" onclick="addWishlist(' + arr_data['id'] + ')"  id="' + arr_data[idName] + '">Wishlist</a>' +
                     '</div></div></div></div>';
         });
@@ -419,12 +613,12 @@ font-family: Playfair Display;display: none"></p>
                 $(".spinner").hide();
                 var new_data = JSON.parse(data);
                 console.log(new_data['result']);
-                if(new_data['result'].length== 0)
-                {
+                if (new_data['result'].length == 0) {
                     $('#shelf_data').html('');
 
                     $("#emptyResult").show();
                     $("#emptyResult").text("No books to show !");
+
                     return false;
                 }
                 $("#emptyResult").hide();
@@ -432,9 +626,11 @@ font-family: Playfair Display;display: none"></p>
 
                 var response = '';
                 var i = 0;
-                var final_response = generateDIV(new_data, 'removeWishlist', 'title_id', 'Remove','block');
+                var final_response = generateDIV(new_data, 'removeWishlist', 'title_id', 'Remove', 'block');
                 $('#shelf_data').html('');
                 $('#shelf_data').append(final_response);
+                $("#left_menu_recommend").css('margin-top','3%');
+
             },
 
         });
@@ -451,8 +647,7 @@ font-family: Playfair Display;display: none"></p>
 
                 $('#shelf_data').html('');
                 var new_data = JSON.parse(data);
-                if(new_data['result'].length== 0)
-                {
+                if (new_data['result'].length == 0) {
                     $('#shelf_data').html('');
                     $('#change_plan').html('');
 
@@ -470,8 +665,10 @@ font-family: Playfair Display;display: none"></p>
                     var id = 'delivery_order_id';
                 }
                 console.log(id);
-                var final_response = generateDIV(new_data, 'cancelOrder', 'delivery_order_id', 'Cancel','block');
+                var final_response = generateDIV(new_data, 'cancelOrder', 'delivery_order_id', 'Cancel', 'block');
                 $('#shelf_data').append(final_response);
+                $("#left_menu_recommend").css('margin-top','33%');
+
             },
 
         });
@@ -490,20 +687,22 @@ font-family: Playfair Display;display: none"></p>
                 $(".spinner").hide();
 
                 var new_data = JSON.parse(data);
-                if(new_data['result'].length== 0)
-                {
+                if (new_data['result'].length == 0) {
                     $('#shelf_data').html('');
                     $('#change_plan').html('');
 
                     $("#emptyResult").show();
                     $("#emptyResult").text("No books to show !");
+
                     return false;
                 }
                 $("#emptyResult").hide();
                 new_data = new_data['result']
-                var final_response = generateDIV(new_data, 'placePickup', 'rental_id', 'Return','none');
+                var final_response = generateDIV(new_data, 'placePickup', 'rental_id', 'Return', 'none');
                 $('#shelf_data').html('');
                 $('#shelf_data').append(final_response);
+                $("#left_menu_recommend").css('margin-top','33%');
+
             },
 
         });
@@ -523,12 +722,12 @@ font-family: Playfair Display;display: none"></p>
                 $('#change_plan').html('');
 
                 var new_data = JSON.parse(data);
-                if(new_data['result'].length== 0)
-                {
+                if (new_data['result'].length == 0) {
                     $('#shelf_data').html('');
 
                     $("#emptyResult").show();
                     $("#emptyResult").text("No pickup requests !");
+
                     return false;
                 }
                 $("#emptyResult").hide();
@@ -536,16 +735,18 @@ font-family: Playfair Display;display: none"></p>
 
                 new_data = new_data['result']
 
-                var final_response = generateDIV(new_data, 'cancelPickup', 'rental_id', 'Cancel','block');
+                var final_response = generateDIV(new_data, 'cancelPickup', 'rental_id', 'Cancel', 'block');
                 $('#shelf_data').html('');
                 $('#shelf_data').append(final_response);
+                $("#left_menu_recommend").css('margin-top','33%');
+
             },
         });
     });
 
     $('#profile').click(function (e) {
         $(".spinner").show();
-$("#emptyResult").hide();
+        $("#emptyResult").hide();
         e.preventDefault();
         $.ajax({
             type: "GET",
@@ -559,12 +760,11 @@ $("#emptyResult").hide();
                 var data_new = JSON.parse(data);
                 if (data_new['success'] === 'false') {
                     toastr.error('Something went wrong !');
+
                     return false;
                 }
                 var current_plan = data_new['curent_plan']['result'];
                 console.log(current_plan);
-
-
 
 
                 $('#shelf_data').html('');
@@ -607,6 +807,8 @@ $("#emptyResult").hide();
                         '<button data-toggle="modal" data-target="#profileUpdate" type="button" class="btn btn-warning">Edit Profile</button>' +
                         '</div>' +
                         '</div></div>');
+                $("#left_menu_recommend").css('margin-top','8%');
+
             }
 
         });
@@ -627,92 +829,103 @@ $("#emptyResult").hide();
                 var data_new = JSON.parse(data);
                 var current_plan = data_new['curent_plan'];
                 var change_plan = data_new['change_plan']
-                var terms=data_new['terms'];
+                var terms = data_new['terms'];
 
                 console.log(data_new);
                 $('#change_plan').html('');
                 var response = '';
                 var i = 0;
                 var colors = ['#EFAC54', '#347AB6', '#5BB85D', '#59C0E1'];
-                if(change_plan['errors'] !== null)
-                {
+                if (change_plan['errors'] !== null) {
                     console.log(change_plan['error'])
                     $("#emptyResult").text(change_plan['error']);
                     $("#emptyResult").show();
+
                     return false;
                 }
 
 
                 $('#shelf_data').append('<br><div class="row">' +
                         '<div class="col-sm-3">' +
-                        '<div class="well">' +
+                        '<span id=' + current_plan['result']['member_cross_reference']['plan_id'] + ' class="planIdDIV">'+
+
+                        '<div class="well" style="padding:7px;box-shadow:5px 5px 6px 5px grey;background-color: #78CFBF;">' +
                         '<h4>Current Plan</h4>' +
                         '<p>' + current_plan['result']['member_cross_reference']['plan_name'] + '</p>' +
                         '</div>' +
                         '</div><div class="col-sm-3">' +
-                        '<div class="well">' +
+                        '<div class="well" style="padding:7px;box-shadow:5px 5px 6px 5px grey;background-color: #78CFBF;">' +
                         '<h4>Duration</h4>' +
                         '<p>' + Math.round(parseFloat(current_plan['result']['member_cross_reference']['term'])) + ' months</p>' +
                         '</div></div>' +
                         '<div class="col-sm-3">' +
-                        '<div class="well">' +
+                        '<div class="well" style="padding:7px;box-shadow:5px 5px 6px 5px grey;background-color: #78CFBF;">' +
                         '<h4>Renewal Date</h4>' +
                         '<p>' + current_plan['result']['member_cross_reference']['expiry_date'] + '</p>' +
                         '</div></div>' +
                         '<div class="col-sm-3">' +
                         '<div class=""><br><br>' +
-                        '<button data-toggle="collapse" data-target="#demo"   class="btn btn-info" role="button">Renew Plan</button>' +
+                        '<button data-toggle="collapse" data-target="#demo"   class="btn btn-primary btn-lg" role="button">Renew Plan</button>' +
                         '</div></div></div><hr>');
-                var response2='';
+                var response2 = '';
                 terms.forEach(function (arr) {
-                    response2 += '<option value='+arr['fee']+' id='+arr['term']+'>'+arr['months']+'</option>';
+                    response2 += '<option value=' + arr['fee'] + ' id=' + arr['term'] + '>' + arr['months'] + '</option>';
 
                 })
-                var defValue=terms[0]['fee'];
+                var defValue = terms[0]['fee'];
 //                console.log(response2);
 //                $('#shelf_data').append('<br> <div class="collapse form-group" id=\"demo\" >' +
 //                        '<label for="sel1">Select list:</label>' +
 //                        '<select class="form-control" id="sel1" onchange="textChange()">'+response2+'' +
 //                        '</select> </div><br><div ><span id="textSpan"></span></div> ')
-                $('#shelf_data').append('<br> <div class="row collapse" id=\"demo\">' +
+                $('#shelf_data').append('<br> <div class="row collapse" id=\"demo\" style="/*! border: thin solid black; */margin-left: -1%;width: 94%;">' +
                         '<div class="col-sm-3">' +
                         '<div class="form-group " >' +
                         '<label for="sel1">Select a renewal duration :</label>' +
                         '<select class="form-control" id="sel1" onchange="textChange()">' +
 
-                        ''+response2+'' +
+                        '' + response2 + '' +
                         '</select> ' +
                         '<br>' +
                         '</div>' +
                         ' </div>' +
-                        '<div class="col-sm-6" style="margin-top: 3%" >' +
-                        ' <div ><span id="textSpan" style="font-size: 23px;font-family: Playfair Display;">Renewal fee is Rs '+defValue+'</span></div>' +
-                        ' <button id="renewBUtton" style="display: block;float: right;margin-top: -7%" type="button" class="btn btn-info" onclick="proceedRenew()">Proceed</button></div><br>')
+                        '<div class="col-sm-6" style="margin-top: 7%" >' +
+                        '<br><div class="col-md-12"style="margin-left: -61%;">' +
+                        '<div class="form-group"><div class="col-md-8"> <label>Apply coupon code, if any:</label><input type="text" class="form-control" id="coupon_code"' +
+                        'placeholder="Coupon Code" name="coupon_code"></div><div class="col-sm-3" style="padding-top:22px;">' +
+                        '<button type="button" class="btn btn-warning" id="coupon_submit" onclick="couponClick()">Apply</button></div></div></div>' +
+                        '<br> <br><div class="col-md-12" style="margin-top: 12%;margin-left: -100%"> <div class="form-group"><div class="col-md-4"> <label>Apply gift card no, if any:</label><input class="form-control" id="gift_card" placeholder="Gift Card No." name="gift_card" type="text"></div><div class="col-md-4"> <label>Apply gift card pin, if any:</label><input class="form-control" id="gift_card_pin" placeholder="Gift Card Pin" name="gift_card_pin" type="text"></div><div style="padding-top:38px;" class="col-md-4"><button type="button" class="btn btn-warning" id="gift_card_submit" onclick="couponClick()">Apply</button></div></div><p id="textSpan" style="margin-top:28%;margin-left:6%;font-weight:bold;font-size:143%">You have to pay Rs '+defValue+'</p></div><button id="renewBUtton" style="display: block;float: left;margin-top: 49%;margin-left:-92%;" type="button" class="btn btn-primary btn-md" onclick="proceedRenew()">Proceed</button></div><br>')
 
 
-
-
-
+                var colors = ['block personal fl', 'block professional fl', 'block business fl'];
 
 
                 change_plan['result'].forEach(function (arr) {
-                    response += '<h4>Upgrade your current plan</h4><div class="price_item" style="width:20%">' +
-                            '<div class="price_item_wrapper">' +
-                            '<div class="price_item_title"><h5>' + arr["change_plan_detail"]['plan_name'] + '</h5></div>' +
-                            '<div class="item_cost_wrapper" style="background-color: ' + colors[i] + ';">' +
-                            '</div>' +
-                            '<div class="price_item_text">3 months plan</div>' +
-                            '<div class="price_item_text" id="price_item_text">Books - ' + arr["change_plan_detail"]['books'] + '</div>' +
-                            '<div class="price_item_text">Regestration Fee - ' + arr["change_plan_detail"]['registration_fee'] + '</div>' +
-                            '<div class="price_item_text" id="price_item_text">Security Deposit - ' + arr["change_plan_detail"]['security_deposit'] + '</div>' +
-                            '<div class="price_item_btn" id="btn" style="background-color: ' + colors[i] + '"><a href="/change_plan?id=' + arr["change_plan_detail"]['plan_id'] + '&planname=' + arr["change_plan_detail"]['promo_code'] + '">Get It Now !</a></div>' +
-                            '</div></div>';
+                    var i = 0;
+
+//                    response += '<h4>Upgrade your current plan</h4><div class="price_item" style="width:20%">' +
+//                            '<div class="price_item_wrapper">' +
+//                            '<div class="price_item_title"><h5>' + arr["change_plan_detail"]['plan_name'] + '</h5></div>' +
+//                            '<div class="item_cost_wrapper" style="background-color: ' + colors[i] + ';">' +
+//                            '</div>' +
+//                            '<div class="price_item_text">3 months plan</div>' +
+//                            '<div class="price_item_text" id="price_item_text">Books - ' + arr["change_plan_detail"]['books'] + '</div>' +
+//                            '<div class="price_item_text">Regestration Fee - ' + arr["change_plan_detail"]['registration_fee'] + '</div>' +
+//                            '<div class="price_item_text" id="price_item_text">Security Deposit - ' + arr["change_plan_detail"]['security_deposit'] + '</div>' +
+//                            '<div class="price_item_btn" id="btn" style="background-color: ' + colors[i] + '"><a href="/change_plan?id=' + arr["change_plan_detail"]['plan_id'] + '&planname=' + arr["change_plan_detail"]['promo_code'] + '">Get It Now !</a></div>' +
+//                            '</div></div>';
+
+                    response += '<h4>Upgrade your current plan</h4><br><div class="' + colors[i] + '" style="text-align: center;/*! height: 314px; */"><h4 class="title">' + arr["change_plan_detail"]['plan_name'] + '</h4> <a href="/change_plan?id=' + arr["change_plan_detail"]['plan_id'] + '&planname=' + arr["change_plan_detail"]['promo_code'] + '"><div class="content_pt" style="margin: -9%;"> <p class="price"><sup>₹</sup><span> ' + arr["change_plan_detail"]['reading_fee'] + '</span><sub></sub></p></div></a><ul class="features" style="margin-top: 8%;height: 130px;list-style-type: none !important;padding: 0;/*! margin: 0; */margin-left: -5%;"><li style="line-height: 39px;">No of books -   ' + arr["change_plan_detail"]['books'] + '</li><li style="line-height: 39px;">Security Deposit - Rs ' + arr["change_plan_detail"]['security_deposit'] + ' </li><li style="line-height: 39px;">Registration Fee - Rs ' + arr["change_plan_detail"]['registration_fee'] + '</li></ul><div class="pt-footer"><h4><a href="/change_plan?id=' + arr["change_plan_detail"]['plan_id'] + '&planname=' + arr["change_plan_detail"]['promo_code'] + '">GET IT NOW !</a></h4></div></div>';
+                    i++;
+
                     i++;
                     if (i >= colors.length) {
                         i = 0;
                     }
+
                 })
 
+                $("#left_menu_recommend").css('margin-top','3%');
                 $('#change_plan').append(response);
 
 
@@ -758,7 +971,7 @@ $("#emptyResult").hide();
         });
     })
 
-    function removeWishlist(elem,id) {
+    function removeWishlist(elem, id) {
         $(".spinner").show();
 
         var id = id;
@@ -767,9 +980,9 @@ $("#emptyResult").hide();
             url: "/removeWishList",
             data: {'titleid': id},
             success: function (data) {
-                
+
                 $(".spinner").hide();
-toastr.success("Successfully removed");
+                toastr.success("Successfully removed");
                 if (data == 'success') {
                     $('#' + id).closest('.module_shelf').remove();
                 }
@@ -805,19 +1018,20 @@ toastr.success("Successfully removed");
 
         });
     }
-    function cancelOrder(elem,id) {
+    function cancelOrder(elem, id) {
         $(".spinner").show();
 
         var cancel = $(elem).attr('id');
         $.ajax({
             type: "POST",
             url: "/cancelOrder",
-            data: {'id': id,'cancelId':cancel},
+            data: {'id': id, 'cancelId': cancel},
             success: function (data) {
                 $(".spinner").hide();
                 ;
                 if (data == 'success') {
-toastr.success("Succesfully canceled !")                }
+                    toastr.success("Succesfully canceled !")
+                }
             },
 
         });
@@ -833,11 +1047,13 @@ toastr.success("Succesfully canceled !")                }
             url: "/rentalHistory",
             success: function (data) {
                 $(".spinner").hide();
-data=JSON.parse(data);
+                data = JSON.parse(data);
                 if (data['success'] == true) {
                     var final_response = generateDIV(data['result'], 'placePickup', 'rental_id', 'Pickup');
                     $('#shelf_data').html('');
                     $('#shelf_data').append(final_response);
+                    $("#left_menu_recommend").css('margin-top','33%');
+
 
                 }
             },
@@ -869,19 +1085,17 @@ data=JSON.parse(data);
     }
 
 
-
-    function addWishlist(id)
-    {
+    function addWishlist(id) {
         $(".spinner").show();
 
         $.ajax({
             type: "GET",
-            url: "/updateWishlist?id="+id,
+            url: "/updateWishlist?id=" + id,
             success: function (data) {
                 ;
                 console.log(JSON.parse(data));
                 $(".spinner").hide();
-                if (JSON.parse(data) === "failure" ) {
+                if (JSON.parse(data) === "failure") {
                     toastr.error('Please sign in to update your wish list !');
                     $(window).scrollTop($('#anchor2').offset().top);
 
@@ -890,114 +1104,213 @@ data=JSON.parse(data);
                     toastr.success('Successfully added into your wish list !');
                 }
             },
-            error:function(err)
-            {
+            error: function (err) {
                 console.log(err);
                 toastr.error("Something went wrong.Please try again !")
             }
 
-        });    }
+        });
+    }
 
 
+    function textChange() {
 
-
-        function textChange()
+        $(".spinner").show();
+        var coupon=$("#coupon_code").val();
+        var gift=$("#gift_card").val();
+        if(coupon == "")
         {
-            $("#textSpan").text("Renewal fee is rupees " + $("#sel1").val());
-            $("#renewBUtton").show();
+            coupon="null";
         }
 
-
-
-
-        function proceedRenew()
+        if(gift == "")
         {
-
-            $(".spinner").show();
-            var termSelected=$('#sel1 option:selected').attr('id');
-            if(termSelected === 0 || termSelected === null)
-            {
-                toastr.error("Please select a month to renew !");
-                return false;
-            }
-            var fee=$("#sel1").val();
-            var email=localStorage.getItem("email");
-            var membership=localStorage.getItem("membership");
-            console.log("http://staging.justbooksclc.com:8990/api/v1/renewal_payment.json?email="+email+"&membercard="+membership+"&term="+termSelected+"&delivery_option=null&delivery_fees="+fee+"&coupon_code=null&gift_card_no=null&pin=null")
-            $.ajax({
-                type: "GET",
-                dataType: "json",
-                url: "http://staging.justbooksclc.com:8990/api/v1/renewal_payment.json?email="+email+"&membercard="+membership+"&term="+termSelected+"&delivery_option=null&delivery_fees="+fee+"&coupon_code=null&gift_card_no=null&pin=null",
-                success: function (data_new) {
-                    console.log(data_new);
-
-
-                    if(data_new.success == true)
-                    {
-                        $.ajax({
-                            type: "GET",
-                            dataType: "json",
-                            url: "http://staging.justbooksclc.com:8990/api/v1/confirm_renewal.json?email="+email+"&membercard="+membership+"&payable_amount="+data_new.result.payable_amount+"&convenience_fee="+data_new.result.convenience_fee+"&renewal_payment_type="+data_new.result.renewal_payment_type+"&plan_id="+data_new.result.plan_id+"&card_number="+data_new.result.card_number+"&member_id="+data_new.result.member_id+"&delivery_fees="+data_new.result.delivery_fees+"&delivery_fees_dormant="+data_new.result.delivery_fees_dormant+"&delivery_option="+data_new.result.delivery_option+"&term="+data_new.result.term+"&member_branch_id="+data_new.result.term+"&member_branch_id="+data_new.result.member_branch_id+"&overdue_adjustment="+data_new.result.overdue_adjustment+"&reward_points="+data_new.result.reward_points+"&gift_card_no="+data_new.result.gift_card_no+"&qc_flag="+data_new.result.qc_flag+"&redeemed_amount="+data_new.result.redeemed_amount+"&pin="+data_new.result.pin+"&coupon_no=null&coupon_id=null&coupon_amount=null",
-                            success: function (data) {
-                                ;
-
-                                if(data.success == true)
-                                {
-                                    var orderNumber = data.result.transaction.transaction.order_number;
-                                    var amount = data.result.transaction.transaction.amount;
-                                    console.log(orderNumber);
-                                    console.log(amount);
-                                    saveSession(orderNumber,amount);
-                                }
-
-
-
-                            },
-
-                        });
-
-                    }
-
-
-
-                },
-
-            });
-
-
-
+            gift="null";
         }
+        var termSelected = $('#sel1 option:selected').attr('id');
+        if (termSelected === 0 || termSelected === null) {
+            toastr.error("Please select a month to renew !");
+            return false;
+        }
+        var fee = $("#sel1").val();
+        var email = localStorage.getItem("email");
+        var membership = localStorage.getItem("membership");
 
-    function saveSession(order,amount)
-    {
         $.ajax({
             type: "GET",
-            url: "/saveSession?orderNumber="+order+"&amount="+amount,
+            dataType: "json",
+            url: "http://staging.justbooksclc.com:8990/api/v1/renewal_payment.json?email=" + email + "&membercard=" + membership + "&term=" + termSelected + "&delivery_option=null&delivery_fees=" + fee + "&coupon_code="+coupon+"&gift_card_no="+gift+"&pin=null",
+            success: function (data_new) {
+                console.log(data_new);
+
+$(".spinner").hide();
+                if (data_new.success == true) {
+                    console.log( data_new.result.payable_amount);
+                    $("#textSpan").text("You have to pay Rs  " + data_new.result.payable_amount);
+                    $("#renewBUtton").show();
+
+                }
+                else{
+                    toastr.error("Something went wrong !")
+                }
+
+
+            },
+
+        });
+
+
+
+    }
+
+
+    function proceedRenew() {
+        $(".spinner").show();
+        var coupon=$("#coupon_code").val();
+        var gift=$("#gift_card").val();
+        if(coupon == "")
+        {
+            coupon="null";
+        }
+
+        if(gift == "")
+        {
+            gift="null";
+        }
+        var termSelected = $('#sel1 option:selected').attr('id');
+        if (termSelected === 0 || termSelected === null) {
+            toastr.error("Please select a month to renew !");
+            return false;
+        }
+        var fee = $("#sel1").val();
+        var email = localStorage.getItem("email");
+        var membership = localStorage.getItem("membership");
+
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: "http://staging.justbooksclc.com:8990/api/v1/renewal_payment.json?email=" + email + "&membercard=" + membership + "&term=" + termSelected + "&delivery_option=null&delivery_fees=" + fee + "&coupon_code="+coupon+"&gift_card_no="+gift+"&pin=null",
+            success: function (data_new) {
+                console.log(data_new);
+
+
+                if (data_new.success == true) {
+                    $.ajax({
+                        type: "GET",
+                        dataType: "json",
+                        url: "http://staging.justbooksclc.com:8990/api/v1/confirm_renewal.json?email=" + email + "&membercard=" + membership + "&payable_amount=" + data_new.result.payable_amount + "&convenience_fee=" + data_new.result.convenience_fee + "&renewal_payment_type=" + data_new.result.renewal_payment_type + "&plan_id=" + data_new.result.plan_id + "&card_number=" + data_new.result.card_number + "&member_id=" + data_new.result.member_id + "&delivery_fees=" + data_new.result.delivery_fees + "&delivery_fees_dormant=" + data_new.result.delivery_fees_dormant + "&delivery_option=" + data_new.result.delivery_option + "&term=" + data_new.result.term + "&member_branch_id=" + data_new.result.term + "&member_branch_id=" + data_new.result.member_branch_id + "&overdue_adjustment=" + data_new.result.overdue_adjustment + "&reward_points=" + data_new.result.reward_points + "&gift_card_no=" + data_new.result.gift_card_no + "&qc_flag=" + data_new.result.qc_flag + "&redeemed_amount=" + data_new.result.redeemed_amount + "&pin=" + data_new.result.pin + "&coupon_no=null&coupon_id=null&coupon_amount=null",
+                        success: function (data) {
+                            ;
+
+                            if (data.success == true) {
+                                var orderNumber = data.result.transaction.transaction.order_number;
+                                var amount = data.result.transaction.transaction.amount;
+                                console.log(orderNumber);
+                                console.log(amount);
+                                saveSession(orderNumber, amount);
+                            }
+
+
+                        },
+
+                    });
+
+                }
+
+
+            },
+
+        });
+
+
+    }
+
+    function saveSession(order, amount) {
+        $.ajax({
+            type: "GET",
+            url: "/saveSession?orderNumber=" + order + "&amount=" + amount,
             success: function (data_new) {
                 ;
-                if(data_new === "success")
-                {
-                    window.location.href="/PaytmKit/pgRedirect.php";
+                if (data_new === "success") {
+                    window.location.href = "/PaytmKit/pgRedirect.php";
                     return false;
                 }
 
-                window.location.href="/PaytmKit/pgRedirect.php"
+                window.location.href = "/PaytmKit/pgRedirect.php"
 
 
             },
 
         });
     }
+    function couponClick() {
+$(".spinner").show();
+        var coupon = $('#coupon_code').val();
+        var planid = $(".planIdDIV").attr('id');
+        var mon =$('#sel1 option:selected').attr('id');
+        $.ajax({
+            type: "POST",
+            url: "/couponValidate",
+            data: {'coupon': coupon, 'planid': planid, 'months': mon},
+            success: function (data_new) {
+                $(".spinner").hide();
+                data_new = JSON.parse(data_new);
+                console.log(data_new);
+                if (data_new['success'] == true) {
+                    toastr.success('Coupon accepted !');
+                }
+                else {
+
+                    toastr.error(data_new['errors']);
+
+                }
+
+
+            },
+
+        });
+    };
+    function GiftClick() {
+
+
+        var gift_card = $('#gift_card').val();
+        var gift_card_pin = $('#gift_card_pin').val();
+        var total_amnt = $('#sel1').val();
+        $.ajax({
+            type: "POST",
+            url: "/giftcardValidate",
+            data: {'gift_card': gift_card, 'gift_card_pin': gift_card_pin, 'total_amnt': total_amnt},
+            success: function (data_new) {
+                data_new = JSON.parse(data_new);
+                console.log(data_new);
+                if (data_new['success'] == true) {
+                    toastr.success('Gift card accepted !');
+                }
+                else {
+
+                    toastr.error(data_new['errors']);
+
+                }
+
+            },
+
+        });
+    };
+
+
+
 </script>
 
 {{> footer}}
 
 <script>
-    $(document).ready(function()
-    {
+    $(document).ready(function () {
+
+
+
         $('#shelfMenu').addClass('current-menu-parent');
 
-    })
+    });
 
 
 </script>

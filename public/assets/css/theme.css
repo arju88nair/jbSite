@@ -2,9 +2,6 @@
 /*-----------------------------*/
 
 /* *** Style.css *** */
-body {
-	height:100%;
-}
 
 input, 
 textarea, 
@@ -32,7 +29,8 @@ body {
 	padding:0;
 	margin:0;
 	width:100%;
-	height:100%;	
+	height:100%;
+	overflow: hidden;	
 	overflow-x:hidden;
 	text-align:center;
 	position:relative;
@@ -195,7 +193,6 @@ header nav ul.menu > li > a {
 	/* display:block; */
 	
 	font-size: 10px;
-    text-transform: uppercase;
     color: rgb(0, 0, 0);
     padding-bottom: 14px;
     border-color: rgb(246, 246, 246);
@@ -2371,17 +2368,27 @@ hr.respond_seperator {
 	}
 	.img_block_books{
 		position: relative;
-
 		height: 225px;
 		overflow: hidden;
 		
 	}
 	.img_block_books img{
-		width:100%;
+		/*width:100%;
 		height:auto; 
 		padding:0; 
 		margin:0; 
-		display:block;
+		display:block;*/
+
+		max-height: 100%;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
 		
 	}
 
@@ -5382,7 +5389,9 @@ nav.mobile_header {
 	opacity: 0.5;
 	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=50);	
 }
-
+.fullwidthbanner-container{
+	margin-left: -30px!important;
+}
 .module_revolution_slider .tparrows:hover  {
 	opacity: 0.99;
 	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=99);

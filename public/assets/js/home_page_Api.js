@@ -20,10 +20,11 @@ function getCard(data, visibleCardCount) {
             '<div class="carousel_body_book">' +
             '<div class="carousel_title_book"><h5 title="' + data[i].author + '">' + data[i].author + '</h5></div>' +
             '<div class="carousel_desc">' +
-            '<div class="smallproflinks">' +
-            '<a href="javascript:void(0)" class="tiptip" title="Wishlist" onclick=\'wishlistAdd(' + data[i].id + ');\'>Wishlist</a>' +
-            '<a href="javascript:void(0)" class="tiptip" title="Rent" onclick=\'placeOrder(' + data[i].id + ');\'>Rent</a>' +
-            '<a href="/book_details/' + data[i].id + '" id="' + data[i].id + '" class="tiptip" title="Read">Read</a>' +
+            '<div class="fram_btn">' +
+            '<a href="javascript:void(0)" class="shortcode_button btn_small btn_type1" title="Rent" onclick=\'placeOrder(' + data[i].id + ');\'>Rent</a>' +
+            '<a href="javascript:void(0)" class="tiptip" title="Wishlist" onclick=\'wishlistAdd(' + data[i].id + ');\'><i class="fa fa-heart wishlist_btn" aria-hidden="true"></i></a>' +
+
+            // '<a href="/book_details/' + data[i].id + '" id="' + data[i].id + '" class="tiptip" title="Read">Read</a>' +
             '<div class="clear"></div>' +
             '</div></div></div></div></div>';
 
@@ -65,10 +66,11 @@ function getCardMostRead(data, visibleCardCount) {
             '<div class="carousel_body_book">' +
             '<div class="carousel_title_book"><h5 title="' + data[i].NAME + '">' + data[i].NAME + '</h5></div>' +
             '<div class="carousel_desc">' +
-            '<div class="smallproflinks">' +
-            '<a href="javascript:void(0)" class="tiptip" title="Wishlist" onclick=\'wishlistAdd(' + data[i].id + ');\'>Wishlist</a>' +
-            '<a href="javascript:void(0)" class="tiptip" title="Rent" onclick=\'placeOrder(' + data[i].id + ');\'>Rent</a>' +
-            '<a href="/book_details/' + data[i].TITLEID + '" id="' + data[i].TITLEID + '" class="tiptip" title="Read">Read</a>' +
+            '<div class="fram_btn">' +
+            '<a href="javascript:void(0)" class="shortcode_button btn_small btn_type1" title="Rent" onclick=\'placeOrder(' + data[i].id + ');\'>Rent</a>' +
+            '<a href="javascript:void(0)" class="tiptip" title="Wishlist" onclick=\'wishlistAdd(' + data[i].id + ');\'><i class="fa fa-heart wishlist_btn" aria-hidden="true"></i></a>' +
+
+            // '<a href="/book_details/' + data[i].TITLEID + '" id="' + data[i].TITLEID + '" class="tiptip" title="Read">Read</a>' +
             '<div class="clear"></div>' +
             '</div></div></div></div></div>';
 
@@ -99,16 +101,17 @@ function getCardAuthor(data, visibleCardCount) {
         }
 
 
-        response += '<div class="col-md-2" style=width:18%;>' +
-            '<div class="item item_shadow ">' +
+        response += '<div class="col-md-2" style="width: 18%;padding-left: 0px;padding-right: 0px;">' +
+            '<div class="item" style="border:thin solid gray;">' +
             '<div class="img_block_books"><a href="/author_details/' + data[i].ID + '"><img src="' + data[i].IMAGE + '" alt="Anna" onerror="this.src=\'http://cdn2.justbooksclc.com/title/0.jpg\'"></a></div>' +
             '<div class="carousel_body_book">' +
             '<div class="carousel_title_book"><h5 title="' + data[i].NAME + '">' + data[i].NAME + '</h5></div>' +
             '<div class="carousel_desc">' +
-            '<div class="smallproflinks">' +
-            '<a href="/author_details/' + data[i].ID + '" id="' + data[i].ID + '" class="tiptip" title="Read">Read</a>' +
+            '<div class="text-center" style="margin-left:37%; margin-top:10px;">' +
+            // '<a href="/author_details/' + data[i].ID + '" id="' + data[i].ID + '" class="shortcode_button btn_small btn_type1" title="Read">Read</a>' +
             '<div class="clear"></div>' +
-            '</div></div></div></div></div>';
+            '</div>'+
+            '</div></div></div></div>';
 
         //if( i > 0 && i % 3 == 0){
         if (items == visibleCardCount) {
@@ -213,27 +216,27 @@ $(document).ready(function () {
                 //     '<div class="price_item_wrapper">' +
                 //     '<div class="price_item_title"><h5>' + arr['PLAN_NAME'].toUpperCase() + '</h5></div>' +
                 //     '<div class="item_cost_wrapper" style="background-color: ' + colors[i] + ';">' +
-                //     '<div class="price_item_title" style="background-color: ' + colors[i] + '; padding: 10px 10px 10px 10px;"><h4>Reading fee - Rs ' + Math.round(parseFloat(arr['READING_FEE'])) + ' </h4></div>' +
+                //     '<div class="price_item_title" style="background-color: ' + colors[i] + '; padding: 10px 10px 10px 10px;"><h4>Reading fee - ₹ ' + Math.round(parseFloat(arr['READING_FEE'])) + ' </h4></div>' +
                 //     '</div>' +
                 //     '<div class="price_item_text">Number of months - '+ arr['NO_OF_MONTHS'] +' </div>' +
                 //     '<div class="price_item_text" id="price_item_text">No of books -   ' + arr['NO_OF_BOOKS'] + '</div>' +
                 //     '<div class="price_item_text">R </div>' +
-                //     '<div class="price_item_text" id="price_item_text">Security Deposit - Rs ' + Math.round(parseFloat(arr['SECURITY_DEPOSIT'])) + ' </div>' +
+                //     '<div class="price_item_text" id="price_item_text">Security Deposit - ₹ ' + Math.round(parseFloat(arr['SECURITY_DEPOSIT'])) + ' </div>' +
                 //     '<div class="price_item_btn" id="btn" style="background-color: ' + colors[i] + '"><a href="/signup?planname=' + arr['PROMO'] + '&books=' + arr['NO_OF_BOOKS'] + '&months=' + arr['NO_OF_MONTHS'] + '">Get It Now !</a></div>' +
                 //     '</div></div>';
 
 
 
 
-
-response +='   <div class="' + colors[i] + '">'+
-                       '<h4 class="title">' + arr['PLAN_NAME'].toUpperCase() + '</h4>'+
-                       ' <a href="/signup?planname=' + arr['PROMO'] + '&books=' + arr['NO_OF_BOOKS'] + '&months=' + arr['NO_OF_MONTHS'] + '"><div class="content_pt">'+
-                       ' <p class="price"><sup>₹</sup><span> ' + Math.round(parseFloat(arr['READING_FEE'])) + '</span><sub></sub></p>'+
-                        '<p class="hint">Number of months - '+ arr['NO_OF_MONTHS'] +'</p></div></a><ul class="features">'+
-                        '<li>No of books -   ' + arr['NO_OF_BOOKS'] + '</li><li>Security Deposit - Rs ' + Math.round(parseFloat(arr['SECURITY_DEPOSIT'])) + ' </li>'+
-                            '<li>Registration Fee - Rs ' + Math.round(parseFloat(arr['REGISTRATION_FEE'])) + '</li></ul><div class="pt-footer">'+
-                            '<h4><a href="/signup?planname=' + arr['PROMO'] + '&books=' + arr['NO_OF_BOOKS'] + '&months=' + arr['NO_OF_MONTHS'] + '">GET IT NOW !</a></h4></div></div>'
+                var sec_colors=['#78CFBF','#3EC6E0','#E3536C']
+                response +='   <div class="' + colors[i] + '">'+
+                    '<h4 class="title">' + arr['PLAN_NAME'].toUpperCase() + '</h4>'+
+                    ' <a href="/signup?planname=' + arr['PROMO'] + '&books=' + arr['NO_OF_BOOKS'] + '&months=' + arr['NO_OF_MONTHS'] + '"><div class="content_pt">'+
+                    ' <p class="price"><sup>₹</sup><span> ' + Math.round(parseFloat(arr['READING_FEE'])) + '</span><sub></sub></p>'+
+                    '<p class="hint">'+ arr['MONTH_TAG'] +'</p></div></a><ul class="features">'+
+                    '<li style="color: black;">' + arr['BOOK_TAG'] + '</li><li style="background-color: '+sec_colors[i]+';padding: 12px;color: white;">' + arr['SUITABLE_TAG'] + '</li><li style="color: black;">Security Deposit - ₹ ' + Math.round(parseFloat(arr['SECURITY_DEPOSIT'])) + ' </li>'+
+                    '<li style="color: black;">Registration Fee - ₹ ' + Math.round(parseFloat(arr['REGISTRATION_FEE'])) + '</li></ul><div class="pt-footer">'+
+                    '<h4><a href="/signup?planname=' + arr['PROMO'] + '&books=' + arr['NO_OF_BOOKS'] + '&months=' + arr['NO_OF_MONTHS'] + '">GET IT NOW !</a></h4></div></div>'
 
 
                 i++;
@@ -263,10 +266,10 @@ response +='   <div class="' + colors[i] + '">'+
                     '<div class="img_block wrapped_img"><img style="width: 100%;height: 17em;" src="'+data[i]['IMAGE']+'" alt="" width="270" height="170"></div>' +
                     '<div class="carousel_body">' +
                     '<div class="carousel_title">' +
-                    '<h5><a href="#">'+data[i]['NAME']+'</a></h5>' +
+                    '<h5><a href="#" style="margin-left: -7%;font-family: \'Playfair Display\'">'+data[i]['NAME']+'</a></h5>' +
                     '</div>' +
                     '<div class="carousel_desc">' +
-                    '<div class="exc">'+data[i]['DESCRIPTION']+'</div>' +
+                    '<div class="exc" style="margin-left: -5%;font-family: \'Playfair Display\'">'+data[i]['DESCRIPTION']+'</div>' +
                     '</div>' +
                     '</div>' +
                     '<a href="'+data[i]['LINK']+'" class="shortcode_button btn_small btn_type1">Read More</a>' +
@@ -362,7 +365,7 @@ function signupClick() {
                 data = JSON.parse(data)
                 $("#firstname").text(" Welcome " + data['name']);
                 $(".userTile").show();
-                $("ul#menuHeader").append("<li><a href=\"/shelf\">Your Shelf</a></li>");
+                $("ul#menuHeader").append("<li><a href=\"/shelf\">MY SHELF</a></li>");
                 toastr.success('Successfully signed in !');
                 localStorage.setItem("flag",true)
                 $("#first").hide();
@@ -408,6 +411,5 @@ function signupClick() {
 
 
 }
-
 
 
