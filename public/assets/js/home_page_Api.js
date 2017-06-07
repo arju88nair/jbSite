@@ -16,7 +16,7 @@ function getCard(data, visibleCardCount) {
         }
         response += '<div class="col-md-2" style=width:18%;>' +
             '<div class="item item_shadow">' +
-            '<div class="img_block_books"><img src="' + img + '" alt="Anna"></div>' +
+            '<div class="img_block_books"><a href="/book_details/' + data[i].id + '"><img src="' + img + '" alt="Anna"></a></div>' +
             '<div class="carousel_body_book">' +
             '<div class="carousel_title_book"><h5 title="' + data[i].author + '">' + data[i].author + '</h5></div>' +
             '<div class="carousel_desc">' +
@@ -61,7 +61,7 @@ function getCardMostRead(data, visibleCardCount) {
         }
         response += '<div class="col-md-2" style=width:18%;>' +
             '<div class="item item_shadow">' +
-            '<div class="img_block_books"><img src="' + img + '" alt=""></div>' +
+            '<div class="img_block_books"><a href="/book_details/' + data[i].TITLEID + '"><img src="' + img + '" alt=""></a></div>' +
             '<div class="carousel_body_book">' +
             '<div class="carousel_title_book"><h5 title="' + data[i].NAME + '">' + data[i].NAME + '</h5></div>' +
             '<div class="carousel_desc">' +
@@ -101,7 +101,7 @@ function getCardAuthor(data, visibleCardCount) {
 
         response += '<div class="col-md-2" style=width:18%;>' +
             '<div class="item item_shadow ">' +
-            '<div class="img_block_books"><img src="' + data[i].IMAGE + '" alt="Anna" onerror="this.src=\'http://cdn2.justbooksclc.com/title/0.jpg\'"></div>' +
+            '<div class="img_block_books"><a href="/author_details/' + data[i].ID + '"><img src="' + data[i].IMAGE + '" alt="Anna" onerror="this.src=\'http://cdn2.justbooksclc.com/title/0.jpg\'"></a></div>' +
             '<div class="carousel_body_book">' +
             '<div class="carousel_title_book"><h5 title="' + data[i].NAME + '">' + data[i].NAME + '</h5></div>' +
             '<div class="carousel_desc">' +
@@ -207,20 +207,35 @@ $(document).ready(function () {
             var response = '';
             var i = 0;
             var plans = val;
-            var colors = ['#EFAC54', '#347AB6', '#5BB85D', '#59C0E1'];
+            var colors = ['block personal fl', 'block professional fl','block business fl'];
             plans.forEach(function (arr) {
-                response += '<div class="price_item" style="width:33.33%">' +
-                    '<div class="price_item_wrapper">' +
-                    '<div class="price_item_title"><h5>' + arr['PLAN_NAME'].toUpperCase() + '</h5></div>' +
-                    '<div class="item_cost_wrapper" style="background-color: ' + colors[i] + ';">' +
-                    '<div class="price_item_title" style="background-color: ' + colors[i] + '; padding: 10px 10px 10px 10px;"><h4>Reading fee - Rs ' + Math.round(parseFloat(arr['READING_FEE'])) + ' </h4></div>' +
-                    '</div>' +
-                    '<div class="price_item_text">Number of months - '+ arr['NO_OF_MONTHS'] +' </div>' +
-                    '<div class="price_item_text" id="price_item_text">No of books -   ' + arr['NO_OF_BOOKS'] + '</div>' +
-                    '<div class="price_item_text">Regestration Fee - Rs ' + Math.round(parseFloat(arr['REGISTRATION_FEE'])) + ' </div>' +
-                    '<div class="price_item_text" id="price_item_text">Security Deposit - Rs ' + Math.round(parseFloat(arr['SECURITY_DEPOSIT'])) + ' </div>' +
-                    '<div class="price_item_btn" id="btn" style="background-color: ' + colors[i] + '"><a href="/signup?planname=' + arr['PROMO'] + '&books=' + arr['NO_OF_BOOKS'] + '&months=' + arr['NO_OF_MONTHS'] + '">Get It Now !</a></div>' +
-                    '</div></div>';
+                // response += '<div class="price_item" style="width:33.33%">' +
+                //     '<div class="price_item_wrapper">' +
+                //     '<div class="price_item_title"><h5>' + arr['PLAN_NAME'].toUpperCase() + '</h5></div>' +
+                //     '<div class="item_cost_wrapper" style="background-color: ' + colors[i] + ';">' +
+                //     '<div class="price_item_title" style="background-color: ' + colors[i] + '; padding: 10px 10px 10px 10px;"><h4>Reading fee - Rs ' + Math.round(parseFloat(arr['READING_FEE'])) + ' </h4></div>' +
+                //     '</div>' +
+                //     '<div class="price_item_text">Number of months - '+ arr['NO_OF_MONTHS'] +' </div>' +
+                //     '<div class="price_item_text" id="price_item_text">No of books -   ' + arr['NO_OF_BOOKS'] + '</div>' +
+                //     '<div class="price_item_text">R </div>' +
+                //     '<div class="price_item_text" id="price_item_text">Security Deposit - Rs ' + Math.round(parseFloat(arr['SECURITY_DEPOSIT'])) + ' </div>' +
+                //     '<div class="price_item_btn" id="btn" style="background-color: ' + colors[i] + '"><a href="/signup?planname=' + arr['PROMO'] + '&books=' + arr['NO_OF_BOOKS'] + '&months=' + arr['NO_OF_MONTHS'] + '">Get It Now !</a></div>' +
+                //     '</div></div>';
+
+
+
+
+
+response +='   <div class="' + colors[i] + '">'+
+                       '<h4 class="title">' + arr['PLAN_NAME'].toUpperCase() + '</h4>'+
+                       ' <a href="/signup?planname=' + arr['PROMO'] + '&books=' + arr['NO_OF_BOOKS'] + '&months=' + arr['NO_OF_MONTHS'] + '"><div class="content_pt">'+
+                       ' <p class="price"><sup>₹</sup><span> ' + Math.round(parseFloat(arr['READING_FEE'])) + '</span><sub></sub></p>'+
+                        '<p class="hint">Number of months - '+ arr['NO_OF_MONTHS'] +'</p></div></a><ul class="features">'+
+                        '<li>No of books -   ' + arr['NO_OF_BOOKS'] + '</li><li>Security Deposit - Rs ' + Math.round(parseFloat(arr['SECURITY_DEPOSIT'])) + ' </li>'+
+                            '<li>Registration Fee - Rs ' + Math.round(parseFloat(arr['REGISTRATION_FEE'])) + '</li></ul><div class="pt-footer">'+
+                            '<h4><a href="/signup?planname=' + arr['PROMO'] + '&books=' + arr['NO_OF_BOOKS'] + '&months=' + arr['NO_OF_MONTHS'] + '">GET IT NOW !</a></h4></div></div>'
+
+
                 i++;
                 if (i >= colors.length) {
                     i = 0;
@@ -382,7 +397,7 @@ function signupClick() {
         error: function (err) {
             $(".spinner").hide();
 
-            toastr.error('Wrong credentials, Please try again !');
+            toastr.error('Something went wrong, Please try again !');
             console.log(err.responseText);
             $("#frame_sign_in").hide();
             $("#loader").hide();

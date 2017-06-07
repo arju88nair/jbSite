@@ -98,7 +98,7 @@ $app->get('/author_details/{authorid}', function (Request $request, Response $re
 $app->get('/search', function (Request $request, Response $response) {
 
     $query = $_GET['q'];
-    $result = curlFunction("8990/api/v1/search.json?q=$query&page_no=1&per_page=40");
+    $result = curlFunction("8990/api/v1/search.json?q=$query&page=1&per_page=20");
     $count = count(json_decode($result)->result);
     $response = $this->view->render($response, 'search.mustache', array('data' => json_decode($result, true), 'query' => ucfirst($query), 'count' => $count));
     return $response;
@@ -170,6 +170,21 @@ $app->get('/getPlanFees', function (Request $request, Response $response) {
 $app->get('/signup', function (Request $request, Response $response) {
     $allGetVars = $request->getQueryParams();
 
+    $con = $this->db;
+    $query_city = "SELECT *  FROM memp.FN_HOME_PAGE_PLANS where active = 1";
+    $result_city = oci_parse($con, $query_city);
+    oci_execute($result_city);
+    while ($row = oci_fetch_assoc($result_city)) {
+        $planData[] = $row;
+    }
+
+
+
+
+
+
+
+
     $plan_data_curl = curlFunction('8990/api/v1/get_all_plans.json');
     $plan_data = json_decode($plan_data_curl);
     $data = $plan_data->result;
@@ -238,7 +253,7 @@ $monthsArray=[];
 
                 if ($plans['plan_duration']['signup_months'] == $months) {
 
-                    $response = $this->view->render($response, 'signup.mustache', array('plan_data' => $array_data, 'planid' => $planid, 'plan_books' => $count, 'planname' => $planname, 'planid' => $planid,"total" => $plans['plan_duration']['totalAmount_with_convenience_fee'], 'reading_fee' => $plans['plan_duration']['reading_fee_for_term'], 'reg_fee' => $item['web_signup_plan']['registration_fee'], 'sec_deposit' => $item['web_signup_plan']['security_deposit'],'months'=>$monthsArray,'book'=>$books,'month'=>$months));
+                    $response = $this->view->render($response, 'signup.mustache', array('plan_data' =>$planData,'plan_dataJ' => json_encode($array_data), 'planid' => $planid, 'plan_books' => $count, 'planname' => $planname, 'planid' => $planid,"total" => $plans['plan_duration']['totalAmount_with_convenience_fee'], 'reading_fee' => $plans['plan_duration']['reading_fee_for_term'], 'reg_fee' => $item['web_signup_plan']['registration_fee'], 'sec_deposit' => $item['web_signup_plan']['security_deposit'],'months'=>$monthsArray,'book'=>$books,'month'=>$months));
                     return $response;
 
                 }
@@ -283,6 +298,7 @@ $app->get('/getAuthor', function (Request $request, Response $response) {
 });
 
 $app->get('/getPlan', function (Request $request, Response $response) {
+
 //    $raw_data = curlFunction('8990/api/v1/get_all_plans.json');
 //    $data = json_decode($raw_data);
 //    $data = $data->result;
@@ -297,7 +313,6 @@ $app->get('/getPlan', function (Request $request, Response $response) {
 //    }
 //
 //    $array = array_values($temp_array);
-
 
     $con = $this->db;
     $query_city = "SELECT *  FROM memp.FN_HOME_PAGE_PLANS where active = 1";
@@ -774,6 +789,7 @@ $app->get('/insertLog', function (Request $request, Response $response) {
     $query = "insert into memp.logs (UNIQUE_ID,USERAGENT,IPADDRESS,MAC_ADDRESS,MAKE,MODEL,ACTION_TYPE,APP_TYPE,REFERRER,DEVICE_OS,USER_ID,CREATED_AT) values('$uId','$userAgent','$ip','$ip','','','$type','Website','$referer','$userAgent','$userId',sysdate) ";
     $compiled = oci_parse($con, $query);
     oci_execute($compiled);
+    echo json_encode("success");
 
 
 });

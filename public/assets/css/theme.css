@@ -2234,12 +2234,17 @@ hr.respond_seperator {
 	overflow:hidden;
 }
 
-	.module_feature_posts .bg_title,
+
 	.module_teamslider .bg_title,
 	.module_bookslider .bg_title,
 	.module_testimonial .bg_title,
 	.module_partners .bg_title {
 		min-height:18px;
+	}
+
+	.module_feature_posts .bg_title{
+		min-height:18px;
+		margin-left: 3%!important;
 	}
 
 	.module_feature_posts,
@@ -2332,7 +2337,7 @@ hr.respond_seperator {
 		padding:0; 
 		list-style:none; 
 		width:10000px;
-		margin:0 0 0 -30px;
+		margin:0 0 0 0px;
 	}
 	.carouselslider ul li:before { 
 		content:''!important; 
@@ -4418,9 +4423,7 @@ hr.respond_seperator {
 .module_line.top_padding_none {
     padding-top: 0 !important;
 }
-.bg_title {
-	text-align:left;
-}
+
 .center_title .bg_title {
 	text-align:center;
 }
@@ -6511,5 +6514,6 @@ transition: 500ms ease-in-out left;
 	font-family: 'Playfair Display';
 	margin:0px 0 5px 0;
 }
+
 
 

@@ -315,7 +315,7 @@ font-family: Playfair Display;display: none"></p>
                 cache: false,
                 success: function (data) {
                     $(".spinner").hide();
-                    console.log(data);
+                    ;
                     if(data['success'] === true)
                     {
                         toastr.success("Updated successfully !");
@@ -355,10 +355,9 @@ font-family: Playfair Display;display: none"></p>
             type: "GET",
             url: "/getCurrentReading",
             success: function (data) {
-                console.log(data)
+                
                 $(".spinner").hide();
                 var new_data = JSON.parse(data);
-                console.log(new_data);
                 if(new_data['result'].length== 0)
                 {
                     $('#shelf_data').html('');
@@ -415,6 +414,8 @@ font-family: Playfair Display;display: none"></p>
             type: "GET",
             url: "/getWishList",
             success: function (data) {
+                $('#change_plan').html('');
+
                 $(".spinner").hide();
                 var new_data = JSON.parse(data);
                 console.log(new_data['result']);
@@ -453,13 +454,15 @@ font-family: Playfair Display;display: none"></p>
                 if(new_data['result'].length== 0)
                 {
                     $('#shelf_data').html('');
+                    $('#change_plan').html('');
 
                     $("#emptyResult").show();
                     $("#emptyResult").text("No books to show !");
                     return false;
                 }
                 $("#emptyResult").hide();
-                console.log(new_data);
+                $('#change_plan').html('');
+
                 new_data = new_data['result']
                 if (new_data[0]['delivery_order_id'] == null) {
                     var id = 'rental_id';
@@ -490,6 +493,7 @@ font-family: Playfair Display;display: none"></p>
                 if(new_data['result'].length== 0)
                 {
                     $('#shelf_data').html('');
+                    $('#change_plan').html('');
 
                     $("#emptyResult").show();
                     $("#emptyResult").text("No books to show !");
@@ -515,7 +519,9 @@ font-family: Playfair Display;display: none"></p>
             success: function (data) {
                 $(".spinner").hide();
 
-                console.log(data)
+                ;
+                $('#change_plan').html('');
+
                 var new_data = JSON.parse(data);
                 if(new_data['result'].length== 0)
                 {
@@ -548,6 +554,8 @@ $("#emptyResult").hide();
                 $(".spinner").hide();
                 console.log(JSON.parse(data));
                 $('#shelf_data').html('');
+                $('#change_plan').html('');
+
                 var data_new = JSON.parse(data);
                 if (data_new['success'] === 'false') {
                     toastr.error('Something went wrong !');
@@ -560,6 +568,19 @@ $("#emptyResult").hide();
 
 
                 $('#shelf_data').html('');
+//                $('#shelf_data').append('<div class="col-sm-6">' +
+//                        '<h3>My Profile</h3><div class="col-sm-12"><img src="img/photo.jpg" class="img-circle" height="65" width="65" alt="Avatar">' +
+//                        '</div><div class="col-sm-4"><div class="panel-body"><p>Supreeth Y N</p></div>' +
+//                        '</div><div class="col-sm-4"><div class="panel-body"><p>Member Since<br>01/01/2017</p></div>' +
+//                        '</div><div class="col-sm-4"><div class="panel-body"><p>Phone No.<br>******8871</p></div>' +
+//                        '</div> <div class="col-sm-12"><div class="panel-body"><h3>Delivery Address</h3><p>#537 24th main 18th cross<br> near BBMP office Jayanagar<br> Bangalore 560070</p></div>' +
+//                        '<div class="panel-body"><button type="button" class="btn btn-warning">Edit Profile</button>' +
+//                        '</div></div></div><div class="col-sm-6"><h3 class="text-left">Notifications</h3><br><div class="row col-sm-12">' +
+//                        '<div class="alert alert-warning fade in">' +
+//                        '<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a><p><span class="glyphicon glyphicon-book"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Ey! People are looking at your profile. Find out who.</strong></p>' +
+//                        '</div><div class="alert alert-success fade in"><a href="#" class="close" data-dismiss="alert" aria-label="close">×</a><p><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Ey! People are looking at your profile. Find out who.</strong></p>' +
+//                        '</div><div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert" aria-label="close">×</a><p><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Ey! People are looking at your profile. Find out who.</strong></p>' +
+//                        '</div></div>                </div>');
                 $('#shelf_data').append('<div class="col-sm-6">' +
                         '<h3>My Profile</h3>' +
                         '<div class="col-sm-4">' +
@@ -647,15 +668,16 @@ $("#emptyResult").hide();
                     response2 += '<option value='+arr['fee']+' id='+arr['term']+'>'+arr['months']+'</option>';
 
                 })
+                var defValue=terms[0]['fee'];
 //                console.log(response2);
 //                $('#shelf_data').append('<br> <div class="collapse form-group" id=\"demo\" >' +
 //                        '<label for="sel1">Select list:</label>' +
 //                        '<select class="form-control" id="sel1" onchange="textChange()">'+response2+'' +
 //                        '</select> </div><br><div ><span id="textSpan"></span></div> ')
-                $('#shelf_data').append('<br> <div class="row">' +
+                $('#shelf_data').append('<br> <div class="row collapse" id=\"demo\">' +
                         '<div class="col-sm-3">' +
-                        '<div class="form-group collapse" id=\"demo\">' +
-                        '<label for="sel1">Select a month :</label>' +
+                        '<div class="form-group " >' +
+                        '<label for="sel1">Select a renewal duration :</label>' +
                         '<select class="form-control" id="sel1" onchange="textChange()">' +
 
                         ''+response2+'' +
@@ -664,8 +686,8 @@ $("#emptyResult").hide();
                         '</div>' +
                         ' </div>' +
                         '<div class="col-sm-6" style="margin-top: 3%" >' +
-                        ' <div ><span id="textSpan" style="font-size: 23px;font-family: Playfair Display;"></span></div>' +
-                        ' <button id="renewBUtton" style="display: none;float: right;margin-top: -7%" type="button" class="btn btn-info" onclick="proceedRenew()">Proceed</button></div><br>')
+                        ' <div ><span id="textSpan" style="font-size: 23px;font-family: Playfair Display;">Renewal fee is Rs '+defValue+'</span></div>' +
+                        ' <button id="renewBUtton" style="display: block;float: right;margin-top: -7%" type="button" class="btn btn-info" onclick="proceedRenew()">Proceed</button></div><br>')
 
 
 
@@ -745,7 +767,7 @@ $("#emptyResult").hide();
             url: "/removeWishList",
             data: {'titleid': id},
             success: function (data) {
-                console.log(data)
+                
                 $(".spinner").hide();
 toastr.success("Successfully removed");
                 if (data == 'success') {
@@ -793,7 +815,7 @@ toastr.success("Successfully removed");
             data: {'id': id,'cancelId':cancel},
             success: function (data) {
                 $(".spinner").hide();
-                console.log(data);
+                ;
                 if (data == 'success') {
 toastr.success("Succesfully canceled !")                }
             },
@@ -836,7 +858,7 @@ data=JSON.parse(data);
             success: function (data) {
                 $(".spinner").hide();
 
-                console.log(data);
+                ;
                 if (data == 'success') {
                     $('#' + id).closest('.module_shelf').remove();
                     toastr.success('Successfully requested !');
@@ -856,7 +878,7 @@ data=JSON.parse(data);
             type: "GET",
             url: "/updateWishlist?id="+id,
             success: function (data) {
-                console.log(data);
+                ;
                 console.log(JSON.parse(data));
                 $(".spinner").hide();
                 if (JSON.parse(data) === "failure" ) {
@@ -917,7 +939,7 @@ data=JSON.parse(data);
                             dataType: "json",
                             url: "http://staging.justbooksclc.com:8990/api/v1/confirm_renewal.json?email="+email+"&membercard="+membership+"&payable_amount="+data_new.result.payable_amount+"&convenience_fee="+data_new.result.convenience_fee+"&renewal_payment_type="+data_new.result.renewal_payment_type+"&plan_id="+data_new.result.plan_id+"&card_number="+data_new.result.card_number+"&member_id="+data_new.result.member_id+"&delivery_fees="+data_new.result.delivery_fees+"&delivery_fees_dormant="+data_new.result.delivery_fees_dormant+"&delivery_option="+data_new.result.delivery_option+"&term="+data_new.result.term+"&member_branch_id="+data_new.result.term+"&member_branch_id="+data_new.result.member_branch_id+"&overdue_adjustment="+data_new.result.overdue_adjustment+"&reward_points="+data_new.result.reward_points+"&gift_card_no="+data_new.result.gift_card_no+"&qc_flag="+data_new.result.qc_flag+"&redeemed_amount="+data_new.result.redeemed_amount+"&pin="+data_new.result.pin+"&coupon_no=null&coupon_id=null&coupon_amount=null",
                             success: function (data) {
-                                console.log(data);
+                                ;
 
                                 if(data.success == true)
                                 {
@@ -952,7 +974,7 @@ data=JSON.parse(data);
             type: "GET",
             url: "/saveSession?orderNumber="+order+"&amount="+amount,
             success: function (data_new) {
-                console.log(data_new);
+                ;
                 if(data_new === "success")
                 {
                     window.location.href="/PaytmKit/pgRedirect.php";

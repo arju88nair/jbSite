@@ -2,17 +2,707 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a5bbfcf1-cc3f-4e66-bea5-f7b3475c823b" name="Default" comment="k">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/adminBlog.mustache" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assets/css/tiles.css" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/Cabin-Bold.ttf" afterPath="$PROJECT_DIR$/public/assets/fonts/Cabin-Bold.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/Cabin-BoldItalic.ttf" afterPath="$PROJECT_DIR$/public/assets/fonts/Cabin-BoldItalic.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/Cabin-Italic.ttf" afterPath="$PROJECT_DIR$/public/assets/fonts/Cabin-Italic.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/Cabin-Medium.ttf" afterPath="$PROJECT_DIR$/public/assets/fonts/Cabin-Medium.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/Cabin-MediumItalic.ttf" afterPath="$PROJECT_DIR$/public/assets/fonts/Cabin-MediumItalic.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/Cabin-Regular.ttf" afterPath="$PROJECT_DIR$/public/assets/fonts/Cabin-Regular.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/Cabin-SemiBold.ttf" afterPath="$PROJECT_DIR$/public/assets/fonts/Cabin-SemiBold.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/Cabin-SemiBoldItalic.ttf" afterPath="$PROJECT_DIR$/public/assets/fonts/Cabin-SemiBoldItalic.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/Open_Sans.zip" afterPath="$PROJECT_DIR$/public/assets/fonts/Open_Sans.zip" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/Raleway-Black.ttf" afterPath="$PROJECT_DIR$/public/assets/fonts/Raleway-Black.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/Raleway-BlackItalic.ttf" afterPath="$PROJECT_DIR$/public/assets/fonts/Raleway-BlackItalic.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/Raleway-Bold.ttf" afterPath="$PROJECT_DIR$/public/assets/fonts/Raleway-Bold.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/Raleway-BoldItalic.ttf" afterPath="$PROJECT_DIR$/public/assets/fonts/Raleway-BoldItalic.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/Raleway-ExtraBold.ttf" afterPath="$PROJECT_DIR$/public/assets/fonts/Raleway-ExtraBold.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/Raleway-ExtraBoldItalic.ttf" afterPath="$PROJECT_DIR$/public/assets/fonts/Raleway-ExtraBoldItalic.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/Raleway-ExtraLight.ttf" afterPath="$PROJECT_DIR$/public/assets/fonts/Raleway-ExtraLight.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/Raleway-ExtraLightItalic.ttf" afterPath="$PROJECT_DIR$/public/assets/fonts/Raleway-ExtraLightItalic.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/Raleway-Heavy.ttf" afterPath="$PROJECT_DIR$/public/assets/fonts/Raleway-Heavy.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/Raleway-Italic.ttf" afterPath="$PROJECT_DIR$/public/assets/fonts/Raleway-Italic.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/Raleway-Light.ttf" afterPath="$PROJECT_DIR$/public/assets/fonts/Raleway-Light.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/Raleway-LightItalic.ttf" afterPath="$PROJECT_DIR$/public/assets/fonts/Raleway-LightItalic.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/Raleway-Medium.ttf" afterPath="$PROJECT_DIR$/public/assets/fonts/Raleway-Medium.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/Raleway-MediumItalic.ttf" afterPath="$PROJECT_DIR$/public/assets/fonts/Raleway-MediumItalic.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/Raleway-Regular.ttf" afterPath="$PROJECT_DIR$/public/assets/fonts/Raleway-Regular.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/Raleway-SemiBold.ttf" afterPath="$PROJECT_DIR$/public/assets/fonts/Raleway-SemiBold.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/Raleway-SemiBoldItalic.ttf" afterPath="$PROJECT_DIR$/public/assets/fonts/Raleway-SemiBoldItalic.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/Raleway-Thin.ttf" afterPath="$PROJECT_DIR$/public/assets/fonts/Raleway-Thin.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/Raleway-ThinItalic.ttf" afterPath="$PROJECT_DIR$/public/assets/fonts/Raleway-ThinItalic.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/SukhumvitSet-Thin.ttf" afterPath="$PROJECT_DIR$/public/assets/fonts/SukhumvitSet-Thin.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/glyphicons-halflings-regular.eot" afterPath="$PROJECT_DIR$/public/assets/fonts/glyphicons-halflings-regular.eot" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/glyphicons-halflings-regular.ttf" afterPath="$PROJECT_DIR$/public/assets/fonts/glyphicons-halflings-regular.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/glyphicons-halflings-regular.woff" afterPath="$PROJECT_DIR$/public/assets/fonts/glyphicons-halflings-regular.woff" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/glyphicons-halflings-regular.woff2" afterPath="$PROJECT_DIR$/public/assets/fonts/glyphicons-halflings-regular.woff2" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/themify.eot" afterPath="$PROJECT_DIR$/public/assets/fonts/themify.eot" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/themify.ttf" afterPath="$PROJECT_DIR$/public/assets/fonts/themify.ttf" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/themify.woff" afterPath="$PROJECT_DIR$/public/assets/fonts/themify.woff" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/images/bg2.jpg" afterPath="$PROJECT_DIR$/public/assets/images/bg2.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/images/jb.png" afterPath="$PROJECT_DIR$/public/assets/images/jb.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/images/logo1.png" afterPath="$PROJECT_DIR$/public/assets/images/logo1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/accordion.png" afterPath="$PROJECT_DIR$/public/assets/img/accordion.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/arrow1.png" afterPath="$PROJECT_DIR$/public/assets/img/arrow1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/bg2.jpg" afterPath="$PROJECT_DIR$/public/assets/img/bg2.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/bg_header.jpg" afterPath="$PROJECT_DIR$/public/assets/img/bg_header.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/bg_iconbox.png" afterPath="$PROJECT_DIR$/public/assets/img/bg_iconbox.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/bg_module-line.jpg" afterPath="$PROJECT_DIR$/public/assets/img/bg_module-line.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/bg_module-line2.jpg" afterPath="$PROJECT_DIR$/public/assets/img/bg_module-line2.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/bg_page_title.jpg" afterPath="$PROJECT_DIR$/public/assets/img/bg_page_title.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/bg_skills.png" afterPath="$PROJECT_DIR$/public/assets/img/bg_skills.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/blockquote.png" afterPath="$PROJECT_DIR$/public/assets/img/blockquote.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/books/1.jpg" afterPath="$PROJECT_DIR$/public/assets/img/books/1.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/books/10.jpg" afterPath="$PROJECT_DIR$/public/assets/img/books/10.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/books/2.jpg" afterPath="$PROJECT_DIR$/public/assets/img/books/2.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/books/3.jpg" afterPath="$PROJECT_DIR$/public/assets/img/books/3.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/books/4.jpg" afterPath="$PROJECT_DIR$/public/assets/img/books/4.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/books/5.jpg" afterPath="$PROJECT_DIR$/public/assets/img/books/5.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/books/6.jpg" afterPath="$PROJECT_DIR$/public/assets/img/books/6.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/books/7.jpg" afterPath="$PROJECT_DIR$/public/assets/img/books/7.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/books/8.jpg" afterPath="$PROJECT_DIR$/public/assets/img/books/8.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/books/9.jpg" afterPath="$PROJECT_DIR$/public/assets/img/books/9.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/books/book1.jpg" afterPath="$PROJECT_DIR$/public/assets/img/books/book1.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/books/book2.gif" afterPath="$PROJECT_DIR$/public/assets/img/books/book2.gif" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/books/book3.gif" afterPath="$PROJECT_DIR$/public/assets/img/books/book3.gif" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/books/book4.jpg" afterPath="$PROJECT_DIR$/public/assets/img/books/book4.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/books/book5.png" afterPath="$PROJECT_DIR$/public/assets/img/books/book5.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/btn2top.png" afterPath="$PROJECT_DIR$/public/assets/img/btn2top.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/btn_carousel_bg.png" afterPath="$PROJECT_DIR$/public/assets/img/btn_carousel_bg.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/btn_close1.png" afterPath="$PROJECT_DIR$/public/assets/img/btn_close1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/btn_close2.png" afterPath="$PROJECT_DIR$/public/assets/img/btn_close2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/carousel_next.png" afterPath="$PROJECT_DIR$/public/assets/img/carousel_next.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/carousel_prev.png" afterPath="$PROJECT_DIR$/public/assets/img/carousel_prev.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/dropcap.png" afterPath="$PROJECT_DIR$/public/assets/img/dropcap.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/favicon.ico" afterPath="$PROJECT_DIR$/public/assets/img/favicon.ico" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/footer_soc_def.png" afterPath="$PROJECT_DIR$/public/assets/img/footer_soc_def.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/footer_soc_hover.png" afterPath="$PROJECT_DIR$/public/assets/img/footer_soc_hover.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/header_soc_def.png" afterPath="$PROJECT_DIR$/public/assets/img/header_soc_def.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/header_soc_hover.png" afterPath="$PROJECT_DIR$/public/assets/img/header_soc_hover.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/blogpost-aside.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/blogpost-aside.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/blogpost-audio.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/blogpost-audio.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/blogpost-chat.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/blogpost-chat.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/blogpost-gallery.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/blogpost-gallery.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/blogpost-image.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/blogpost-image.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/blogpost-link.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/blogpost-link.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/blogpost-quote.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/blogpost-quote.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/blogpost-text.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/blogpost-text.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/blogpost-video.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/blogpost-video.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/buzz.jpg" afterPath="$PROJECT_DIR$/public/assets/img/icons/buzz.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/carousel_post-aside.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/carousel_post-aside.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/carousel_post-audio.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/carousel_post-audio.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/carousel_post-chat.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/carousel_post-chat.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/carousel_post-gallery.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/carousel_post-gallery.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/carousel_post-image.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/carousel_post-image.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/carousel_post-link.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/carousel_post-link.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/carousel_post-quote.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/carousel_post-quote.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/carousel_post-text.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/carousel_post-text.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/carousel_post-video.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/carousel_post-video.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/engage.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/engage.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/favorite-512.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/favorite-512.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_carousel_facebook.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_carousel_facebook.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_carousel_linked.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_carousel_linked.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_carousel_mail.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_carousel_mail.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_carousel_tumbler.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_carousel_tumbler.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_carousel_twitter.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_carousel_twitter.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_social-delicious.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_social-delicious.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_social-dribbble.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_social-dribbble.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_social-facebook.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_social-facebook.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_social-flickr.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_social-flickr.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_social-gplus.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_social-gplus.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_social-instagram.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_social-instagram.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_social-linked.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_social-linked.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_social-pinterest.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_social-pinterest.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_social-tumblr.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_social-tumblr.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_social-twitter.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_social-twitter.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_social-vimeo.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_social-vimeo.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_social-youtube.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_social-youtube.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_blogspot.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_blogspot.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_delicious.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_delicious.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_deviantart.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_deviantart.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_digg1.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_digg1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_digg2.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_digg2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_dribbble1.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_dribbble1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_dribbble2.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_dribbble2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_dropbox.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_dropbox.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_evernote.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_evernote.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_facebook1.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_facebook1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_facebook2.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_facebook2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_ffffound.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_ffffound.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_flickr.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_flickr.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_google1.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_google1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_google2.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_google2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_gowalla.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_gowalla.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_iChat.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_iChat.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_instagram.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_instagram.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_lastfm.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_lastfm.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_linkedIn.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_linkedIn.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_moby.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_moby.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_myspace.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_myspace.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_odnoklassniki.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_odnoklassniki.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_phone.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_phone.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_pinterest.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_pinterest.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_plixi.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_plixi.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_reddit.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_reddit.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_skype.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_skype.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_stubleUpon.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_stubleUpon.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_tumbler.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_tumbler.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_twitter1.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_twitter1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_twitter2.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_twitter2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_twitter3.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_twitter3.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_vimeo.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_vimeo.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_vk1.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_vk1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_vk2.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_vk2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_wordpress.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_wordpress.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_youtube1.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_youtube1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_youtube2.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/ico_socialize_youtube2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/read.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/read.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/rent.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/rent.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/wishlist.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/wishlist.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/icons/wishlist1.png" afterPath="$PROJECT_DIR$/public/assets/img/icons/wishlist1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/logo.png" afterPath="$PROJECT_DIR$/public/assets/img/logo.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/logo1.png" afterPath="$PROJECT_DIR$/public/assets/img/logo1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/marker_list1.png" afterPath="$PROJECT_DIR$/public/assets/img/marker_list1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/marker_list2.png" afterPath="$PROJECT_DIR$/public/assets/img/marker_list2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/marker_list3.png" afterPath="$PROJECT_DIR$/public/assets/img/marker_list3.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/marker_list4.png" afterPath="$PROJECT_DIR$/public/assets/img/marker_list4.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/marker_list5.png" afterPath="$PROJECT_DIR$/public/assets/img/marker_list5.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/marker_list6.png" afterPath="$PROJECT_DIR$/public/assets/img/marker_list6.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/pictures/carousel_blog1.jpg" afterPath="$PROJECT_DIR$/public/assets/img/pictures/carousel_blog1.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/pictures/carousel_blog2.jpg" afterPath="$PROJECT_DIR$/public/assets/img/pictures/carousel_blog2.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/pictures/carousel_blog3.jpg" afterPath="$PROJECT_DIR$/public/assets/img/pictures/carousel_blog3.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/pictures/carousel_works1.jpg" afterPath="$PROJECT_DIR$/public/assets/img/pictures/carousel_works1.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/pictures/carousel_works2.jpg" afterPath="$PROJECT_DIR$/public/assets/img/pictures/carousel_works2.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/pictures/carousel_works3.jpg" afterPath="$PROJECT_DIR$/public/assets/img/pictures/carousel_works3.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/pictures/featured_widget1.jpg" afterPath="$PROJECT_DIR$/public/assets/img/pictures/featured_widget1.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/pictures/featured_widget2.jpg" afterPath="$PROJECT_DIR$/public/assets/img/pictures/featured_widget2.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/pictures/gallery1.jpg" afterPath="$PROJECT_DIR$/public/assets/img/pictures/gallery1.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/pictures/gallery10.jpg" afterPath="$PROJECT_DIR$/public/assets/img/pictures/gallery10.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/pictures/gallery11.jpg" afterPath="$PROJECT_DIR$/public/assets/img/pictures/gallery11.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/pictures/gallery12.jpg" afterPath="$PROJECT_DIR$/public/assets/img/pictures/gallery12.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/pictures/gallery13.jpg" afterPath="$PROJECT_DIR$/public/assets/img/pictures/gallery13.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/pictures/gallery2.jpg" afterPath="$PROJECT_DIR$/public/assets/img/pictures/gallery2.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/pictures/gallery3.jpg" afterPath="$PROJECT_DIR$/public/assets/img/pictures/gallery3.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/pictures/gallery4.jpg" afterPath="$PROJECT_DIR$/public/assets/img/pictures/gallery4.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/pictures/gallery5.jpg" afterPath="$PROJECT_DIR$/public/assets/img/pictures/gallery5.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/pictures/gallery6.jpg" afterPath="$PROJECT_DIR$/public/assets/img/pictures/gallery6.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/pictures/gallery7.jpg" afterPath="$PROJECT_DIR$/public/assets/img/pictures/gallery7.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/pictures/gallery8.jpg" afterPath="$PROJECT_DIR$/public/assets/img/pictures/gallery8.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/pictures/hiring.jpg" afterPath="$PROJECT_DIR$/public/assets/img/pictures/hiring.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/pictures/partners-d1.png" afterPath="$PROJECT_DIR$/public/assets/img/pictures/partners-d1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/pictures/partners-d10.png" afterPath="$PROJECT_DIR$/public/assets/img/pictures/partners-d10.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/pictures/partners-d2.png" afterPath="$PROJECT_DIR$/public/assets/img/pictures/partners-d2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/pictures/partners-d3.png" afterPath="$PROJECT_DIR$/public/assets/img/pictures/partners-d3.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/pictures/partners-d4.png" afterPath="$PROJECT_DIR$/public/assets/img/pictures/partners-d4.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/pictures/partners-d5.png" afterPath="$PROJECT_DIR$/public/assets/img/pictures/partners-d5.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/pictures/partners-d6.png" afterPath="$PROJECT_DIR$/public/assets/img/pictures/partners-d6.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/pictures/partners-d7.png" afterPath="$PROJECT_DIR$/public/assets/img/pictures/partners-d7.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/pictures/partners-d8.png" afterPath="$PROJECT_DIR$/public/assets/img/pictures/partners-d8.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/pictures/partners-d9.png" afterPath="$PROJECT_DIR$/public/assets/img/pictures/partners-d9.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/pictures/pic_about.jpg" afterPath="$PROJECT_DIR$/public/assets/img/pictures/pic_about.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/pictures/team1.jpg" afterPath="$PROJECT_DIR$/public/assets/img/pictures/team1.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/pictures/team2.jpg" afterPath="$PROJECT_DIR$/public/assets/img/pictures/team2.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/pictures/team3.jpg" afterPath="$PROJECT_DIR$/public/assets/img/pictures/team3.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/pictures/team4.jpg" afterPath="$PROJECT_DIR$/public/assets/img/pictures/team4.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/pictures/team5.jpg" afterPath="$PROJECT_DIR$/public/assets/img/pictures/team5.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/pictures/team6.jpg" afterPath="$PROJECT_DIR$/public/assets/img/pictures/team6.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/portfolio/portfolio2-1.jpg" afterPath="$PROJECT_DIR$/public/assets/img/portfolio/portfolio2-1.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/portfolio/portfolio2-10.jpg" afterPath="$PROJECT_DIR$/public/assets/img/portfolio/portfolio2-10.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/portfolio/portfolio2-11.jpg" afterPath="$PROJECT_DIR$/public/assets/img/portfolio/portfolio2-11.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/portfolio/portfolio2-12.jpg" afterPath="$PROJECT_DIR$/public/assets/img/portfolio/portfolio2-12.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/portfolio/portfolio2-2.jpg" afterPath="$PROJECT_DIR$/public/assets/img/portfolio/portfolio2-2.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/portfolio/portfolio2-3.jpg" afterPath="$PROJECT_DIR$/public/assets/img/portfolio/portfolio2-3.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/portfolio/portfolio2-4.jpg" afterPath="$PROJECT_DIR$/public/assets/img/portfolio/portfolio2-4.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/portfolio/portfolio2-5.jpg" afterPath="$PROJECT_DIR$/public/assets/img/portfolio/portfolio2-5.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/portfolio/portfolio2-6.jpg" afterPath="$PROJECT_DIR$/public/assets/img/portfolio/portfolio2-6.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/portfolio/portfolio2-7.jpg" afterPath="$PROJECT_DIR$/public/assets/img/portfolio/portfolio2-7.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/portfolio/portfolio2-8.jpg" afterPath="$PROJECT_DIR$/public/assets/img/portfolio/portfolio2-8.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/portfolio/portfolio2-9.jpg" afterPath="$PROJECT_DIR$/public/assets/img/portfolio/portfolio2-9.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/retina/bg_iconbox.png" afterPath="$PROJECT_DIR$/public/assets/img/retina/bg_iconbox.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/retina/btn2top.png" afterPath="$PROJECT_DIR$/public/assets/img/retina/btn2top.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/retina/btn_carousel_bg.png" afterPath="$PROJECT_DIR$/public/assets/img/retina/btn_carousel_bg.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/retina/carousel_next.png" afterPath="$PROJECT_DIR$/public/assets/img/retina/carousel_next.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/retina/carousel_prev.png" afterPath="$PROJECT_DIR$/public/assets/img/retina/carousel_prev.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/retina/icons/ico_carousel_facebook.png" afterPath="$PROJECT_DIR$/public/assets/img/retina/icons/ico_carousel_facebook.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/retina/icons/ico_carousel_mail.png" afterPath="$PROJECT_DIR$/public/assets/img/retina/icons/ico_carousel_mail.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/retina/icons/ico_carousel_twitter.png" afterPath="$PROJECT_DIR$/public/assets/img/retina/icons/ico_carousel_twitter.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/retina/logo-old.png" afterPath="$PROJECT_DIR$/public/assets/img/retina/logo-old.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/retina/logo.png" afterPath="$PROJECT_DIR$/public/assets/img/retina/logo.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/retina/slide1f.jpg" afterPath="$PROJECT_DIR$/public/assets/img/retina/slide1f.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/retina/slider_next.png" afterPath="$PROJECT_DIR$/public/assets/img/retina/slider_next.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/retina/slider_prev.png" afterPath="$PROJECT_DIR$/public/assets/img/retina/slider_prev.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/slider/ls1_img1.png" afterPath="$PROJECT_DIR$/public/assets/img/slider/ls1_img1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/slider/ls1_img2.png" afterPath="$PROJECT_DIR$/public/assets/img/slider/ls1_img2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/slider/ls2_img1.png" afterPath="$PROJECT_DIR$/public/assets/img/slider/ls2_img1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/slider/ls2_img2.png" afterPath="$PROJECT_DIR$/public/assets/img/slider/ls2_img2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/slider/ls2_img3.png" afterPath="$PROJECT_DIR$/public/assets/img/slider/ls2_img3.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/slider/ls2_img4.png" afterPath="$PROJECT_DIR$/public/assets/img/slider/ls2_img4.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/slider/ls2_img5.png" afterPath="$PROJECT_DIR$/public/assets/img/slider/ls2_img5.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/slider/ls2_img6.png" afterPath="$PROJECT_DIR$/public/assets/img/slider/ls2_img6.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/slider/ls3_img1.png" afterPath="$PROJECT_DIR$/public/assets/img/slider/ls3_img1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/slider/ls3_img2.png" afterPath="$PROJECT_DIR$/public/assets/img/slider/ls3_img2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/slider/ls3_img3.png" afterPath="$PROJECT_DIR$/public/assets/img/slider/ls3_img3.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/slider/ls3_img4.png" afterPath="$PROJECT_DIR$/public/assets/img/slider/ls3_img4.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/slider/ls3_img5.png" afterPath="$PROJECT_DIR$/public/assets/img/slider/ls3_img5.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/slider/ls3_img6.png" afterPath="$PROJECT_DIR$/public/assets/img/slider/ls3_img6.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/slider/ls3_img7.png" afterPath="$PROJECT_DIR$/public/assets/img/slider/ls3_img7.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/slider/ls4_img1.png" afterPath="$PROJECT_DIR$/public/assets/img/slider/ls4_img1.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/slider/ls4_img2.png" afterPath="$PROJECT_DIR$/public/assets/img/slider/ls4_img2.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/slider/ls4_img3.png" afterPath="$PROJECT_DIR$/public/assets/img/slider/ls4_img3.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/slider/slide1f.jpg" afterPath="$PROJECT_DIR$/public/assets/img/slider/slide1f.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/slider/slide2f.jpg" afterPath="$PROJECT_DIR$/public/assets/img/slider/slide2f.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/slider/slide3f.jpg" afterPath="$PROJECT_DIR$/public/assets/img/slider/slide3f.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/slider/slide4f.jpg" afterPath="$PROJECT_DIR$/public/assets/img/slider/slide4f.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/slider/slider.jpg" afterPath="$PROJECT_DIR$/public/assets/img/slider/slider.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/slider/slider2.jpg" afterPath="$PROJECT_DIR$/public/assets/img/slider/slider2.jpg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/slider_next.png" afterPath="$PROJECT_DIR$/public/assets/img/slider_next.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/slider_prev.png" afterPath="$PROJECT_DIR$/public/assets/img/slider_prev.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/tiles/Issue books.png" afterPath="$PROJECT_DIR$/public/assets/img/tiles/Issue books.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/tiles/Return books.png" afterPath="$PROJECT_DIR$/public/assets/img/tiles/Return books.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/tiles/Shelf.png" afterPath="$PROJECT_DIR$/public/assets/img/tiles/Shelf.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/tiles/Subscription.png" afterPath="$PROJECT_DIR$/public/assets/img/tiles/Subscription.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/img/user.png" afterPath="$PROJECT_DIR$/public/assets/img/user.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templacd" afterPath="$PROJECT_DIR$/templacd" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/container-interop/container-interop/docs/images/interoperating_containers.png" afterPath="$PROJECT_DIR$/vendor/container-interop/container-interop/docs/images/interoperating_containers.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/container-interop/container-interop/docs/images/priority.png" afterPath="$PROJECT_DIR$/vendor/container-interop/container-interop/docs/images/priority.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/container-interop/container-interop/docs/images/side_by_side_containers.png" afterPath="$PROJECT_DIR$/vendor/container-interop/container-interop/docs/images/side_by_side_containers.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/SlimMIS.iml" afterPath="$PROJECT_DIR$/.idea/SlimMIS.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.json" afterPath="$PROJECT_DIR$/composer.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/includes/functions.php" afterPath="$PROJECT_DIR$/includes/functions.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/.htaccess" afterPath="$PROJECT_DIR$/public/.htaccess" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/PaytmKit/pgRedirect.php" afterPath="$PROJECT_DIR$/public/PaytmKit/pgRedirect.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/animate.min.css" afterPath="$PROJECT_DIR$/public/assets/css/animate.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/bootstrap-responsive.css" afterPath="$PROJECT_DIR$/public/assets/css/bootstrap-responsive.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/bootstrap.css" afterPath="$PROJECT_DIR$/public/assets/css/bootstrap.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/bootstrap.min.css" afterPath="$PROJECT_DIR$/public/assets/css/bootstrap.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/color_theme.css" afterPath="$PROJECT_DIR$/public/assets/css/color_theme.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/demo.css" afterPath="$PROJECT_DIR$/public/assets/css/demo.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/font-awesome.min.css" afterPath="$PROJECT_DIR$/public/assets/css/font-awesome.min.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/jquery-ui.css" afterPath="$PROJECT_DIR$/public/assets/css/jquery-ui.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/paper-dashboard.css" afterPath="$PROJECT_DIR$/public/assets/css/paper-dashboard.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/plugins.css" afterPath="$PROJECT_DIR$/public/assets/css/plugins.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/responsive.css" afterPath="$PROJECT_DIR$/public/assets/css/responsive.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/rs-settings.css" afterPath="$PROJECT_DIR$/public/assets/css/rs-settings.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/signup_form.css" afterPath="$PROJECT_DIR$/public/assets/css/signup_form.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/style.css" afterPath="$PROJECT_DIR$/public/assets/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/theme.css" afterPath="$PROJECT_DIR$/public/assets/css/theme.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/theme_settings.css" afterPath="$PROJECT_DIR$/public/assets/css/theme_settings.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/themify-icons.css" afterPath="$PROJECT_DIR$/public/assets/css/themify-icons.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/OFL.txt" afterPath="$PROJECT_DIR$/public/assets/fonts/OFL.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/glyphicons-halflings-regular.svg" afterPath="$PROJECT_DIR$/public/assets/fonts/glyphicons-halflings-regular.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/fonts/themify.svg" afterPath="$PROJECT_DIR$/public/assets/fonts/themify.svg" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-checkbox-radio.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-checkbox-radio.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap-notify.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap-notify.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/bootstrap.min.js" afterPath="$PROJECT_DIR$/public/assets/js/bootstrap.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/chartist.min.js" afterPath="$PROJECT_DIR$/public/assets/js/chartist.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/color_panel.js" afterPath="$PROJECT_DIR$/public/assets/js/color_panel.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/dataTables.buttons.min.js" afterPath="$PROJECT_DIR$/public/assets/js/dataTables.buttons.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/demo.js" afterPath="$PROJECT_DIR$/public/assets/js/demo.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/home_page_Api.js" afterPath="$PROJECT_DIR$/public/assets/js/home_page_Api.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/jquery-1.10.2.js" afterPath="$PROJECT_DIR$/public/assets/js/jquery-1.10.2.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/jquery-1.9.1.js" afterPath="$PROJECT_DIR$/public/assets/js/jquery-1.9.1.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/jquery-ui.js" afterPath="$PROJECT_DIR$/public/assets/js/jquery-ui.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/jquery.dataTables.min.js" afterPath="$PROJECT_DIR$/public/assets/js/jquery.dataTables.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/jquery.isotope.min.js" afterPath="$PROJECT_DIR$/public/assets/js/jquery.isotope.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/jquery.min.js" afterPath="$PROJECT_DIR$/public/assets/js/jquery.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/jquery.themepunch.plugins.min.js" afterPath="$PROJECT_DIR$/public/assets/js/jquery.themepunch.plugins.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/jquery.themepunch.revolution.min.js" afterPath="$PROJECT_DIR$/public/assets/js/jquery.themepunch.revolution.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/jszip.min.js" afterPath="$PROJECT_DIR$/public/assets/js/jszip.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/login_form.js" afterPath="$PROJECT_DIR$/public/assets/js/login_form.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/paper-dashboard.js" afterPath="$PROJECT_DIR$/public/assets/js/paper-dashboard.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/pdfmake.min.js" afterPath="$PROJECT_DIR$/public/assets/js/pdfmake.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/scroll_animation.js" afterPath="$PROJECT_DIR$/public/assets/js/scroll_animation.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/sorting.js" afterPath="$PROJECT_DIR$/public/assets/js/sorting.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/theme.js" afterPath="$PROJECT_DIR$/public/assets/js/theme.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/plugins/Star-Rating-Plugin-jQuery-Glyphicons/LICENSE" afterPath="$PROJECT_DIR$/public/assets/plugins/Star-Rating-Plugin-jQuery-Glyphicons/LICENSE" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/plugins/Star-Rating-Plugin-jQuery-Glyphicons/README.md" afterPath="$PROJECT_DIR$/public/assets/plugins/Star-Rating-Plugin-jQuery-Glyphicons/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/plugins/Star-Rating-Plugin-jQuery-Glyphicons/css/main.css" afterPath="$PROJECT_DIR$/public/assets/plugins/Star-Rating-Plugin-jQuery-Glyphicons/css/main.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/plugins/Star-Rating-Plugin-jQuery-Glyphicons/index.html" afterPath="$PROJECT_DIR$/public/assets/plugins/Star-Rating-Plugin-jQuery-Glyphicons/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/plugins/Star-Rating-Plugin-jQuery-Glyphicons/src/j-rating-advance/j-rating-advance.css" afterPath="$PROJECT_DIR$/public/assets/plugins/Star-Rating-Plugin-jQuery-Glyphicons/src/j-rating-advance/j-rating-advance.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/plugins/Star-Rating-Plugin-jQuery-Glyphicons/src/j-rating-advance/j-rating-advance.js" afterPath="$PROJECT_DIR$/public/assets/plugins/Star-Rating-Plugin-jQuery-Glyphicons/src/j-rating-advance/j-rating-advance.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.php" afterPath="$PROJECT_DIR$/public/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/adminCards.mustache" afterPath="$PROJECT_DIR$/templates/adminCards.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/author_details.mustache" afterPath="$PROJECT_DIR$/templates/author_details.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/blah.mustache" afterPath="$PROJECT_DIR$/templates/blah.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/book_details.mustache" afterPath="$PROJECT_DIR$/templates/book_details.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/change_plan.mustache" afterPath="$PROJECT_DIR$/templates/change_plan.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/home.mustache" afterPath="$PROJECT_DIR$/templates/home.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/login.mustache" afterPath="$PROJECT_DIR$/templates/login.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/partials/author_related_books.mustache" afterPath="$PROJECT_DIR$/templates/partials/author_related_books.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/partials/authors.mustache" afterPath="$PROJECT_DIR$/templates/partials/authors.mustache" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/partials/blog.mustache" afterPath="$PROJECT_DIR$/templates/partials/blog.mustache" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/partials/footer.mustache" afterPath="$PROJECT_DIR$/templates/partials/footer.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/partials/header.mustache" afterPath="$PROJECT_DIR$/templates/partials/header.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/partials/header_logo.mustache" afterPath="$PROJECT_DIR$/templates/partials/header_logo.mustache" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/partials/header_menu.mustache" afterPath="$PROJECT_DIR$/templates/partials/header_menu.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/partials/header_search.mustache" afterPath="$PROJECT_DIR$/templates/partials/header_search.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/partials/left_menu.mustache" afterPath="$PROJECT_DIR$/templates/partials/left_menu.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/partials/left_recmend_book.mustache" afterPath="$PROJECT_DIR$/templates/partials/left_recmend_book.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/partials/membership_plan.mustache" afterPath="$PROJECT_DIR$/templates/partials/membership_plan.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/partials/mostRead.mustache" afterPath="$PROJECT_DIR$/templates/partials/mostRead.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/partials/newArrivals.mustache" afterPath="$PROJECT_DIR$/templates/partials/newArrivals.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/partials/preFooter.mustache" afterPath="$PROJECT_DIR$/templates/partials/preFooter.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/partials/profile.mustache" afterPath="$PROJECT_DIR$/templates/partials/profile.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/partials/related_authors.mustache" afterPath="$PROJECT_DIR$/templates/partials/related_authors.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/partials/related_books.mustache" afterPath="$PROJECT_DIR$/templates/partials/related_books.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/partials/slider.mustache" afterPath="$PROJECT_DIR$/templates/partials/slider.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/partials/subscription.mustache" afterPath="$PROJECT_DIR$/templates/partials/subscription.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/search.mustache" afterPath="$PROJECT_DIR$/templates/search.mustache" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/shelf.mustache" afterPath="$PROJECT_DIR$/templates/shelf.mustache" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/signup.mustache" afterPath="$PROJECT_DIR$/templates/signup.mustache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/view.mustache" afterPath="$PROJECT_DIR$/templates/view.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/autoload.php" afterPath="$PROJECT_DIR$/vendor/autoload.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/composer/ClassLoader.php" afterPath="$PROJECT_DIR$/vendor/composer/ClassLoader.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/composer/LICENSE" afterPath="$PROJECT_DIR$/vendor/composer/LICENSE" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" afterPath="$PROJECT_DIR$/vendor/composer/autoload_classmap.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/composer/autoload_files.php" afterPath="$PROJECT_DIR$/vendor/composer/autoload_files.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" afterPath="$PROJECT_DIR$/vendor/composer/autoload_namespaces.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" afterPath="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/composer/autoload_real.php" afterPath="$PROJECT_DIR$/vendor/composer/autoload_real.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/composer/autoload_static.php" afterPath="$PROJECT_DIR$/vendor/composer/autoload_static.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/composer/installed.json" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/container-interop/container-interop/.gitignore" afterPath="$PROJECT_DIR$/vendor/container-interop/container-interop/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/container-interop/container-interop/LICENSE" afterPath="$PROJECT_DIR$/vendor/container-interop/container-interop/LICENSE" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/container-interop/container-interop/README.md" afterPath="$PROJECT_DIR$/vendor/container-interop/container-interop/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/container-interop/container-interop/composer.json" afterPath="$PROJECT_DIR$/vendor/container-interop/container-interop/composer.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/container-interop/container-interop/docs/ContainerInterface-meta.md" afterPath="$PROJECT_DIR$/vendor/container-interop/container-interop/docs/ContainerInterface-meta.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/container-interop/container-interop/docs/ContainerInterface.md" afterPath="$PROJECT_DIR$/vendor/container-interop/container-interop/docs/ContainerInterface.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/container-interop/container-interop/docs/Delegate-lookup-meta.md" afterPath="$PROJECT_DIR$/vendor/container-interop/container-interop/docs/Delegate-lookup-meta.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/container-interop/container-interop/docs/Delegate-lookup.md" afterPath="$PROJECT_DIR$/vendor/container-interop/container-interop/docs/Delegate-lookup.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/container-interop/container-interop/src/Interop/Container/ContainerInterface.php" afterPath="$PROJECT_DIR$/vendor/container-interop/container-interop/src/Interop/Container/ContainerInterface.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/container-interop/container-interop/src/Interop/Container/Exception/ContainerException.php" afterPath="$PROJECT_DIR$/vendor/container-interop/container-interop/src/Interop/Container/Exception/ContainerException.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/container-interop/container-interop/src/Interop/Container/Exception/NotFoundException.php" afterPath="$PROJECT_DIR$/vendor/container-interop/container-interop/src/Interop/Container/Exception/NotFoundException.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/danjam/slim-mustache-view/LICENSE" afterPath="$PROJECT_DIR$/vendor/danjam/slim-mustache-view/LICENSE" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/danjam/slim-mustache-view/README.md" afterPath="$PROJECT_DIR$/vendor/danjam/slim-mustache-view/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/danjam/slim-mustache-view/composer.json" afterPath="$PROJECT_DIR$/vendor/danjam/slim-mustache-view/composer.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/danjam/slim-mustache-view/src/Mustache.php" afterPath="$PROJECT_DIR$/vendor/danjam/slim-mustache-view/src/Mustache.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/.gitignore" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/.gitmodules" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/.gitmodules" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/.php_cs" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/.php_cs" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/.styleci.yml" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/.styleci.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/.travis.yml" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/.travis.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/CONTRIBUTING.md" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/CONTRIBUTING.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/LICENSE" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/LICENSE" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/README.md" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/bin/build_bootstrap.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/bin/build_bootstrap.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/composer.json" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/composer.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/phpunit.xml.dist" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/phpunit.xml.dist" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Autoloader.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Autoloader.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Cache.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Cache.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Cache/AbstractCache.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Cache/AbstractCache.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Cache/FilesystemCache.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Cache/FilesystemCache.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Cache/NoopCache.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Cache/NoopCache.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Compiler.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Compiler.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Context.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Context.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Engine.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Engine.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Exception.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Exception.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Exception/InvalidArgumentException.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Exception/InvalidArgumentException.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Exception/LogicException.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Exception/LogicException.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Exception/RuntimeException.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Exception/RuntimeException.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Exception/SyntaxException.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Exception/SyntaxException.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Exception/UnknownFilterException.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Exception/UnknownFilterException.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Exception/UnknownHelperException.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Exception/UnknownHelperException.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Exception/UnknownTemplateException.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Exception/UnknownTemplateException.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/HelperCollection.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/HelperCollection.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/LambdaHelper.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/LambdaHelper.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Loader.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Loader.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Loader/ArrayLoader.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Loader/ArrayLoader.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Loader/CascadingLoader.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Loader/CascadingLoader.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Loader/FilesystemLoader.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Loader/FilesystemLoader.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Loader/InlineLoader.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Loader/InlineLoader.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Loader/MutableLoader.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Loader/MutableLoader.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Loader/StringLoader.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Loader/StringLoader.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Logger.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Logger.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Logger/AbstractLogger.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Logger/AbstractLogger.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Logger/StreamLogger.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Logger/StreamLogger.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Parser.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Parser.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Template.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Template.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Tokenizer.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/src/Mustache/Tokenizer.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/AutoloaderTest.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/AutoloaderTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Cache/AbstractCacheTest.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Cache/AbstractCacheTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Cache/FilesystemCacheTest.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Cache/FilesystemCacheTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/CompilerTest.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/CompilerTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/ContextTest.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/ContextTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/EngineTest.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/EngineTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Exception/SyntaxExceptionTest.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Exception/SyntaxExceptionTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Exception/UnknownFilterExceptionTest.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Exception/UnknownFilterExceptionTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Exception/UnknownHelperExceptionTest.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Exception/UnknownHelperExceptionTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Exception/UnknownTemplateExceptionTest.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Exception/UnknownTemplateExceptionTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/FiveThree/Functional/ClosureQuirksTest.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/FiveThree/Functional/ClosureQuirksTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/FiveThree/Functional/EngineTest.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/FiveThree/Functional/EngineTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/FiveThree/Functional/FiltersTest.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/FiveThree/Functional/FiltersTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/FiveThree/Functional/HigherOrderSectionsTest.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/FiveThree/Functional/HigherOrderSectionsTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/FiveThree/Functional/LambdaHelperTest.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/FiveThree/Functional/LambdaHelperTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/FiveThree/Functional/MustacheSpecTest.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/FiveThree/Functional/MustacheSpecTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/FiveThree/Functional/PartialLambdaIndentTest.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/FiveThree/Functional/PartialLambdaIndentTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/FiveThree/Functional/StrictCallablesTest.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/FiveThree/Functional/StrictCallablesTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Functional/CallTest.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Functional/CallTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Functional/ExamplesTest.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Functional/ExamplesTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Functional/HigherOrderSectionsTest.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Functional/HigherOrderSectionsTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Functional/InheritanceTest.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Functional/InheritanceTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Functional/MustacheInjectionTest.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Functional/MustacheInjectionTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Functional/MustacheSpecTest.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Functional/MustacheSpecTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Functional/NestedPartialIndentTest.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Functional/NestedPartialIndentTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Functional/ObjectSectionTest.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Functional/ObjectSectionTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/FunctionalTestCase.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/FunctionalTestCase.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/HelperCollectionTest.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/HelperCollectionTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Loader/ArrayLoaderTest.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Loader/ArrayLoaderTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Loader/CascadingLoaderTest.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Loader/CascadingLoaderTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Loader/FilesystemLoaderTest.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Loader/FilesystemLoaderTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Loader/InlineLoaderTest.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Loader/InlineLoaderTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Loader/StringLoaderTest.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Loader/StringLoaderTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Logger/AbstractLoggerTest.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Logger/AbstractLoggerTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Logger/StreamLoggerTest.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/Logger/StreamLoggerTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/ParserTest.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/ParserTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/SpecTestCase.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/SpecTestCase.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/TemplateTest.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/TemplateTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/TokenizerTest.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/Mustache/Test/TokenizerTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/bootstrap.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/bootstrap.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/autoloader/Mustache/Bar.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/autoloader/Mustache/Bar.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/autoloader/Mustache/Foo.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/autoloader/Mustache/Foo.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/autoloader/NonMustacheClass.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/autoloader/NonMustacheClass.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/blocks/Blocks.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/blocks/Blocks.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/blocks/blocks.mustache" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/blocks/blocks.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/blocks/blocks.txt" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/blocks/blocks.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/blocks/partials/parent.mustache" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/blocks/partials/parent.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/child_context/ChildContext.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/child_context/ChildContext.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/child_context/child_context.mustache" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/child_context/child_context.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/child_context/child_context.txt" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/child_context/child_context.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/comments/Comments.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/comments/Comments.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/comments/comments.mustache" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/comments/comments.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/comments/comments.txt" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/comments/comments.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/complex/complex.mustache" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/complex/complex.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/complex/complex.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/complex/complex.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/complex/complex.txt" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/complex/complex.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/delimiters/Delimiters.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/delimiters/Delimiters.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/delimiters/delimiters.mustache" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/delimiters/delimiters.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/delimiters/delimiters.txt" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/delimiters/delimiters.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/dot_notation/DotNotation.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/dot_notation/DotNotation.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/dot_notation/dot_notation.mustache" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/dot_notation/dot_notation.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/dot_notation/dot_notation.txt" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/dot_notation/dot_notation.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/double_section/DoubleSection.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/double_section/DoubleSection.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/double_section/double_section.mustache" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/double_section/double_section.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/double_section/double_section.txt" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/double_section/double_section.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/escaped/Escaped.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/escaped/Escaped.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/escaped/escaped.mustache" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/escaped/escaped.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/escaped/escaped.txt" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/escaped/escaped.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/filters/Filters.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/filters/Filters.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/filters/filters.mustache" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/filters/filters.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/filters/filters.txt" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/filters/filters.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/grand_parent_context/GrandParentContext.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/grand_parent_context/GrandParentContext.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/grand_parent_context/grand_parent_context.mustache" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/grand_parent_context/grand_parent_context.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/grand_parent_context/grand_parent_context.txt" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/grand_parent_context/grand_parent_context.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/i18n/I18n.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/i18n/I18n.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/i18n/i18n.mustache" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/i18n/i18n.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/i18n/i18n.txt" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/i18n/i18n.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/implicit_iterator/ImplicitIterator.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/implicit_iterator/ImplicitIterator.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/implicit_iterator/implicit_iterator.mustache" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/implicit_iterator/implicit_iterator.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/implicit_iterator/implicit_iterator.txt" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/implicit_iterator/implicit_iterator.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/inverted_double_section/InvertedDoubleSection.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/inverted_double_section/InvertedDoubleSection.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/inverted_double_section/inverted_double_section.mustache" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/inverted_double_section/inverted_double_section.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/inverted_double_section/inverted_double_section.txt" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/inverted_double_section/inverted_double_section.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/inverted_section/InvertedSection.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/inverted_section/InvertedSection.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/inverted_section/inverted_section.mustache" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/inverted_section/inverted_section.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/inverted_section/inverted_section.txt" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/inverted_section/inverted_section.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/nested_partials/NestedPartials.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/nested_partials/NestedPartials.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/nested_partials/nested_partials.mustache" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/nested_partials/nested_partials.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/nested_partials/nested_partials.txt" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/nested_partials/nested_partials.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/nested_partials/partials/fourth.mustache" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/nested_partials/partials/fourth.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/nested_partials/partials/second.mustache" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/nested_partials/partials/second.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/nested_partials/partials/third.mustache" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/nested_partials/partials/third.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/partials/Partials.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/partials/Partials.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/partials/partials.mustache" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/partials/partials.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/partials/partials.txt" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/partials/partials.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/partials/partials/header.mustache" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/partials/partials/header.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/recursive_partials/RecursivePartials.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/recursive_partials/RecursivePartials.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/recursive_partials/partials/child.mustache" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/recursive_partials/partials/child.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/recursive_partials/recursive_partials.mustache" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/recursive_partials/recursive_partials.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/recursive_partials/recursive_partials.txt" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/recursive_partials/recursive_partials.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/section_iterator_objects/SectionIteratorObjects.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/section_iterator_objects/SectionIteratorObjects.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/section_iterator_objects/section_iterator_objects.mustache" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/section_iterator_objects/section_iterator_objects.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/section_iterator_objects/section_iterator_objects.txt" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/section_iterator_objects/section_iterator_objects.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/section_magic_objects/SectionMagicObjects.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/section_magic_objects/SectionMagicObjects.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/section_magic_objects/section_magic_objects.mustache" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/section_magic_objects/section_magic_objects.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/section_magic_objects/section_magic_objects.txt" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/section_magic_objects/section_magic_objects.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/section_objects/SectionObjects.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/section_objects/SectionObjects.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/section_objects/section_objects.mustache" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/section_objects/section_objects.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/section_objects/section_objects.txt" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/section_objects/section_objects.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/sections/Sections.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/sections/Sections.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/sections/sections.mustache" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/sections/sections.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/sections/sections.txt" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/sections/sections.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/sections_nested/SectionsNested.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/sections_nested/SectionsNested.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/sections_nested/sections_nested.mustache" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/sections_nested/sections_nested.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/sections_nested/sections_nested.txt" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/sections_nested/sections_nested.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/simple/Simple.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/simple/Simple.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/simple/simple.mustache" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/simple/simple.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/simple/simple.txt" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/simple/simple.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/unescaped/Unescaped.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/unescaped/Unescaped.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/unescaped/unescaped.mustache" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/unescaped/unescaped.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/unescaped/unescaped.txt" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/unescaped/unescaped.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/utf8/UTF8.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/utf8/UTF8.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/utf8/utf8.mustache" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/utf8/utf8.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/utf8/utf8.txt" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/utf8/utf8.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/utf8_unescaped/UTF8Unescaped.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/utf8_unescaped/UTF8Unescaped.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/utf8_unescaped/utf8_unescaped.mustache" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/utf8_unescaped/utf8_unescaped.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/utf8_unescaped/utf8_unescaped.txt" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/utf8_unescaped/utf8_unescaped.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/whitespace/Whitespace.php" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/whitespace/Whitespace.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/whitespace/partials/alphabet.mustache" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/whitespace/partials/alphabet.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/whitespace/whitespace.mustache" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/whitespace/whitespace.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/whitespace/whitespace.txt" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/examples/whitespace/whitespace.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/templates/alpha.ms" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/templates/alpha.ms" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/templates/beta.ms" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/templates/beta.ms" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/templates/one.mustache" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/templates/one.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/templates/two.mustache" afterPath="$PROJECT_DIR$/vendor/mustache/mustache/test/fixtures/templates/two.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/nikic/fast-route/.gitignore" afterPath="$PROJECT_DIR$/vendor/nikic/fast-route/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/nikic/fast-route/.hhconfig" afterPath="$PROJECT_DIR$/vendor/nikic/fast-route/.hhconfig" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/nikic/fast-route/.travis.yml" afterPath="$PROJECT_DIR$/vendor/nikic/fast-route/.travis.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/nikic/fast-route/FastRoute.hhi" afterPath="$PROJECT_DIR$/vendor/nikic/fast-route/FastRoute.hhi" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/nikic/fast-route/LICENSE" afterPath="$PROJECT_DIR$/vendor/nikic/fast-route/LICENSE" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/nikic/fast-route/README.md" afterPath="$PROJECT_DIR$/vendor/nikic/fast-route/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/nikic/fast-route/composer.json" afterPath="$PROJECT_DIR$/vendor/nikic/fast-route/composer.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/nikic/fast-route/phpunit.xml" afterPath="$PROJECT_DIR$/vendor/nikic/fast-route/phpunit.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/nikic/fast-route/src/BadRouteException.php" afterPath="$PROJECT_DIR$/vendor/nikic/fast-route/src/BadRouteException.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/nikic/fast-route/src/DataGenerator.php" afterPath="$PROJECT_DIR$/vendor/nikic/fast-route/src/DataGenerator.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/nikic/fast-route/src/DataGenerator/CharCountBased.php" afterPath="$PROJECT_DIR$/vendor/nikic/fast-route/src/DataGenerator/CharCountBased.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/nikic/fast-route/src/DataGenerator/GroupCountBased.php" afterPath="$PROJECT_DIR$/vendor/nikic/fast-route/src/DataGenerator/GroupCountBased.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/nikic/fast-route/src/DataGenerator/GroupPosBased.php" afterPath="$PROJECT_DIR$/vendor/nikic/fast-route/src/DataGenerator/GroupPosBased.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/nikic/fast-route/src/DataGenerator/MarkBased.php" afterPath="$PROJECT_DIR$/vendor/nikic/fast-route/src/DataGenerator/MarkBased.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/nikic/fast-route/src/DataGenerator/RegexBasedAbstract.php" afterPath="$PROJECT_DIR$/vendor/nikic/fast-route/src/DataGenerator/RegexBasedAbstract.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/nikic/fast-route/src/Dispatcher.php" afterPath="$PROJECT_DIR$/vendor/nikic/fast-route/src/Dispatcher.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/nikic/fast-route/src/Dispatcher/CharCountBased.php" afterPath="$PROJECT_DIR$/vendor/nikic/fast-route/src/Dispatcher/CharCountBased.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/nikic/fast-route/src/Dispatcher/GroupCountBased.php" afterPath="$PROJECT_DIR$/vendor/nikic/fast-route/src/Dispatcher/GroupCountBased.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/nikic/fast-route/src/Dispatcher/GroupPosBased.php" afterPath="$PROJECT_DIR$/vendor/nikic/fast-route/src/Dispatcher/GroupPosBased.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/nikic/fast-route/src/Dispatcher/MarkBased.php" afterPath="$PROJECT_DIR$/vendor/nikic/fast-route/src/Dispatcher/MarkBased.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/nikic/fast-route/src/Dispatcher/RegexBasedAbstract.php" afterPath="$PROJECT_DIR$/vendor/nikic/fast-route/src/Dispatcher/RegexBasedAbstract.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/nikic/fast-route/src/Route.php" afterPath="$PROJECT_DIR$/vendor/nikic/fast-route/src/Route.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/nikic/fast-route/src/RouteCollector.php" afterPath="$PROJECT_DIR$/vendor/nikic/fast-route/src/RouteCollector.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/nikic/fast-route/src/RouteParser.php" afterPath="$PROJECT_DIR$/vendor/nikic/fast-route/src/RouteParser.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/nikic/fast-route/src/RouteParser/Std.php" afterPath="$PROJECT_DIR$/vendor/nikic/fast-route/src/RouteParser/Std.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/nikic/fast-route/src/bootstrap.php" afterPath="$PROJECT_DIR$/vendor/nikic/fast-route/src/bootstrap.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/nikic/fast-route/src/functions.php" afterPath="$PROJECT_DIR$/vendor/nikic/fast-route/src/functions.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/nikic/fast-route/test/Dispatcher/CharCountBasedTest.php" afterPath="$PROJECT_DIR$/vendor/nikic/fast-route/test/Dispatcher/CharCountBasedTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/nikic/fast-route/test/Dispatcher/DispatcherTest.php" afterPath="$PROJECT_DIR$/vendor/nikic/fast-route/test/Dispatcher/DispatcherTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/nikic/fast-route/test/Dispatcher/GroupCountBasedTest.php" afterPath="$PROJECT_DIR$/vendor/nikic/fast-route/test/Dispatcher/GroupCountBasedTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/nikic/fast-route/test/Dispatcher/GroupPosBasedTest.php" afterPath="$PROJECT_DIR$/vendor/nikic/fast-route/test/Dispatcher/GroupPosBasedTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/nikic/fast-route/test/Dispatcher/MarkBasedTest.php" afterPath="$PROJECT_DIR$/vendor/nikic/fast-route/test/Dispatcher/MarkBasedTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/nikic/fast-route/test/HackTypechecker/HackTypecheckerTest.php" afterPath="$PROJECT_DIR$/vendor/nikic/fast-route/test/HackTypechecker/HackTypecheckerTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/nikic/fast-route/test/HackTypechecker/fixtures/all_options.php" afterPath="$PROJECT_DIR$/vendor/nikic/fast-route/test/HackTypechecker/fixtures/all_options.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/nikic/fast-route/test/HackTypechecker/fixtures/empty_options.php" afterPath="$PROJECT_DIR$/vendor/nikic/fast-route/test/HackTypechecker/fixtures/empty_options.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/nikic/fast-route/test/HackTypechecker/fixtures/no_options.php" afterPath="$PROJECT_DIR$/vendor/nikic/fast-route/test/HackTypechecker/fixtures/no_options.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/nikic/fast-route/test/RouteCollectorTest.php" afterPath="$PROJECT_DIR$/vendor/nikic/fast-route/test/RouteCollectorTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/nikic/fast-route/test/RouteParser/StdTest.php" afterPath="$PROJECT_DIR$/vendor/nikic/fast-route/test/RouteParser/StdTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/nikic/fast-route/test/bootstrap.php" afterPath="$PROJECT_DIR$/vendor/nikic/fast-route/test/bootstrap.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/pimple/pimple/.gitignore" afterPath="$PROJECT_DIR$/vendor/pimple/pimple/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/pimple/pimple/.travis.yml" afterPath="$PROJECT_DIR$/vendor/pimple/pimple/.travis.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/pimple/pimple/CHANGELOG" afterPath="$PROJECT_DIR$/vendor/pimple/pimple/CHANGELOG" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/pimple/pimple/LICENSE" afterPath="$PROJECT_DIR$/vendor/pimple/pimple/LICENSE" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/pimple/pimple/README.rst" afterPath="$PROJECT_DIR$/vendor/pimple/pimple/README.rst" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/pimple/pimple/composer.json" afterPath="$PROJECT_DIR$/vendor/pimple/pimple/composer.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/.gitignore" afterPath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/README.md" afterPath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/config.m4" afterPath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/config.m4" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/config.w32" afterPath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/config.w32" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/php_pimple.h" afterPath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/php_pimple.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/pimple.c" afterPath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/pimple.c" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/pimple_compat.h" afterPath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/pimple_compat.h" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/tests/001.phpt" afterPath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/tests/001.phpt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/tests/002.phpt" afterPath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/tests/002.phpt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/tests/003.phpt" afterPath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/tests/003.phpt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/tests/004.phpt" afterPath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/tests/004.phpt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/tests/005.phpt" afterPath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/tests/005.phpt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/tests/006.phpt" afterPath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/tests/006.phpt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/tests/007.phpt" afterPath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/tests/007.phpt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/tests/008.phpt" afterPath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/tests/008.phpt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/tests/009.phpt" afterPath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/tests/009.phpt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/tests/010.phpt" afterPath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/tests/010.phpt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/tests/011.phpt" afterPath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/tests/011.phpt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/tests/012.phpt" afterPath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/tests/012.phpt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/tests/013.phpt" afterPath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/tests/013.phpt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/tests/014.phpt" afterPath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/tests/014.phpt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/tests/015.phpt" afterPath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/tests/015.phpt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/tests/016.phpt" afterPath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/tests/016.phpt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/tests/017.phpt" afterPath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/tests/017.phpt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/tests/017_1.phpt" afterPath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/tests/017_1.phpt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/tests/018.phpt" afterPath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/tests/018.phpt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/tests/019.phpt" afterPath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/tests/019.phpt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/tests/bench.phpb" afterPath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/tests/bench.phpb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/tests/bench_shared.phpb" afterPath="$PROJECT_DIR$/vendor/pimple/pimple/ext/pimple/tests/bench_shared.phpb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/pimple/pimple/phpunit.xml.dist" afterPath="$PROJECT_DIR$/vendor/pimple/pimple/phpunit.xml.dist" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/pimple/pimple/src/Pimple/Container.php" afterPath="$PROJECT_DIR$/vendor/pimple/pimple/src/Pimple/Container.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/pimple/pimple/src/Pimple/ServiceProviderInterface.php" afterPath="$PROJECT_DIR$/vendor/pimple/pimple/src/Pimple/ServiceProviderInterface.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/pimple/pimple/src/Pimple/Tests/Fixtures/Invokable.php" afterPath="$PROJECT_DIR$/vendor/pimple/pimple/src/Pimple/Tests/Fixtures/Invokable.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/pimple/pimple/src/Pimple/Tests/Fixtures/NonInvokable.php" afterPath="$PROJECT_DIR$/vendor/pimple/pimple/src/Pimple/Tests/Fixtures/NonInvokable.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/pimple/pimple/src/Pimple/Tests/Fixtures/PimpleServiceProvider.php" afterPath="$PROJECT_DIR$/vendor/pimple/pimple/src/Pimple/Tests/Fixtures/PimpleServiceProvider.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/pimple/pimple/src/Pimple/Tests/Fixtures/Service.php" afterPath="$PROJECT_DIR$/vendor/pimple/pimple/src/Pimple/Tests/Fixtures/Service.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/pimple/pimple/src/Pimple/Tests/PimpleServiceProviderInterfaceTest.php" afterPath="$PROJECT_DIR$/vendor/pimple/pimple/src/Pimple/Tests/PimpleServiceProviderInterfaceTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/pimple/pimple/src/Pimple/Tests/PimpleTest.php" afterPath="$PROJECT_DIR$/vendor/pimple/pimple/src/Pimple/Tests/PimpleTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/psr/container/.gitignore" afterPath="$PROJECT_DIR$/vendor/psr/container/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/psr/container/LICENSE" afterPath="$PROJECT_DIR$/vendor/psr/container/LICENSE" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/psr/container/README.md" afterPath="$PROJECT_DIR$/vendor/psr/container/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/psr/container/composer.json" afterPath="$PROJECT_DIR$/vendor/psr/container/composer.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/psr/container/src/ContainerExceptionInterface.php" afterPath="$PROJECT_DIR$/vendor/psr/container/src/ContainerExceptionInterface.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/psr/container/src/ContainerInterface.php" afterPath="$PROJECT_DIR$/vendor/psr/container/src/ContainerInterface.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/psr/container/src/NotFoundExceptionInterface.php" afterPath="$PROJECT_DIR$/vendor/psr/container/src/NotFoundExceptionInterface.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/psr/http-message/CHANGELOG.md" afterPath="$PROJECT_DIR$/vendor/psr/http-message/CHANGELOG.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/psr/http-message/LICENSE" afterPath="$PROJECT_DIR$/vendor/psr/http-message/LICENSE" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/psr/http-message/README.md" afterPath="$PROJECT_DIR$/vendor/psr/http-message/README.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/psr/http-message/composer.json" afterPath="$PROJECT_DIR$/vendor/psr/http-message/composer.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/psr/http-message/src/MessageInterface.php" afterPath="$PROJECT_DIR$/vendor/psr/http-message/src/MessageInterface.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/psr/http-message/src/RequestInterface.php" afterPath="$PROJECT_DIR$/vendor/psr/http-message/src/RequestInterface.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/psr/http-message/src/ResponseInterface.php" afterPath="$PROJECT_DIR$/vendor/psr/http-message/src/ResponseInterface.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/psr/http-message/src/ServerRequestInterface.php" afterPath="$PROJECT_DIR$/vendor/psr/http-message/src/ServerRequestInterface.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/psr/http-message/src/StreamInterface.php" afterPath="$PROJECT_DIR$/vendor/psr/http-message/src/StreamInterface.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/psr/http-message/src/UploadedFileInterface.php" afterPath="$PROJECT_DIR$/vendor/psr/http-message/src/UploadedFileInterface.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/psr/http-message/src/UriInterface.php" afterPath="$PROJECT_DIR$/vendor/psr/http-message/src/UriInterface.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/LICENSE.md" afterPath="$PROJECT_DIR$/vendor/slim/slim/LICENSE.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/App.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/App.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/CallableResolver.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/CallableResolver.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/CallableResolverAwareTrait.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/CallableResolverAwareTrait.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/Collection.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Collection.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/Container.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Container.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/DefaultServicesProvider.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/DefaultServicesProvider.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/DeferredCallable.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/DeferredCallable.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/Exception/ContainerException.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Exception/ContainerException.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/Exception/ContainerValueNotFoundException.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Exception/ContainerValueNotFoundException.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/Exception/MethodNotAllowedException.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Exception/MethodNotAllowedException.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/Exception/NotFoundException.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Exception/NotFoundException.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/Exception/SlimException.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Exception/SlimException.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/Handlers/AbstractError.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Handlers/AbstractError.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/Handlers/AbstractHandler.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Handlers/AbstractHandler.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/Handlers/Error.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Handlers/Error.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/Handlers/NotAllowed.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Handlers/NotAllowed.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/Handlers/NotFound.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Handlers/NotFound.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/Handlers/PhpError.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Handlers/PhpError.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponseArgs.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponseArgs.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/Http/Body.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Http/Body.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/Http/Cookies.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Http/Cookies.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/Http/Environment.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Http/Environment.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/Http/Headers.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Http/Headers.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/Http/Message.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Http/Message.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/Http/Request.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Http/Request.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/Http/RequestBody.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Http/RequestBody.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/Http/Response.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Http/Response.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/Http/Stream.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Http/Stream.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/Http/UploadedFile.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Http/UploadedFile.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/Http/Uri.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Http/Uri.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/Interfaces/CallableResolverInterface.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Interfaces/CallableResolverInterface.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/Interfaces/CollectionInterface.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Interfaces/CollectionInterface.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/Interfaces/Http/CookiesInterface.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Interfaces/Http/CookiesInterface.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/Interfaces/Http/EnvironmentInterface.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Interfaces/Http/EnvironmentInterface.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/Interfaces/Http/HeadersInterface.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Interfaces/Http/HeadersInterface.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/Interfaces/InvocationStrategyInterface.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Interfaces/InvocationStrategyInterface.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/Interfaces/RouteGroupInterface.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Interfaces/RouteGroupInterface.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/Interfaces/RouteInterface.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Interfaces/RouteInterface.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/Interfaces/RouterInterface.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Interfaces/RouterInterface.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/MiddlewareAwareTrait.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/MiddlewareAwareTrait.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/Routable.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Routable.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/Route.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Route.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/RouteGroup.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/RouteGroup.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/Slim/Router.php" afterPath="$PROJECT_DIR$/vendor/slim/slim/Slim/Router.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/vendor/slim/slim/composer.json" afterPath="$PROJECT_DIR$/vendor/slim/slim/composer.json" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,89 +715,39 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="shelf.mustache" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/shelf.mustache">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="5" column="33" lean-forward="false" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
-              <folding>
-                <marker date="1496044755332" expanded="true" signature="25043:25061" ph="..." />
-                <marker date="1496044755332" expanded="true" signature="25575:25593" ph="..." />
-                <marker date="1496044755332" expanded="true" signature="25575:25607" ph="..." />
-                <marker date="1496044755332" expanded="true" signature="25908:25941" ph="..." />
-                <marker date="1496044755332" expanded="true" signature="36161:36175" ph="..." />
-                <marker date="1496044755332" expanded="true" signature="36241:36287" ph="..." />
-                <marker date="1496044755332" expanded="true" signature="36364:36406" ph="..." />
-                <marker date="1496044755332" expanded="true" signature="36665:36674" ph="..." />
-                <marker date="1496044755332" expanded="true" signature="36936:36972" ph="..." />
-                <marker date="1496044755332" expanded="true" signature="37611:37629" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="22" column="5" lean-forward="false" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+            <state relative-caret-position="518">
+              <caret line="270" column="0" lean-forward="false" selection-start-line="270" selection-start-column="0" selection-end-line="270" selection-end-column="0" />
               <folding>
-                <marker date="1496049794153" expanded="true" signature="1552:1584" ph="SELECT * FRO... website_parameters" />
-                <marker date="1496049794153" expanded="true" signature="3073:3182" ph="select id,na... authors" />
-                <marker date="1496049794153" expanded="true" signature="8957:8984" ph="SELECT * FRO... TEMP_MOSTREAD" />
-                <marker date="1496049794153" expanded="true" signature="9284:9309" ph="SELECT * FRO... temp_author" />
-                <marker date="1496049794153" expanded="true" signature="10064:10119" ph="SELECT * FRO... FN_HOME_PAGE_PLANS" />
-                <marker date="1496049794153" expanded="true" signature="10984:11023" ph="SELECT cityi... city" />
-                <marker date="1496049794153" expanded="true" signature="11208:11250" ph="SELECT state... state" />
-                <marker date="1496049794153" expanded="true" signature="27031:27272" ph="insert into memp.logs... " />
-                <marker date="1496049794153" expanded="true" signature="28686:28746" ph="update websi... " />
-                <marker date="1496049794153" expanded="true" signature="30404:30472" ph="update websi... " />
-                <marker date="1496049794153" expanded="true" signature="31518:31585" ph="select * fro... PUSH_NOTIFICATION_TABLE" />
-                <marker date="1496049794153" expanded="true" signature="31855:31952" ph="insert into PUSH_NOTIFICATION_TABLE... " />
-                <marker date="1496049794153" expanded="true" signature="32160:32255" ph="update PUSH_... " />
-                <marker date="1496049794153" expanded="true" signature="37618:37656" ph="SELECT * FRO... city" />
-                <marker date="1496049794153" expanded="true" signature="37618:37673" ph="SELECT * FRO... FN_HOME_PAGE_PLANS" />
-                <marker date="1496049794153" expanded="true" signature="38092:38150" ph="SELECT * FRO... FN_HOME_PAGE_PLANS" />
-                <marker date="1496049794153" expanded="true" signature="38093:38147" ph="update memp.... " />
-                <marker date="1496049794153" expanded="true" signature="38423:38480" ph="update memp.... " />
-                <marker date="1496049794153" expanded="true" signature="39021:39163" ph="insert into FN_HOME_PAGE_PLANS" />
-                <marker date="1496049794153" expanded="true" signature="39021:39240" ph="insert into FN_HOME_PAGE_PLANS" />
-                <marker date="1496049794153" expanded="true" signature="39021:39241" ph="insert into FN_HOME_PAGE_PLANS" />
-                <marker date="1496049794153" expanded="true" signature="39621:39730" ph="insert into ADMIN_BLOG_PARAMETERS" />
-                <marker date="1496049794153" expanded="true" signature="39621:39738" ph="insert into ADMIN_BLOG_PARAMETERS" />
-                <marker date="1496049794153" expanded="true" signature="39993:40051" ph="SELECT * FRO... FN_HOME_PAGE_PLANS" />
-                <marker date="1496049794153" expanded="true" signature="40444:40502" ph="SELECT * FRO... ADMIN_BLOG_PARAMETERS" />
+                <marker date="1496753271067" expanded="true" signature="1552:1584" ph="SELECT * FRO... website_parameters" />
+                <marker date="1496753271067" expanded="true" signature="3073:3182" ph="select id,na... authors" />
+                <marker date="1496753271067" expanded="true" signature="6197:6252" ph="SELECT * FRO... FN_HOME_PAGE_PLANS" />
+                <marker date="1496753271067" expanded="true" signature="9264:9291" ph="SELECT * FRO... TEMP_MOSTREAD" />
+                <marker date="1496753271067" expanded="true" signature="9591:9616" ph="SELECT * FRO... temp_author" />
+                <marker date="1496753271067" expanded="true" signature="10371:10426" ph="SELECT * FRO... FN_HOME_PAGE_PLANS" />
+                <marker date="1496753271067" expanded="true" signature="11291:11330" ph="SELECT cityi... city" />
+                <marker date="1496753271067" expanded="true" signature="11515:11557" ph="SELECT state... state" />
+                <marker date="1496753271067" expanded="true" signature="27338:27579" ph="insert into memp.logs... " />
+                <marker date="1496753271067" expanded="true" signature="29026:29086" ph="update websi... " />
+                <marker date="1496753271067" expanded="true" signature="30744:30812" ph="update websi... " />
+                <marker date="1496753271067" expanded="true" signature="31858:31925" ph="select * fro... PUSH_NOTIFICATION_TABLE" />
+                <marker date="1496753271067" expanded="true" signature="32195:32292" ph="insert into PUSH_NOTIFICATION_TABLE... " />
+                <marker date="1496753271067" expanded="true" signature="32500:32595" ph="update PUSH_... " />
+                <marker date="1496753271067" expanded="true" signature="37958:37996" ph="SELECT * FRO... city" />
+                <marker date="1496753271067" expanded="true" signature="37958:38013" ph="SELECT * FRO... FN_HOME_PAGE_PLANS" />
+                <marker date="1496753271067" expanded="true" signature="38432:38490" ph="SELECT * FRO... FN_HOME_PAGE_PLANS" />
+                <marker date="1496753271067" expanded="true" signature="38433:38487" ph="update memp.... " />
+                <marker date="1496753271067" expanded="true" signature="38763:38820" ph="update memp.... " />
+                <marker date="1496753271067" expanded="true" signature="39361:39503" ph="insert into FN_HOME_PAGE_PLANS" />
+                <marker date="1496753271067" expanded="true" signature="39361:39580" ph="insert into FN_HOME_PAGE_PLANS" />
+                <marker date="1496753271067" expanded="true" signature="39361:39581" ph="insert into FN_HOME_PAGE_PLANS" />
+                <marker date="1496753271067" expanded="true" signature="39961:40070" ph="insert into ADMIN_BLOG_PARAMETERS" />
+                <marker date="1496753271067" expanded="true" signature="39961:40078" ph="insert into ADMIN_BLOG_PARAMETERS" />
+                <marker date="1496753271067" expanded="true" signature="40333:40391" ph="SELECT * FRO... FN_HOME_PAGE_PLANS" />
+                <marker date="1496753271067" expanded="true" signature="40784:40842" ph="SELECT * FRO... ADMIN_BLOG_PARAMETERS" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="home.mustache" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/home.mustache">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="960">
-              <caret line="48" column="13" lean-forward="false" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="footer.mustache" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/partials/footer.mustache">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20">
-              <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="header_menu.mustache" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/partials/header_menu.mustache">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="8" column="45" lean-forward="false" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="45" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -116,36 +756,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>renew</find>
-      <find>rene</find>
-      <find>hr</find>
-      <find>assets</find>
-      <find>font</find>
-      <find>update</find>
-      <find>spinner</find>
-      <find>pull-left</find>
-      <find>jb</find>
-      <find>button</find>
-      <find>signup/</find>
-      <find>getPla</find>
-      <find>app</find>
-      <find>signup</find>
-      <find>getPlanYears</find>
-      <find>getPlan</find>
-      <find>chnge</find>
-      <find>chng</find>
-      <find>chn</find>
-      <find>ch</find>
-      <find>cha</find>
-      <find>change_</find>
-      <find>change_pl</find>
-      <find>getsub</find>
-      <find>btn_carousel_right</find>
-      <find>getPl</find>
-      <find>prof</find>
-      <find>getSubscription</find>
-      <find>profiler</find>
       <find>login.m</find>
+      <find>btn_carousel_left</find>
+      <find>wrong Cre</find>
+      <find>insertLog</find>
+      <find>saveSession</find>
+      <find>profile</find>
+      <find>getSubscription</find>
+      <find>box</find>
+      <find>signup.m</find>
+      <find>bg_title</find>
+      <find>module_feature_posts</find>
+      <find>tab</find>
+      <find>console.log</find>
+      <find>console.log(new_data)</find>
+      <find>ord</find>
+      <find>author</find>
+      <find>getAuthor</find>
+      <find>sear</find>
+      <find>search</find>
+      <find>searchDiv</find>
+      <find>rs-fullscreen</find>
+      <find>signup</find>
+      <find>plan_dataJ</find>
+      <find>getP</find>
+      <find>datep</find>
+      <find>datepi</find>
+      <find>datepic</find>
+      <find>datepick</find>
+      <find>datepicker</find>
+      <find>box_</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -170,43 +810,45 @@
         <option value="$PROJECT_DIR$/templates/blah.php" />
         <option value="$PROJECT_DIR$/public/PaytmKit/lib/config_paytm.php" />
         <option value="$PROJECT_DIR$/templates/blah.mustache" />
-        <option value="$PROJECT_DIR$/public/PaytmKit/pgRedirect.php" />
         <option value="$PROJECT_DIR$/public/assets/css/bootstrap.css" />
         <option value="$PROJECT_DIR$/templates/partials/header_logo.mustache" />
         <option value="$PROJECT_DIR$/templates/partials/mostRead.mustache" />
         <option value="$PROJECT_DIR$/templates/partials/authors.mustache" />
         <option value="$PROJECT_DIR$/public/assets/css/theme_settings.css" />
         <option value="$PROJECT_DIR$/includes/functions.php" />
-        <option value="$PROJECT_DIR$/templates/partials/slider.mustache" />
-        <option value="$PROJECT_DIR$/public/assets/css/theme.css" />
         <option value="$PROJECT_DIR$/templates/franchise.mustache" />
         <option value="$PROJECT_DIR$/templates/faq.mustache" />
         <option value="$PROJECT_DIR$/templates/contactUs.mustache" />
         <option value="$PROJECT_DIR$/templates/author_details.mustache" />
         <option value="$PROJECT_DIR$/templates/partials/header_search.mustache" />
         <option value="$PROJECT_DIR$/templates/book_details.mustache" />
-        <option value="$PROJECT_DIR$/templates/search.mustache" />
         <option value="$PROJECT_DIR$/templates/partials/left_menu.mustache" />
         <option value="$PROJECT_DIR$/public/PaytmKit/pgResponse.php" />
         <option value="$PROJECT_DIR$/templates/partials/newArrivals.mustache" />
         <option value="$PROJECT_DIR$/templates/partials/preFooter.mustache" />
         <option value="$PROJECT_DIR$/templates/renew.mustache" />
         <option value="$PROJECT_DIR$/public/assets/js/demo.js" />
-        <option value="$PROJECT_DIR$/templates/partials/header.mustache" />
-        <option value="$PROJECT_DIR$/templates/partials/membership_plan.mustache" />
-        <option value="$PROJECT_DIR$/templates/signup.mustache" />
         <option value="$PROJECT_DIR$/templates/change_plan.mustache" />
         <option value="$PROJECT_DIR$/templates/view.mustache" />
         <option value="$PROJECT_DIR$/templates/adminCards.mustache" />
         <option value="$PROJECT_DIR$/templates/adminBlog.mustache" />
-        <option value="$PROJECT_DIR$/templates/partials/blog.mustache" />
-        <option value="$PROJECT_DIR$/public/assets/js/home_page_Api.js" />
         <option value="$PROJECT_DIR$/templates/partials/sitemap.mustache" />
-        <option value="$PROJECT_DIR$/templates/shelf.mustache" />
-        <option value="$PROJECT_DIR$/public/index.php" />
         <option value="$PROJECT_DIR$/templates/home.mustache" />
         <option value="$PROJECT_DIR$/templates/partials/header_menu.mustache" />
+        <option value="$PROJECT_DIR$/public/assets/css/tile.css" />
+        <option value="$PROJECT_DIR$/templates/partials/blog.mustache" />
         <option value="$PROJECT_DIR$/templates/partials/footer.mustache" />
+        <option value="$PROJECT_DIR$/templates/partials/slider.mustache" />
+        <option value="$PROJECT_DIR$/templates/partials/header.mustache" />
+        <option value="$PROJECT_DIR$/templates/shelf.mustache" />
+        <option value="$PROJECT_DIR$/public/PaytmKit/pgRedirect.php" />
+        <option value="$PROJECT_DIR$/templates/partials/membership_plan.mustache" />
+        <option value="$PROJECT_DIR$/public/assets/css/price_table.css" />
+        <option value="$PROJECT_DIR$/templates/search.mustache" />
+        <option value="$PROJECT_DIR$/public/assets/css/theme.css" />
+        <option value="$PROJECT_DIR$/public/index.php" />
+        <option value="$PROJECT_DIR$/public/assets/js/home_page_Api.js" />
+        <option value="$PROJECT_DIR$/templates/signup.mustache" />
       </list>
     </option>
   </component>
@@ -237,8 +879,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -325,6 +967,68 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SlimMIS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SlimMIS" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SlimMIS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SlimMIS" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SlimMIS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SlimMIS" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="includes" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -339,6 +1043,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../projectMuses" />
     <property name="js.eslint.eslintPackage" value="" />
     <property name="jsx.switch.disabled" value="true" />
+    <property name="settings.editor.selected.configurable" value="AppEnginePhpModulesConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -362,6 +1067,9 @@
     </option>
   </component>
   <component name="RunManager">
+    <configuration default="true" type="AppEnginePhpConfigurationType" factoryName="App Engine for PHP">
+      <method />
+    </configuration>
     <configuration default="true" type="CodeceptionConfigurationType" factoryName="Codeception">
       <PhpTestRunnerSettings />
       <method />
@@ -508,17 +1216,26 @@
       <workItem from="1495776736966" duration="24470000" />
       <workItem from="1495865437230" duration="17020000" />
       <workItem from="1496035232693" duration="12936000" />
-      <workItem from="1496122060725" duration="21000" />
+      <workItem from="1496122060725" duration="352000" />
+      <workItem from="1496127793734" duration="13938000" />
+      <workItem from="1496293570325" duration="1483000" />
+      <workItem from="1496300367848" duration="9155000" />
+      <workItem from="1496380613843" duration="706000" />
+      <workItem from="1496384688059" duration="17665000" />
+      <workItem from="1496662960769" duration="4698000" />
+      <workItem from="1496725600004" duration="16083000" />
+      <workItem from="1496811950507" duration="430000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="436103000" />
+    <option name="totallyTimeSpent" value="500592000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1366" height="689" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21449487" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.215959" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32736155" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -549,7 +1266,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/public/index.php</url>
-          <line>576</line>
+          <line>591</line>
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/public/assets/js/home_page_Api.js</url>
@@ -562,60 +1279,10 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/PaytmKit/lib/config_paytm.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="16" column="17" lean-forward="false" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/partials/subscription.mustache">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="438">
-          <caret line="66" column="4" lean-forward="true" selection-start-line="66" selection-start-column="4" selection-end-line="66" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/blah.mustache">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="16" column="52" lean-forward="true" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/PaytmKit/pgRedirect.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="26" column="36" lean-forward="false" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/color_panel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/partials/authors.mustache">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="62" lean-forward="false" selection-start-line="2" selection-start-column="62" selection-end-line="2" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/css/theme_settings.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="160" column="24" lean-forward="false" selection-start-line="160" selection-start-column="24" selection-end-line="160" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/includes/functions.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="500">
           <caret line="25" column="16" lean-forward="false" selection-start-line="18" selection-start-column="10" selection-end-line="25" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -647,20 +1314,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/css/theme.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="6496" column="0" lean-forward="true" selection-start-line="6496" selection-start-column="0" selection-end-line="6496" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/partials/slider.mustache">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-493">
-          <caret line="128" column="46" lean-forward="false" selection-start-line="128" selection-start-column="46" selection-end-line="128" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/faq.mustache">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="358">
@@ -682,13 +1335,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/author_details.mustache">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="62" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/partials/header_search.mustache">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -703,18 +1349,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/search.mustache">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="29" column="41" lean-forward="false" selection-start-line="29" selection-start-column="41" selection-end-line="29" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/PaytmKit/pgResponse.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="327">
           <caret line="37" column="22" lean-forward="true" selection-start-line="37" selection-start-column="22" selection-end-line="37" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -788,27 +1426,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/css/tiles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/partials/header.mustache">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="151">
-          <caret line="26" column="51" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/partials/membership_plan.mustache">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="18" lean-forward="true" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/css/tiles.css" />
     <entry file="file://$PROJECT_DIR$/templates/change_plan.mustache">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1481">
@@ -816,24 +1434,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/signup.mustache">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="738" column="12" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="738" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/view.mustache">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="186">
           <caret line="44" column="8" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="491" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/adminBlog.mustache">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="129" column="36" lean-forward="true" selection-start-line="129" selection-start-column="36" selection-end-line="129" selection-end-column="36" />
         </state>
       </provider>
     </entry>
@@ -848,32 +1452,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1000">
           <caret line="50" column="30" lean-forward="false" selection-start-line="50" selection-start-column="30" selection-end-line="50" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/home_page_Api.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="266" column="7" lean-forward="true" selection-start-line="266" selection-start-column="7" selection-end-line="266" selection-end-column="7" />
-          <folding>
-            <element signature="e#7126#9137#0" expanded="false" />
-            <marker date="1495884955368" expanded="true" signature="487:497" ph="..." />
-            <marker date="1495884955368" expanded="true" signature="2372:2382" ph="..." />
-            <marker date="1495884955368" expanded="true" signature="3993:4003" ph="..." />
-            <marker date="1495884955368" expanded="true" signature="7617:7629" ph="..." />
-            <marker date="1495884955368" expanded="true" signature="7859:7895" ph="..." />
-            <marker date="1495884955368" expanded="true" signature="7959:8025" ph="..." />
-            <marker date="1495884955368" expanded="true" signature="8735:8753" ph="..." />
-            <marker date="1495884955368" expanded="true" signature="9633:9658" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/partials/blog.mustache">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="32" column="36" lean-forward="false" selection-start-line="19" selection-start-column="23" selection-end-line="32" selection-end-column="36" />
         </state>
       </provider>
     </entry>
@@ -892,63 +1470,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/shelf.mustache">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="33" lean-forward="false" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
-          <folding>
-            <marker date="1496044755332" expanded="true" signature="25043:25061" ph="..." />
-            <marker date="1496044755332" expanded="true" signature="25575:25593" ph="..." />
-            <marker date="1496044755332" expanded="true" signature="25575:25607" ph="..." />
-            <marker date="1496044755332" expanded="true" signature="25908:25941" ph="..." />
-            <marker date="1496044755332" expanded="true" signature="36161:36175" ph="..." />
-            <marker date="1496044755332" expanded="true" signature="36241:36287" ph="..." />
-            <marker date="1496044755332" expanded="true" signature="36364:36406" ph="..." />
-            <marker date="1496044755332" expanded="true" signature="36665:36674" ph="..." />
-            <marker date="1496044755332" expanded="true" signature="36936:36972" ph="..." />
-            <marker date="1496044755332" expanded="true" signature="37611:37629" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="22" column="5" lean-forward="false" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
-          <folding>
-            <marker date="1496049794153" expanded="true" signature="1552:1584" ph="SELECT * FRO... website_parameters" />
-            <marker date="1496049794153" expanded="true" signature="3073:3182" ph="select id,na... authors" />
-            <marker date="1496049794153" expanded="true" signature="8957:8984" ph="SELECT * FRO... TEMP_MOSTREAD" />
-            <marker date="1496049794153" expanded="true" signature="9284:9309" ph="SELECT * FRO... temp_author" />
-            <marker date="1496049794153" expanded="true" signature="10064:10119" ph="SELECT * FRO... FN_HOME_PAGE_PLANS" />
-            <marker date="1496049794153" expanded="true" signature="10984:11023" ph="SELECT cityi... city" />
-            <marker date="1496049794153" expanded="true" signature="11208:11250" ph="SELECT state... state" />
-            <marker date="1496049794153" expanded="true" signature="27031:27272" ph="insert into memp.logs... " />
-            <marker date="1496049794153" expanded="true" signature="28686:28746" ph="update websi... " />
-            <marker date="1496049794153" expanded="true" signature="30404:30472" ph="update websi... " />
-            <marker date="1496049794153" expanded="true" signature="31518:31585" ph="select * fro... PUSH_NOTIFICATION_TABLE" />
-            <marker date="1496049794153" expanded="true" signature="31855:31952" ph="insert into PUSH_NOTIFICATION_TABLE... " />
-            <marker date="1496049794153" expanded="true" signature="32160:32255" ph="update PUSH_... " />
-            <marker date="1496049794153" expanded="true" signature="37618:37656" ph="SELECT * FRO... city" />
-            <marker date="1496049794153" expanded="true" signature="37618:37673" ph="SELECT * FRO... FN_HOME_PAGE_PLANS" />
-            <marker date="1496049794153" expanded="true" signature="38092:38150" ph="SELECT * FRO... FN_HOME_PAGE_PLANS" />
-            <marker date="1496049794153" expanded="true" signature="38093:38147" ph="update memp.... " />
-            <marker date="1496049794153" expanded="true" signature="38423:38480" ph="update memp.... " />
-            <marker date="1496049794153" expanded="true" signature="39021:39163" ph="insert into FN_HOME_PAGE_PLANS" />
-            <marker date="1496049794153" expanded="true" signature="39021:39240" ph="insert into FN_HOME_PAGE_PLANS" />
-            <marker date="1496049794153" expanded="true" signature="39021:39241" ph="insert into FN_HOME_PAGE_PLANS" />
-            <marker date="1496049794153" expanded="true" signature="39621:39730" ph="insert into ADMIN_BLOG_PARAMETERS" />
-            <marker date="1496049794153" expanded="true" signature="39621:39738" ph="insert into ADMIN_BLOG_PARAMETERS" />
-            <marker date="1496049794153" expanded="true" signature="39993:40051" ph="SELECT * FRO... FN_HOME_PAGE_PLANS" />
-            <marker date="1496049794153" expanded="true" signature="40444:40502" ph="SELECT * FRO... ADMIN_BLOG_PARAMETERS" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/css/tile.css" />
     <entry file="file://$PROJECT_DIR$/templates/home.mustache">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="960">
-          <caret line="48" column="13" lean-forward="false" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
+        <state relative-caret-position="160">
+          <caret line="8" column="38" lean-forward="true" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/partials/blog.mustache">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="4" column="59" lean-forward="true" selection-start-line="4" selection-start-column="59" selection-end-line="4" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/phpstorm.jar!/resources/html5-schema/html5/block.rnc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="12" column="16" lean-forward="false" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
           <folding />
         </state>
       </provider>
@@ -957,15 +1497,170 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="8" column="45" lean-forward="false" selection-start-line="8" selection-start-column="34" selection-end-line="8" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/PaytmKit/pgRedirect.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="940">
+          <caret line="47" column="25" lean-forward="false" selection-start-line="47" selection-start-column="25" selection-end-line="47" selection-end-column="25" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_2.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-703">
+          <caret line="215" column="9" lean-forward="false" selection-start-line="215" selection-start-column="9" selection-end-line="215" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/PaytmKit/lib/config_paytm.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="326">
+          <caret line="17" column="38" lean-forward="true" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/PaytmKit/lib/encdec_paytm.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/css/price_table.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="129" column="11" lean-forward="true" selection-start-line="129" selection-start-column="11" selection-end-line="129" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/adminBlog.mustache">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="129" column="36" lean-forward="true" selection-start-line="129" selection-start-column="36" selection-end-line="129" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/author_details.mustache">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1080">
+          <caret line="54" column="0" lean-forward="false" selection-start-line="54" selection-start-column="0" selection-end-line="62" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/partials/membership_plan.mustache">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="9" column="33" lean-forward="false" selection-start-line="9" selection-start-column="33" selection-end-line="9" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/shelf.mustache">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="960">
+          <caret line="51" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/search.mustache">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1680">
+          <caret line="84" column="33" lean-forward="false" selection-start-line="84" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+          <folding>
+            <marker date="1496748550346" expanded="true" signature="3629:3643" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/css/theme.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="335">
+          <caret line="5682" column="17" lean-forward="true" selection-start-line="5682" selection-start-column="17" selection-end-line="5682" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/partials/slider.mustache">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="15" column="50" lean-forward="false" selection-start-line="15" selection-start-column="50" selection-end-line="15" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/home_page_Api.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4620">
+          <caret line="231" column="47" lean-forward="false" selection-start-line="231" selection-start-column="47" selection-end-line="231" selection-end-column="48" />
+          <folding>
+            <marker date="1496753748088" expanded="true" signature="487:497" ph="..." />
+            <marker date="1496753748088" expanded="true" signature="2419:2429" ph="..." />
+            <marker date="1496753748088" expanded="true" signature="4092:4102" ph="..." />
+            <marker date="1496753748088" expanded="true" signature="10830:10855" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/partials/footer.mustache">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="20">
-          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+        <state relative-caret-position="120">
+          <caret line="6" column="18" lean-forward="true" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/signup.mustache">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10640">
+          <caret line="532" column="32" lean-forward="false" selection-start-line="532" selection-start-column="32" selection-end-line="532" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/partials/header.mustache">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="34" column="63" lean-forward="true" selection-start-line="34" selection-start-column="63" selection-end-line="34" selection-end-column="63" />
+          <folding>
+            <marker date="1496743085460" expanded="true" signature="2356:2569" ph="..." />
+            <marker date="1496743085460" expanded="true" signature="2503:2556" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="518">
+          <caret line="270" column="0" lean-forward="false" selection-start-line="270" selection-start-column="0" selection-end-line="270" selection-end-column="0" />
+          <folding>
+            <marker date="1496753271067" expanded="true" signature="1552:1584" ph="SELECT * FRO... website_parameters" />
+            <marker date="1496753271067" expanded="true" signature="3073:3182" ph="select id,na... authors" />
+            <marker date="1496753271067" expanded="true" signature="6197:6252" ph="SELECT * FRO... FN_HOME_PAGE_PLANS" />
+            <marker date="1496753271067" expanded="true" signature="9264:9291" ph="SELECT * FRO... TEMP_MOSTREAD" />
+            <marker date="1496753271067" expanded="true" signature="9591:9616" ph="SELECT * FRO... temp_author" />
+            <marker date="1496753271067" expanded="true" signature="10371:10426" ph="SELECT * FRO... FN_HOME_PAGE_PLANS" />
+            <marker date="1496753271067" expanded="true" signature="11291:11330" ph="SELECT cityi... city" />
+            <marker date="1496753271067" expanded="true" signature="11515:11557" ph="SELECT state... state" />
+            <marker date="1496753271067" expanded="true" signature="27338:27579" ph="insert into memp.logs... " />
+            <marker date="1496753271067" expanded="true" signature="29026:29086" ph="update websi... " />
+            <marker date="1496753271067" expanded="true" signature="30744:30812" ph="update websi... " />
+            <marker date="1496753271067" expanded="true" signature="31858:31925" ph="select * fro... PUSH_NOTIFICATION_TABLE" />
+            <marker date="1496753271067" expanded="true" signature="32195:32292" ph="insert into PUSH_NOTIFICATION_TABLE... " />
+            <marker date="1496753271067" expanded="true" signature="32500:32595" ph="update PUSH_... " />
+            <marker date="1496753271067" expanded="true" signature="37958:37996" ph="SELECT * FRO... city" />
+            <marker date="1496753271067" expanded="true" signature="37958:38013" ph="SELECT * FRO... FN_HOME_PAGE_PLANS" />
+            <marker date="1496753271067" expanded="true" signature="38432:38490" ph="SELECT * FRO... FN_HOME_PAGE_PLANS" />
+            <marker date="1496753271067" expanded="true" signature="38433:38487" ph="update memp.... " />
+            <marker date="1496753271067" expanded="true" signature="38763:38820" ph="update memp.... " />
+            <marker date="1496753271067" expanded="true" signature="39361:39503" ph="insert into FN_HOME_PAGE_PLANS" />
+            <marker date="1496753271067" expanded="true" signature="39361:39580" ph="insert into FN_HOME_PAGE_PLANS" />
+            <marker date="1496753271067" expanded="true" signature="39361:39581" ph="insert into FN_HOME_PAGE_PLANS" />
+            <marker date="1496753271067" expanded="true" signature="39961:40070" ph="insert into ADMIN_BLOG_PARAMETERS" />
+            <marker date="1496753271067" expanded="true" signature="39961:40078" ph="insert into ADMIN_BLOG_PARAMETERS" />
+            <marker date="1496753271067" expanded="true" signature="40333:40391" ph="SELECT * FRO... FN_HOME_PAGE_PLANS" />
+            <marker date="1496753271067" expanded="true" signature="40784:40842" ph="SELECT * FRO... ADMIN_BLOG_PARAMETERS" />
+          </folding>
         </state>
       </provider>
     </entry>

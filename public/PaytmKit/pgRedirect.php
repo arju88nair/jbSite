@@ -20,6 +20,7 @@ $INDUSTRY_TYPE_ID = "Retail";
 $CHANNEL_ID = "WEB";
 //$TXN_AMOUNT = 2;
 $TXN_AMOUNT = (float) $_SESSION['amount'];
+//echo $TXN_AMOUNT;die;
 
 
 

@@ -9,7 +9,7 @@ Inspired by the dribble shot http://dribbble.com/shots/1285240-Freebie-Flat-Pric
 [class*="fontawesome-"]:before {
   font-family: 'FontAwesome', sans-serif;
 }
-* {
+*{
     margin: 0;
     padding: 0;
     border: 0;
@@ -36,12 +36,12 @@ Inspired by the dribble shot http://dribbble.com/shots/1285240-Freebie-Flat-Pric
     zoom: 1;  /*For IE 6/7 (trigger hasLayout) */
 }
 
-body {
-    background: #F2F2F2;
-    font-family: 'Droid Sans', sans-serif;
-    line-height: 1;
-    font-size: 16px;    
-}
+/*body {*/
+    /*background: #F2F2F2;*/
+    /*font-family: 'Droid Sans', sans-serif;*/
+    /*line-height: 1;*/
+    /*font-size: 16px;    */
+/*}*/
 .wrapper {
     
 }
@@ -51,6 +51,7 @@ body {
     text-align: center;
     padding: 10px;
     padding-right: 0;
+
 }
 .pricing-table .heading{
     color: #9C9E9F;
@@ -67,36 +68,53 @@ body {
     border-radius: 5px;    
 /*    border: 1px solid red;*/
 }
+
+.pricing-table .block h4{
+    margin-bottom: 0px;
+    
+}
 /*Shared properties*/
-.title,.pt-footer{
+.title{
+    color: #FEFEFE;
+    text-transform: capitalize;
+    line-height: 1;
+    position: relative;
+}
+
+.pt-footer{
     color: #FEFEFE;
     text-transform: capitalize;
     line-height: 2.5;
     position: relative;
 }
-.content{
+
+
+.content_pt{
     position: relative;
     color: #FEFEFE;
     padding: 20px 0 10px 0;
 }
+.content_pt p{
+    text-align: center;
+}
 /*arrow creation*/
-.content:after, .content:before,.pt-footer:before,.pt-footer:after {
-	top: 100%;
-	left: 50%;
-	border: solid transparent;
-	content: " ";
-	height: 0;
-	width: 0;
-	position: absolute;
-	pointer-events: none;
+.content_pt:after, .content_pt:before,.pt-footer:before,.pt-footer:after {
+    top: 100%;
+    left: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
 }
 .pt-footer:after,.pt-footer:before{
     top:0;
 }
-.content:after,.pt-footer:after {
-	border-color: rgba(136, 183, 213, 0);	
-	border-width: 5px;
-	margin-left: -5px;
+.content_pt:after,.pt-footer:after {
+    border-color: rgba(136, 183, 213, 0);   
+    border-width: 5px;
+    margin-left: -5px;
 }
 /*/arrow creation*/
 .price{
@@ -105,8 +123,8 @@ body {
     margin-bottom: 0.625rem;
 }
 .price span{    
-    font-size: 6rem;
-    letter-spacing: 8px;
+    font-size: 5rem;
+    letter-spacing: 2px;
     font-weight: bold;        
 }
 .price sup{
@@ -121,15 +139,15 @@ body {
 }
 .features{
     list-style-type: none;    
-    background: #FFFFFF;
-    text-align: left;
+    background: #F2F2F2;
+    text-align: center;
     color: #9C9C9C;
-    padding:30px 22%;
-    font-size: 0.9rem;
+    padding:30px 10%;
 }
 .features li{
-    padding:15px 0;
+    padding:5px 0;
     width: 100%;
+    font-size: 16px;
 }
 .features li span{
    padding-right: 0.4rem; 
@@ -142,11 +160,12 @@ body {
 .personal .title{        
     background: #78CFBF;    
 }
-.personal .content,.personal .pt-footer{
+
+.personal .content_pt,.personal .pt-footer{
     background: #82DACA;
 }
-.personal .content:after{	
-	border-top-color: #82DACA;	
+.personal .content_pt:after{   
+    border-top-color: #82DACA;  
 }
 .personal .pt-footer:after{
     border-top-color: #FFFFFF;
@@ -155,11 +174,11 @@ body {
 .professional .title{
     background: #3EC6E0;
 }
-.professional .content,.professional .pt-footer{
+.professional .content_pt,.professional .pt-footer{
     background: #53CFE9;
 }
-.professional .content:after{	
-	border-top-color: #53CFE9;	
+.professional .content_pt:after{   
+    border-top-color: #53CFE9;  
 }
 .professional .pt-footer:after{
     border-top-color: #FFFFFF;
@@ -168,12 +187,12 @@ body {
 .business .title{
     background: #E3536C;
 }
-.business .content,.business .pt-footer{
+.business .content_pt,.business .pt-footer{
     background: #EB6379;
 }
-.business .content:after{	
-	border-top-color: #EB6379;	
+.business .content_pt:after{   
+    border-top-color: #EB6379;  
 }
-.business .pt-footer:after {	
-	border-top-color: #FFFFFF;	
+.business .pt-footer:after {    
+    border-top-color: #FFFFFF;  
 }

@@ -1,58 +1,100 @@
 {{> header}}
 
 <!-- C O N T E N T -->
-        <div class="content_wrapper background_color_gray">
-            <!--<div class="page_title_block">
-                <div class="container">
-                    <h2 class="title">Portfolio. 4 Columns</h2>
-                    <div class="breadcrumbs"><a href="home.html">Home</a><a href="#">Portfolio</a><span>4 Columns</span></div>
-                </div>
-            </div>-->
-            <style type="text/css">
-                .col-lg-3 h5{
-                    margin:10px 0 10px 0;
-                }
-            </style>
-            <div class="container">
-                <div class="">
-                    <div class="fl-container span12">
-                        <div class="row">
+<div class="content_wrapper background_color_gray">
+    <!--<div class="page_title_block">
+        <div class="container">
+            <h2 class="title">Portfolio. 4 Columns</h2>
+            <div class="breadcrumbs"><a href="home.html">Home</a><a href="#">Portfolio</a><span>4 Columns</span></div>
+        </div>
+    </div>-->
+    <style type="text/css">
+        .col-lg-3 h5 {
+            margin: 10px 0 10px 0;
+        }
+    </style>
+    <div class="container">
+        <div class="spinner" style='display: none;z-index: 100000;opacity:0.55;background-color: grey'>
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+        <div class="">
+            <div class="fl-container span12">
+                <div class="row">
 
-                            <div class="col-lg-12">
-                                <h4 class="page-header"><small>You searched for  </small> <b>" {{query}} " </b><small>which have {{count}} results</small></h4>
-                            </div>
-                            <br>
-                            <br>
-                            <br>
-                            {{# data}}
-
+                    <div class="col-lg-12">
+                        <h4 class="page-header">
+                            <small>You searched for</small>
+                            <b>" {{query}} " </b>
+                            <small id="countResult">which have {{count}} results</small>
+                        </h4>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    {{# data}}
+                        <div id="searchDiv">
                             {{# result}}
-                            <div class="col-lg-3 col-md-4 col-xs-12 thumb">
-                                <a class="thumbnail" href="/book_details/{{id}}"  style="height: 320px;">
-                                    <img class="img-responsive" src="{{image_url}}" onerror="this.src='https://www.safetybasics.com/v/vspfiles/photos/003-C-4L-Cover-0.jpg'" >
-                                    <h5 class="gallery_title">{{title}}</h5>
-                                    <p>{{summary}}</p>
-                                </a>
-                            </div>
+                                <div class="col-lg-3 col-md-4 col-xs-12 thumb">
+                                    <a class="thumbnail" href="/book_details/{{id}}" style="height: 320px;">
+                                        <img class="img-responsive" src="{{image_url}}"
+                                             onerror="this.src='https://www.safetybasics.com/v/vspfiles/photos/003-C-4L-Cover-0.jpg'">
+                                        <h5 class="gallery_title">{{title}}</h5>
+                                        <p>{{summary}}</p>
+                                    </a>
+                                </div>
                             {{/result}}
+                        </div>
                             <!--{{/data}}-->
 
-                        </div>
-                    </div><!-- .contentarea -->
                 </div>
-            </div>
-            <div class="clear"><!-- ClearFix --></div>
-         </div><!-- .fl-container -->
-                    
-        <div class="clear"><!-- ClearFix --></div>
-        {{> footer}}
+            </div><!-- .contentarea -->
+        </div>
+        <button type="button" class="btn btn-default" onclick="loadMore()">Load More</button>
+        <br><br><br><br>
+    </div>
+    <div class="clear"><!-- ClearFix --></div>
+</div><!-- .fl-container -->
+
+<div class="clear"><!-- ClearFix --></div>
+{{> footer}}
 <script>
-    $(document).ready(function()
-    {
+    $(document).ready(function () {
+        localStorage.setItem("countFlag", 2);
         $('#home').addClass('current-menu-parent');
         <!--$("#count").text(" which have" {{result}}.length);-->
 
     })
+
+    function loadMore() {
+        $(".spinner").show();
+        var count = localStorage.getItem("countFlag");
+        var query = "{{query}}";
+        localStorage.setItem("countFlag", parseInt(count) + 1);
+        $.ajax({
+            type: "GET",
+            url: "http://staging.justbooksclc.com:8990/api/v1/search.json?q=" + query + "&page=" + count + "&per_page=20",
+            success: function (data) {
+                $(".spinner").hide();
+                if(data.result.length == 0)
+                {
+                    toastr.show("No more result to show !");
+                    return false;
+                }
+                console.log(data.result);
+                data = data.result
+                for (var i = 0; i < data.length; i++) {
+                    $("#searchDiv").append("<div class=\"col-lg-3 col-md-4 col-xs-12 thumb\" >" +
+                            "<a class=\"thumbnail\" href=\"/book_details/" + data[i]["id"] + "\"  style=\"height: 320px;\">" +
+                            " <img class=\"img-responsive\" src=\"" + data[i]["image_url"] + "\" onerror=\"this.src='https://www.safetybasics.com/v/vspfiles/photos/003-C-4L-Cover-0.jpg'\" >" +
+                            "        <h5 class=\"gallery_title\">" + data[i]["title"] + "</h5><p>" + data[i]["summary"] + "</p></a></div>");
+                }
+                $("#countResult").text( "which have " +$("#searchDiv > div").length + " results");
+            },
+
+        });
+
+    }
 
 
 </script>

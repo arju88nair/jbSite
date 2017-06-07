@@ -1,7 +1,7 @@
 {{> header}}
 
 <!-- C O N T E N T -->
-<div class="content_wrapper background_color_gray">
+<div class="content_wrapper">
     <!--<div class="page_title_block">
         <div class="container">
             <h2 class="title">Portfolio. 4 Columns</h2>
@@ -161,7 +161,7 @@
         </div>
         <div class="content_block no-sidebar row">
             <div class="fl-container span12">
-                <div id="{{planid}}" class="planid"></div>
+                <div id="{{planname}}" class="planid"></div>
 
                 <div class="contentarea">
                     <div class="module_line_trigger" data-option="" data-background="#323232 url(img/) no-repeat center"
@@ -176,22 +176,68 @@
                                     <div class="span6 module_cont module_text_area module_medium_padding">
                                         <!-- 1st row verticaly centered text in the square columns -->
 
-                                        {{# plan_data}}
+                                        <!--{{# plan_data}}-->
 
-                                            {{# web_signup_plan}}
-                                                <a href="/signup?planid={{plan_id}}&planname={{promo_code}}">
-                                                    <div class="square box-shadow" id="box_{{plan_id}}">
-                                                        <div class="content1">
-                                                            <div class="table">
-                                                                <div class="table-cell title_text">
-                                                                    {{promo_code}}
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            {{/web_signup_plan}}
+                                            <!--{{# web_signup_plan}}-->
+                                                <!--<a href="/signup?planid={{plan_id}}&planname={{promo_code}}">-->
+                                                    <!--<div class="square box-shadow" id="box_{{plan_id}}">-->
+                                                        <!--<div class="content1">-->
+                                                            <!--<div class="table">-->
+                                                                <!--<div class="table-cell title_text">-->
+                                                                    <!--{{promo_code}}-->
+                                                                <!--</div>-->
+                                                            <!--</div>-->
+                                                        <!--</div>-->
+                                                    <!--</div>-->
+                                                <!--</a>-->
+                                            <!--{{/web_signup_plan}}-->
+                                        <!--{{/plan_data}}-->
+                                        <style>
+                                            h3{
+                                                color:white;
+
+                                            }
+                                            .card{
+                                                margin: 5px;
+                                                box-shadow: 1px 0px 4px 2px grey;
+
+                                            }
+
+
+                                            .card-active{
+
+                                                padding-top: 20px;
+                                                padding-bottom: 6px;
+
+                                                margin-bottom: 15px;
+                                                box-shadow: 1px 0px 4px 2px grey;
+                                            }
+                                            .PLATINUM{
+                                                background-color: #EDAB53;
+                                            } .STARTER{
+                                                background-color: #3379B4;
+                                            } .DEFAULT{
+                                                background-color: #58B75B;
+                                            }
+                                        </style>
+                                            <!--{{# plan_data}}-->
+
+                                            <!--{{# web_signup_plan}}-->
+                                                <!--<div class="col-md-7 col-md-offset-2"><div class="card {{promo_code}}" id="box_{{plan_id}}"  ><h3 class="htag_{{promo_code}}">{{promo_code}}</h3></div></div>-->
+                                                <!--{{/web_signup_plan}}-->
+                                            <!--{{/plan_data}}-->
+
+                                        {{# plan_data}}
+                                                         <a href="/signup?planname={{PROMO}}&books={{NO_OF_BOOKS}}&months={{NO_OF_MONTHS}}"><div class="col-md-7 col-md-offset-2"><div class="card {{PLAN_NAME}}" id="box_{{PLAN_NAME}}"  ><h3 class="htag_{{PLAN_NAME}}">{{PLAN_NAME}}</h3></div></div></a>
                                         {{/plan_data}}
+                                        <!---->
+
+
+
+                                        <!--<div class="col-md-7"><div class="card" style="background-color: #EDAB53;" ><h3>hwhwhwh</h3></div></div>-->
+                                        <!--<div class="col-md-7"><div class="card" style="background-color: #3379B4;"><h3>hwhwhwh</h3></div></div>-->
+                                        <!--<div class="col-md-7"><div class="card" style="background-color: #58B75B;"><h3>hwhwhwh</h3></div></div>-->
+
                                     </div>
                                     <div class="span6 r_content">
                                         <div class="col-sm-11">
@@ -218,7 +264,7 @@
                                                 <h5 style="float: left">One Time Registration Fee:</h5>
                                             </div>
                                             <div class="col-sm-4" id="reg_fee">
-                                                <h5>{{reg_fee}}</h5>
+                                                <h5>₹ {{reg_fee}}</h5>
                                             </div>
                                         </div>
                                         <div class="col-sm-11" id="border_bottom">
@@ -226,7 +272,7 @@
                                                 <h5 style="float: left">Security Deposit:</h5>
                                             </div>
                                             <div class="col-sm-4" id="sec_deposit_fee">
-                                                <h5>{{sec_deposit}}</h5>
+                                                <h5>₹ {{sec_deposit}}</h5>
                                             </div>
                                         </div>
                                         <div class="col-sm-11" id="border_bottom">
@@ -234,7 +280,7 @@
                                                 <h5 style="float: left">Reading Fee:</h5>
                                             </div>
                                             <div class="col-sm-4" id="reading_fee">
-                                                <h5>{{reading_fee}}</h5>
+                                                <h5>₹ {{reading_fee}}</h5>
                                             </div>
                                         </div>
                                         <div class="col-sm-11" id="border_none">
@@ -242,7 +288,7 @@
                                                 <h5 style="float: left">Total:</h5>
                                             </div>
                                             <div class="col-sm-4" id="total_fee">
-                                                <h5>{{total}}</h5>
+                                                <h5>₹ {{total}}</h5>
                                             </div>
                                         </div>
                                         <div class="col-sm-11">
@@ -435,8 +481,11 @@
 <div class="clear"><!-- ClearFix --></div>
 <script type="application/javascript">
 
-    $(document).ready(function()
-    {
+    $(document).ready(function(){
+//            var texts=$(".htag_starter").text().toUpperCase();
+//    console.log(texts);
+//        $(".htag_starter").text(texts);
+//        $(".hTag").text($(".hTag").text().toUpperCase());
 
         $("#books").val("{{book}}");
         $("#months ").val("{{month}}");
@@ -444,7 +493,7 @@
 
         $('#plansHeader').addClass('current-menu-parent');
 
-    })
+    });
 
 
 
@@ -479,14 +528,22 @@
 
         $("#dob").datepicker({
             dateFormat: 'dd-mm-yy',
-            changeMonth: true
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "-100:+0"
         }).val();
     });
 
     var planid = $('.planid').attr('id');
     var mon = '';
     var book = '';
-    $('#box_' + planid).attr('style', 'background-color:#FF6861');
+    $('#box_' + planid).css({
+        'padding-top': '20px',
+   'padding-bottom' : '6px',
+    'border-radius': '8px',
+    'margin-bottom': '15px',
+    'box-shadow': '1px 4px 4px 2px grey'
+    });
     $('#months').on('change', function () {
 $(".spinner").show();
         mon = this.value;
@@ -524,10 +581,10 @@ $(".spinner").show();
                 else {
                     $("#months").append('<option value="' + data_new['month'] + '">' + data_new['month'] + ' month(s)</option>')
 
-                    $('#reg_fee h5').html(data_new['reg_fee']);
-                    $('#sec_deposit_fee h5').html(data_new['sec_deposit']);
-                    $('#reading_fee h5').html(data_new['reading_fee']);
-                    $('#total_fee h5').html(data_new['total']);
+                    $('#reg_fee h5').html("₹ "+data_new['reg_fee'] );
+                    $('#sec_deposit_fee h5').html("₹ "+data_new['sec_deposit']);
+                    $('#reading_fee h5').html("₹ "+data_new['reading_fee']);
+                    $('#total_fee h5').html("₹ "+data_new['total']);
 
                 }
 
@@ -556,10 +613,10 @@ $(".spinner").show();
                     data_new = JSON.parse(data_new);
                     console.log(data_new);
 //                        console.log(data_new['reg_fee']);
-                    $('#reg_fee h5').html(data_new['reg_fee']);
-                    $('#sec_deposit_fee h5').html(data_new['sec_deposit']);
-                    $('#reading_fee h5').html(data_new['reading_fee']);
-                    $('#total_fee h5').html(data_new['total']);
+                    $('#reg_fee h5').html("₹ "+data_new['reg_fee']);
+                    $('#sec_deposit_fee h5').html("₹ "+data_new['sec_deposit']);
+                    $('#reading_fee h5').html("₹ "+data_new['reading_fee']);
+                    $('#total_fee h5').html("₹ "+data_new['total']);
                 },
                 error: function (err) {
                     $(".spinner").hide();
