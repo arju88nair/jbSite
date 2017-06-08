@@ -1,6 +1,6 @@
 {{> header}}
 <style>
-    h3 {
+    .left-sidebar-block h3 {
         color: white;
 
     }
@@ -30,6 +30,17 @@
 
     .DEFAULT {
         background-color: #58B75B;
+    }
+
+    .jumbotron{
+        background-color: #fff;
+        border: 1px solid gray;
+        margin-top: 20px;
+    }
+    .jumbotron .profile li {
+        margin-bottom:10px;
+        list-style: none!important;
+        
     }
 </style>
 
@@ -64,12 +75,9 @@
 
                     <div class="row">
                         <div class="contentarea">
-                            <p id="emptyResult" style="margin-left: 27%;
-font-size: 170%;
-margin-top: 16%;
-font-family: Playfair Display;display: none"></p>
+                            <p id="emptyResult" style="margin-left: 27%;font-size: 170%;margin-top: 16%;font-family: Playfair Display;display: none"></p>
                             <div id="profileUpdate" class="modal fade" role="dialog" style="z-index: 10000">
-                                <div class="modal-dialog" style="top:-80%;width:100%">
+                                <div class="modal-dialog" style="top:-60%;width:100%">
 
                                     <!-- Modal content-->
                                     <div class="modal-content">
@@ -84,188 +92,11 @@ font-family: Playfair Display;display: none"></p>
                                                     <textarea type="text" class="form-control" id="address"
                                                               required></textarea>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label>City:</label>
-
-                                                    <select class="form-control" id="city" name="city">
-                                                        <option value="1">Agra</option>
-                                                        <option value="5">Chennai</option>
-                                                        <option value="7">Ernakulam</option>
-                                                        <option value="9">Hyderabad</option>
-                                                        <option value="10">Indore</option>
-                                                        <option value="14">Mangalore</option>
-                                                        <option value="17">Nagpur</option>
-                                                        <option value="18">New Delhi</option>
-                                                        <option value="26">Bangalore</option>
-                                                        <option value="2">Ahmedabad</option>
-                                                        <option value="3">Allahabad</option>
-                                                        <option value="11">Jaipur</option>
-                                                        <option value="12">Kanpur</option>
-                                                        <option value="15">Mumbai</option>
-                                                        <option value="19">Patna</option>
-                                                        <option value="20">Pune</option>
-                                                        <option value="23">Trivandrum</option>
-                                                        <option value="24">Vadodara</option>
-                                                        <option value="25">Vizag</option>
-                                                        <option value="4">Bhubaneswar</option>
-                                                        <option value="6">Coimbatore</option>
-                                                        <option value="8">Gurgaon</option>
-                                                        <option value="13">Kolkata</option>
-                                                        <option value="16">Mysore</option>
-                                                        <option value="21">Rajkot</option>
-                                                        <option value="22">Ranchi</option>
-                                                        <option value="27">Mohali</option>
-                                                        <option value="119">Shimoga</option>
-                                                        <option value="120">Calicut</option>
-                                                        <option value="28"> Agartala</option>
-                                                        <option value="29"> Aizawl</option>
-                                                        <option value="30"> Ajmer</option>
-                                                        <option value="31"> Akola</option>
-                                                        <option value="32"> Aligarh</option>
-                                                        <option value="33"> Amravati</option>
-                                                        <option value="34"> Amritsar</option>
-                                                        <option value="35"> Asansol</option>
-                                                        <option value="36"> Aurangabad</option>
-                                                        <option value="37"> Bareilly</option>
-                                                        <option value="38"> Belgaum</option>
-                                                        <option value="39"> Bellary</option>
-                                                        <option value="40"> Bhagalpur</option>
-                                                        <option value="41"> Bhavnagar</option>
-                                                        <option value="42"> Bhiwandi</option>
-                                                        <option value="43"> Bhopal</option>
-                                                        <option value="44"> Bikaner</option>
-                                                        <option value="45"> Bokaro</option>
-                                                        <option value="46"> Chandigarh</option>
-                                                        <option value="47"> Chandrapur</option>
-                                                        <option value="48"> Cuttack</option>
-                                                        <option value="49"> Davanagere</option>
-                                                        <option value="50"> Dehradun</option>
-                                                        <option value="51"> Dhanbad</option>
-                                                        <option value="52"> Dhule</option>
-                                                        <option value="53"> Durgapur</option>
-                                                        <option value="54"> Faridabad</option>
-                                                        <option value="55"> Firozabad</option>
-                                                        <option value="56"> Gandhidham</option>
-                                                        <option value="57"> Gaya</option>
-                                                        <option value="58"> Ghaziabad</option>
-                                                        <option value="59"> Gorakhpur</option>
-                                                        <option value="60"> Gulbarga</option>
-                                                        <option value="61"> Guntur</option>
-                                                        <option value="62"> Guwahati</option>
-                                                        <option value="63"> Gwalior</option>
-                                                        <option value="64"> Imphal</option>
-                                                        <option value="65"> Jabalpur</option>
-                                                        <option value="66"> Jalandhar</option>
-                                                        <option value="67"> Jalgaon</option>
-                                                        <option value="68"> Jammu</option>
-                                                        <option value="69"> Jamnagar</option>
-                                                        <option value="70"> Jamshedpur</option>
-                                                        <option value="71"> Jhansi</option>
-                                                        <option value="72"> Jodhpur</option>
-                                                        <option value="73"> Kalyan-dombivali</option>
-                                                        <option value="74"> Kolhapur</option>
-                                                        <option value="75"> Korba</option>
-                                                        <option value="76"> Kota</option>
-                                                        <option value="77"> Kurnool</option>
-                                                        <option value="78"> Latur</option>
-                                                        <option value="79"> Loni</option>
-                                                        <option value="80"> Lucknow</option>
-                                                        <option value="81"> Ludhiana</option>
-                                                        <option value="82"> Madurai</option>
-                                                        <option value="83"> Malegaon</option>
-                                                        <option value="84"> Meerut</option>
-                                                        <option value="85"> Mira-bhayandar</option>
-                                                        <option value="86"> Moradabad</option>
-                                                        <option value="87"> Muzaffarnagar</option>
-                                                        <option value="88"> Nashik</option>
-                                                        <option value="89"> Navi Mumbai</option>
-                                                        <option value="90"> Nellore</option>
-                                                        <option value="91"> Nizamabad</option>
-                                                        <option value="92"> Noida</option>
-                                                        <option value="93"> Panaji</option>
-                                                        <option value="94"> Patiala</option>
-                                                        <option value="95"> Puducherry</option>
-                                                        <option value="96"> Raipur</option>
-                                                        <option value="97"> Rajahmundry</option>
-                                                        <option value="98"> Rampur</option>
-                                                        <option value="99"> Rohtak</option>
-                                                        <option value="100"> Salem</option>
-                                                        <option value="101"> Siliguri</option>
-                                                        <option value="102"> Solapur</option>
-                                                        <option value="103"> Srinagar</option>
-                                                        <option value="104"> Surat</option>
-                                                        <option value="105"> Thane</option>
-                                                        <option value="106"> Thrissur</option>
-                                                        <option value="107"> Tiruchirappalli</option>
-                                                        <option value="108"> Tirunelveli</option>
-                                                        <option value="109"> Tirupati</option>
-                                                        <option value="110"> Tumkur</option>
-                                                        <option value="111"> Udaipur</option>
-                                                        <option value="112"> Ujjain</option>
-                                                        <option value="113"> Ulhasnagar</option>
-                                                        <option value="114"> Varanasi</option>
-                                                        <option value="115"> Vijayawada</option>
-                                                        <option value="116"> Vizianagaram</option>
-                                                        <option value="117"> Warangal</option>
-                                                        <option value="118">Hubli</option>
-                                                    </select>
-
-                                                </div>
-                                                <div class="form-group">
-
-                                                    <label>State:</label>
-                                                    <select class="form-control" id="state" name="state">
-                                                        <option value="1">Andhra Pradesh</option>
-                                                        <option value="2">Arunachal Pradesh</option>
-                                                        <option value="3">Assam</option>
-                                                        <option value="4">Bihar</option>
-                                                        <option value="5">Chhattisgarh</option>
-                                                        <option value="6">Goa</option>
-                                                        <option value="7">Gujarat</option>
-                                                        <option value="8">Haryana</option>
-                                                        <option value="9">Himachal Pradesh</option>
-                                                        <option value="10">Jammu and Kashmir</option>
-                                                        <option value="11">Jharkhand</option>
-                                                        <option value="12">Karnataka</option>
-                                                        <option value="13">Kerala</option>
-                                                        <option value="14">Madhya Pradesh</option>
-                                                        <option value="15">Maharashtra</option>
-                                                        <option value="16">Manipur</option>
-                                                        <option value="17">Meghalaya</option>
-                                                        <option value="18">Mizoram</option>
-                                                        <option value="19">Nagaland</option>
-                                                        <option value="20">Orissa</option>
-                                                        <option value="21">Punjab</option>
-                                                        <option value="22">Rajasthan</option>
-                                                        <option value="23">Sikkim</option>
-                                                        <option value="24">Tamil Nadu</option>
-                                                        <option value="25">Tripura</option>
-                                                        <option value="26">Uttar Pradesh</option>
-                                                        <option value="27">Uttarakhand</option>
-                                                        <option value="28">West Bengal</option>
-                                                        <option value="29">Telengana</option>
-                                                        <option value="30">Union territory</option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="email">Pin code:</label>
-                                                    <input type="text" minlength="6" maxlength="6" class="form-control"
-                                                           id="pincode" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="email">Phone Number:</label>
-                                                    <input type="text" class="form-control" maxlength="10" id="phone"
-                                                           required>
-                                                </div>
-
-
-                                                <button type="submit" class="btn btn-default">Submit</button>
+                                                
+                                                <button type="submit" class="btn btn-info">Submit</button>
                                             </form>
                                         </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close
-                                            </button>
-                                        </div>
+
                                     </div>
 
                                 </div>
@@ -273,76 +104,7 @@ font-family: Playfair Display;display: none"></p>
                             <div class="row-fluid" id="shelf_data">
 
 
-                                <!--<div class="col-md-6 col-xs-12 module_cont module_shelf shadow1">-->
-                                <!--<div class="col-md-5 col-xs-5">-->
-                                <!--<img src="../assets/img/books/6.jpg" class="img-responsive" alt="..." style="margin-top: -20px;">-->
-                                <!--</div>                              -->
-                                <!--<div class="col-md-7 col-xs-7" id="module_shelf">-->
-                                <!--<h4>AUTHORS NAME</h4>-->
-                                <!--<p>The efferevesent dragon</p>-->
-                                <!--<div class="rating" id="rating1">-->
-                                <!--<script type="text/javascript">-->
-                                <!--$(document).ready(function() {-->
-                                <!--$("#rating1").jRatingAdvance({-->
-                                <!--size: "18px",-->
-                                <!--buttons_color: "gray",-->
-                                <!--active_color: "#ff7300",-->
-                                <!--text: true,-->
-                                <!--rating: 0.1-->
-                                <!--});-->
-                                <!--});-->
-                                <!--</script>-->
-                                <!--</div>-->
-                                <!--<p><a href="">Rate/Review</a></p>-->
-                                <!--<h6>Return Date:<span>12/03/2017</span></h6>-->
-                                <!--<div class="shelf_sicial">-->
-                                <!--<div class="col-md-4 col-xs-2">-->
-                                <!--<a href=""><img src="../assets/img/icons/engage.png"></a>-->
-                                <!--</div>-->
-                                <!--<div class="col-md-4 col-xs-5">-->
-                                <!--<a href="#" class="shortcode_button btn_small btn_type10" id="myBtn">Return</a>-->
-                                <!--</div>-->
-                                <!--<div class="col-md-4 col-xs-5">-->
-                                <!--<a href="#" class="shortcode_button btn_small btn_type10">Renew</a>-->
-                                <!--</div>-->
-                                <!--</div>   -->
-                                <!--</div>-->
-                                <!--</div>-->
-                                <!--<div class="col-md-6 col-xs-12 module_cont module_shelf shadow1">-->
-                                <!--<div class="col-md-5 col-xs-5">-->
-                                <!--<img src="../assets/img/books/6.jpg" class="img-responsive" alt="..." style="margin-top: -20px;">-->
-                                <!--</div>                              -->
-                                <!--<div class="col-md-7 col-xs-7" id="module_shelf">-->
-                                <!--<h4>AUTHORS NAME</h4>-->
-                                <!--<p>The efferevesent dragon</p>-->
-                                <!--<div class="rating" id="rating2">-->
-                                <!--<script type="text/javascript">-->
-                                <!--$(document).ready(function() {-->
-                                <!--$("#rating2").jRatingAdvance({-->
-                                <!--size: "18px",-->
-                                <!--buttons_color: "gray",-->
-                                <!--active_color: "#ff7300",-->
-                                <!--text: true,-->
-                                <!--rating: 3.5-->
-                                <!--});-->
-                                <!--});-->
-                                <!--</script>-->
-                                <!--</div>-->
-                                <!--<p><a href="">Rate/Review</a></p>-->
-                                <!--<h6>Return Date:<span>12/03/2017</span></h6>-->
-                                <!--<div class="shelf_sicial">-->
-                                <!--<div class="col-md-4 col-xs-2">-->
-                                <!--<a href=""><img src="../assets/img/icons/engage.png"></a>-->
-                                <!--</div>-->
-                                <!--<div class="col-md-4 col-xs-5">-->
-                                <!--<a href="#" class="shortcode_button btn_small btn_type10">Return</a>-->
-                                <!--</div>-->
-                                <!--<div class="col-md-4 col-xs-5">-->
-                                <!--<a href="#" class="shortcode_button btn_small btn_type10">Renew</a>-->
-                                <!--</div>-->
-                                <!--</div>   -->
-                                <!--</div>-->
-                                <!--</div>-->
+                                
                             </div>
                             <div class="row-fluid" id="change_plan">
 
@@ -350,79 +112,7 @@ font-family: Playfair Display;display: none"></p>
                             {{> left_recmend_book}}
 
 
-                            <!--<div class="row-fluid">-->
-                            <!--<div class="col-md-6 col-xs-12 module_cont module_shelf shadow1">-->
-                            <!--<div class="col-md-5 col-xs-5">-->
-                            <!--<img src="../assets/img/books/6.jpg" class="img-responsive" alt="..." style="margin-top: -20px;">-->
-                            <!--</div>                              -->
-                            <!--<div class="col-md-7 col-xs-7" id="module_shelf">-->
-                            <!--<h4>AUTHORS NAME</h4>-->
-                            <!--<p>The efferevesent dragon</p>-->
-                            <!--<div class="rating" id="rating3">-->
-                            <!--<script type="text/javascript">-->
-                            <!--$(document).ready(function() {-->
-                            <!--$("#rating3").jRatingAdvance({-->
-                            <!--size: "18px",-->
-                            <!--buttons_color: "gray",-->
-                            <!--active_color: "#ff7300",-->
-                            <!--text: true,-->
-                            <!--rating: 3.5-->
-                            <!--});-->
-                            <!--});-->
-                            <!--</script>-->
-                            <!--</div>-->
-                            <!--<p><a href="">Rate/Review</a></p>-->
-                            <!--<h6>Return Date:<span>12/03/2017</span></h6>-->
-                            <!--<div class="shelf_sicial">-->
-                            <!--<div class="col-md-4 col-xs-2">-->
-                            <!--<a href=""><img src="../assets/img/icons/engage.png"></a>-->
-                            <!--</div>-->
-                            <!--<div class="col-md-4 col-xs-5">-->
-                            <!--<a href="#" class="shortcode_button btn_small btn_type10">Return</a>-->
-                            <!--</div>-->
-                            <!--<div class="col-md-4 col-xs-5">-->
-                            <!--<a href="#" class="shortcode_button btn_small btn_type10">Renew</a>-->
-                            <!--</div>-->
-                            <!--</div>   -->
-                            <!--</div>-->
-                            <!--</div>-->
-                            <!--<div class="col-md-6 col-xs-12 module_cont module_shelf shadow1">-->
-                            <!--<div class="col-md-5 col-xs-5">-->
-                            <!--<img src="../assets/img/books/6.jpg" class="img-responsive" alt="..." style="margin-top: -20px;">-->
-                            <!--</div>                              -->
-                            <!--<div class="col-md-7 col-xs-7" id="module_shelf">-->
-                            <!--<h4>AUTHORS NAME</h4>-->
-                            <!--<p>The efferevesent dragon</p>-->
-                            <!--<div class="rating" id="rating4">-->
-                            <!--<script type="text/javascript">-->
-                            <!--$(document).ready(function() {-->
-                            <!--$("#rating4").jRatingAdvance({-->
-                            <!--size: "18px",-->
-                            <!--buttons_color: "gray",-->
-                            <!--active_color: "#ff7300",-->
-                            <!--text: true,-->
-                            <!--rating: 3.5-->
-                            <!--});-->
-                            <!--});-->
-                            <!--</script>-->
-                            <!--</div>-->
-                            <!--<p><a href="">Rate/Review</a></p>-->
-                            <!--<h6>Return Date:<span>12/03/2017</span></h6>-->
-                            <!--<div class="shelf_sicial">-->
-                            <!--<div class="col-md-4 col-xs-2">-->
-                            <!--<a href=""><img src="../assets/img/icons/engage.png"></a>-->
-                            <!--</div>-->
-                            <!--<div class="col-md-4 col-xs-5">-->
-                            <!--<a href="#" class="shortcode_button btn_small btn_type10" id="myBtn">Return</a>-->
-                            <!--</div>-->
-                            <!--<div class="col-md-4 col-xs-5">-->
-                            <!--<a href="#" class="shortcode_button btn_small btn_type10">Renew</a>-->
-                            <!--</div>-->
-                            <!--</div>   -->
-                            <!--</div>-->
-                            <!--</div>-->
-                            <!--</div>-->
-
+                            
 
                             <!-- The POPUP content -->
                             <div id="myModal" class="modal">
@@ -494,6 +184,23 @@ font-family: Playfair Display;display: none"></p>
 
     $(document).ready(function () {
 
+$('#profileUpdate').on('show.bs.modal', function(e) {
+
+    //get data-id attribute of the clicked element
+    var address = $(e.relatedTarget).data('address');
+
+    //populate the textbox
+    $('#address').val(address);
+});
+
+
+
+
+
+
+
+
+
         $('form').submit(function (e) {
             $(".spinner").show();
             $.ajax({
@@ -501,16 +208,14 @@ font-family: Playfair Display;display: none"></p>
                 url: "/updateProfile",
                 data: {
                     'address': $("#address").val(),
-                    'state': $("#state").val(),
-                    'city': $("#city").val(),
-                    'pincode': $("#pincode").val(),
-                    'phone': $("#phone").val()
+                    
                 },
                 async: true,
                 dataType: 'json',
                 enctype: 'multipart/form-data',
                 cache: false,
                 success: function (data) {
+                    console.log(data)
                     $(".spinner").hide();
                     ;
                     if (data['success'] === true) {
@@ -577,7 +282,7 @@ font-family: Playfair Display;display: none"></p>
 
         var response = '';
         arr.forEach(function (arr_data) {
-            response += '<div class="col-md-6 col-xs-12 module_cont module_shelf shadow1">' +
+            response += '<div class="col-md-6 col-xs-12 module_cont module_shelf shadow1" style="height: 200px;">' +
                     '<div class="col-md-5 col-xs-5">' +
                     '<a href="/book_details/' + arr_data['id'] + '">' +
                     '<img src="' + arr_data['image_url'] + '" class="img-responsive" alt="..." style="margin-top: -20px;">' +
@@ -768,45 +473,33 @@ font-family: Playfair Display;display: none"></p>
 
 
                 $('#shelf_data').html('');
-//                $('#shelf_data').append('<div class="col-sm-6">' +
-//                        '<h3>My Profile</h3><div class="col-sm-12"><img src="img/photo.jpg" class="img-circle" height="65" width="65" alt="Avatar">' +
-//                        '</div><div class="col-sm-4"><div class="panel-body"><p>Supreeth Y N</p></div>' +
-//                        '</div><div class="col-sm-4"><div class="panel-body"><p>Member Since<br>01/01/2017</p></div>' +
-//                        '</div><div class="col-sm-4"><div class="panel-body"><p>Phone No.<br>******8871</p></div>' +
-//                        '</div> <div class="col-sm-12"><div class="panel-body"><h3>Delivery Address</h3><p>#537 24th main 18th cross<br> near BBMP office Jayanagar<br> Bangalore 560070</p></div>' +
-//                        '<div class="panel-body"><button type="button" class="btn btn-warning">Edit Profile</button>' +
-//                        '</div></div></div><div class="col-sm-6"><h3 class="text-left">Notifications</h3><br><div class="row col-sm-12">' +
-//                        '<div class="alert alert-warning fade in">' +
-//                        '<a href="#" class="close" data-dismiss="alert" aria-label="close">×</a><p><span class="glyphicon glyphicon-book"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Ey! People are looking at your profile. Find out who.</strong></p>' +
-//                        '</div><div class="alert alert-success fade in"><a href="#" class="close" data-dismiss="alert" aria-label="close">×</a><p><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Ey! People are looking at your profile. Find out who.</strong></p>' +
-//                        '</div><div class="alert alert-danger fade in"><a href="#" class="close" data-dismiss="alert" aria-label="close">×</a><p><span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Ey! People are looking at your profile. Find out who.</strong></p>' +
-//                        '</div></div>                </div>');
-                $('#shelf_data').append('<div class="col-sm-6">' +
-                        '<h3>My Profile</h3>' +
-                        '<div class="col-sm-4">' +
-                        '<div class="panel-body">' +
-                        '<p>' + current_plan['member_cross_reference']['first_name'] + '</p>' +
-                        '</div>' +
-                        '</div>' +
-                        '<div class="col-sm-4">' +
-                        '<div class="panel-body">' +
-                        '<p>Member Since<br>' + current_plan['member_cross_reference']['start_date'] + '</p>' +
-                        '</div>' +
-                        '</div>' +
-                        '<div class="col-sm-4">' +
-                        '<div class="panel-body">' +
-                        '<p>Phone No.<br>' + current_plan['member_cross_reference']['mphone'] + '</p>' +
-                        '</div>' +
-                        '</div>' +
-                        '<div class="col-sm-12">' +
-                        '<div class="panel-body">' +
-                        '<h3>Delivery Address</h3>' +
-                        '<p>' + current_plan['member_cross_reference']['full_address'] + '</p>' +
-                        '</div>' +
-                        '<div class="panel-body">' +
-                        '<button data-toggle="modal" data-target="#profileUpdate" type="button" class="btn btn-warning">Edit Profile</button>' +
-                        '</div>' +
-                        '</div></div>');
+//                
+
+
+                $('#shelf_data').append(
+                    
+                    '<div class="jumbotron shadow1">'+      
+                        '<div class="row">'+
+                            '<div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">'+
+                              '<img src="../assets/img/user.png" alt="stack photo" class="img" style="width:150px;">'+
+                            '</div>'+
+                            '<div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">'+
+                              '<div class="row" style="border-bottom:1px solid black">'+
+                                '<h2>' + current_plan['member_cross_reference']['first_name'] + '</h2>'+
+                              '</div>'+
+                                
+                              '<div class="row profile">'+
+                                '<h4>Member since from: ' + current_plan['member_cross_reference']['start_date'] + '</h4>'+
+                                '<h4>Phone No: ' + current_plan['member_cross_reference']['mphone'] + '</h4>'+
+                                
+                                '<h4>' + current_plan['member_cross_reference']['full_address'] + '</h4>'+
+                                
+                              '</div>'+
+                            '</div>'+
+                            '<button data-toggle="modal" data-address="'+ current_plan['member_cross_reference']['full_address'] +'" data-target="#profileUpdate" type="button" class="btn btn-danger">Edit Profile</button>' +
+                        '</div>'+
+                    '</div>');
+
                 $("#left_menu_recommend").css('margin-top','8%');
 
             }

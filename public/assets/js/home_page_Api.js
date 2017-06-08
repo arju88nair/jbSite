@@ -67,8 +67,8 @@ function getCardMostRead(data, visibleCardCount) {
             '<div class="carousel_title_book"><h5 title="' + data[i].NAME + '">' + data[i].NAME + '</h5></div>' +
             '<div class="carousel_desc">' +
             '<div class="fram_btn">' +
-            '<a href="javascript:void(0)" class="shortcode_button btn_small btn_type1" title="Rent" onclick=\'placeOrder(' + data[i].id + ');\'>Rent</a>' +
-            '<a href="javascript:void(0)" class="tiptip" title="Wishlist" onclick=\'wishlistAdd(' + data[i].id + ');\'><i class="fa fa-heart wishlist_btn" aria-hidden="true"></i></a>' +
+            '<a href="javascript:void(0)" class="shortcode_button btn_small btn_type1" title="Rent" onclick=\'placeOrder(' + data[i].TITLEID + ');\'>Rent</a>' +
+            '<a href="javascript:void(0)" class="tiptip" title="Wishlist" onclick=\'wishlistAdd(' + data[i].TITLEID + ');\'><i class="fa fa-heart wishlist_btn" aria-hidden="true"></i></a>' +
 
             // '<a href="/book_details/' + data[i].TITLEID + '" id="' + data[i].TITLEID + '" class="tiptip" title="Read">Read</a>' +
             '<div class="clear"></div>' +
@@ -103,7 +103,7 @@ function getCardAuthor(data, visibleCardCount) {
 
         response += '<div class="col-md-2" style="width: 18%;padding-left: 0px;padding-right: 0px;">' +
             '<div class="item" style="border:thin solid gray;">' +
-            '<div class="img_block_books"><a href="/author_details/' + data[i].ID + '"><img src="' + data[i].IMAGE + '" alt="Anna" onerror="this.src=\'http://cdn2.justbooksclc.com/title/0.jpg\'"></a></div>' +
+            '<div class="img_block_books"><a href="/author_details/' + data[i].ID + '"><img src="' + data[i].IMAGE + '" alt="Anna" onerror="this.src=\'../assets/img/user.png\'"></a></div>' +
             '<div class="carousel_body_book">' +
             '<div class="carousel_title_book"><h5 title="' + data[i].NAME + '">' + data[i].NAME + '</h5></div>' +
             '<div class="carousel_desc">' +

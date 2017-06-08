@@ -1,20 +1,23 @@
 {{> header}}
 
 <div class="main_wrapper">
-        <!-- C O N T E N T -->
-        <div class="content_wrapper background_color_gray">
-        	<div class="container">
-                <div class="content_block right-sidebar row">
-                    <div class="fl-container span12">
-                        <div class="row">
-                            {{# data}}
+    <!-- C O N T E N T -->
+    <div class="content_wrapper background_color_gray">
+        <div class="container">
+            <div class="content_block right-sidebar row">
+                <div class="fl-container span12">
+                    <div class="row">
+                        {{# data}}
                             <div class="left-sidebar-block span5" style="margin-top: 10px; padding: 10px;">
-                                <aside class="sidebar" >
-                                    <img src="{{IMAGE}}" alt="" class="img-responsive">
+                                <aside class="sidebar">
+                                    <div class="img_block_books">
+                                        <img src="{{IMAGE}}" alt="" class="img-responsive" onerror="this.src='../assets/img/pictures/team1.jpg';" style="max-height: 250px;">
+                                    </div>
+
                                     <h2>{{NAME}}</h2>
-                                    
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec lectus mauris. Suspendisse et elit ut lacus convallis dapibus. Nunc consequat, turpis ac 
-                                    iaculis porttitor, sem dui molestie mauris, eu ultrices urna dolor sed anteiaculis porttitor, sem dui molestie mauris, eu ultrices urna dolor sed ante urna dolor sed ante  urna dolor sed ante</p>
+
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam nec lectus mauris. Suspendisse et elit ut lacus convallis dapibus. Nunc consequat, turpis ac
+                                        iaculis porttitor, sem dui molestie mauris, eu ultrices urna dolor sed anteiaculis porttitor, sem dui molestie mauris, eu ultrices urna dolor sed ante urna dolor sed ante  urna dolor sed ante</p>
                                     <div class="row-fluid">
                                         <div class="span12">
                                             <a href="#" class="ico_socialize_facebook1 ico_socialize type1"></a>
@@ -24,33 +27,33 @@
                                             <a href="#" class="ico_socialize_wordpress ico_socialize type1"></a>
                                             <div class="clear"></div>
                                         </div><!-- .module_cont -->
-                                    </div><!-- .row-fluid -->               
+                                    </div><!-- .row-fluid -->
 
                                 </aside>
                             </div><!-- .left-sidebar -->
-                                {{/data}}
-                            <div class="posts-block span7">
-                                <div class="contentarea">                                    
-                                    
-                                    {{> author_related_books}}
+                        {{/data}}
+                        <div class="posts-block span7">
+                            <div class="contentarea">
 
-                                </div><!-- .contentarea -->
-                            </div>
-                            
+                                {{> author_related_books}}
+
+                            </div><!-- .contentarea -->
                         </div>
-                        <div class="clear"><!-- ClearFix --></div>
-                    </div><!-- .fl-container -->
-                    
-                </div>
-            </div><!-- .container -->
-            
-            {{> related_authors}}
 
-        </div><!-- .content_wrapper -->
-	
-    </div><!-- .main_wrapper -->
+                    </div>
+                    <div class="clear"><!-- ClearFix --></div>
+                </div><!-- .fl-container -->
 
-    {{> footer}}
+            </div>
+        </div><!-- .container -->
+
+        {{> related_authors}}
+
+    </div><!-- .content_wrapper -->
+
+</div><!-- .main_wrapper -->
+
+{{> footer}}
 
 <script>
     $(document).ready(function()
