@@ -5,6 +5,10 @@
 
     }
 
+    .active {
+        background: #a72e1b !important;
+    }
+
     .card {
         margin: 5px;
         box-shadow: 1px 0px 4px 2px grey;
@@ -32,15 +36,16 @@
         background-color: #58B75B;
     }
 
-    .jumbotron{
+    .jumbotron {
         background-color: #fff;
         border: 1px solid gray;
         margin-top: 20px;
     }
+
     .jumbotron .profile li {
-        margin-bottom:10px;
-        list-style: none!important;
-        
+        margin-bottom: 10px;
+        list-style: none !important;
+
     }
 </style>
 
@@ -55,7 +60,7 @@
             </div>
         </div>
         <div class="container">
-            <div class="spinner" style='display: none;z-index: 100000;opacity:0.55;background-color: grey'>
+            <div class="spinner" style='display: block;z-index: 100000;opacity:0.55;background-color: grey'>
                 <div class="double-bounce1"></div>
                 <div class="double-bounce2"></div>
             </div>
@@ -65,8 +70,6 @@
                     {{> left_menu}}
 
 
-                    <hr>
-
 
 
                 </div><!-- .right-sidebar -->
@@ -75,7 +78,8 @@
 
                     <div class="row">
                         <div class="contentarea">
-                            <p id="emptyResult" style="margin-left: 27%;font-size: 170%;margin-top: 16%;font-family: Playfair Display;display: none"></p>
+                            <p id="emptyResult"
+                               style="margin-left: 27%;font-size: 170%;margin-top: 16%;font-family: Playfair Display;display: none"></p>
                             <div id="profileUpdate" class="modal fade" role="dialog" style="z-index: 10000">
                                 <div class="modal-dialog" style="top:-60%;width:100%">
 
@@ -92,7 +96,7 @@
                                                     <textarea type="text" class="form-control" id="address"
                                                               required></textarea>
                                                 </div>
-                                                
+
                                                 <button type="submit" class="btn btn-info">Submit</button>
                                             </form>
                                         </div>
@@ -104,7 +108,6 @@
                             <div class="row-fluid" id="shelf_data">
 
 
-                                
                             </div>
                             <div class="row-fluid" id="change_plan">
 
@@ -112,7 +115,7 @@
                             {{> left_recmend_book}}
 
 
-                            
+
 
                             <!-- The POPUP content -->
                             <div id="myModal" class="modal">
@@ -184,21 +187,16 @@
 
     $(document).ready(function () {
 
-$('#profileUpdate').on('show.bs.modal', function(e) {
 
-    //get data-id attribute of the clicked element
-    var address = $(e.relatedTarget).data('address');
+        $('li a#currently_reading').addClass('active');
+        $('#profileUpdate').on('show.bs.modal', function (e) {
 
-    //populate the textbox
-    $('#address').val(address);
-});
+            //get data-id attribute of the clicked element
+            var address = $(e.relatedTarget).data('address');
 
-
-
-
-
-
-
+            //populate the textbox
+            $('#address').val(address);
+        });
 
 
         $('form').submit(function (e) {
@@ -208,7 +206,7 @@ $('#profileUpdate').on('show.bs.modal', function(e) {
                 url: "/updateProfile",
                 data: {
                     'address': $("#address").val(),
-                    
+
                 },
                 async: true,
                 dataType: 'json',
@@ -256,6 +254,7 @@ $('#profileUpdate').on('show.bs.modal', function(e) {
 
                 $(".spinner").hide();
                 var new_data = JSON.parse(data);
+                console.log(data);
                 if (new_data['result'].length == 0) {
                     $('#shelf_data').html('');
                     $("#left_menu_recommend").show();
@@ -282,18 +281,18 @@ $('#profileUpdate').on('show.bs.modal', function(e) {
 
         var response = '';
         arr.forEach(function (arr_data) {
-            response += '<div class="col-md-6 col-xs-12 module_cont module_shelf shadow1" style="height: 200px;">' +
+            response += '<div class="col-md-6 col-xs-12 module_cont module_shelf shadow1" style="height: 154px;">' +
                     '<div class="col-md-5 col-xs-5">' +
                     '<a href="/book_details/' + arr_data['id'] + '">' +
-                    '<img src="' + arr_data['image_url'] + '" class="img-responsive" alt="..." style="margin-top: -20px;">' +
+                    '<img src="' + arr_data['image_url'] + '" class="img-responsive" alt="..." style="margin-top: -20px;height: 145px" onerror="this.src=\'http://cdn2.justbooksclc.com/title/0.jpg\'">' +
                     '</a>' +
                     '</div>' +
                     '<div class="col-md-7 col-xs-7" id="module_shelf">' +
-                    '<h4>' + arr_data['title'] + '</h4>' +
+                    '<h4 style=" width: 100%;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">' + arr_data['title'] + '</h4>' +
                     '<p>' + arr_data['author'] + '</p>' +
-                    '<div class="rating" id="rating1">' +
+                    '<br><div class="rating" id="rating1">' +
                     '</div>' +
-                    '<p><a href="">Rate/Review</a></p>' +
+                    '<p><a href="/book_details/' + arr_data['id'] + '">Rate/Review</a></p>' +
                     '<div class="shelf_sicial">' +
                     '<div class="col-md-4 col-xs-2" style="margin-right: 15%;margin-top: 4%">' +
                     '<a href="javascript:void(0)" class="shortcode_button btn_small btn_type10" onclick="' + funcName + '(this,' + arr_data['id'] + ')"  id="' + arr_data[idName] + '">' + btnTxt + '</a>' +
@@ -306,6 +305,8 @@ $('#profileUpdate').on('show.bs.modal', function(e) {
     }
 
     $('#wishlist').click(function (e) {
+        $("li a").removeClass('active');
+        $("li a#wishlist").addClass('active');
         $(".spinner").show();
 
         e.preventDefault();
@@ -331,10 +332,10 @@ $('#profileUpdate').on('show.bs.modal', function(e) {
 
                 var response = '';
                 var i = 0;
-                var final_response = generateDIV(new_data, 'removeWishlist', 'title_id', 'Remove', 'block');
+                var final_response = generateDIV(new_data, 'removeWishlist', 'title_id', 'Remove', 'none');
                 $('#shelf_data').html('');
                 $('#shelf_data').append(final_response);
-                $("#left_menu_recommend").css('margin-top','3%');
+                $("#left_menu_recommend").css('margin-top', '3%');
 
             },
 
@@ -342,6 +343,8 @@ $('#profileUpdate').on('show.bs.modal', function(e) {
     });
 
     $('#ordered_books').click(function (e) {
+        $("li a").removeClass('active');
+        $("li a#ordered_books").addClass('active');
         $(".spinner").show();
         e.preventDefault();
         $.ajax({
@@ -372,7 +375,7 @@ $('#profileUpdate').on('show.bs.modal', function(e) {
                 console.log(id);
                 var final_response = generateDIV(new_data, 'cancelOrder', 'delivery_order_id', 'Cancel', 'block');
                 $('#shelf_data').append(final_response);
-                $("#left_menu_recommend").css('margin-top','33%');
+                $("#left_menu_recommend").css('margin-top', '33%');
 
             },
 
@@ -380,7 +383,9 @@ $('#profileUpdate').on('show.bs.modal', function(e) {
     });
 
     $('#currently_reading').click(function (e) {
-
+        $("li a").removeClass('active');
+        $("li a#currently_reading").addClass('active');
+        $("#currently_reading").addClass('active');
 
         $(".spinner").show();
 
@@ -389,6 +394,7 @@ $('#profileUpdate').on('show.bs.modal', function(e) {
             type: "GET",
             url: "/getCurrentReading",
             success: function (data) {
+                console.log(data)
                 $(".spinner").hide();
 
                 var new_data = JSON.parse(data);
@@ -406,7 +412,7 @@ $('#profileUpdate').on('show.bs.modal', function(e) {
                 var final_response = generateDIV(new_data, 'placePickup', 'rental_id', 'Return', 'none');
                 $('#shelf_data').html('');
                 $('#shelf_data').append(final_response);
-                $("#left_menu_recommend").css('margin-top','33%');
+                $("#left_menu_recommend").css('margin-top', '33%');
 
             },
 
@@ -414,6 +420,8 @@ $('#profileUpdate').on('show.bs.modal', function(e) {
     });
 
     $('#pick_up').click(function (e) {
+        $("li a").removeClass('active');
+        $("li a#pick_up").addClass('active');
         $(".spinner").show();
 
         e.preventDefault();
@@ -421,6 +429,7 @@ $('#profileUpdate').on('show.bs.modal', function(e) {
             type: "GET",
             url: "/getPickupList",
             success: function (data) {
+                console.log(data)
                 $(".spinner").hide();
 
                 ;
@@ -443,13 +452,15 @@ $('#profileUpdate').on('show.bs.modal', function(e) {
                 var final_response = generateDIV(new_data, 'cancelPickup', 'rental_id', 'Cancel', 'block');
                 $('#shelf_data').html('');
                 $('#shelf_data').append(final_response);
-                $("#left_menu_recommend").css('margin-top','33%');
+                $("#left_menu_recommend").css('margin-top', '33%');
 
             },
         });
     });
 
     $('#profile').click(function (e) {
+        $("li a").removeClass('active');
+        $("li a#profile").addClass('active');
         $(".spinner").show();
         $("#emptyResult").hide();
         e.preventDefault();
@@ -477,30 +488,29 @@ $('#profileUpdate').on('show.bs.modal', function(e) {
 
 
                 $('#shelf_data').append(
-                    
-                    '<div class="jumbotron shadow1">'+      
-                        '<div class="row">'+
-                            '<div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">'+
-                              '<img src="../assets/img/user.png" alt="stack photo" class="img" style="width:150px;">'+
-                            '</div>'+
-                            '<div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">'+
-                              '<div class="row" style="border-bottom:1px solid black">'+
-                                '<h2>' + current_plan['member_cross_reference']['first_name'] + '</h2>'+
-                              '</div>'+
-                                
-                              '<div class="row profile">'+
-                                '<h4>Member since from: ' + current_plan['member_cross_reference']['start_date'] + '</h4>'+
-                                '<h4>Phone No: ' + current_plan['member_cross_reference']['mphone'] + '</h4>'+
-                                
-                                '<h4>' + current_plan['member_cross_reference']['full_address'] + '</h4>'+
-                                
-                              '</div>'+
-                            '</div>'+
-                            '<button data-toggle="modal" data-address="'+ current_plan['member_cross_reference']['full_address'] +'" data-target="#profileUpdate" type="button" class="btn btn-danger">Edit Profile</button>' +
-                        '</div>'+
-                    '</div>');
+                        '<div class="jumbotron shadow1">' +
+                        '<div class="row">' +
+                        '<div class="col-md-4 col-xs-12 col-sm-6 col-lg-4">' +
+                        '<img src="../assets/img/user.png" alt="stack photo" class="img" style="width:150px;">' +
+                        '</div>' +
+                        '<div class="col-md-8 col-xs-12 col-sm-6 col-lg-8">' +
+                        '<div class="row" style="border-bottom:1px solid black">' +
+                        '<h2>' + current_plan['member_cross_reference']['first_name'] + '</h2>' +
+                        '</div>' +
 
-                $("#left_menu_recommend").css('margin-top','8%');
+                        '<div class="row profile">' +
+                        '<h4>Member since from: ' + current_plan['member_cross_reference']['start_date'] + '</h4>' +
+                        '<h4>Phone No: ' + current_plan['member_cross_reference']['mphone'] + '</h4>' +
+
+                        '<h4>' + current_plan['member_cross_reference']['full_address'] + '</h4>' +
+
+                        '</div>' +
+                        '</div>' +
+                        '<button data-toggle="modal" data-address="' + current_plan['member_cross_reference']['full_address'] + '" data-target="#profileUpdate" type="button" class="btn btn-danger">Edit Profile</button>' +
+                        '</div>' +
+                        '</div>');
+
+                $("#left_menu_recommend").css('margin-top', '8%');
 
             }
 
@@ -508,6 +518,14 @@ $('#profileUpdate').on('show.bs.modal', function(e) {
     });
 
     $('#subscription').click(function (e) {
+        $("#datePickInput").datepicker({
+            dateFormat: 'dd-mm-yy',
+            changeMonth: true,
+            yearRange: "-100:+0"
+        }).val();
+        $("li a").removeClass('active');
+        $("li a#subscription").addClass('active');
+
         $("#emptyResult").hide();
 
         $(".spinner").show();
@@ -540,25 +558,26 @@ $('#profileUpdate').on('show.bs.modal', function(e) {
 
                 $('#shelf_data').append('<br><div class="row">' +
                         '<div class="col-sm-3">' +
-                        '<span id=' + current_plan['result']['member_cross_reference']['plan_id'] + ' class="planIdDIV">'+
+                        '<span id=' + current_plan['result']['member_cross_reference']['plan_id'] + ' class="planIdDIV">' +
 
-                        '<div class="well" style="padding:7px;box-shadow:5px 5px 6px 5px grey;background-color: #78CFBF;">' +
+                        '<div class="well" style="border-radius:0px !important;padding:7px;background-color: #7FDBFF ;text-align:center;">' +
                         '<h4>Current Plan</h4>' +
                         '<p>' + current_plan['result']['member_cross_reference']['plan_name'] + '</p>' +
                         '</div>' +
                         '</div><div class="col-sm-3">' +
-                        '<div class="well" style="padding:7px;box-shadow:5px 5px 6px 5px grey;background-color: #78CFBF;">' +
+                        '<div class="well" style="border-radius:0px !important;padding:7px;background-color: #7FDBFF ;text-align:center;">' +
                         '<h4>Duration</h4>' +
                         '<p>' + Math.round(parseFloat(current_plan['result']['member_cross_reference']['term'])) + ' months</p>' +
                         '</div></div>' +
                         '<div class="col-sm-3">' +
-                        '<div class="well" style="padding:7px;box-shadow:5px 5px 6px 5px grey;background-color: #78CFBF;">' +
+                        '<div class="well" style="border-radius:0px !important;padding:7px;background-color: #7FDBFF ;text-align:center;">' +
                         '<h4>Renewal Date</h4>' +
                         '<p>' + current_plan['result']['member_cross_reference']['expiry_date'] + '</p>' +
                         '</div></div>' +
                         '<div class="col-sm-3">' +
-                        '<div class=""><br><br>' +
+                        '<div class="">' +
                         '<button data-toggle="collapse" data-target="#demo"   class="btn btn-primary btn-lg" role="button">Renew Plan</button>' +
+                        '<br><br><button  data-toggle="collapse" data-target="#break" class="btn btn-primary btn-lg" role="button">Take a break</button>' +
                         '</div></div></div><hr>');
                 var response2 = '';
                 terms.forEach(function (arr) {
@@ -571,23 +590,30 @@ $('#profileUpdate').on('show.bs.modal', function(e) {
 //                        '<label for="sel1">Select list:</label>' +
 //                        '<select class="form-control" id="sel1" onchange="textChange()">'+response2+'' +
 //                        '</select> </div><br><div ><span id="textSpan"></span></div> ')
-                $('#shelf_data').append('<br> <div class="row collapse" id=\"demo\" style="/*! border: thin solid black; */margin-left: -1%;width: 94%;">' +
-                        '<div class="col-sm-3">' +
-                        '<div class="form-group " >' +
-                        '<label for="sel1">Select a renewal duration :</label>' +
-                        '<select class="form-control" id="sel1" onchange="textChange()">' +
+                $('#shelf_data').append('<br> <div id=\"break\" class="collapse"> <form class="form-inline" action="/action_page.php"><div class="form-group" style="margin-right: 3%;">' +
+                        ' <label for="sel1">Select Duration:</label><select class="form-control" id="monthSel"><option value="1">1 month</option>' +
+                        '<option value= "2">2 months</option><option value="3">3 months</option></select>' +
+                        '</div><div class="form-group" style="margin-right: 3%;">' +
+                        '<label for="pwd">Start Date:</label><input class="form-control" type="text" id="datePickInput" readonly required="required" name="datePickInput" required>'+
+                '</div><button type="button" class="btn btn-default" onclick="breakValidate()">Submit</button><br><br><hr><p id="textSpanBreak" style="margin-left:0%;display:none;font-weight:bold;font-size:143%"></p><br><p id="textSpanBreakDate" style="margin-left:0%;display:none;font-weight:bold;font-size:143%"></p><br><button id="BreakBUtton" style="display: none;float: left;" type="button" class="btn btn-primary btn-md" onclick="proceedBreak()">Proceed</button><span class="breakAmount" style="display: none"></span><span class="breakAMountPay" style="display: none"></span><span class="breakDate" style="display: none"></span><br><br><br><br><hr style="display:none" id="hrTag"><div id="aboutBreak" style= "display:none" class="col-md-12"><p><b>What\'s \'Take a break\' ?</b></p><p>Through a feature called “Subscription Holiday”, JustBooksclc allows the member to pause the membership (temporary suspension), for a duration of 1 month, 2 months or 3 months before expiration of membership. During Subscription Holiday period, a member will not be able to use the library. To utilise this feature, a member is required to fill up the Subscription Holiday Form either at the branch or online. All issued books and magazines should be returned to the JustBooksclc branch before the start date of Subscription Holiday. Members who pay for Yearly and Half-yearly terms will receive free Subscription Holidays of 2 months and 1 month respectively, and are required to pay Rs. 50/- per month there after. Quarterly members are required to pay Rs. 50/- per month to avail the feature.</p></div></div></div></form></div>' +
+                '<div class="row collapse" id=\"demo\" style="/*! border: thin solid black; */margin-left: -1%;width: 94%;">' +
+                '<div class="col-sm-3">' +
+                '<div class="form-group " >' +
+                '<label for="sel1">Select a renewal duration :</label>' +
+                '<select class="form-control" id="sel1" onchange="textChange()">' +
 
-                        '' + response2 + '' +
-                        '</select> ' +
-                        '<br>' +
-                        '</div>' +
-                        ' </div>' +
-                        '<div class="col-sm-6" style="margin-top: 7%" >' +
-                        '<br><div class="col-md-12"style="margin-left: -61%;">' +
-                        '<div class="form-group"><div class="col-md-8"> <label>Apply coupon code, if any:</label><input type="text" class="form-control" id="coupon_code"' +
-                        'placeholder="Coupon Code" name="coupon_code"></div><div class="col-sm-3" style="padding-top:22px;">' +
-                        '<button type="button" class="btn btn-warning" id="coupon_submit" onclick="couponClick()">Apply</button></div></div></div>' +
-                        '<br> <br><div class="col-md-12" style="margin-top: 12%;margin-left: -100%"> <div class="form-group"><div class="col-md-4"> <label>Apply gift card no, if any:</label><input class="form-control" id="gift_card" placeholder="Gift Card No." name="gift_card" type="text"></div><div class="col-md-4"> <label>Apply gift card pin, if any:</label><input class="form-control" id="gift_card_pin" placeholder="Gift Card Pin" name="gift_card_pin" type="text"></div><div style="padding-top:38px;" class="col-md-4"><button type="button" class="btn btn-warning" id="gift_card_submit" onclick="couponClick()">Apply</button></div></div><p id="textSpan" style="margin-top:28%;margin-left:6%;font-weight:bold;font-size:143%">You have to pay Rs '+defValue+'</p></div><button id="renewBUtton" style="display: block;float: left;margin-top: 49%;margin-left:-92%;" type="button" class="btn btn-primary btn-md" onclick="proceedRenew()">Proceed</button></div><br>')
+                '' + response2 + '' +
+                '</select> ' +
+                '<br>' +
+                '</div>' +
+                ' </div>' +
+                '<div class="col-sm-6" style="margin-top: 7%" >' +
+                '<br><div class="col-md-12"style="margin-left: -61%;">' +
+                '<div class="form-group"><div class="col-md-8"> <label>Apply coupon code, if any:</label><input type="text" class="form-control" id="coupon_code"' +
+                'placeholder="Coupon Code" name="coupon_code"></div><div class="col-sm-3" style="padding-top:22px;">' +
+                '<button type="button" class="btn btn-warning" id="coupon_submit" onclick="couponClick()">Apply</button></div></div></div>' +
+                '<br> <br><div class="col-md-12" style="margin-top: 12%;margin-left: -100%"> <div class="form-group"><div class="col-md-5"> <label>Apply gift card no, if any:</label><input class="form-control" id="gift_card" placeholder="Gift Card No." name="gift_card" type="text"></div><div class="col-md-5"> <label>Apply gift card pin, if any:</label><input class="form-control" id="gift_card_pin" placeholder="Gift Card Pin" name="gift_card_pin" type="text"></div><div style="padding-top:38px;" class="col-md-2"><button type="button" class="btn btn-warning" id="gift_card_submit" onclick="couponClick()">Apply</button></div></div><p id="textSpan" style="margin-top:28%;margin-left:6%;font-weight:bold;font-size:143%">You have to pay Rs ' + defValue + '</p></div><button id="renewBUtton" style="display: block;float: left;margin-top: 49%;margin-left:-92%;" type="button" class="btn btn-primary btn-md" onclick="proceedRenew()">Proceed</button></div><br>'
+                )
 
 
                 var colors = ['block personal fl', 'block professional fl', 'block business fl'];
@@ -595,7 +621,7 @@ $('#profileUpdate').on('show.bs.modal', function(e) {
 
                 change_plan['result'].forEach(function (arr) {
                     var i = 0;
-
+                    var plan_durations = arr['change_plan_detail']['plan_durations'];
 //                    response += '<h4>Upgrade your current plan</h4><div class="price_item" style="width:20%">' +
 //                            '<div class="price_item_wrapper">' +
 //                            '<div class="price_item_title"><h5>' + arr["change_plan_detail"]['plan_name'] + '</h5></div>' +
@@ -607,21 +633,31 @@ $('#profileUpdate').on('show.bs.modal', function(e) {
 //                            '<div class="price_item_text" id="price_item_text">Security Deposit - ' + arr["change_plan_detail"]['security_deposit'] + '</div>' +
 //                            '<div class="price_item_btn" id="btn" style="background-color: ' + colors[i] + '"><a href="/change_plan?id=' + arr["change_plan_detail"]['plan_id'] + '&planname=' + arr["change_plan_detail"]['promo_code'] + '">Get It Now !</a></div>' +
 //                            '</div></div>';
+                    if (plan_durations != null) {
+                        response += '<h4>Upgrade your current plan</h4><br><div class="' + colors[i] + '" style="text-align: center;/*! height: 314px; */"><h4 class="title">' + arr["change_plan_detail"]['plan_name'] + '</h4> <a href="/change_plan?id=' + arr["change_plan_detail"]['plan_id'] + '&planname=' + arr["change_plan_detail"]['promo_code'] + '"><div class="content_pt" style="margin: -9%;"> <p class="price"><sup>₹</sup><span> ' + arr["change_plan_detail"]['reading_fee'] + '</span><sub></sub></p></div></a><ul class="features" style="margin-top: 8%;height: 130px;list-style-type: none !important;padding: 0;/*! margin: 0; */margin-left: -5%;"><li style="line-height: 39px;">No of books -   ' + arr["change_plan_detail"]['books'] + '</li><li style="line-height: 39px;">Security Deposit - Rs ' + arr["change_plan_detail"]['security_deposit'] + ' </li><li style="line-height: 39px;">Registration Fee - Rs ' + arr["change_plan_detail"]['registration_fee'] + '</li></ul><div class="pt-footer"><h4><a href="/change_plan?id=' + arr["change_plan_detail"]['plan_id'] + '&planname=' + arr["change_plan_detail"]['promo_code'] + '">GET IT NOW !</a></h4></div></div>';
+                        i++;
 
-                    response += '<h4>Upgrade your current plan</h4><br><div class="' + colors[i] + '" style="text-align: center;/*! height: 314px; */"><h4 class="title">' + arr["change_plan_detail"]['plan_name'] + '</h4> <a href="/change_plan?id=' + arr["change_plan_detail"]['plan_id'] + '&planname=' + arr["change_plan_detail"]['promo_code'] + '"><div class="content_pt" style="margin: -9%;"> <p class="price"><sup>₹</sup><span> ' + arr["change_plan_detail"]['reading_fee'] + '</span><sub></sub></p></div></a><ul class="features" style="margin-top: 8%;height: 130px;list-style-type: none !important;padding: 0;/*! margin: 0; */margin-left: -5%;"><li style="line-height: 39px;">No of books -   ' + arr["change_plan_detail"]['books'] + '</li><li style="line-height: 39px;">Security Deposit - Rs ' + arr["change_plan_detail"]['security_deposit'] + ' </li><li style="line-height: 39px;">Registration Fee - Rs ' + arr["change_plan_detail"]['registration_fee'] + '</li></ul><div class="pt-footer"><h4><a href="/change_plan?id=' + arr["change_plan_detail"]['plan_id'] + '&planname=' + arr["change_plan_detail"]['promo_code'] + '">GET IT NOW !</a></h4></div></div>';
-                    i++;
-
-                    i++;
-                    if (i >= colors.length) {
-                        i = 0;
+                        i++;
+                        if (i >= colors.length) {
+                            i = 0;
+                        }
+                        $("#left_menu_recommend").css('margin-top', '3%');
+                        $('#change_plan').append(response);
                     }
+                    else {
+
+                        $("#left_menu_recommend").css('margin-top', '40%');
+                        $('#change_plan').append(response);
+                    }
+
 
                 })
 
-                $("#left_menu_recommend").css('margin-top','3%');
-                $('#change_plan').append(response);
-
-
+                $("#datePickInput").datepicker({
+                    dateFormat: 'dd-mm-yy',
+                    changeMonth: true,
+                    yearRange: "-100:+0"
+                }).val();
 //
                 console.log(current_plan['result']['member_cross_reference'])
 
@@ -702,7 +738,9 @@ $('#profileUpdate').on('show.bs.modal', function(e) {
                 }
                 if (data['success'] === 'true') {
                     toastr.success("Successfully requested !")
-                    $('#' + id).closest('.module_shelf').remove();
+//                    $('#' + id).closest('.module_shelf').remove();
+                    $("#left_menu_recommend").css('margin-top', '40%');
+
                 }
                 else {
 
@@ -721,8 +759,8 @@ $('#profileUpdate').on('show.bs.modal', function(e) {
             data: {'id': id, 'cancelId': cancel},
             success: function (data) {
                 $(".spinner").hide();
-                ;
-                if (data == 'success') {
+data=JSON.parse(data)
+                if (data['success'] == 'true') {
                     toastr.success("Succesfully canceled !")
                 }
             },
@@ -732,6 +770,8 @@ $('#profileUpdate').on('show.bs.modal', function(e) {
 
 
     function pastReads() {
+        $("li a").removeClass('active');
+        $("li a#pastreads").addClass('active');
         $(".spinner").show();
 
 
@@ -741,11 +781,12 @@ $('#profileUpdate').on('show.bs.modal', function(e) {
             success: function (data) {
                 $(".spinner").hide();
                 data = JSON.parse(data);
+                console.log(data)
                 if (data['success'] == true) {
-                    var final_response = generateDIV(data['result'], 'placePickup', 'rental_id', 'Pickup');
+                    var final_response = generateDIV(data['result'], 'placePickup', 'id', 'Pickup');
                     $('#shelf_data').html('');
                     $('#shelf_data').append(final_response);
-                    $("#left_menu_recommend").css('margin-top','33%');
+                    $("#left_menu_recommend").css('margin-top', '33%');
 
 
                 }
@@ -809,16 +850,14 @@ $('#profileUpdate').on('show.bs.modal', function(e) {
     function textChange() {
 
         $(".spinner").show();
-        var coupon=$("#coupon_code").val();
-        var gift=$("#gift_card").val();
-        if(coupon == "")
-        {
-            coupon="null";
+        var coupon = $("#coupon_code").val();
+        var gift = $("#gift_card").val();
+        if (coupon == "") {
+            coupon = "null";
         }
 
-        if(gift == "")
-        {
-            gift="null";
+        if (gift == "") {
+            gift = "null";
         }
         var termSelected = $('#sel1 option:selected').attr('id');
         if (termSelected === 0 || termSelected === null) {
@@ -832,18 +871,18 @@ $('#profileUpdate').on('show.bs.modal', function(e) {
         $.ajax({
             type: "GET",
             dataType: "json",
-            url: "http://staging.justbooksclc.com:8990/api/v1/renewal_payment.json?email=" + email + "&membercard=" + membership + "&term=" + termSelected + "&delivery_option=null&delivery_fees=" + fee + "&coupon_code="+coupon+"&gift_card_no="+gift+"&pin=null",
+            url: "http://staging.justbooksclc.com:8990/api/v1/renewal_payment.json?email=" + email + "&membercard=" + membership + "&term=" + termSelected + "&delivery_option=null&delivery_fees=" + fee + "&coupon_code=" + coupon + "&gift_card_no=" + gift + "&pin=null",
             success: function (data_new) {
                 console.log(data_new);
 
-$(".spinner").hide();
+                $(".spinner").hide();
                 if (data_new.success == true) {
-                    console.log( data_new.result.payable_amount);
+                    console.log(data_new.result.payable_amount);
                     $("#textSpan").text("You have to pay Rs  " + data_new.result.payable_amount);
                     $("#renewBUtton").show();
 
                 }
-                else{
+                else {
                     toastr.error("Something went wrong !")
                 }
 
@@ -853,22 +892,19 @@ $(".spinner").hide();
         });
 
 
-
     }
 
 
     function proceedRenew() {
         $(".spinner").show();
-        var coupon=$("#coupon_code").val();
-        var gift=$("#gift_card").val();
-        if(coupon == "")
-        {
-            coupon="null";
+        var coupon = $("#coupon_code").val();
+        var gift = $("#gift_card").val();
+        if (coupon == "") {
+            coupon = "null";
         }
 
-        if(gift == "")
-        {
-            gift="null";
+        if (gift == "") {
+            gift = "null";
         }
         var termSelected = $('#sel1 option:selected').attr('id');
         if (termSelected === 0 || termSelected === null) {
@@ -882,7 +918,7 @@ $(".spinner").hide();
         $.ajax({
             type: "GET",
             dataType: "json",
-            url: "http://staging.justbooksclc.com:8990/api/v1/renewal_payment.json?email=" + email + "&membercard=" + membership + "&term=" + termSelected + "&delivery_option=null&delivery_fees=" + fee + "&coupon_code="+coupon+"&gift_card_no="+gift+"&pin=null",
+            url: "http://staging.justbooksclc.com:8990/api/v1/renewal_payment.json?email=" + email + "&membercard=" + membership + "&term=" + termSelected + "&delivery_option=null&delivery_fees=" + fee + "&coupon_code=" + coupon + "&gift_card_no=" + gift + "&pin=null",
             success: function (data_new) {
                 console.log(data_new);
 
@@ -937,10 +973,10 @@ $(".spinner").hide();
         });
     }
     function couponClick() {
-$(".spinner").show();
+        $(".spinner").show();
         var coupon = $('#coupon_code').val();
         var planid = $(".planIdDIV").attr('id');
-        var mon =$('#sel1 option:selected').attr('id');
+        var mon = $('#sel1 option:selected').attr('id');
         $.ajax({
             type: "POST",
             url: "/couponValidate",
@@ -991,15 +1027,96 @@ $(".spinner").show();
     };
 
 
+    function breakValidate()
+    {
+        $(".spinner").show();
+       var month=$("#monthSel").val();
+       var date = $("#datePickInput").val();
+        var email = localStorage.getItem("email");
+        var membership = localStorage.getItem("membership");
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: "http://staging.justbooksclc.com:8990/api/v1/sh_payment.json?email="+email+"&membercard="+membership+"&no_of_months="+month+"&holiday_start_date="+date+"",
+            success: function (data_new) {
+                console.log(data_new);
 
+                $(".spinner").hide();
+                if (data_new.success == true) {
+
+                        date=new Date(data_new.result.sh.subscription_holiday.holiday_end_date);
+                        console.log(date)
+                    var dd = (date.getDate() < 10 ? '0' : '') + date.getDate();
+                    // 01, 02, 03, ... 10, 11, 12
+                    var MM = ((date.getMonth() + 1) < 10 ? '0' : '') + (date.getMonth() + 1);
+                    // 1970, 1971, ... 2015, 2016, ...
+                    var yyyy = date.getFullYear();
+                        date=dd + "-" + MM + "-" + yyyy;
+
+                        $("#textSpanBreak").text("You have to pay Rs - " + data_new.result.sh.subscription_holiday.payable_amount);
+                        $("#textSpanBreakDate").text("Holiday end date - " + date);
+                        $(".breakAmount").text(data_new.result.sh.subscription_holiday.payable_amount);
+                        $(".breakDate").text(date);
+                        $(".breakAMountPay").text(data_new.result.sh.subscription_holiday.paid_amount);
+                        $("#BreakBUtton").show();
+                        $("#textSpanBreak").show();
+                        $("#textSpanBreakDate").show();
+                        $("#hrTag").show();
+                        $("#aboutBreak").show();
+
+                }
+                else {
+                    toastr.error(data_new.errors)
+                }
+
+
+            },
+
+        });
+    }
+
+
+
+    function proceedBreak(){
+       var amount=$(".breakAmount").text();
+       var paid=$(".breakAMountPay").text();
+       if(paid === null)
+       {paid = 0}
+       var Enddate=$(".breakDate").text();
+       var month=$("#monthSel").val();
+        var date = $("#datePickInput").val();
+        var email = localStorage.getItem("email");
+        var membership = localStorage.getItem("membership");
+        console.log("http://staging.justbooksclc.com:8990/api/v1/confirm_sh.json?email="+email+"&membercard="+membership+"&no_of_months="+month+"&holiday_start_date="+date+"&created_in=810&holiday_end_date="+Enddate+"&paid_amount="+paid+"&payable_amount="+amount+"");
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: "http://staging.justbooksclc.com:8990/api/v1/confirm_sh.json?email="+email+"&membercard="+membership+"&no_of_months="+month+"&holiday_start_date="+date+"&created_in=810&holiday_end_date="+Enddate+"&paid_amount="+paid+"&payable_amount="+amount+"",
+            success: function (data_new) {
+                console.log(data_new);
+
+                $(".spinner").hide();
+                if (data_new.success == true) {
+                orderNumber=data_new.result.transaction.transaction.order_number;
+                amountTotal=data_new.result.transaction.transaction.amount;
+                    saveSession(orderNumber, amount);
+
+                }
+                else {
+                    toastr.error(data_new.errors)
+                }
+
+
+            },
+
+        });
+
+    }
 </script>
 
-{{> footer}}
 
 <script>
     $(document).ready(function () {
-
-
 
         $('#shelfMenu').addClass('current-menu-parent');
 
@@ -1007,3 +1124,4 @@ $(".spinner").show();
 
 
 </script>
+{{> footer}}

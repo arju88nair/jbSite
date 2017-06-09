@@ -7,7 +7,7 @@ Inspired by the dribble shot http://dribbble.com/shots/1285240-Freebie-Flat-Pric
 @import url(http://weloveiconfonts.com/api/?family=fontawesome);
 /* fontawesome */
 [class*="fontawesome-"]:before {
-  font-family: 'FontAwesome', sans-serif;
+    font-family: 'FontAwesome', sans-serif;
 }
 *{
     margin: 0;
@@ -28,7 +28,7 @@ Inspired by the dribble shot http://dribbble.com/shots/1285240-Freebie-Flat-Pric
 .group:after {
     content: "";
     display: table;
-} 
+}
 .group:after {
     clear: both;
 }
@@ -37,13 +37,13 @@ Inspired by the dribble shot http://dribbble.com/shots/1285240-Freebie-Flat-Pric
 }
 
 /*body {*/
-    /*background: #F2F2F2;*/
-    /*font-family: 'Droid Sans', sans-serif;*/
-    /*line-height: 1;*/
-    /*font-size: 16px;    */
+/*background: #F2F2F2;*/
+/*font-family: 'Droid Sans', sans-serif;*/
+/*line-height: 1;*/
+/*font-size: 16px;    */
 /*}*/
 .wrapper {
-    
+
 }
 .pricing-table {
     width: 80%;
@@ -60,18 +60,19 @@ Inspired by the dribble shot http://dribbble.com/shots/1285240-Freebie-Flat-Pric
     margin-bottom: 4rem;
 }
 .block{
-    width: 30%;    
+    width: 30%;
     margin: 0 15px;
     overflow: hidden;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
-    border-radius: 5px;    
-/*    border: 1px solid red;*/
+    border-radius: 5px;
+    /*    border: 1px solid red;*/
 }
 
 .pricing-table .block h4{
     margin-bottom: 0px;
-    
+    font-family: 'Playfair Display';
+    font-size: 20px;
 }
 /*Shared properties*/
 .title{
@@ -86,6 +87,7 @@ Inspired by the dribble shot http://dribbble.com/shots/1285240-Freebie-Flat-Pric
     text-transform: capitalize;
     line-height: 2.5;
     position: relative;
+    font-family: 'Playfair Display';
 }
 
 
@@ -96,6 +98,7 @@ Inspired by the dribble shot http://dribbble.com/shots/1285240-Freebie-Flat-Pric
 }
 .content_pt p{
     text-align: center;
+    font-family: 'Playfair Display';
 }
 /*arrow creation*/
 .content_pt:after, .content_pt:before,.pt-footer:before,.pt-footer:after {
@@ -112,7 +115,7 @@ Inspired by the dribble shot http://dribbble.com/shots/1285240-Freebie-Flat-Pric
     top:0;
 }
 .content_pt:after,.pt-footer:after {
-    border-color: rgba(136, 183, 213, 0);   
+    border-color: rgba(136, 183, 213, 0);
     border-width: 5px;
     margin-left: -5px;
 }
@@ -122,14 +125,14 @@ Inspired by the dribble shot http://dribbble.com/shots/1285240-Freebie-Flat-Pric
     display: inline-block;
     margin-bottom: 0.625rem;
 }
-.price span{    
+.price span{
     font-size: 5rem;
     letter-spacing: 2px;
-    font-weight: bold;        
+    font-weight: bold;
 }
 .price sup{
-    font-size: 1.5rem;    
-    position: absolute;    
+    font-size: 1.5rem;
+    position: absolute;
     top: 12px;
     left: -12px;
 }
@@ -139,7 +142,7 @@ Inspired by the dribble shot http://dribbble.com/shots/1285240-Freebie-Flat-Pric
     font-family: 'Playfair Display'
 }
 .features{
-    list-style-type: none;    
+    list-style-type: none;
     background: #F5F5F5;
     text-align: center;
     color: #9C9C9C;
@@ -150,24 +153,34 @@ Inspired by the dribble shot http://dribbble.com/shots/1285240-Freebie-Flat-Pric
     padding:12px 0;
     width: 100%;
     font-size: 16px;
+    font-family: 'Playfair Display';
 }
 .features li span{
-   padding-right: 0.4rem; 
+    padding-right: 0.4rem;
+    font-family: 'Playfair Display';
 }
 .pt-footer{
     font-size: 0.95rem;
     text-transform: capitalize;
 }
+
+.pt-footer h4{
+    font-family: 'Playfair Display';
+}
+
+.pt-footer a{
+    font-family: 'Playfair Display';
+}
 /*PERSONAL*/
-.personal .title{        
-    background: #78CFBF;    
+.personal .title{
+    background: #78CFBF;
 }
 
 .personal .content_pt,.personal .pt-footer{
     background: #82DACA;
 }
-.personal .content_pt:after{   
-    border-top-color: #82DACA;  
+.personal .content_pt:after{
+    border-top-color: #82DACA;
 }
 .personal .pt-footer:after{
     border-top-color: #FFFFFF;
@@ -179,8 +192,8 @@ Inspired by the dribble shot http://dribbble.com/shots/1285240-Freebie-Flat-Pric
 .professional .content_pt,.professional .pt-footer{
     background: #53CFE9;
 }
-.professional .content_pt:after{   
-    border-top-color: #53CFE9;  
+.professional .content_pt:after{
+    border-top-color: #53CFE9;
 }
 .professional .pt-footer:after{
     border-top-color: #FFFFFF;
@@ -192,9 +205,9 @@ Inspired by the dribble shot http://dribbble.com/shots/1285240-Freebie-Flat-Pric
 .business .content_pt,.business .pt-footer{
     background: #EB6379;
 }
-.business .content_pt:after{   
-    border-top-color: #EB6379;  
+.business .content_pt:after{
+    border-top-color: #EB6379;
 }
-.business .pt-footer:after {    
-    border-top-color: #FFFFFF;  
+.business .pt-footer:after {
+    border-top-color: #FFFFFF;
 }

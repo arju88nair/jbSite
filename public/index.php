@@ -284,7 +284,7 @@ $app->get('/getMostRead', function (Request $request, Response $response) {
 
 $app->get('/getAuthor', function (Request $request, Response $response) {
     $con = $this->db;
-    $query = "SELECT * FROM temp_author";
+    $query = "SELECT author_id,author_name  FROM fn_author_details where rownum<=20";
     $result = oci_parse($con, $query);
     oci_execute($result);
     while ($row = oci_fetch_assoc($result)) {
@@ -1247,6 +1247,17 @@ $app->post('/updateProfile', function (Request $request, Response $response) {
 
     $result = curlFunction("8990/api/v1/update_personal_info.json?email=$mail&api_key=$api_key&membership_no=$membership_no&address1=$address&address2=&address3=&city=&state=&pincode=&lphone=");
     echo json_decode(json_encode($result));
+});
+
+
+$app->get('/break', function (Request $request, Response $response) {
+
+    $mail = $_SESSION['email'];
+    $membership_no = $_SESSION['membership_no'];
+    $result = curlFunction(":8990/api/v1/get_change_plan_terms.json?email=$mail&membercard=$membership_no&for_mobile=true");
+    return $this->view->render($response, 'break.mustache',array('data'=>$result));
+
+
 });
 
 

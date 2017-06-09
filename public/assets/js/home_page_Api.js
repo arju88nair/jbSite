@@ -22,7 +22,7 @@ function getCard(data, visibleCardCount) {
             '<div class="carousel_desc">' +
             '<div class="fram_btn">' +
             '<a href="javascript:void(0)" class="shortcode_button btn_small btn_type1" title="Rent" onclick=\'placeOrder(' + data[i].id + ');\'>Rent</a>' +
-            '<a href="javascript:void(0)" class="tiptip" title="Wishlist" onclick=\'wishlistAdd(' + data[i].id + ');\'><i class="fa fa-heart wishlist_btn" aria-hidden="true"></i></a>' +
+            '<a href="javascript:void(0)" class="tiptip" title="Wishlist" onclick=\'wishlistAdd(' + data[i].id + ');\'><img class="wishlist_btn" src="../assets/img/Added_WL_50.png" alt="Smiley face" height="25" width="25"></a>' +
 
             // '<a href="/book_details/' + data[i].id + '" id="' + data[i].id + '" class="tiptip" title="Read">Read</a>' +
             '<div class="clear"></div>' +
@@ -68,7 +68,7 @@ function getCardMostRead(data, visibleCardCount) {
             '<div class="carousel_desc">' +
             '<div class="fram_btn">' +
             '<a href="javascript:void(0)" class="shortcode_button btn_small btn_type1" title="Rent" onclick=\'placeOrder(' + data[i].TITLEID + ');\'>Rent</a>' +
-            '<a href="javascript:void(0)" class="tiptip" title="Wishlist" onclick=\'wishlistAdd(' + data[i].TITLEID + ');\'><i class="fa fa-heart wishlist_btn" aria-hidden="true"></i></a>' +
+            '<a href="javascript:void(0)" class="tiptip" title="Wishlist" onclick=\'wishlistAdd(' + data[i].TITLEID + ');\'><img class="wishlist_btn" src="../assets/img/Added_WL_50.png" alt="Smiley face" height="25" width="25"></a>' +
 
             // '<a href="/book_details/' + data[i].TITLEID + '" id="' + data[i].TITLEID + '" class="tiptip" title="Read">Read</a>' +
             '<div class="clear"></div>' +
@@ -103,9 +103,9 @@ function getCardAuthor(data, visibleCardCount) {
 
         response += '<div class="col-md-2" style="width: 18%;padding-left: 0px;padding-right: 0px;">' +
             '<div class="item" style="border:thin solid gray;">' +
-            '<div class="img_block_books"><a href="/author_details/' + data[i].ID + '"><img src="' + data[i].IMAGE + '" alt="Anna" onerror="this.src=\'../assets/img/user.png\'"></a></div>' +
+            '<div class="img_block_books"><a href="/author_details/' + data[i].AUTHOR_ID + '"><img src="https://s3.amazonaws.com/prod.justbooksclc.com/authors/' + data[i].AUTHOR_ID + '.jpg" alt="Anna" onerror="this.src=\'../assets/img/user.png\'"></a></div>' +
             '<div class="carousel_body_book">' +
-            '<div class="carousel_title_book"><h5 title="' + data[i].NAME + '">' + data[i].NAME + '</h5></div>' +
+            '<div class="carousel_title_book"><h5 title="' + data[i].AUTHOR_NAME + '">' + data[i].AUTHOR_NAME + '</h5></div>' +
             '<div class="carousel_desc">' +
             '<div class="text-center" style="margin-left:37%; margin-top:10px;">' +
             // '<a href="/author_details/' + data[i].ID + '" id="' + data[i].ID + '" class="shortcode_button btn_small btn_type1" title="Read">Read</a>' +
@@ -236,7 +236,7 @@ $(document).ready(function () {
                     '<p class="hint">'+ arr['MONTH_TAG'] +'</p></div></a><ul class="features">'+
                     '<li style="color: black;">' + arr['BOOK_TAG'] + '</li><li style="background-color: '+sec_colors[i]+';padding: 12px;color: white;">' + arr['SUITABLE_TAG'] + '</li><li style="color: black;">Security Deposit - ₹ ' + Math.round(parseFloat(arr['SECURITY_DEPOSIT'])) + ' </li>'+
                     '<li style="color: black;">Registration Fee - ₹ ' + Math.round(parseFloat(arr['REGISTRATION_FEE'])) + '</li></ul><div class="pt-footer">'+
-                    '<h4><a href="/signup?planname=' + arr['PROMO'] + '&books=' + arr['NO_OF_BOOKS'] + '&months=' + arr['NO_OF_MONTHS'] + '">GET IT NOW !</a></h4></div></div>'
+                    '<a href="/signup?planname=' + arr['PROMO'] + '&books=' + arr['NO_OF_BOOKS'] + '&months=' + arr['NO_OF_MONTHS'] + '"><h4>GET IT NOW !</h4></a></div></div>'
 
 
                 i++;
@@ -298,7 +298,7 @@ function wishlistAdd(id) {
             $(".spinner").hide();
             if (JSON.parse(data) === "failure" ) {
                 toastr.error('Please sign in to update your wish list !');
-                $(window).scrollTop($('#anchor2').offset().top);
+                $(window).scrollTop($('#signin').offset().top);
 
             }
             else {
@@ -325,7 +325,7 @@ function placeOrder(id) {
                 $(".spinner").hide();
 
                 toastr.error('Please sign in to order the book !');
-                $(window).scrollTop($('#anchor2').offset().top);
+                $(window).scrollTop($('#signin').offset().top);
 
             }
             else {
@@ -411,5 +411,8 @@ function signupClick() {
 
 
 }
+
+
+
 
 

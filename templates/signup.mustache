@@ -9,147 +9,7 @@
         </div>
     </div>-->
     <style>
-        .contentarea .row-fluid .module_padding{
-            background-color:#347AB6;
-            margin-top:40px;
-            margin-bottom:40px;
-            padding-top:40px;
-            padding-bottom:40px;
-            border-radius:5px;
-
-
-        }
-
-        .contentarea .row-fluid .module_padding .center_div{
-            margin: 0 auto;
-            width:80% /* value of your choice which suits your alignment */
-        }
-        .contentarea .row-fluid .module_padding .center_div h4{
-            padding-top:0px!important;
-            color:#fff;
-        }
-        .contentarea .row-fluid .module_padding_active{
-            background-color:#EFAC54;
-            margin-top:40px;
-            margin-bottom:40px;
-            padding-top:40px;
-            padding-bottom:40px;
-            border-radius:5px;
-
-
-        }
-
-        .contentarea .row-fluid .module_padding_active .center_div{
-            margin: 0 auto;
-            width:80% /* value of your choice which suits your alignment */
-        }
-        .contentarea .row-fluid .module_padding_active .center_div h4{
-            padding-top:0px!important;
-            color:#fff;
-        }
-
-        #border{
-            margin-top:15px;
-            padding-top:15px;
-            border: 3px solid #fff!important;
-        }
-        #border h5{
-            color:#fff;
-            font-family: Arial;
-        }
-        #border_bottom{
-            margin-top:15px;
-            padding-top:15px;
-            border-bottom: 1px solid #b2b2b2!important;
-        }
-        #border_bottom h5{
-            color:#000;
-            font-family: Arial;
-        }
-        #border_none{
-            margin-top:15px;
-            padding-top:15px;
-        }
-        #border_none h5{
-            color:#000;
-            font-family: Arial;
-        }
-        .form-horizontal label{
-            text-align:left!important;
-            float:left;
-            color:#999999;
-        }
-        .form-horizontal h4{
-            font-family: 'Arial';
-            text-align:left;
-        }
-
-
-
-
-        .square {
-            float:right;
-            position: relative;
-            width: 35%;
-            padding-bottom : 35%; /* = width for a 1:1 aspect ratio */
-            margin:3%;
-            background: transparent linear-gradient(135deg, rgb(54, 209, 220), rgb(91, 134, 229)) repeat scroll 0% 0%;
-            overflow:hidden;
-            border: solid 1px #BEBEBE;
-            border-radius:5px;
-            box-shadow: 5px 5px 5px #A0A0A0;
-            /*box-shadow: 10px -10px rgba(0,0,0,0.6);*/
-            /*transition: 0.3s;
-
-            box-shadow: 20px -16px rgba(0,0,0,0.6);*/
-
-        }
-
-
-        .square:hover {
-
-            box-shadow: 8px 8px 5px #A0A0A0;
-
-        }
-
-        .title_text{
-
-            font-size:30px;
-            line-height: 30px;
-            color:#fff;
-            font-family: Century;
-        }
-
-        .content1 {
-            position:absolute;
-            height:90%; /* = 100% - 2*5% padding */
-            width:90%; /* = 100% - 2*5% padding */
-            padding: 5%;
-
-        }
-        .table{
-            display:table;
-            width:100%;
-            height:100%;
-        }
-        .table-cell{
-            display:table-cell;
-            vertical-align:middle;
-        }
-
-
-        /*  For responsive images */
-
-        .content1 .rs{
-            width:auto;
-            height:auto;
-            max-height:90%;
-            max-width:100%;
-        }
-
-        }
-
-
+       
 
 
 
@@ -199,7 +59,7 @@
                                             }
                                             .card{
                                                 margin: 5px;
-                                                box-shadow: 1px 0px 4px 2px grey;
+                                                /*box-shadow: 1px 0px 4px 2px grey;*/
 
                                             }
 
@@ -259,22 +119,22 @@
                                             </div>
                                         </div>
 
-                                        <!--<div class="col-sm-11" id="border_bottom">-->
-                                            <!--<div class="col-sm-6">-->
-                                                <!--<h5 style="float: left">One Time Registration Fee:</h5>-->
-                                            <!--</div>-->
-                                            <!--<div class="col-sm-4" id="reg_fee">-->
-                                                <!--<h5>₹ {{reg_fee}}</h5>-->
-                                            <!--</div>-->
-                                        <!--</div>-->
-                                        <!--<div class="col-sm-11" id="border_bottom">-->
-                                            <!--<div class="col-sm-6">-->
-                                                <!--<h5 style="float: left">Security Deposit:</h5>-->
-                                            <!--</div>-->
-                                            <!--<div class="col-sm-4" id="sec_deposit_fee">-->
-                                                <!--<h5>₹ {{sec_deposit}}</h5>-->
-                                            <!--</div>-->
-                                        <!--</div>-->
+                                        <div class="col-sm-11" id="border_bottom">
+                                            <div class="col-sm-6">
+                                                <h5 style="float: left">One Time Registration Fee:</h5>
+                                            </div>
+                                            <div class="col-sm-4" id="reg_fee">
+                                                <h5>₹ {{reg_fee}}</h5>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-11" id="border_bottom">
+                                            <div class="col-sm-6">
+                                                <h5 style="float: left">Security Deposit:</h5>
+                                            </div>
+                                            <div class="col-sm-4" id="sec_deposit_fee">
+                                                <h5>₹ {{sec_deposit}}</h5>
+                                            </div>
+                                        </div>
                                         <div class="col-sm-11" id="border_bottom">
                                             <div class="col-sm-6">
                                                 <h5 style="float: left">Reading Fee:</h5>
@@ -304,10 +164,10 @@
                         </div><!-- .row-fluid -->
                     </div>
                 </div>
-                <div class="row" style="background-color:#fff; margin-top:20px; margin-bottom:20px; border-radius:5px;">
+                <div class="row">
                     <a id="anchor2"></a>
                     <div class="span12 module_cont module_text_area"></br>
-                        <h2>Fill Your Personal Details Here</h2>
+                        <h4 class="module_cont">Fill Your Personal Details Here</h4>
                         <hr>
                         <form class="form-horizontal" id="signup_form">
 
@@ -367,7 +227,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <!----------/////////////////////END/////////////////////////-------------------->
+                            <!--/////////////////////END/////////////////////////-->
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <div class="col-sm-6">
@@ -397,7 +257,7 @@
                                 <span id="error" style="color :red;display: block;margin-right: 10%;float:right"></span>
 
                             </div>
-                            <!----------/////////////////////END/////////////////////////-------------------->
+                            <!--/////////////////////END/////////////////////////-->
 
 
                             <h4 class="dark-grey">Coupon Information</h4>
@@ -443,7 +303,7 @@
 
                                 </div>
                             </div>
-                            <!----------/////////////////////END/////////////////////////-------------------->
+                            <!--/////////////////////END/////////////////////////-->
 
 
                             <div class="col-md-12">
@@ -542,7 +402,8 @@
    'padding-bottom' : '6px',
     'border-radius': '8px',
     'margin-bottom': '15px',
-    'box-shadow': '1px 4px 4px 2px grey'
+    'font-family': 'Playfair Display',
+    'box-shadow': '5px 5px 8px 1px grey'
     });
     $('#months').on('change', function () {
 $(".spinner").show();
