@@ -1,118 +1,207 @@
 <div class="row-fluid">
     <div class="span12 module_cont module_teamslider">
         <div class="bg_title"><h4 class="headInModule">RELATED BOOKS</h4></div>
-        <div class="team_slider">
-            <div class="carouselslider teamslider items3" data-count="3">
-                <ul class="item_list" id="items4">
-                    <li>
-                        <div class="item item_shadow">
-                            <div class="img_block_books_rel"><img src="../assets/img/books/1.jpg"" alt="Tom"></div>
-                            <div class="carousel_body_book">    
-                                <div class="carousel_desc">    
-                                    <div class="smallproflinks">
-                                        <a href="twitter" class="wishlist tiptip" title="Wishlist"></a>
-                                        <a href="twitter" class="rent tiptip" title="Rent"></a>
-                                       <a href="twitter" class="read tiptip" title="Read"></a>
-                                        <div class="clear"></div>
-                                    </div>  
-                                </div>
+        <!--<div class="team_slider" style="overflow-y: auto">-->
+            <!--<div class="carouselslider teamslider items3" data-count="3">-->
+                <!--<ul class="item_list" id="items4">-->
+                    <!--{{#related}}-->
+                        <!--<li>-->
+                            <!--<div class="item item_shadow"><div class="img_block_books"><a href="/book_details/{{id}}"><img src="{{image_url}}" alt=""></a></div><div class="carousel_body_book"><div class="carousel_title_book"><h5 title="{{author}}">{{author}}</h5></div><div class="carousel_desc"><div class="fram_btn"><a href="javascript:void(0)" class="shortcode_button btn_small btn_type1" title="Rent" onclick="placeOrder({{id}});">Rent</a><a href="javascript:void(0)" class="tiptip" title="Wishlist" onclick="wishlistAdd({{id}});"><img class="wishlist_btn" src="../assets/img/Added_WL_50.png" alt="Smiley face" width="25" height="25" style="margin-top: -49%"></a><div class="clear"></div></div></div></div></div>                        </li>-->
+                    <!--{{/related}}-->
+
+                <!--</ul>-->
+            <!--</div>-->
+            <!--<div class="clear"></div>-->
+        <!--</div>&lt;!&ndash; .team_slider &ndash;&gt;-->
+        <div class="container" >
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="myCarousel" class="carousel slide multi-item-carousel">
+                        <div class="carousel-inner carouselslider" id="newArrivals"  style="padding: 0px 0px 20px 0px; margin-left: 60px; margin-right: 60px;">
+
+                        </div>
+                        <div id="frame_new_arr" class="loader_fram">
+                            <div id="loader" style="display: block">
+                                <img src="../assets/img/loader.gif" id="loader_image">
                             </div>
                         </div>
-                    </li>  
-                    <li>
-                        <div class="item item_shadow">
-                            <div class="img_block_books_rel"><img src="../assets/img/books/2.jpg"" alt="Anna"></div>
-                            <div class="carousel_body_book">
-                                <div class="carousel_desc">    
-                                   <div class="smallproflinks">
-                                        <a href="twitter" class="wishlist tiptip" title="Wishlist"></a>
-                                        <a href="twitter" class="rent tiptip" title="Rent"></a>
-                                       <a href="twitter" class="read tiptip" title="Read"></a>
-                                        <div class="clear"></div>
-                                    </div>  
-                                </div>
-                            </div>
-                        </div>
-                    </li>  
-                    <li>
-                        <div class="item item_shadow">
-                            <div class="img_block_books_rel"><img src="../assets/img/books/3.jpg"" alt="John"></div>
-                            <div class="carousel_body_book">
-                                <div class="carousel_desc">    
-                                    <div class="smallproflinks">
-                                        <a href="twitter" class="wishlist tiptip" title="Wishlist"></a>
-                                        <a href="twitter" class="rent tiptip" title="Rent"></a>
-                                       <a href="twitter" class="read tiptip" title="Read"></a>
-                                        <div class="clear"></div>
-                                    </div>  
-                                </div>
-                            </div>
-                        </div>
-                    </li>  
-                    <li>
-                        <div class="item item_shadow">
-                            <div class="img_block_books_rel"><img src="../assets/img/books/4.jpg"" alt="Anna"></div>
-                            <div class="carousel_body_book">    
-                                <div class="carousel_desc">    
-                                    <div class="smallproflinks">
-                                        <a href="twitter" class="wishlist tiptip" title="Wishlist"></a>
-                                        <a href="twitter" class="rent tiptip" title="Rent"></a>
-                                       <a href="twitter" class="read tiptip" title="Read"></a>
-                                        <div class="clear"></div>
-                                    </div>  
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="item item_shadow">
-                            <div class="img_block_books_rel"><img src="../assets/img/books/5.jpg"" alt="John"></div>
-                            <div class="carousel_body_book">    
-                                <div class="carousel_desc">    
-                                    <div class="smallproflinks">
-                                        <a href="twitter" class="wishlist tiptip" title="Wishlist"></a>
-                                        <a href="twitter" class="rent tiptip" title="Rent"></a>
-                                       <a href="twitter" class="read tiptip" title="Read"></a>
-                                        <div class="clear"></div>
-                                    </div>                   
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="item item_shadow">
-                            <div class="img_block_books_rel"><img src="../assets/img/books/6.jpg"" alt="Tom"></div>
-                            <div class="carousel_body_book">
-                                <div class="carousel_desc">    
-                                    <div class="smallproflinks">
-                                        <a href="twitter" class="wishlist tiptip" title="Wishlist"></a>
-                                        <a href="twitter" class="rent tiptip" title="Rent"></a>
-                                       <a href="twitter" class="read tiptip" title="Read"></a>
-                                        <div class="clear"></div>
-                                    </div>                    
-                                </div>
-                            </div>
-                        </div>
-                    </li>  
-                    <li>
-                        <div class="item item_shadow">
-                            <div class="img_block_books_rel"><img src="../assets/img/books/7.jpg"" alt="Tom"></div>
-                            <div class="carousel_body_book">
-                                <div class="carousel_desc">    
-                                    <div class="smallproflinks">
-                                        <a href="twitter" class="wishlist tiptip" title="Wishlist"></a>
-                                        <a href="twitter" class="rent tiptip" title="Rent"></a>
-                                       <a href="twitter" class="read tiptip" title="Read"></a>
-                                        <div class="clear"></div>
-                                    </div>                  
-                                </div>
-                            </div>
-                        </div>
-                    </li>  
-                </ul>                        
-            </div>                                               
-            <div class="clear"></div>
-        </div><!-- .team_slider -->
+                        <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+                        <a class="right carousel-control" href="#myCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <a id="anchor8"></a>
     </div>
 </div><!-- .row-fluid -->
+<script>
+    function getCard(data, visibleCardCount,ids,wishlist) {
+        var response = '', items = 0;
+        var final_response = '';
+        for (var i = 0; i < data.length; i++) {
+            items++;
+            var active = '';
+            if (i == 0) {
+                active = "active";
+            }
+
+
+            if(ids.indexOf(data[i].id) != -1)
+            {
+                var text="Rented";
+                action="";
+            }
+            else{
+                var action="\'placeOrder("+ data[i].id + ");\'"
+
+                text="Rent";
+            }
+            if(wishlist.indexOf(data[i].id) != -1)
+            {
+                var images="../assets/img/Added_WL_Right.png"
+                wish="";
+            }
+            else{
+                images="../assets/img/Added_WL_50.png";
+                var wish="\'wishlistAdd(" + data[i].id + ");\'";
+            }
+
+
+            response += '<div class="col-md-2" style=width:18%;>' +
+                    '<div class="item item_shadow">' +
+                    '<div class="img_block_books"><a href="/book_details/' + data[i].id + '"><img src="' + data[i].image_url + '"  onerror="this.src=\'http://cdn2.justbooksclc.com/title/0.jpg\'"></a></div>' +
+                    '<div class="carousel_body_book">' +
+                    '<div class="carousel_title_book"><h5 title="' + data[i].title + '">' + data[i].title + '</h5><p style="text-align: center">' + data[i].author + '</p></div>' +
+                    '<div class="carousel_desc">' +
+                    '<div class="fram_btn">' +
+                    '<a    href="javascript:void(0)" class="shortcode_button btn_small btn_type1" title="Rent" onclick='+action+' id="rent_'+data[i].id+'">'+text+'</a>' +
+                    '<a href="javascript:void(0)" class="tiptip" title="Wishlist" onclick='+wish+'><img id="wish_'+data[i].id+'" class="wishlist_btn" src='+images+' alt="Smiley face" height="25" width="25"></a>' +
+
+                    // '<a href="/book_details/' + data[i].id + '" id="' + data[i].id + '" class="tiptip" title="Read">Read</a>' +
+                    '<div class="clear"></div>' +
+                    '</div></div></div></div></div>';
+
+            //if( i > 0 && i % 3 == 0){
+            if (items == visibleCardCount) {
+
+                final_response += '<div class="item ' + active + '">' + response + '</div>';
+                response = "";
+                items = 0;
+            }
+
+        }
+        if (items < visibleCardCount && items > 0) {
+            final_response += '<div class="item ' + active + '">' + response + '</div>';
+        }
+        return final_response;
+    }
+
+    $(document).ready(function () {
+        var id="{{id}}";
+        console.log(id)
+
+        $.ajax({
+            type: "GET",
+            url: "/getAuthorRelatedBooks?id=" + id,
+            success: function (data) {
+                data=JSON.parse(data);
+                console.log(data)
+                cardData=data['data'];
+
+                $("#frame_new_arr").hide();
+                $("#loader").hide();
+                var final_response = getCard(cardData, 3,data['ids'],data['wishlist']);
+                $('#newArrivals').append(final_response);
+                $('.item').first().addClass('active');
+                $("#myCarousel").carousel();
+
+//                if(data['wishlist'].indexOf(parseInt(id)) != -1)
+//                {
+//                    $("#wishlistMain").attr("src","../assets/img/Added_WL_Right.png");
+//                }
+//                else{
+//                    $("#wishlistMain").attr("src","../assets/img/Added_WL_50.png");
+//
+//                }
+
+                $(".spinner").hide()
+            },
+            error: function (err) {
+                console.log(err);
+                toastr.error('Something went wrong  !');
+                $(".spinner").hide();
+
+            }
+
+        });
+
+
+
+        $('#home').addClass('current-menu-parent');
+
+    })
+    function placeOrder(id) {
+        $(".spinner").show();
+        $.ajax({
+            type: "GET",
+            url: "/placeOrder?id=" + id,
+            success: function (data) {
+                console.log(data);
+                if (JSON.parse(data) === "failure" ) {
+                    $(".spinner").hide();
+
+                    toastr.error('Please sign in to order the book !');
+                    $(window).scrollTop($('#signin').offset().top);
+
+                }
+                else {
+                    $(".spinner").hide();
+                    data=JSON.parse(data);
+                    console.log(data['success'])
+                    if(data['success'] === "false")
+                    {
+                        toastr.warning(data['errors'])
+                    }else{
+                        $("#rent_"+id).text("Rented")
+
+                        toastr.success('Successfully added !');
+
+                    }
+                }
+            },
+
+        });
+    }
+
+    function wishlistAdd(id) {
+        $(".spinner").show();
+
+        $.ajax({
+            type: "GET",
+            url: "/updateWishlist?id="+id,
+            success: function (data) {
+                console.log(data);
+                console.log(JSON.parse(data));
+                $(".spinner").hide();
+                if (JSON.parse(data) === "failure" ) {
+                    toastr.error('Please sign in to update your wish list !');
+                    $(window).scrollTop($('#signin').offset().top);
+
+                }
+                else {
+                    $("#wish_"+id).attr("src","../assets/img/Added_WL_Right.png")
+                    toastr.success('Successfully added into your wish list !');
+                }
+            },
+            error:function(err)
+            {
+                console.log(err);
+                toastr.error("Something went wrong.Please try again !")
+            }
+
+        });
+    }
+
+</script>

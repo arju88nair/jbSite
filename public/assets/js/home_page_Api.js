@@ -1,4 +1,4 @@
-function getCard(data, visibleCardCount) {
+function getCard(data, visibleCardCount,ids,wishlist) {
     var response = '', items = 0;
     var final_response = '';
     for (var i = 0; i < data.length; i++) {
@@ -14,15 +14,37 @@ function getCard(data, visibleCardCount) {
         else {
             var img = data[i].image_url;
         }
+
+        if(ids.indexOf(data[i].id) != -1)
+        {
+            var text="Rented";
+            action="";
+        }
+        else{
+            var action="\'placeOrder("+ data[i].id + ");\'"
+
+            text="Rent";
+        }
+        if(wishlist.indexOf(data[i].id) != -1)
+        {
+            var image="../assets/img/Added_WL_Right.png"
+            wish="";
+        }
+        else{
+            image="../assets/img/Added_WL_50.png";
+            var wish="\'wishlistAdd(" + data[i].id + ");\'";
+        }
+
+
         response += '<div class="col-md-2" style=width:18%;>' +
             '<div class="item item_shadow">' +
             '<div class="img_block_books"><a href="/book_details/' + data[i].id + '"><img src="' + img + '" alt="Anna"></a></div>' +
             '<div class="carousel_body_book">' +
-            '<div class="carousel_title_book"><h5 title="' + data[i].author + '">' + data[i].author + '</h5></div>' +
+            '<div class="carousel_title_book"><h5 title="' + data[i].title + '">' + data[i].title + '</h5></div>' +
             '<div class="carousel_desc">' +
             '<div class="fram_btn">' +
-            '<a href="javascript:void(0)" class="shortcode_button btn_small btn_type1" title="Rent" onclick=\'placeOrder(' + data[i].id + ');\'>Rent</a>' +
-            '<a href="javascript:void(0)" class="tiptip" title="Wishlist" onclick=\'wishlistAdd(' + data[i].id + ');\'><img class="wishlist_btn" src="../assets/img/Added_WL_50.png" alt="Smiley face" height="25" width="25"></a>' +
+            '<a    href="javascript:void(0)" class="shortcode_button btn_small btn_type1" title="Rent" onclick='+action+' id="rent_'+data[i].id+'">'+text+'</a>' +
+            '<a href="javascript:void(0)" class="tiptip" title="Wishlist" onclick='+wish+'><img id="wish_'+data[i].id+'" class="wishlist_btn" src='+image+' alt="Smiley face" height="25" width="25"></a>' +
 
             // '<a href="/book_details/' + data[i].id + '" id="' + data[i].id + '" class="tiptip" title="Read">Read</a>' +
             '<div class="clear"></div>' +
@@ -43,7 +65,7 @@ function getCard(data, visibleCardCount) {
     return final_response;
 }
 
-function getCardMostRead(data, visibleCardCount) {
+function getCardMostRead(data, visibleCardCount,ids,wishlist) {
     var response = '', items = 0;
 
     var final_response = '';
@@ -60,6 +82,30 @@ function getCardMostRead(data, visibleCardCount) {
         else {
             var img = data[i].IMAGE;
         }
+
+
+        if(ids.indexOf(parseInt(data[i].TITLEID)) != -1)
+        {
+            var text="Rented";
+            action="";
+        }
+        else{
+            var action="\'placeOrder("+ data[i].TITLEID + ");\'"
+
+            text="Rent";
+        }
+        if(wishlist.indexOf(parseInt(data[i].TITLEID)) != -1)
+        {
+            var image="../assets/img/Added_WL_Right.png"
+            wish="";
+        }
+        else{
+            image="../assets/img/Added_WL_50.png";
+            var wish="\'wishlistAdd(" + data[i].TITLEID + ");\'";
+        }
+
+
+
         response += '<div class="col-md-2" style=width:18%;>' +
             '<div class="item item_shadow">' +
             '<div class="img_block_books"><a href="/book_details/' + data[i].TITLEID + '"><img src="' + img + '" alt=""></a></div>' +
@@ -67,8 +113,8 @@ function getCardMostRead(data, visibleCardCount) {
             '<div class="carousel_title_book"><h5 title="' + data[i].NAME + '">' + data[i].NAME + '</h5></div>' +
             '<div class="carousel_desc">' +
             '<div class="fram_btn">' +
-            '<a href="javascript:void(0)" class="shortcode_button btn_small btn_type1" title="Rent" onclick=\'placeOrder(' + data[i].TITLEID + ');\'>Rent</a>' +
-            '<a href="javascript:void(0)" class="tiptip" title="Wishlist" onclick=\'wishlistAdd(' + data[i].TITLEID + ');\'><img class="wishlist_btn" src="../assets/img/Added_WL_50.png" alt="Smiley face" height="25" width="25"></a>' +
+            '<a    href="javascript:void(0)" class="shortcode_button btn_small btn_type1" title="Rent" onclick='+action+' id="rent_'+data[i].TITLEID+'">'+text+'</a>' +
+            '<a href="javascript:void(0)" class="tiptip" title="Wishlist" onclick='+wish+'><img id="wish_'+data[i].TITLEID+'" class="wishlist_btn" src='+image+' alt="Smiley face" height="25" width="25"></a>' +
 
             // '<a href="/book_details/' + data[i].TITLEID + '" id="' + data[i].TITLEID + '" class="tiptip" title="Read">Read</a>' +
             '<div class="clear"></div>' +
@@ -157,7 +203,10 @@ $(document).ready(function () {
             $("#frame_new_arr").hide();
             $("#loader").hide();
             data=JSON.parse(data);
-            var final_response = getCard(data['result'], 5);
+            cardData=data['data'];
+            console.log(cardData)
+
+            var final_response = getCard(cardData['result'], 5,data['ids'],data['wishlist']);
             $('#newArrivals').append(final_response);
             $('.item').first().addClass('active');
             $("#myCarousel").carousel();
@@ -174,8 +223,10 @@ $(document).ready(function () {
 
             $("#frame_mostRead").hide();
             $("#loader").hide();
-            var final_response = getCardMostRead(JSON.parse(data), 5);
-            $('#mostRead').append(final_response);
+            data=JSON.parse(data)
+            console.log(data);
+            cardData=data['data'];
+            var final_response = getCardMostRead(cardData, 5,data['ids'],data['wishlist']);            $('#mostRead').append(final_response);
             $('.item_mostread').first().addClass('active');
             $("#myCarousel1").carousel();
         },
@@ -186,7 +237,6 @@ $(document).ready(function () {
         type: "GET",
         url: "/getAuthor",
         success: function (data) {
-            console.log(JSON.parse(data));
 
             $("#frame_authorCarousel1").hide();
             $("#loader").hide();
@@ -302,6 +352,7 @@ function wishlistAdd(id) {
 
             }
             else {
+                $("#wish_"+id).attr("src","../assets/img/Added_WL_Right.png")
                 toastr.success('Successfully added into your wish list !');
             }
         },
@@ -336,6 +387,8 @@ function placeOrder(id) {
                 {
                     toastr.warning(data['errors'])
                 }else{
+                    $("#rent_"+id).text("Rented")
+
                     toastr.success('Successfully added !');
 
                 }

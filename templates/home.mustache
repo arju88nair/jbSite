@@ -1,64 +1,64 @@
-	{{> header }}
+{{> header }}
 
 
-	<div class="main_wrapper">
-		<!-- C O N T E N T -->
-		<div class="content_wrapper">
-			<div class="container">
-                <div class="spinner"  style='display: none;z-index: 100;opacity:0.55;background-color: grey'>
-                    <div class="double-bounce1"></div>
-                    <div class="double-bounce2"></div>
-                </div>
-				<div class="content_block no-sidebar row">
-					<div class="fl-container span12">
-						<div class="row">
-							<div class="posts-block span12">
-								<div class="contentarea">
+<div class="main_wrapper">
+    <!-- C O N T E N T -->
+    <div class="content_wrapper">
+        <div class="container">
+            <div class="spinner"  style='display: none;z-index: 100;opacity:0.55;background-color: grey'>
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+            <div class="content_block no-sidebar row">
+                <div class="fl-container span12">
+                    <div class="row">
+                        <div class="posts-block span12">
+                            <div class="contentarea">
 
-									{{> slider}}
-									
-									{{> newArrivals}}
-									
-									{{> mostRead}}
-									
-									<!-- .row-fluid -->
-									<!-- .row-fluid -->
-									
-									{{> authors}}
-									
-									<!-- .row-fluid -->
-								</div><!-- .contentarea -->
-							</div>
+                                {{> slider}}
 
-						</div>
-						<div class="clear"><!-- ClearFix --></div>
-					</div><!-- .fl-container -->
-				</div>
-		
-				{{> membership_plan}}
-				{{> blog}}
-				<!-- .Post area -->
-			</div><!-- .module_line_trigger -->
-            </div><!-- .container -->
-        </div><!-- .content_wrapper -->
-    
-    </div><!-- .main_wrapper -->
+                                {{> newArrivals}}
 
-	{{> preFooter}}<!-- .pre_footer -->
+                                {{> mostRead}}
 
-	{{> footer }}
-    <script>
-        $('.multi-item-carousel').carousel({
-            interval: false
-        });
-    </script>
-    <script src="assets/js/home_page_Api.js"></script>
-    <script>
-        $(document).ready(function()
-        {
-            $('#home').addClass('current-menu-parent');
+                                <!-- .row-fluid -->
+                                <!-- .row-fluid -->
 
-        })
+                                {{> authors}}
+
+                                <!-- .row-fluid -->
+                            </div><!-- .contentarea -->
+                        </div>
+
+                    </div>
+                    <div class="clear"><!-- ClearFix --></div>
+                </div><!-- .fl-container -->
+            </div>
+
+            {{> membership_plan}}
+            {{> blog}}
+            <!-- .Post area -->
+        </div><!-- .module_line_trigger -->
+    </div><!-- .container -->
+</div><!-- .content_wrapper -->
+
+</div><!-- .main_wrapper -->
+
+    {{> preFooter}}<!-- .pre_footer -->
+
+{{> footer }}
+<script>
+    $('.multi-item-carousel').carousel({
+        interval: false
+    });
+</script>
+<script src="assets/js/home_page_Api.js"></script>
+<script>
+    $(document).ready(function()
+    {
+        $('#home').addClass('current-menu-parent');
+
+    })
 
 
-    </script>
+</script>

@@ -38,7 +38,7 @@
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     <link href="../assets/plugins/Star-Rating-Plugin-jQuery-Glyphicons/src/j-rating-advance/j-rating-advance.css"
           type="text/css" rel="stylesheet"/>
-
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <!-- price Tabel home page -->
 
     <link rel="stylesheet" href="../assets/css/price_table.css">
@@ -54,8 +54,8 @@
     <script src="../assets/js/jquery-1.9.1.js"></script>
     <script src="../assets/js/jquery-ui.js"></script>
     <!-- <script src="js/color_panel.js"></script> -->
-    <script type="text/javascript" src="./assets/js/jquery.isotope.min.js"></script>
-    <script type="text/javascript" src="./assets/js/sorting.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery.isotope.min.js"></script>
+    <script type="text/javascript" src="../assets/js/sorting.js"></script>
     <script type="text/javascript"
             src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <!--<script  src="https://i.icomoon.io/public/temp/fe64edd509/UntitledProject/svgxuse.js"></script>-->
@@ -83,7 +83,66 @@
 
     <script type="text/javascript">
 
+        function placeOrder(id) {
+            $(".spinner").show();
+            $.ajax({
+                type: "GET",
+                url: "/placeOrder?id=" + id,
+                success: function (data) {
+                    console.log(data);
+                    if (JSON.parse(data) === "failure" ) {
+                        $(".spinner").hide();
 
+                        toastr.error('Please sign in to order the book !');
+                        $(window).scrollTop($('#signin').offset().top);
+
+                    }
+                    else {
+                        $(".spinner").hide();
+                        data=JSON.parse(data);
+                        console.log(data['success'])
+                        if(data['success'] === "false")
+                        {
+                            toastr.warning(data['errors'])
+                        }else{
+                            toastr.success('Successfully added !');
+
+                        }
+                    }
+                },
+
+            });
+        }
+        function wishlistAdd(id) {
+            var flag = localStorage.getItem("flag");
+            if (flag === "false") {
+                toastr.error("Please sign in to wish list a book !");
+                return false;
+            }
+
+            $(".spinner").show();
+
+            $.ajax({
+                type: "GET",
+                url: "/updateWishlist?id=" + id,
+                success: function (data) {
+                    if (JSON.parse(data) === "failure") {
+                        toastr.error('Please sign in to update wish list  !');
+                    }
+                    else {
+                        toastr.success("Successfully updated your wishlist !")
+                    }
+                    $(".spinner").hide()
+                },
+                error: function (err) {
+                    console.log(err);
+                    toastr.error('Something went wrong  !');
+                    $(".spinner").hide();
+
+                }
+
+            });
+        }
         function logClick(type) {
 //            $.ajax({
 //                type: "GET",
@@ -161,19 +220,17 @@
             type: "GET",
             url: "/loginValidate",
             success: function (data) {
-                console.log(data)
                 if (data != 'failure') {
-                    console.log(data);
                     data = JSON.parse(data);
-                    console.log(data['name'])
+                    console.log(data)
                     $("#firstname").text(" Welcome " + data['name']);
-                    $("ul#menuHeader").append("<li id=\"shelfMenu\"><a href=\"/shelf\">MY SHELF</a></li>");
                     $("nav").show()
-                    $(".userTile").show();
-
-                    $("#first").hide();
+                    $("#userTitle").show();
+                    $(".login_form_fram_one").hide();
                     $("#main").hide();
+                    $("#first").hide();
                     localStorage.setItem("flag", true)
+                    $("ul#menuHeader").prepend("<li id=\"shelfMenu\" class='awesome_change_color'><a href=\"/shelf\">MY SHELF</a></li>");
 
                     return false;
                 }
@@ -182,10 +239,11 @@
 
                     $("nav").show();
 
-                    $(".userTile").hide();
+                    $("#userTitle").hide();
 
-                    $("#first").show();
+                    $(".login_form_fram_one").show();
                     $("#main").show();
+                    $("#first").show();
                     return false;
 
                 }
@@ -214,7 +272,7 @@
          <div class="clear"></div>
      </section> -->
 
-    <div class="userTile" style="float: right; padding-top: -6px;display: none;">
+    <div class="userTile" id="userTitle" style="float: right; padding-top: -6px;display: none; margin-right: 20px;">
         <ul class="nav navbar-nav navbar-right">
             <li><a href="#"><span class="glyphicon glyphicon-user"></span><span id="firstname"></span> </a></li>
             <li><a href="/logout/"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>

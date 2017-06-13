@@ -14,7 +14,7 @@ ul.mobile_menu li > a:hover,
 ul.mobile_menu li:hover > a,
 ul.mobile_menu li .sub-menu li:hover > a,
 ul.mobile_menu li .sub-menu li:hover .sub-menu li:hover > a,
-.feedback_form .feedback_go:hover, 
+.feedback_form .feedback_go:hover,
 .feedback_form .feedback_reset:hover,
 #commentform #reset:hover,
 #commentform #submit:hover,
@@ -40,7 +40,7 @@ ul.sub-menu li.current-menu-item > a,
 .shortcode_button.btn_type2:hover,
 .shortcode_button.btn_type3:hover,
 .widget_tag_cloud a:hover {
-	background-color:#37878d!important;
+	background-color:#db241c!important;
 }
 
 a,
@@ -48,7 +48,7 @@ a,
 .testimonials_list .author,
 .recent_posts_content .post_title,
 .blogpost_title:hover,
-a.menu_toggler:hover { 
+a.menu_toggler:hover {
 	color:#37878d;
 }
 header ul.menu > li > a:hover,

@@ -1657,7 +1657,7 @@ ol.list li:before {
 .widget_nav_menu ul li a {
 	position:relative;
 	border-radius:5px;
-	background:#E15943;
+	background:#323232;
 	color:#ffffff;
 	padding:15px 15px 15px 40px;
 	margin-bottom: 15px;
@@ -1714,7 +1714,7 @@ ol.list li:before {
 }
 
 .widget_nav_menu ul li a:hover{
-	background:#ec9385;
+	background:#db241c;
 	color:#ffffff!important;
 	box-shadow: 4px 3px 5px #7f7f7f;
 }
@@ -3916,7 +3916,7 @@ hr.respond_seperator {
 	background:#e24da5;
 }
 .shortcode_button.btn_type10 {
-	background:#e15943;
+	background:#464d52;
 }
 .shortcode_button.btn_type11 {
 	background:#ffa800;
@@ -3935,7 +3935,7 @@ hr.respond_seperator {
 }
 
 .shortcode_button:hover {
-	background:#464d52!important;
+	background:#db241c!important;
 	color:#ffffff;
 }
 
@@ -4393,7 +4393,7 @@ ol.sitemap_list li span.sitemap_comments a{
 -----------*/
 
 /*Misc*/
-.module_text_area img {
+.details_img img {
 	border-radius:5px;
 	width:200px;
 	max-width:100%;
@@ -5779,7 +5779,7 @@ hr.light {
 }
 .module_cont_button {
 	margin-bottom: 20px !important;
-	text-align:center;
+	/*text-align:center;*/
 	width: 100%;
 }
 
@@ -5798,11 +5798,11 @@ hr.light {
 .module_none_padding1 {
 	margin-bottom: 0!important;
 	border-right: 1px solid;
-	text-align:center;
+	/*text-align:center;*/
 }
 .module_none_padding2 {
 	margin-bottom: 0!important;
-	text-align:center;
+	/*text-align:center;*/
 }
 .page404 {
 	margin-bottom:0px!important;
@@ -6422,7 +6422,6 @@ transition: 500ms ease-in-out left;
 	margin-top: 0px;
 	padding: 5px 20px;
 	background-color: white;
-	display:none;
 	position :absolute;
 	left: 50%;
 	margin-left:-180px;

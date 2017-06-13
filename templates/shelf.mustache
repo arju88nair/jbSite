@@ -6,7 +6,7 @@
     }
 
     .active {
-        background: #a72e1b !important;
+        background: #db241c !important;
     }
 
     .card {
@@ -254,8 +254,9 @@
 
                 $(".spinner").hide();
                 var new_data = JSON.parse(data);
-                console.log(data);
-                if (new_data['result'].length == 0) {
+                console.log(new_data['data']['result']);
+
+                if (new_data['data']['result'].length == 0) {
                     $('#shelf_data').html('');
                     $("#left_menu_recommend").show();
 
@@ -265,10 +266,11 @@
                 }
                 $("#emptyResult").hide();
                 $("#left_menu_recommend").show();
-                new_data = new_data['result']
-                var final_response = generateDIV(new_data, 'placePickup', 'rental_id', 'Return', 'none');
+                var final_response = generateDIV(new_data['data']['result'], 'placePickup', 'rental_id', 'Return', 'none',new_data['wishlist']);
                 $('#shelf_data').html('');
                 $('#shelf_data').append(final_response);
+                $("#left_menu_recommend").css('margin-top', '33%');
+
 
             },
 
@@ -276,11 +278,23 @@
     })
 
 
-    function generateDIV(arr, funcName, idName, btnTxt, style) {
+    function generateDIV(arr, funcName, idName, btnTxt, style,ids) {
         $('#change_plan').html('');
-
+console.log(style)
         var response = '';
         arr.forEach(function (arr_data) {
+//            console.log(arr_data['id']);
+//            console.log(ids.indexOf(arr_data['id']))
+            if(ids.indexOf(arr_data['id']) != -1)
+            {
+                var image="../assets/img/Added_WL_Right.png"
+                wish="";
+            }
+            else{
+                image="../assets/img/Added_WL_50.png";
+                var wish="\'wishlistAdd(" + arr_data['id'] + ");\'";
+            }
+
             response += '<div class="col-md-6 col-xs-12 module_cont module_shelf shadow1" style="height: 154px;">' +
                     '<div class="col-md-5 col-xs-5">' +
                     '<a href="/book_details/' + arr_data['id'] + '">' +
@@ -292,13 +306,16 @@
                     '<p>' + arr_data['author'] + '</p>' +
                     '<br><div class="rating" id="rating1">' +
                     '</div>' +
-                    '<p><a href="/book_details/' + arr_data['id'] + '">Rate/Review</a></p>' +
+                    // '<p><a href="/book_details/' + arr_data['id'] + '">Rate/Review</a></p>' +
                     '<div class="shelf_sicial">' +
-                    '<div class="col-md-4 col-xs-2" style="margin-right: 15%;margin-top: 4%">' +
+                    '<div class="col-md-3 col-xs-2" style="margin-right: 26%;margin-top: 4%;margin-left:-3%">' +
+                    '<a class="shortcode_button btn_small btn_type10"  href="/book_details/' + arr_data['id'] + '">Rate/Review</a>' +
+                    '</div>' +
+                    '<div class="col-md-3 col-xs-2" style="margin-right: -8%;margin-top: 4%">' +
                     '<a href="javascript:void(0)" class="shortcode_button btn_small btn_type10" onclick="' + funcName + '(this,' + arr_data['id'] + ')"  id="' + arr_data[idName] + '">' + btnTxt + '</a>' +
                     '</div>' +
-                    '<div class="col-md-4 col-xs-5" style="display: ' + style + ';margin-top: 4%">' +
-                    '<a href="javascript:void(0)"  class="shortcode_button btn_small btn_type10" onclick="addWishlist(' + arr_data['id'] + ')"  id="' + arr_data[idName] + '">Wishlist</a>' +
+                    '<div class="col-md-3 col-xs-5" style="display:'+style+';margin-top: 2%">' +
+                    '<a href="javascript:void(0)"  class="tiptip" onclick="addWishlist(' + arr_data['id'] + ')"  id="' + arr_data[idName] + '"><img id="wish_'+arr_data['id']+'" class="wishlist_btn" src='+image+' alt="Smiley face" height="25" width="25"></a>' +
                     '</div></div></div></div>';
         });
         return response;
@@ -318,8 +335,8 @@
 
                 $(".spinner").hide();
                 var new_data = JSON.parse(data);
-                console.log(new_data['result']);
-                if (new_data['result'].length == 0) {
+
+                if (new_data['data']['result'].length == 0) {
                     $('#shelf_data').html('');
 
                     $("#emptyResult").show();
@@ -328,11 +345,10 @@
                     return false;
                 }
                 $("#emptyResult").hide();
-                new_data = new_data['result'];
 
                 var response = '';
                 var i = 0;
-                var final_response = generateDIV(new_data, 'removeWishlist', 'title_id', 'Remove', 'none');
+                var final_response = generateDIV(new_data['data']['result'], 'removeWishlist', 'title_id', 'Remove', 'none',new_data['wishlist']);
                 $('#shelf_data').html('');
                 $('#shelf_data').append(final_response);
                 $("#left_menu_recommend").css('margin-top', '3%');
@@ -355,7 +371,7 @@
 
                 $('#shelf_data').html('');
                 var new_data = JSON.parse(data);
-                if (new_data['result'].length == 0) {
+                if (new_data['data']['result'].length == 0) {
                     $('#shelf_data').html('');
                     $('#change_plan').html('');
 
@@ -366,14 +382,13 @@
                 $("#emptyResult").hide();
                 $('#change_plan').html('');
 
-                new_data = new_data['result']
-                if (new_data[0]['delivery_order_id'] == null) {
+                if (new_data['data']['result'][0]['delivery_order_id'] == null) {
                     var id = 'rental_id';
                 } else {
                     var id = 'delivery_order_id';
                 }
                 console.log(id);
-                var final_response = generateDIV(new_data, 'cancelOrder', 'delivery_order_id', 'Cancel', 'block');
+                var final_response = generateDIV(new_data['data']['result'], 'cancelOrder', 'delivery_order_id', 'Cancel', 'block',new_data['wishlist']);
                 $('#shelf_data').append(final_response);
                 $("#left_menu_recommend").css('margin-top', '33%');
 
@@ -394,25 +409,25 @@
             type: "GET",
             url: "/getCurrentReading",
             success: function (data) {
-                console.log(data)
-                $(".spinner").hide();
 
+                $(".spinner").hide();
                 var new_data = JSON.parse(data);
-                if (new_data['result'].length == 0) {
+
+                if (new_data['data']['result'].length == 0) {
                     $('#shelf_data').html('');
-                    $('#change_plan').html('');
+                    $("#left_menu_recommend").show();
 
                     $("#emptyResult").show();
                     $("#emptyResult").text("No books to show !");
-
                     return false;
                 }
                 $("#emptyResult").hide();
-                new_data = new_data['result']
-                var final_response = generateDIV(new_data, 'placePickup', 'rental_id', 'Return', 'none');
+                $("#left_menu_recommend").show();
+                var final_response = generateDIV(new_data['data']['result'], 'placePickup', 'rental_id', 'Return', 'none',new_data['wishlist']);
                 $('#shelf_data').html('');
                 $('#shelf_data').append(final_response);
                 $("#left_menu_recommend").css('margin-top', '33%');
+
 
             },
 
@@ -436,7 +451,7 @@
                 $('#change_plan').html('');
 
                 var new_data = JSON.parse(data);
-                if (new_data['result'].length == 0) {
+                if (new_data['data']['result'].length == 0) {
                     $('#shelf_data').html('');
 
                     $("#emptyResult").show();
@@ -447,9 +462,8 @@
                 $("#emptyResult").hide();
 
 
-                new_data = new_data['result']
 
-                var final_response = generateDIV(new_data, 'cancelPickup', 'rental_id', 'Cancel', 'block');
+                var final_response = generateDIV(new_data['data']['result'], 'cancelPickup', 'rental_id', 'Cancel', 'block',new_data['wishlist']);
                 $('#shelf_data').html('');
                 $('#shelf_data').append(final_response);
                 $("#left_menu_recommend").css('margin-top', '33%');
@@ -782,8 +796,8 @@ data=JSON.parse(data)
                 $(".spinner").hide();
                 data = JSON.parse(data);
                 console.log(data)
-                if (data['success'] == true) {
-                    var final_response = generateDIV(data['result'], 'placePickup', 'id', 'Pickup');
+                if (data['data']['success'] == true) {
+                    var final_response = generateDIV(data['data']['result'], 'placePickup', 'id', 'Pickup','none',data['wishlist']);
                     $('#shelf_data').html('');
                     $('#shelf_data').append(final_response);
                     $("#left_menu_recommend").css('margin-top', '33%');
@@ -835,6 +849,8 @@ data=JSON.parse(data)
 
                 }
                 else {
+                    $("#wish_"+id).attr("src","../assets/img/Added_WL_Right.png")
+
                     toastr.success('Successfully added into your wish list !');
                 }
             },

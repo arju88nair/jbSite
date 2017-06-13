@@ -25,6 +25,145 @@
         <a id="anchor8"></a>
     </div>
 </div>
+<script>
+    function getCard(data, visibleCardCount,ids,wishlist) {
+        var response = '', items = 0;
+        var final_response = '';
+        for (var i = 0; i < data.length; i++) {
+            items++;
+            var active = '';
+            if (i == 0) {
+                active = "active";
+            }
+
+            if(ids.indexOf(data[i].id) != -1)
+            {
+                var text="Rented";
+                action="";
+            }
+            else{
+                var action="\'placeOrder("+ data[i].id + ");\'"
+
+                text="Rent";
+            }
+            if(wishlist.indexOf(data[i].id) != -1)
+            {
+                var images="../assets/img/Added_WL_Right.png"
+                wish="";
+            }
+            else{
+                images="../assets/img/Added_WL_50.png";
+                var wish="\'wishlistAdd(" + data[i].id + ");\'";
+            }
+
+
+            response += '<div class="col-md-2" style=width:18%;>' +
+                    '<div class="item item_shadow">' +
+                    '<div class="img_block_books"><a href="/book_details/' + data[i].id + '"><img src="' + data[i].image + '"  onerror="this.src=\'http://cdn2.justbooksclc.com/title/0.jpg\'"></a></div>' +
+                    '<div class="carousel_body_book">' +
+                    '<div class="carousel_title_book"><h5 title="' + data[i].title + '">' + data[i].title + '</h5></div>' +
+                    '<div class="carousel_desc">' +
+                    '<div class="fram_btn">' +
+                    '<a    href="javascript:void(0)" class="shortcode_button btn_small btn_type1" title="Rent" onclick='+action+' id="rent_'+data[i].id+'">'+text+'</a>' +
+                    '<a href="javascript:void(0)" class="tiptip" title="Wishlist" onclick='+wish+'><img id="wish_'+data[i].id+'" class="wishlist_btn" src='+images+' alt="Smiley face" height="25" width="25"></a>' +
+
+                    // '<a href="/book_details/' + data[i].id + '" id="' + data[i].id + '" class="tiptip" title="Read">Read</a>' +
+                    '<div class="clear"></div>' +
+                    '</div></div></div></div></div>';
+
+            //if( i > 0 && i % 3 == 0){
+            if (items == visibleCardCount) {
+
+                final_response += '<div class="item ' + active + '">' + response + '</div>';
+                response = "";
+                items = 0;
+            }
+
+        }
+        if (items < visibleCardCount && items > 0) {
+            final_response += '<div class="item ' + active + '">' + response + '</div>';
+        }
+        return final_response;
+    }
+
+    $(document).ready(function () {
+        var id="{{titleid}}";
+        console.log(id)
+
+        $.ajax({
+            type: "GET",
+            url: "/getRelatedBooks?id=" + id,
+            success: function (data) {
+                data=JSON.parse(data);
+                cardData=data['data'];
+
+                $("#frame_new_arr").hide();
+                $("#loader").hide();
+                var final_response = getCard(cardData, 5,data['ids'],data['wishlist']);
+                $('#newArrivals').append(final_response);
+                $('.item').first().addClass('active');
+                $("#myCarousel").carousel();
+
+                if(data['wishlist'].indexOf(parseInt(id)) != -1)
+                {
+                    $("#wishlistMain").attr("src","../assets/img/Added_WL_Right.png");
+                }
+                else{
+                    $("#wishlistMain").attr("src","../assets/img/Added_WL_50.png");
+
+                }
+
+                $(".spinner").hide()
+            },
+            error: function (err) {
+                console.log(err);
+                toastr.error('Something went wrong  !');
+                $(".spinner").hide();
+
+            }
+
+        });
+
+
+
+        $('#home').addClass('current-menu-parent');
+
+    })
+    function placeOrder(id) {
+        $(".spinner").show();
+        $.ajax({
+            type: "GET",
+            url: "/placeOrder?id=" + id,
+            success: function (data) {
+                console.log(data);
+                if (JSON.parse(data) === "failure" ) {
+                    $(".spinner").hide();
+
+                    toastr.error('Please sign in to order the book !');
+                    $(window).scrollTop($('#signin').offset().top);
+
+                }
+                else {
+                    $(".spinner").hide();
+                    data=JSON.parse(data);
+                    console.log(data['success'])
+                    if(data['success'] === "false")
+                    {
+                        toastr.warning(data['errors'])
+                    }else{
+                        $("#rent_"+id).text("Rented")
+
+                        toastr.success('Successfully added !');
+
+                    }
+                }
+            },
+
+        });
+    }
+
+
+</script>
 <!--<script>-->
     <!--$('.multi-item-carousel').carousel({-->
         <!--interval: false-->
