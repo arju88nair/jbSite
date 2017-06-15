@@ -59,14 +59,10 @@ $app->get('/', function (Request $request, Response $response) {
     $image1 = $final_data[0]['IMAGE_URL_1'];
     $image2 = $final_data[0]['IMAGE_URL_2'];
     $image3 = $final_data[0]['IMAGE_URL_3'];
-    $action1 =$final_data[0]['ACTION_1"'];
-    $action2 =$final_data[0]['ACTI0N_2"'];
-    $action3 =$final_data[0]['ACTION_3"'];
-    $address =$final_data[0]['ADDRESS'];
-
-
-
-
+    $action1 = $final_data[0]['ACTION_1"'];
+    $action2 = $final_data[0]['ACTI0N_2"'];
+    $action3 = $final_data[0]['ACTION_3"'];
+    $address = $final_data[0]['ADDRESS'];
 
 
     $response = $this->view->render($response, 'home.mustache', array('loggedIn' => "true", 'session' => $_SESSION['username'], 'image1' => $image1, 'image2' => $image2, 'image3' => $image3, 'action1' => $action1, 'action2' => $action2, 'action3' => $action3, 'address' => $address));
@@ -99,65 +95,12 @@ $app->get('/author_details/{authorid}', function (Request $request, Response $re
     oci_execute($result);
     while ($row = oci_fetch_assoc($result)) {
         $final_data[] = $row;
-    }
-    $resultRelated = curlFunction("8990/api/v1/author_info.json?id=116923");
-    $plan_data = json_decode($resultRelated);
-    $data = $plan_data->result;
-
-    $data = json_decode(json_encode($data), True);
-    $titles= $data['titles'];
 
 
-    $author_id = $request->getQueryParams()['author_id'];
-    $con = $this->db;
-    $query = "select * from fn_author_details_new where author_id=2780";
-    $result = oci_parse($con, $query);
-    oci_execute($result);
-    $query_construct_category = '';
-    $query_construct_laguage = '';
-    $final_query = '';
-    while ($row = oci_fetch_assoc($result)) {
-        $category = $row['AUTHOR_CATEGORY'];
-        $category_array = explode(',',$category);
-        foreach($category_array as $cat){
-            $final_category = explode('@',$cat);
-            if(!empty($final_category[0]))
-                $query_construct_category .= "author_category like '%".$final_category[0]."%' or ";
-        }
-
-        $language = $row['AUTHOR_LANGUAGES'];
-        $language_array = explode(',',$language);
-        foreach($language_array as $lan){
-            $final_language = explode('@',$lan);
-            if(!empty($final_language[0]))
-                $query_construct_laguage .= "author_languages like '%".$final_language[0]."%' or ";
-        }
-        if($query_construct_laguage == '' && $query_construct_category != '') {
-            $query_construct_category = rtrim($query_construct_category, ' or');
-        }elseif($query_construct_laguage != '' && $query_construct_category == ''){
-            $query_construct_laguage = rtrim($query_construct_laguage, ' or');
-        }elseif($query_construct_laguage != '' && $query_construct_category != ''){
-            $query_construct_laguage = rtrim($query_construct_laguage, ' or');
-        }elseif($query_construct_laguage == '' && $query_construct_category == ''){
-            $query_construct_category = " author_category like '%General%'";
-        }
-    }
-    $final_query = "select fad.author_id,fad.author_name,'https://s3.amazonaws.com/prod.justbooksclc.com/authors/'||fad.author_id||'.jpg' as image , fad.description from fn_author_details fad join fn_author_details_new fadn on fad.author_id=fadn.author_id where ".$query_construct_category.$query_construct_laguage;
-
-    $final_result = oci_parse($con, $final_query);
-    oci_execute($final_result);
-    while ($row = oci_fetch_assoc($final_result)) {
-        $final_data_Result[] = $row;
     }
 
 
-
-
-
-
-
-
-    $response = $this->view->render($response, 'author_details.mustache', array('data' => $final_data,'related'=>$titles,'authors'=>$final_data_Result,'id'=>$authorid));
+    $response = $this->view->render($response, 'author_details.mustache', array('data' => $final_data, 'id' => $authorid));
     return $response;
 });
 
@@ -336,9 +279,9 @@ $app->get('/newArrivals', function (Request $request, Response $response) {
 //}
 
 
-    $array=presentIds();
-    $wishlist=wishlistIds();
-    echo json_encode(array("data"=>$data,'ids'=>(array)$array,'wishlist'=>(array)$wishlist));
+    $array = presentIds();
+    $wishlist = wishlistIds();
+    echo json_encode(array("data" => $data, 'ids' => (array)$array, 'wishlist' => (array)$wishlist));
 
 });
 
@@ -350,13 +293,14 @@ $app->get('/getMostRead', function (Request $request, Response $response) {
     while ($row = oci_fetch_assoc($result)) {
         $final_data[] = $row;
     }
-    $array=presentIds();
-    $wishlist=wishlistIds();
-    echo json_encode(array("data"=>$final_data,'ids'=>(array)$array,'wishlist'=>(array)$wishlist));});
+    $array = presentIds();
+    $wishlist = wishlistIds();
+    echo json_encode(array("data" => $final_data, 'ids' => (array)$array, 'wishlist' => (array)$wishlist));
+});
 
 $app->get('/getAuthor', function (Request $request, Response $response) {
     $con = $this->db;
-    $query = "SELECT author_id,author_name,description  FROM fn_author_details where rownum<=20";
+    $query = "SELECT author_id,author_name,description  FROM fn_author_details WHERE rownum<=20";
     $result = oci_parse($con, $query);
     oci_execute($result);
     while ($row = oci_fetch_assoc($result)) {
@@ -524,8 +468,8 @@ $app->get('/getWishList', function (Request $request, Response $response) {
     $api_key = $_SESSION['api_key'];
     $mail = $_SESSION['email'];
     $result = curlFunction("8990/api/v1/wishlists.json?email=$mail&membership_no=$membership_no&api_key=$api_key");
-    $wishlist=wishlistIds();
-    echo json_encode(array('data'=>(array)json_decode($result),'wishlist'=>$wishlist));
+    $wishlist = wishlistIds();
+    echo json_encode(array('data' => (array)json_decode($result), 'wishlist' => $wishlist));
 });
 
 $app->post('/removeWishList', function (Request $request, Response $response) {
@@ -543,8 +487,8 @@ $app->get('/getOrderList', function (Request $request, Response $response) {
     $api_key = $_SESSION['api_key'];
     $email = $_SESSION['email'];
     $result = curlFunction("8990/api/v1/pending_delivery_order.json?email=$email&membership_no=$membership_no&api_key=$api_key");
-    $wishlist=wishlistIds();
-    echo json_encode(array('data'=>(array)json_decode($result),'wishlist'=>$wishlist));
+    $wishlist = wishlistIds();
+    echo json_encode(array('data' => (array)json_decode($result), 'wishlist' => $wishlist));
 });
 
 $app->get('/getCurrentReading', function (Request $request, Response $response) {
@@ -553,8 +497,8 @@ $app->get('/getCurrentReading', function (Request $request, Response $response) 
     $email = $_SESSION['email'];
     $result = curlFunction("8990/api/v1/books_at_home.json?membership_no=$membership_no&api_key=$api_key&email=$email");
 
-    $wishlist=wishlistIds();
-    echo json_encode(array('data'=>(array)json_decode($result),'wishlist'=>$wishlist));
+    $wishlist = wishlistIds();
+    echo json_encode(array('data' => (array)json_decode($result), 'wishlist' => $wishlist));
 });
 
 $app->post('/placePickup', function (Request $request, Response $response) {
@@ -575,8 +519,9 @@ $app->get('/getPickupList', function (Request $request, Response $response) {
 //    echo "8787/api/v3/pending_pickup_order.json?membership_no=$membership_no&api_key=$api_key";
 //    die;
     $result = curlFunction("8990/api/v1/pending_pickup_order.json?email=$email&membership_no=$membership_no&api_key=$api_key");
-    $wishlist=wishlistIds();
-    echo json_encode(array('data'=>(array)json_decode($result),'wishlist'=>$wishlist));});
+    $wishlist = wishlistIds();
+    echo json_encode(array('data' => (array)json_decode($result), 'wishlist' => $wishlist));
+});
 
 $app->post('/cancelOrder', function (Request $request, Response $response) {
     $data = $request->getParsedBody();
@@ -679,7 +624,8 @@ $app->post('/cancelPickup', function (Request $request, Response $response, $arg
     $membership = $_SESSION['membership_no'];
     $email = $_SESSION['email'];
     $api_key = $_SESSION['api_key'];
-    echo "8990/api/v1/orders/order_cancel.json?email=$email&api_key=$api_key&membership_no=$membership&order_status=pickup&order_id=$id&title_id=$titleId";die;
+    echo "8990/api/v1/orders/order_cancel.json?email=$email&api_key=$api_key&membership_no=$membership&order_status=pickup&order_id=$id&title_id=$titleId";
+    die;
     $result = curlFunction("8990/api/v1/orders/order_cancel.json?email=$email&api_key=$api_key&membership_no=$membership&order_status=pickup&order_id=$id&title_id=$titleId");
     echo $result;
 
@@ -723,23 +669,21 @@ $app->get('/change_plan', function (Request $request, Response $response, $args)
         }
 
     }
-$temp_array=json_decode(json_encode($temp_array), True);
+    $temp_array = json_decode(json_encode($temp_array), True);
 
-    $plan_durations_array=$temp_array[0]['change_plan_detail']['plan_durations'];
+    $plan_durations_array = $temp_array[0]['change_plan_detail']['plan_durations'];
     if ($temp_array[0]['change_plan_detail']['plan_durations'] != null) {
-        $final=[];
-        foreach($plan_durations_array as $plan_duration)
-        {
-            $count_array=[];
-            $count_array['months']=$plan_duration['plan_duration']['change_plan_months'];
-            $count_array['fee']=$plan_duration['plan_duration']['payable_amount'];
-            array_push($final,$count_array);
+        $final = [];
+        foreach ($plan_durations_array as $plan_duration) {
+            $count_array = [];
+            $count_array['months'] = $plan_duration['plan_duration']['change_plan_months'];
+            $count_array['fee'] = $plan_duration['plan_duration']['payable_amount'];
+            array_push($final, $count_array);
         }
 
 
-
-            $response = $this->view->render($response, 'change_plan.mustache', array('plan_duration' => true, 'planid' => $planid, 'plan_books' => $temp_array[0]['change_plan_detail']['books'], 'available_balance' => $temp_array[0]['change_plan_detail']['available_balance'],'balance_due' => $temp_array[0]['change_plan_detail']['balance_due'],'reading_fee' => $temp_array[0]['change_plan_detail']['reading_fee'],'count_array' => $final, 'planname' => $planname));
-            return $response;
+        $response = $this->view->render($response, 'change_plan.mustache', array('plan_duration' => true, 'planid' => $planid, 'plan_books' => $temp_array[0]['change_plan_detail']['books'], 'available_balance' => $temp_array[0]['change_plan_detail']['available_balance'], 'balance_due' => $temp_array[0]['change_plan_detail']['balance_due'], 'reading_fee' => $temp_array[0]['change_plan_detail']['reading_fee'], 'count_array' => $final, 'planname' => $planname));
+        return $response;
     }
 
 
@@ -1204,8 +1148,8 @@ $app->get('/rentalHistory', function (Request $request, Response $response) {
     }
     $api_key = $_SESSION['api_key'];
     $result = curlFunction("8990/api/v1/rental_history.json?email=$mail&api_key=$api_key&membership_no=$membership_no");
-    $wishlist=wishlistIds();
-    echo json_encode(array('data'=>(array)json_decode($result),'wishlist'=>$wishlist));
+    $wishlist = wishlistIds();
+    echo json_encode(array('data' => (array)json_decode($result), 'wishlist' => $wishlist));
 });
 
 
@@ -1331,7 +1275,7 @@ $app->get('/break', function (Request $request, Response $response) {
     $mail = $_SESSION['email'];
     $membership_no = $_SESSION['membership_no'];
     $result = curlFunction(":8990/api/v1/get_change_plan_terms.json?email=$mail&membercard=$membership_no&for_mobile=true");
-    return $this->view->render($response, 'break.mustache',array('data'=>$result));
+    return $this->view->render($response, 'break.mustache', array('data' => $result));
 
 
 });
@@ -1384,7 +1328,7 @@ $app->get('/break', function (Request $request, Response $response) {
 
 function presentIds()
 {
-    $array=[];
+    $array = [];
     if (isset($_SESSION['username'])) {
 
         $membership_no = $_SESSION['membership_no'];
@@ -1397,10 +1341,9 @@ function presentIds()
 
         $currentData = json_decode(json_encode($currentData), True);
 
-        foreach ($currentData as $current)
-        {
+        foreach ($currentData as $current) {
 
-            array_push($array,$current['id']);
+            array_push($array, $current['id']);
         }
         $result = curlFunction("8990/api/v1/pending_delivery_order.json?email=$email&membership_no=$membership_no&api_key=$api_key");
         $orderData = json_decode($result);
@@ -1409,10 +1352,9 @@ function presentIds()
 
         $OrderData = json_decode(json_encode($OrderData), True);
 
-        foreach ($OrderData as $order)
-        {
+        foreach ($OrderData as $order) {
 
-            array_push($array,$order['id']);
+            array_push($array, $order['id']);
         }
         $result = curlFunction("8990/api/v1/pending_pickup_order.json?email=$email&membership_no=$membership_no&api_key=$api_key");
         $pickupData = json_decode($result);
@@ -1421,10 +1363,9 @@ function presentIds()
 
         $OrderData = json_decode(json_encode($OrderData), True);
 
-        foreach ($OrderData as $order)
-        {
+        foreach ($OrderData as $order) {
 
-            array_push($array,$order['id']);
+            array_push($array, $order['id']);
         }
         $result = curlFunction("8990/api/v1/wishlists.json?email=$email&membership_no=$membership_no&api_key=$api_key");
         $pickupData = json_decode($result);
@@ -1433,17 +1374,17 @@ function presentIds()
 
         $OrderData = json_decode(json_encode($OrderData), True);
 
-        foreach ($OrderData as $order)
-        {
+        foreach ($OrderData as $order) {
 
-            array_push($array,$order['id']);
+            array_push($array, $order['id']);
         }
     }
     return $array;
 }
+
 function wishlistIds()
 {
-    $array=[];
+    $array = [];
     if (isset($_SESSION['username'])) {
 
         $membership_no = $_SESSION['membership_no'];
@@ -1457,10 +1398,9 @@ function wishlistIds()
 
         $wishlist = json_decode(json_encode($wishlist), True);
 
-        foreach ($wishlist as $wish)
-        {
+        foreach ($wishlist as $wish) {
 
-            array_push($array,$wish['id']);
+            array_push($array, $wish['id']);
         }
     }
     return $array;
@@ -1468,7 +1408,8 @@ function wishlistIds()
 
 $app->get('/getRelatedBooks', function (Request $request, Response $response) {
 
-   $id=$_GET['id'];
+    $params = $request->getQueryParams();
+    $id = $params['id'];
     $result1 = curlFunction("8990/api/v1/title_info.json?title_id=$id");
     $result1 = str_replace("NaN", 0, $result1);
     $plan_data = json_decode($result1);
@@ -1476,26 +1417,80 @@ $app->get('/getRelatedBooks', function (Request $request, Response $response) {
 
 
     $data = json_decode(json_encode($data), True);
-    $related=$data['related_books'];
-    $array=presentIds();
-    $wishlist=wishlistIds();
-    echo json_encode(array("data"=>$related,'ids'=>(array)$array,'wishlist'=>(array)$wishlist));
+    $related = $data['related_books'];
+    $array = presentIds();
+    $wishlist = wishlistIds();
+    echo json_encode(array("data" => $related, 'ids' => (array)$array, 'wishlist' => (array)$wishlist));
 
 });
 $app->get('/getAuthorRelatedBooks', function (Request $request, Response $response) {
 
-   $id=$_GET['id'];
-    $resultRelated = curlFunction("8990/api/v1/author_info.json?id=116923");
+    $params = $request->getQueryParams();
+    $id = $params['id'];
+    $resultRelated = curlFunction("8990/api/v1/author_info.json?id=$id");
     $plan_data = json_decode($resultRelated);
     $data = $plan_data->result;
 
     $data = json_decode(json_encode($data), True);
-    $titles= $data['titles'];
+    $titles = $data['titles'];
 
 
-    $array=presentIds();
-    $wishlist=wishlistIds();
-    echo json_encode(array("data"=>$titles,'ids'=>(array)$array,'wishlist'=>(array)$wishlist));
+    $array = presentIds();
+    $wishlist = wishlistIds();
+
+
+    echo json_encode(array("data" => $titles, 'ids' => (array)$array, 'wishlist' => (array)$wishlist));
+
+});
+$app->get('/getRelatedAuthors', function (Request $request, Response $response) {
+
+    $params = $request->getQueryParams();
+    $id = $params['id'];
+
+    $author_id = $request->getQueryParams()['author_id'];
+    $con = $this->db;
+    $query = "SELECT * FROM fn_author_details_new WHERE author_id=2780";
+    $result = oci_parse($con, $query);
+    oci_execute($result);
+    $query_construct_category = '';
+    $query_construct_laguage = '';
+    $final_query = '';
+    while ($row = oci_fetch_assoc($result)) {
+        $category = $row['AUTHOR_CATEGORY'];
+        $category_array = explode(',', $category);
+        foreach ($category_array as $cat) {
+            $final_category = explode('@', $cat);
+            if (!empty($final_category[0]))
+                $query_construct_category .= "author_category like '%" . $final_category[0] . "%' or ";
+        }
+
+        $language = $row['AUTHOR_LANGUAGES'];
+        $language_array = explode(',', $language);
+        foreach ($language_array as $lan) {
+            $final_language = explode('@', $lan);
+            if (!empty($final_language[0]))
+                $query_construct_laguage .= "author_languages like '%" . $final_language[0] . "%' or ";
+        }
+        if ($query_construct_laguage == '' && $query_construct_category != '') {
+            $query_construct_category = rtrim($query_construct_category, ' or');
+        } elseif ($query_construct_laguage != '' && $query_construct_category == '') {
+            $query_construct_laguage = rtrim($query_construct_laguage, ' or');
+        } elseif ($query_construct_laguage != '' && $query_construct_category != '') {
+            $query_construct_laguage = rtrim($query_construct_laguage, ' or');
+        } elseif ($query_construct_laguage == '' && $query_construct_category == '') {
+            $query_construct_category = " author_category like '%General%'";
+        }
+    }
+    $final_query = "SELECT fad.author_id,fad.author_name,'https://s3.amazonaws.com/prod.justbooksclc.com/authors/'||fad.author_id||'.jpg' AS image , fad.description FROM fn_author_details fad JOIN fn_author_details_new fadn ON fad.author_id=fadn.author_id WHERE " . $query_construct_category . $query_construct_laguage;
+
+    $final_result = oci_parse($con, $final_query);
+    oci_execute($final_result);
+    while ($row = oci_fetch_assoc($final_result)) {
+        $final_data_Result[] = $row;
+    }
+
+
+    echo json_encode(array('related' => $final_data_Result));
 
 });
 

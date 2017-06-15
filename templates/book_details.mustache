@@ -24,7 +24,7 @@
                                         <div class="span2 module_cont module_text_area">
 
                                         </div>
-                                        <div class="span3 module_cont module_text_area details_img">
+                                        <div class="span3 module_cont module_text_area details_img" style="height: 300px;">
                                             <img src="{{image}}" alt="" align="middle"
                                                  onerror="this.src='http://cdn2.justbooksclc.com/title/0.jpg';"/>
                                         </div>
@@ -270,8 +270,9 @@
                                                 });
                                             </script>
 
-                                            <a href="javascript:void(0)" class="shortcode_button btn_small btn_type10" onclick="checkAvailability({{titleid}})">Check Availability</a>
-                                            <a href="javascript:void(0)" class="tiptip"  onclick='wishlistAdd({{titleid}});'><img class="wishlist_btn"  id="wishlistMain" alt="" height="25" width="25"></a>                                            <div class="socialCircle-container">
+                                            <a href="javascript:void(0)" id="availibilityCheck"style="display:none" class="shortcode_button btn_small btn_type10" onclick="checkAvailability({{titleid}})">Check Availability</a>
+                                            <a href="javascript:void(0)" class="tiptip"  onclick='wishlistAdd({{titleid}});'><img class="wishlist_btn"  id="wishlistMain" alt="" height="25" width="25"></a>
+                                            <div class="socialCircle-container">
                                                 <div class="socialCircle-item"><a href="https://plus.google.com/share?url=http://justbooksclc.com/book_details/{{titleid}}"><i class="fa fa-google-plus"></i></a></div>
 
                                                 <div class="socialCircle-item"><a href="http://www.facebook.com/sharer.php?u=http://justbooksclc.com/book_details/{{titleid}}"><i class="fa fa-facebook"></i></a></div>
@@ -318,392 +319,24 @@
                                          data-top-padding="top_padding_normal"
                                          data-bottom-padding="module_normal_padding">
                                         <div class="row-fluid">
-                                            <div class="span12 module_cont module_bookslider" id="left_menu_recommend">
-                                                <div class="bg_title"><a id="whatsNew"></a><h4 class="headInModule">
-                                                    Recommended Books</h4></div>
+                                            <div class="span12 module_cont module_bookslider">
+                                                <div class="bg_title"><a id="whatsNew"></a><h4 class="headInModule">Related Books</h4></div>
 
-                                                <div class="container">
+                                                <div class="container" >
 
                                                     <div class="row">
                                                         <div class="col-md-12">
-                                                            <div id="myCarousel"
-                                                                 class="carousel slide multi-item-carousel">
-                                                                <div class="carousel-inner carouselslider"
-                                                                     id="newArrivals"
-                                                                     style="padding: 0px 0px 20px 0px; margin-left: 60px; margin-right: 60px;">
+                                                            <div id="myCarousel" class="carousel slide multi-item-carousel">
+                                                                <div class="carousel-inner carouselslider" id="releatedBooks"  style="padding: 0px 0px 20px 0px; margin-left: 60px; margin-right: 60px;">
 
-                                                                    <div class="item  active">
-                                                                        {{#related_books}}
-                                                                            <div class="col-md-2" style="width:18%;">
-                                                                                <div class="item item_shadow">
-                                                                                    <div class="img_block_books"><a
-                                                                                            href="/book_details/{{id}}"><img
-                                                                                            src="{{image}}"
-                                                                                            alt="Anna" onerror="this.src='http://cdn2.justbooksclc.com/title/0.jpg';"></a></div>
-                                                                                    <div class="carousel_body_book">
-                                                                                        <div class="carousel_title_book">
-                                                                                            <h5 title="{{name}} ">
-                                                                                                {{name}} </h5></div>
-                                                                                        <div class="carousel_desc">
-                                                                                            <div class="fram_btn"><a
-                                                                                                    href="javascript:void(0)"
-                                                                                                    class="shortcode_button btn_small btn_type1"
-                                                                                                    title="Rent"
-                                                                                                    onclick="placeOrder({{id}});">Rent</a><a
-                                                                                                    href="javascript:void(0)"
-                                                                                                    class="tiptip"
-                                                                                                    title="Wishlist"
-                                                                                                    onclick="wishlistAdd({{id}});"><img class="wishlist_btn" src="../assets/img/Added_WL_50.png" alt="Smiley face" height="25" width="25"></a>
-                                                                                                <div class="clear"></div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <!--<div class="item item_shadow">-->
-                                                                                <!--<div class="img_block_books"><a-->
-                                                                                <!--href="/book_details/{{id}}"><img-->
-                                                                                <!--src="{{image}}"-->
-                                                                                <!--alt="Anna" ></a></div>-->
-                                                                                <!--<div class="carousel_body_book">-->
-                                                                                <!--<div class="carousel_title_book"><h5-->
-                                                                                <!--title="Orhan Pamuk  ">{{name}} </h5></div>-->
-                                                                                <!--<div class="carousel_desc">-->
-                                                                                <!--<div class="smallproflinks"><a-->
-                                                                                <!--href="javascript:void(0)"-->
-                                                                                <!--class="tiptip"-->
-                                                                                <!--title="Wishlist"-->
-                                                                                <!--onclick="wishlistAdd({{id}});">Wishlist</a><a-->
-                                                                                <!--href="javascript:void(0)"-->
-                                                                                <!--class="tiptip"-->
-                                                                                <!--title="Rent"-->
-                                                                                <!--onclick="placeOrder({{id}});">Rent</a><a-->
-                                                                                <!--href="/book_details/{{id}}"-->
-                                                                                <!--id="315877"-->
-                                                                                <!--class="tiptip"-->
-                                                                                <!--title="Read">Read</a>-->
-                                                                                <!--<div class="clear"></div>-->
-                                                                                <!--</div>-->
-                                                                                <!--</div>-->
-                                                                                <!--</div>-->
-                                                                                <!--</div>-->
-                                                                            </div>
-                                                                        {{/related_books}}
-                                                                        <!--<div class="col-md-2" style="width:18%;">-->
-                                                                        <!--<div class="item item_shadow">-->
-                                                                        <!--<div class="img_block_books"><a-->
-                                                                        <!--href="/book_details/314311"><img-->
-                                                                        <!--src="http://cdn2.justbooksclc.com/medium/9780143104100.jpg"-->
-                                                                        <!--alt="Anna"></a></div>-->
-                                                                        <!--<div class="carousel_body_book">-->
-                                                                        <!--<div class="carousel_title_book"><h5-->
-                                                                        <!--title="P. Sivakami, Pritham K. Chakravarthy  ">-->
-                                                                        <!--P. Sivakami, Pritham K.-->
-                                                                        <!--Chakravarthy </h5></div>-->
-                                                                        <!--<div class="carousel_desc">-->
-                                                                        <!--<div class="smallproflinks"><a-->
-                                                                        <!--href="javascript:void(0)"-->
-                                                                        <!--class="tiptip"-->
-                                                                        <!--title="Wishlist"-->
-                                                                        <!--onclick="wishlistAdd(314311);">Wishlist</a><a-->
-                                                                        <!--href="javascript:void(0)"-->
-                                                                        <!--class="tiptip"-->
-                                                                        <!--title="Rent"-->
-                                                                        <!--onclick="placeOrder(314311);">Rent</a><a-->
-                                                                        <!--href="/book_details/314311"-->
-                                                                        <!--id="314311"-->
-                                                                        <!--class="tiptip"-->
-                                                                        <!--title="Read">Read</a>-->
-                                                                        <!--<div class="clear"></div>-->
-                                                                        <!--</div>-->
-                                                                        <!--</div>-->
-                                                                        <!--</div>-->
-                                                                        <!--</div>-->
-                                                                        <!--</div>-->
-                                                                        <!--<div class="col-md-2" style="width:18%;">-->
-                                                                        <!--<div class="item item_shadow">-->
-                                                                        <!--<div class="img_block_books"><a-->
-                                                                        <!--href="/book_details/314308"><img-->
-                                                                        <!--src="http://cdn2.justbooksclc.com/medium/9780670085552.jpg"-->
-                                                                        <!--alt="Anna"></a></div>-->
-                                                                        <!--<div class="carousel_body_book">-->
-                                                                        <!--<div class="carousel_title_book"><h5-->
-                                                                        <!--title="Ruskin Bond  ">Ruskin-->
-                                                                        <!--Bond </h5></div>-->
-                                                                        <!--<div class="carousel_desc">-->
-                                                                        <!--<div class="smallproflinks"><a-->
-                                                                        <!--href="javascript:void(0)"-->
-                                                                        <!--class="tiptip"-->
-                                                                        <!--title="Wishlist"-->
-                                                                        <!--onclick="wishlistAdd(314308);">Wishlist</a><a-->
-                                                                        <!--href="javascript:void(0)"-->
-                                                                        <!--class="tiptip"-->
-                                                                        <!--title="Rent"-->
-                                                                        <!--onclick="placeOrder(314308);">Rent</a><a-->
-                                                                        <!--href="/book_details/314308"-->
-                                                                        <!--id="314308"-->
-                                                                        <!--class="tiptip"-->
-                                                                        <!--title="Read">Read</a>-->
-                                                                        <!--<div class="clear"></div>-->
-                                                                        <!--</div>-->
-                                                                        <!--</div>-->
-                                                                        <!--</div>-->
-                                                                        <!--</div>-->
-                                                                        <!--</div>-->
-                                                                        <!--<div class="col-md-2" style="width:18%;">-->
-                                                                        <!--<div class="item item_shadow">-->
-                                                                        <!--<div class="img_block_books"><a-->
-                                                                        <!--href="/book_details/315878"><img-->
-                                                                        <!--src="http://cdn2.justbooksclc.com/medium/9780670086283.jpg"-->
-                                                                        <!--alt="Anna"></a></div>-->
-                                                                        <!--<div class="carousel_body_book">-->
-                                                                        <!--<div class="carousel_title_book"><h5-->
-                                                                        <!--title="M. G. Vassanji  ">M.-->
-                                                                        <!--G. Vassanji </h5></div>-->
-                                                                        <!--<div class="carousel_desc">-->
-                                                                        <!--<div class="smallproflinks"><a-->
-                                                                        <!--href="javascript:void(0)"-->
-                                                                        <!--class="tiptip"-->
-                                                                        <!--title="Wishlist"-->
-                                                                        <!--onclick="wishlistAdd(315878);">Wishlist</a><a-->
-                                                                        <!--href="javascript:void(0)"-->
-                                                                        <!--class="tiptip"-->
-                                                                        <!--title="Rent"-->
-                                                                        <!--onclick="placeOrder(315878);">Rent</a><a-->
-                                                                        <!--href="/book_details/315878"-->
-                                                                        <!--id="315878"-->
-                                                                        <!--class="tiptip"-->
-                                                                        <!--title="Read">Read</a>-->
-                                                                        <!--<div class="clear"></div>-->
-                                                                        <!--</div>-->
-                                                                        <!--</div>-->
-                                                                        <!--</div>-->
-                                                                        <!--</div>-->
-                                                                        <!--</div>-->
-                                                                        <!--<div class="col-md-2" style="width:18%;">-->
-                                                                        <!--<div class="item item_shadow">-->
-                                                                        <!--<div class="img_block_books"><a-->
-                                                                        <!--href="/book_details/314312"><img-->
-                                                                        <!--src="http://cdn2.justbooksclc.com/medium/9780143068464.jpg"-->
-                                                                        <!--alt="Anna"></a></div>-->
-                                                                        <!--<div class="carousel_body_book">-->
-                                                                        <!--<div class="carousel_title_book"><h5-->
-                                                                        <!--title="Anand, Chetana Sachidanandan  ">-->
-                                                                        <!--Anand, Chetana-->
-                                                                        <!--Sachidanandan </h5></div>-->
-                                                                        <!--<div class="carousel_desc">-->
-                                                                        <!--<div class="smallproflinks"><a-->
-                                                                        <!--href="javascript:void(0)"-->
-                                                                        <!--class="tiptip"-->
-                                                                        <!--title="Wishlist"-->
-                                                                        <!--onclick="wishlistAdd(314312);">Wishlist</a><a-->
-                                                                        <!--href="javascript:void(0)"-->
-                                                                        <!--class="tiptip"-->
-                                                                        <!--title="Rent"-->
-                                                                        <!--onclick="placeOrder(314312);">Rent</a><a-->
-                                                                        <!--href="/book_details/314312"-->
-                                                                        <!--id="314312"-->
-                                                                        <!--class="tiptip"-->
-                                                                        <!--title="Read">Read</a>-->
-                                                                        <!--<div class="clear"></div>-->
-                                                                        <!--</div>-->
-                                                                        <!--</div>-->
-                                                                        <!--</div>-->
-                                                                        <!--</div>-->
-                                                                        <!--</div>-->
-                                                                    </div>
-                                                                    <!--<div class="item ">-->
-                                                                    <!--<div class="col-md-2" style="width:18%;">-->
-                                                                    <!--<div class="item item_shadow">-->
-                                                                    <!--<div class="img_block_books"><a-->
-                                                                    <!--href="/book_details/314313"><img-->
-                                                                    <!--src="http://cdn2.justbooksclc.com/medium/9780143416258.jpg"-->
-                                                                    <!--alt="Anna"></a></div>-->
-                                                                    <!--<div class="carousel_body_book">-->
-                                                                    <!--<div class="carousel_title_book"><h5-->
-                                                                    <!--title="Bijoya Ray, Indrani Majumdar  ">-->
-                                                                    <!--Bijoya Ray, Indrani-->
-                                                                    <!--Majumdar </h5></div>-->
-                                                                    <!--<div class="carousel_desc">-->
-                                                                    <!--<div class="smallproflinks"><a-->
-                                                                    <!--href="javascript:void(0)"-->
-                                                                    <!--class="tiptip"-->
-                                                                    <!--title="Wishlist"-->
-                                                                    <!--onclick="wishlistAdd(314313);">Wishlist</a><a-->
-                                                                    <!--href="javascript:void(0)"-->
-                                                                    <!--class="tiptip"-->
-                                                                    <!--title="Rent"-->
-                                                                    <!--onclick="placeOrder(314313);">Rent</a><a-->
-                                                                    <!--href="/book_details/314313"-->
-                                                                    <!--id="314313"-->
-                                                                    <!--class="tiptip"-->
-                                                                    <!--title="Read">Read</a>-->
-                                                                    <!--<div class="clear"></div>-->
-                                                                    <!--</div>-->
-                                                                    <!--</div>-->
-                                                                    <!--</div>-->
-                                                                    <!--</div>-->
-                                                                    <!--</div>-->
-                                                                    <!--<div class="col-md-2" style="width:18%;">-->
-                                                                    <!--<div class="item item_shadow">-->
-                                                                    <!--<div class="img_block_books"><a-->
-                                                                    <!--href="/book_details/314309"><img-->
-                                                                    <!--src="http://cdn2.justbooksclc.com/medium/9780143418658.jpg"-->
-                                                                    <!--alt="Anna"></a></div>-->
-                                                                    <!--<div class="carousel_body_book">-->
-                                                                    <!--<div class="carousel_title_book"><h5-->
-                                                                    <!--title="Sudha Murty  ">Sudha-->
-                                                                    <!--Murty </h5></div>-->
-                                                                    <!--<div class="carousel_desc">-->
-                                                                    <!--<div class="smallproflinks"><a-->
-                                                                    <!--href="javascript:void(0)"-->
-                                                                    <!--class="tiptip"-->
-                                                                    <!--title="Wishlist"-->
-                                                                    <!--onclick="wishlistAdd(314309);">Wishlist</a><a-->
-                                                                    <!--href="javascript:void(0)"-->
-                                                                    <!--class="tiptip"-->
-                                                                    <!--title="Rent"-->
-                                                                    <!--onclick="placeOrder(314309);">Rent</a><a-->
-                                                                    <!--href="/book_details/314309"-->
-                                                                    <!--id="314309"-->
-                                                                    <!--class="tiptip"-->
-                                                                    <!--title="Read">Read</a>-->
-                                                                    <!--<div class="clear"></div>-->
-                                                                    <!--</div>-->
-                                                                    <!--</div>-->
-                                                                    <!--</div>-->
-                                                                    <!--</div>-->
-                                                                    <!--</div>-->
-                                                                    <!--<div class="col-md-2" style="width:18%;">-->
-                                                                    <!--<div class="item item_shadow">-->
-                                                                    <!--<div class="img_block_books"><a-->
-                                                                    <!--href="/book_details/315880"><img-->
-                                                                    <!--src="http://cdn2.justbooksclc.com/medium/9780670084708.jpg"-->
-                                                                    <!--alt="Anna"></a></div>-->
-                                                                    <!--<div class="carousel_body_book">-->
-                                                                    <!--<div class="carousel_title_book"><h5-->
-                                                                    <!--title="Gurcharan Das  ">-->
-                                                                    <!--Gurcharan Das </h5></div>-->
-                                                                    <!--<div class="carousel_desc">-->
-                                                                    <!--<div class="smallproflinks"><a-->
-                                                                    <!--href="javascript:void(0)"-->
-                                                                    <!--class="tiptip"-->
-                                                                    <!--title="Wishlist"-->
-                                                                    <!--onclick="wishlistAdd(315880);">Wishlist</a><a-->
-                                                                    <!--href="javascript:void(0)"-->
-                                                                    <!--class="tiptip"-->
-                                                                    <!--title="Rent"-->
-                                                                    <!--onclick="placeOrder(315880);">Rent</a><a-->
-                                                                    <!--href="/book_details/315880"-->
-                                                                    <!--id="315880"-->
-                                                                    <!--class="tiptip"-->
-                                                                    <!--title="Read">Read</a>-->
-                                                                    <!--<div class="clear"></div>-->
-                                                                    <!--</div>-->
-                                                                    <!--</div>-->
-                                                                    <!--</div>-->
-                                                                    <!--</div>-->
-                                                                    <!--</div>-->
-                                                                    <!--<div class="col-md-2" style="width:18%;">-->
-                                                                    <!--<div class="item item_shadow">-->
-                                                                    <!--<div class="img_block_books"><a-->
-                                                                    <!--href="/book_details/317026"><img-->
-                                                                    <!--src="http://cdn2.justbooksclc.com/medium/9780718177522.jpg"-->
-                                                                    <!--alt="Anna"></a></div>-->
-                                                                    <!--<div class="carousel_body_book">-->
-                                                                    <!--<div class="carousel_title_book"><h5-->
-                                                                    <!--title="Mark Owen, Kevin Maurer  ">-->
-                                                                    <!--Mark Owen, Kevin Maurer </h5>-->
-                                                                    <!--</div>-->
-                                                                    <!--<div class="carousel_desc">-->
-                                                                    <!--<div class="smallproflinks"><a-->
-                                                                    <!--href="javascript:void(0)"-->
-                                                                    <!--class="tiptip"-->
-                                                                    <!--title="Wishlist"-->
-                                                                    <!--onclick="wishlistAdd(317026);">Wishlist</a><a-->
-                                                                    <!--href="javascript:void(0)"-->
-                                                                    <!--class="tiptip"-->
-                                                                    <!--title="Rent"-->
-                                                                    <!--onclick="placeOrder(317026);">Rent</a><a-->
-                                                                    <!--href="/book_details/317026"-->
-                                                                    <!--id="317026"-->
-                                                                    <!--class="tiptip"-->
-                                                                    <!--title="Read">Read</a>-->
-                                                                    <!--<div class="clear"></div>-->
-                                                                    <!--</div>-->
-                                                                    <!--</div>-->
-                                                                    <!--</div>-->
-                                                                    <!--</div>-->
-                                                                    <!--</div>-->
-                                                                    <!--<div class="col-md-2" style="width:18%;">-->
-                                                                    <!--<div class="item item_shadow">-->
-                                                                    <!--<div class="img_block_books"><a-->
-                                                                    <!--href="/book_details/312532"><img-->
-                                                                    <!--src="http://cdn2.justbooksclc.com/medium/9781447223443.jpg"-->
-                                                                    <!--alt="Anna"></a></div>-->
-                                                                    <!--<div class="carousel_body_book">-->
-                                                                    <!--<div class="carousel_title_book"><h5-->
-                                                                    <!--title="Jenny Lawson  ">Jenny-->
-                                                                    <!--Lawson </h5></div>-->
-                                                                    <!--<div class="carousel_desc">-->
-                                                                    <!--<div class="smallproflinks"><a-->
-                                                                    <!--href="javascript:void(0)"-->
-                                                                    <!--class="tiptip"-->
-                                                                    <!--title="Wishlist"-->
-                                                                    <!--onclick="wishlistAdd(312532);">Wishlist</a><a-->
-                                                                    <!--href="javascript:void(0)"-->
-                                                                    <!--class="tiptip"-->
-                                                                    <!--title="Rent"-->
-                                                                    <!--onclick="placeOrder(312532);">Rent</a><a-->
-                                                                    <!--href="/book_details/312532"-->
-                                                                    <!--id="312532"-->
-                                                                    <!--class="tiptip"-->
-                                                                    <!--title="Read">Read</a>-->
-                                                                    <!--<div class="clear"></div>-->
-                                                                    <!--</div>-->
-                                                                    <!--</div>-->
-                                                                    <!--</div>-->
-                                                                    <!--</div>-->
-                                                                    <!--</div>-->
-                                                                    <!--</div>-->
-                                                                    <!--<div class="item ">-->
-                                                                    <!--<div class="col-md-2" style="width:18%;">-->
-                                                                    <!--<div class="item item_shadow">-->
-                                                                    <!--<div class="img_block_books"><a-->
-                                                                    <!--href="/book_details/314305"><img-->
-                                                                    <!--src="http://cdn2.justbooksclc.com/medium/9781846144783.jpg"-->
-                                                                    <!--alt="Anna"></a></div>-->
-                                                                    <!--<div class="carousel_body_book">-->
-                                                                    <!--<div class="carousel_title_book"><h5-->
-                                                                    <!--title="Pankaj Mishra  ">-->
-                                                                    <!--Pankaj Mishra </h5></div>-->
-                                                                    <!--<div class="carousel_desc">-->
-                                                                    <!--<div class="smallproflinks"><a-->
-                                                                    <!--href="javascript:void(0)"-->
-                                                                    <!--class="tiptip"-->
-                                                                    <!--title="Wishlist"-->
-                                                                    <!--onclick="wishlistAdd(314305);">Wishlist</a><a-->
-                                                                    <!--href="javascript:void(0)"-->
-                                                                    <!--class="tiptip"-->
-                                                                    <!--title="Rent"-->
-                                                                    <!--onclick="placeOrder(314305);">Rent</a><a-->
-                                                                    <!--href="/book_details/314305"-->
-                                                                    <!--id="314305"-->
-                                                                    <!--class="tiptip"-->
-                                                                    <!--title="Read">Read</a>-->
-                                                                    <!--<div class="clear"></div>-->
-                                                                    <!--</div>-->
-                                                                    <!--</div>-->
-                                                                    <!--</div>-->
-                                                                    <!--</div>-->
-                                                                    <!--</div>-->
-                                                                    <!--</div>-->
                                                                 </div>
-                                                                <a class="left carousel-control" href="#myCarousel"
-                                                                   data-slide="prev"><i
-                                                                        class="glyphicon glyphicon-chevron-left"></i></a>
-                                                                <a class="right carousel-control" href="#myCarousel"
-                                                                   data-slide="next"><i
-                                                                        class="glyphicon glyphicon-chevron-right"></i></a>
+                                                                <div id="frame_new_rel" class="loader_fram">
+                                                                    <div id="loader_rel" style="display: block;margin-left: 43%">
+                                                                        <img src="../assets/img/loader.gif" id="loader_image">
+                                                                    </div>
+                                                                </div>
+                                                                <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+                                                                <a class="right carousel-control" href="#myCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -711,47 +344,7 @@
 
                                                 <a id="anchor8"></a>
                                             </div>
-                                            <!--<div class="span12 module_cont module_bookslider">-->
-                                            <!--<div class="bg_title"><h4 class="headInModule" style="color: #464D52;">-->
-                                            <!--RELATED BOOKS</h4></div>-->
-                                            <!--<div class="team_slider" style="">-->
-                                            <!--<div class="carouselslider teamslider items5" data-count="5">-->
-                                            <!--<ul class="item_list" id="items5">-->
-                                                <!--{{# related_books}}-->
-                                            <!--<li>-->
-                                            <!--<div class="item item_shadow" id="{{id}}">-->
-                                            <!--<div class="img_block_books"><img-->
-                                            <!--src="{{image}}" alt="Tom"-->
-                                            <!--onerror="this.src='http://cdn2.justbooksclc.com/title/0.jpg';">-->
-                                            <!--</div>-->
-                                            <!--<div class="carousel_body_book">-->
-                                            <!--<div class="carousel_title_book">-->
-                                            <!--<h5>{{title}}</h5>-->
-                                            <!--</div>-->
-                                            <!--<div class="carousel_desc">-->
-                                            <!--<div class="smallproflinks">-->
-                                            <!--<a href="javascript:void(0)"-->
-                                            <!--title="Wishlist"-->
-                                            <!--onclick="wishlistAdd({{id}});">Wishlist</a>-->
-                                            <!--<a href="javascript:void(0)"-->
-                                            <!--title="Rent"-->
-                                            <!--onclick="placeOrder({{id}});">Rent</a>-->
-                                            <!--<a href="/book_details/{{id}}"-->
-                                            <!--title="Read">Read</a>-->
-                                            <!--<div class="clear"></div>-->
-                                            <!--</div>-->
-                                            <!--</div>-->
-                                            <!--</div>-->
-                                            <!--</div>-->
-                                            <!--</li>-->
-                                                <!--{{/related_books}}-->
-                                            <!--</ul>-->
-                                            <!--</div>-->
-                                            <!--<div class="clear"></div>-->
-                                            <!--</div>&lt;!&ndash; .team_slider &ndash;&gt;-->
-                                            <!--<a id="anchor8"></a>-->
-                                            <!--</div>-->
-                                        </div><!-- .row-fluid -->
+                                        </div>
 
                                     </div><!-- .module_line_trigger -->
 
@@ -779,9 +372,6 @@
 {{> footer}}
 
 <script type="application/javascript">
-    $(document).ready(function () {
-        $('form').submit(false)
-    })
 
 
     function wishlistAdd(id) {
@@ -891,7 +481,7 @@
     }
 </script>
 <script>
-    function getCard(data, visibleCardCount,ids,wishlist) {
+    function getCardRelated(data, visibleCardCount,ids,wishlist) {
         var response = '', items = 0;
         var final_response = '';
         for (var i = 0; i < data.length; i++) {
@@ -932,6 +522,7 @@
                     '<div class="fram_btn">' +
                     '<a    href="javascript:void(0)" class="shortcode_button btn_small btn_type1" title="Rent" onclick='+action+' id="rent_'+data[i].id+'">'+text+'</a>' +
                     '<a href="javascript:void(0)" class="tiptip" title="Wishlist" onclick='+wish+'><img id="wish_'+data[i].id+'" class="wishlist_btn" src='+images+' alt="Smiley face" height="25" width="25"></a>' +
+                    '<a href="javascript:void(0)" class="tiptip" title="Share" data-id="' + data[i].id + '" data-toggle="modal" data-target="#shareModal"><img  class="share_btn" src=../assets/img/Engage.png alt="Smiley face" height="25" width="25"></a>' +
 
                     // '<a href="/book_details/' + data[i].id + '" id="' + data[i].id + '" class="tiptip" title="Read">Read</a>' +
                     '<div class="clear"></div>' +
@@ -963,19 +554,27 @@
                 data=JSON.parse(data);
                 cardData=data['data'];
 
-                $("#frame_new_arr").hide();
-                $("#loader").hide();
-                var final_response = getCard(cardData, 5,data['ids'],data['wishlist']);
-                $('#newArrivals').append(final_response);
+                var final_response = getCardRelated(cardData, 5,data['ids'],data['wishlist']);
+                $('#releatedBooks').append(final_response);
                 $('.item').first().addClass('active');
                 $("#myCarousel").carousel();
-
+                $("#frame_new_rel").hide();
+                $("#loader_rel").hide();
                 if(data['wishlist'].indexOf(parseInt(id)) != -1)
                 {
                     $("#wishlistMain").attr("src","../assets/img/Added_WL_Right.png");
                 }
                 else{
                     $("#wishlistMain").attr("src","../assets/img/Added_WL_50.png");
+
+                }
+
+                if(data['ids'].indexOf(parseInt(id)) != -1)
+                {
+                    $("#availibilityCheck").hide();
+                }
+                else{
+                    $("#availibilityCheck").show();
 
                 }
 

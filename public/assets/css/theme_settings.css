@@ -189,14 +189,14 @@ header ul.menu > li > a {
 }
 
 .fram_btn{
-	margin-left:16%;
+	margin-left:10%;
 	margin-top:10px;
 }
 
 .wishlist_btn{
 	color:red;
 	font-size:20px!important;
-	margin-left:40px;
+	margin-left:6px;
 	margin-top:3px;
 }
 
@@ -656,4 +656,67 @@ a.socialIcon:hover, .socialHoverClass {
 	color: #ffffff;
 	font-size: 15px;
 	cursor: pointer;
+}
+
+.share_btn{
+	margin-left: 8%;
+	color:red;
+	font-size:20px!important;
+	margin-top:3px;
+}
+
+
+
+#share {
+	width: 100%;
+	margin: 0px auto;
+	text-align: center;
+}
+
+/* buttons */
+
+#share a {
+	width: 50px;
+	height: 50px;
+	display: inline-block;
+	margin: 8px;
+	border-radius: 50%;
+	font-size: 24px;
+	color: #fff;
+	opacity: 0.75;
+	transition: opacity 0.15s linear;
+}
+
+#share a:hover {
+	opacity: 1;
+}
+
+/* icons */
+
+#share i {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+/* colors */
+
+.facebook {
+	background: #3b5998;
+}
+
+.twitter {
+	background: #55acee;
+}
+
+.googleplus {
+	background: #dd4b39;
+}
+
+.instagram {
+	background: #bc2a8d;
+}
+
+.envelope {
+	background: #cb2027;
 }

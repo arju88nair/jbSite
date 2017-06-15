@@ -1,114 +1,112 @@
-<div class="container">
-    <div class="content_block no-sidebar row">
-        <div class="fl-container span12">
-            <div class="row-fluid">
-                <div class="span12 module_cont module_teamslider">
-                    <div class="bg_title"><h4 class="headInModule">OTHER AUTHORS</h4></div>
-                    <div class="team_slider">
-                        <div class="carouselslider carouselslider_team teamslider items4" data-count="4" style="overflow: auto; white-space: nowrap;">
-                            <ul class="item_list" >
-                                {{#authors}}
-                                <li>
-                                    <a href="authors-details.php">
-                                        <div class="item">
-                                            <div class="img_block"><a href="/author_details/{{AUTHOR_ID}}"><img style="width: 100%;height: 329px;" src="{{IMAGE}}" alt="Tom"></a></div>
-                                            <div class="carousel_body_author">
-                                                <div class="carousel_title_auth">
-                                                    <h5>{{AUTHOR_NAME}}</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                                {{/authors}}
-                                <!--<li>-->
-                                    <!--<a href="authors-details.php"><div class="item">-->
-                                        <!--<div class="img_block"><img src="../assets/img/pictures/team2.jpg" alt="Anna"></div>-->
-                                        <!--<div class="carousel_body_author">-->
-                                            <!--<div class="carousel_title_auth">-->
-                                                <!--<h5>Anna Smith</h5>-->
+<div class="row-fluid">
+    <div class="span12 module_cont module_bookslider">
+        <div class="bg_title"><h4 class="headInModule">RELATED AUTHORS</h4></div>
 
-                                            <!--</div>-->
-
-                                        <!--</div>-->
-                                    <!--</div></a>-->
-                                <!--</li>-->
-                                <!--<li>-->
-                                    <!--<a href="authors-details.php">-->
-                                        <!--<div class="item">-->
-                                            <!--<div class="img_block"><img src="../assets/img/pictures/team3.jpg" alt="John"></div>-->
-                                            <!--<div class="carousel_body_author">-->
-                                                <!--<div class="carousel_title_auth">-->
-                                                    <!--<h5>John Doe</h5>-->
-                                                <!--</div>-->
-                                            <!--</div>-->
-                                        <!--</div>-->
-                                    <!--</a>-->
-                                <!--</li>-->
-                                <!--<li>-->
-                                    <!--<a href="authors-details.php"><div class="item">-->
-                                        <!--<div class="img_block"><img src="../assets/img/pictures/team4.jpg" alt="Anna"></div>-->
-                                        <!--<div class="carousel_body_author">-->
-                                            <!--<div class="carousel_title_auth">-->
-                                                <!--<h5>Bella White</h5>-->
-
-                                            <!--</div>-->
-
-                                        <!--</div>-->
-                                    <!--</div></a>-->
-                                <!--</li>-->
-                                <!--<li>-->
-                                    <!--<a href="authors-details.php"><div class="item">-->
-                                        <!--<div class="img_block"><img src="../assets/img/pictures/team5.jpg" alt="John"></div>-->
-                                        <!--<div class="carousel_body_author">-->
-                                            <!--<div class="carousel_title_auth">-->
-                                                <!--<h5>Chris Redfield</h5>-->
-
-                                            <!--</div>-->
-
-                                        <!--</div>-->
-                                    <!--</div></a>-->
-                                <!--</li>-->
-                                <!--<li>-->
-                                    <!--<a href=""><div class="item">-->
-                                        <!--<div class="img_block"><img src="../assets/img/pictures/team6.jpg" alt="Tom"></div>-->
-                                        <!--<div class="carousel_body_author">-->
-                                            <!--<div class="carousel_title_auth">-->
-                                                <!--<h5>Ada Wong</h5>-->
-                                            <!--</div>-->
-                                        <!--</div>-->
-                                    <!--</div></a>-->
-                                <!--</li>-->
-                                <!--<li>-->
-                                    <!--<a href="authors-details.php"><div class="item">-->
-                                        <!--<div class="img_block"><img src="../assets/img/pictures/hiring.jpg" alt="Tom"></div>-->
-                                        <!--<div class="carousel_body_author">-->
-                                            <!--<div class="carousel_title_auth">-->
-                                                <!--<h5>Hiring</h5>-->
-                                            <!--</div>-->
-                                        <!--</div>-->
-                                    <!--</div></a>-->
-                                <!--</li>-->
-                            </ul>
+        <div class="container" >
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="authorCarousel" class="carousel slide multi-item-carousel">
+                        <div class="carousel-inner carouselslider" id="authorCarousel1"  style="padding: 0px 0px 20px 0px; margin-left: 60px; margin-right: 60px;">
                         </div>
-                        <div class="clear"></div>
-                    </div><!-- .team_slider -->
-                    <a id="anchor8"></a>
-                </div>
-            </div><!-- .row-fluid -->
-            <div class="clear"><!-- ClearFix --></div>
-        </div><!-- .fl-container -->
-        <div class="right-sidebar-block span3">
-            <aside class="sidebar">
 
-            </aside>
-        </div><!-- .right-sidebar -->
-        <div class="clear"><!-- ClearFix --></div>
+                        <div id="frame_authorCarousel1" class="loader_fram">
+                            <div id="loader" style="display: block">
+                                <img src="../assets/img/loader.gif" id="loader_image">
+                            </div>
+                        </div>
+
+                        <a class="left carousel-control" href="#authorCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+                        <a class="right carousel-control" href="#authorCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <a id="anchor8"></a>
     </div>
-</div><!-- .container -->
+</div>
+<!--<script>-->
+<!--$('.multi-item-carousel').carousel({-->
+<!--interval: false-->
+<!--});-->
+<!--</script>-->
+<!--<script src="assets/js/home_page_Api.js"></script>-->
 
 <script>
+    var id="{{id}}";
+
+    $.ajax({
+        type: "GET",
+        url: "/getRelatedAuthors?id=" + id,
+        success: function (data) {
+            data=JSON.parse(data);
+            console.log(data)
+            cardData=data['related'];
 
 
+            $("#frame_authorCarousel1").hide();
+            $("#loader").hide();
+            var relatedResponse = getCardAuthor(cardData, 5);
+            $('#authorCarousel1').append(relatedResponse);
+            $('.item_author').first().addClass('active');
+            $("#authorCarousel").carousel();
+
+//                if(data['wishlist'].indexOf(parseInt(id)) != -1)
+//                {
+//                    $("#wishlistMain").attr("src","../assets/img/Added_WL_Right.png");
+//                }
+//                else{
+//                    $("#wishlistMain").attr("src","../assets/img/Added_WL_50.png");
+//
+//                }
+
+            $(".spinner").hide()
+        },
+        error: function (err) {
+            console.log(err);
+            toastr.error('Something went wrong  !');
+            $(".spinner").hide();
+
+        }
+
+    });
+
+
+    function getCardAuthor(data, visibleCardCount) {
+        var response = '', items = 0;
+
+        var final_response = '';
+        for (var i = 0; i < data.length; i++) {
+            items++;
+            var active = '';
+            if (i == 0) {
+                active = "active";
+            }
+            response += '<div class="col-md-2" style="width: 18%;">' +
+                    '<div class="item item_shadow">' +
+                    '<div class="img_block_books"><a href="/author_details/' + data[i].AUTHOR_ID + '"><img src="https://s3.amazonaws.com/prod.justbooksclc.com/authors/' + data[i].AUTHOR_ID + '.jpg" alt="Anna" onerror="this.src=\'../assets/img/user.png\'"></a></div>' +
+                    '<div class="carousel_body_author">' +
+                    '<div class="carousel_title_author"><h5 title="' + data[i].AUTHOR_NAME + '">' + data[i].AUTHOR_NAME + '</h5></div>' +
+                    '<div class="carousel_desc">' +
+                    '<div class="text-center">' +
+                    // '<a href="/author_details/' + data[i].ID + '" id="' + data[i].ID + '" class="shortcode_button btn_small btn_type1" title="Read">Read</a>' +
+                    '<div class="clear"></div>' +
+                    '</div>'+
+                    '</div></div></div></div>';
+
+            //if( i > 0 && i % 3 == 0){
+            if (items == visibleCardCount) {
+
+                final_response += '<div class="item item_author ' + active + '">' + response + '</div>';
+                response = "";
+                items = 0;
+            }
+
+        }
+        if (items < visibleCardCount && items > 0) {
+            final_response += '<div class="item item_author ' + active + '">' + response + '</div>';
+        }
+        return final_response;
+    }
 
 </script>

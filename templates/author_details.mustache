@@ -1,5 +1,4 @@
 {{> header}}
-
 <div class="main_wrapper">
     <!-- C O N T E N T -->
     <div class="content_wrapper background_color_gray">
@@ -15,48 +14,26 @@
                             <div class="left-sidebar-block span5" style="margin-top: 10px; padding: 10px;">
                                 <aside class="sidebar">
                                     <div class="img_block_books">
-                                        <img  src="{{IMAGE}}" alt="" class="img-responsive" onerror="this.src='../assets/img/pictures/team1.jpg';" style="margin-left-1%;max-height: 250px;">
+                                        <img src="{{IMAGE}}" alt="" class="img-responsive"
+                                             onerror="this.src='../assets/img/pictures/team1.jpg';"
+                                             style="margin-left-1%;max-height: 250px;">
                                     </div>
-                                    <div class="module_cont">
-
-                                        <h4>{{AUTHOR_NAME}}</h4>
-
+                                    <div class="module_cont"><h4>{{AUTHOR_NAME}}</h4>
                                         <p>{{DESCRIPTION}}
                                     </div>
-
-
                                 </aside>
                             </div><!-- .left-sidebar -->
                         {{/data}}
                         <div class="posts-block span7">
-                            <div class="contentarea">
-
-                                {{> author_related_books}}
-
-                            </div><!-- .contentarea -->
+                            <div class="contentarea">                                {{> author_related_books}}                            </div>
+                            <!-- .contentarea -->
                         </div>
-
                     </div>
                     <div class="clear"><!-- ClearFix --></div>
-                </div><!-- .fl-container -->
-
-            </div>
-        </div><!-- .container -->
-
-        {{> related_authors}}
-
-    </div><!-- .content_wrapper -->
-
-</div><!-- .main_wrapper -->
-
-{{> footer}}
-
+                </div><!-- .fl-container -->            </div>
+        </div><!-- .container -->        {{> related_authors}}    </div><!-- .content_wrapper -->
+</div><!-- .main_wrapper -->{{> footer}}
 <script>
-    $(document).ready(function()
-    {
+    $(document).ready(function () {
         $('#home').addClass('current-menu-parent');
-
-    })
-
-
-</script>
+    })</script>

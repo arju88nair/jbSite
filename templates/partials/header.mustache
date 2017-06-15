@@ -175,6 +175,38 @@
 
         }
         $(document).ready(function () {
+            $('#shareModal').on('show.bs.modal', function (e) {
+
+                //get data-id attribute of the clicked element
+                var id = $(e.relatedTarget).data('id');
+                //populate the textbox
+                $("#sharefb").attr("href", "http://www.facebook.com/sharer.php?u=http://justbooksclc.com/book_details/"+id);
+                $("#sharegp").attr("href", "https://plus.google.com/share?url=http://justbooksclc.com/book_details/"+id);
+                $("#sharetw").attr("href", "https://twitter.com/share?url=http://justbooksclc.com/book_details/"+id+"&amp;text=Simple%20Share%20Buttons&amp;hashtags=justbookclc.com");
+                $("#shareen").attr("href", "mailto:me@domain.com?subject=Hi, This might interest you ! http://justbooksclc.com/book_details/"+id);
+                // $("#sharefb").attr("href", "http://www.facebook.com/sharer.php?u=http://justbooksclc.com/book_details/"+id);
+            });
+
+
+
+
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": false,
+                "positionClass": "toast-bottom-center",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
             $('#srch-term').keypress(function (e) {
                 var key = e.which;
                 if (key == 13) // the enter key code
@@ -195,7 +227,6 @@
 
 
 //            $('header nav ul.menu > li > a').click(function(e) {
-//                alert("FG")
 //                var $this = $(this);
 //                $this.parent().siblings().removeClass('current-menu-parent').end().addClass('current-menu-parent');
 //                e.preventDefault();
@@ -220,6 +251,7 @@
             type: "GET",
             url: "/loginValidate",
             success: function (data) {
+
                 if (data != 'failure') {
                     data = JSON.parse(data);
                     console.log(data)
@@ -235,6 +267,7 @@
                     return false;
                 }
                 else {
+
                     localStorage.setItem("flag", false)
 
                     $("nav").show();
@@ -274,12 +307,46 @@
 
     <div class="userTile" id="userTitle" style="float: right; padding-top: -6px;display: none; margin-right: 20px;">
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><span class="glyphicon glyphicon-user"></span><span id="firstname"></span> </a></li>
+            <li><a href="/shelf"><span class="glyphicon glyphicon-user"></span><span id="firstname"></span> </a></li>
             <li><a href="/logout/"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
         </ul>
     </div>
 
     <div class="header_wrapper container">
+        <div id="shareModal" class="modal fade" role="dialog" style="z-index: 10000">
+            <div class="modal-dialog" style="top:-60%;width:100%">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Share</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="share">
+
+                            <!-- facebook -->
+                            <a class="facebook" id="sharefb" href="" target="blank"><i class="fa fa-facebook"></i></a>
+
+                            <!-- twitter -->
+                            <a class="twitter" id="sharetw" href=" " target="blank"><i class="fa fa-twitter"></i></a>
+
+                            <!-- google plus -->
+                            <a class="googleplus"  id="sharegp" href="https://plus.google.com/share?url={{url}}" target="blank"><i class="fa fa-google-plus"></i></a>
+
+                            <!-- linkedin -->
+                            <!--<a class="instagram" id="shareig" href="" target="blank"><i class="fa fa-instagram"></i></a>-->
+
+                            <!-- pinterest -->
+                            <a class="envelope"  id="shareen" href="" target="blank"><i class="fa fa-envelope"></i></a>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
 
         {{> header_logo}}
 

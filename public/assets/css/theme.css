@@ -10,7 +10,7 @@ button {
 	background:none;
 	border-radius:0;
 	box-shadow:none!important;
-	-webkit-appearance: none!important;
+	/*-webkit-appearance: none!important;*/
 }
 * {
 	outline:none!important;
@@ -2510,6 +2510,31 @@ hr.respond_seperator {
 	text-align: center;
 	font-size: 12px;
 }
+
+
+.carousel_title_author h5{
+	white-space: nowrap;
+	width: 15em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	color: #fff;
+	margin: 0px;
+	padding-top: 5px;
+	padding-bottom: 0px;
+	text-align: center;
+	font-size: 14px;
+	font-family: 'Playfair Display';
+	margin-left:-9%
+}
+.carousel_body_author{
+	 background-color:#E3536C
+ ;
+	 padding:5px 0 5px 0;
+	 color:#fff;
+	 font-family:Playfair Display;
+	 font-size:14px;
+ }
+
 .carouselslider .smallproflinks {
 	display:inline-block;
 	margin:0 auto;
@@ -5558,10 +5583,22 @@ nav.mobile_header {
 .module_revolution_slider .banner,
 .module_revolution_slider .slotholder img {
 	border-radius:5px;
+	position: relative;
+	opacity: 0.6;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 .module_revolution_slider.first-module .banner,
 .module_revolution_slider.first-module .slotholder img {
 	border-radius:0px;
+	position: relative;
+	opacity: 0.6;
+	background-attachment: fixed;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 .module_revolution_slider ul {
 	display:none;
@@ -6523,6 +6560,44 @@ transition: 500ms ease-in-out left;
 	font-family: 'Playfair Display';
 	margin:0px 0 5px 0;
 }
+
+
+.gallery-view {
+	margin: 0 -12px 0 -12px;
+}
+.gallery-view:hover {
+	box-shadow: 0 10px 10px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;
+}
+
+article.clickable, .item.clickable {
+	cursor: pointer;
+}
+
+.column .item {
+	border-radius: 2px;
+	background-color: #fff;
+	box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important;
+}
+
+
+
+.clickable {
+	cursor: pointer;
+	transition: all 250ms;
+}
+
+article, .item {
+	display: block;
+	position: relative;
+	margin-bottom: 24px;
+	clear: both;
+}article .article-body, .item .article-body {
+	 position: relative;
+	 padding: 15px;
+	 letter-spacing: 0.25pt;
+ }.gray {
+	  color: #999999 !important;
+  }
 
 
 
