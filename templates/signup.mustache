@@ -1,19 +1,14 @@
 {{> header}}
 
 <!-- C O N T E N T -->
-<div class="content_wrapper">
-    <!--<div class="page_title_block">
+<div class="content_wrapper" style="margin-top: 8%">
+    <div class="page_title_block">
         <div class="container">
-            <h2 class="title">Portfolio. 4 Columns</h2>
-            <div class="breadcrumbs"><a href="home.html">Home</a><a href="#">Portfolio</a><span>4 Columns</span></div>
+            <div class="bg_title" id="bg_title_shelf"><h4 class="headInModule">PLAN DETAILS</h4></div>
+
         </div>
-    </div>-->
-    <style>
-       
+    </div>
 
-
-
-    </style>
     <div class="container">
         <div class="spinner"  style='display: none;z-index: 100;opacity:0.55;background-color: grey'>
             <div class="double-bounce1"></div>
@@ -30,65 +25,41 @@
                         <div class="row-fluid">
                             <div class="span12 module_cont module_price_table">
                                 <div class="bg_title bg_title_price" style="text-align: center;">
-                                    <h4 class="headInModule">PLAN DETAILS</h4>
+                                    <!-- <h4 class="headInModule">PLAN DETAILS</h4> -->
                                 </div>
                                 <div class="row">
                                     <div class="span6 module_cont module_text_area module_medium_padding">
                                         <!-- 1st row verticaly centered text in the square columns -->
 
-                                        <!--{{# plan_data}}-->
 
-                                            <!--{{# web_signup_plan}}-->
-                                                <!--<a href="/signup?planid={{plan_id}}&planname={{promo_code}}">-->
-                                                    <!--<div class="square box-shadow" id="box_{{plan_id}}">-->
-                                                        <!--<div class="content1">-->
-                                                            <!--<div class="table">-->
-                                                                <!--<div class="table-cell title_text">-->
-                                                                    <!--{{promo_code}}-->
-                                                                <!--</div>-->
-                                                            <!--</div>-->
-                                                        <!--</div>-->
-                                                    <!--</div>-->
-                                                <!--</a>-->
-                                            <!--{{/web_signup_plan}}-->
-                                        <!--{{/plan_data}}-->
-                                        <style>
-                                            h3{
-                                                color:white;
-
-                                            }
-                                            .card{
-                                                margin: 5px;
-                                                /*box-shadow: 1px 0px 4px 2px grey;*/
-
-                                            }
-
-
-                                            .card-active{
-
-                                                padding-top: 20px;
-                                                padding-bottom: 6px;
-
-                                                margin-bottom: 15px;
-                                                box-shadow: 1px 0px 4px 2px grey;
-                                            }
-                                            .PLATINUM{
-                                                background-color: #EDAB53;
-                                            } .STARTER{
-                                                background-color: #3379B4;
-                                            } .DEFAULT{
-                                                background-color: #58B75B;
-                                            }
-                                        </style>
-                                            <!--{{# plan_data}}-->
-
-                                            <!--{{# web_signup_plan}}-->
-                                                <!--<div class="col-md-7 col-md-offset-2"><div class="card {{promo_code}}" id="box_{{plan_id}}"  ><h3 class="htag_{{promo_code}}">{{promo_code}}</h3></div></div>-->
-                                                <!--{{/web_signup_plan}}-->
-                                            <!--{{/plan_data}}-->
 
                                         {{# plan_data}}
-                                                         <a href="/signup?planname={{PROMO}}&books={{NO_OF_BOOKS}}&months={{NO_OF_MONTHS}}"><div class="col-md-7 col-md-offset-2"><div class="card {{PLAN_NAME}}" id="box_{{PLAN_NAME}}"  ><h3 class="htag_{{PLAN_NAME}}">{{PLAN_NAME}}</h3></div></div></a>
+
+                                            <a href="/signup?planname={{PROMO}}&books={{NO_OF_BOOKS}}&months={{NO_OF_MONTHS}}">
+
+                                                <div class="span9 l_content">
+                                                    <div class="row">
+                                                        <div class='col-md-10 col-md-offset-2 card bordered' id="box_{{PLAN_NAME}}" style="padding-top: 7%;padding-bottom: 4%;text-indent: 8%">
+                                                            <div class="col-md-12 text-left">
+                                                                <div class="row bottom">
+                                                                    <div class="col-md-12 left">
+                                                                        <h4>{{PLAN_NAME}}</h4>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-12 text-left">
+                                                                <div class="row bottom">
+                                                                    <div class="col-md-12 left">
+                                                                        <h5>{{BOOK_TAG}} for {{SUITABLE_TAG}}</h5>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+
                                         {{/plan_data}}
                                         <!---->
 
@@ -398,15 +369,16 @@
     var mon = '';
     var book = '';
     $('#box_' + planid).css({
-        'padding-top': '20px',
-   'padding-bottom' : '6px',
-    'border-radius': '8px',
-    'margin-bottom': '15px',
-    'font-family': 'Playfair Display',
-    'box-shadow': '5px 5px 8px 1px grey'
+
+        'display': 'block',
+        'background-color': '#fff',
+        'box-shadow':' 1px 1px 8px #999',
+        'cursor': 'pointer',
+        'border': '1px solid #A9A9A9'
+
     });
     $('#months').on('change', function () {
-$(".spinner").show();
+        $(".spinner").show();
         mon = this.value;
         book = $("#books").val();
 

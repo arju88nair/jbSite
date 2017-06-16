@@ -255,15 +255,14 @@
                 if (data != 'failure') {
                     data = JSON.parse(data);
                     console.log(data)
-                    $("#firstname").text(" Welcome " + data['name']);
+                    $("#welcomeId").text(" Welcome " + data['name']);
                     $("nav").show()
-                    $("#userTitle").show();
+                    $("#userTile").show();
                     $(".login_form_fram_one").hide();
                     $("#main").hide();
                     $("#first").hide();
                     localStorage.setItem("flag", true)
-                    $("ul#menuHeader").prepend("<li id=\"shelfMenu\" class='awesome_change_color'><a href=\"/shelf\">MY SHELF</a></li>");
-
+$("#shelfButton").show();
                     return false;
                 }
                 else {
@@ -271,8 +270,9 @@
                     localStorage.setItem("flag", false)
 
                     $("nav").show();
+                    $("#shelfButton").hide();
 
-                    $("#userTitle").hide();
+                    $("#userTile").hide();
 
                     $(".login_form_fram_one").show();
                     $("#main").show();
@@ -292,79 +292,148 @@
 
 
     </script>
+
 </head>
 <body>
 
-
 <header class="">
-    <!--  <section class="">
-         <div class="container">
-             <div class="call_us">Call us toll free:  +1 800 546 35 48</div>
-             <div class="slogan">Best HTML5 Theme Ever!</div>
-         </div>
-         <div class="clear"></div>
-     </section> -->
 
-    <div class="userTile" id="userTitle" style="float: right; padding-top: -6px;display: none; margin-right: 20px;">
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="/shelf"><span class="glyphicon glyphicon-user"></span><span id="firstname"></span> </a></li>
-            <li><a href="/logout/"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
-        </ul>
-    </div>
-
-    <div class="header_wrapper container">
-        <div id="shareModal" class="modal fade" role="dialog" style="z-index: 10000">
-            <div class="modal-dialog" style="top:-60%;width:100%">
-
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Share</h4>
-                    </div>
-                    <div class="modal-body">
-                        <div id="share">
-
-                            <!-- facebook -->
-                            <a class="facebook" id="sharefb" href="" target="blank"><i class="fa fa-facebook"></i></a>
-
-                            <!-- twitter -->
-                            <a class="twitter" id="sharetw" href=" " target="blank"><i class="fa fa-twitter"></i></a>
-
-                            <!-- google plus -->
-                            <a class="googleplus"  id="sharegp" href="https://plus.google.com/share?url={{url}}" target="blank"><i class="fa fa-google-plus"></i></a>
-
-                            <!-- linkedin -->
-                            <!--<a class="instagram" id="shareig" href="" target="blank"><i class="fa fa-instagram"></i></a>-->
-
-                            <!-- pinterest -->
-                            <a class="envelope"  id="shareen" href="" target="blank"><i class="fa fa-envelope"></i></a>
-
-                        </div>
-                    </div>
-
+    <div id="flipkart-navbar">
+        <div class="container">
+            <div class="row row1">
+                <div class="col-sm-9">
+                    <ul class="largenav pull-right menu" id="menuHeader">
+                        <li class="upper-links"><a class="links" href="/#whatsNew">WHAT'S NEW</a></li>
+                        <li class="upper-links"><a class="links" href="/#anchor2">MEMBERSHIP PLANS</a></li>
+                        <li class="upper-links"><a class="links" href="/#anchor3">BLOG</a></li>
+                        <li class="upper-links"><a class="links" href="/franchise">BECOME A FRANCHISEE</a></li>
+                        <li class="upper-links"><a class="links" href="http://culture.place">CULTURE.PLACE</a></li>
+                        <li class="upper-links"><a class="links" href="/#contactUs">CONTACT US</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3" id="userTile" style="display:none;">
+                    <ul class="largenav pull-right menu">
+                        <li class="upper-links"><a class="links" href="" id="welcomeId">Welocom XYZ</a></li>
+                        <li class="upper-links"><a class="links" href="/logout/">Logout</a></li>
+                    </ul>
                 </div>
 
             </div>
+            <div class="row row2">
+                <div class="col-sm-3">
+                    <h2 style="margin:0px;"><span class="smallnav menu" onclick="openNav()">☰ Brand</span></h2>
+                    <h1 style="margin:0px;">
+                    <span class="largenav">
+                        <a href="/" class="logo">
+                            <img src="../assets/img/logo.png" alt=""  class="logo_def" width="190px">
+                            <img src="../assets/img/retina/logo.png" alt="" class="logo_retina" width="190px">
+                        </a>
+                    </span>
+                    </h1>
+                </div>
+                <div class="flipkart-navbar-search smallsearch col-sm-7" >
+                    <div class="row">
+                        <input class="flipkart-navbar-input col-sm-11" type="" placeholder="Discover!"name="srch-term" id="srch-term" type="text" value="{{query}}">
+                        <button class="flipkart-navbar-button col-sm-1" type="submit" onclick="searchClick()">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="cart largenav col-sm-2" id="shelfButton" style="display:none;">
+                    <a class="cart-button" href="/shelf">
+                        <i class="fa fa-book" aria-hidden="true"></i> My Shelf
+                        <!-- <span class="item-number ">3</span> -->
+                    </a>
+                </div>
+            </div>
         </div>
-
-        {{> header_logo}}
-
-        {{> header_menu}}
-
-        <!-- <div class="call_us">Call us toll free:  +1 800 546 35 48</div>
-        <div class="socials">
-            <ul class="socials_list">
-                <li><a href="#" class="ico_social-flickr"></a></li>
-                <li><a href="#" class="ico_social-instagram"></a></li>
-                <li><a href="#" class="ico_social-dribbble"></a></li>
-                <li><a href="#" class="ico_social-gplus"></a></li>
-            </ul>
-        </div> --><!-- .social -->
-
     </div>
-
-    {{> header_search}}
+    <div id="mySidenav" class="sidenav">
+        <div class="container" style="background-color: #2874f0; padding-top: 10px;">
+            <span class="sidenav-heading">Home</span>
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+        </div>
+        <a href="">Link</a>
+        <a href="">Link</a>
+        <a href="">Link</a>
+        <a href="">Link</a>
+    </div>
 
 
 </header>
+<div id="shareModal" class="modal fade" role="dialog" style="z-index: 10000">
+    <div class="modal-dialog" style="top:-60%;width:100%">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Share</h4>
+            </div>
+            <div class="modal-body">
+                <div id="share">
+
+                    <!-- facebook -->
+                    <a class="facebook" id="sharefb" href="" target="blank"><i class="fa fa-facebook"></i></a>
+
+                    <!-- twitter -->
+                    <a class="twitter" id="sharetw" href=" " target="blank"><i class="fa fa-twitter"></i></a>
+
+                    <!-- google plus -->
+                    <a class="googleplus"  id="sharegp" href="https://plus.google.com/share?url={{url}}" target="blank"><i class="fa fa-google-plus"></i></a>
+
+                    <!-- linkedin -->
+                    <!--<a class="instagram" id="shareig" href="" target="blank"><i class="fa fa-instagram"></i></a>-->
+
+                    <!-- pinterest -->
+                    <a class="envelope"  id="shareen" href="" target="blank"><i class="fa fa-envelope"></i></a>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript">
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "70%";
+        // document.getElementById("flipkart-navbar").style.width = "50%";
+        document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        document.body.style.backgroundColor = "rgba(0,0,0,0)";
+    }
+</script>
+
+<script>
+    $(document).ready(function(){
+        // Add scrollspy to <body>
+        $('body').scrollspy({target: ".navbar", offset: 50});
+
+        // Add smooth scrolling on all links inside the navbar
+        $("#menuHeader a").on('click', function(event) {
+            // Make sure this.hash has a value before overriding default behavior
+            if (this.hash !== "") {
+                // Prevent default anchor click behavior
+                event.preventDefault();
+
+                // Store hash
+                var hash = this.hash;
+
+                // Using jQuery's animate() method to add smooth page scroll
+                // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+                $('html, body').animate({
+                    scrollTop: $(hash).offset().top
+                }, 800, function(){
+
+                    // Add hash (#) to URL when done scrolling (default click behavior)
+                    window.location.hash = hash;
+                });
+            }  // End if
+        });
+    });
+
+</script>

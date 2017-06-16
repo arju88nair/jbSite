@@ -6,6 +6,7 @@ use \Psr\Http\Message\ResponseInterface as Response;
 require '../vendor/autoload.php';
 require '../includes/functions.php';
 define('API_URL', 'http://staging.justbooksclc.com:');
+define('API_URL_ES', 'http://rec.justbooksclc.com');
 session_start();
 //$_SESSION['membership_no'] = 'M191990';
 //$_SESSION['api_key'] = 'FmCvJxNw6nCsLzCgwjFw';
@@ -46,6 +47,16 @@ function curlFunction($url)
     curl_close($ch);
     return $raw_data;
 }
+function curlFunctionEs($url)
+{
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, API_URL_ES . $url);
+    curl_setopt($ch, CURLOPT_HEADER, 0);            // No header in the result
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // Return, do not echo result
+    $raw_data = curl_exec($ch);
+    curl_close($ch);
+    return $raw_data;
+}
 
 $app->get('/', function (Request $request, Response $response) {
 
@@ -71,45 +82,82 @@ $app->get('/', function (Request $request, Response $response) {
 
 $app->get('/book_details/{titleid}', function (Request $request, Response $response, $args) {
     $titleid = $args['titleid'];
-    $result1 = curlFunction("8990/api/v1/title_info.json?title_id=$titleid");
-    $result1 = str_replace("NaN", 0, $result1);
-//    echo json_encode($result1);die;
-    $result = json_decode($result1, true)['result'];
-//    echo json_encode($result);die;
-//    echo json_decode($result1, true);die;
-//    print_r(json_encode(json_decode($result1, true))) ;die;
-//    $new_result = json_decode($result, true);
-//    print_r($new_result['related_books'][0]);die;
-//    $authorid = json_decode($result1)->authorid;
-//    $result = curlFunction("8990/api/v1/author_info.json?id=$authorid");
-    $response = $this->view->render($response, 'book_details.mustache', array('data' => $result, 'titleid' => $titleid));
+//    $result1 = curlFunction("8990/api/v1/title_info.json?title_id=$titleid");
+//    $result1 = str_replace("NaN", 0, $result1);
+
+    $raw_data = curlFunctionEs("/getTitleDetails?title_id=$titleid");
+    $data = json_decode($raw_data);
+
+
+
+    $membership_no = $_SESSION['membership_no'];
+    $api_key = $_SESSION['api_key'];
+    $email = $_SESSION['email'];
+    $result = curlFunction("8990/api/v1/books_at_home.json?membership_no=$membership_no&api_key=$api_key&email=$email");
+    $currentData= json_decode($result);
+    $currentData = $currentData->result;
+    $currentData = json_decode(json_encode($currentData), True);
+
+    $currentID=[];
+    foreach ($currentData as $current) {
+
+        array_push($currentID, $current['id']);
+    }
+    $rental_id= "";
+    $flag=0;
+    if(in_array($titleid,$currentID))
+    {
+        $flag=1;
+        foreach ($currentData as $current) {
+
+            if($current['id'] == $titleid)
+
+            {
+                $rental_id=$current['rental_id'];
+            }
+
+        }
+    }
+    $ids=presentIds();
+    $Wishflag=1;
+    if(in_array($titleid,$ids))
+    {
+        $Wishflag=0;
+
+    }
+
+    $response = $this->view->render($response, 'book_details.mustache', array('data' => $data, 'titleid' => $titleid,'flag'=>$flag,'rental'=>$rental_id,'wishFlag'=>$Wishflag));
     return $response;
 });
 
 $app->get('/author_details/{authorid}', function (Request $request, Response $response, $args) {
     $authorid = $args['authorid'];
-    $con = $this->db;
-    $final_data = [];
-    $query = "SELECT author_id,author_name,description ,'https://s3.amazonaws.com/prod.justbooksclc.com/authors/'||author_id||'.jpg' as image  FROM fn_author_details where author_id = $authorid";
-    $result = oci_parse($con, $query);
-    oci_execute($result);
-    while ($row = oci_fetch_assoc($result)) {
-        $final_data[] = $row;
+//    $con = $this->db;
+//    $final_data = [];
+//    $query = "SELECT author_id,author_name,description ,'https://s3.amazonaws.com/prod.justbooksclc.com/authors/'||author_id||'.jpg' as image  FROM fn_author_details where author_id = $authorid";
+//    $result = oci_parse($con, $query);
+//    oci_execute($result);
+//    while ($row = oci_fetch_assoc($result)) {
+//        $final_data[] = $row;
+//
+//
+//    }
+    $raw_data = curlFunctionEs("/getAuthorDetails?author_id=$authorid");
+    $data = json_decode($raw_data);
 
-
-    }
-
-
-    $response = $this->view->render($response, 'author_details.mustache', array('data' => $final_data, 'id' => $authorid));
+    $response = $this->view->render($response, 'author_details.mustache', array('data' => $data, 'id' => $authorid));
     return $response;
 });
 
 $app->get('/search', function (Request $request, Response $response) {
 
     $query = $_GET['q'];
-    $result = curlFunction("8990/api/v1/search.json?q=$query&page=1&per_page=20");
-    $count = count(json_decode($result)->result);
-    $response = $this->view->render($response, 'search.mustache', array('data' => json_decode($result, true), 'query' => ucfirst($query), 'count' => $count));
+//    $result = curlFunction("8990/api/v1/search.json?q=$query&page=1&per_page=20");
+//    $count = count(json_decode($result)->result);
+    $raw_data = curlFunctionEs("/getSuggestBooks?text=$query&page=1");
+    $data = json_decode($raw_data);
+    $count= count($data);
+    $response = $this->view->render($response, 'search.mustache', array('data' => $data, 'query' => ucfirst($query), 'count' => $count));
     return $response;
 
 });
@@ -186,7 +234,6 @@ $app->get('/signup', function (Request $request, Response $response) {
     while ($row = oci_fetch_assoc($result_city)) {
         $planData[] = $row;
     }
-
 
     $plan_data_curl = curlFunction('8990/api/v1/get_all_plans.json');
     $plan_data = json_decode($plan_data_curl);
@@ -269,16 +316,11 @@ $app->get('/signup', function (Request $request, Response $response) {
 
 $app->get('/newArrivals', function (Request $request, Response $response) {
 
-    $raw_data = curlFunction('8990/api/v1/new_arrivals.json');
+//    $raw_data = curlFunction('8990/api/v1/new_arrivals.json');
+//    $data = json_decode($raw_data);
+
+    $raw_data = curlFunctionEs('/getNewArrivalTitles');
     $data = json_decode($raw_data);
-
-//    $array=[];
-//foreach($final_data as $final)
-//{
-//    array_push($array ,$final['BOOK_ID']);
-//}
-
-
     $array = presentIds();
     $wishlist = wishlistIds();
     echo json_encode(array("data" => $data, 'ids' => (array)$array, 'wishlist' => (array)$wishlist));
@@ -286,27 +328,35 @@ $app->get('/newArrivals', function (Request $request, Response $response) {
 });
 
 $app->get('/getMostRead', function (Request $request, Response $response) {
-    $con = $this->db;
-    $query = "SELECT * FROM TEMP_MOSTREAD";
-    $result = oci_parse($con, $query);
-    oci_execute($result);
-    while ($row = oci_fetch_assoc($result)) {
-        $final_data[] = $row;
-    }
+//    $con = $this->db;
+//    $query = "SELECT * FROM TEMP_MOSTREAD";
+//    $result = oci_parse($con, $query);
+//    oci_execute($result);
+//    while ($row = oci_fetch_assoc($result)) {
+//        $final_data[] = $row;
+//    }
+
+    $raw_data = curlFunctionEs('/getTopTitles');
+    $data = json_decode($raw_data);
     $array = presentIds();
     $wishlist = wishlistIds();
-    echo json_encode(array("data" => $final_data, 'ids' => (array)$array, 'wishlist' => (array)$wishlist));
+    echo json_encode(array("data" => $data, 'ids' => (array)$array, 'wishlist' => (array)$wishlist));
 });
 
 $app->get('/getAuthor', function (Request $request, Response $response) {
-    $con = $this->db;
-    $query = "SELECT author_id,author_name,description  FROM fn_author_details WHERE rownum<=20";
-    $result = oci_parse($con, $query);
-    oci_execute($result);
-    while ($row = oci_fetch_assoc($result)) {
-        $final_data[] = $row;
-    }
-    echo json_encode($final_data);
+//    $con = $this->db;
+//    $query = "SELECT author_id,author_name,description  FROM fn_author_details WHERE rownum<=20";
+//    $result = oci_parse($con, $query);
+//    oci_execute($result);
+//    while ($row = oci_fetch_assoc($result)) {
+//        $final_data[] = $row;
+//    }
+
+
+    $raw_data = curlFunctionEs('/getPopularAuthors');
+    $data = json_decode($raw_data);
+
+    echo json_encode(array('data'=>$data));
 });
 
 $app->get('/getPlan', function (Request $request, Response $response) {
@@ -659,6 +709,18 @@ $app->get('/change_plan', function (Request $request, Response $response, $args)
     $data = $plan_data->result;
 
 
+    $con = $this->db;
+    $query_city = "SELECT *  FROM memp.FN_HOME_PAGE_PLANS WHERE active = 1 and promo= '$planname'";
+    $result_city = oci_parse($con, $query_city);
+    oci_execute($result_city);
+    while ($row = oci_fetch_assoc($result_city)) {
+        $planData[] = $row;
+    }
+    echo json_encode($planData);die;
+
+
+
+
     $data = json_decode(json_encode($data), True);
 
     $temp_array = array();
@@ -682,7 +744,7 @@ $app->get('/change_plan', function (Request $request, Response $response, $args)
         }
 
 
-        $response = $this->view->render($response, 'change_plan.mustache', array('plan_duration' => true, 'planid' => $planid, 'plan_books' => $temp_array[0]['change_plan_detail']['books'], 'available_balance' => $temp_array[0]['change_plan_detail']['available_balance'], 'balance_due' => $temp_array[0]['change_plan_detail']['balance_due'], 'reading_fee' => $temp_array[0]['change_plan_detail']['reading_fee'], 'count_array' => $final, 'planname' => $planname));
+        $response = $this->view->render($response, 'change_plan.mustache', array('plan_data'=>$planData,'plan_duration' => true, 'planid' => $planid, 'plan_books' => $temp_array[0]['change_plan_detail']['books'], 'available_balance' => $temp_array[0]['change_plan_detail']['available_balance'], 'balance_due' => $temp_array[0]['change_plan_detail']['balance_due'], 'reading_fee' => $temp_array[0]['change_plan_detail']['reading_fee'], 'count_array' => $final, 'planname' => $planname));
         return $response;
     }
 
@@ -1283,7 +1345,9 @@ $app->get('/break', function (Request $request, Response $response) {
 //$app->get('/getRelatedAuthors', function(Request $request, Response $response) {
 //    $author_id = $request->getQueryParams()['author_id'];
 //    $con = $this->db;
-//    $query = "select * from fn_author_details_new where author_id=2780";
+//    $query = "select * from fn
+//
+//_author_details_new where author_id=2780";
 //    $result = oci_parse($con, $query);
 //    oci_execute($result);
 //    $query_construct_category = '';
@@ -1410,17 +1474,11 @@ $app->get('/getRelatedBooks', function (Request $request, Response $response) {
 
     $params = $request->getQueryParams();
     $id = $params['id'];
-    $result1 = curlFunction("8990/api/v1/title_info.json?title_id=$id");
-    $result1 = str_replace("NaN", 0, $result1);
-    $plan_data = json_decode($result1);
-    $data = $plan_data->result;
-
-
-    $data = json_decode(json_encode($data), True);
-    $related = $data['related_books'];
+    $raw_data = curlFunctionEs("/getRelatedTitles?title_id=$id");
+    $data= json_decode($raw_data);
     $array = presentIds();
     $wishlist = wishlistIds();
-    echo json_encode(array("data" => $related, 'ids' => (array)$array, 'wishlist' => (array)$wishlist));
+    echo json_encode(array("data" => $data, 'ids' => (array)$array, 'wishlist' => (array)$wishlist));
 
 });
 $app->get('/getAuthorRelatedBooks', function (Request $request, Response $response) {
@@ -1447,52 +1505,68 @@ $app->get('/getRelatedAuthors', function (Request $request, Response $response) 
     $params = $request->getQueryParams();
     $id = $params['id'];
 
-    $author_id = $request->getQueryParams()['author_id'];
-    $con = $this->db;
-    $query = "SELECT * FROM fn_author_details_new WHERE author_id=2780";
-    $result = oci_parse($con, $query);
-    oci_execute($result);
-    $query_construct_category = '';
-    $query_construct_laguage = '';
-    $final_query = '';
-    while ($row = oci_fetch_assoc($result)) {
-        $category = $row['AUTHOR_CATEGORY'];
-        $category_array = explode(',', $category);
-        foreach ($category_array as $cat) {
-            $final_category = explode('@', $cat);
-            if (!empty($final_category[0]))
-                $query_construct_category .= "author_category like '%" . $final_category[0] . "%' or ";
-        }
+//    $con = $this->db;
+//    $query = "SELECT * FROM fn_author_details_new WHERE author_id=2780";
+//    $result = oci_parse($con, $query);
+//    oci_execute($result);
+//    $query_construct_category = '';
+//    $query_construct_laguage = '';
+//    $final_query = '';
+//    while ($row = oci_fetch_assoc($result)) {
+//        $category = $row['AUTHOR_CATEGORY'];
+//        $category_array = explode(',', $category);
+//        foreach ($category_array as $cat) {
+//            $final_category = explode('@', $cat);
+//            if (!empty($final_category[0]))
+//                $query_construct_category .= "author_category like '%" . $final_category[0] . "%' or ";
+//        }
+//
+//        $language = $row['AUTHOR_LANGUAGES'];
+//        $language_array = explode(',', $language);
+//        foreach ($language_array as $lan) {
+//            $final_language = explode('@', $lan);
+//            if (!empty($final_language[0]))
+//                $query_construct_laguage .= "author_languages like '%" . $final_language[0] . "%' or ";
+//        }
+//        if ($query_construct_laguage == '' && $query_construct_category != '') {
+//            $query_construct_category = rtrim($query_construct_category, ' or');
+//        } elseif ($query_construct_laguage != '' && $query_construct_category == '') {
+//            $query_construct_laguage = rtrim($query_construct_laguage, ' or');
+//        } elseif ($query_construct_laguage != '' && $query_construct_category != '') {
+//            $query_construct_laguage = rtrim($query_construct_laguage, ' or');
+//        } elseif ($query_construct_laguage == '' && $query_construct_category == '') {
+//            $query_construct_category = " author_category like '%General%'";
+//        }
+//    }
+//    $final_query = "SELECT fad.author_id,fad.author_name,'https://s3.amazonaws.com/prod.justbooksclc.com/authors/'||fad.author_id||'.jpg' AS image , fad.description FROM fn_author_details fad JOIN fn_author_details_new fadn ON fad.author_id=fadn.author_id WHERE " . $query_construct_category . $query_construct_laguage;
+//
+//    $final_result = oci_parse($con, $final_query);
+//    oci_execute($final_result);
+//    while ($row = oci_fetch_assoc($final_result)) {
+//        $final_data_Result[] = $row;
+//    }
 
-        $language = $row['AUTHOR_LANGUAGES'];
-        $language_array = explode(',', $language);
-        foreach ($language_array as $lan) {
-            $final_language = explode('@', $lan);
-            if (!empty($final_language[0]))
-                $query_construct_laguage .= "author_languages like '%" . $final_language[0] . "%' or ";
-        }
-        if ($query_construct_laguage == '' && $query_construct_category != '') {
-            $query_construct_category = rtrim($query_construct_category, ' or');
-        } elseif ($query_construct_laguage != '' && $query_construct_category == '') {
-            $query_construct_laguage = rtrim($query_construct_laguage, ' or');
-        } elseif ($query_construct_laguage != '' && $query_construct_category != '') {
-            $query_construct_laguage = rtrim($query_construct_laguage, ' or');
-        } elseif ($query_construct_laguage == '' && $query_construct_category == '') {
-            $query_construct_category = " author_category like '%General%'";
-        }
-    }
-    $final_query = "SELECT fad.author_id,fad.author_name,'https://s3.amazonaws.com/prod.justbooksclc.com/authors/'||fad.author_id||'.jpg' AS image , fad.description FROM fn_author_details fad JOIN fn_author_details_new fadn ON fad.author_id=fadn.author_id WHERE " . $query_construct_category . $query_construct_laguage;
+    $raw_data = curlFunctionEs("/getRelatedAuthors?author_id=$id");
+    $data= json_decode($raw_data);
 
-    $final_result = oci_parse($con, $final_query);
-    oci_execute($final_result);
-    while ($row = oci_fetch_assoc($final_result)) {
-        $final_data_Result[] = $row;
-    }
-
-
-    echo json_encode(array('related' => $final_data_Result));
+    echo json_encode(array('related' => $data));
 
 });
+
+$app->get('/getRecommendedBooks', function (Request $request, Response $response) {
+
+    $params = $request->getQueryParams();
+    $id = $params['id'];
+    $raw_data = curlFunctionEs("/getRelatedTitles?title_id=$id");
+    $data= json_decode($raw_data);
+    $array = presentIds();
+    $wishlist = wishlistIds();
+    echo json_encode(array("data" => $data, 'ids' => (array)$array, 'wishlist' => (array)$wishlist));
+
+});
+
+
+
 
 $app->run();
 

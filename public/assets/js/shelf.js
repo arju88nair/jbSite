@@ -11,7 +11,7 @@ $(document).ready(function () {
         success: function (data) {
             data = JSON.parse(data);
             cardData = data['data'];
-            var final_response = getCard(cardData['result'], 5, data['ids'], data['wishlist']);
+            var final_response = getCard(cardData, 5, data['ids'], data['wishlist']);
             $('#newArrivalsShelf').append(final_response);
             $('.item_shelf_new').first().addClass('active');
             $("#myCarousel").carousel();
@@ -27,7 +27,6 @@ $(document).ready(function () {
 
 
             data = JSON.parse(data)
-            console.log(data);
             cardData = data['data'];
             var final_response = getCardMostRead(cardData, 5, data['ids'], data['wishlist']);
             $('#mostRead').append(final_response);
@@ -50,41 +49,45 @@ function getCard(data, visibleCardCount, ids, wishlist) {
         if (i == 0) {
             active = "active";
         }
-
-        if (data[i].isbn == "NOISBN") {
-            var img = "http://cdn2.justbooksclc.com/title/0.jpg";
+        if (data[i]['_source'].image_url == null) {
+            // var img = "../assets/images/Default_Book_Thumbnail.png";
+            var img = "../assets/images/Default_Book_Thumbnail.png";
         }
         else {
-            var img = data[i].image_url;
+            var img = data[i]['_source'].image_url;
         }
 
-        if (ids.indexOf(data[i].id) != -1) {
+        if (ids.indexOf(parseInt(data[i]['_source'].title_id)) != -1) {
             var text = "Rented";
             action = "";
         }
         else {
-            var action = "\'placeOrder(" + data[i].id + ");\'"
+            var action = "\'placeOrder(" + data[i]['_source'].title_id + ");\'"
 
             text = "Rent";
         }
-        if (wishlist.indexOf(data[i].id) != -1) {
+
+
+        if (wishlist.indexOf(parseInt(data[i]['_source'].title_id)) != -1) {
             var image = "../assets/img/Added_WL_Right.png"
             wish = "";
         }
         else {
             image = "../assets/img/Added_WL_50.png";
-            var wish = "\'addWishlist(" + data[i].id + ");\'";
+            var wish = "\'wishlistAdd(" + data[i]['_source'].title_id + ");\'";
         }
+
+
         response += '<div class="col-md-2" style=width:18%;>' +
             '<div class="item item_shadow">' +
-            '<div class="img_block_books"><a href="/book_details/' + data[i].id + '"><img src="' + img + '" alt="Anna"></a></div>' +
+            '<div class="img_block_books"><a href="/book_details/' + data[i]['_source'].title_id + '"><img src="' + img + '" onerror="this.src=\'../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
             '<div class="carousel_body_book">' +
-            '<div class="carousel_title_book"><h5 title="' + data[i].title + '">' + data[i].title + '</h5></div>' +
+            '<div class="carousel_title_book"><h5 title="' + data[i]['_source'].title + '">' + data[i]['_source'].title + '</h5></div>' +
             '<div class="carousel_desc">' +
             '<div class="fram_btn">' +
-            '<a    href="javascript:void(0)" class="shortcode_button btn_small btn_type1" title="Rent" onclick=' + action + ' id="rent_' + data[i].id + '">' + text + '</a>' +
-            '<a href="javascript:void(0)" class="tiptip" title="Wishlist" onclick=' + wish + '><img id="wish_' + data[i].id + '" class="wishlist_btn" src=' + image + ' alt="Smiley face" height="25" width="25"></a>' +
-            '<a href="javascript:void(0)" class="tiptip" title="Share" data-id="' + data[i].id + '" data-toggle="modal" data-target="#shareModal"><img  class="share_btn" src=../assets/img/Engage.png alt="Smiley face" height="25" width="25"></a>' +
+            '<a href="javascript:void(0)" class="shortcode_button btn_small btn_type1" title="Rent" onclick=' + action + ' id="rent_' + data[i]['_source'].title_id + '">' + text + '</a>' +
+            '<a href="javascript:void(0)" class="tiptip" title="Wishlist" onclick=' + wish + '><img id="wish_' + data[i]['_source'].title_id + '" class="wishlist_btn" src=' + image + ' alt="Smiley face" height="25" width="25"></a>' +
+            '<a href="javascript:void(0)" class="tiptip" title="Share"  data-id="' + data[i]['_source'].title_id + '" data-toggle="modal" data-target="#shareModal"><img  class="share_btn" src=../assets/img/Engage.png alt="Smiley face" height="25" width="25"></a>' +
 
             // '<a href="/book_details/' + data[i].id + '" id="' + data[i].id + '" class="tiptip" title="Read">Read</a>' +
             '<div class="clear"></div>' +
@@ -100,7 +103,7 @@ function getCard(data, visibleCardCount, ids, wishlist) {
 
     }
     if (items < visibleCardCount && items > 0) {
-        final_response += '<div class="item item_shelf_new  ' + active + '">' + response + '</div>';
+        final_response += '<div class="item item_shelf_new ' + active + '">' + response + '</div>';
     }
     return final_response;
 }
@@ -108,50 +111,49 @@ function getCardMostRead(data, visibleCardCount, ids, wishlist) {
     var response = '', items = 0;
 
     var final_response = '';
+
     for (var i = 0; i < data.length; i++) {
         items++;
         var active = '';
         if (i == 0) {
             active = "active";
         }
-        if (data[i].IMAGE == "http://cdn2.justbooksclc.com/medium/.jpg" || data[i].IMAGE ==
-            "http://cdn2.justbooksclc.com/medium/NOISBN.jpg") {
-            var img = "http://cdn2.justbooksclc.com/title/0.jpg";
+        if (data[i]['_source'].image_url === null) {
+            var img = "../assets/images/Default_Book_Thumbnail.png";
         }
         else {
-            var img = data[i].IMAGE;
+            var img = data[i]['_source'].image_url;
         }
 
-
-        if (ids.indexOf(parseInt(data[i].TITLEID)) != -1) {
+        if (ids.indexOf(parseInt(data[i]['_source'].title_id)) != -1) {
             var text = "Rented";
             action = "";
         }
         else {
-            var action = "\'placeOrder(" + data[i].TITLEID + ");\'"
+            var action = "\'placeOrder(" + data[i]['_source'].title_id + ");\'"
 
             text = "Rent";
         }
-        if (wishlist.indexOf(parseInt(data[i].TITLEID)) != -1) {
+        if (wishlist.indexOf(parseInt(data[i]['_source'].title_id)) != -1) {
             var image = "../assets/img/Added_WL_Right.png"
             wish = "";
         }
         else {
             image = "../assets/img/Added_WL_50.png";
-            var wish = "\'addWishlist(" + data[i].TITLEID + ");\'";
+            var wish = "\'wishlistAdd(" + data[i]['_source'].title_id + ");\'";
         }
 
 
         response += '<div class="col-md-2" style=width:18%;>' +
             '<div class="item item_shadow">' +
-            '<div class="img_block_books"><a href="/book_details/' + data[i].TITLEID + '"><img src="' + img + '" alt=""></a></div>' +
+            '<div class="img_block_books"><a href="/book_details/' + data[i]['_source'].title_id + '"><img src="' + data[i]['_source'].img + '" onerror="this.src=\'../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
             '<div class="carousel_body_book">' +
-            '<div class="carousel_title_book"><h5 title="' + data[i].NAME + '">' + data[i].NAME + '</h5></div>' +
+            '<div class="carousel_title_book"><h5 title="' + data[i]['_source'].title + '">' + data[i]['_source'].title + '</h5></div>' +
             '<div class="carousel_desc">' +
             '<div class="fram_btn">' +
-            '<a    href="javascript:void(0)" class="shortcode_button btn_small btn_type1" title="Rent" onclick=' + action + ' id="rent_' + data[i].TITLEID + '">' + text + '</a>' +
-            '<a href="javascript:void(0)" class="tiptip" title="Wishlist" onclick=' + wish + '><img id="wish_' + data[i].TITLEID + '" class="wishlist_btn" src=' + image + ' alt="Smiley face" height="25" width="25"></a>' +
-            '<a href="javascript:void(0)" class="tiptip" title="Share" data-id="' + data[i].TITLEID + '" data-toggle="modal" data-target="#shareModal"><img  class="share_btn" src=../assets/img/Engage.png alt="Smiley face" height="25" width="25"></a>' +
+            '<a    href="javascript:void(0)" class="shortcode_button btn_small btn_type1" title="Rent" onclick=' + action + ' id="rent_' + data[i]['_source'].title_id + '">' + text + '</a>' +
+            '<a href="javascript:void(0)" class="tiptip" title="Wishlist" onclick=' + wish + '><img id="wish_' + data[i]['_source'].title_id + '" class="wishlist_btn" src=' + image + ' alt="Smiley face" height="25" width="25"></a>' +
+            '<a href="javascript:void(0)" class="tiptip" title="Share" data-id="' + data[i]['_source'].title_id + '" data-toggle="modal" data-target="#shareModal"><img  class="share_btn" src=../assets/img/Engage.png alt="Smiley face" height="25" width="25"></a>' +
 
             // '<a href="/book_details/' + data[i].TITLEID + '" id="' + data[i].TITLEID + '" class="tiptip" title="Read">Read</a>' +
             '<div class="clear"></div>' +
@@ -243,6 +245,26 @@ $(document).ready(function () {
     });
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     $('#change_plan').html('');
 
     $(".spinner").show();
@@ -256,7 +278,6 @@ $(document).ready(function () {
             $("#emptyResult").hide();
             $("#left_menu_recommend").show();
             $(".spinner").hide();
-            console.log(JSON.parse(data));
             $('#shelf_data').html('');
             $('#change_plan').html('');
 
@@ -267,7 +288,6 @@ $(document).ready(function () {
                 return false;
             }
             var current_plan = data_new['curent_plan']['result'];
-            console.log(current_plan);
 
 
             $('#shelf_data').html('');
@@ -291,7 +311,6 @@ $(document).ready(function () {
 
 function generateDIV(arr, funcName, idName, btnTxt, style, ids) {
     $('#change_plan').html('');
-    console.log(style)
     var response = '';
     arr.forEach(function (arr_data) {
 //            console.log(arr_data['id']);
@@ -309,7 +328,7 @@ function generateDIV(arr, funcName, idName, btnTxt, style, ids) {
             '<span id="alertText"></span></div><div class="col-md-6 col-xs-12 module_cont module_shelf shadow1" style="height: 154px;">' +
             '<div class="col-md-5 col-xs-5">' +
             '<a href="/book_details/' + arr_data['id'] + '">' +
-            '<img src="' + arr_data['image_url'] + '" class="img-responsive" alt="..." style="margin-top: -20px;height: 145px" onerror="this.src=\'http://cdn2.justbooksclc.com/title/0.jpg\'">' +
+            '<img src="' + arr_data['image_url'] + '" class="img-responsive" alt="..." style="margin-top: -20px;height: 145px" onerror="this.src=\'../assets/images/Default_Book_Thumbnail.png\'">' +
             '</a>' +
             '</div>' +
             '<div class="col-md-7 col-xs-7" id="module_shelf">' +
@@ -319,13 +338,13 @@ function generateDIV(arr, funcName, idName, btnTxt, style, ids) {
             '</div>' +
             // '<p><a href="/book_details/' + arr_data['id'] + '">Rate/Review</a></p>' +
             '<div class="shelf_sicial">' +
-            '<div class="col-md-3 col-xs-2" style="margin-right: 26%;margin-top: 4%;margin-left:-3%">' +
+            '<div class="col-md-3 col-xs-2" style="margin-right: 26%;margin-top: 4%;margin-left:-9%">' +
             '<a class="shortcode_button btn_small btn_type10"  data-toggle="modal" data-id='+arr_data['id']+' data-title="'+arr_data['title']+'"  data-target="#rateModal">Rate/Review</a>' +
             '</div>' +
             '<div class="col-md-3 col-xs-2" style="margin-right: -8%;margin-top: 4%">' +
             '<a href="javascript:void(0)" class="shortcode_button btn_small btn_type10" onclick="' + funcName + '(this,' + arr_data['id'] + ')"  id="' + arr_data[idName] + '">' + btnTxt + '</a>' +
             '</div>' +
-            '<div class="col-md-3 col-xs-5" style="display:' + style + ';margin-top: 2%">' +
+            '<div class="col-md-3 col-xs-5" style="display:' + style + ';margin-top: 2%;float:right">' +
             '<a href="javascript:void(0)"  class="tiptip" onclick="addWishlist(' + arr_data['id'] + ')"  id="' + arr_data[idName] + '"><img id="wish_' + arr_data['id'] + '" class="wishlist_btn" src=' + image + ' alt="Smiley face" height="25" width="25"></a>' +
             '</div></div></div></div>';
     });
@@ -405,7 +424,6 @@ $('#ordered_books').click(function (e) {
             } else {
                 var id = 'delivery_order_id';
             }
-            console.log(id);
             var final_response = generateDIV(new_data['data']['result'], 'cancelOrder', 'delivery_order_id', 'Cancel', 'block', new_data['wishlist']);
             $('#shelf_data').append(final_response);
             $("#left_menu_recommend").css('margin-top', '33%');
@@ -507,7 +525,6 @@ $('#profile').click(function (e) {
             $("#left_menu_recommend").show();
 
             $(".spinner").hide();
-            console.log(JSON.parse(data));
             $('#shelf_data').html('');
             $('#change_plan').html('');
 

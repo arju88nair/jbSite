@@ -84,9 +84,9 @@
             }
             response += '<div class="col-md-2" style="width: 18%;">' +
                     '<div class="item item_shadow">' +
-                    '<div class="img_block_books"><a href="/author_details/' + data[i].AUTHOR_ID + '"><img src="https://s3.amazonaws.com/prod.justbooksclc.com/authors/' + data[i].AUTHOR_ID + '.jpg" alt="Anna" onerror="this.src=\'../assets/img/user.png\'"></a></div>' +
+                    '<div class="img_block_books"><a href="/author_details/' + data[i]['_source'].author_id + '"><img src="'+data[i]['_source'].image_url+'" alt="Anna" onerror="this.src=\'../assets/img/user.png\'"></a></div>' +
                     '<div class="carousel_body_author">' +
-                    '<div class="carousel_title_author"><h5 title="' + data[i].AUTHOR_NAME + '">' + data[i].AUTHOR_NAME + '</h5></div>' +
+                    '<div class="carousel_title_author"><h5 title="' + data[i]['_source'].author_name + '">' + data[i]['_source'].author_name + '</h5></div>' +
                     '<div class="carousel_desc">' +
                     '<div class="text-center">' +
                     // '<a href="/author_details/' + data[i].ID + '" id="' + data[i].ID + '" class="shortcode_button btn_small btn_type1" title="Read">Read</a>' +

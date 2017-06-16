@@ -1,6 +1,6 @@
 {{> header }}
 
-<div class="main_wrapper background_color_gray" style="padding-top:20px;">
+<div class="main_wrapper background_color_gray" style="padding-top:20px;margin-top:8%;">
     <!-- C O N T E N T -->
     <div class="content_wrapper">
         <!--<div class="page_title_block">
@@ -24,44 +24,56 @@
                                         <div class="span2 module_cont module_text_area">
 
                                         </div>
-                                        <div class="span3 module_cont module_text_area details_img" style="height: 300px;">
-                                            <img src="{{image}}" alt="" align="middle"
+                                        <div class="span3 module_cont module_text_area details_img"
+                                             style="height: 300px;">
+                                            <img src="{{image_url}}" alt="" align="middle"
                                                  onerror="this.src='http://cdn2.justbooksclc.com/title/0.jpg';"/>
                                         </div>
                                         <div class="span6 module_cont module_text_area">
+                                            {{#jb_info}}
                                             <h4 style="margin-top: -10px;">{{title}}</h4>
+                                            {{#author}}
                                             <p><strong>By: </strong><a
-                                                    href="/author_details/{{authorid}}">{{author_name}} </a></p>
-                                            <p>{{title}}</p>
-
+                                                    href="/author_details/{{id}}">{{name}} </a></p>
+                                            {{/author}}
+                                            {{/jb_info}}
+                                            <p>{{description}}</p>
+{{#jb_info}}
                                             <div class="row-fluid" id="pad_10px">
                                                 <div class="span3 module_cont module_text_area module_none_padding1">
-                                                    <h4>2 Times</h4>
+                                                    <h4>{{times_rented}} Times</h4>
                                                     <h6>Rented Till Now</h6>
 
                                                 </div><!-- .module_cont -->
                                                 <div class="span3 module_cont module_text_area module_none_padding2">
-                                                    <h4>4 Days</h4>
+                                                    <h4>{{avg_reading_time}} Days</h4>
                                                     <h6>Average Reading Time</h6>
 
                                                 </div><!-- .module_cont -->
 
                                             </div><!-- .row-fluid -->
+{{/jb_info}}
                                         </div>
                                         <div class="span6 module_cont module_text_area">
 
 
-                                            <a href="#reviews-anchor" class="shortcode_button btn_small btn_type10" id="open-review-box">Rate/Review</a>
+                                            <a href="#reviews-anchor" class="shortcode_button btn_small btn_type10"
+                                               id="open-review-box">Rate/Review</a>
 
                                             <div class="row" id="post-review-box" style="display:none;">
                                                 <div class="col-md-12">
                                                     <form>
                                                         <input id="ratings-hidden" name="rating" type="hidden">
-                                                        <textarea class="form-control animated" cols="50" id="new-review" name="comment" placeholder="Enter your review here..." rows="5"></textarea>
+                                                        <textarea class="form-control animated" cols="50"
+                                                                  id="new-review" name="comment"
+                                                                  placeholder="Enter your review here..."
+                                                                  rows="5"></textarea>
                                                         <div class="stars starrr col-md-4" data-rating="0"></div>
 
                                                         <div class="stars col-md-6">
-                                                            <a class="btn btn-danger btn-sm" href="#" id="close-review-box" style="display:none; margin-right: 10px;">
+                                                            <a class="btn btn-danger btn-sm" href="#"
+                                                               id="close-review-box"
+                                                               style="display:none; margin-right: 10px;">
                                                                 <span class="glyphicon glyphicon-remove"></span>Cancel</a>
 
                                                             <button class="btn btn-success btn-sm"
@@ -270,33 +282,27 @@
                                                 });
                                             </script>
 
-                                            <a href="javascript:void(0)" id="availibilityCheck"style="display:none" class="shortcode_button btn_small btn_type10" onclick="checkAvailability({{titleid}})">Check Availability</a>
-                                            <a href="javascript:void(0)" class="tiptip"  onclick='wishlistAdd({{titleid}});'><img class="wishlist_btn"  id="wishlistMain" alt="" height="25" width="25"></a>
-                                            <div class="socialCircle-container">
-                                                <div class="socialCircle-item"><a href="https://plus.google.com/share?url=http://justbooksclc.com/book_details/{{titleid}}"><i class="fa fa-google-plus"></i></a></div>
 
-                                                <div class="socialCircle-item"><a href="http://www.facebook.com/sharer.php?u=http://justbooksclc.com/book_details/{{titleid}}"><i class="fa fa-facebook"></i></a></div>
+                                            {{#wishFlag}}
+                                                <a href="javascript:void(0)" id="availibilityCheck"
+                                                   class="shortcode_button btn_small btn_type10"
+                                                   onclick="checkAvailability({{titleid}})">Check Availability</a>
+                                            {{/wishFlag}}
+                                            {{#flag}}
+                                                <a href="javascript:void(0)" id="{{rental}}"
+                                                   class="shortcode_button btn_small btn_type10 returnClass "
+                                                   onclick="placePickup(this,{{titleid}})">Return Book</a>
+                                            {{/flag}}
+                                            <a href="javascript:void(0)" class="tiptip"
+                                               onclick='wishlistAdd({{titleid}});'><img class="wishlist_btn"
+                                                                                        id="wishlistMain" alt=""
+                                                                                        height="25" width="25"></a>
+                                            <a style="margin-left: -5%" href="javascript:void(0)" class="tiptip"
+                                               title="Share" data-id="{{titleid}}" data-toggle="modal"
+                                               data-target="#shareModal"><img class="share_btn"
+                                                                              src=../assets/img/Engage.png
+                                                                              alt="Smiley face" height="25" width="25"></a>
 
-                                                <div class="socialCircle-item"><a href="https://twitter.com/share?url=http://justbooksclc.com/book_details/{{titleid}}&amp;text=Simple%20Share%20Buttons&amp;hashtags=justbookclc.com"><i class="fa fa-twitter"></i></a></div>
-
-                                                <div class="socialCircle-item"><a href="whatsapp://send?text= This course may be of interest to u and ur contacts. Please read and forward. http://justbooksclc.com/book_details/{{titleid}}"><i class="fa fa-whatsapp"></i></a></div>
-
-                                                <!-- <div class="socialCircle-item"><i class="fa fa-twitter"></i></div>
-
-                                                <div class="socialCircle-item"><i class="fa fa-pinterest"></i></div> -->
-
-                                                <div class="socialCircle-center closed"><i class="fa fa-share-alt"></i></div>
-                                            </div>
-
-                                            <script src="../assets/js/socialCircle.js"></script>
-                                            <script type="text/javascript">
-                                                $( ".socialCircle-center" ).socialCircle({
-                                                    rotate: 0,
-                                                    radius:70,
-                                                    circleSize: 2,
-                                                    speed:500
-                                                });
-                                            </script>
                                             <script type="text/javascript">
 
                                                 var _gaq = _gaq || [];
@@ -304,10 +310,13 @@
                                                 _gaq.push(['_setDomainName', 'jqueryscript.net']);
                                                 _gaq.push(['_trackPageview']);
 
-                                                (function() {
-                                                    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                                                (function () {
+                                                    var ga = document.createElement('script');
+                                                    ga.type = 'text/javascript';
+                                                    ga.async = true;
                                                     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                                                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                                                    var s = document.getElementsByTagName('script')[0];
+                                                    s.parentNode.insertBefore(ga, s);
                                                 })();
 
                                             </script>
@@ -320,23 +329,33 @@
                                          data-bottom-padding="module_normal_padding">
                                         <div class="row-fluid">
                                             <div class="span12 module_cont module_bookslider">
-                                                <div class="bg_title"><a id="whatsNew"></a><h4 class="headInModule">Related Books</h4></div>
+                                                <div class="bg_title"><a id="whatsNew"></a><h4 class="headInModule">
+                                                    Related Books</h4></div>
 
-                                                <div class="container" >
+                                                <div class="container">
 
                                                     <div class="row">
                                                         <div class="col-md-12">
-                                                            <div id="myCarousel" class="carousel slide multi-item-carousel">
-                                                                <div class="carousel-inner carouselslider" id="releatedBooks"  style="padding: 0px 0px 20px 0px; margin-left: 60px; margin-right: 60px;">
+                                                            <div id="myCarousel"
+                                                                 class="carousel slide multi-item-carousel">
+                                                                <div class="carousel-inner carouselslider"
+                                                                     id="releatedBooks"
+                                                                     style="padding: 0px 0px 20px 0px; margin-left: 60px; margin-right: 60px;">
 
                                                                 </div>
                                                                 <div id="frame_new_rel" class="loader_fram">
-                                                                    <div id="loader_rel" style="display: block;margin-left: 43%">
-                                                                        <img src="../assets/img/loader.gif" id="loader_image">
+                                                                    <div id="loader_rel"
+                                                                         style="display: block;margin-left: 43%">
+                                                                        <img src="../assets/img/loader.gif"
+                                                                             id="loader_image">
                                                                     </div>
                                                                 </div>
-                                                                <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
-                                                                <a class="right carousel-control" href="#myCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+                                                                <a class="left carousel-control" href="#myCarousel"
+                                                                   data-slide="prev"><i
+                                                                        class="glyphicon glyphicon-chevron-left"></i></a>
+                                                                <a class="right carousel-control" href="#myCarousel"
+                                                                   data-slide="next"><i
+                                                                        class="glyphicon glyphicon-chevron-right"></i></a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -369,63 +388,38 @@
     </div><!-- .content_wrapper -->
 
 </div><!-- .main_wrapper -->
+<script src="../assets/js/book_details.js"></script>
+
 {{> footer}}
 
 <script type="application/javascript">
-
-
-    function wishlistAdd(id) {
-        $(".spinner").show();
+    $(document).ready(function () {
+        var id = "{{titleid}}";
+        console.log(id)
 
         $.ajax({
             type: "GET",
-            url: "/updateWishlist?id="+id,
+            url: "/getRelatedBooks?id=" + id,
             success: function (data) {
+                data = JSON.parse(data);
                 console.log(data);
-                console.log(JSON.parse(data));
-                $(".spinner").hide();
-                if (JSON.parse(data) === "failure" ) {
-                    toastr.error('Please sign in to update your wish list !');
-                    $(window).scrollTop($('#signin').offset().top);
-
+                cardData = data['data'];
+                var final_response = getCardRelated(cardData, 5, data['ids'], data['wishlist']);
+                $('#releatedBooks').append(final_response);
+                $('.item').first().addClass('active');
+                $("#myCarousel").carousel();
+                $("#frame_new_rel").hide();
+                $("#loader_rel").hide();
+                if (data['wishlist'].indexOf(parseInt(id)) != -1) {
+                    $("#wishlistMain").attr("src", "../assets/img/Added_WL_Right.png");
                 }
                 else {
-                    $("#wish_"+id).attr("src","../assets/img/Added_WL_Right.png")
-                    toastr.success('Successfully added into your wish list !');
-                }
-            },
-            error:function(err)
-            {
-                console.log(err);
-                toastr.error("Something went wrong.Please try again !")
-            }
-
-        });
-    }
-    function checkAvailability(id) {
-        var flag = localStorage.getItem("flag");
-        if (flag === "false") {
-            toastr.error("Please sign in to check availability of a book !");
-            return false;
-        }
-
-        $(".spinner").show();
-        $.ajax({
-            type: "GET",
-            url: "/checkAvailability?id=" + id,
-            success: function (data) {
-                $(".spinner").hide();
-
-                data = JSON.parse(data);
-                console.log(data)
-                if (data['success'] === true) {
-                    toastr.warning(data['result']['member_cross_reference']['status']);
+                    $("#wishlistMain").attr("src", "../assets/img/Added_WL_50.png");
 
                 }
-                if (data['success'] == "failure") {
-                    toastr.error('Please sign in to check availability  !');
-                }
 
+
+                $(".spinner").hide()
             },
             error: function (err) {
                 console.log(err);
@@ -435,8 +429,11 @@
             }
 
         });
-    }
 
+
+        $('#home').addClass('current-menu-parent');
+
+    })
 
     function giveReview() {
         var title = "{{titleid}}";
@@ -479,153 +476,8 @@
 
         });
     }
+
 </script>
 <script>
-    function getCardRelated(data, visibleCardCount,ids,wishlist) {
-        var response = '', items = 0;
-        var final_response = '';
-        for (var i = 0; i < data.length; i++) {
-            items++;
-            var active = '';
-            if (i == 0) {
-                active = "active";
-            }
-
-
-            if(ids.indexOf(data[i].id) != -1)
-            {
-                var text="Rented";
-                action="";
-            }
-            else{
-                var action="\'placeOrder("+ data[i].id + ");\'"
-
-                text="Rent";
-            }
-            if(wishlist.indexOf(data[i].id) != -1)
-            {
-                var images="../assets/img/Added_WL_Right.png"
-                wish="";
-            }
-            else{
-                images="../assets/img/Added_WL_50.png";
-                var wish="\'wishlistAdd(" + data[i].id + ");\'";
-            }
-
-
-            response += '<div class="col-md-2" style=width:18%;>' +
-                    '<div class="item item_shadow">' +
-                    '<div class="img_block_books"><a href="/book_details/' + data[i].id + '"><img src="' + data[i].image + '"  onerror="this.src=\'http://cdn2.justbooksclc.com/title/0.jpg\'"></a></div>' +
-                    '<div class="carousel_body_book">' +
-                    '<div class="carousel_title_book"><h5 title="' + data[i].title + '">' + data[i].title + '</h5></div>' +
-                    '<div class="carousel_desc">' +
-                    '<div class="fram_btn">' +
-                    '<a    href="javascript:void(0)" class="shortcode_button btn_small btn_type1" title="Rent" onclick='+action+' id="rent_'+data[i].id+'">'+text+'</a>' +
-                    '<a href="javascript:void(0)" class="tiptip" title="Wishlist" onclick='+wish+'><img id="wish_'+data[i].id+'" class="wishlist_btn" src='+images+' alt="Smiley face" height="25" width="25"></a>' +
-                    '<a href="javascript:void(0)" class="tiptip" title="Share" data-id="' + data[i].id + '" data-toggle="modal" data-target="#shareModal"><img  class="share_btn" src=../assets/img/Engage.png alt="Smiley face" height="25" width="25"></a>' +
-
-                    // '<a href="/book_details/' + data[i].id + '" id="' + data[i].id + '" class="tiptip" title="Read">Read</a>' +
-                    '<div class="clear"></div>' +
-                    '</div></div></div></div></div>';
-
-            //if( i > 0 && i % 3 == 0){
-            if (items == visibleCardCount) {
-
-                final_response += '<div class="item ' + active + '">' + response + '</div>';
-                response = "";
-                items = 0;
-            }
-
-        }
-        if (items < visibleCardCount && items > 0) {
-            final_response += '<div class="item ' + active + '">' + response + '</div>';
-        }
-        return final_response;
-    }
-
-    $(document).ready(function () {
-        var id="{{titleid}}";
-        console.log(id)
-
-        $.ajax({
-            type: "GET",
-            url: "/getRelatedBooks?id=" + id,
-            success: function (data) {
-                data=JSON.parse(data);
-                cardData=data['data'];
-
-                var final_response = getCardRelated(cardData, 5,data['ids'],data['wishlist']);
-                $('#releatedBooks').append(final_response);
-                $('.item').first().addClass('active');
-                $("#myCarousel").carousel();
-                $("#frame_new_rel").hide();
-                $("#loader_rel").hide();
-                if(data['wishlist'].indexOf(parseInt(id)) != -1)
-                {
-                    $("#wishlistMain").attr("src","../assets/img/Added_WL_Right.png");
-                }
-                else{
-                    $("#wishlistMain").attr("src","../assets/img/Added_WL_50.png");
-
-                }
-
-                if(data['ids'].indexOf(parseInt(id)) != -1)
-                {
-                    $("#availibilityCheck").hide();
-                }
-                else{
-                    $("#availibilityCheck").show();
-
-                }
-
-                $(".spinner").hide()
-            },
-            error: function (err) {
-                console.log(err);
-                toastr.error('Something went wrong  !');
-                $(".spinner").hide();
-
-            }
-
-        });
-
-
-
-        $('#home').addClass('current-menu-parent');
-
-    })
-    function placeOrder(id) {
-        $(".spinner").show();
-        $.ajax({
-            type: "GET",
-            url: "/placeOrder?id=" + id,
-            success: function (data) {
-                console.log(data);
-                if (JSON.parse(data) === "failure" ) {
-                    $(".spinner").hide();
-
-                    toastr.error('Please sign in to order the book !');
-                    $(window).scrollTop($('#signin').offset().top);
-
-                }
-                else {
-                    $(".spinner").hide();
-                    data=JSON.parse(data);
-                    console.log(data['success'])
-                    if(data['success'] === "false")
-                    {
-                        toastr.warning(data['errors'])
-                    }else{
-                        $("#rent_"+id).text("Rented")
-
-                        toastr.success('Successfully added !');
-
-                    }
-                }
-            },
-
-        });
-    }
-
 
 </script>

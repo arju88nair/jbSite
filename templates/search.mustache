@@ -1,7 +1,7 @@
 {{> header}}
 
 <!-- C O N T E N T -->
-<div class="content_wrapper background_color_gray">
+<div class="content_wrapper background_color_gray"  style="margin-top: 8%">
     <!--<div class="page_title_block">
         <div class="container">
             <h2 class="title">Portfolio. 4 Columns</h2>
@@ -34,17 +34,21 @@
                     <br>
                     {{# data}}
                         <div id="searchDiv">
-                            {{# result}}
+                            {{# _source}}
                                 <div class="col-lg-3 col-md-4 col-xs-12 thumb">
-                                    <a class="thumbnail" href="/book_details/{{id}}" style="height: 320px;">
+                                    {{#jb_info}}
+                                    <a class="thumbnail" href="/book_details/{{titleid}}" style="height: 320px;">
+                            {{/jb_info}}
                                         <img class="img-responsive" src="{{image_url}}"
                                              onerror="this.src='https://www.safetybasics.com/v/vspfiles/photos/003-C-4L-Cover-0.jpg'">
+                                        {{#jb_info}}
                                         <h5 class="gallery_title">{{title}}</h5>
+                                        {{/jb_info}}
                                     </a>
                                 </div>
-                            {{/result}}
+                            {{/_source}}
                         </div>
-                            <!--{{/data}}-->
+                            {{/data}}
 
                 </div>
             </div><!-- .contentarea -->
@@ -71,25 +75,31 @@
         var query = "{{query}}";
         localStorage.setItem("countFlag", parseInt(count) + 1);
         $.ajax({
-            type: "GET",
-            url: "http://staging.justbooksclc.com:8990/api/v1/search.json?q=" + query + "&page=" + count + "&per_page=20",
+            url: "http://rec.justbooksclc.com/getSuggestBooks?text="+query+"&page="+count,
+            type: 'GET',
+
             success: function (data) {
+                console.log(data)
                 $(".spinner").hide();
-                if(data.result.length == 0)
+                if(data.length == 0)
                 {
                     toastr.show("No more result to show !");
                     return false;
                 }
-                console.log(data.result);
-                data = data.result
+                console.log(data[i]['_source']['jb_info']['titleid']);
                 for (var i = 0; i < data.length; i++) {
                     $("#searchDiv").append("<div class=\"col-lg-3 col-md-4 col-xs-12 thumb\" >" +
-                            "<a class=\"thumbnail\" href=\"/book_details/" + data[i]["id"] + "\"  style=\"height: 320px;\">" +
-                            " <img class=\"img-responsive\" src=\"" + data[i]["image_url"] + "\" onerror=\"this.src='https://www.safetybasics.com/v/vspfiles/photos/003-C-4L-Cover-0.jpg'\" >" +
-                            "        <h5 class=\"gallery_title\">" + data[i]["title"] + "</h5><p>" + data[i]["summary"] + "</p></a></div>");
+                            "<a class=\"thumbnail\" href=\"/book_details/" + data[i]['_source']['jb_info']['titleid'] + "\"  style=\"height: 320px;\">" +
+                            " <img class=\"img-responsive\" src=\"" + data[i]['_source']["image_url"] + "\" onerror=\"this.src='https://www.safetybasics.com/v/vspfiles/photos/003-C-4L-Cover-0.jpg'\" >" +
+                            "        <h5 class=\"gallery_title\">" + data[i]['_source']['jb_info']["title"] + "</h5></a></div>");
                 }
                 $("#countResult").text( "which have " +$("#searchDiv > div").length + " results");
             },
+            error:function (err) {
+                console.log(err);
+                console.log(err.responseText)
+
+            }
 
         });
 

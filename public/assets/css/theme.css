@@ -108,13 +108,13 @@ header {}
 	text-align:center!important;
 }
 
-header .logo {
+/*header .logo {
 	margin:33px auto 25px auto;
 	display:inline-block;
 }
 header .logo img {
 	display:block;
-}
+}*/
 
 footer .socials {
 	padding-top:58px;
@@ -506,7 +506,7 @@ header.head_type5 .call_us {
 
 }
 
-/*Footer 
+/*Footer
 ---------*/
 footer {
 	min-height:60px;
@@ -2527,13 +2527,13 @@ hr.respond_seperator {
 	margin-left:-9%
 }
 .carousel_body_author{
-	 background-color:#E3536C
- ;
-	 padding:5px 0 5px 0;
-	 color:#fff;
-	 font-family:Playfair Display;
-	 font-size:14px;
- }
+	background-color:#E3536C
+;
+	padding:5px 0 5px 0;
+	color:#fff;
+	font-family:Playfair Display;
+	font-size:14px;
+}
 
 .carouselslider .smallproflinks {
 	display:inline-block;
@@ -6598,6 +6598,5 @@ article, .item {
  }.gray {
 	  color: #999999 !important;
   }
-
 
 

@@ -1,7 +1,7 @@
 {{> header}}
 
 <!-- C O N T E N T -->
-<div class="content_wrapper background_color_gray">
+<div class="content_wrapper background_color_gray"  style="margin-top: 8%">
     <!--<div class="page_title_block">
         <div class="container">
             <h2 class="title">Portfolio. 4 Columns</h2>
@@ -210,39 +210,27 @@
                                             <!--</a>-->
                                                 <!--{{/web_signup_plan}}-->
                                             <!--{{/plan_data}}-->
-                                        <style>
-                                            h3 {
-                                                color: white;
+                                        <div class="span9 l_content">
+                                            <div class="row">
+                                                <div class='col-md-10 col-md-offset-2 card bordered' id="box_{{PLAN_NAME}}" style="padding-top: 7%;padding-bottom: 4%;text-indent: 8%">
+                                                    <div class="col-md-12 text-left">
+                                                        <div class="row bottom">
+                                                            <div class="col-md-12 left">
+                                                                <h4>{{PLAN_NAME}}</h4>
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
-                                            }
-
-                                            .card {
-                                                margin: 5px;
-                                                box-shadow: 1px 0px 4px 2px grey;
-
-                                            }
-
-                                            .card-active {
-
-                                                padding-top: 20px;
-                                                padding-bottom: 6px;
-
-                                                margin-bottom: 15px;
-                                                box-shadow: 1px 0px 4px 2px grey;
-                                            }
-
-                                            .PLATINUM {
-                                                background-color: #EDAB53;
-                                            }
-
-                                            .STARTER {
-                                                background-color: #3379B4;
-                                            }
-
-                                            .DEFAULT {
-                                                background-color: #58B75B;
-                                            }
-                                        </style>
+                                                    <div class="col-md-12 text-left">
+                                                        <div class="row bottom">
+                                                            <div class="col-md-12 left">
+                                                                <h5>{{BOOK_TAG}} for {{SUITABLE_TAG}}</h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
 
                                         <div class="col-md-7 col-md-offset-2">
@@ -295,12 +283,12 @@
                                             </div>
                                         </div>
                                         <div class="col-sm-11" id="border_none">
-                                        <div class="col-sm-6" style="display: none" id="totalDiv">
-                                        <h5 style="float: left">Total Payable Amount:</h5>
-                                        </div>
-                                        <div class="col-sm-4" id="total_fee">
-                                        <h5></h5>
-                                        </div>
+                                            <div class="col-sm-6" style="display: none" id="totalDiv">
+                                                <h5 style="float: left">Total Payable Amount:</h5>
+                                            </div>
+                                            <div class="col-sm-4" id="total_fee">
+                                                <h5></h5>
+                                            </div>
                                         </div>
                                         <div class="col-sm-11">
                                             <!--<div class="col-sm-offset-2 col-sm-8">-->
