@@ -29,6 +29,7 @@
                                             <img src="{{image_url}}" alt="" align="middle"
                                                  onerror="this.src='http://cdn2.justbooksclc.com/title/0.jpg';"/>
                                         </div>
+
                                         <div class="span6 module_cont module_text_area">
                                             {{#jb_info}}
                                             <h4 style="margin-top: -10px;">{{title}}</h4>
@@ -288,20 +289,11 @@
                                                    class="shortcode_button btn_small btn_type10"
                                                    onclick="checkAvailability({{titleid}})">Check Availability</a>
                                             {{/wishFlag}}
-                                            {{#flag}}
+                                            {{#Currentflag}}
                                                 <a href="javascript:void(0)" id="{{rental}}"
                                                    class="shortcode_button btn_small btn_type10 returnClass "
                                                    onclick="placePickup(this,{{titleid}})">Return Book</a>
-                                            {{/flag}}
-                                            <a href="javascript:void(0)" class="tiptip"
-                                               onclick='wishlistAdd({{titleid}});'><img class="wishlist_btn"
-                                                                                        id="wishlistMain" alt=""
-                                                                                        height="25" width="25"></a>
-                                            <a style="margin-left: -5%" href="javascript:void(0)" class="tiptip"
-                                               title="Share" data-id="{{titleid}}" data-toggle="modal"
-                                               data-target="#shareModal"><img class="share_btn"
-                                                                              src=../assets/img/Engage.png
-                                                                              alt="Smiley face" height="25" width="25"></a>
+                                            {{/Currentflag}}
 
                                             <script type="text/javascript">
 
@@ -323,13 +315,24 @@
 
                                         </div>
                                     </div><!-- .row-fluid -->
+                                <div style="/*! margin-left: -66%; */margin-top: -5%;float: left;margin-left: 23%;margin-bottom: 10%;">
+                                    <a href="javascript:void(0)" class="tiptip"
+                                       onclick='wishlistAdd({{titleid}});'><img class="wishlist_btn"
+                                                                                id="wishlistMain" alt=""
+                                                                                height="25" width="25"></a>
+                                    <a style="margin-left: -5%" href="javascript:void(0)" class="tiptip"
+                                       title="Share" data-id="{{titleid}}" data-toggle="modal"
+                                       data-target="#shareModal"><img class="share_btn"
+                                                                      src=../assets/img/Engage.png
+                                                                      alt="Smiley face" height="25" width="25"></a></div>
+
                                     <div class="module_line_trigger" data-option=""
                                          data-background="#fff url(img/) no-repeat center"
                                          data-top-padding="top_padding_normal"
                                          data-bottom-padding="module_normal_padding">
                                         <div class="row-fluid">
                                             <div class="span12 module_cont module_bookslider">
-                                                <div class="bg_title"><a id="whatsNew"></a><h4 class="headInModule">
+                                                <div class="bg_title"><a id="realted"></a><h4 class="headInModule">
                                                     Related Books</h4></div>
 
                                                 <div class="container">
@@ -370,6 +373,7 @@
                                 {{/data}}
 
                             </div><!-- .contentarea -->
+
                         </div>
                         <div class="left-sidebar-block span3">
                             //Sidebar Text

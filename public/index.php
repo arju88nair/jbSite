@@ -59,7 +59,6 @@ function curlFunctionEs($url)
 }
 
 $app->get('/', function (Request $request, Response $response) {
-
     $con = $this->db;
     $query = "SELECT * FROM website_parameters";
     $result = oci_parse($con, $query);
@@ -74,9 +73,18 @@ $app->get('/', function (Request $request, Response $response) {
     $action2 = $final_data[0]['ACTI0N_2"'];
     $action3 = $final_data[0]['ACTION_3"'];
     $address = $final_data[0]['ADDRESS'];
-
-
-    $response = $this->view->render($response, 'home.mustache', array('loggedIn' => "true", 'session' => $_SESSION['username'], 'image1' => $image1, 'image2' => $image2, 'image3' => $image3, 'action1' => $action1, 'action2' => $action2, 'action3' => $action3, 'address' => $address));
+if(isset($_SESSION['username']))
+{
+    $flag=1;
+    $slider=0;
+    $name=$_SESSION['first_name'];
+}
+else{
+    $flag=0;
+    $slider=1;
+    $name="";
+}
+    $response = $this->view->render($response, 'home.mustache', array('loggedIn' => "true", 'session' => $_SESSION['username'], 'image1' => $image1, 'image2' => $image2, 'image3' => $image3, 'action1' => $action1, 'action2' => $action2, 'action3' => $action3, 'address' => $address,'flag'=>(int)$flag,'name'=>$name,'slider'=>$slider));
     return $response;
 });
 
@@ -104,10 +112,10 @@ $app->get('/book_details/{titleid}', function (Request $request, Response $respo
         array_push($currentID, $current['id']);
     }
     $rental_id= "";
-    $flag=0;
+    $Currentflag=0;
     if(in_array($titleid,$currentID))
     {
-        $flag=1;
+        $Currentflag=1;
         foreach ($currentData as $current) {
 
             if($current['id'] == $titleid)
@@ -125,8 +133,22 @@ $app->get('/book_details/{titleid}', function (Request $request, Response $respo
         $Wishflag=0;
 
     }
+    if(isset($_SESSION['username']))
+    {
+        $flag=1;
+        $slider=0;
+        $name=$_SESSION['first_name'];
+    }
+    else{
+        $flag=0;
+        $slider=1;
+        $name="";
+    }
 
-    $response = $this->view->render($response, 'book_details.mustache', array('data' => $data, 'titleid' => $titleid,'flag'=>$flag,'rental'=>$rental_id,'wishFlag'=>$Wishflag));
+
+
+
+    $response = $this->view->render($response, 'book_details.mustache', array('data' => $data, 'titleid' => $titleid,'Currentflag'=>$Currentflag,'rental'=>$rental_id,'wishFlag'=>$Wishflag,'flag'=>(int)$flag,'name'=>$name,'slider'=>$slider));
     return $response;
 });
 
@@ -145,7 +167,20 @@ $app->get('/author_details/{authorid}', function (Request $request, Response $re
     $raw_data = curlFunctionEs("/getAuthorDetails?author_id=$authorid");
     $data = json_decode($raw_data);
 
-    $response = $this->view->render($response, 'author_details.mustache', array('data' => $data, 'id' => $authorid));
+    if(isset($_SESSION['username']))
+    {
+        $flag=1;
+        $slider=0;
+        $name=$_SESSION['first_name'];
+    }
+    else{
+        $flag=0;
+        $slider=1;
+        $name="";
+    }
+
+
+    $response = $this->view->render($response, 'author_details.mustache', array('data' => $data, 'id' => $authorid,'flag'=>(int)$flag,'name'=>$name,'slider'=>$slider));
     return $response;
 });
 
@@ -154,16 +189,42 @@ $app->get('/search', function (Request $request, Response $response) {
     $query = $_GET['q'];
 //    $result = curlFunction("8990/api/v1/search.json?q=$query&page=1&per_page=20");
 //    $count = count(json_decode($result)->result);
-    $raw_data = curlFunctionEs("/getSuggestBooks?text=$query&page=1");
+    $raw_data = curlFunctionEs("/getSuggestBooksDetails?text=$query&page=1");
     $data = json_decode($raw_data);
     $count= count($data);
-    $response = $this->view->render($response, 'search.mustache', array('data' => $data, 'query' => ucfirst($query), 'count' => $count));
+
+    if(isset($_SESSION['username']))
+    {
+        $flag=1;
+        $slider=0;
+        $name=$_SESSION['first_name'];
+    }
+    else{
+        $flag=0;
+        $slider=1;
+        $name="";
+    }
+
+    $response = $this->view->render($response, 'search.mustache', array('data' => $data, 'query' => ucfirst($query), 'count' => $count,'flag'=>(int)$flag,'name'=>$name,'slider'=>$slider));
     return $response;
 
 });
 
 $app->get('/shelf', function (Request $request, Response $response) {
-    $response = $this->view->render($response, 'shelf.mustache');
+    if(isset($_SESSION['username']))
+    {
+        $flag=1;
+        $slider=0;
+        $name=$_SESSION['first_name'];
+    }
+    else{
+        $flag=0;
+        $slider=1;
+        $name="";
+    }
+
+
+    $response = $this->view->render($response, 'shelf.mustache',array('flag'=>(int)$flag,'name'=>$name,'slider'=>$slider));
     return $response;
 })->add($authenticate);
 
@@ -302,8 +363,18 @@ $app->get('/signup', function (Request $request, Response $response) {
             foreach ($item['web_signup_plan']['plan_durations'] as $plans) {
 
                 if ($plans['plan_duration']['signup_months'] == $months) {
-
-                    $response = $this->view->render($response, 'signup.mustache', array('plan_data' => $planData, 'plan_dataJ' => json_encode($array_data), 'planid' => $planid, 'plan_books' => $count, 'planname' => $planname, 'planid' => $planid, "total" => $plans['plan_duration']['totalAmount_with_convenience_fee'], 'reading_fee' => $plans['plan_duration']['reading_fee_for_term'], 'reg_fee' => $item['web_signup_plan']['registration_fee'], 'sec_deposit' => $item['web_signup_plan']['security_deposit'], 'months' => $monthsArray, 'book' => $books, 'month' => $months));
+                    if(isset($_SESSION['username']))
+                    {
+                        $flag=1;
+                        $slider=0;
+                        $name=$_SESSION['first_name'];
+                    }
+                    else{
+                        $flag=0;
+                        $slider=1;
+                        $name="";
+                    }
+                    $response = $this->view->render($response, 'signup.mustache', array('plan_data' => $planData, 'plan_dataJ' => json_encode($array_data), 'planid' => $planid, 'plan_books' => $count, 'planname' => $planname, 'planid' => $planid, "total" => $plans['plan_duration']['totalAmount_with_convenience_fee'], 'reading_fee' => $plans['plan_duration']['reading_fee_for_term'], 'reg_fee' => $item['web_signup_plan']['registration_fee'], 'sec_deposit' => $item['web_signup_plan']['security_deposit'], 'months' => $monthsArray, 'book' => $books, 'month' => $months,'flag'=>(int)$flag,'name'=>$name,'slider'=>$slider));
                     return $response;
 
                 }
@@ -566,8 +637,6 @@ $app->get('/getPickupList', function (Request $request, Response $response) {
     $membership_no = $_SESSION['membership_no'];
     $api_key = $_SESSION['api_key'];
     $email = $_SESSION['email'];
-//    echo "8787/api/v3/pending_pickup_order.json?membership_no=$membership_no&api_key=$api_key";
-//    die;
     $result = curlFunction("8990/api/v1/pending_pickup_order.json?email=$email&membership_no=$membership_no&api_key=$api_key");
     $wishlist = wishlistIds();
     echo json_encode(array('data' => (array)json_decode($result), 'wishlist' => $wishlist));
@@ -742,9 +811,19 @@ $app->get('/change_plan', function (Request $request, Response $response, $args)
             $count_array['fee'] = $plan_duration['plan_duration']['payable_amount'];
             array_push($final, $count_array);
         }
+        if(isset($_SESSION['username']))
+        {
+            $flag=1;
+            $slider=0;
+            $name=$_SESSION['first_name'];
+        }
+        else{
+            $flag=0;
+            $slider=1;
+            $name="";
+        }
 
-
-        $response = $this->view->render($response, 'change_plan.mustache', array('plan_data'=>$planData,'plan_duration' => true, 'planid' => $planid, 'plan_books' => $temp_array[0]['change_plan_detail']['books'], 'available_balance' => $temp_array[0]['change_plan_detail']['available_balance'], 'balance_due' => $temp_array[0]['change_plan_detail']['balance_due'], 'reading_fee' => $temp_array[0]['change_plan_detail']['reading_fee'], 'count_array' => $final, 'planname' => $planname));
+        $response = $this->view->render($response, 'change_plan.mustache', array('plan_data'=>$planData,'plan_duration' => true, 'planid' => $planid, 'plan_books' => $temp_array[0]['change_plan_detail']['books'], 'available_balance' => $temp_array[0]['change_plan_detail']['available_balance'], 'balance_due' => $temp_array[0]['change_plan_detail']['balance_due'], 'reading_fee' => $temp_array[0]['change_plan_detail']['reading_fee'], 'count_array' => $final, 'planname' => $planname,'flag'=>(int)$flag,'name'=>$name,'slider'=>$slider));
         return $response;
     }
 
@@ -848,15 +927,7 @@ $app->get('/getPlanYears', function (Request $request, Response $response, $args
 });
 
 
-$app->get('/test', function (Request $request, Response $response) {
-    $response = $this->view->render($response, 'blah.mustache');
-    return $response;
-});
 
-$app->post('/callback/', function (Request $request, Response $response) {
-    $response = $this->view->render($response, 'blah.mustache');
-    return $response;
-});
 
 
 $app->get('/saveSession', function (Request $request, Response $response) {
@@ -873,7 +944,19 @@ $app->get('/saveSession', function (Request $request, Response $response) {
 
 $app->get('/renewView', function (Request $request, Response $response) {
 
-    $response = $this->view->render($response, 'renew.mustache');
+    if(isset($_SESSION['username']))
+    {
+        $flag=1;
+        $slider=0;
+        $name=$_SESSION['first_name'];
+    }
+    else{
+        $flag=0;
+        $slider=1;
+        $name="";
+    }
+
+    $response = $this->view->render($response, 'renew.mustache',array('flag'=>(int)$flag,'name'=>$name,'slider'=>$slider));
     return $response;
 
 
@@ -1157,20 +1240,53 @@ $app->get('/sendPush', function (Request $request, Response $response) {
 
 
 $app->get('/faq', function (Request $request, Response $response) {
+    if(isset($_SESSION['username']))
+    {
+        $flag=1;
+        $slider=0;
+        $name=$_SESSION['first_name'];
+    }
+    else{
+        $flag=0;
+        $slider=1;
+        $name="";
+    }
 
-    return $this->view->render($response, 'faq.mustache');
+    return $this->view->render($response, 'faq.mustache',array('flag'=>(int)$flag,'name'=>$name,'slider'=>$slider));
 
 });
 
 
 $app->get('/contactUs', function (Request $request, Response $response) {
-
-    return $this->view->render($response, 'contactUs.mustache');
+    if(isset($_SESSION['username']))
+    {
+        $flag=1;
+        $slider=0;
+        $name=$_SESSION['first_name'];
+    }
+    else{
+        $flag=0;
+        $slider=1;
+        $name="";
+    }
+    return $this->view->render($response, 'contactUs.mustache',array('flag'=>(int)$flag,'name'=>$name,'slider'=>$slider));
 
 });
 $app->get('/franchise', function (Request $request, Response $response) {
 
-    return $this->view->render($response, 'franchise.mustache');
+    if(isset($_SESSION['username']))
+    {
+        $flag=1;
+        $slider=0;
+        $name=$_SESSION['first_name'];
+    }
+    else{
+        $flag=0;
+        $slider=1;
+        $name="";
+    }
+
+    return $this->view->render($response, 'franchise.mustache',array('flag'=>(int)$flag,'name'=>$name,'slider'=>$slider));
 
 });
 $app->get('/checkAvailability', function (Request $request, Response $response) {
@@ -1224,8 +1340,18 @@ $app->get('/adminCardsView', function (Request $request, Response $response) {
         $data[] = $row;
     }
 
-
-    return $this->view->render($response, 'adminCards.mustache', array('data' => $data));
+    if(isset($_SESSION['username']))
+    {
+        $flag=1;
+        $slider=0;
+        $name=$_SESSION['first_name'];
+    }
+    else{
+        $flag=0;
+        $slider=1;
+        $name="";
+    }
+    return $this->view->render($response, 'adminCards.mustache', array('data' => $data,'flag'=>(int)$flag,'name'=>$name,'slider'=>$slider));
 
 })->add($adminAuthenticate);
 
@@ -1303,8 +1429,19 @@ $app->get('/adminBlogs', function (Request $request, Response $response) {
     while ($row = oci_fetch_assoc($result_city)) {
         $data[] = $row;
     }
+    if(isset($_SESSION['username']))
+    {
+        $flag=1;
+        $slider=0;
+        $name=$_SESSION['first_name'];
+    }
+    else{
+        $flag=0;
+        $slider=1;
+        $name="";
+    }
 
-    return $this->view->render($response, 'adminBlog.mustache', array('data' => $data));
+    return $this->view->render($response, 'adminBlog.mustache', array('data' => $data,'flag'=>(int)$flag,'name'=>$name,'slider'=>$slider));
 
 
 })->add($adminAuthenticate);
@@ -1337,7 +1474,18 @@ $app->get('/break', function (Request $request, Response $response) {
     $mail = $_SESSION['email'];
     $membership_no = $_SESSION['membership_no'];
     $result = curlFunction(":8990/api/v1/get_change_plan_terms.json?email=$mail&membercard=$membership_no&for_mobile=true");
-    return $this->view->render($response, 'break.mustache', array('data' => $result));
+    if(isset($_SESSION['username']))
+    {
+        $flag=1;
+        $slider=0;
+        $name=$_SESSION['first_name'];
+    }
+    else{
+        $flag=0;
+        $slider=1;
+        $name="";
+    }
+    return $this->view->render($response, 'break.mustache', array('data' => $result,'flag'=>(int)$flag,'name'=>$name,'slider'=>$slider));
 
 
 });
@@ -1564,8 +1712,38 @@ $app->get('/getRecommendedBooks', function (Request $request, Response $response
     echo json_encode(array("data" => $data, 'ids' => (array)$array, 'wishlist' => (array)$wishlist));
 
 });
+$app->get('/getStatusDelivery', function (Request $request, Response $response) {
+
+    $params = $request->getQueryParams();
+    $id = $params['id'];
+
+    $membership_no = $_SESSION['membership_no'];
+    $api_key = $_SESSION['api_key'];
+    $email = $_SESSION['email'];
+    $raw_data = curlFunction("8990/api/v1/get_order_details_for_mobile.json?email=$email&api_key=$api_key&membership_no=$membership_no&order_id=$id");
+    $data= json_decode($raw_data);
+    $data = $data->result;
+    $data = json_decode(json_encode($data), True);
+    if(count($data['order_details']) == 0)
+    {
+        echo json_encode("Tracking info not available !");die;
+    }
+    echo json_encode($data['order_details'][0]['message']);die;
 
 
+});
+
+$app->get('/getShelfRecommendedBooks', function (Request $request, Response $response) {
+
+    $params = $request->getQueryParams();
+    $id = $params['id'];
+    $raw_data = curlFunctionEs("/getRecommendedTitles?membership_no=A000255");
+    $data= json_decode($raw_data);
+    $array = presentIds();
+    $wishlist = wishlistIds();
+    echo json_encode(array("data" => $data, 'ids' => (array)$array, 'wishlist' => (array)$wishlist));
+
+});
 
 
 $app->run();

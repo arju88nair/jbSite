@@ -78,7 +78,7 @@ Inspired by the dribble shot http://dribbble.com/shots/1285240-Freebie-Flat-Pric
 .title{
     color: #FEFEFE;
     text-transform: capitalize;
-    line-height: 1;
+    line-height: 176%;
     position: relative;
 }
 
@@ -160,6 +160,7 @@ Inspired by the dribble shot http://dribbble.com/shots/1285240-Freebie-Flat-Pric
     font-family: 'Playfair Display';
 }
 .pt-footer{
+    padding: 6% 0 4% 0;
     font-size: 0.95rem;
     text-transform: capitalize;
 }

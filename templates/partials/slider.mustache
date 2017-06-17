@@ -16,7 +16,8 @@
 						<li data-masterspeed="400" data-slotamount="7" data-transition="fade">
 							<img src="/{{image1}}" alt="">
                             <div class="caption lfr" data-autoplay="false" data-x="150" data-y="10">
-                                <div id="main" class="login_form" style="display: none">
+                                {{#slider}}
+                                <div id="main" class="login_form" >
                                     <!-- Create div first for Login Form-->
                                     <div id="first" class="loginDIv login_form_fram_one" >
                                         <form action="" method="post">
@@ -63,6 +64,7 @@
                                     </div>
 
                                 </div>
+                                {{/slider}}
                             </div>
 							<!-- THE CAPTIONS OF THE FIRST SLIDE -->
 							<!-- <div class="caption lft ltl start"
@@ -96,7 +98,8 @@
                                 </div>
                             </div>
                             <div class="caption lfr" data-autoplay="false" data-x="150" data-y="10">
-                                <div id="main" class="login_form" style="display: none">
+                                {{#slider}}
+                                <div id="main" class="login_form" >
                                     <!-- Create div first for Login Form-->
                                     <div id="first" class="loginDIv login_form_fram_one">
                                         <form action="" method="post">
@@ -143,6 +146,7 @@
                                     </div>
 
                                 </div >
+                                {{/slider}}
                             </div>
 
 							<!-- <div class="caption lfl ltr start"
