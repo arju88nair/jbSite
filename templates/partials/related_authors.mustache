@@ -11,7 +11,7 @@
 
                         <div id="frame_authorCarousel1" class="loader_fram">
                             <div id="loader" style="display: block">
-                                <img src="../assets/img/loader.gif" id="loader_image">
+                                <img src="../../assets/img/loader.gif" id="loader_image">
                             </div>
                         </div>
 
@@ -53,10 +53,10 @@
 
 //                if(data['wishlist'].indexOf(parseInt(id)) != -1)
 //                {
-//                    $("#wishlistMain").attr("src","../assets/img/Added_WL_Right.png");
+//                    $("#wishlistMain").attr("src","../../assets/img/Added_WL_Right.png");
 //                }
 //                else{
-//                    $("#wishlistMain").attr("src","../assets/img/Added_WL_50.png");
+//                    $("#wishlistMain").attr("src","../../assets/img/Added_WL_50.png");
 //
 //                }
 
@@ -84,7 +84,7 @@
             }
             response += '<div class="col-md-2" style="width: 18%;">' +
                     '<div class="item item_shadow">' +
-                    '<div class="img_block_books"><a href="/author_details/' + data[i]['_source'].author_id + '"><img src="'+data[i]['_source'].image_url+'" alt="Anna" onerror="this.src=\'../assets/img/user.png\'"></a></div>' +
+                    '<div class="img_block_books"><a href="/author_details/' + data[i]['_source'].author_id + '/' + data[i]['_source'].author_name + '"><img src="'+data[i]['_source'].image_url+'" alt="Anna" onerror="this.src=\'../../assets/img/user.png\'"></a></div>' +
                     '<div class="carousel_body_author">' +
                     '<div class="carousel_title_author"><h5 title="' + data[i]['_source'].author_name + '">' + data[i]['_source'].author_name + '</h5></div>' +
                     '<div class="carousel_desc">' +

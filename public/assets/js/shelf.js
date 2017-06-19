@@ -81,8 +81,8 @@ function getCard(data, visibleCardCount, ids, wishlist) {
             active = "active";
         }
         if (data[i]['_source'].image_url == null) {
-            // var img = "../assets/images/Default_Book_Thumbnail.png";
-            var img = "../assets/images/Default_Book_Thumbnail.png";
+            // var img = "../../assets/images/Default_Book_Thumbnail.png";
+            var img = "../../assets/images/Default_Book_Thumbnail.png";
         }
         else {
             var img = data[i]['_source'].image_url;
@@ -100,25 +100,25 @@ function getCard(data, visibleCardCount, ids, wishlist) {
 
 
         if (wishlist.indexOf(parseInt(data[i]['_source'].title_id)) != -1) {
-            var image = "../assets/img/Added_WL_Right.png"
+            var image = "../../assets/img/Added_WL_Right.png"
             wish = "";
         }
         else {
-            image = "../assets/img/Added_WL_50.png";
+            image = "../../assets/img/Added_WL_50.png";
             var wish = "\'wishlistAdd(" + data[i]['_source'].title_id + ");\'";
         }
 
 
         response += '<div class="col-md-2" style=width:18%;>' +
             '<div class="item item_shadow">' +
-            '<div class="img_block_books"><a href="/book_details/' + data[i]['_source'].title_id + '"><img src="' + img + '" onerror="this.src=\'../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
+            '<div class="img_block_books"><a href="/book_details/' + data[i]['_source'].title_id + '/' + data[i]['_source'].title + '"><img src="' + img + '" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
             '<div class="carousel_body_book">' +
             '<div class="carousel_title_book"><h5 title="' + data[i]['_source'].title + '">' + data[i]['_source'].title + '</h5></div>' +
             '<div class="carousel_desc">' +
             '<div class="fram_btn">' +
             '<a href="javascript:void(0)" class="shortcode_button btn_small btn_type1" title="Rent" onclick=' + action + ' id="rent_' + data[i]['_source'].title_id + '">' + text + '</a>' +
             '<a href="javascript:void(0)" class="tiptip" title="Wishlist" onclick=' + wish + '><img id="wish_' + data[i]['_source'].title_id + '" class="wishlist_btn" src=' + image + ' alt="Smiley face" height="25" width="25"></a>' +
-            '<a href="javascript:void(0)" class="tiptip" title="Share"  data-id="' + data[i]['_source'].title_id + '" data-toggle="modal" data-target="#shareModal"><img  class="share_btn" src=../assets/img/Engage.png alt="Smiley face" height="25" width="25"></a>' +
+            '<a href="javascript:void(0)" class="tiptip" title="Share"  data-id="' + data[i]['_source'].title_id + '" data-toggle="modal" data-target="#shareModal"><img  class="share_btn" src=../../assets/img/Engage.png alt="Smiley face" height="25" width="25"></a>' +
 
             // '<a href="/book_details/' + data[i].id + '" id="' + data[i].id + '" class="tiptip" title="Read">Read</a>' +
             '<div class="clear"></div>' +
@@ -148,8 +148,8 @@ function getRecommend(data, visibleCardCount, ids, wishlist) {
             active = "active";
         }
         if (data[i]['_source'].image_url == null) {
-            // var img = "../assets/images/Default_Book_Thumbnail.png";
-            var img = "../assets/images/Default_Book_Thumbnail.png";
+            // var img = "../../assets/images/Default_Book_Thumbnail.png";
+            var img = "../../assets/images/Default_Book_Thumbnail.png";
         }
         else {
             var img = data[i]['_source'].image_url;
@@ -167,25 +167,25 @@ function getRecommend(data, visibleCardCount, ids, wishlist) {
 
 
         if (wishlist.indexOf(parseInt(data[i]['_source'].title_id)) != -1) {
-            var image = "../assets/img/Added_WL_Right.png"
+            var image = "../../assets/img/Added_WL_Right.png"
             wish = "";
         }
         else {
-            image = "../assets/img/Added_WL_50.png";
+            image = "../../assets/img/Added_WL_50.png";
             var wish = "\'wishlistAdd(" + data[i]['_source'].title_id + ");\'";
         }
 
 
         response += '<div class="col-md-2" style=width:18%;>' +
             '<div class="item item_shadow">' +
-            '<div class="img_block_books"><a href="/book_details/' + data[i]['_source'].title_id + '"><img src="' + img + '" onerror="this.src=\'../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
+            '<div class="img_block_books"><a href="/book_details/' + data[i]['_source'].title_id + '/' + data[i]['_source'].title + '"><img src="' + img + '" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
             '<div class="carousel_body_book">' +
             '<div class="carousel_title_book"><h5 title="' + data[i]['_source'].title + '">' + data[i]['_source'].title + '</h5></div>' +
             '<div class="carousel_desc">' +
             '<div class="fram_btn">' +
             '<a href="javascript:void(0)" class="shortcode_button btn_small btn_type1" title="Rent" onclick=' + action + ' id="rent_' + data[i]['_source'].title_id + '">' + text + '</a>' +
             '<a href="javascript:void(0)" class="tiptip" title="Wishlist" onclick=' + wish + '><img id="wish_' + data[i]['_source'].title_id + '" class="wishlist_btn" src=' + image + ' alt="Smiley face" height="25" width="25"></a>' +
-            '<a href="javascript:void(0)" class="tiptip" title="Share"  data-id="' + data[i]['_source'].title_id + '" data-toggle="modal" data-target="#shareModal"><img  class="share_btn" src=../assets/img/Engage.png alt="Smiley face" height="25" width="25"></a>' +
+            '<a href="javascript:void(0)" class="tiptip" title="Share"  data-id="' + data[i]['_source'].title_id + '" data-toggle="modal" data-target="#shareModal"><img  class="share_btn" src=../../assets/img/Engage.png alt="Smiley face" height="25" width="25"></a>' +
 
             // '<a href="/book_details/' + data[i].id + '" id="' + data[i].id + '" class="tiptip" title="Read">Read</a>' +
             '<div class="clear"></div>' +
@@ -217,7 +217,7 @@ function getCardMostRead(data, visibleCardCount, ids, wishlist) {
             active = "active";
         }
         if (data[i]['_source'].image_url === null) {
-            var img = "../assets/images/Default_Book_Thumbnail.png";
+            var img = "../../assets/images/Default_Book_Thumbnail.png";
         }
         else {
             var img = data[i]['_source'].image_url;
@@ -233,25 +233,25 @@ function getCardMostRead(data, visibleCardCount, ids, wishlist) {
             text = "Rent";
         }
         if (wishlist.indexOf(parseInt(data[i]['_source'].title_id)) != -1) {
-            var image = "../assets/img/Added_WL_Right.png"
+            var image = "../../assets/img/Added_WL_Right.png"
             wish = "";
         }
         else {
-            image = "../assets/img/Added_WL_50.png";
+            image = "../../assets/img/Added_WL_50.png";
             var wish = "\'wishlistAdd(" + data[i]['_source'].title_id + ");\'";
         }
 
 
         response += '<div class="col-md-2" style=width:18%;>' +
             '<div class="item item_shadow">' +
-            '<div class="img_block_books"><a href="/book_details/' + data[i]['_source'].title_id + '"><img src="' + data[i]['_source'].img + '" onerror="this.src=\'../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
+            '<div class="img_block_books"><a href="/book_details/' + data[i]['_source'].title_id + '/' + data[i]['_source'].title + '"><img src="' + data[i]['_source'].img + '" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
             '<div class="carousel_body_book">' +
             '<div class="carousel_title_book"><h5 title="' + data[i]['_source'].title + '">' + data[i]['_source'].title + '</h5></div>' +
             '<div class="carousel_desc">' +
             '<div class="fram_btn">' +
             '<a    href="javascript:void(0)" class="shortcode_button btn_small btn_type1" title="Rent" onclick=' + action + ' id="rent_' + data[i]['_source'].title_id + '">' + text + '</a>' +
             '<a href="javascript:void(0)" class="tiptip" title="Wishlist" onclick=' + wish + '><img id="wish_' + data[i]['_source'].title_id + '" class="wishlist_btn" src=' + image + ' alt="Smiley face" height="25" width="25"></a>' +
-            '<a href="javascript:void(0)" class="tiptip" title="Share" data-id="' + data[i]['_source'].title_id + '" data-toggle="modal" data-target="#shareModal"><img  class="share_btn" src=../assets/img/Engage.png alt="Smiley face" height="25" width="25"></a>' +
+            '<a href="javascript:void(0)" class="tiptip" title="Share" data-id="' + data[i]['_source'].title_id + '" data-toggle="modal" data-target="#shareModal"><img  class="share_btn" src=../../assets/img/Engage.png alt="Smiley face" height="25" width="25"></a>' +
 
             // '<a href="/book_details/' + data[i].TITLEID + '" id="' + data[i].TITLEID + '" class="tiptip" title="Read">Read</a>' +
             '<div class="clear"></div>' +
@@ -417,19 +417,19 @@ function generateDIV(arr, funcName, idName, btnTxt, style, ids,statusKey,statusS
 //            console.log(arr_data['id']);
 //            console.log(ids.indexOf(arr_data['id']))
         if (ids.indexOf(arr_data['id']) != -1) {
-            var image = "../assets/img/Added_WL_Right.png"
+            var image = "../../assets/img/Added_WL_Right.png"
             wish = "";
         }
         else {
-            image = "../assets/img/Added_WL_50.png";
+            image = "../../assets/img/Added_WL_50.png";
             var wish = "\'wishlistAdd(" + arr_data['id'] + ");\'";
         }
 
         response += '<div id="alertDiv" class="alert  alert-dismissable" style="display: none"><a  href="#" class="close"  aria-label="close" onclick="hideAlert()">&times;</a>' +
             '<span id="alertText"></span></div><div class="col-md-6 col-xs-12 module_cont module_shelf shadow1" style="height: 180px;">' +
             '<div class="col-md-5 col-xs-5">' +
-            '<a href="/book_details/' + arr_data['id'] + '">' +
-            '<img src="' + arr_data['image_url'] + '" class="img-responsive" alt="..." style="margin-top: -20px;height: 145px" onerror="this.src=\'../assets/images/Default_Book_Thumbnail.png\'">' +
+            '<a href="/book_details/' + arr_data['id'] + '/' + arr_data['title'] + '">' +
+            '<img src="' + arr_data['image_url'] + '" class="img-responsive" alt="..." style="margin-top: -20px;height: 145px" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'">' +
             '</a>' +
             '</div>' +
             '<div class="col-md-7 col-xs-7" id="module_shelf">' +
@@ -1030,7 +1030,7 @@ function addWishlist(id) {
 
             }
             else {
-                $("#wish_" + id).attr("src", "../assets/img/Added_WL_Right.png")
+                $("#wish_" + id).attr("src", "../../assets/img/Added_WL_Right.png")
 
                 toastr.success('Successfully added into your wish list ');
             }

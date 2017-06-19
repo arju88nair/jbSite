@@ -1,5 +1,28 @@
 {{> header }}
-
+<style>.block-with-text {
+    overflow: hidden;
+    position: relative;
+    line-height: 1.2em;
+    max-height: 6em;
+    text-align: justify;
+    margin-right: -1em;
+    padding-right: 1em;
+}
+.block-with-text:before {
+    content: '...';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+.block-with-text:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    width: 1em;
+    height: 1em;
+    margin-top: 0.2em;
+    background: white;
+}</style>
 <div class="main_wrapper background_color_gray" style="padding-top:20px;margin-top:8%;">
     <!-- C O N T E N T -->
     <div class="content_wrapper">
@@ -38,7 +61,7 @@
                                                     href="/author_details/{{id}}">{{name}} </a></p>
                                             {{/author}}
                                             {{/jb_info}}
-                                            <p>{{description}}</p>
+                                            <p  class="block-with-text"> {{description}}</p>
 {{#jb_info}}
                                             <div class="row-fluid" id="pad_10px">
                                                 <div class="span3 module_cont module_text_area module_none_padding1">
@@ -323,7 +346,7 @@
                                     <a style="margin-left: -5%" href="javascript:void(0)" class="tiptip"
                                        title="Share" data-id="{{titleid}}" data-toggle="modal"
                                        data-target="#shareModal"><img class="share_btn"
-                                                                      src=../assets/img/Engage.png
+                                                                      src=../../assets/img/Engage.png
                                                                       alt="Smiley face" height="25" width="25"></a></div>
 
                                     <div class="module_line_trigger" data-option=""
@@ -349,7 +372,7 @@
                                                                 <div id="frame_new_rel" class="loader_fram">
                                                                     <div id="loader_rel"
                                                                          style="display: block;margin-left: 43%">
-                                                                        <img src="../assets/img/loader.gif"
+                                                                        <img src="../../assets/img/loader.gif"
                                                                              id="loader_image">
                                                                     </div>
                                                                 </div>
@@ -392,7 +415,7 @@
     </div><!-- .content_wrapper -->
 
 </div><!-- .main_wrapper -->
-<script src="../assets/js/book_details.js"></script>
+<script src="../../assets/js/book_details.js"></script>
 
 {{> footer}}
 
@@ -415,10 +438,10 @@
                 $("#frame_new_rel").hide();
                 $("#loader_rel").hide();
                 if (data['wishlist'].indexOf(parseInt(id)) != -1) {
-                    $("#wishlistMain").attr("src", "../assets/img/Added_WL_Right.png");
+                    $("#wishlistMain").attr("src", "../../assets/img/Added_WL_Right.png");
                 }
                 else {
-                    $("#wishlistMain").attr("src", "../assets/img/Added_WL_50.png");
+                    $("#wishlistMain").attr("src", "../../assets/img/Added_WL_50.png");
 
                 }
 

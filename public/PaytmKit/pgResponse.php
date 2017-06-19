@@ -34,7 +34,6 @@ if ($isValidChecksum == "TRUE") {
             $orderid = $_POST['ORDERID'];
             $url = "http://staging.justbooksclc.com:8990/api/v1/paytm_payment_callback.json?orderid=$orderid&response_code=01&payment_type=Paytm&branch_id=810";
 echo $url;
-die;
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url);
             curl_setopt($ch, CURLOPT_HEADER, 0);            // No header in the result

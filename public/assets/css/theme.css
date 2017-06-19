@@ -4420,9 +4420,10 @@ ol.sitemap_list li span.sitemap_comments a{
 /*Misc*/
 .details_img img {
 	border-radius:5px;
-	width:200px;
+	width:68%;
 	max-width:100%;
 	padding-bottom: 20px;
+	height:100%
 }
 
 .colored_italic {

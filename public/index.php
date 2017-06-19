@@ -88,7 +88,7 @@ else{
     return $response;
 });
 
-$app->get('/book_details/{titleid}', function (Request $request, Response $response, $args) {
+$app->get('/book_details/{titleid}/{name}', function (Request $request, Response $response, $args) {
     $titleid = $args['titleid'];
 //    $result1 = curlFunction("8990/api/v1/title_info.json?title_id=$titleid");
 //    $result1 = str_replace("NaN", 0, $result1);
@@ -150,9 +150,9 @@ $app->get('/book_details/{titleid}', function (Request $request, Response $respo
 
     $response = $this->view->render($response, 'book_details.mustache', array('data' => $data, 'titleid' => $titleid,'Currentflag'=>$Currentflag,'rental'=>$rental_id,'wishFlag'=>$Wishflag,'flag'=>(int)$flag,'name'=>$name,'slider'=>$slider));
     return $response;
-});
+})->setName('book_details/');
 
-$app->get('/author_details/{authorid}', function (Request $request, Response $response, $args) {
+$app->get('/author_details/{authorid}/{name}', function (Request $request, Response $response, $args) {
     $authorid = $args['authorid'];
 //    $con = $this->db;
 //    $final_data = [];
@@ -572,7 +572,7 @@ $app->post('/couponValidate', function (Request $request, Response $response) {
     $coupon = $data['coupon'];
     $months = $data['months'];
     $result = curlFunction("8990/api/v1/apply_coupon.json?plan_id=$planid&coupon_code=$coupon&months=$months");
-    echo json_encode($result);
+    echo $result;
 });
 
 $app->post('/giftcardValidate', function (Request $request, Response $response) {
@@ -581,7 +581,7 @@ $app->post('/giftcardValidate', function (Request $request, Response $response) 
     $gift_card_pin = $data['gift_card_pin'];
     $amnt = $data['total_amnt'];
     $result = curlFunction("8990/api/v1/apply_gift_card.json?gift_card_no=$gift_card&pin=$gift_card_pin&total_amount=$amnt");
-    echo json_encode($result);
+    echo $result;
 });
 
 $app->get('/getWishList', function (Request $request, Response $response) {

@@ -4,7 +4,7 @@
 <div class="content_wrapper" style="margin-top: 8%">
     <div class="page_title_block">
         <div class="container">
-            <div class="bg_title" id="bg_title_shelf"><h4 class="headInModule">PLAN DETAILS</h4></div>
+            <div class="bg_title" id="bg_title_shelf"><h4 class="headInModule">PLAN DETAILS </h4></div>
 
         </div>
     </div>
@@ -17,6 +17,7 @@
         <div class="content_block no-sidebar row">
             <div class="fl-container span12">
                 <div id="{{planname}}" class="planid"></div>
+                <div id="{{planid}}" class="planID"></div>
 
                 <div class="contentarea">
                     <div class="module_line_trigger" data-option="" data-background="#323232 url(img/) no-repeat center"
@@ -517,6 +518,12 @@
         if ($("#password").val() !== $("#Cpassword").val()) {
             toastr.error("Passwords doens't match");
             return false;
+        } if ($("#password").val() <6 ) {
+            toastr.error("Password is too short");
+            return false;
+        }if ($("#Cpassword").val() <6 ) {
+            toastr.error("Password is too short");
+            return false;
         }
         $("#error").hide();
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -564,22 +571,25 @@
     });
 
     $('#coupon_submit').click(function (e) {
+        $(".spinner").show();
+        var planId={{planid}};
+        mon=$("#months").val();
         e.preventDefault();
         var coupon = $('#coupon_code').val();
         $.ajax({
             type: "POST",
             url: "/couponValidate",
-            data: {'coupon': coupon, 'planid': planid, 'months': mon},
+            data: {'coupon': coupon, 'planid': planId, 'months': mon},
             success: function (data_new) {
+                $(".spinner").hide();
                 data_new = JSON.parse(data_new);
                 console.log(data_new);
                 if (data_new['success'] == true) {
                     toastr.success('Coupon accepted !');
                 }
                 else {
+                    toastr.error(data_new['errors']);
 
-                    $("#error").text(data_new['errors']);
-                    $("#error").show();
 
                 }
 
@@ -590,6 +600,7 @@
     });
 
     $('#gift_card_submit').click(function (e) {
+        $(".spinner").show();
         e.preventDefault();
         var gift_card = $('#gift_card').val();
         var gift_card_pin = $('#gift_card_pin').val();
@@ -599,15 +610,16 @@
             url: "/giftcardValidate",
             data: {'gift_card': gift_card, 'gift_card_pin': gift_card_pin, 'total_amnt': total_amnt},
             success: function (data_new) {
+                $(".spinner").hide()
                 data_new = JSON.parse(data_new);
                 console.log(data_new);
                 if (data_new['success'] == true) {
-                    toastr.success('Gift card accepted !');
+                    toastr.success(data_new['result']['error']);
                 }
                 else {
 
-                    $("#error").text(data_new['errors']);
-                    $("#error").show();
+                    toastr.error(data_new['errors']);
+
 
                 }
 
