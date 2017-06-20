@@ -132,7 +132,9 @@ $(document).ready(function () {
                 '</div>',
             ].join('\n'),
             suggestion: function (data) {
-                return ['<p><a href="book_details/' + data.link + '">' + data.value + '</a></p>'].join('\n');
+                console.log(data.link)
+                console.log(data.value)
+                return ['<p><a href="/book_details/' + data.link + '/' + data.value + '">' + data.value + '</a></p>'].join('\n');
             },
         }
 

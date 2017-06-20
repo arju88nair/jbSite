@@ -192,6 +192,10 @@ $app->get('/search', function (Request $request, Response $response) {
     $raw_data = curlFunctionEs("/getSuggestBooksDetails?text=$query&page=1");
     $data = json_decode($raw_data);
     $count= count($data);
+    if($data == "No Titles" )
+    {
+        $count=0;
+    }
 
     if(isset($_SESSION['username']))
     {
@@ -1009,6 +1013,11 @@ $app->get('/logout/', function (Request $request, Response $response) {
 });
 
 
+$app->get('/forget-password/', function (Request $request, Response $response) {
+    $response = $this->view->render($response, 'forget-password.mustache');
+    return $response;
+});
+
 $app->get('/adminLogin/', function (Request $request, Response $response) {
     $response = $this->view->render($response, 'login.mustache');
     return $response;
@@ -1744,7 +1753,50 @@ $app->get('/getShelfRecommendedBooks', function (Request $request, Response $res
     echo json_encode(array("data" => $data, 'ids' => (array)$array, 'wishlist' => (array)$wishlist));
 
 });
+$app->get('/sendResetMail', function (Request $request, Response $response) {
+    $token = bin2hex(openssl_random_pseudo_bytes(30));
+    $params = $request->getQueryParams();
+    $email = $params['email'];
 
+    $con = $this->db;
+    $query = "insert into memp.FORGOT_PASSWORD_TOKEN(EMAIL,AUTH_TOKEN,TIME_STAMP,FLAG) values('$email','$token',CURRENT_TIMESTAMP,0) ";
+    $compiled = oci_parse($con, $query);
+    $result=oci_execute($compiled);
+    if($result)
+    {
+echo json_encode("success");die;
+    }
+    echo json_encode("failure");die;
+
+});
+$app->get('/verifyResetMail', function (Request $request, Response $response) {
+    $params = $request->getQueryParams();
+    $email = $params['email'];
+    $token=$params['token'];
+    $passwrod=$params['password'];
+
+    $con = $this->db;
+    $query = "select id  from forgot_password_token where email='$email' and auth_token='$token' and round(
+    (cast(current_timestamp as date) - cast(time_stamp as date))
+    * 24 * 60
+  ) > 180 ";
+    echo $query;die;
+    $result = oci_parse($con, $query);
+    oci_execute($result);
+    while ($row = oci_fetch_assoc($result)) {
+        $final_data[] = $row;
+    }
+    echo json_encode($final_data);
+    if(count($final_data) == 0)
+    {
+ echo json_encode("Something went wrong");die;
+    }
+
+    echo json_encode("success");die;
+
+
+
+});
 
 $app->run();
 

@@ -106,7 +106,7 @@ function getCardMostRead(data, visibleCardCount, ids, wishlist) {
 
         response += '<div class="col-md-2" style=width:18%;>' +
             '<div class="item item_shadow">' +
-            '<div class="img_block_books"><a href="/book_details/' + data[i]['_source'].title_id + '/' + data[i]['_source'].title + '"><img src="' + data[i]['_source'].img + '" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
+            '<div class="img_block_books"><a href="/book_details/' + data[i]['_source'].title_id + '/' + data[i]['_source'].title + '"><img src="' + img + '" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
             '<div class="carousel_body_book">' +
             '<div class="carousel_title_book"><h5 title="' + data[i]['_source'].title + '">' + data[i]['_source'].title + '</h5></div>' +
             '<div class="carousel_desc">' +
@@ -389,12 +389,51 @@ function placeOrder(id) {
 }
 
 
+$(document).ready(function(){
+    // on click SignIn Button checks for valid email and all field should be filled
+
+
+
+    // on click signup It Hide Login Form and Display Registration Form
+    $("#signup").click(function(){
+
+       
+        $("#first").slideUp("slow", function(){
+            $("#second").slideDown("slow");
+        });
+    });
+
+    // on click signin It Hide Registration Form and Display Login Form
+    $("#signin_form").click(function(){
+
+        
+
+        $("#second").slideUp("slow",function(){
+            $("#first").slideDown("slow");
+        });
+    });
+
+});
+
+
+
+
 function signupClick() {
-    $(".spinner").show();
 
     var username = $("#username").val();
+    if(username == "" || username == 0)
+    {
+        toastr.error("Please enter an email !");
+        return false;
+    }
 
     var password = $("#password").val();
+    if(password == "" || username == 0)
+    {
+        toastr.error("Please enter password !");
+        return false;
+    }
+    $(".spinner").show();
 
     $.ajax({
         type: "GET",
@@ -459,6 +498,43 @@ function signupClick() {
 
 }
 
+
+
+function forgotPassword()
+{
+
+    var email=$("#forgetEmail").val();
+    if(email == "" || email == 0)
+    {
+        toastr.error("Please enter an email !");
+        return false;
+    }
+$(".spinner").show();
+    $.ajax({
+        type: "GET",
+        url: "/sendResetMail?email=" + email,
+        success: function (data) {
+            $(".spinner").hide();
+
+            console.log(data)
+            if (JSON.parse(data) === "success") {
+                $(".spinner").hide();
+
+                toastr.success('Please check your mail for further instructions !');
+
+            }
+            else {
+                $(".spinner").hide();
+
+                toastr.warning("Something went wrong!")
+
+
+            }
+        },
+
+    });
+
+}
 
 
 

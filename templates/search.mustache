@@ -53,7 +53,7 @@
                 </div>
             </div><!-- .contentarea -->
         </div>
-        <button type="button" class="btn btn-default" onclick="loadMore()">Load More</button>
+        <button type="button" class="btn btn-default" onclick="loadMore()" id="load">Load More</button>
         <br><br><br><br>
     </div>
     <div class="clear"><!-- ClearFix --></div>
@@ -63,6 +63,11 @@
 {{> footer}}
 <script>
     $(document).ready(function () {
+        var count={{count}};
+        if(count === 0)
+        {
+           $("#load").hide();
+        }
         localStorage.setItem("countFlag", 2);
         $('#home').addClass('current-menu-parent');
         <!--$("#count").text(" which have" {{result}}.length);-->

@@ -44,18 +44,18 @@
 
                                     <!-- Create div second for Signup Form-->
                                     <div id="second" class="login_form_fram_second" style="display:none">
-                                        <form action="" method="post" id="form">
+                                        <form >
                                             <h2>FORGOT PASSWORD</h2>
                                             <hr style="color:#000; font-size:2px; height:10px; padding-top:5px;">
                                             <div class="form-group">
-                                                <input type="text" name="email" id="registeremail" tabindex="1" class="form-control" placeholder="Email" value="">
+                                                <input type="text" name="email" id="forgetEmail" tabindex="1" class="form-control" placeholder="Email" value="">
                                             </div>
                                             <div class="">
                                                 <div class="form-group col-md-4" style="margin-bottom:0px;">
-                                                    <input type="button" class="shortcode_button btn_small btn_type1" id="forgetpassword" value="Sign In" />
+                                                    <input type="button" class="shortcode_button btn_small btn_type1" id="forgetpassword" value="Submit" onclick="forgotPassword()" />
                                                 </div>
                                                 <div class="form-group col-md-8" style="margin-bottom:0px;">
-                                                    <p id="two"><a href="#" id="signin" class="signin"> Sign-in?</a></p>
+                                                    <p id="two"><a href="#" id="signin_form" class="signin"> Sign-in?</a></p>
                                                 </div>
                                             </div><br><br>
                                             <p id="one">Not a member yet? <a href="#anchor2" id="signup" class="signup">Sign up here</a></p>
@@ -101,7 +101,7 @@
                                 {{#slider}}
                                 <div id="main" class="login_form" >
                                     <!-- Create div first for Login Form-->
-                                    <div id="first" class="loginDIv login_form_fram_one">
+                                    <div id="first" class="loginDIv login_form_fram_one" >
                                         <form action="" method="post">
                                             <h2>SIGN-IN</h2>
                                             <hr style="color:#000; font-size:2px; height:10px; padding-top:5px;">
@@ -113,7 +113,7 @@
                                             </div>
                                             <div class="">
                                                 <div class="form-group col-md-4" style="margin-bottom:0px;">
-                                                    <input type="button" class="shortcode_button btn_small btn_type1" onclick="signupClick()"  id="login" value="Sign In" />
+                                                    <input type="button" class="shortcode_button btn_small btn_type1" id="login" value="Sign In" onclick="signupClick()" />
 
                                                 </div>
                                                 <div class="form-group col-md-8" style="margin-bottom:0px;">
@@ -125,27 +125,27 @@
                                     </div>
 
                                     <!-- Create div second for Signup Form-->
-                                    <!--<div id="second" class="login_form_fram_second">-->
-                                        <!--<form action="" method="post" id="form">-->
-                                            <!--<h2>FORGOT PASSWORD</h2>-->
-                                            <!--<hr style="color:#000; font-size:2px; height:10px; padding-top:5px;">-->
-                                            <!--<div class="form-group">-->
-                                                <!--<input type="text" name="email" id="registeremail" tabindex="1" class="form-control" placeholder="Email" value="">-->
-                                            <!--</div>-->
-                                            <!--<div class="">-->
-                                                <!--<div class="form-group col-md-4" style="margin-bottom:0px;">-->
-                                                    <!--<input type="button" class="shortcode_button btn_small btn_type1" id="forgetpassword" value="Sign In" />-->
-                                                <!--</div>-->
-                                                <!--<div class="form-group col-md-8" style="margin-bottom:0px;">-->
-                                                    <!--<p id="two"><a href="#" id="signin" class="signin"> Sign-in?</a></p>-->
-                                                <!--</div>-->
-                                            <!--</div><br><br>-->
-                                            <!--<p id="one">Not a member yet? <a href="#anchor2" id="signup" class="signup">Sign up here</a></p>-->
+                                    <div id="second" class="login_form_fram_second" style="display:none">
+                                        <form action="" method="post" id="form">
+                                            <h2>FORGOT PASSWORD</h2>
+                                            <hr style="color:#000; font-size:2px; height:10px; padding-top:5px;">
+                                            <div class="form-group">
+                                                <input type="text" name="email" id="forgetEmail" tabindex="1" class="form-control" placeholder="Email" value="">
+                                            </div>
+                                            <div class="">
+                                                <div class="form-group col-md-4" style="margin-bottom:0px;">
+                                                    <input type="button" class="shortcode_button btn_small btn_type1" id="forgetpassword" value="Submit" onclick="forgotPassword()" />
+                                                </div>
+                                                <div class="form-group col-md-8" style="margin-bottom:0px;">
+                                                    <p id="two"><a href="#" id="signin_form" class="signin"> Sign-in?</a></p>
+                                                </div>
+                                            </div><br><br>
+                                            <p id="one">Not a member yet? <a href="#anchor2" id="signup" class="signup">Sign up here</a></p>
 
-                                        <!--</form>-->
-                                    <!--</div>-->
+                                        </form>
+                                    </div>
 
-                                </div >
+                                </div>
                                 {{/slider}}
                             </div>
 
@@ -325,7 +325,7 @@
 				</div>
 			</div>
 		</div>
-        <script src="../../assets/js/login_form.js"></script>
+        <!-- <script src="../../assets/js/login_form.js"></script> -->
 		<script type="text/javascript">
 			//var tpj=jQuery;
 			//$.noConflict();

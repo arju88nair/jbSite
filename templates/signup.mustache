@@ -71,6 +71,7 @@
                                         <!--<div class="col-md-7"><div class="card" style="background-color: #58B75B;"><h3>hwhwhwh</h3></div></div>-->
 
                                     </div>
+                                    <a id="signup"></a>
                                     <div class="span6 r_content">
                                         <div class="col-sm-11">
                                             <div class="col-sm-6">
@@ -125,7 +126,7 @@
                                         </div>
                                         <div class="col-sm-11">
                                             <div class="col-sm-offset-2 col-sm-8">
-                                                <a href="#anchor2" class="btn btn-success btn-block" id="plan_submit">Sign
+                                                <a href="#signup" class="btn btn-success btn-block" id="plan_submit">Sign
                                                     up Now</a>
                                             </div>
                                         </div>
@@ -137,7 +138,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <a id="anchor2"></a>
+                    
                     <div class="span12 module_cont module_text_area"></br>
                         <h4 class="module_cont">Fill Your Personal Details Here</h4>
                         <hr>
@@ -332,7 +333,7 @@
     function passwordval() {
 
         if ($("#Cpassword").val() !== $("#password").val()) {
-            $("#error").text("Passwords doesnot match!");
+            $("#error").text("Passwords does not match!");
             $("#error").show();
             return false;
         }
