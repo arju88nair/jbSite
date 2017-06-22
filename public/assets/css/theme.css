@@ -67,11 +67,11 @@ a:hover {
 	color:#464d52;
 }
 
-ul {
-	list-style:none;
-	margin:0;
-	padding:0
-}
+/*ul {*/
+	/*list-style:none;*/
+	/*margin:0;*/
+	/*padding:0*/
+/*}*/
 svg,
 svg rect {
 	transition: all 400ms;

@@ -1,321 +1,318 @@
-{{>header}}
+{{> header}}
+<style type="text/css">
+    .shape{
+        border-style: solid; border-width: 0 70px 40px 0; float:right; height: 0px; width: 0px;
+        -ms-transform:rotate(360deg); /* IE 9 */
+        -o-transform: rotate(360deg);  /* Opera 10.5 */
+        -webkit-transform:rotate(360deg); /* Safari and Chrome */
+        transform:rotate(360deg);
+    }
 
-<div class="main_wrapper" style="background-color: #EDE8DE; padding-top: 20px;margin-top: 8%">
-    <!-- C O N T E N T -->
-    <div class="content_wrapper">
+    .lead {
+        padding-top: 5px;
+        font-size: 15px;
+        font-family: arial;
+        font-weight: bold;
+    }
+    .project{
+        background:#fff;
+        border:1px solid #e5e5e5;
+        /*box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);*/
+        margin: 15px 0;
+        overflow:hidden;height:auto;
+    }
 
+    .project-radius{
+        border-radius:7px;
+    }
+
+    .project-default {    border-color: none; }
+    .project-default .shape{
+        border-color: transparent #999999 transparent transparent;
+        border-color: rgba(255,255,255,0) #999999 rgba(255,255,255,0) rgba(255,255,255,0);
+    }
+
+
+    .project-content {
+        background-color: rgba(220, 220, 220, 0.33);
+        padding:0 20px 10px;
+    }
+    .project-content p{
+        text-align: justify !important;
+    }
+
+    #playground input {
+        padding: 7px 16px !important;
+        border-radius: 2px 0 0 2px !important;
+        border: 1px solid #504848 !important;
+        outline: 0 none !important;
+        font-size: 15px !important;
+        font-family: 'Arial' !important;
+    }
+</style>
+<!-- C O N T E N T -->
+<div class="content_wrapper" style="margin-top: 8%">
+    <div class="page_title_block">
         <div class="container">
-            <div class="content_block right-sidebar row">
-                <div class="fl-container col-sm-12">
-                    <div class="row">
-                        <div class="posts-block col-sm-12">
-                            <div class="contentarea">
-                                <div class="row-fluid">
-                                    <div class="col-sm-12 first-module module_number_1 module_cont  module_medium_padding module_text_area">
-                                        <div class="module_content">
-                                            <h2>How to ?</h2>
-                                        </div>
-                                    </div><!-- .module_cont -->
-                                </div>
-                                <div class="row-fluid">
-                                    <div class="col-sm-12 module_cont module_sitemap">
-                                        <div class="row-fluid">
-                                            <div class="col-sm-4">
+            <div class="bg_title" id="bg_title_shelf"><h4 class="headInModule">FAQs</h4></div>
 
-                                                <div class="bg_title"><h4 class="headInModule">Get Books</h4></div>
-                                                <ul class="sitemap_list">
-                                                    <li><a href="#order_help">Order Online</a></li>
-                                                    <li><a href="#pickup_help">Order Pickup</a></li>
-                                                    <li><a href="#ord_fr_ws_help">Order book(s) from the Wishlist</a></li>
-                                                    <li><a href="#wishlist_help">Add to Wishlist</a></li>
-                                                    <li><a href="#rec_help">Recommend Books</a></li>
-                                                    <li><a href="#order_mag_help">Order Magazines</a></li>
-                                                </ul>
-                                            </div><!-- .span4 -->
-                                            <div class="col-sm-4">
-                                                <div class="bg_title"><h4 class="headInModule">Membership</h4></div>
-                                                <ul class="sitemap_list">
-                                                    <li><a href="#signup_help">Signup online</a></li>
-                                                    <li><a href="#signin_help">Sign In (For the first time users)</a></li>
-                                                    <li><a href="#upgrade_help">Upgrade/Change Plan</a></li>
-                                                    <li><a href="#renew_help">Renew membership</a></li>
-                                                    <li><a href="#edit_con_help">Edit contact details</a></li>
-                                                    <li><a href="#subscribe_help">Unsubscribe</a></li>
-                                                    <li><a href="#password_help">Change Password</a></li>
-                                                    <li><a href="#branch_help">Change home branch</a></li>
-                                                    <li><a href="#lostcard_help">Get a replacement membership card</a></li>
-                                                    <li><a href="#lostbook_help">Pay for a lost book/magazine</a></li>
-                                                    <li><a href="#sh_help">Subscribe Holiday</a></li>
-                                                    <li><a href="#sh_end_help">Cancel/End Holiday</a></li>
-                                                    <li><a href="#correct_order_help">Correct Order Status</a></li>
-                                                </ul>
-                                            </div><!-- .span4 -->
-                                            <div class="col-sm-4">
-                                                <div class="bg_title"><h4 class="headInModule">Online</h4></div>
-                                                <ul class="sitemap_list">
-                                                    <li><a href="#avail_help">Check Availability of a book</a></li>
-                                                    <li><a href="#search_reg_help">Search for Regional books </a></li>
-                                                    <li><a href="#search_help"></a>Search for a Book</li>
-                                                </ul>
-                                            </div><!-- .span4 -->
-                                        </div>
-                                    </div><!-- .module_sitemap -->
-                                </div><!-- .row-fluid -->
+        </div>
+    </div>
+    <hr>
+    <div class="container" id="playground">
+        <form>
+            <input id="keywords" size="24" placeholder="Search FAQs">
+        </form>
+        <script type="text/javascript" src="http://www.the-art-of-web.com/hilitor.js"></script>
+        <script type="text/javascript">
 
-                                <div class="row-fluid">
-                                    <div class="col-sm-12 first-module module_number_1 module_cont  module_medium_padding module_text_area">
-                                        <div class="module_content">
-                                            <a id="signup_help"></a>
-                                            <h4>How to Signup online?</h4>
-                                            <p>JustBooks provides you the option to Sign up online without any need to visit the branch. Now, get a membership at your ease and enjoy reading with JustBooks CLC.</p>
-                                            <p><b>Step 1:</b> Click on 'Sign up' </p>
-                                            <p><b> Step 2:</b> Choose the membership plan </p>
-                                            <p><b> Step 3:</b> Check availability of service by putting the pincode of delivery location </p>
-                                            <p><b> Step 4:</b> Fill out the Sign up form and click on 'Make Payment' </p>
-                                            <p><b> Step 5:</b> Make your payment through Credit Card/Debit Card/Net Banking </p>
-                                            <p><b> Step 6:</b> Click on the confirmation link sent to your email address </p>
-                                            <p> You have successfully created your account with us. The Introduction package including your membership card would be sent to your address. </p>
-                                        </div>
+            var myHilitor2;
 
-                                        <div class="module_cotent">
-                                            <a id="signin_help"></a>
-                                            <h4>How to Sign In? (For the first time users)</h4>
-                                            <p> You need to create a password and confirm your email address in order to Sign In </p>
-                                            <p><b> Step 1:</b> Click on 'Sign In' and then on 'Don't have a Password' </p>
-                                            <p><b> Step 2:</b> Input your email address and click 'Verify' </p>
-                                            <p><b> Step 3:</b> Click on 'Change my Password' in the email sent to you </p>
-                                            <p><b> Step 4:</b> Input your new password and click on 'Change my Password' </p>
-                                            <p><b> Step 5:</b> Sign In with your email address and the new password </p>
-                                            <p>You have successfully signed in to your account .</p>
-                                        </div>
+            document.addEventListener("DOMContentLoaded", function(e) {
+                myHilitor2 = new Hilitor("playground");
+                myHilitor2.setMatchType("left");
+            }, false);
 
-                                        <div class="module_content">
-                                            <a id="order_help"></a>
-                                            <h4>How to Order Online?</h4>
-                                            <p> You need to Sign In to your account before you can order for books online If this is your first time visit, kindly follow the procedure on 'How to Sign In' </p>
-                                            <p><b> Step 1:</b> Select the book(s) which you would like to read & click on 'Add to cart' </p>
-                                            <p><b> Step 2:</b> Repeat the Step 1 to add more number of books to your cart </p>
-                                            <p><b> Step 3:</b> Click on Check Out to confirm the book(s) to be rented </p>
-                                            <p><b> Step 4:</b> Click on Rent Now </p>
-                                            <p>You have successfully placed an order for the book(s) </p>
-                                        </div>
+            document.getElementById("keywords").addEventListener("keyup", function(e) {
+                myHilitor2.apply(this.value);
+            }, false);
 
-                                        <div class="module_content">
-                                            <a id="pickup_help"></a>
-                                            <h4>How to Order Pickup?</h4>
-                                            <p> The books which are delivered to your home would also be picked up from your home at the next delivery. </p>
-                                            <p><b> Step 1:</b> Login In to your account </p>
-                                            <p><b> Step 2:</b> Click on Bookshelf, which is on the right top corner of the page </p>
-                                            <p><b> Step 3:</b> Click on 'Currently Reading' to view Book(s) or Magazine(s) issued to you </p>
-                                            <p><b> Step 4:</b> Click on the link 'Place Pickup Order' corresponding to each book. </p>
-                                            <p>You have successfully placed Pickup order for the book </p>
-                                        </div>
+        </script>
+        <div class="row">
 
-                                        <div class="module_content">
-                                            <a id="search_help"></a>
-                                            <h4>How to search for a Book?</h4>
-                                            <p>You can search for a book with its Title/Author?/ISBN by simply typing in the search bar on the website. Titles matching the search will be displayed below.</p>
+            <div class="col-md-4">
+                <div class="col-xs-12">
+                    <div class="project project-default project-radius">
 
-                                        </div>
+                        <div class="project-content">
 
-                                        <div class="module_content">
-                                            <a id="wishlist_help"></a>
-                                            <h4>How to Add Books to Wishlist?</h4>
-                                            <p> Wishlist serves as a reference list for you to order interested titles at a later point in time. </p>
-                                            <p><b> Step 1:</b> Search for the Book(s) which you would like to add to wishlist by following the procedure on 'How to search for a Book'. </p>
-                                            <p><b> Step 2:</b> In the title page, click on Add to Wishlist </p>
-                                            <p> You have successfully added the book(s) to your wishlist </p>
-                                        </div>
+                            <h3 class="lead">How many books does a JustBooks library have?</h3>
 
-                                        <div class="module_content">
-                                            <a id="ord_fr_ws_help"></a>
-                                            <h4>How to Order book(s) from the Wishlist?</h4>
-                                            <p> The book(s) in the wishlist can be ordered by following the below procedure. </p>
-                                            <p><b> Step 1:</b> Go to the tab Bookshelf </p>
-                                            <p><b> Step 2:</b> Click on 'Books you want to Read' where you will find all the books you have added to Wishlist </p>
-                                            <p><b> Step 3:</b> Click on 'Add to Cart' corresponding to each book </p>
-                                            <p><b> Step 4:</b> Click on Check Out, if you have added all the books you want to read to the cart </p>
-                                            <p><b> Step 5:</b> Click on Rent Now </p>
-                                            <p> You have successfully order for the book from the wishlist </p>
-                                        </div>
+                            <p> While each of our libraries have anywhere between 3000 to 15000 books, the entire JustBooks chain has over a million books in its network. Our members get access to this entire inventory of books at all points of time. </p>
 
-                                        <div class="module_content">
-                                            <a id="rec_help"></a>
-                                            <h4>How to Recommend Books?</h4>
-                                            <p> The book(s) which are not available with JustBooks can be recommended for procuring. The processing of such recommendation is at the sole discretion of JustBooks. </p>
-                                            <p><b> Step 1:</b> Go to the tab 'Bookshelf' </p>
-                                            <p><b> Step 2:</b> Click on 'My Recommendations' </p>
-                                            <p><b> Step 3:</b> Click on 'New Recommendation' </p>
-                                            <p><b> Step 4:</b> Search the title of the book in the search bar </p>
-                                            <p><b> Step 5:</b> Select the appropriate book and click on 'Proceed' </p>
-                                            <p><b> Step 6:</b> Click on 'Recommend' after verifying the details </p>
-
-                                            <h4>If the book is not among the list,</h4>
-                                            <p><b> Step 1:</b> Click on 'Not found' </p>
-                                            <p><b> Step 2:</b> Enter the requested details and click on 'Recommend' </p>
-                                            <p> You have successfully recommended for the book. </p>
-                                        </div>
-
-                                        <div class="module_content">
-                                            <a id="avail_hel"></a>
-                                            <h4>How to check Availability of a book?</h4>
-                                            <p><b> Step 1:</b> Search the title, for which you want to check availability </p>
-                                            <p><b> Step 2:</b> Click on Check Availability below the title. The City & Branch wise availability would be displayed to you. </p>
-                                        </div>
-
-                                        <div class="module_content">
-                                            <a id="search_reg_help"></a>
-                                            <h4>How to search for Regional books?</h4>
-                                            <p>
-                                                You may search for regional book by either using the search bar (search with Title/Author) or by picking your language under the tab Catalog.
-                                            </p>
-                                        </div>
-
-                                        <div class="module_content">
-                                            <a id="upgrade_help"></a>
-                                            <h4>How to Upgrade/Change Plan?</h4>
-                                            <p><b> Step 1:</b> Sign in to your account </p>
-                                            <p><b> Step 2:</b> Go to the tab 'Accounts' </p>
-                                            <p><b> Step 3:</b> Click on the link 'Upgrade' next to the Plan on the page 'Membership Details' </p>
-                                            <p><b> Step 4:</b> On the next page, select the Plan you would like to upgrade to and click 'Continue'</p>
-                                            <p><b> Step 5:</b> Confirm your mode of payment and click on 'Continue' </p>
-                                            <p><b> Step 6:</b> You will be redirected to the payment page </p>
-                                            <p><b> Step 7:</b> Make the payment using your Credit Card/Debit Card/Net Banking </p>
-                                            <p> You have successfully upgraded your account </p>
-                                        </div>
-
-                                        <div class="module_content">
-                                            <a id="renew_help"></a>
-                                            <h4>How to renew membership?</h4>
-                                            <p><b> Step 1:</b> Sign in to your account </p>
-                                            <p><b> Step 2:</b> Go to the tab Accounts </p>
-                                            <p><b> Step 3:</b> Click on the link 'Renew' next to the Renewal date </p>
-                                            <p><b> Step 4:</b> Click 'Continue' on the next page and you will redirected to the payment page </p>
-                                            <p><b> Step 5:</b> Make the payment using your Credit Card/Debit Card/Net Banking </p>
-                                            <p> You have successfully renewed your membership </p>
-                                        </div>
-
-                                        <div class="module_content">
-                                            <a id="edit_con_help"></a>
-                                            <h4>How to edit your contact details?</h4>
-                                            <p><b> Step 1:</b> Login to your account </p>
-                                            <p><b> Step 2:</b> Go to the tab Accounts </p>
-                                            <p><b> Step 3:</b> Click on Contact Details in the left menu bar </p>
-                                            <p><b> Step 4:</b> Click on Edit in the contact details page </p>
-                                            <p><b> Step 5:</b> Update your contact details and click on Save </p>
-                                            <p> You have successfully updated your account details </p>
-                                        </div>
-
-                                        <div class="module_content">
-                                            <a id="subscribe_help"></a>
-                                            <h4>How to Unsubscribe?</h4>
-                                            <p><b> Step 1:</b> Login to your account </p>
-                                            <p><b> Step 2:</b> Go to the tab Accounts </p>
-                                            <p><b> Step 3:</b> Click on Privacy Settings in the left menu bar </p>
-                                            <p><b> Step 4:</b> Uncheck the options which you would like to unsubscribe from and click on Save </p>
-                                            <p> You have successfully unsubscribed </p>
-                                        </div>
-
-                                        <div class="module_content">
-                                            <a id="password_help"></a>
-                                            <h4>How to change Password?</h4>
-                                            <p><b> Step 1:</b> Sign in to your account </p>
-                                            <p><b> Step 2: </b> Go to the tab 'Accounts'</p>
-                                            <p><b> Step 3:</b> Click on 'Change Password' on the left menu bar </p>
-                                            <p><b> Step 4:</b> Input your 'New Password' and the 'Current Password' to confirm the changes and click on Update </p>
-                                            <p> You have successfully changed your password </p>
-                                        </div>
-
-                                        <div class="module_content">
-                                            <a id="order_mag_help"></a>
-                                            <h4>How to Order Magazines?</h4>
-                                            <p>Unfortunately, we don't have a catalog for Magazines online. You will need to order for the magazine(s) either by calling or visiting your branch.</p>
-                                        </div>
-
-                                        <div class="module_content">
-                                            <a id="sh_help"></a>
-                                            <h4>How to Subscribe Holiday?</h4>
-                                            <p><b> Step 1:</b> Login to your account </p>
-                                            <p><b> Step 2:</b> Click on the tab Account </p>
-                                            <p><b> Step 3:</b> Click on the link Subscribe holiday? </p>
-                                            <p><b> Step 4:</b> Click on the button New Holiday Plans? </p>
-                                            <p><b> Step 5:</b> Select the Number of months, Holiday start date and click on Submit </p>
-                                            <p><b> Step 6:</b> If you have free slots of holiday available, then the Payable amount would be “0” and simply click on Apply holiday </p>
-                                            <p><b> Step 7:</b> Else if you don’t have free slots or are exhausted with the free slots, click on Make payment and you will be redirected to the CC Avenue. </p>
-                                            <p> You have successfully initiated a Subscription Holiday. </p>
-                                            <p><b style="color: red;"> Note: The free subscription holidays available can be carried over to the next term only if you renew your membership before the expiry date else the available holidays would be lost. </b></p>
-                                        </div>
-
-                                        <div class="module_content">
-                                            <a id="sh_end_help"></a>
-                                            <h4>How to Cancel/End Subscription Holiday?</h4>
-                                            <p><b> Step 1:</b> Login to your account </p>
-                                            <p><b> Step 2:</b> Click on the tab Account </p>
-                                            <p><b> Step 3:</b> If the holiday is Inactive, Click on the link Subscribe holiday? Else if the holiday is Active, Click on the link End holiday? </p>
-                                            <p><b> Step 4:</b> On the next page, click on the link Click here to end </p>
-                                            <p><b> Step 5:</b> Click OK to re-confirm </p>
-                                            <p><b> You have successfully Cancelled/Ended the holiday </b></p>
-                                        </div>
-
-                                        <div class="module_content">
-                                            <a id="branch_help"></a>
-                                            <h4>How to change the branch/city?</h4>
-                                            <p>You may change your branch/city by loging into your account online or by visiting your current home branch.</p>
-                                        </div>
-
-                                        <div class="module_content">
-                                            <a id="lostcard_help"></a>
-                                            <h4>What do I do if I lost my membership card?</h4>
-                                            <p>You will need to visit your branch and place a request for a new membership card after paying Rs.100 towards the lost card</p>
-                                        </div>
-
-                                        <div class="module_content">
-                                            <a id="lostbook_help"></a>
-                                            <h4>What do I do if I lose a book/magazine?</h4>
-                                            <p> You will need to visit your branch to report the lost Book/Magazine and get it removed from your currently issued books list. </p>
-
-                                        </div>
-
-                                        <div class="module_content">
-                                            <a id="correct_order_help"></a>
-                                            <h4>How to correct Member Order Status?</h4>
-                                            <p><b> Step 1:</b> Login to your account </p>
-                                            <p><b> Step 2:</b> Click on Bookshelf, which is on the right top corner of the page </p>
-                                            <p><b> Step 3:</b> Click on 'Orders' where you will find all the books you have placed an Order </p>
-                                            <p><b> Step 4</b>: Click on 'Incorrect Order Status' if the book has been delivered to you but the status displayed is incorrect </p>
-                                            <p><b> Step 5:</b> Input the Book Number seen on the back of the Book Cover (B0XXXXX) in the new window which pops up and click on 'Save' </p>
-                                            <p> You have successfully Issued the book and Updated the Order </p>
-                                        </div>
-                                    </div><!-- .module_cont -->
-                                </div>
-                            </div><!-- .contentarea -->
                         </div>
-
                     </div>
-                    <div class="clear"><!-- ClearFix --></div>
-                </div><!-- .fl-container -->
+                </div>
+
+                <div class="col-xs-12">
+                    <div class="project project-default project-radius">
+
+                        <div class="project-content">
+
+                            <h3 class="lead">How can I become a member of JustBooks?</h3>
+
+                            <p>You can become a member of JustBooks by visiting any of our stores closest to you or by signing up online.</p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12">
+                    <div class="project project-default project-radius">
+
+                        <div class="project-content">
+
+                            <h3 class="lead">How can I get access to this huge inventory of books?</h3>
+
+                            <p>We are a networked library chain that allows our members to choose and order books from this huge inventory either online or through our kiosks at branches, and get it delivered.</p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12">
+                    <div class="project project-default project-radius">
+
+                        <div class="project-content">
+
+                            <h3 class="lead">Can I use services across all JustBooks branches?</h3>
+
+                            <p> Yes, our members can access any of our branches interchangeably. While a member will be tagged to one particular home branch, usage of services on any other branch is not restricted.</p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12">
+                    <div class="project project-default project-radius">
+
+                        <div class="project-content">
+
+                            <h3 class="lead">Can I change my home branch?</h3>
+
+                            <p>Yes, members are free to change their home branch at any point of time. You may place a request with the particular branch that you want to get transferred to and the same will be activated within a short period of time.</p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12">
+                    <div class="project project-default project-radius">
+
+                        <div class="project-content">
+
+                            <h3 class="lead">How soon will I receive my membership card on signing up?</h3>
+
+                            <p>Please expect to receive your permanent membership card in approximately 2-3 weeks from the day your membership is registered.</p>
+
+                        </div>
+                    </div>
+                </div>
+
 
             </div>
-        </div><!-- .container -->
-    </div><!-- .content_wrapper -->
 
-</div><!-- .main_wrapper -->
+            <div class="col-md-4">
+                <div class="col-xs-12">
+                    <div class="project project-default project-radius">
+
+                        <div class="project-content">
+
+                            <h3 class="lead">Can my family members use my membership card?</h3>
+
+                            <p>Yes, your family members may use your membership card</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="project project-default project-radius">
+
+                        <div class="project-content">
+
+                            <h3 class="lead">Do I have to pay the registration fee every time I renew my account?</h3>
+
+                            <p>No. The registration fees is a one time payment received from you for all future renewals</p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12">
+                    <div class="project project-default project-radius">
+
+                        <div class="project-content">
+
+                            <h3 class="lead">How can I take a break from the library services?</h3>
+
+                            <p>All members who have signed up for renewed or 12 months are entitled a free break of two months during the course of the membership. All members who have signed up or renewed for 6 months are entitled to a free break of one month during the course of the membership. For any additional pause in membership, members will be charged a nominal fee of Rs. 50 / month. For members in any other plan, a nominal fee for Rs 50/month will be charged for every month of pause.</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="project project-default project-radius">
+
+                        <div class="project-content">
+
+                            <h3 class="lead">How can I replace a lost/stolen membership card?</h3>
+
+                            <p>There is a Rs 100 processing fee for each replacement card. You may visit your home branch and request for the same. You will receive your replacement card within 2-3 weeks.</p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12">
+                    <div class="project project-default project-radius">
+
+                        <div class="project-content">
+
+                            <h3 class="lead">Does JustBooks deliver books home?</h3>
+
+                            <p>Yes, we deliver books home for a small additional charge of Rs. 50 per month. Watch out for offers that will allow you free door delivery from time to time.</p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12">
+                    <div class="project project-default project-radius">
+
+                        <div class="project-content">
+
+                            <h3 class="lead">How long can I keep a book with me once I have picked it up?</h3>
+
+                            <p>We do not have a cap on the number of days that you can keep a book with you. You can keep a book for as long as you want. However we request you to return the book in a reasonable amount of time since other members may also be in the waiting list. However for books that are transferred from other branches, we request that you return the book within 7 days. </p>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="col-md-4">
+                <div class="col-xs-12">
+                    <div class="project project-default project-radius">
+
+                        <div class="project-content">
+
+                            <h3 class="lead">How many books can I take at any given point of time?</h3>
+
+                            <p>The number of books you can take at any point of time is dependent on the plan that you sign up for. We have plans that start at a minimum of 2 books.</p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12">
+                    <div class="project project-default project-radius">
+
+                        <div class="project-content">
+
+                            <h3 class="lead">What can I do if the book i have issued gets lost?</h3>
+
+                            <p>If a book that you have been issued gets lost, please inform your library immediately. We will adjust the value of the book from your security deposit</p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12">
+                    <div class="project project-default project-radius">
+
+                        <div class="project-content">
+
+                            <h3 class="lead">How can I recommend a book to be purchased by the library?</h3>
+
+                            <p>You can recommend a book with your librarian and if there is enough demand for the book, we will procure the same for you. You can also recommend a book by logging in to your account on www.justbooksclc.com</p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12">
+                    <div class="project project-default project-radius">
+
+                        <div class="project-content">
+
+                            <h3 class="lead">Do I need my membership card to issue books from the library?</h3>
+
+                            <p>We recommend that you always walk in with your membership card when you visit your JustBooks library. However in case you forget, we are there to help you at the store :)</p>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12">
+                    <div class="project project-default project-radius">
+
+                        <div class="project-content">
+
+                            <h3 class="lead">How can I change my current plan?</h3>
+
+                            <p>Members can log into their account on www.justbooksclc.com where an option to change their current plan is visible under “My Subscription”. Alternatively do reach out to us and we will be happy to help you change your plan. </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
 
 
+        </div><!--/row-->
+    </div><!--/container -->
 
-
-
-
-
-{{> footer}}
-<script>
-    $(document).ready(function()
-    {
-        $('#faq').addClass('current-menu-parent');
-
-    })
-
-
-</script>
+</div>
