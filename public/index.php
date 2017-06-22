@@ -59,6 +59,7 @@ function curlFunctionEs($url)
 }
 
 $app->get('/', function (Request $request, Response $response) {
+
     $con = $this->db;
     $query = "SELECT * FROM website_parameters";
     $result = oci_parse($con, $query);
@@ -1013,10 +1014,6 @@ $app->get('/logout/', function (Request $request, Response $response) {
 });
 
 
-$app->get('/forget-password/', function (Request $request, Response $response) {
-    $response = $this->view->render($response, 'forget-password.mustache');
-    return $response;
-});
 
 $app->get('/adminLogin/', function (Request $request, Response $response) {
     $response = $this->view->render($response, 'login.mustache');
@@ -1754,45 +1751,146 @@ $app->get('/getShelfRecommendedBooks', function (Request $request, Response $res
 
 });
 $app->get('/sendResetMail', function (Request $request, Response $response) {
-    $token = bin2hex(openssl_random_pseudo_bytes(30));
+//    $token = bin2hex(openssl_random_pseudo_bytes(30));
+//    $email = $params['email'];
+//
+//    $con = $this->db;
+//    $query = "insert into memp.FORGOT_PASSWORD_TOKEN(EMAIL,AUTH_TOKEN,TIME_STAMP,FLAG) values('$email','$token',CURRENT_TIMESTAMP,0) ";
+//    $compiled = oci_parse($con, $query);
+//    $result=oci_execute($compiled);
+//    if($result)
+//    {
+//echo json_encode("success");die;
+//    echo json_encode("failure");die;
     $params = $request->getQueryParams();
+
     $email = $params['email'];
 
-    $con = $this->db;
-    $query = "insert into memp.FORGOT_PASSWORD_TOKEN(EMAIL,AUTH_TOKEN,TIME_STAMP,FLAG) values('$email','$token',CURRENT_TIMESTAMP,0) ";
-    $compiled = oci_parse($con, $query);
-    $result=oci_execute($compiled);
-    if($result)
+    $result = curlFunction("8990/api/v1/send_reset_email?email=$email");
+    $data= json_decode($result);
+    if($data->success == true)
     {
-echo json_encode("success");die;
+        echo json_encode("success");die;
     }
     echo json_encode("failure");die;
+
+
+
 
 });
 $app->get('/verifyResetMail', function (Request $request, Response $response) {
     $params = $request->getQueryParams();
     $email = $params['email'];
-    $token=$params['token'];
     $passwrod=$params['password'];
+    $result = curlFunction("8990/api/v1/reset_pwd?email=$email&password=$passwrod");
+    $data= json_decode($result);
+    if($data->success == true)
+    {
+        echo json_encode("success");die;
+    }
+    echo json_encode("failure");die;
+
+    echo json_encode($data->success);die;
+
+
+
+//    $con = $this->db;
+//    $query = "select id  from forgot_password_token where email='$email' and auth_token='$token' and round(
+//    (cast(current_timestamp as date) - cast(time_stamp as date))
+//    * 24 * 60
+//  ) > 180 ";
+//    echo $query;die;
+//    $result = oci_parse($con, $query);
+//    oci_execute($result);
+//    while ($row = oci_fetch_assoc($result)) {
+//        $final_data[] = $row;
+//    }
+//    echo json_encode($final_data);
+//    if(count($final_data) == 0)
+//    {
+// echo json_encode("Something went wrong");die;
+//    }
+//
+//    echo json_encode("success");die;
+
+
+
+});
+
+$app->get('/locations', function (Request $request, Response $response) {
+    $con = $this->db;
+    $query_city = "SELECT *  FROM memp.FN_HOME_PAGE_PLANS WHERE active = 1";
+    $result_city = oci_parse($con, $query_city);
+    oci_execute($result_city);
+    while ($row = oci_fetch_assoc($result_city)) {
+        $data[] = $row;
+    }
+    return $this->view->render($response, 'adminLocations.mustache', array('data' => $data));
+
+
+});
+
+
+
+$app->get('/users/password/edit', function (Request $request, Response $response) {
+    $email=$_GET['email'];
+    $token=$_GET['reset_password_token'];
 
     $con = $this->db;
-    $query = "select id  from forgot_password_token where email='$email' and auth_token='$token' and round(
-    (cast(current_timestamp as date) - cast(time_stamp as date))
-    * 24 * 60
-  ) > 180 ";
-    echo $query;die;
-    $result = oci_parse($con, $query);
-    oci_execute($result);
-    while ($row = oci_fetch_assoc($result)) {
-        $final_data[] = $row;
+    $query_city = "SELECT *  FROM webstore.users where  reset_password_token = '$token'";
+    $result_city = oci_parse($con, $query_city);
+    oci_execute($result_city);
+    while ($row = oci_fetch_assoc($result_city)) {
+        $data[] = $row;
     }
-    echo json_encode($final_data);
-    if(count($final_data) == 0)
+    if(count($data) != 0 && $data!=[] )
     {
- echo json_encode("Something went wrong");die;
-    }
+        $formFlag=1;
+        $errorFlag=0;
 
-    echo json_encode("success");die;
+    }
+    else{
+        $formFlag=0;
+        $errorFlag=1;
+    }
+    $response = $this->view->render($response, 'forget-password.mustache',array('email'=>$email,'div'=>$formFlag,'error'=>$errorFlag));
+    return $response;
+
+});
+
+
+$app->get('/store-locator', function (Request $request, Response $response) {
+
+    return $this->view->render($response, 'store_location.mustache');
+
+
+});
+
+$app->get('/storeLocator', function (Request $request, Response $response) {
+    $params = $request->getQueryParams();
+    $lat = (float)$params['lat'];
+    $long=(float)$params['lng'];
+    $con = $this->db;
+    $query="select branch_id id ,a.distance,jb.branchname name,branchaddress address,a.latitude,a.longitude from (SELECT branch_id, name, latitude, longitude,
+			((ACOS(SIN($lat * 3.14/ 180) * SIN(latitude * 3.14 / 180) + COS($lat * 3.14 / 180) * COS(latitude * 3.14 / 180) * COS(($long - longitude) * 3.14 / 180)) * 180 / 3.14) * 60 * 1.1515) AS distance
+		FROM JBGPS.V_STORELOCATIONS) a join memp.jb_branches jb on jb.id=a.branch_id
+		where a.distance <= 5
+		ORDER BY distance ASC";
+    $result_city = oci_parse($con, $query);
+    oci_execute($result_city);
+    while ($row = oci_fetch_assoc($result_city)) {
+        $row['distance_kilometers']=round($row['DISTANCE']) . ' km';
+        $row['distance_miles']=round($row['DISTANCE']/1.6) . ' mi';
+        $row['latitude']=$row['LATITUDE'];
+        $row['longitude']=$row['LONGITUDE'];
+        $row['name']=$row['NAME'];
+        $row['address']=$row['ADDRESS'];
+        $row['id']=$row['ID'];
+
+
+        $data[] = $row;
+    }
+echo json_encode($data);
 
 
 
