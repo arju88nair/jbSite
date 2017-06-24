@@ -44,7 +44,7 @@ function checkAvailability(id) {
             data = JSON.parse(data);
             console.log(data)
             if (data['success'] === true) {
-                toastr.warning(data['result']['member_cross_reference']['status']);
+                toastr.success(data['result']['member_cross_reference']['status']);
 
             }
             if (data['success'] == "failure") {

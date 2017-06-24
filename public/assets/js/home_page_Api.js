@@ -345,7 +345,7 @@ function wishlistAdd(id) {
             }
             else {
                 $("#wish_" + id).attr("src", "../../assets/img/Added_WL_Right.png")
-                toastr.success('Successfully added into your wish list !');
+                toastr.success('Successfully added into your wish list !').css("width","500px");
             }
         },
         error: function (err) {

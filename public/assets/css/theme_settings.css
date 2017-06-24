@@ -1185,6 +1185,7 @@ select[multiple].input-group.input-group-lg .twitter-typeahead .tt-hint {
 .twitter-typeahead .tt-hint {
 	color: #999999;
 }
+
 .twitter-typeahead .tt-input {
 	z-index: 2;
 }
@@ -1241,6 +1242,7 @@ fieldset[disabled] .twitter-typeahead .tt-input {
 .tt-dropdown-menu .tt-suggestion:hover a,
 .tt-menu .tt-suggestion:hover a {
 	color: #262626;
+
 }
 .tt-dropdown-menu .tt-suggestion p,
 .tt-menu .tt-suggestion p {

@@ -1852,6 +1852,7 @@ p.light {
 	font-size:13px;
 	font-family: 'Arial';
 	text-align:justify;
+	margin-left: 0%;
 }
 
 #pad_10px{
@@ -6586,6 +6587,9 @@ article.clickable, .item.clickable {
 .clickable {
 	cursor: pointer;
 	transition: all 250ms;
+}
+ul{
+	list-style: none;
 }
 
 article, .item {

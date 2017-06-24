@@ -5,7 +5,8 @@ use \Psr\Http\Message\ResponseInterface as Response;
 
 require '../vendor/autoload.php';
 require '../includes/functions.php';
-define('API_URL', 'http://staging.justbooksclc.com:');
+//define('API_URL', 'http://staging.justbooksclc.com:');
+define('API_URL', 'http://justbooksclc.com/api/v1/');
 define('API_URL_ES', 'http://rec.justbooksclc.com');
 session_start();
 //$_SESSION['membership_no'] = 'M191990';
@@ -1206,7 +1207,7 @@ $app->get('/sendPush', function (Request $request, Response $response) {
 //    curl_close($ch);
 //#Echo Result Of FireBase Server
 //    echo $result;
-    $data = array('Title' => 'Just Books', 'Body' => 'A harmless test body', 'Id' => 666, 'Action' => 'Navigation', 'Image' => null, 'Author' => null);
+    $data = array('Title' => 'Just Books', 'Body' => 'A harmless test body', 'Id' => 666, 'Action' => 'Navigation', 'Image' => null, 'Author' => null,'uId'=>rand());
     $target = array('cKWaI8ESqig:APA91bG3s_SxKVzRWctLjslrAeOqxkqSlUxJTzFVLrtFa6HfhdpynfCulfQuyqm4OPX5K3OcapxkKfU3geq-wFJj8vKVz-VYPGtVIRSZjgE4yVgmF-ooyHoXRpTD42emtPzZjcx4tZFh');
 
     $url = 'https://fcm.googleapis.com/fcm/send';
@@ -1794,24 +1795,6 @@ $app->get('/verifyResetMail', function (Request $request, Response $response) {
 
 
 
-//    $con = $this->db;
-//    $query = "select id  from forgot_password_token where email='$email' and auth_token='$token' and round(
-//    (cast(current_timestamp as date) - cast(time_stamp as date))
-//    * 24 * 60
-//  ) > 180 ";
-//    echo $query;die;
-//    $result = oci_parse($con, $query);
-//    oci_execute($result);
-//    while ($row = oci_fetch_assoc($result)) {
-//        $final_data[] = $row;
-//    }
-//    echo json_encode($final_data);
-//    if(count($final_data) == 0)
-//    {
-// echo json_encode("Something went wrong");die;
-//    }
-//
-//    echo json_encode("success");die;
 
 
 
@@ -1893,6 +1876,26 @@ $app->get('/storeLocator', function (Request $request, Response $response) {
 echo json_encode($data);
 
 
+
+});$app->post('/insertFranchisee', function (Request $request, Response $response) {
+    $params = $request->getQueryParams();
+    $fname=$_POST['fname'];
+    $lname=$_POST['lname'];
+    $email=$_POST['email'];
+    $phone=$_POST['phone'];
+    $city=$_POST['city'];
+    $ticket=rand();
+    $description=$_POST['description'];
+    $con = $this->db;
+    $query = "insert into webstore.franchise_enquiries (NAME,EMAIL,CONTACT_NO,TICKET,CREATED_AT,UPDATED_AT,CITY,LOCATION) values('$fname$lname','$email','$phone','$ticket',sysdate,sysdate,'$city','$city') ";
+    $compiled = oci_parse($con, $query);
+    $res=oci_execute($compiled);
+    if($res){
+        echo json_encode("success");
+die;
+    }
+    echo json_encode("failure");
+    die;
 
 });
 

@@ -68,12 +68,7 @@
                 <p>Blog</p>
                 </a>
                 </li>
-                <li>
-                    <a href="/locations">
-                        <i class="ti-map"></i>
-                        <p>Store Locations</p>
-                    </a>
-                </li>
+               
                 <!--<li>-->
                 <!--<a href="typography.html">-->
                 <!--<i class="ti-text"></i>-->
@@ -184,62 +179,135 @@
 
                 <button  data-toggle="collapse"  class="btn btn-info" data-target="#demo" style="float: right;" >Add new plan</button>
 
-                <div id="demo" class="collapse col-md-12">
-                    <form class="form" >
-                        <div class="form-group" style="margin-top:5%;margin-right: 2%">
-                            <label for="email">Plan name:</label>
-                            <input type="text" class="form-control" id="name" placeholder="Enter plan name" name="plan" required>
+                <div id="demo" class="collapse col-md-12" style="margin-top: 20px;">
+
+                    <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="card">
+                                        <div class="header">
+                                            <h4 class="title">Add New Plan</h4>
+                                        </div>
+                                        <div class="content">
+                                             <form class="form" >
+                                                <div class="row">
+
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="email">Plan name:</label>
+                                                            <input type="text" class="form-control border-input" id="name" placeholder="Enter plan name" name="plan" required>
+                                                        </div>
+                                                    </div>
+
+                                                    
+
+                                                    <div class="col-md-4">
+                                                         <div class="form-group">
+                                                        <label for="email">Plan Category:</label>
+                                                        <input type="text" class="form-control border-input" id="category" placeholder="Enter plan category" name="category" required>
+                                                    </div>
+                                                    </div>
+
+                                                   
+
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                        <label for="email">Plan registration fee:</label>
+                                                        <input type="text" class="form-control border-input" id="registration" placeholder="Enter plan registration fee" name="registration" required>
+                                                    </div>
+                                                    </div>
+
+                                                    
+
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                        <label for="email">Plan reading fee:</label>
+                                                        <input type="text" class="form-control border-input" id="reading" placeholder="Enter plan reading fee" name="reading" required>
+                                                    </div>
+                                                    </div>
+
+                                                    
+
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                        <label for="email">Plan security fee:</label>
+                                                        <input type="text" class="form-control border-input" id="security" placeholder="Enter security fee" name="security" required>
+                                                    </div>
+                                                    </div>
+
+                                                    
+
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                        <label for="email">Number of books:</label>
+                                                        <input type="text" class="form-control border-input" id="books" placeholder="Enter number of books" name="books" required>
+                                                    </div>
+                                                    </div>
+
+                                                    
+
+                                                    <div class="col-md-4">
+                                                         <div class="form-group">
+                                                        <label for="email">Number of months:</label>
+                                                        <input type="text" class="form-control border-input" id="months" placeholder="Enter number of months" name="months" required>
+                                                    </div>
+                                                    </div>
+
+                                                   
+
+                                                    <div class="col-md-4">
+                                                       <div class="form-group">
+                                                        <label for="email">Months tag</label>
+                                                        <input type="text" class="form-control border-input" id="monthsTag" placeholder="Enter months tag" name="monthsTag" required>
+                                                    </div> 
+                                                    </div>
+
+                                                    
+
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                        <label for="email">Books Tag:</label>
+                                                        <input type="text" class="form-control border-input" id="booksTag" placeholder="Enter books tag" name="booksTag" required>
+                                                    </div>
+                                                    </div>
+                                                    
+
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                        <label for="email">Suitable for Tag:</label>
+                                                        <input type="text" class="form-control border-input" id="suitable" placeholder="Enter suitable for tag" name="suitTag" required>
+                                                    </div>
+                                                    </div>
+                                                    
+
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                        <label for="email">Promo name:</label>
+                                                        <input type="text" class="form-control border-input" id="Promo" placeholder="Enter Promo name" name="Promo" required>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                                <div class="text-center">
+                                                    <button id="buttonSubmit"  class="btn btn-info btn-fill btn-wd">Submit</button>
+
+                                                    <!-- <input type="submit" value="Upload Image" name="submit" accept="image/*" class="btn btn-info btn-fill btn-wd"> -->
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </form>
+
+                       
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group" style="margin-top:5%;margin-right: 2%">
-                            <label for="email">Plan Category:</label>
-                            <input type="text" class="form-control" id="category" placeholder="Enter plan category" name="category" required>
-                        </div>
-                        <div class="form-group" style="margin-top:5%;margin-right: 2%">
-                            <label for="email">Plan registration fee:</label>
-                            <input type="text" class="form-control" id="registration" placeholder="Enter plan registration fee" name="registration" required>
-                        </div>
-                        <div class="form-group" style="margin-top:5%;margin-right: 2%">
-                            <label for="email">Plan reading fee:</label>
-                            <input type="text" class="form-control" id="reading" placeholder="Enter plan reading fee" name="reading" required>
-                        </div>
-                        <div class="form-group" style="margin-top:5%;margin-right: 2%">
-                            <label for="email">Plan security fee:</label>
-                            <input type="text" class="form-control" id="security" placeholder="Enter security fee" name="security" required>
-                        </div>
-                        <div class="form-group" style="margin-top:5%;margin-right: 2%">
-                            <label for="email">Number of books:</label>
-                            <input type="text" class="form-control" id="books" placeholder="Enter number of books" name="books" required>
-                        </div>
-                        <div class="form-group" style="margin-top:5%;margin-right: 2%">
-                            <label for="email">Number of months:</label>
-                            <input type="text" class="form-control" id="months" placeholder="Enter number of months" name="months" required>
-                        </div>
-                        <div class="form-group" style="margin-top:5%;margin-right: 2%">
-                            <label for="email">Months tag</label>
-                            <input type="text" class="form-control" id="monthsTag" placeholder="Enter months tag" name="monthsTag" required>
-                        </div>
-                        <div class="form-group" style="margin-top:5%;margin-right: 2%">
-                            <label for="email">Books Tag:</label>
-                            <input type="text" class="form-control" id="booksTag" placeholder="Enter books tag" name="booksTag" required>
-                        </div>
-                        <div class="form-group" style="margin-top:5%;margin-right: 2%">
-                            <label for="email">Suitable for Tag:</label>
-                            <input type="text" class="form-control" id="suitable" placeholder="Enter suitable for tag" name="suitTag" required>
-                        </div>
-                        <div class="form-group" style="margin-top:5%;margin-right: 2%">
-                            <label for="email">Promo name:</label>
-                            <input type="text" class="form-control" id="Promo" placeholder="Enter Promo name" name="Promo" required>
-                        </div>
+                    </div>
 
 
-                        <button id="buttonSubmit"  class="btn btn-default" style="margin-top:5%;margin-right: 2%">Submit</button>
-                    </form>                </div>
+                </div>
 
 
             </div>
-
-
-        </div>
 
 
         <footer class="footer">

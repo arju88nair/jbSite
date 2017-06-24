@@ -48,7 +48,10 @@
 
 <div class="content_wrapper"  style="margin-top: 12%">
 
-
+    <div class="spinner" style='display: none;z-index: 100;opacity:0.55;background-color: grey'>
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-sm-6 text-left">
@@ -85,33 +88,33 @@
 
                             <div class="form-group col-sm-6">
                                 <label for="exampleInputEmail1">First Name</label>
-                                <input type="text" class="form-control" placeholder="First Name">
+                                <input type="text" class="form-control" placeholder="First Name" id="fname" maxlength="15">
                             </div>
 
                             <div class="form-group col-sm-6">
                                 <label for="exampleInputPassword1">Last Name</label>
-                                <input type="text" class="form-control" placeholder="Last Name">
+                                <input type="text" class="form-control" placeholder="Last Name" id="lname" maxlength="10">
                             </div>
 
                             <div class="form-group col-sm-6">
                                 <label for="exampleInputPassword1">Email</label>
-                                <input type="email" class="form-control" placeholder="Email">
+                                <input type="email" class="form-control" placeholder="Email" id="email" maxlength="50">
                             </div>
 
                             <div class="form-group col-sm-6">
                                 <label for="exampleInputPassword1">Mobile</label>
-                                <input type="text" class="form-control" placeholder="Mobile">
+                                <input type="number" class="form-control" placeholder="Mobile" id="phonen" maxlength="10" min="0">
                             </div>
 
                             <div class="form-group col-sm-6">
                                 <label for="exampleInputPassword1">Interested City</label>
-                                <input type="text" class="form-control" placeholder="Interested City">
+                                <input type="text" class="form-control" placeholder="Interested City" id="city">
                             </div>
 
                             <div class="form-group col-sm-6">
                                 <label for="exampleInputPassword1">Description</label>
 
-                                <textarea class="form-control"></textarea>
+                                <textarea id="description" class="form-control" maxlength="50"></textarea>
                                 <!-- <input type="password" class="form-control" placeholder="Password"> -->
                             </div>
 
@@ -133,7 +136,7 @@
                                  </label>
                              </div> -->
                             <div class="form-group col-sm-12 text-center">
-                                <button type="submit" class="shortcode_button btn_small btn_type1">Send Request</button>
+                                <button type="button" class="shortcode_button btn_small btn_type1" onclick="sendEnq()">Send Request</button>
                             </div>
                         </form>
 
@@ -149,9 +152,43 @@
 <script>
     $(document).ready(function()
     {
+        $("form").submit(false)
         $('#franchise').addClass('current-menu-parent');
 
     })
+
+    function sendEnq()
+    {
+        $(".spinner").show();
+        $.ajax({
+            type: "POST",
+            url: "/insertFranchisee",
+            data:{'fname':$("#fname").val(),'lname':$("#lname").val(),'email':$("#email").val(),'phone':$("#phonen").val(),'city':$("#city").val(),'description':$("#description").val(),},
+            success: function (data) {
+                $(".spinner").hide();
+               console.log(data)
+                data=JSON.parse(data)
+                if (data === 'success') {
+                    toastr.success("Successfully updated");
+
+                }
+
+                else{
+                    toastr.error('Something went wrong !');
+
+                }
+
+            },
+            error: function (err) {
+                console.log(err);
+                toastr.error('Something went wrong  !');
+                $(".spinner").hide();
+
+            }
+
+        });
+
+    }
 </script>
 
 

@@ -98,25 +98,46 @@
     <div id="flipkart-navbar">
         <div class="container">
             <div class="row row1">
-                <div class="col-sm-9">
-                    <ul class="largenav pull-right menu" id="menuHeader">
-                        <li class="upper-links"><a class="links" href="/#whatsNew">WHAT'S NEW</a></li>
-                        <li class="upper-links"><a class="links" href="/#membershipPlans">MEMBERSHIP PLANS</a></li>
-                        <li class="upper-links"><a class="links" href="/#blog">BLOG</a></li>
-                        <li class="upper-links"><a class="links" href="/franchise">BECOME A FRANCHISEE</a></li>
-                        <li class="upper-links"><a class="links" href="http://culture.place">CULTURE.PLACE</a></li>
-                        <li class="upper-links"><a class="links" href="/faq">FAQs</a></li>
-                        <li class="upper-links"><a class="links" href="/#contactUs">CONTACT US</a></li>
-                    </ul>
-                </div>
                 {{#flag}}
-                <div class="col-sm-3" id="userTile" >
-                    <ul class="largenav pull-right menu">
-                        <li class="upper-links"><a class="links" href="" id="welcomeId">Welcome {{name}}</a></li>
-                        <li class="upper-links"><a class="links" href="/logout/">Logout</a></li>
-                    </ul>
-                </div>
+                    <div class="col-sm-12" style="width: 104%;">
+                        <ul class="largenav pull-right menu" id="menuHeader">
+                            <li class="upper-links" id="whatsNewMenu"><a class="links" href="/#whatsNew">WHAT'S NEW</a></li>
+                            <li class="upper-links" id="membershipPlansMenu"><a class="links" href="/#membershipPlans">MEMBERSHIP PLANS</a></li>
+                            <li class="upper-links" id="blogMenu"><a class="links" href="/#blog">BLOG</a></li>
+                            <li class="upper-links" id="franchise"><a class="links" href="/franchise">BECOME A FRANCHISEE</a></li>
+                            <li class="upper-links" ><a class="links" href="http://culture.place">CULTURE.PLACE</a></li>
+                            <li class="upper-links" ><a class="links" href="/store-locator">STORE LOCATIONS</a></li>
+                            <li class="upper-links" id="faqMenu"><a class="links" href="/faq">FAQs</a></li>
+                            <li class="upper-links" id="contactUsMenu"><a class="links" href="/#contactUs">CONTACT US</a></li>
+                            <li class="upper-links"><a class="links" href="" id="welcomeId">Welcome {{name}}</a></li>
+                            <li class="upper-links"><a class="links" href="/logout/">Logout</a></li>
+                        </ul>
+
+                    </div>
                 {{/flag}}
+                {{#slider}}
+                    <div class="col-sm-12" style="width: 104%;left:-16%">
+                        <ul class="largenav pull-right menu" id="menuHeader">
+                            <li class="upper-links" id="whatsNewMenu"><a class="links" href="/#whatsNew">WHAT'S NEW</a></li>
+                            <li class="upper-links" id="membershipPlansMenu"><a class="links" href="/#membershipPlans">MEMBERSHIP PLANS</a></li>
+                            <li class="upper-links" id="blogMenu"><a class="links" href="/#blog">BLOG</a></li>
+                            <li class="upper-links" id="franchise"><a class="links" href="/franchise">BECOME A FRANCHISEE</a></li>
+                            <li class="upper-links" ><a class="links" href="http://culture.place">CULTURE.PLACE</a></li>
+                            <li class="upper-links" ><a class="links" href="/store-locator">STORE LOCATIONS</a></li>
+                            <li class="upper-links" id="faqMenu"><a class="links" href="/faq">FAQs</a></li>
+                            <li class="upper-links" id="contactUsMenu"><a class="links" href="/#contactUs">CONTACT US</a></li>
+                        </ul>
+
+                    </div>
+                {{/slider}}
+
+                    <!--{{#flag}}-->
+                <!--<div class="col-sm-3" id="userTile" >-->
+                <!--<ul class="largenav pull-right menu">-->
+
+                <!--</ul>-->
+                <!--</div>-->
+                    <!--{{/flag}}-->
             </div>
             <div class="row row2">
                 <div class="col-sm-3">
@@ -132,19 +153,19 @@
                 </div>
                 <div class="flipkart-navbar-search smallsearch col-sm-7" >
                     <div class="row">
-                        <input class="flipkart-navbar-input col-sm-11" type="" placeholder="Discover!"name="srch-term" id="srch-term" type="text" value="{{query}}">
+                        <input style="font-family: 'Playfair Display'" class="flipkart-navbar-input col-sm-11" type="" placeholder="DISCOVER!"name="srch-term" id="srch-term" type="text" value="{{query}}">
                         <button class="flipkart-navbar-button col-sm-1" type="submit" onclick="searchClick()">
                             <i class="fa fa-search" aria-hidden="true"></i>
                         </button>
                     </div>
                 </div>
                 {{#flag}}
-                <div class="cart largenav col-sm-2" id="shelfButton" >
-                    <a class="cart-button" href="/shelf">
-                        <i class="fa fa-book" aria-hidden="true"></i> My Shelf
-                        <!-- <span class="item-number ">3</span> -->
-                    </a>
-                </div>
+                    <div class="cart largenav col-sm-2" id="shelfButton" >
+                        <a class="cart-button" href="/shelf">
+                            <i class="fa fa-book" aria-hidden="true"></i> My Shelf
+                            <!-- <span class="item-number ">3</span> -->
+                        </a>
+                    </div>
                 {{/flag}}
             </div>
         </div>
@@ -218,30 +239,55 @@
         if (location.pathname == "/" ||location.pathname == "/#whatsNew" ||location.pathname == "/#membershipPlans" ||location.pathname == "/#blog"  ) {
 
             $("#menuHeader a").on('click', function (event) {
-                console.log("FDS")
-            // Make sure this.hash has a value before overriding default behavior
+                // Make sure this.hash has a value before overriding default behavior
+                if (this.hash !== "") {
+                    // Prevent default anchor click behavior
+                    event.preventDefault();
+
+                    // Store hash
+                    var hash = this.hash;
+                    $("#menuHeader li").removeClass("current-menu-parent");
+
+                    $(hash+"Menu").addClass('current-menu-parent');
+
+                    // Using jQuery's animate() method to add smooth page scroll
+                    // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top - 150
+                    },800);
+                    // Add hash (#) to URL when done scrolling (default click behavior)
+                    window.location.hash = hash;
+
+
+
+//                    });$('html, body').animate({
+//                        scrollTop: $(hash).offset().top - 100
+//                    },800, function () {
+//
+//                        // Add hash (#) to URL when done scrolling (default click behavior)
+//                        window.location.hash = hash;
+//                    });
+                }  // End if
+            });
+        }
+
+
+        $("#signupLink ").on('click', function (event) {
+
+
             if (this.hash !== "") {
-                // Prevent default anchor click behavior
+                // Prevent default anchor click b
                 event.preventDefault();
 
                 // Store hash
                 var hash = this.hash;
-
-                // Using jQuery's animate() method to add smooth page scroll
-                // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
                 $('html, body').animate({
-                    scrollTop: $(hash).offset().top
-                }, 800, function () {
-
-                    // Add hash (#) to URL when done scrolling (default click behavior)
-                    window.location.hash = hash;
-                });
-            }  // End if
+                    scrollTop: $(hash).offset().top - 150
+                }, 800);
+                window.location.hash = hash;
+            }
         });
-    }
-    else{
-            console.log("FDX")
-        }
+
     });
 
 </script>
