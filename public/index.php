@@ -325,6 +325,7 @@ $app->get('/signup', function (Request $request, Response $response) {
     while ($row = oci_fetch_assoc($result_city)) {
         $planData[] = $row;
     }
+
     if(isset($_SESSION['branchID']))
     {
         $branch_id=$_SESSION['branchID'];
@@ -353,19 +354,26 @@ $app->get('/signup', function (Request $request, Response $response) {
     $months = $allGetVars['months'];
     $planname = $allGetVars['planname'];
 
-
     $temp_array = array();
-    foreach ($data as $v) {
-        if (strtoupper($v['web_signup_plan']['promo_code']) === strtoupper($planname) && $v['web_signup_plan']['books'] === (int)$books) {
-
-            $planid = $v['web_signup_plan']['plan_id'];
+    foreach ($data as $indPlan) {
+        if (strtoupper($indPlan['web_signup_plan']['promo_code']) === strtoupper($planname) && $indPlan['web_signup_plan']['books'] === (int)$books) {
+            $monthTag=$indPlan['web_signup_plan']['frequency'];
+            $namePlan=$indPlan['web_signup_plan']['plan_name'];
+            $planid = $indPlan['web_signup_plan']['plan_id'];
         }
 
     }
 
-    foreach ($data as $v) {
-        if (strtoupper($v['web_signup_plan']['promo_code']) === strtoupper($planname)) {
-            array_push($temp_array, $v);
+    if($monthTag == 'Y')
+    {
+        $monthTagText="year(s)";
+    }
+    else{
+        $monthTagText="month(s)";
+    }
+    foreach ($data as $indPLan) {
+        if (strtoupper($indPLan['web_signup_plan']['promo_code']) === strtoupper($planname)) {
+            array_push($temp_array, $indPLan);
         }
 
     }
@@ -396,6 +404,8 @@ $app->get('/signup', function (Request $request, Response $response) {
         }
     }
 
+
+    $monthsArray=array_values(array_unique($monthsArray));
     foreach ($array as $item) {
         if ($item['web_signup_plan']['books'] == $books) {
             foreach ($item['web_signup_plan']['plan_durations'] as $plans) {
@@ -409,7 +419,7 @@ $app->get('/signup', function (Request $request, Response $response) {
                         $slider = 1;
                         $name = "";
                     }
-                    $response = $this->view->render($response, 'signup.mustache', array('plan_data' => $planData, 'plan_dataJ' => json_encode($array_data), 'planid' => $planid, 'plan_books' => $count, 'planname' => $planname, 'planid' => $planid, "total" => $plans['plan_duration']['totalAmount_with_convenience_fee'], 'reading_fee' => $plans['plan_duration']['reading_fee_for_term'], 'reg_fee' => $item['web_signup_plan']['registration_fee'], 'sec_deposit' => $item['web_signup_plan']['security_deposit'], 'months' => $monthsArray, 'book' => $books, 'month' => $months, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider));
+                    $response = $this->view->render($response, 'signup.mustache', array('plan_data' => $planData, 'plan_dataJ' => json_encode($array_data), 'planid' => $planid, 'plan_books' => $count, 'planname' => $planname, 'planid' => $planid, "total" => $plans['plan_duration']['totalAmount_with_convenience_fee'], 'reading_fee' => $plans['plan_duration']['reading_fee_for_term'], 'reg_fee' => $item['web_signup_plan']['registration_fee'], 'sec_deposit' => $item['web_signup_plan']['security_deposit'], 'months' => $monthsArray, 'book' => $books, 'month' => $months, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider,'namePlan'=>$namePlan,'monthTagText'=>$monthTagText));
                     return $response;
 
                 }
@@ -975,6 +985,15 @@ $app->get('/getPlanYears', function (Request $request, Response $response, $args
     $count = [];
     foreach ($array as $item) {
         if ($item['web_signup_plan']['books'] == $book) {
+            $monthTag=$item['web_signup_plan']['frequency'];
+            if($monthTag == 'Y')
+            {
+                $monthTagText=" year(s)";
+            }
+            else{
+                $monthTagText=" month(s)";
+
+            }
             $planId = $item['web_signup_plan']['coupon_id'];
 
             if (count($item['web_signup_plan']['plan_durations']) > 1) {
@@ -982,14 +1001,14 @@ $app->get('/getPlanYears', function (Request $request, Response $response, $args
                     array_push($count, $plans['plan_duration']['signup_months']);
                 }
             } else {
-                echo json_encode(array('planID' => $planId, "status" => "1st", "total" => $item['web_signup_plan']['plan_durations'][0]['plan_duration']['totalAmount_with_convenience_fee'], 'reading_fee' => $item['web_signup_plan']['plan_durations'][0]['plan_duration']['reading_fee_for_term'], 'reg_fee' => $item['web_signup_plan']['registration_fee'], 'sec_deposit' => $item['web_signup_plan']['security_deposit'], 'month' => $item['web_signup_plan']['plan_durations'][0]['plan_duration']['signup_months']));
+                echo json_encode(array('planID' => $planId, "status" => "1st", "total" => $item['web_signup_plan']['plan_durations'][0]['plan_duration']['totalAmount_with_convenience_fee'], 'reading_fee' => $item['web_signup_plan']['plan_durations'][0]['plan_duration']['reading_fee_for_term'], 'reg_fee' => $item['web_signup_plan']['registration_fee'], 'sec_deposit' => $item['web_signup_plan']['security_deposit'], 'month' => $item['web_signup_plan']['plan_durations'][0]['plan_duration']['signup_months'],'monthTag'=>$monthTagText));
                 die;
             }
         }
     }
 
 
-    echo json_encode(array('data' => array_unique($count), 'status' => '2nd', 'planID' => $planId));
+    echo json_encode(array('data' => array_unique($count), 'status' => '2nd', 'planID' => $planId,'monthTag'=>$monthTagText));
 });
 
 

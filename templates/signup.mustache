@@ -1,6 +1,8 @@
 {{> header}}
 
 <!-- C O N T E N T -->
+<script src="../../assets/js/state.js"></script>
+
 <div class="content_wrapper" style="margin-top: 10%">
     <div class="page_title_block">
         <div class="container">
@@ -18,6 +20,7 @@
             <div class="fl-container span12">
                 <div id="{{planname}}" class="planid"></div>
                 <div id="{{planid}}" class="planID"></div>
+                <div id="{{planname}}_{{book}}_{{month}}" class="namePlan"></div>
 
                 <div class="contentarea">
                     <div class="module_line_trigger" data-option="" data-background="#323232 url(img/) no-repeat center"
@@ -40,7 +43,7 @@
 
                                                 <div class="span9 l_content">
                                                     <div class="row">
-                                                        <div class='col-md-10 col-md-offset-2 card bordered' id="box_{{PLAN_NAME}}" style="padding-top: 7%;padding-bottom: 4%;text-indent: 8%">
+                                                        <div class='col-md-10 col-md-offset-2 card bordered' id="box_{{PROMO}}_{{NO_OF_BOOKS}}_{{NO_OF_MONTHS}}" style="padding-top: 7%;padding-bottom: 4%;text-indent: 8%">
                                                             <div class="col-md-12 text-left">
                                                                 <div class="row bottom">
                                                                     <div class="col-md-12 left">
@@ -86,7 +89,7 @@
                                                 <select class="form-control" id="months" >
                                                     <option value="">Select No of Months:</option>
                                                     {{# months}}
-                                                        <option value="{{.}}">{{.}}  month(s)</option>
+                                                        <option value="{{.}}">{{.}}  {{monthTagText}}</option>
                                                     {{/months}}
                                                 </select></br>
                                             </div>
@@ -144,7 +147,7 @@
                         <hr>
                         <form class="form-horizontal" id="signup_form">
 
-                            <h4 class="dark-grey" style="font-weight: normal">Account Information</h4>
+                            <h4 class="dark-grey" style="font-weight: normalfont-family: 'Playfair Display'">Account Information</h4>
 
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -185,13 +188,13 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-4">
-                                        <label>City:</label>
-                                        <select class="form-control" id="city" name="city">
+                                        <label>State:</label>
+                                        <select class="form-control" id="state" name="state" onchange='selct_district(this.value)'>
                                         </select>
                                     </div>
                                     <div class="col-sm-4">
-                                        <label>State:</label>
-                                        <select class="form-control" id="state" name="state">
+                                        <label>City:</label>
+                                        <select class="form-control" id="city" name="city">
                                         </select>
                                     </div>
                                     <div class="col-sm-4">
@@ -233,7 +236,7 @@
                             <!--/////////////////////END/////////////////////////-->
 
 
-                            <h4 class="dark-grey" style="font-weight: normal">Coupon Information</h4>
+                            <h4 class="dark-grey" style="font-weight: normal;font-family: 'Playfair Display'">Coupon Information</h4>
 
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -368,9 +371,10 @@
     });
 
     var planid = $('.planid').attr('id');
+    var namePLan = $('.namePlan').attr('id');
     var mon = '';
     var book = '';
-    $('#box_' + planid).css({
+    $('#box_'+namePLan).css({
 
         'display': 'block',
         'background-color': '#fff',
@@ -400,13 +404,15 @@
                 console.log(data_new);
                 console.log(JSON.parse(data_new));
                 data_new = JSON.parse(data_new);
+                var  monthTag=data_new['monthTag']
+
                 if (data_new['status'] === "2nd") {
                     data_new = data_new['data'];
 
                     if (data_new.length != 0 || data_new != [] || data_new != '[]') {
                         for (var i = 0; i < data_new.length; i++) {
 
-                            $("#months").append('<option value="' + data_new[i] + '">' + data_new[i] + '  month(s)</option>')
+                            $("#months").append('<option value="' + data_new[i] + '">' + data_new[i] + '  '+monthTag+'</option>')
 
                         }
                         $("#months").prepend("<option value=''>Select months</option>").val('');
@@ -414,7 +420,7 @@
                     }
                 }
                 else {
-                    $("#months").append('<option value="' + data_new['month'] + '">' + data_new['month'] + ' month(s)</option>')
+                    $("#months").append('<option value="' + data_new['month'] + '">' + data_new['month'] + ' '+monthTag+'</option>')
 
                     $('#reg_fee h5').html("₹ "+data_new['reg_fee'] );
                     $('#sec_deposit_fee h5').html("₹ "+data_new['sec_deposit']);
@@ -463,22 +469,22 @@
     }
 
 
-    $.ajax({
-        type: "GET",
-        url: "/getCitiesAndState",
-        success: function (data_new) {
-            data_new = JSON.parse(data_new);
-            console.log(data_new);
-            console.log(data_new[0]['city']);
-            data_new[0]['city'].forEach(function (arr) {
-                $('#city').append("<option value=" + arr['CITYID'] + ">" + arr['CITYNAME'] + "</option>");
-            });
-            data_new[0]['state'].forEach(function (arr) {
-                $('#state').append("<option value=" + arr['STATEID'] + ">" + arr['STATENAME'] + "</option>");
-            });
-        },
-
-    });
+//    $.ajax({
+//        type: "GET",
+//        url: "/getCitiesAndState",
+//        success: function (data_new) {
+//            data_new = JSON.parse(data_new);
+//            console.log(data_new);
+//            console.log(data_new[0]['city']);
+//            data_new[0]['city'].forEach(function (arr) {
+//                $('#city').append("<option value=" + arr['CITYID'] + ">" + arr['CITYNAME'] + "</option>");
+//            });
+//            data_new[0]['state'].forEach(function (arr) {
+//                $('#state').append("<option value=" + arr['STATEID'] + ">" + arr['STATENAME'] + "</option>");
+//            });
+//        },
+//
+//    });
 
     $('#signup').click(function (e) {
 

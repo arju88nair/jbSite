@@ -16,7 +16,7 @@
 
     <link rel="apple-touch-icon" sizes="114x114" href="../../../assets/img/apple_icons_114x114.png">
 
-    <title>JustBook</title>
+    <title>JustBooks</title>
 
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,400italic,600italic,700italic'
           rel='stylesheet' type='text/css'>
@@ -138,10 +138,10 @@
                             <li class="upper-links" id="membershipPlansMenu"><a class="links" href="/#membershipPlans">MEMBERSHIP PLANS</a></li>
                             <li class="upper-links" id="blogMenu"><a class="links" href="/#blog">BLOG</a></li>
                             <li class="upper-links" id="franchise"><a class="links" href="/franchise">BECOME A FRANCHISEE</a></li>
-                            <li class="upper-links" ><a class="links" href="http://culture.place">CULTURE.PLACE</a></li>
+                            <li class="upper-links" ><a class="links" target="_blank" href="http://culture.place">CULTURE.PLACE</a></li>
                             <li class="upper-links" ><a class="links" href="/store-locator">STORE LOCATIONS</a></li>
                             <li class="upper-links" id="faqMenu"><a class="links" href="/faq">FAQs</a></li>
-                            <li class="upper-links" id="contactUsMenu"><a class="links" href="/#contactUs">CONTACT US</a></li>
+                            <!--<li class="upper-links" id="contactUsMenu"><a class="links" href="/#contactUs">CONTACT US</a></li>-->
                             <!--<li class="upper-links"><a class="links" href="" id="welcomeId">Welcome {{name}}</a></li>-->
                             <!--<li class="upper-links"> <a class="links" href="/logout/"> Log Out-->
                             <!--</a></li>-->
@@ -165,7 +165,7 @@
                 </div>
                 <div class="flipkart-navbar-search smallsearch col-sm-6" >
                     <div class="row">
-                        <input style="font-family: 'Playfair Display'" class="flipkart-navbar-input col-sm-11" type="" placeholder="DISCOVER!"name="srch-term" id="srch-term" type="text" value="{{query}}">
+                        <input style="font-family: 'Playfair Display;font-size:10px'" class="flipkart-navbar-input col-sm-11" type="" placeholder="Books, Authors & More!"name="srch-term" id="srch-term" type="text" value="{{query}}">
                         <button class="flipkart-navbar-button col-sm-1" type="submit" onclick="searchClick()">
                             <i class="fa fa-search" aria-hidden="true"></i>
                         </button>
@@ -215,6 +215,7 @@
 
             {{/slider}}
             {{#flag}}
+
                 <a class="links" href="" id="welcomeId" style="float:left;margin-left:-8%;font-family:Playfair Display">Welcome {{name}}</a>
 
             {{/flag}}
