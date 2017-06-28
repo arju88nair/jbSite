@@ -48,7 +48,7 @@ $(document).ready(function(){
 
 
     // on click signup It Hide Login Form and Display Registration Form
-    $("#signup").click(function(){
+    $(".signup").click(function(){
         $("#first").slideUp("slow", function(){
             $("#second").slideDown("slow");
         });

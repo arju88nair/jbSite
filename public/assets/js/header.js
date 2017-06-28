@@ -204,11 +204,12 @@ $(document).ready(function () {
 
         //get data-id attribute of the clicked element
         var id = $(e.relatedTarget).data('id');
+        var title = $(e.relatedTarget).data('title');
         //populate the textbox
-        $("#sharefb").attr("href", "http://www.facebook.com/sharer.php?u=http://justbooksclc.com/book_details/"+id);
-        $("#sharegp").attr("href", "https://plus.google.com/share?url=http://justbooksclc.com/book_details/"+id);
-        $("#sharetw").attr("href", "https://twitter.com/share?url=http://justbooksclc.com/book_details/"+id+"&amp;text=Simple%20Share%20Buttons&amp;hashtags=justbookclc.com");
-        $("#shareen").attr("href", "mailto:me@domain.com?subject=Hi, This might interest you ! http://justbooksclc.com/book_details/"+id);
+        $("#sharefb").attr("href", "http://www.facebook.com/sharer.php?u=http://justbooks.in/book_details/"+id+"/"+title+"&t=Reading"+title+" rented from Justbooks" );
+        $("#sharegp").attr("href", "https://plus.google.com/share?url=http://justbooks.in/book_details/"+id+"/"+title);
+        $("#sharetw").attr("href", "https://twitter.com/share?url=http://justbooks.in/book_details/"+id+"/"+title+"&amp;text=Reading %20"+title+"%20,%20rented%20from%20JustBooks&amp;hashtags=justbookclc.com");
+        // $("#shareen").attr("href", "mailto:me@domain.com?subject=Hi, This might interest you ! http://justbooksclc.com/book_details/"+id);
         // $("#sharefb").attr("href", "http://www.facebook.com/sharer.php?u=http://justbooksclc.com/book_details/"+id);
     });
 
@@ -241,7 +242,7 @@ $(document).ready(function () {
         }
     });
 
-    $('#password').keypress(function (e) {
+    $('.loginPwd').keypress(function (e) {
         var key = e.which;
         if (key == 13) // the enter key code
         {

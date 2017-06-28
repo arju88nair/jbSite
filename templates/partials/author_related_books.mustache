@@ -1,6 +1,8 @@
-<div class="row-fluid">
+<div class="row-fluid" style="margin-left: -2%;width: 111%">
     <div class="span12 module_cont module_teamslider">
-        <div class="bg_title"><h4 class="headInModule">RELATED BOOKS</h4></div>
+        {{#data}}
+        <div class="bg_title"><h4 class="headInModule">BOOKS BY {{author_name}}</h4></div>
+        {{/data}}
         <!--<div class="team_slider" style="overflow-y: auto">-->
         <!--<div class="carouselslider teamslider items3" data-count="3">-->
         <!--<ul class="item_list" id="items4">-->
@@ -27,7 +29,7 @@
                             </div>
                         </div>
                         <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
-                        <a class="right carousel-control" href="#myCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+                        <a style="right: 35%" class="right carousel-control" href="#myCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -78,7 +80,7 @@
                     '<div class="fram_btn">' +
                     '<a    href="javascript:void(0)" class="shortcode_button btn_small btn_type1" title="Rent" onclick='+action+' id="rent_'+data[i].id+'">'+text+'</a>' +
                     '<a href="javascript:void(0)" class="tiptip" title="Wishlist" onclick='+wish+'><img id="wish_'+data[i].id+'" class="wishlist_btn" src='+images+' alt="Smiley face" height="25" width="25"></a>' +
-                    '<a href="javascript:void(0)" class="tiptip" title="Share" data-id="' + data[i].id + '" data-toggle="modal" data-target="#shareModal"><img  class="share_btn" src=../../assets/img/Engage.png alt="Smiley face" height="25" width="25"></a>' +
+                    '<a href="javascript:void(0)" class="tiptip" title="Share" data-id="' + data[i].id + '" data-title="' + data[i].title + '" data-toggle="modal" data-target="#shareModal"><img  class="share_btn" src=../../assets/img/Engage.png alt="Smiley face" height="25" width="25"></a>' +
 
                     // '<a href="/book_details/' + data[i].id + '" id="' + data[i].id + '" class="tiptip" title="Read">Read</a>' +
                     '<div class="clear"></div>' +

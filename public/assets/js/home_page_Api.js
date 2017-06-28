@@ -46,7 +46,7 @@ function getCard(data, visibleCardCount, ids, wishlist) {
             '<div class="fram_btn">' +
             '<a href="javascript:void(0)" class="shortcode_button btn_small btn_type1" title="Rent" onclick=' + action + ' id="rent_' + data[i]['_source'].title_id + '">' + text + '</a>' +
             '<a href="javascript:void(0)" class="tiptip" title="Wishlist" onclick=' + wish + '><img id="wish_' + data[i]['_source'].title_id + '" class="wishlist_btn" src=' + image + ' alt="Smiley face" height="25" width="25"></a>' +
-            '<a href="javascript:void(0)" class="tiptip" title="Share"  data-id="' + data[i]['_source'].title_id + '" data-toggle="modal" data-target="#shareModal"><img  class="share_btn" src=../../assets/img/Engage.png alt="Smiley face" height="25" width="25"></a>' +
+            '<a href="javascript:void(0)" class="tiptip" title="Share"  data-id="' + data[i]['_source'].title_id + '" data-title="' + data[i]['_source'].title + '" data-toggle="modal" data-target="#shareModal"><img  class="share_btn" src=../../assets/img/Engage.png alt="Smiley face" height="25" width="25"></a>' +
 
             // '<a href="/book_details/' + data[i].id + '" id="' + data[i].id + '" class="tiptip" title="Read">Read</a>' +
             '<div class="clear"></div>' +
@@ -113,7 +113,7 @@ function getCardMostRead(data, visibleCardCount, ids, wishlist) {
             '<div class="fram_btn">' +
             '<a    href="javascript:void(0)" class="shortcode_button btn_small btn_type1" title="Rent" onclick=' + action + ' id="rent_' + data[i]['_source'].title_id + '">' + text + '</a>' +
             '<a href="javascript:void(0)" class="tiptip" title="Wishlist" onclick=' + wish + '><img id="wish_' + data[i]['_source'].title_id + '" class="wishlist_btn" src=' + image + ' alt="Smiley face" height="25" width="25"></a>' +
-            '<a href="javascript:void(0)" class="tiptip" title="Share" data-id="' + data[i]['_source'].title_id + '" data-toggle="modal" data-target="#shareModal"><img  class="share_btn" src=../../assets/img/Engage.png alt="Smiley face" height="25" width="25"></a>' +
+            '<a href="javascript:void(0)" class="tiptip" title="Share" data-title="' + data[i]['_source'].title + '"  data-id="' + data[i]['_source'].title_id + '" data-toggle="modal" data-target="#shareModal"><img  class="share_btn" src=../../assets/img/Engage.png alt="Smiley face" height="25" width="25"></a>' +
 
             // '<a href="/book_details/' + data[i].TITLEID + '" id="' + data[i].TITLEID + '" class="tiptip" title="Read">Read</a>' +
             '<div class="clear"></div>' +
@@ -258,7 +258,7 @@ $(document).ready(function () {
             var response = '';
             var i = 0;
             var plans = val;
-            var colors = ['block personal fl', 'block professional fl', 'block business fl'];
+            var colors = ['block personal fl', 'block professional fl', 'block business fl','block third fl'];
             plans.forEach(function (arr) {
                 // response += '<div class="price_item" style="width:33.33%">' +
                 //     '<div class="price_item_wrapper">' +
@@ -274,7 +274,7 @@ $(document).ready(function () {
                 //     '</div></div>';
 
 
-                var sec_colors = ['#78CFBF', '#3EC6E0', '#E3536C']
+                var sec_colors = ['#78CFBF', '#3EC6E0', '#E3536C','#7470b9']
                 response += '   <div class="' + colors[i] + '">' +
                     '<h4 class="title">' + arr['PLAN_NAME'].toUpperCase() + '</h4>' +
                     ' <a href="/signup?planname=' + arr['PROMO'] + '&books=' + arr['NO_OF_BOOKS'] + '&months=' + arr['NO_OF_MONTHS'] + '"><div class="content_pt">' +
@@ -395,21 +395,20 @@ $(document).ready(function(){
 
 
     // on click signup It Hide Login Form and Display Registration Form
-    $("#signup").click(function(){
+    $(".signup").click(function(){
 
-       
-        $("#first").slideUp("slow", function(){
-            $("#second").slideDown("slow");
+        $(".loginDIv").slideUp("slow", function(){
+            $(".login_form_fram_second").slideDown("slow");
         });
     });
 
     // on click signin It Hide Registration Form and Display Login Form
-    $("#signin_form").click(function(){
+    $(".signin").click(function(){
 
         
 
-        $("#second").slideUp("slow",function(){
-            $("#first").slideDown("slow");
+        $(".login_form_fram_second").slideUp("slow",function(){
+            $(".loginDIv").slideDown("slow");
         });
     });
 

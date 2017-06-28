@@ -104,7 +104,7 @@ function getCardRelated(data, visibleCardCount,ids,wishlist) {
             '<div class="fram_btn">' +
             '<a    href="javascript:void(0)" class="shortcode_button btn_small btn_type1" title="Rent" onclick='+action+' id="rent_'+data[i]['_source'].title_id+'">'+text+'</a>' +
             '<a href="javascript:void(0)" class="tiptip" title="Wishlist" onclick='+wish+'><img id="wish_'+data[i]['_source'].title_id+'" class="wishlist_btn" src='+images+' alt="Smiley face" height="25" width="25"></a>' +
-            '<a href="javascript:void(0)" class="tiptip" title="Share" data-id="' + data[i]['_source'].title_id + '" data-toggle="modal" data-target="#shareModal"><img  class="share_btn" src=../../assets/img/Engage.png alt="Smiley face" height="25" width="25"></a>' +
+            '<a href="javascript:void(0)" class="tiptip" title="Share" data-id="' + data[i]['_source'].title_id + '"data-title="' + data[i]['_source'].title + '" data-toggle="modal" data-target="#shareModal"><img  class="share_btn" src=../../assets/img/Engage.png alt="Smiley face" height="25" width="25"></a>' +
 
             // '<a href="/book_details/' + data[i].id + '" id="' + data[i].id + '" class="tiptip" title="Read">Read</a>' +
             '<div class="clear"></div>' +

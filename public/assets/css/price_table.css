@@ -60,7 +60,7 @@ Inspired by the dribble shot http://dribbble.com/shots/1285240-Freebie-Flat-Pric
     margin-bottom: 4rem;
 }
 .block{
-    width: 30%;
+    width: 22%;
     margin: 0 15px;
     overflow: hidden;
     -webkit-border-radius: 5px;
@@ -210,5 +210,18 @@ Inspired by the dribble shot http://dribbble.com/shots/1285240-Freebie-Flat-Pric
     border-top-color: #EB6379;
 }
 .business .pt-footer:after {
+    border-top-color: #FFFFFF;
+}
+
+.third .title{
+    background: #706FA6;
+}
+.third .content_pt,.third .pt-footer{
+    background: #8783bb;
+}
+.third .content_pt:after{
+    border-top-color: #8783bb;
+}
+.third .pt-footer:after {
     border-top-color: #FFFFFF;
 }

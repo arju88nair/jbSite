@@ -1,4 +1,7 @@
 {{> header }}
+<script type="text/javascript"
+        src="http://viralpatel.net/blogs/demo/jquery/jquery.shorten.1.0.js"></script>
+
 <style>.block-with-text {
     overflow: hidden;
     position: relative;
@@ -72,7 +75,7 @@
                                                     href="/author_details/{{id}}/{{name}}">{{name}} </a></p>
                                             {{/author}}
                                             {{/jb_info}}
-                                            <p  class="block-with-text"> {{description}}</p>
+                                            <p  class="comment"> {{description}}</p>
 {{#jb_info}}
                                             <div class="row-fluid" id="pad_10px">
                                                 <div class="span3 module_cont module_text_area module_none_padding1">
@@ -422,6 +425,17 @@
 
 {{> footer}}
 
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        $(".comment").shorten({
+            "showChars" : 440,
+            "moreText"	: "Read More",
+            "lessText"	: "Less",
+        });
+
+    });
+</script>
 <script type="application/javascript">
     $(document).ready(function () {
         var id = "{{titleid}}";

@@ -194,14 +194,14 @@ function getRecommend(data, visibleCardCount, ids, wishlist) {
         //if( i > 0 && i % 3 == 0){
         if (items == visibleCardCount) {
 
-            final_response += '<div class="item item_shelf_rec' + active + '">' + response + '</div>';
+            final_response += '<div class="item item_shelf_rec' + active + '" style="margin-left: 4%;">' + response + '</div>';
             response = "";
             items = 0;
         }
 
     }
     if (items < visibleCardCount && items > 0) {
-        final_response += '<div class="item item_shelf_rec ' + active + '">' + response + '</div>';
+        final_response += '<div class="item item_shelf_rec ' + active + '" style="margin-left: 4%;">' + response + '</div>';
     }
     return final_response;
 }
@@ -283,9 +283,13 @@ $(document).ready(function () {
 
         //get data-id attribute of the clicked element
         var address = $(e.relatedTarget).data('address');
+        var phone = $(e.relatedTarget).data('phone');
+        var email = $(e.relatedTarget).data('email');
 
         //populate the textbox
         $('#address').val(address);
+        $('#phone').val(phone);
+        $('#email').val(email);
     });
 
 
@@ -308,6 +312,8 @@ $(document).ready(function () {
             url: "/updateProfile",
             data: {
                 'address': $("#address").val(),
+                'email': $("#email").val(),
+                'phone': $("#phone").val(),
 
             },
             async: true,
@@ -399,7 +405,7 @@ $(document).ready(function () {
                 '<div class="jumbotron">' +
                 '<div class="row">' +
 
-                '<div class="column column-66"> <img src="https://www.gravatar.com/avatar/7b600a6db66bcececed9607db8acc4cc?s=100&amp;d=mm" alt="" style="max-width:100px;max-height:100px;border-radius:50%;float:left;margin: -40px 24px 16px 0;"> <div style="font-size: 18px;margin-top:-3% ;color:#000 !important; font-family: Playfair Display;" class="col-sm-10">  <span class="" style="font-family:Playfair Display;">' + current_plan['member_cross_reference']['first_name'] + '</span>  <a class="shortcode_button btn_small btn_type1" style="float:right;" href="" data-toggle="modal" data-address="' + current_plan['member_cross_reference']['full_address'] + '" data-target="#profileUpdate">Edit Profile</a></div></div>' + '<div class="column column-33"> <div class="card border-color-teal" style="border-top: 4px solid;padding:0;"> <table class="table table-striped" style="margin:0;font-family:Playfair Display;"> <tbody> <tr> <td>Member since</td> <td>' + current_plan['member_cross_reference']['start_date'] + '</td> </tr>   <tr> <td>E-mail</td> <td>vasim143s@gmail.com</td> </tr>  <tr> <td>Phone No</td> <td>' + current_plan['member_cross_reference']['mphone'] + '</td> </tr> <tr> <td>Address</td>  <td>' + current_plan['member_cross_reference']['full_address'] + '</td>  </tr> </tbody> </table> </div> </div>' + '</div>' +
+                '<div class="column column-66" style="cursor:default;"> <div style="font-size: 18px; color:#000 !important; font-family: Playfair Display;margin-top: -3%" class="col-sm-10">  <span class="">' + current_plan['member_cross_reference']['first_name'] + '</span>  <a class="shortcode_button btn_small btn_type1" style="float:right;" href="" data-toggle="modal" data-address="' + current_plan['member_cross_reference']['full_address'] + '" data-phone="'+current_plan['member_cross_reference']['mphone']+'" data-email="'+current_plan['member_cross_reference']['email']+'" data-target="#profileUpdate">Edit Profile</a></div></div>' + '<div class="column column-33"> <div class="card border-color-teal" style="cursor:default !important;border-top: 4px solid;padding:0;"> <table class="table table-striped" style="margin:0;font-family:Playfair Display;"> <tbody> <tr> <td>Member since</td> <td>' + current_plan['member_cross_reference']['start_date'] + '</td> </tr>   <tr> <td>E-mail</td> <td>' + current_plan['member_cross_reference']['email'] + '</td> </tr>  <tr> <td>Phone No</td> <td>' + current_plan['member_cross_reference']['mphone'] + '</td> </tr> <tr> <td>Address</td>  <td>' + current_plan['member_cross_reference']['full_address'] + '</td>  </tr> </tbody> </table> </div> </div>' + '</div>' +
                 '</div>');
 
             $("#left_menu_recommend").css('margin-top', '15%');
@@ -410,7 +416,7 @@ $(document).ready(function () {
 });
 
 
-function generateDIV(arr, funcName, idName, btnTxt, style, ids,statusKey,statusStyle) {
+function generateDIV(arr, funcName, idName, btnTxt, style, ids,statusKey,statusStyle,shareStyle,wishStyle,custStyle) {
     $('#change_plan').html('');
     var response = '';
     arr.forEach(function (arr_data) {
@@ -426,12 +432,13 @@ function generateDIV(arr, funcName, idName, btnTxt, style, ids,statusKey,statusS
         }
 
         response += '<div id="alertDiv" class="alert  alert-dismissable" style="display: none"><a  href="#" class="close"  aria-label="close" onclick="hideAlert()">&times;</a>' +
-            '<span id="alertText"></span></div><div class="col-md-6 col-xs-12 module_cont module_shelf shadow1" style="height: 180px;">' +
+            '<span id="alertText"></span></div><div id="div' + arr_data['id'] + '" class="col-md-6 col-xs-12 module_cont module_shelf shadow1" style="height: 180px;">' +
             '<div class="col-md-5 col-xs-5">' +
             '<a href="/book_details/' + arr_data['id'] + '/' + arr_data['title'] + '">' +
             '<img src="' + arr_data['image_url'] + '" class="img-responsive" alt="..." style="margin-top: -20px;height: 145px" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'">' +
             '</a>' +
             '</div>' +
+
             '<div class="col-md-7 col-xs-7" id="module_shelf">' +
             '<h4 style=" width: 100%;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">' + arr_data['title'] + '</h4>' +
             '<p>' + arr_data['author'] + '</p>' +
@@ -442,13 +449,17 @@ function generateDIV(arr, funcName, idName, btnTxt, style, ids,statusKey,statusS
             '<div class="col-md-3 col-xs-2" style="margin-right: 26%;margin-top: 4%;margin-left:-9%">' +
             '<a class="shortcode_button btn_small btn_type10"  data-toggle="modal" data-id='+arr_data['id']+' data-title="'+arr_data['title']+'"  data-target="#rateModal">Rate/Review</a>' +
             '</div>' +
-            '<div class="col-md-3 col-xs-2" style="margin-right: -8%;margin-top: 4%">' +
+            '<div class="col-md-3 col-xs-2" style="margin-right: -8%;margin-top: 4%;display: '+custStyle+'">' +
             '<a href="javascript:void(0)" class="shortcode_button btn_small btn_type10" onclick="' + funcName + '(this,' + arr_data['id'] + ')"  id="' + arr_data[idName] + '">' + btnTxt + '</a>' +
             '</div>' +
-            '<div class="col-md-3 col-xs-5" style="display:' + style + ';margin-top: 2%;float:right">' +
-            '<a   class="tiptip" onclick="addWishlist(' + arr_data['id'] + ')"  id="' + arr_data[idName] + '"><img id="wish_' + arr_data['id'] + '" class="wishlist_btn" src=' + image + ' alt="Smiley face" height="25" width="25"></a>' +
-            '</div>' +
-            '</div></div><a onclick="statusCheck(this,' + arr_data[statusKey] + ')" id="status_' + arr_data['id'] + '" style="text-decoration: underline; display:' + style + '" href="javascript:void(0)">Track Status</a><p id="message_' + arr_data[statusKey] + '" style="display: none;color:green;font-weight: bold" ></p></div>';
+            '</div></div>' +
+            '<a onclick="statusCheck(this,' + arr_data[statusKey] + ')" id="status_' + arr_data['id'] + '" style="text-decoration: underline; display:' + style + '" href="javascript:void(0)">Track Status</a><p id="message_' + arr_data[statusKey] + '" style="display: none;color:green;font-weight: bold" ></p>' +
+            '<div class="col-md-4" style="float: left;'+shareStyle+'">' +
+            '<a href="javascript:void(0)" class="tiptip" title="Share" data-id="' + arr_data['id'] + '" data-title="' + arr_data['title'] + '" data-toggle="modal" data-target="#shareModal" style="margin-left: 10%">' +
+            '<img class="share_btn" src=../../assets/img/Engage.png alt="Smiley face" height="25" width="25"></a>' +
+            '<a   style="display:' + wishStyle + ';class="tiptip" onclick="addWishlist(' + arr_data['id'] + ')"  id="' + arr_data[idName] + '"><img id="wish_' + arr_data['id'] + '" class="wishlist_btn" src=' + image + ' alt="Smiley face" height="25" width="25"></a>' +
+            '</div>'+
+            '</div>';
     });
     return response;
 }
@@ -483,7 +494,7 @@ $('#wishlist').click(function (e) {
 
             var response = '';
             var i = 0;
-            var final_response = generateDIV(new_data['data']['result'], 'removeWishlist', 'title_id', 'Remove', 'none', new_data['wishlist'],'','none');
+            var final_response = generateDIV(new_data['data']['result'], 'removeWishlist', 'title_id', 'Remove', 'none', new_data['wishlist'],'','none','margin-top: 34%;margin-left: -97%;','none','block');
             $('#shelf_data').html('');
             $('#shelf_data').append(final_response);
             $("#left_menu_recommend").show();
@@ -526,7 +537,7 @@ $('#ordered_books').click(function (e) {
             } else {
                 var id = 'delivery_order_id';
             }
-            var final_response = generateDIV(new_data['data']['result'], 'cancelOrder', 'delivery_order_id', 'Cancel', 'block', new_data['wishlist'],'delivery_order_id','block');
+            var final_response = generateDIV(new_data['data']['result'], 'cancelOrder', 'delivery_order_id', 'Cancel', 'inline-block', new_data['wishlist'],'delivery_order_id','block','margin-top: 6%;margin-left: -40%', 'inline-block','block');
             $('#shelf_data').append(final_response);
             $("#left_menu_recommend").css('margin-top', '33%');
 
@@ -565,7 +576,7 @@ $('#currently_reading').click(function (e) {
             }
             $("#emptyResult").hide();
             $("#left_menu_recommend").show();
-            var final_response = generateDIV(new_data['data']['result'], 'placePickup', 'rental_id', 'Return', 'none', new_data['wishlist'],'','none');
+            var final_response = generateDIV(new_data['data']['result'], 'placePickup', 'rental_id', 'Return', 'inline-block', new_data['wishlist'],'','none','margin-top: 6%;margin-left: -40%', 'inline-block','block');
             $('#shelf_data').html('');
             $('#shelf_data').append(final_response);
             $("#left_menu_recommend").css('margin-top', '33%');
@@ -605,7 +616,7 @@ $('#pick_up').click(function (e) {
             $("#emptyResult").hide();
 
 
-            var final_response = generateDIV(new_data['data']['result'], 'cancelPickup', 'rental_id', 'Cancel', 'block', new_data['wishlist'],'delivery_order_id','block');
+            var final_response = generateDIV(new_data['data']['result'], 'cancelPickup', 'rental_id', 'Cancel', 'inline-block', new_data['wishlist'],'delivery_order_id','block','margin-top: 6%;margin-left: -40%', 'inline-block','block');
             $('#shelf_data').html('');
             $('#shelf_data').append(final_response);
             $("#left_menu_recommend").css('margin-top', '33%');
@@ -648,7 +659,7 @@ $('#profile').click(function (e) {
                 '<div class="jumbotron">' +
                 '<div class="row">' +
 
-                '<div class="column column-66"> <img src="https://www.gravatar.com/avatar/7b600a6db66bcececed9607db8acc4cc?s=100&amp;d=mm" alt="" style="max-width:100px;max-height:100px;border-radius:50%;float:left;margin: -40px 24px 16px 0;"> <div style="font-size: 18px; color:#000 !important; font-family: Playfair Display;margin-top: -3%" class="col-sm-10">  <span class="">' + current_plan['member_cross_reference']['first_name'] + '</span>  <a class="shortcode_button btn_small btn_type1" style="float:right;" href="" data-toggle="modal" data-address="' + current_plan['member_cross_reference']['full_address'] + '" data-target="#profileUpdate">Edit Profile</a></div></div>' + '<div class="column column-33"> <div class="card border-color-teal" style="border-top: 4px solid;padding:0;"> <table class="table table-striped" style="margin:0;font-family:Playfair Display;"> <tbody> <tr> <td>Member since</td> <td>' + current_plan['member_cross_reference']['start_date'] + '</td> </tr>   <tr> <td>E-mail</td> <td>vasim143s@gmail.com</td> </tr>  <tr> <td>Phone No</td> <td>' + current_plan['member_cross_reference']['mphone'] + '</td> </tr> <tr> <td>Address</td>  <td>' + current_plan['member_cross_reference']['full_address'] + '</td>  </tr> </tbody> </table> </div> </div>' + '</div>' +
+                '<div class="column column-66" style="cursor:default;"> <div style="font-size: 18px; color:#000 !important; font-family: Playfair Display;margin-top: -3%" class="col-sm-10">  <span class="">' + current_plan['member_cross_reference']['first_name'] + '</span>  <a class="shortcode_button btn_small btn_type1" style="float:right;" href="" data-toggle="modal" data-address="' + current_plan['member_cross_reference']['full_address'] + '" data-phone="'+current_plan['member_cross_reference']['mphone']+'" data-email="'+current_plan['member_cross_reference']['email']+'" data-target="#profileUpdate">Edit Profile</a></div></div>' + '<div class="column column-33"> <div class="card border-color-teal" style="cursor:default !important;border-top: 4px solid;padding:0;"> <table class="table table-striped" style="margin:0;font-family:Playfair Display;"> <tbody> <tr> <td>Member since</td> <td>' + current_plan['member_cross_reference']['start_date'] + '</td> </tr>   <tr> <td>E-mail</td> <td>' + current_plan['member_cross_reference']['email'] + '</td> </tr>  <tr> <td>Phone No</td> <td>' + current_plan['member_cross_reference']['mphone'] + '</td> </tr> <tr> <td>Address</td>  <td>' + current_plan['member_cross_reference']['full_address'] + '</td>  </tr> </tbody> </table> </div> </div>' + '</div>' +
                 '</div>'
             );
 
@@ -693,13 +704,12 @@ $('#subscription').click(function (e) {
             var response = '';
             var i = 0;
             var colors = ['#EFAC54', '#347AB6', '#5BB85D', '#59C0E1'];
-            if (change_plan['errors'] !== null) {
-                console.log(change_plan['error'])
-                $("#emptyResult").text(change_plan['errors']);
-                $("#emptyResult").show();
-
-                return false;
-            }
+            // if (change_plan.length === 0) {
+            //     $("#emptyResult").text(change_plan['errors']);
+            //     $("#emptyResult").show();
+            //
+            //     return false;
+            // }
 
 
             $('#shelf_data').append('<br><div class="row" style="margin-left: 0px !important;">' +
@@ -735,7 +745,7 @@ $('#subscription').click(function (e) {
                 '</div>'+
                 '</div>' +
 
-                '<div class="col-sm-3">' +
+                '<div class="col-sm-3" >' +
 
                 '<div class="gallery-view">' +
                 '<div data-reveal-group="relations22" class="column column-50" data-sr-id="4">' +
@@ -751,7 +761,7 @@ $('#subscription').click(function (e) {
                 '</div>'+
                 '</div>' +
 
-                '<div class="col-sm-3">' +
+                '<div class="col-sm-3" style="margin-top:3%">' +
                 '<div class="text-right">' +
                 '<button data-toggle="collapse" data-target="#demo" class="shortcode_button btn_small btn_type10" role="button" onclick="RenewButton()">Renew Plan &nbsp;&nbsp;</button>' +
                 '<br><br><button  data-toggle="collapse" data-target="#break" class="shortcode_button btn_small btn_type10" role="button" onclick="breakButton()">Take a break</button>' +
@@ -774,7 +784,7 @@ $('#subscription').click(function (e) {
                 '<label for="pwd">Start Date:</label><input class="form-control" type="text" id="datePickInput" readonly required="required" name="datePickInput" required>' +
                 '</div><button type="button" class="btn btn-default" onclick="breakValidate()">Submit</button><br><br><hr><p id="textSpanBreak" style="margin-left:0%;display:none;font-weight:bold;font-size:143%"></p><br><p id="textSpanBreakDate" style="margin-left:0%;display:none;font-weight:bold;font-size:143%"></p><br><button id="BreakBUtton" style="display: none;float: left;" type="button" class="btn btn-primary btn-md" onclick="proceedBreak()">Proceed</button><span class="breakAmount" style="display: none"></span><span class="breakAMountPay" style="display: none"></span><span class="breakDate" style="display: none"></span><br><br><br><br><hr style="display:none" id="hrTag"><div id="aboutBreak" style= "display:none" class="col-md-12"><p><b>What\'s \'Take a break\' ?</b></p><p>Through a feature called “Subscription Holiday”, JustBooksclc allows the member to pause the membership (temporary suspension), for a duration of 1 month, 2 months or 3 months before expiration of membership. During Subscription Holiday period, a member will not be able to use the library. To utilise this feature, a member is required to fill up the Subscription Holiday Form either at the branch or online. All issued books and magazines should be returned to the JustBooksclc branch before the start date of Subscription Holiday. Members who pay for Yearly and Half-yearly terms will receive free Subscription Holidays of 2 months and 1 month respectively, and are required to pay Rs. 50/- per month there after. Quarterly members are required to pay Rs. 50/- per month to avail the feature.</p></div></div></div></form></div>' +
                 '<div class="row collapse" id=\"demo\" style="/*! border: thin solid black; */margin-left: -1%;width: 94%;">' +
-                '<div class="col-sm-3">' +
+                '<div class="col-sm-3" >' +
                 '<div class="form-group " >' +
                 '<label for="sel1">Select a renewal duration :</label>' +
                 '<select class="form-control" id="sel1" onchange="textChange()">' +
@@ -796,8 +806,7 @@ $('#subscription').click(function (e) {
             var colors = ['block personal fl', 'block professional fl', 'block business fl'];
 
 
-            change_plan['result'].forEach(function (arr) {
-
+            change_plan.forEach(function (arr) {
                 var i = 0;
                 var plan_durations = arr['change_plan_detail']['plan_durations'];
 //                    response += '<h4>Upgrade your current plan</h4><div class="price_item" style="width:20%">' +
@@ -813,7 +822,7 @@ $('#subscription').click(function (e) {
 //                            '</div></div>';
                 response = "";
                 if (plan_durations != null) {
-                    response += '<div class="col-md-4"><div class="' + colors[i] + '" style="text-align: center;width:100%/*! height: 314px; */"><h4 class="title">' + arr["change_plan_detail"]['plan_name'] + '</h4> <a href="/change_plan?id=' + arr["change_plan_detail"]['plan_id'] + '&planname=' + arr["change_plan_detail"]['promo_code'] + '"><div class="content_pt" style="margin: -9%;"> <p class="price"><sup>₹</sup><span> ' + arr["change_plan_detail"]['reading_fee'] + '</span><sub></sub></p></div></a><ul class="features" style="margin-top: 8%;height: 130px;list-style-type: none !important;padding: 0;/*! margin: 0; */margin-left: -5%;"><li style="line-height: 39px;">No of books -   ' + arr["change_plan_detail"]['books'] + '</li><li style="line-height: 39px;">Security Deposit - Rs ' + arr["change_plan_detail"]['security_deposit'] + ' </li><li style="line-height: 39px;">Registration Fee - Rs ' + arr["change_plan_detail"]['registration_fee'] + '</li></ul><div class="pt-footer"><h4><a href="/change_plan?id=' + arr["change_plan_detail"]['plan_id'] + '&planname=' + arr["change_plan_detail"]['promo_code'] + '">GET IT NOW !</a></h4></div></div></div>';
+                    response += '<div class="col-md-4" style="margin-top:1%"><div class="' + colors[i] + '" style="text-align: center;width:100%/*! height: 314px; */"><h4 class="title">' + arr["change_plan_detail"]['plan_name'] + '</h4> <a href="/change_plan?id=' + arr["change_plan_detail"]['plan_id'] + '&planname=' + arr["change_plan_detail"]['promo_code'] + '"><div class="content_pt" style="margin: -9%;"> <p class="price"><sup>₹</sup><span> ' + arr["change_plan_detail"]['reading_fee'] + '</span><sub></sub></p></div></a><ul class="features" style="margin-top: 8%;height: 130px;list-style-type: none !important;padding: 0;/*! margin: 0; */margin-left: -5%;"><li style="line-height: 39px;">No of books -   ' + arr["change_plan_detail"]['books'] + '</li><li style="line-height: 39px;">Security Deposit - Rs ' + arr["change_plan_detail"]['security_deposit'] + ' </li><li style="line-height: 39px;">Registration Fee - Rs ' + arr["change_plan_detail"]['registration_fee'] + '</li></ul><div class="pt-footer"><h4><a href="/change_plan?planname=' + arr["change_plan_detail"]['promo_code'] + '&books=' + arr["change_plan_detail"]['books'] + '&months='+arr["change_plan_detail"]['plan_durations'][0]['plan_duration']['change_plan_months']+'">UPGRADE NOW !</a></h4></div></div></div>';
                     i++;
                     if (i >= colors.length) {
                         i = 0;
@@ -883,14 +892,14 @@ function removeWishlist(elem, id) {
         url: "/removeWishList",
         data: {'titleid': id},
         success: function (data) {
-
+console.log(data)
             $(".spinner").hide();
             $("#alertDiv").addClass("alert-success");
             $("#alertDiv").show();
             $("#alertText").text("Successfully removed")
-            if (data == 'success') {
-                $('#' + id).closest('.module_shelf').remove();
-            }
+            $('#div' + id).closest('.module_shelf').remove();
+
+
         },
 
     });
@@ -941,9 +950,17 @@ function cancelOrder(elem, id) {
             $(".spinner").hide();
             data = JSON.parse(data)
             if (data['success'] == 'true') {
+                $('#div' + id).closest('.module_shelf').remove();
+
                 $("#alertDiv").addClass("alert-success");
                 $("#alertDiv").show();
                 $("#alertText").text("Successfully cancelled")
+            }
+            else{
+
+                $("#alertDiv").addClass("alert-danger");
+                $("#alertDiv").show();
+                $("#alertText").text("Something went wrong! Please try againg !");
             }
         },
 
@@ -956,7 +973,6 @@ function pastReads() {
     $("li a#pastreads").addClass('active');
     $(".spinner").show();
 
-
     $.ajax({
         type: "GET",
         url: "/rentalHistory",
@@ -965,18 +981,23 @@ function pastReads() {
             data = JSON.parse(data);
             console.log(data);
             $("#left_menu_recommend").show();
+
+
+
+
+
             if (data['data']['result'].length == 0) {
                 $('#shelf_data').html('');
 
                 $("#emptyResult").show();
-                $("#emptyResult").text("No pickup requests !");
+                $("#emptyResult").text("No past reads yet !");
                 $("#left_menu_recommend").css('margin-top', '33%');
 
                 return false;
             }
             $("#emptyResult").hide();
             if (data['data']['success'] == true) {
-                var final_response = generateDIV(data['data']['result'], 'placePickup', 'id', 'Pickup', 'none', data['wishlist'],'','none');
+                var final_response = generateDIV(data['data']['result'], 'placePickup', 'id', 'Pickup', 'none', data['wishlist'],'','none','margin-top: 34%;margin-left: -97%;', 'inline-block','none');
                 $('#shelf_data').html('');
                 $('#shelf_data').append(final_response);
                 $("#left_menu_recommend").css('margin-top', '33%');

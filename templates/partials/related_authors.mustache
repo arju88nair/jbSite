@@ -25,12 +25,6 @@
         <a id="anchor8"></a>
     </div>
 </div>
-<!--<script>-->
-<!--$('.multi-item-carousel').carousel({-->
-<!--interval: false-->
-<!--});-->
-<!--</script>-->
-<!--<script src="assets/js/home_page_Api.js"></script>-->
 
 <script>
     var id="{{id}}";
@@ -84,7 +78,7 @@
             }
             response += '<div class="col-md-2" style="width: 18%;">' +
                     '<div class="item item_shadow">' +
-                    '<div class="img_block_books"><a href="/author_details/' + data[i]['_source'].author_id + '/' + data[i]['_source'].author_name + '"><img src="'+data[i]['_source'].image_url+'" alt="Anna" onerror="this.src=\'../../assets/img/user.png\'"></a></div>' +
+                    '<div class="img_block_books"><a href="/author_details/' + data[i]['_source'].author_id + '/' + data[i]['_source'].author_name + '"><img src="'+data[i]['_source'].image_url+'"  onerror="this.src=\'../../assets/img/user.png\'"></a></div>' +
                     '<div class="carousel_body_author">' +
                     '<div class="carousel_title_author"><h5 title="' + data[i]['_source'].author_name + '">' + data[i]['_source'].author_name + '</h5></div>' +
                     '<div class="carousel_desc">' +

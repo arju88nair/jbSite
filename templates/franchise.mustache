@@ -169,6 +169,7 @@
                console.log(data)
                 data=JSON.parse(data)
                 if (data === 'success') {
+                    window.location.reload();
                     toastr.success("Successfully updated");
 
                 }
