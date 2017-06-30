@@ -49,6 +49,7 @@
         list-style: none !important;
     }
 </style>
+<script src="../../assets/js/state.js"></script>
 <script src="../../assets/js/socialCircle.js"></script>
 
 <div class="main_wrapper"  style="margin-top: 10%">
@@ -316,7 +317,7 @@
                                 </div>
                             </div>
                             <div id="profileUpdate" class="modal fade" role="dialog" style="z-index: 10000">
-                                <div class="modal-dialog" style="top:-40%;width:100%">
+                                <div class="modal-dialog" style="top:-80%;width:200%;margin-left:-47%">
 
                                     <!-- Modal content-->
                                     <div class="modal-content">
@@ -325,7 +326,36 @@
                                             <h4 class="modal-title">Update your profile</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <form>
+                                            <form >
+                                                <div class="form-group">
+                                                    <label for="email">Address:</label>
+                                                    <input type="text" maxlength="30" class="form-control" id="address1" placeholder="Address 1"
+                                                              required></input>
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" maxlength="30" class="form-control" id="address2" placeholder="Address 2"
+                                                              required></input>
+                                                </div> <div class="form-group">
+                                                    <input type="text" maxlength="30" class="form-control" id="address3" placeholder="Address 3"
+                                                              required></input>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-sm-4">
+                                                        <label>State:</label>
+                                                        <select class="form-control" id="state" name="state" onchange='selct_district(this.value)' required>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <label>City:</label>
+                                                        <select class="form-control" id="city" name="city" required>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <label>Zip/Post:</label>
+                                                        <input type="number" class="form-control" id="zip" required name="zip" pattern="[0-9]{6}" title="Six digit zip code"  maxlength="6" required>
+                                                    </div>
+                                                </div>
+
                                                 <div class="form-group">
                                                     <label for="phone">Phone :</label>
                                                     <input type="number" class="form-control" id="phone" maxlength="10"
@@ -337,11 +367,7 @@
                                                           required></input>
                                             </div>
 
-                                                <div class="form-group">
-                                                    <label for="email">Address:</label>
-                                                    <textarea type="text" class="form-control" id="address"
-                                                              required></textarea>
-                                                </div>
+
 
 
                                                 <button type="submit" class="btn btn-info">Submit</button>

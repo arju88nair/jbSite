@@ -129,7 +129,7 @@
                                         </div>
                                         <div class="col-sm-11">
                                             <div class="col-sm-offset-2 col-sm-8">
-                                                <a href="#tagHead" class="btn btn-success btn-block" id="plan_submit">Sign
+                                                <a href="#tagHead" class="btn shortcode_button btn_small btn_type1" id="plan_submit">Sign
                                                     up Now</a>
                                             </div>
                                         </div>
@@ -199,7 +199,7 @@
                                     </div>
                                     <div class="col-sm-4">
                                         <label>Zip/Post:</label>
-                                        <input type="text" class="form-control" id="zip" name="zip" required>
+                                        <input type="text" class="form-control" id="zip" name="zip" pattern="[0-9]{6}" title="Six digit zip code" required>
                                     </div>
                                 </div>
                             </div>
@@ -251,7 +251,7 @@
                                                placeholder="Coupon Code" name="coupon_code">
                                     </div>
                                     <div class="col-sm-2" style="padding-top:22px;">
-                                        <button type="submit" class="btn btn-warning" id="coupon_submit">Apply</button>
+                                        <button type="submit" class="btn shortcode_button btn_small btn_type1" id="coupon_submit">Apply</button>
                                     </div>
                                 </div>
                             </div>
@@ -268,7 +268,7 @@
                                                name="gift_card_pin">
                                     </div>
                                     <div class="col-sm-2" style="padding-top:22px;">
-                                        <button type="submit" class="btn btn-warning" id="gift_card_submit">Apply
+                                        <button type="submit" class="btn shortcode_button btn_small btn_type1" id="gift_card_submit">Apply
                                         </button>
                                     </div>
                                 </div>
@@ -298,7 +298,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <div class="col-sm-6">
-                                        <button type="submit"  class="btn btn-success btn-block" id="signup" disabled>Register
+                                        <button type="submit"  class="btn shortcode_button btn_small btn_type1" id="signupBtn" disabled>Register
                                         </button>
                                     </div>
                                 </div>
@@ -354,7 +354,8 @@
 
 
         $('#checkbox').click(function(){
-            $("#signup").attr("disabled", !this.checked);
+            alert("F")
+            $("#signupBtn").attr("disabled", !this.checked);
         });
         var planname = "{{planname}}";
         var planid = "{{planid}}";
@@ -378,9 +379,9 @@
 
         'display': 'block',
         'background-color': '#fff',
-        'box-shadow':' 1px 1px 8px #999',
+        'box-shadow':' 1px 1px 5px #999',
         'cursor': 'pointer',
-        'border': '1px solid #A9A9A9'
+        'border-bottom': '4px solid red'
 
     });
     $('#months').on('change', function () {
@@ -523,7 +524,7 @@
             return false;
         }
         if ($("#password").val() !== $("#Cpassword").val()) {
-            toastr.error("Passwords doens't match");
+            toastr.error("Passwords do not match");
             return false;
         } if ($("#password").val() <6 ) {
             toastr.error("Password is too short");

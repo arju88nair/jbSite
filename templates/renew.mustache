@@ -102,7 +102,7 @@
         var membership=localStorage.getItem("membership");
         $.ajax({
             type: "GET",
-            url: "http://staging.justbooksclc.com:8990/api/v1/get_renewal_terms.json?email=ravi@freenet.zone&membercard=M103604",
+            url: "http://justbooksclc.com/api/v1/get_renewal_terms.json?email="+email+"&membercard="+membership+"",
             success: function (data_new) {
                 console.log(data_new);
                 var response = '';
@@ -147,11 +147,11 @@
     {
         var email=localStorage.getItem("email");
         var membership=localStorage.getItem("membership");
-        console.log("http://staging.justbooksclc.com:8990/api/v1/renewal_payment.json?email="+email+"&membercard="+membership+"&term="+termMonth+"&delivery_option=null&delivery_fees="+fee+"&coupon_code=null&gift_card_no=null&pin=null")
+        console.log("http://justbooksclc.com/api/v1/renewal_payment.json?email="+email+"&membercard="+membership+"&term="+termMonth+"&delivery_option=null&delivery_fees="+fee+"&coupon_code=null&gift_card_no=null&pin=null")
         $.ajax({
             type: "GET",
             dataType: "json",
-            url: "http://staging.justbooksclc.com:8990/api/v1/renewal_payment.json?email="+email+"&membercard="+membership+"&term="+termMonth+"&delivery_option=null&delivery_fees="+fee+"&coupon_code=null&gift_card_no=null&pin=null",
+            url: "http://justbooksclc.com/api/v1/renewal_payment.json?email="+email+"&membercard="+membership+"&term="+termMonth+"&delivery_option=null&delivery_fees="+fee+"&coupon_code=null&gift_card_no=null&pin=null",
             success: function (data_new) {
                 console.log(data_new);
 
@@ -161,7 +161,7 @@
                     $.ajax({
                         type: "GET",
                         dataType: "json",
-                        url: "http://staging.justbooksclc.com:8990/api/v1/confirm_renewal.json?email="+email+"&membercard="+membership+"&payable_amount="+data_new.result.payable_amount+"&convenience_fee="+data_new.result.convenience_fee+"&renewal_payment_type="+data_new.result.renewal_payment_type+"&plan_id="+data_new.result.plan_id+"&card_number="+data_new.result.card_number+"&member_id="+data_new.result.member_id+"&delivery_fees="+data_new.result.delivery_fees+"&delivery_fees_dormant="+data_new.result.delivery_fees_dormant+"&delivery_option="+data_new.result.delivery_option+"&term="+data_new.result.term+"&member_branch_id="+data_new.result.term+"&member_branch_id="+data_new.result.member_branch_id+"&overdue_adjustment="+data_new.result.overdue_adjustment+"&reward_points="+data_new.result.reward_points+"&gift_card_no="+data_new.result.gift_card_no+"&qc_flag="+data_new.result.qc_flag+"&redeemed_amount="+data_new.result.redeemed_amount+"&pin="+data_new.result.pin+"&coupon_no=null&coupon_id=null&coupon_amount=null",
+                        url: "http://justbooksclc.com/api/v1/confirm_renewal.json?email="+email+"&membercard="+membership+"&payable_amount="+data_new.result.payable_amount+"&convenience_fee="+data_new.result.convenience_fee+"&renewal_payment_type="+data_new.result.renewal_payment_type+"&plan_id="+data_new.result.plan_id+"&card_number="+data_new.result.card_number+"&member_id="+data_new.result.member_id+"&delivery_fees="+data_new.result.delivery_fees+"&delivery_fees_dormant="+data_new.result.delivery_fees_dormant+"&delivery_option="+data_new.result.delivery_option+"&term="+data_new.result.term+"&member_branch_id="+data_new.result.term+"&member_branch_id="+data_new.result.member_branch_id+"&overdue_adjustment="+data_new.result.overdue_adjustment+"&reward_points="+data_new.result.reward_points+"&gift_card_no="+data_new.result.gift_card_no+"&qc_flag="+data_new.result.qc_flag+"&redeemed_amount="+data_new.result.redeemed_amount+"&pin="+data_new.result.pin+"&coupon_no=null&coupon_id=null&coupon_amount=null",
                         success: function (data) {
                             console.log(data);
 

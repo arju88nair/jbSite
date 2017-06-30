@@ -59,6 +59,16 @@ function curlFunctionEs($url)
     curl_close($ch);
     return $raw_data;
 }
+//function curlFunctionPost($url)
+//{
+//    $ch = curl_init();
+//    curl_setopt($ch, CURLOPT_URL, API_URL_ES . $url);
+//    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+//    curl_setopt($ch, CURLOPT_POSTFIELDS, "isbn=$isbn&product_id=$product_id&author=$author&label=$label&price=$price&manufacturer=$manufacturer&pages=$pages&publicationdate=$publicationdate&publisher=$publisher&title=$title&image_url=$image_url&editorialreview=$editorialreview&description=$description&language=$language&category_string=$category_string");
+//    $raw_data = curl_exec($ch);
+//    curl_close($ch);
+//    return $raw_data;
+//}
 
 $app->get('/', function (Request $request, Response $response) {
 
@@ -224,16 +234,18 @@ $app->get('/getPlanFees', function (Request $request, Response $response) {
     $book = $allGetVars['book'];
     $months = $allGetVars['months'];
 
-    if(isset($_SESSION['branchID']))
-    {
-        $branch_id=$_SESSION['branchID'];
-        $plan_data_curl = curlFunction('get_all_plans.json?branch_id='.$branch_id);
-
-    }
-    else{
-        $plan_data_curl = curlFunction('get_all_plans.json');
-
-    }    $plan_data = json_decode($plan_data_curl);
+//    if(isset($_SESSION['branchID']))
+//    {
+//        $branch_id=$_SESSION['branchID'];
+//        $plan_data_curl = curlFunction('get_all_plans.json?branch_id='.$branch_id);
+//
+//    }
+//    else{
+//        $plan_data_curl = curlFunction('get_all_plans.json');
+//
+//    }
+    $plan_data_curl = curlFunction('get_all_plans.json');
+    $plan_data = json_decode($plan_data_curl);
     $data = $plan_data->result;
 
     $data = json_decode(json_encode($data), True);
@@ -283,7 +295,7 @@ $app->get('/getChangePlanFees', function (Request $request, Response $response) 
 
     $temp_array = array();
     foreach ($data as $v) {
-        if ($v['change_plan_detail']['promo_code'] === $planname) {
+        if (strtoupper($v['change_plan_detail']['promo_code']) === strtoupper($planname)) {
             array_push($temp_array, $v);
         }
 
@@ -296,7 +308,7 @@ $app->get('/getChangePlanFees', function (Request $request, Response $response) 
             foreach ($item['change_plan_detail']['plan_durations'] as $plans) {
 
                 if ($plans['plan_duration']['change_plan_months'] == $months) {
-                    echo json_encode(array("total" => $plans['plan_duration']['payable_amount'], 'reading_fee' => $item['change_plan_detail']['reading_fee'], 'reg_fee' => $item['change_plan_detail']['available_balance'], 'sec_deposit' => $item['change_plan_detail']['balance_due']));
+                    echo json_encode(array("total" => $plans['plan_duration']['payable_amount'], 'reading_fee' => $item['change_plan_detail']['reading_fee'], 'available_balance' => $item['change_plan_detail']['available_balance'], 'balance_due' => $item['change_plan_detail']['balance_due']));
                     die;
 
                 }
@@ -311,31 +323,35 @@ $app->get('/signup', function (Request $request, Response $response) {
     $allGetVars = $request->getQueryParams();
 
     $con = $this->db;
-    if(isset($_SESSION['branchID']))
-    {
-        $query_city = "SELECT *  FROM memp.FN_HOME_PAGE_PLANS WHERE ACTIVE = 1 and FOR_VIRTUAL = 0";
+//    if(isset($_SESSION['branchID']))
+//    {
+//        $query_city = "SELECT *  FROM memp.FN_HOME_PAGE_PLANS WHERE ACTIVE = 1 and FOR_VIRTUAL = 0";
+//
+//    }
+//    else{
+//        $query_city = "SELECT *  FROM memp.FN_HOME_PAGE_PLANS WHERE ACTIVE = 1 and FOR_VIRTUAL = 1";
+//
+//    }
+    $query_city = "SELECT *  FROM memp.FN_HOME_PAGE_PLANS WHERE ACTIVE = 1 and FOR_VIRTUAL = 1";
 
-    }
-    else{
-        $query_city = "SELECT *  FROM memp.FN_HOME_PAGE_PLANS WHERE ACTIVE = 1 and FOR_VIRTUAL = 1";
-
-    }
     $result_city = oci_parse($con, $query_city);
     oci_execute($result_city);
     while ($row = oci_fetch_assoc($result_city)) {
         $planData[] = $row;
     }
 
-    if(isset($_SESSION['branchID']))
-    {
-        $branch_id=$_SESSION['branchID'];
-        $plan_data_curl = curlFunction('get_all_plans.json?branch_id='.$branch_id);
+//    if(isset($_SESSION['branchID']))
+//    {
+//        $branch_id=$_SESSION['branchID'];
+//        $plan_data_curl = curlFunction('get_all_plans.json?branch_id='.$branch_id);
+//
+//    }
+//    else{
+//        $plan_data_curl = curlFunction('get_all_plans.json');
+//
+//    }
+    $plan_data_curl = curlFunction('get_all_plans.json');
 
-    }
-    else{
-        $plan_data_curl = curlFunction('get_all_plans.json');
-
-    }
     $plan_data = json_decode($plan_data_curl);
     $data = $plan_data->result;
 
@@ -390,8 +406,10 @@ $app->get('/signup', function (Request $request, Response $response) {
 
 
     }
-    $count = array_values(array_unique((array)$count, SORT_REGULAR));
 
+
+    $count = array_values(array_unique($count, SORT_REGULAR));
+    sort($count);
 
     $monthsArray = [];
     foreach ($array as $item) {
@@ -493,15 +511,17 @@ $app->get('/getPlan', function (Request $request, Response $response) {
 //    $array = array_values($temp_array);
 
     $con = $this->db;
-    if(isset($_SESSION['branchID']))
-    {
-        $query_city = "SELECT *  FROM memp.FN_HOME_PAGE_PLANS WHERE ACTIVE = 1 and FOR_VIRTUAL = 0";
+//    if(isset($_SESSION['branchID']))
+//    {
+//        $query_city = "SELECT *  FROM memp.FN_HOME_PAGE_PLANS WHERE ACTIVE = 1 and FOR_VIRTUAL = 0";
+//
+//    }
+//    else{
+//        $query_city = "SELECT *  FROM memp.FN_HOME_PAGE_PLANS WHERE ACTIVE = 1 and FOR_VIRTUAL = 1";
+//
+//    }
+    $query_city = "SELECT *  FROM memp.FN_HOME_PAGE_PLANS WHERE ACTIVE = 1 and FOR_VIRTUAL = 1";
 
-    }
-    else{
-        $query_city = "SELECT *  FROM memp.FN_HOME_PAGE_PLANS WHERE ACTIVE = 1 and FOR_VIRTUAL = 1";
-
-    }
     $result_city = oci_parse($con, $query_city);
     oci_execute($result_city);
     while ($row = oci_fetch_assoc($result_city)) {
@@ -653,7 +673,7 @@ $app->post('/removeWishList', function (Request $request, Response $response) {
     $api_key = $_SESSION['api_key'];
     $email = $_SESSION['email'];
 //    $result = curlFunction("wishlists/destroy.json?email=$email&membership_no=$membership_no&api_key=$api_key&id=$titleid");
-    $result = curlFunctionEs("removeWishlist?membership_no=$membership_no&title_id=$titleid");
+    $result = curlFunctionEs("/removeWishlist?membership_no=$membership_no&title_id=$titleid");
     echo json_encode($result);
 });
 
@@ -671,7 +691,6 @@ $app->get('/getCurrentReading', function (Request $request, Response $response) 
     $api_key = $_SESSION['api_key'];
     $email = $_SESSION['email'];
     $result = curlFunction("books_at_home.json?membership_no=$membership_no&api_key=$api_key&email=$email");
-
     $wishlist = wishlistIds();
     echo json_encode(array('data' => (array)json_decode($result), 'wishlist' => $wishlist));
 });
@@ -850,24 +869,26 @@ $app->get('/change_plan', function (Request $request, Response $response, $args)
     $planname = $allGetVars['planname'];
 
     $con = $this->db;
-    if(isset($_SESSION['branchID']))
-    {
-        $query_city = "SELECT *  FROM memp.FN_HOME_PAGE_PLANS WHERE ACTIVE = 1 and FOR_VIRTUAL = 0  and promo= '$planname'";
+//    if(isset($_SESSION['branchID']))
+//    {
+//        $query_city = "SELECT *  FROM memp.FN_HOME_PAGE_PLANS WHERE ACTIVE = 1 and FOR_VIRTUAL = 0  and promo= '$planname'";
+//
+//    }
+//    else{
+//        $query_city = "SELECT *  FROM memp.FN_HOME_PAGE_PLANS WHERE ACTIVE = 1 and FOR_VIRTUAL = 1  and promo= '$planname'";
+//
+//    }
 
-    }
-    else{
-        $query_city = "SELECT *  FROM memp.FN_HOME_PAGE_PLANS WHERE ACTIVE = 1 and FOR_VIRTUAL = 1  and promo= '$planname'";
-
-    }
-
-
-
-//    $query_city = "SELECT *  FROM memp.FN_HOME_PAGE_PLANS WHERE active = 1 and rownum<4 and promo= '$planname'";
-    $result_city = oci_parse($con, $query_city);
-    oci_execute($result_city);
-    while ($row = oci_fetch_assoc($result_city)) {
-        $planData[] = $row;
-    }
+//    $query_city = "SELECT *  FROM memp.FN_HOME_PAGE_PLANS WHERE ACTIVE = 1 and FOR_VIRTUAL = 1  and promo= '$planname'";
+//
+//
+////    $query_city = "SELECT *  FROM memp.FN_HOME_PAGE_PLANS WHERE active = 1 and rownum<4 and promo= '$planname'";
+//    $result_city = oci_parse($con, $query_city);
+//    oci_execute($result_city);
+//    while ($row = oci_fetch_assoc($result_city)) {
+//        $planData[] = $row;
+//    }
+//    echo json_encode($planData);die;
     $plan_data_curl = curlFunction('get_change_plan_terms.json?email=' . $email . '&membercard=' . $membership . '&for_mobile=true');
     $plan_data = json_decode($plan_data_curl);
     $data = $plan_data->result;
@@ -916,6 +937,7 @@ $app->get('/change_plan', function (Request $request, Response $response, $args)
 
     }
     $count = array_values(array_unique((array)$count, SORT_REGULAR));
+    sort($count);
 
 
     $monthsArray = [];
@@ -929,6 +951,7 @@ $app->get('/change_plan', function (Request $request, Response $response, $args)
         }
     }
     $monthsArray=array_values(array_unique($monthsArray));
+    sort($monthsArray);
 
     foreach ($array as $item) {
         if ($item['change_plan_detail']['books'] == $books) {
@@ -943,7 +966,7 @@ $app->get('/change_plan', function (Request $request, Response $response, $args)
                         $slider = 1;
                         $name = "";
                     }
-                    $response = $this->view->render($response, 'change_plan.mustache', array('plan_data' => $planData, 'plan_dataJ' => json_encode($array_data), 'planid' => $planid, 'plan_books' => $count, 'planname' => $planname, 'planid' => $planid, "available_balance" => $item['change_plan_detail']['available_balance'], 'balance_due' => $item['change_plan_detail']['balance_due'], 'reading_fee' => $item['change_plan_detail']['reading_fee'],'totalAMount'=>$plans['plan_duration']['payable_amount'],  'months' => $monthsArray, 'book' => $books, 'month' => $months, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider));
+                    $response = $this->view->render($response, 'change_plan.mustache', array('plan_data' => strtoupper($planname), 'plan_dataJ' => json_encode($array_data), 'planid' => $planid, 'plan_books' => $count, 'planname' => $planname, 'planid' => $planid, "available_balance" => $item['change_plan_detail']['available_balance'], 'balance_due' => $item['change_plan_detail']['balance_due'], 'reading_fee' => $item['change_plan_detail']['reading_fee'],'totalAMount'=>$plans['plan_duration']['payable_amount'],  'months' => $monthsArray, 'book' => $books, 'month' => $months, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider));
                     return $response;
 
                 }
@@ -957,16 +980,18 @@ $app->get('/getPlanYears', function (Request $request, Response $response, $args
     $book = $_GET['book'];
     $planname = $_GET['planname'];
 
-    if(isset($_SESSION['branchID']))
-    {
-        $branch_id=$_SESSION['branchID'];
-        $plan_data_curl = curlFunction('get_all_plans.json?branch_id='.$branch_id);
+//    if(isset($_SESSION['branchID']))
+//    {
+//        $branch_id=$_SESSION['branchID'];
+//        $plan_data_curl = curlFunction('get_all_plans.json?branch_id='.$branch_id);
+//
+//    }
+//    else{
+//        $plan_data_curl = curlFunction('get_all_plans.json');
+//
+//    }
+    $plan_data_curl = curlFunction('get_all_plans.json');
 
-    }
-    else{
-        $plan_data_curl = curlFunction('get_all_plans.json');
-
-    }
     $plan_data = json_decode($plan_data_curl);
     $data = $plan_data->result;
 
@@ -1398,6 +1423,7 @@ $app->get('/rentalHistory', function (Request $request, Response $response) {
     }
     $api_key = $_SESSION['api_key'];
     $result = curlFunction("rental_history.json?email=$mail&api_key=$api_key&membership_no=$membership_no");
+    echo "rental_history.json?email=$mail&api_key=$api_key&membership_no=$membership_no";die;
     $wishlist = wishlistIds();
     echo json_encode(array('data' => (array)json_decode($result), 'wishlist' => $wishlist));
 });
@@ -1443,8 +1469,13 @@ $app->post('/deleteBlog', function (Request $request, Response $response) {
     $con = $this->db;
     $query = "update memp.ADMIN_BLOG_PARAMETERS set active=0 where id =$id";
     $compiled = oci_parse($con, $query);
-    oci_execute($compiled);
-    echo json_encode("success");
+    $res=oci_execute($compiled);
+    if($res)
+    {
+        echo json_encode("success");
+die;
+    }
+    echo json_encode("failure");
 
 
 })->add($adminAuthenticate);
@@ -1492,8 +1523,14 @@ $app->post('/submitAdminBlog', function (Request $request, Response $response) {
     $query = "insert into  memp.ADMIN_BLOG_PARAMETERS(NAME,DESCRIPTION,IMAGE,LINK) values ('$name','$description','$image','$link') ";
 
     $compiled = oci_parse($con, $query);
-    oci_execute($compiled);
-    echo json_encode("success");
+    $res=oci_execute($compiled);
+    if($res)
+    {
+        echo json_encode("success");
+die;
+    }
+    echo json_encode("failure");
+    die;
 
 
 })->add($adminAuthenticate);
@@ -1524,7 +1561,7 @@ $app->get('/adminBlogs', function (Request $request, Response $response) {
 
 $app->get('/getBlog', function (Request $request, Response $response) {
     $con = $this->db;
-    $query = "SELECT *  FROM memp.ADMIN_BLOG_PARAMETERS WHERE active = 1";
+    $query = "SELECT *  FROM memp.ADMIN_BLOG_PARAMETERS WHERE active = 1 and rownum <4 order by id desc ";
     $result = oci_parse($con, $query);
     oci_execute($result);
     while ($row = oci_fetch_assoc($result)) {
@@ -1533,15 +1570,34 @@ $app->get('/getBlog', function (Request $request, Response $response) {
     echo json_encode($final_data);
 });
 $app->post('/updateProfile', function (Request $request, Response $response) {
-    $address = $_POST['address'];
+    $address1 = $_POST['address1'];
+    $address2= $_POST['address2'];
+    $address3 = $_POST['address3'];
+    $state = $_POST['state'];
+    $city = $_POST['city'];
+    $zip = $_POST['pin'];
     $email=$_POST['email'];
     $phone = $_POST['phone'];
-
+//echo "/updateMemberProfile?email=$email&membership_no=$membership_no&address1=$address1&address2=$address2&address3=$address3&city=$city&state=$state&pincode=$zip&mphone=$phone";die;
     $api_key = $_SESSION['api_key'];
     $membership_no = $_SESSION['membership_no'];
 
-    $result = curlFunction("update_personal_info.json?email=$email&api_key=$api_key&membership_no=$membership_no&address1=$address&address2=&address3=&city=&state=&pincode=&mphone=$phone");
-    echo json_decode(json_encode($result));
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, API_URL_ES . "/updateMemberProfile?");
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, "email=$email&membership_no=$membership_no&address1=$address1&address2=$address2&address3=$address3&city=$city&state=$state&pincode=$zip&mphone=$phone");
+    $raw_data = curl_exec($ch);
+    curl_close($ch);
+//    if(json_decode($raw_data) == "Updated")
+//    {
+//        $_SESSION['email']=$email;
+//    }
+    echo json_encode(json_decode($raw_data)) ;
+
+
+
+//    $result = curlFunctionEs("/updateMemberProfile?email=$email&membership_no=$membership_no&address1=$address1&address2=$address2&address3=$address3&city=$city&state=$state&pincode=$zip&mphone=$phone");
+//    echo json_decode(json_encode($result));
 });
 
 
@@ -1987,6 +2043,72 @@ $app->post('/insertFranchisee', function (Request $request, Response $response) 
     }
     echo json_encode("failure");
     die;
+
+});
+$app->get('/getChangePlanYears', function (Request $request, Response $response) {
+    $params = $request->getQueryParams();
+    $book = $_GET['book'];
+    $planname = $_GET['planname'];
+    $membership = $_SESSION['membership_no'];
+    $email = $_SESSION['email'];
+    $api_key = $_SESSION['api_key'];
+    $plan_data_curl = curlFunction('get_change_plan_terms.json?email=' . $email . '&membercard=' . $membership . '&for_mobile=true');
+
+    $plan_data = json_decode($plan_data_curl);
+    $data = $plan_data->result;
+
+    $data = json_decode(json_encode($data), True);
+
+
+    $temp_array = array();
+    foreach ($data as $v) {
+        if (strtoupper($v['change_plan_detail']['promo_code']) === strtoupper($planname)) {
+            array_push($temp_array, $v);
+        }
+
+    }
+    $array = array_values($temp_array);
+    $count = [];
+    foreach ($array as $item) {
+        if ($item['change_plan_detail']['books'] == $book) {
+            $monthTag=$item['change_plan_detail']['frequency'];
+            if($monthTag == 'Y')
+            {
+                $monthTagText=" year(s)";
+            }
+            else{
+                $monthTagText=" month(s)";
+
+            }
+            $planId = $item['change_plan_detail']['plan_id'];
+            if (count($item['change_plan_detail']['plan_durations']) > 1) {
+                foreach ($item['change_plan_detail']['plan_durations'] as $plans) {
+
+                    array_push($count, $plans['plan_duration']['change_plan_months']);
+                }
+sort($count);
+            } else {
+                echo json_encode(array('planID' => $planId, "status" => "1st", "total" => $item['change_plan_detail']['plan_durations'][0]['plan_duration']['payable_amount'], "available_balance" => $item['change_plan_detail']['available_balance'], 'balance_due' => $item['change_plan_detail']['balance_due'], 'reading_fee' => $item['change_plan_detail']['reading_fee'],'totalAMount'=>$plans['plan_duration']['payable_amount'],'monthTag'=>$monthTagText));
+                die;
+            }
+        }
+    }
+
+
+    echo json_encode(array('data' => array_unique($count), 'status' => '2nd', 'planID' => $planId,'monthTag'=>$monthTagText));
+
+
+});
+$app->get('/getProfileDetails', function (Request $request, Response $response) {
+
+    $membership = $_SESSION['membership_no'];
+
+    $plan_data_curl = curlFunctionEs('/getMemberProfile?membership_no='.$membership);
+
+    $plan_data = json_decode($plan_data_curl);
+    echo json_encode(array('data'=>$plan_data));
+
+
 
 });
 

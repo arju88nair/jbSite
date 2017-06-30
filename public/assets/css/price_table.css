@@ -171,20 +171,26 @@ Inspired by the dribble shot http://dribbble.com/shots/1285240-Freebie-Flat-Pric
 
 .pt-footer a{
     font-family: 'Playfair Display';
+    color:white!important;
 }
 /*PERSONAL*/
 .personal .title{
-    background: #78CFBF;
+    background: #454545;
+    /*background: #78CFBF;*/
 }
 
 .personal .content_pt,.personal .pt-footer{
-    background: #82DACA;
+    /*background: #82DACA;*/
+    background: #666666;
+
 }
 .personal .content_pt:after{
-    border-top-color: #82DACA;
+    /*border-top-color: #82DACA;*/
+    border-top-color: #666666;
 }
 .personal .pt-footer:after{
-    border-top-color: #FFFFFF;
+    border-top-color: #666666;
+    /*border-top-color: #FFFFFF;*/
 }
 /*PROFESSIONAL*/
 .professional .title{

@@ -37,10 +37,11 @@
                             {{# _source}}
                                 <div class="col-lg-3 col-md-4 col-xs-12 thumb">
                                     {{#jb_info}}
-                                    <a class="thumbnail" href="/book_details/{{titleid}}" style="height: 320px;">
+                                    <a class="thumbnail" href="/book_details/{{titleid}}/{{#author}}{{name}}{{/author}}" style="height: 320px;">
                             {{/jb_info}}
-                                        <img class="img-responsive" src="{{image_url}}"
-                                             onerror="this.src='https://www.safetybasics.com/v/vspfiles/photos/003-C-4L-Cover-0.jpg'">
+                                        <img class="img-responsive" src="{{image_url}}" width="150" height="160"
+                                             onerror="this.src='../../assets/images/Default_Book_Thumbnail.png'">
+                                             <!--onerror="this.src='https://www.safetybasics.com/v/vspfiles/photos/003-C-4L-Cover-0.jpg'">-->
                                         {{#jb_info}}
                                         <h5 class="gallery_title">{{title}}</h5>
                                         {{/jb_info}}
@@ -80,7 +81,7 @@
         var query = "{{query}}";
         localStorage.setItem("countFlag", parseInt(count) + 1);
         $.ajax({
-            url: "http://rec.justbooksclc.com/getSuggestBooksDetails?text="+query+"&page="+count,
+            url: "https://rec.justbooks.in/getSuggestBooksDetails?text="+query+"&page="+count,
             type: 'GET',
 
             success: function (data) {

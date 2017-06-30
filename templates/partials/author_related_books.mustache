@@ -1,4 +1,4 @@
-<div class="row-fluid" style="margin-left: -2%;width: 111%">
+<div class="row-fluid" style="margin-left: -2%;width: 111%" id="relAuthDiv">
     <div class="span12 module_cont module_teamslider">
         {{#data}}
         <div class="bg_title"><h4 class="headInModule">BOOKS BY {{author_name}}</h4></div>
@@ -23,8 +23,8 @@
                         <div class="carousel-inner carouselslider" id="authRelated"  style="padding: 0px 0px 20px 0px; margin-left: 60px; margin-right: 60px;">
 
                         </div>
-                        <div id="frame_new_arr" class="loader_fram">
-                            <div id="loader" style="display: block">
+                        <div id="frame_auth_arr" class="loader_fram">
+                            <div id="loader" style="display: block;margin-left: -25%">
                                 <img src="../../assets/img/loader.gif" id="loader_image">
                             </div>
                         </div>
@@ -75,7 +75,7 @@
                     '<div class="item item_shadow">' +
                     '<div class="img_block_books"><a href="/book_details/' + data[i].id + '/' + data[i].title + '"><img src="' + data[i].image_url + '"  onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
                     '<div class="carousel_body_book">' +
-                    '<div class="carousel_title_book"><h5 title="' + data[i].title + '">' + data[i].title + '</h5><p style="text-align: center">' + data[i].author + '</p></div>' +
+                    '<div class="carousel_title_book"><h5 title="' + data[i].title + '">' + data[i].title + '</h5></div>' +
                     '<div class="carousel_desc">' +
                     '<div class="fram_btn">' +
                     '<a    href="javascript:void(0)" class="shortcode_button btn_small btn_type1" title="Rent" onclick='+action+' id="rent_'+data[i].id+'">'+text+'</a>' +
@@ -111,11 +111,14 @@
                 data=JSON.parse(data);
                 console.log(data)
                 cardData=data['data'];
-                $("#frame_new_arr").hide();
-                $("#loader").hide();
+                if(cardData === null)
+                {
+                   $("#relAuthDiv").hide();
+                }
                 var final_response = getCard(cardData, 3,data['ids'],data['wishlist']);
-
                 $('#authRelated').append(final_response);
+                $("#frame_auth_arr").hide();
+                $("#loader").hide();
                 $('.item').first().addClass('active');
                 $("#myCarousel").carousel();
 

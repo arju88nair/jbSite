@@ -1,6 +1,6 @@
 {{> header }}
 <script type="text/javascript"
-        src="http://viralpatel.net/blogs/demo/jquery/jquery.shorten.1.0.js"></script>
+        src="../../assets/js/shorten.js"></script>
 
 <style>.block-with-text {
     overflow: hidden;
@@ -62,7 +62,7 @@
                                                 <a href="javascript:void(0)" class="tiptip" onclick='wishlistAdd({{titleid}});' style="margin-left: 20%">
                                                     <img class="wishlist_btn" id="wishlistMain" alt="" height="25" width="25">
                                                 </a>
-                                                <a href="javascript:void(0)" class="tiptip" title="Share" data-id="{{titleid}}" data-toggle="modal" data-target="#shareModal" style="margin-left: 10%">
+                                                <a href="javascript:void(0)" class="tiptip" title="Share" data-id="{{titleid}}" data-title="{{#jb_info}}{{title}}{{/jb_info}}" data-toggle="modal" data-target="#shareModal" style="margin-left: 10%">
                                                     <img class="share_btn" src=../../assets/img/Engage.png alt="Smiley face" height="25" width="25"></a>
                                             </div>
                                         </div>
@@ -94,13 +94,20 @@
                                         </div>
                                         <div class="span6 module_cont module_text_area">
 
+{{#flag}}
+    <a href="#reviews-anchor" class="shortcode_button btn_small btn_type10"
+       id="open-review-box" >Rate/Review</a>
+{{/flag}}
+                                            {{#slider}}
 
-                                            <a href="#reviews-anchor" class="shortcode_button btn_small btn_type10"
-                                               id="open-review-box">Rate/Review</a>
+                                                <a href="javascript:void(0)" class="shortcode_button btn_small btn_type10"
+                                                   onclick="checkRate()" >Rate/Review</a>
+                                            {{/slider}}
+
 
                                             <div class="row" id="post-review-box" style="display:none;">
                                                 <div class="col-md-12">
-                                                    <form>
+                                                    <form onsubmit="return false">
                                                         <input id="ratings-hidden" name="rating" type="hidden">
                                                         <div class="stars starrr col-md-4" data-rating="0"></div>
                                                         <textarea class="form-control animated" cols="50"
@@ -112,10 +119,10 @@
                                                             <a class="btn btn-danger btn-sm" href="#"
                                                                id="close-review-box"
                                                                style="display:none; margin-right: 10px;">
-                                                                <span class="glyphicon glyphicon-remove"></span>Cancel</a>
+                                                                <span class="glyphicon glyphicon-remove"></span>&nbsp;Cancel</a>
 
-                                                            <button class="btn btn-success btn-sm"
-                                                                    onclick="giveReview()">Save
+                                                            <button class="btn btn-success btn-sm" type="button"
+                                                                    onclick="giveReview({{flag}})"><span class="glyphicon glyphicon-ok"></span>&nbsp;Save
                                                             </button>
                                                         </div>
 
@@ -479,19 +486,28 @@
 
     })
 
-    function giveReview() {
+    function giveReview(flag) {
+        if(flag === 0)
+        {
+            toastr.error('Please sign in to submit a review !').css("width","500px");
+            return false;
+        }
+
         var title = "{{titleid}}";
         var ratings = $("#ratings-hidden").val();
         var review = $("#new-review").val();
 
         if (ratings === "" || ratings === 0) {
-            toastr.error('Please give a rating in order to submit  !');
+            toastr.error('Please give a rating in order to submit !').css("width","500px");
             return false;
         }
         if (review === "" || review === 0) {
-            toastr.error('Please give a review in order to submit  !');
+            toastr.error('Please give a review in order to submit !').css("width","500px");
             return false;
         }
+
+
+
         $(".spinner").show();
 
         $.ajax({

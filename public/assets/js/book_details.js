@@ -10,7 +10,7 @@ function wishlistAdd(id) {
             console.log(JSON.parse(data));
             $(".spinner").hide();
             if (JSON.parse(data) === "failure" ) {
-                toastr.error('Please sign in to update your wish list !');
+                toastr.error('Please sign in to update your wish list !').css("width","500px");
                 $(window).scrollTop($('#signin').offset().top);
 
             }
@@ -22,7 +22,7 @@ function wishlistAdd(id) {
         error:function(err)
         {
             console.log(err);
-            toastr.error("Something went wrong.Please try again !")
+            toastr.error("Something went wrong.Please try again !").css("width","500px")
         }
 
     });
@@ -30,7 +30,7 @@ function wishlistAdd(id) {
 function checkAvailability(id) {
     var flag = localStorage.getItem("flag");
     if (flag === "false") {
-        toastr.error("Please sign in to check availability of a book !");
+        toastr.error("Please sign in to check availability of a book !").css("width","500px");
         return false;
     }
 
@@ -48,7 +48,7 @@ function checkAvailability(id) {
 
             }
             if (data['success'] == "failure") {
-                toastr.error('Please sign in to check availability  !');
+                toastr.error('Please sign in to check availability  !').css("width","500px");
             }
 
         },
@@ -135,7 +135,7 @@ function placeOrder(id) {
             if (JSON.parse(data) === "failure" ) {
                 $(".spinner").hide();
 
-                toastr.error('Please sign in to order the book !');
+                toastr.error('Please sign in to order the book !').css("width","500px");
                 $(window).scrollTop($('#signin').offset().top);
 
             }
@@ -189,4 +189,14 @@ function placePickup(elem, title) {
         },
 
     });
+}
+
+function checkRate()
+{
+
+        toastr.error('Please sign in to rate and review !').css("width", "500px");
+        return false;
+
+
+
 }

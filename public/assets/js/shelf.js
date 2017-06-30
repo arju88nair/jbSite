@@ -282,12 +282,23 @@ $(document).ready(function () {
     $('#profileUpdate').on('show.bs.modal', function (e) {
 
         //get data-id attribute of the clicked element
-        var address = $(e.relatedTarget).data('address');
+        var address1 = $(e.relatedTarget).data('address1');
+        var address2 = $(e.relatedTarget).data('address2');
+        var address3 = $(e.relatedTarget).data('address3');
+        var state = $(e.relatedTarget).data('state');
+        var city = $(e.relatedTarget).data('city');
+        var pincode = $(e.relatedTarget).data('pin');
         var phone = $(e.relatedTarget).data('phone');
         var email = $(e.relatedTarget).data('email');
 
         //populate the textbox
-        $('#address').val(address);
+        $('#address1').val(address1);
+        $('#address2').val(address2);
+        $('#address3').val(address3);
+        $('#state').val(state);
+        selct_district(state);
+        $('#city').val(city);
+        $('#zip').val(pincode);
         $('#phone').val(phone);
         $('#email').val(email);
     });
@@ -306,12 +317,18 @@ $(document).ready(function () {
 
 
     $('form').submit(function (e) {
+
         $(".spinner").show();
         $.ajax({
             type: "POST",
             url: "/updateProfile",
             data: {
-                'address': $("#address").val(),
+                'address1': $("#address1").val(),
+                'address2': $("#address2").val(),
+                'address3': $("#address3").val(),
+                'state': $("#state").val(),
+                'city': $("#city").val(),
+                'pin': $("#zip").val(),
                 'email': $("#email").val(),
                 'phone': $("#phone").val(),
 
@@ -321,18 +338,21 @@ $(document).ready(function () {
             enctype: 'multipart/form-data',
             cache: false,
             success: function (data) {
-                console.log(data)
                 $(".spinner").hide();
-                ;
-                if (data['success'] === true) {
+                console.log(data);return false;
+                if(data === "Updated")
+                {
                     toastr.success("Updated successfully !");
                     location.reload();
                     return false;
                 }
-                else {
-                    toastr.error("Something went wrong.Please try again. !");
+                else{
+                    toastr.error("Something went wrong !");
                     return false;
                 }
+
+
+
                 $(".spinner").hide();
                 return false;
 
@@ -380,21 +400,15 @@ $(document).ready(function () {
     $(".spinner").show();
     $.ajax({
         type: "GET",
-        url: "/getSubscription",
+        url: "/getProfileDetails",
         success: function (data) {
             $("#emptyResult").hide();
             $("#left_menu_recommend").show();
             $(".spinner").hide();
             $('#shelf_data').html('');
             $('#change_plan').html('');
-
             var data_new = JSON.parse(data);
-            if (data_new['success'] === 'false') {
-                toastr.error('Something went wrong !');
-
-                return false;
-            }
-            var current_plan = data_new['curent_plan']['result'];
+            console.log(data_new);
 
 
             $('#shelf_data').html('');
@@ -405,7 +419,7 @@ $(document).ready(function () {
                 '<div class="jumbotron">' +
                 '<div class="row">' +
 
-                '<div class="column column-66" style="cursor:default;"> <div style="font-size: 18px; color:#000 !important; font-family: Playfair Display;margin-top: -3%" class="col-sm-10">  <span class="">' + current_plan['member_cross_reference']['first_name'] + '</span>  <a class="shortcode_button btn_small btn_type1" style="float:right;" href="" data-toggle="modal" data-address="' + current_plan['member_cross_reference']['full_address'] + '" data-phone="'+current_plan['member_cross_reference']['mphone']+'" data-email="'+current_plan['member_cross_reference']['email']+'" data-target="#profileUpdate">Edit Profile</a></div></div>' + '<div class="column column-33"> <div class="card border-color-teal" style="cursor:default !important;border-top: 4px solid;padding:0;"> <table class="table table-striped" style="margin:0;font-family:Playfair Display;"> <tbody> <tr> <td>Member since</td> <td>' + current_plan['member_cross_reference']['start_date'] + '</td> </tr>   <tr> <td>E-mail</td> <td>' + current_plan['member_cross_reference']['email'] + '</td> </tr>  <tr> <td>Phone No</td> <td>' + current_plan['member_cross_reference']['mphone'] + '</td> </tr> <tr> <td>Address</td>  <td>' + current_plan['member_cross_reference']['full_address'] + '</td>  </tr> </tbody> </table> </div> </div>' + '</div>' +
+                '<div class="column column-66" style="cursor:default;"> <div style="font-size: 18px; color:#000 !important; font-family: Playfair Display;margin-top: -3%" class="col-sm-10">  <span class="">' + data_new['data'][0]['FIRST_NAME'] + '</span>  <a class="shortcode_button btn_small btn_type1" style="float:right;" href="" data-toggle="modal" data-address="' + data_new['data'][0]['EMAIL_ID'] + '"  data-address1="' + data_new['data'][0]['ADDRESS1'] + '"  data-address2="' + data_new['data'][0]['ADDRESS2'] + '"  data-address3="' + data_new['data'][0]['ADDRESS3'] + '"  data-state="' + data_new['data'][0]['STATE'] + '"  data-city="' + data_new['data'][0]['CITY'] + '"data-pin="' + data_new['data'][0]['PINCODE'] + '" data-phone="'+data_new['data'][0]['MPHONE']+'" data-email="'+data_new['data'][0]['EMAIL_ID']+'" data-target="#profileUpdate">Edit Profile</a></div></div>' + '<div class="column column-33"> <div class="card border-color-teal" style="cursor:default !important;border-top: 4px solid;padding:0;"> <table class="table table-striped" style="margin:0;font-family:Playfair Display;"> <tbody> <tr> <td>Member since</td> <td>' + data_new['data'][0]['REGISTER_TIME'] + '</td> </tr>   <tr> <td>E-mail</td> <td>' + data_new['data'][0]['EMAIL_ID'] + '</td> </tr>  <tr> <td>Phone No</td> <td>' + data_new['data'][0]['MPHONE'] + '</td> </tr> <tr> <td>Address</td>  <td>' + data_new['data'][0]['ADDRESS1']+data_new['data'][0]['ADDRESS2']+data_new['data'][0]['ADDRESS3']+", "+data_new['data'][0]['STATE']+", "+data_new['data'][0]['CITY']+", "+data_new['data'][0]['PINCODE'] + '</td>  </tr> </tbody> </table> </div> </div>' + '</div>' +
                 '</div>');
 
             $("#left_menu_recommend").css('margin-top', '15%');
@@ -632,7 +646,7 @@ $('#profile').click(function (e) {
     e.preventDefault();
     $.ajax({
         type: "GET",
-        url: "/getSubscription",
+        url: "/getProfileDetails",
         success: function (data) {
             $("#emptyResult").hide();
             $("#left_menu_recommend").show();
@@ -642,13 +656,8 @@ $('#profile').click(function (e) {
             $('#change_plan').html('');
 
             var data_new = JSON.parse(data);
-            if (data_new['success'] === 'false') {
-                toastr.error('Something went wrong !');
+            console.log(data_new['data'][0]['EMAIL_ID']);
 
-                return false;
-            }
-            var current_plan = data_new['curent_plan']['result'];
-            console.log(current_plan);
 
 
             $('#shelf_data').html('');
@@ -659,7 +668,7 @@ $('#profile').click(function (e) {
                 '<div class="jumbotron">' +
                 '<div class="row">' +
 
-                '<div class="column column-66" style="cursor:default;"> <div style="font-size: 18px; color:#000 !important; font-family: Playfair Display;margin-top: -3%" class="col-sm-10">  <span class="">' + current_plan['member_cross_reference']['first_name'] + '</span>  <a class="shortcode_button btn_small btn_type1" style="float:right;" href="" data-toggle="modal" data-address="' + current_plan['member_cross_reference']['full_address'] + '" data-phone="'+current_plan['member_cross_reference']['mphone']+'" data-email="'+current_plan['member_cross_reference']['email']+'" data-target="#profileUpdate">Edit Profile</a></div></div>' + '<div class="column column-33"> <div class="card border-color-teal" style="cursor:default !important;border-top: 4px solid;padding:0;"> <table class="table table-striped" style="margin:0;font-family:Playfair Display;"> <tbody> <tr> <td>Member since</td> <td>' + current_plan['member_cross_reference']['start_date'] + '</td> </tr>   <tr> <td>E-mail</td> <td>' + current_plan['member_cross_reference']['email'] + '</td> </tr>  <tr> <td>Phone No</td> <td>' + current_plan['member_cross_reference']['mphone'] + '</td> </tr> <tr> <td>Address</td>  <td>' + current_plan['member_cross_reference']['full_address'] + '</td>  </tr> </tbody> </table> </div> </div>' + '</div>' +
+                '<div class="column column-66" style="cursor:default;"> <div style="font-size: 18px; color:#000 !important; font-family: Playfair Display;margin-top: -3%" class="col-sm-10">  <span class="">' + data_new['data'][0]['FIRST_NAME'] + '</span>  <a class="shortcode_button btn_small btn_type1" style="float:right;" href="" data-toggle="modal" data-address="' + data_new['data'][0]['EMAIL_ID'] + '"  data-address1="' + data_new['data'][0]['ADDRESS1'] + '"  data-address2="' + data_new['data'][0]['ADDRESS2'] + '"  data-address3="' + data_new['data'][0]['ADDRESS3'] + '"  data-state="' + data_new['data'][0]['STATE'] + '"  data-city="' + data_new['data'][0]['CITY'] + '"data-pin="' + data_new['data'][0]['PINCODE'] + '" data-phone="'+data_new['data'][0]['MPHONE']+'" data-email="'+data_new['data'][0]['EMAIL_ID']+'" data-target="#profileUpdate">Edit Profile</a></div></div>' + '<div class="column column-33"> <div class="card border-color-teal" style="cursor:default !important;border-top: 4px solid;padding:0;"> <table class="table table-striped" style="margin:0;font-family:Playfair Display;"> <tbody> <tr> <td>Member since</td> <td>' + data_new['data'][0]['REGISTER_TIME'] + '</td> </tr>   <tr> <td>E-mail</td> <td>' + data_new['data'][0]['EMAIL_ID'] + '</td> </tr>  <tr> <td>Phone No</td> <td>' + data_new['data'][0]['MPHONE'] + '</td> </tr> <tr> <td>Address</td>  <td>' + data_new['data'][0]['ADDRESS1']+", "+data_new['data'][0]['ADDRESS2']+", "+data_new['data'][0]['ADDRESS3']+", "+data_new['data'][0]['STATE']+", "+data_new['data'][0]['CITY']+", "+data_new['data'][0]['PINCODE'] + '</td>  </tr> </tbody> </table> </div> </div>' + '</div>' +
                 '</div>'
             );
 
@@ -718,7 +727,7 @@ $('#subscription').click(function (e) {
                 '<div class="gallery-view">' +
                 '<div data-reveal-group="relations22" class="column column-50" data-sr-id="4">' +
                 ' <div class="item clickable" style="margin:0;">' +
-                '<div class="article border-color-" style="border-top: 4px solid #6057DC;">' +
+                '<div class="article border-color-" style="border-top: 4px solid black;">' +
                 '<div class="article-body planIdDIV" id=' + current_plan['result']['member_cross_reference']['plan_id'] + '> '+
                 '<h4 style="font-family: Playfair Display; white-space:nowrap;height:35px;text-overflow:ellipsis;overflow:hidden;display:block; text-align:center;">Current Plan</h4> '+
                 '<div class="gray" style="white-space:nowrap;height:25px;text-overflow:ellipsis;overflow:hidden;display:block;text-align:center;">'+ current_plan['result']['member_cross_reference']['plan_name'] +'</div> '+
@@ -734,7 +743,7 @@ $('#subscription').click(function (e) {
                 '<div class="gallery-view">' +
                 '<div data-reveal-group="relations22" class="column column-50" data-sr-id="4">' +
                 ' <div class="item clickable" style="margin:0;">' +
-                '<div class="article border-color-" style="border-top: 4px solid #00D9FF;">' +
+                '<div class="article border-color-" style="border-top: 4px solid blue;">' +
                 '<div class="article-body">'+
                 '<h4 style="font-family: Playfair Display; white-space:nowrap;height:35px;text-overflow:ellipsis;overflow:hidden;display:block; text-align:center;">Duration</h4> '+
                 '<div class="gray" style="white-space:nowrap;height:25px;text-overflow:ellipsis;overflow:hidden;display:block;text-align:center;">' + Math.round(parseFloat(current_plan['result']['member_cross_reference']['term'])) + ' months</div> '+
@@ -750,7 +759,7 @@ $('#subscription').click(function (e) {
                 '<div class="gallery-view">' +
                 '<div data-reveal-group="relations22" class="column column-50" data-sr-id="4">' +
                 ' <div class="item clickable" style="margin:0;">' +
-                '<div class="article border-color-" style="border-top: 4px solid #FF00A1;">' +
+                '<div class="article border-color-" style="border-top: 4px solid red;">' +
                 '<div class="article-body">'+
                 '<h4 style="white-space:nowrap;height:35px;text-overflow:ellipsis;overflow:hidden;display:block; text-align:center; font-family: Playfair Display;">Renewal Date</h4> '+
                 '<div class="gray" style="white-space:nowrap;height:25px;text-overflow:ellipsis;overflow:hidden;display:block;text-align:center;">' + current_plan['result']['member_cross_reference']['expiry_date'] + '</div> '+
@@ -822,7 +831,7 @@ $('#subscription').click(function (e) {
 //                            '</div></div>';
                 response = "";
                 if (plan_durations != null) {
-                    response += '<div class="col-md-4" style="margin-top:1%"><div class="' + colors[i] + '" style="text-align: center;width:100%/*! height: 314px; */"><h4 class="title">' + arr["change_plan_detail"]['plan_name'] + '</h4> <a href="/change_plan?id=' + arr["change_plan_detail"]['plan_id'] + '&planname=' + arr["change_plan_detail"]['promo_code'] + '"><div class="content_pt" style="margin: -9%;"> <p class="price"><sup>₹</sup><span> ' + arr["change_plan_detail"]['reading_fee'] + '</span><sub></sub></p></div></a><ul class="features" style="margin-top: 8%;height: 130px;list-style-type: none !important;padding: 0;/*! margin: 0; */margin-left: -5%;"><li style="line-height: 39px;">No of books -   ' + arr["change_plan_detail"]['books'] + '</li><li style="line-height: 39px;">Security Deposit - Rs ' + arr["change_plan_detail"]['security_deposit'] + ' </li><li style="line-height: 39px;">Registration Fee - Rs ' + arr["change_plan_detail"]['registration_fee'] + '</li></ul><div class="pt-footer"><h4><a href="/change_plan?planname=' + arr["change_plan_detail"]['promo_code'] + '&books=' + arr["change_plan_detail"]['books'] + '&months='+arr["change_plan_detail"]['plan_durations'][0]['plan_duration']['change_plan_months']+'">UPGRADE NOW !</a></h4></div></div></div>';
+                    response += '<div class="col-md-4" style="margin-top:1%"><div class="block personal fl" style="text-align: center;width:100%/*! height: 314px; */"><h4 class="title">' + arr["change_plan_detail"]['plan_name'] + '</h4> <a href="/change_plan?id=' + arr["change_plan_detail"]['plan_id'] + '&planname=' + arr["change_plan_detail"]['promo_code'] + '"><div class="content_pt" style="margin: -9%;"> <p class="price"><sup>₹</sup><span> ' + arr["change_plan_detail"]['reading_fee'] + '</span><sub></sub></p></div></a><ul class="features" style="margin-top: 8%;height: 130px;list-style-type: none !important;padding: 0;/*! margin: 0; */margin-left: -5%;"><li style="line-height: 39px;">No of books -   ' + arr["change_plan_detail"]['books'] + '</li><li style="line-height: 39px;">Security Deposit - Rs ' + arr["change_plan_detail"]['security_deposit'] + ' </li><li style="line-height: 39px;">Registration Fee - Rs ' + arr["change_plan_detail"]['registration_fee'] + '</li></ul><div class="pt-footer" style="padding-bottom: 1%"><h4><a href="/change_plan?planname=' + arr["change_plan_detail"]['promo_code'] + '&books=' + arr["change_plan_detail"]['books'] + '&months='+arr["change_plan_detail"]['plan_durations'][0]['plan_duration']['change_plan_months']+'">UPGRADE NOW !</a></h4></div></div></div>';
                     i++;
                     if (i >= colors.length) {
                         i = 0;
@@ -892,12 +901,14 @@ function removeWishlist(elem, id) {
         url: "/removeWishList",
         data: {'titleid': id},
         success: function (data) {
-console.log(data)
+            console.log(data)
             $(".spinner").hide();
             $("#alertDiv").addClass("alert-success");
             $("#alertDiv").show();
             $("#alertText").text("Successfully removed")
             $('#div' + id).closest('.module_shelf').remove();
+            return false;
+
 
 
         },
@@ -1047,7 +1058,6 @@ function addWishlist(id) {
             $(".spinner").hide();
             if (JSON.parse(data) === "failure") {
                 toastr.error('Please sign in to update your wish list !');
-                $(window).scrollTop($('#anchor2').offset().top);
 
             }
             else {
@@ -1089,7 +1099,7 @@ function textChange() {
     $.ajax({
         type: "GET",
         dataType: "json",
-        url: "http://staging.justbooksclc.com:8990/api/v1/renewal_payment.json?email=" + email + "&membercard=" + membership + "&term=" + termSelected + "&delivery_option=null&delivery_fees=" + fee + "&coupon_code=" + coupon + "&gift_card_no=" + gift + "&pin=null",
+        url: "http://justbooksclc.com/api/v1/renewal_payment.json?email=" + email + "&membercard=" + membership + "&term=" + termSelected + "&delivery_option=null&delivery_fees=" + fee + "&coupon_code=" + coupon + "&gift_card_no=" + gift + "&pin=null",
         success: function (data_new) {
             console.log(data_new);
 
@@ -1136,7 +1146,7 @@ function proceedRenew() {
     $.ajax({
         type: "GET",
         dataType: "json",
-        url: "http://staging.justbooksclc.com:8990/api/v1/renewal_payment.json?email=" + email + "&membercard=" + membership + "&term=" + termSelected + "&delivery_option=null&delivery_fees=" + fee + "&coupon_code=" + coupon + "&gift_card_no=" + gift + "&pin=null",
+        url: "http://justbooksclc.com/api/v1/renewal_payment.json?email=" + email + "&membercard=" + membership + "&term=" + termSelected + "&delivery_option=null&delivery_fees=" + fee + "&coupon_code=" + coupon + "&gift_card_no=" + gift + "&pin=null",
         success: function (data_new) {
             console.log(data_new);
 
@@ -1145,7 +1155,7 @@ function proceedRenew() {
                 $.ajax({
                     type: "GET",
                     dataType: "json",
-                    url: "http://staging.justbooksclc.com:8990/api/v1/confirm_renewal.json?email=" + email + "&membercard=" + membership + "&payable_amount=" + data_new.result.payable_amount + "&convenience_fee=" + data_new.result.convenience_fee + "&renewal_payment_type=" + data_new.result.renewal_payment_type + "&plan_id=" + data_new.result.plan_id + "&card_number=" + data_new.result.card_number + "&member_id=" + data_new.result.member_id + "&delivery_fees=" + data_new.result.delivery_fees + "&delivery_fees_dormant=" + data_new.result.delivery_fees_dormant + "&delivery_option=" + data_new.result.delivery_option + "&term=" + data_new.result.term + "&member_branch_id=" + data_new.result.term + "&member_branch_id=" + data_new.result.member_branch_id + "&overdue_adjustment=" + data_new.result.overdue_adjustment + "&reward_points=" + data_new.result.reward_points + "&gift_card_no=" + data_new.result.gift_card_no + "&qc_flag=" + data_new.result.qc_flag + "&redeemed_amount=" + data_new.result.redeemed_amount + "&pin=" + data_new.result.pin + "&coupon_no=null&coupon_id=null&coupon_amount=null",
+                    url: "http://justbooksclc.com/api/v1/confirm_renewal.json?email=" + email + "&membercard=" + membership + "&payable_amount=" + data_new.result.payable_amount + "&convenience_fee=" + data_new.result.convenience_fee + "&renewal_payment_type=" + data_new.result.renewal_payment_type + "&plan_id=" + data_new.result.plan_id + "&card_number=" + data_new.result.card_number + "&member_id=" + data_new.result.member_id + "&delivery_fees=" + data_new.result.delivery_fees + "&delivery_fees_dormant=" + data_new.result.delivery_fees_dormant + "&delivery_option=" + data_new.result.delivery_option + "&term=" + data_new.result.term + "&member_branch_id=" + data_new.result.term + "&member_branch_id=" + data_new.result.member_branch_id + "&overdue_adjustment=" + data_new.result.overdue_adjustment + "&reward_points=" + data_new.result.reward_points + "&gift_card_no=" + data_new.result.gift_card_no + "&qc_flag=" + data_new.result.qc_flag + "&redeemed_amount=" + data_new.result.redeemed_amount + "&pin=" + data_new.result.pin + "&coupon_no=null&coupon_id=null&coupon_amount=null",
                     success: function (data) {
                         ;
 
@@ -1254,7 +1264,7 @@ function breakValidate() {
     $.ajax({
         type: "GET",
         dataType: "json",
-        url: "http://staging.justbooksclc.com:8990/api/v1/sh_payment.json?email=" + email + "&membercard=" + membership + "&no_of_months=" + month + "&holiday_start_date=" + date + "",
+        url: "http://justbooksclc.com/api/v1/sh_payment.json?email=" + email + "&membercard=" + membership + "&no_of_months=" + month + "&holiday_start_date=" + date + "",
         success: function (data_new) {
             console.log(data_new);
 
@@ -1304,11 +1314,11 @@ function proceedBreak() {
     var date = $("#datePickInput").val();
     var email = localStorage.getItem("email");
     var membership = localStorage.getItem("membership");
-    console.log("http://staging.justbooksclc.com:8990/api/v1/confirm_sh.json?email=" + email + "&membercard=" + membership + "&no_of_months=" + month + "&holiday_start_date=" + date + "&created_in=810&holiday_end_date=" + Enddate + "&paid_amount=" + paid + "&payable_amount=" + amount + "");
+    console.log("http://justbooksclc.com/api/v1/confirm_sh.json?email=" + email + "&membercard=" + membership + "&no_of_months=" + month + "&holiday_start_date=" + date + "&created_in=810&holiday_end_date=" + Enddate + "&paid_amount=" + paid + "&payable_amount=" + amount + "");
     $.ajax({
         type: "GET",
         dataType: "json",
-        url: "http://staging.justbooksclc.com:8990/api/v1/confirm_sh.json?email=" + email + "&membercard=" + membership + "&no_of_months=" + month + "&holiday_start_date=" + date + "&created_in=810&holiday_end_date=" + Enddate + "&paid_amount=" + paid + "&payable_amount=" + amount + "",
+        url: "http://justbooksclc.com/api/v1/confirm_sh.json?email=" + email + "&membercard=" + membership + "&no_of_months=" + month + "&holiday_start_date=" + date + "&created_in=810&holiday_end_date=" + Enddate + "&paid_amount=" + paid + "&payable_amount=" + amount + "",
         success: function (data_new) {
             console.log(data_new);
 
@@ -1341,7 +1351,6 @@ function placeOrder(id) {
                 $(".spinner").hide();
 
                 toastr.error('Please sign in to order the book !');
-                $(window).scrollTop($('#anchor2').offset().top);
 
             }
             else {

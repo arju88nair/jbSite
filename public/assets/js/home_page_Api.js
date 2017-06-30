@@ -275,12 +275,12 @@ $(document).ready(function () {
 
 
                 var sec_colors = ['#78CFBF', '#3EC6E0', '#E3536C','#7470b9']
-                response += '   <div class="' + colors[i] + '">' +
+                response += '   <div class="block personal fl">' +
                     '<h4 class="title">' + arr['PLAN_NAME'].toUpperCase() + '</h4>' +
                     ' <a href="/signup?planname=' + arr['PROMO'] + '&books=' + arr['NO_OF_BOOKS'] + '&months=' + arr['NO_OF_MONTHS'] + '"><div class="content_pt">' +
                     ' <p class="price"><sup>₹</sup><span> ' + Math.round(parseFloat(arr['READING_FEE'])) + '</span><sub></sub></p>' +
                     '<p class="hint">' + arr['MONTH_TAG'] + '</p></div></a><ul class="features">' +
-                    '<li style="color: black;">' + arr['BOOK_TAG'] + '</li><li style="background-color: ' + sec_colors[i] + ';padding: 12px;color: white;">' + arr['SUITABLE_TAG'] + '</li><li style="color: black;">Security Deposit - ₹ ' + Math.round(parseFloat(arr['SECURITY_DEPOSIT'])) + ' </li>' +
+                    '<li style="color: black;">' + arr['BOOK_TAG'] + '</li><li style="background-color:#666666;padding: 12px;color: white;">' + arr['SUITABLE_TAG'] + '</li><li style="color: black;">Security Deposit - ₹ ' + Math.round(parseFloat(arr['SECURITY_DEPOSIT'])) + ' </li>' +
                     '<li style="color: black;">Registration Fee - ₹ ' + Math.round(parseFloat(arr['REGISTRATION_FEE'])) + '</li></ul><div class="pt-footer">' +
                     '<a href="/signup?planname=' + arr['PROMO'] + '&books=' + arr['NO_OF_BOOKS'] + '&months=' + arr['NO_OF_MONTHS'] + '"><h4>GET IT NOW !</h4></a></div></div>'
 
@@ -310,13 +310,13 @@ $(document).ready(function () {
                     '<div class="img_block wrapped_img"><img style="width: 100%;height: 17em;" src="' + data[i]['IMAGE'] + '" alt="" width="270" height="170"></div>' +
                     '<div class="carousel_body">' +
                     '<div class="carousel_title">' +
-                    '<h5><a href="#" style="margin-left: -7%;font-family: \'Playfair Display\'">' + data[i]['NAME'] + '</a></h5>' +
+                    '<h5><p  style="margin-left: -5%;font-family: \'Playfair Display\'">' + data[i]['NAME'] + '</p></h5>' +
                     '</div>' +
                     '<div class="carousel_desc">' +
                     '<div class="exc" style="margin-left: -5%;font-family: \'Playfair Display\'">' + data[i]['DESCRIPTION'] + '</div>' +
                     '</div>' +
                     '</div>' +
-                    '<a href="' + data[i]['LINK'] + '" class="shortcode_button btn_small btn_type1">Read More</a>' +
+                    '<a target="_blank" href="' + data[i]['LINK'] + '" class="shortcode_button btn_small btn_type1">Read More</a>' +
                     '</div>' +
                     '</li>')
             }
@@ -339,9 +339,11 @@ function wishlistAdd(id) {
             ;
             $(".spinner").hide();
             if (JSON.parse(data) === "failure") {
-                toastr.error('Please sign in to update your wish list !');
-                $(window).scrollTop($('#anchor2').offset().top);
 
+                toastr.error('Please sign in to update your wish list');
+                $('html, body').animate({
+                    scrollTop: $('#membershipPlans').offset().top - 150
+                }, 800);
             }
             else {
                 $("#wish_" + id).attr("src", "../../assets/img/Added_WL_Right.png")
@@ -350,7 +352,6 @@ function wishlistAdd(id) {
         },
         error: function (err) {
             console.log(err);
-            toastr.error("Something went wrong.Please try again !")
         }
 
     });
@@ -367,7 +368,10 @@ function placeOrder(id) {
                 $(".spinner").hide();
 
                 toastr.error('Please sign in to order the book !');
-                $(window).scrollTop($('#anchor2').offset().top);
+                $('html, body').animate({
+                    scrollTop: $('#membershipPlans').offset().top - 150
+                }, 800);
+                // $(window).scrollTop($('#membershipPlans').offset().top);
 
             }
             else {
@@ -449,7 +453,6 @@ function signupClick() {
                 $(".login_form_fram_one").hide();
                 $("#main").hide();
                 $("#first").hide();
-                localStorage.setItem("flag", true)
                 $("#shelfButton").show();
                 toastr.success('Successfully signed in !');
                 localStorage.setItem("flag", true)
@@ -485,7 +488,7 @@ function signupClick() {
         error: function (err) {
             $(".spinner").hide();
 
-            toastr.error('Something went wrong, Please try again !');
+            // toastr.error('Something went wrong, Please try again !');
             console.log(err.responseText);
             $("#frame_sign_in").hide();
             $("#loader").hide();
@@ -519,7 +522,7 @@ $(".spinner").show();
             if (JSON.parse(data) === "success") {
                 $(".spinner").hide();
 
-                toastr.success('Please check your mail for further instructions !');
+                toastr.success('Please check your mail for further instructions!');
 
             }
             else {

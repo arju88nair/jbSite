@@ -59,15 +59,15 @@ function wishlistAdd(id) {
     });
 }
 function logClick(type) {
-//            $.ajax({
-//                type: "GET",
-//                url: "/insertLog?type=" + type + "",
-//                success: function (data) {
-//                    console.log(data)
-//                },
-//
-//
-//            });
+           $.ajax({
+               type: "GET",
+               url: "/insertLog?type=" + type + "",
+               success: function (data) {
+                   console.log(data)
+               },
+
+
+           });
 }
 
 
@@ -98,7 +98,7 @@ $(document).ready(function () {
         },
         queryTokenizer: Bloodhound.tokenizers.whitespace,
         remote: {
-            url: 'http://rec.justbooksclc.com/getSuggestBooks?',
+            url: 'https://rec.justbooks.in/getSuggestBooks?',
             replace: function(url, uriEncodedQuery){
 
                 val = $('#srch-term').val();

@@ -2501,7 +2501,7 @@ hr.respond_seperator {
 }
 .carousel_title_book h5{
 	white-space: nowrap;
-	width: 15em;
+	width: 14em;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	color: black;
@@ -2520,7 +2520,7 @@ hr.respond_seperator {
 	text-overflow: ellipsis;
 	color: #fff;
 	margin: 0px;
-	padding-top: 5px;
+	/*padding-top: 5px;*/
 	padding-bottom: 0px;
 	text-align: center;
 	font-size: 14px;
@@ -4421,7 +4421,7 @@ ol.sitemap_list li span.sitemap_comments a{
 /*Misc*/
 .details_img img {
 	border-radius:5px;
-	width:68%;
+	width:70%;
 	max-width:100%;
 	padding-bottom: 20px;
 	height:100%
@@ -6423,7 +6423,7 @@ transition: 500ms ease-in-out left;
 	background-color: white;
 	position :absolute;
 	left: 50%;
-	margin-left:-160px;
+	margin-left:-100px;
 	top:25px;
 }
 .login_form_fram_one h2{
@@ -6464,7 +6464,7 @@ transition: 500ms ease-in-out left;
 	background-color: white;
 	position :absolute;
 	left: 50%;
-	margin-left:-180px;
+	margin-left:-100px;
 	top:0px;
 }
 

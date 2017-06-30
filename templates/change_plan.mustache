@@ -1,7 +1,7 @@
 {{> header}}
 
 <!-- C O N T E N T -->
-<div class="content_wrapper" style="margin-top: 8%">
+<div class="content_wrapper" style="margin-top: 10%">
     <div class="page_title_block">
         <div class="container">
             <div class="bg_title" id="bg_title_shelf"><h4 class="headInModule">PLAN DETAILS </h4></div>
@@ -34,28 +34,26 @@
 
 
 
-                                        {{# plan_data}}
 
-                                            <a href="/signup?planname={{PROMO}}&books={{NO_OF_BOOKS}}&months={{NO_OF_MONTHS}}">
+
+                                            <a href="/signup?planname={{plan_data}}&books={{book}}&months={{month}}">
 
                                                 <div class="span9 l_content">
                                                     <div class="row">
                                                         <div class='col-md-10 col-md-offset-2 card bordered'
-                                                             id="box_{{PLAN_NAME}}"
+                                                             id="box_{{plan_data}}"
                                                              style="padding-top: 7%;padding-bottom: 4%;text-indent: 8%">
                                                             <div class="col-md-12 text-left">
                                                                 <div class="row bottom">
                                                                     <div class="col-md-12 left">
-                                                                        <h4>{{PLAN_NAME}}</h4>
+                                                                        <h4>{{plan_data}}</h4>
                                                                     </div>
                                                                 </div>
                                                             </div>
 
                                                             <div class="col-md-12 text-left">
                                                                 <div class="row bottom">
-                                                                    <div class="col-md-12 left">
-                                                                        <h5>{{BOOK_TAG}} for {{SUITABLE_TAG}}</h5>
-                                                                    </div>
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -63,7 +61,6 @@
                                                 </div>
                                             </a>
 
-                                        {{/plan_data}}
                                         <!---->
 
 
@@ -270,9 +267,9 @@
 
                 'display': 'block',
                 'background-color': '#fff',
-                'box-shadow': ' 1px 1px 8px #999',
+                'box-shadow': ' 1px 1px 5px #999',
                 'cursor': 'pointer',
-                'border': '1px solid #A9A9A9'
+                'border-bottom': '4px solid red'
 
             });
             $('#months').on('change', function () {
@@ -312,8 +309,8 @@
                         else {
                             $("#months").append('<option value="' + data_new['month'] + '">' + data_new['month'] + ' month(s)</option>')
 
-                            $('#reg_fee h5').html("₹ " + data_new['reg_fee']);
-                            $('#sec_deposit_fee h5').html("₹ " + data_new['sec_deposit']);
+                            $('#reg_fee h5').html("₹ " + data_new['available_balance']);
+                            $('#sec_deposit_fee h5').html("₹ " + data_new['balance_due']);
                             $('#reading_fee h5').html("₹ " + data_new['reading_fee']);
                             $('#total_fee h5').html("₹ " + data_new['total']);
 
@@ -343,8 +340,8 @@
                             data_new = JSON.parse(data_new);
                             console.log(data_new);
 //                        console.log(data_new['reg_fee']);
-                            $('#reg_fee h5').html("₹ " + data_new['reg_fee']);
-                            $('#sec_deposit_fee h5').html("₹ " + data_new['sec_deposit']);
+                            $('#reg_fee h5').html("₹ " + data_new['available_balance']);
+                            $('#sec_deposit_fee h5').html("₹ " + data_new['balance_due']);
                             $('#reading_fee h5').html("₹ " + data_new['reading_fee']);
                             $('#total_fee h5').html("₹ " + data_new['total']);
                         },
@@ -481,7 +478,7 @@
 
                 $.ajax({
                     type: "GET",
-                    url: "http://staging.justbooksclc.com:8990/api/v1/change_plan_payment.json?email=" + email + "&membercard=" + membership + "&term=" + terms + "&new_plan_id=" + planid + "&coupon_code=" + coupon + "&gift_card_no=" + gift + "&pin=null",
+                    url: "http://justbooksclc.com/api/v1/change_plan_payment.json?email=" + email + "&membercard=" + membership + "&term=" + terms + "&new_plan_id=" + planid + "&coupon_code=" + coupon + "&gift_card_no=" + gift + "&pin=null",
                     crossDomain: true,
                     success: function (data_new) {
                         console.log(data_new);
@@ -500,7 +497,7 @@
                             $.ajax({
                                 type: "GET",
                                 crossDomain: true,
-                                url: "http://staging.justbooksclc.com:8990/api/v1/confirm_change_plan.json?email=" + email + "&membercard=" + membership + "&member_id=" + data_new.result.member_id + "&membership_no=" + data_new.result.membership_no + "&amount=" + data_new.result.amount + "&old_plan_id=" + data_new.result.old_plan_id + "&new_plan_id=" + data_new.result.new_plan_id + "&term=" + data_new.result.term + "&created_in=" + data_new.result.created_in + "&member_branch_id=" + data_new.result.member_branch_id + "&old_expiry_date=" + data_new.result.member_branch_id + "&new_expiry_date=" + data_new.result.new_expiry_date + "&old_security_deposit=" + data_new.result.old_security_deposit + "&new_security_deposit=" + data_new.result.new_security_deposit + "&old_reading_fee_balance=" + data_new.result.old_reading_fee_balance + "&convenience_fee=" + data_new.result.convenience_fee + "&delivery_fees=" + data_new.result.delivery_fees + "&delivery_option=" + data_new.result.delivery_option + "&overdue_adjustment=" + data_new.result.overdue_adjustment + "&adjustment_narration=" + data_new.result.adjustment_narration + "&reward_points=" + data_new.result.reward_points + "&coupon_no=" + data_new.result.coupon_no + "&coupon_id=" + data_new.result.coupon_id + "&coupon_amount=" + data_new.result.coupon_amount + "&change_plan_payment_type=" + data_new.result.change_plan_payment_type + "",
+                                url: "http://justbooksclc.com/api/v1/confirm_change_plan.json?email=" + email + "&membercard=" + membership + "&member_id=" + data_new.result.member_id + "&membership_no=" + data_new.result.membership_no + "&amount=" + data_new.result.amount + "&old_plan_id=" + data_new.result.old_plan_id + "&new_plan_id=" + data_new.result.new_plan_id + "&term=" + data_new.result.term + "&created_in=" + data_new.result.created_in + "&member_branch_id=" + data_new.result.member_branch_id + "&old_expiry_date=" + data_new.result.member_branch_id + "&new_expiry_date=" + data_new.result.new_expiry_date + "&old_security_deposit=" + data_new.result.old_security_deposit + "&new_security_deposit=" + data_new.result.new_security_deposit + "&old_reading_fee_balance=" + data_new.result.old_reading_fee_balance + "&convenience_fee=" + data_new.result.convenience_fee + "&delivery_fees=" + data_new.result.delivery_fees + "&delivery_option=" + data_new.result.delivery_option + "&overdue_adjustment=" + data_new.result.overdue_adjustment + "&adjustment_narration=" + data_new.result.adjustment_narration + "&reward_points=" + data_new.result.reward_points + "&coupon_no=" + data_new.result.coupon_no + "&coupon_id=" + data_new.result.coupon_id + "&coupon_amount=" + data_new.result.coupon_amount + "&change_plan_payment_type=" + data_new.result.change_plan_payment_type + "",
                                 success: function (data_new) {
                                     console.log(data_new + " 2nd");
                                     console.log(data_new.result.transaction.transaction.order_number);
@@ -539,7 +536,7 @@
 
                 $.ajax({
                     type: "GET",
-                    url: "http://staging.justbooksclc.com:8990/api/v1/confirm_change_plan.json?email=" + email + "&membercard=" + membership + "&member_id=40021804&membership_no=M103604&amount=1440.0&old_plan_id=400328&new_plan_id=400082&term=1&created_in=810&member_branch_id=1008&old_expiry_date=2018-05-06&new_expiry_date=null&old_security_deposit=1000&new_security_deposit=0.0&old_reading_fee_balance=3600&convenience_fee=0&delivery_fees=0&delivery_option=0&overdue_adjustment=0&adjustment_narration=null&reward_points=null&coupon_no=null&coupon_id=null&coupon_amount=null&change_plan_payment_type=card",
+                    url: "http://justbooksclc.com/api/v1/confirm_change_plan.json?email=" + email + "&membercard=" + membership + "&member_id=40021804&membership_no=M103604&amount=1440.0&old_plan_id=400328&new_plan_id=400082&term=1&created_in=810&member_branch_id=1008&old_expiry_date=2018-05-06&new_expiry_date=null&old_security_deposit=1000&new_security_deposit=0.0&old_reading_fee_balance=3600&convenience_fee=0&delivery_fees=0&delivery_option=0&overdue_adjustment=0&adjustment_narration=null&reward_points=null&coupon_no=null&coupon_id=null&coupon_amount=null&change_plan_payment_type=card",
                     success: function (data_new) {
                         console.log(data_new);
                         console.log(data_new.result.transaction.transaction.order_number);

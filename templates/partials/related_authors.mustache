@@ -1,4 +1,4 @@
-<div class="row-fluid">
+<div class="row-fluid" id="relAuth">
     <div class="span12 module_cont module_bookslider">
         <div class="bg_title"><h4 class="headInModule">OTHER AUTHORS</h4></div>
 
@@ -9,8 +9,8 @@
                         <div class="carousel-inner carouselslider" id="authorCarousel1"  style="padding: 0px 0px 20px 0px; margin-left: 60px; margin-right: 60px;">
                         </div>
 
-                        <div id="frame_authorCarousel1" class="loader_fram">
-                            <div id="loader" style="display: block">
+                        <div id="frame_authorCarousel1" class="loader_fram" style="margin-left: 44%">
+                            <div id="rel_loader" style="display: block">
                                 <img src="../../assets/img/loader.gif" id="loader_image">
                             </div>
                         </div>
@@ -36,14 +36,18 @@
             data=JSON.parse(data);
             console.log(data)
             cardData=data['related'];
+            if(cardData === "No Authors")
+            {
+                $("#relAuth").hide();
+                return false;
+            }
 
-
-            $("#frame_authorCarousel1").hide();
-            $("#loader").hide();
             var relatedResponse = getCardAuthor(cardData, 5);
             $('#authorCarousel1').append(relatedResponse);
             $('.item_author').first().addClass('active');
             $("#authorCarousel").carousel();
+            $("#frame_authorCarousel1").hide();
+            $("#rel_loader").hide();
 
 //                if(data['wishlist'].indexOf(parseInt(id)) != -1)
 //                {

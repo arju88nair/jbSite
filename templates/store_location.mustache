@@ -120,22 +120,22 @@
 
             // When the document is fully loaded...
             $(document).ready(function () {
-                function getLocation() {
-                    if (navigator.geolocation) {
-                        navigator.geolocation.getCurrentPosition(showPosition);
-                    } else {
-                    }
-                }
+//                var lat ;var lng;
+//                if (navigator.geolocation) {
+//                    navigator.geolocation.getCurrentPosition(showPosition);
+//                } else {
+//                    lat=12.9;
+//                    lng=77.5;
+//                }
+//
+//                function showPosition(position) {
+//                    lat=position.coords.latitude;
+//                    lng=position.coords.longitude
+//                    alert(lat+"XFDzs")
+//
+//                }
 
-                function showPosition(position) {
 
-                    if (position.coords.latitude === "" || position.coords.latitude === null) {
-                        lat = 12.9282;
-                        lon = 77.5685
-                    }
-
-
-                }
                 $('#storeLocator').storeLocator({
 
                     // The fetchStoresFunction is a quite required
@@ -154,7 +154,7 @@
                     // will be centered to.
 
 
-                    defaultLocation: {latitude: 12.9, longitude: 77.5}
+                    defaultLocation: {latitude: 12.9, longitude: 77.56}
 
                 });
 
@@ -192,7 +192,6 @@
             // is finished, we call the callback function. The stores will be passed
             // as parameter to this function.
             function fetchStores(lat, lng, callback) {
-
                 $.get('/storeLocator', {lat: lat, lng: lng}, 'json').success(callback);
             }
         </script>

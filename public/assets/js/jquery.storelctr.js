@@ -4,14 +4,13 @@
  */
 
 (function ($) {
-
     var $this = null;
     var stores = [];
     var map = null;
     var markers = {};
     var infowindow = null;
     var enableGeolocation = true;
-    var defaultLocation = {latitude: 48.858877, longitude: 2.3470598};
+    // var defaultLocation = {latitude: 48.858877, longitude: 2.3470598};
 
     /**
      * Prints an error in the console.
@@ -88,7 +87,6 @@
      */
     function placeMarkerForStore(store, bounds) {
         var id = store.id;
-        console.log(id);
 
         var latLng = new google.maps.LatLng(store.latitude, store.longitude);
         if (!bounds || bounds.contains(latLng)) {
@@ -323,16 +321,16 @@
         google.maps.event.addListener(map, 'dragend', placeStoresMarkers);
         google.maps.event.addListener(map, 'zoom_changed', placeStoresMarkers);
 
-        if (enableGeolocation && navigator.geolocation) {
-            alert("Fds")
+        if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function (position) {
                 var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
                 map.setCenter(pos);
+
                 loadStores(pos.lat(), pos.lng());
             });
         }
         else {
-            var pos = new google.maps.LatLng(12.9284666, 77.5673713);
+            var pos = new google.maps.LatLng(12.92846, 77.5673713);
             map.setCenter(pos);
             loadStores(pos.lat(), pos.lng());
         }

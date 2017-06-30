@@ -32,7 +32,7 @@ if ($isValidChecksum == "TRUE") {
 
         if ($_POST['STATUS'] == "TXN_SUCCESS") {
             $orderid = $_POST['ORDERID'];
-            $url = "http://staging.justbooksclc.com:8990/api/v1/paytm_payment_callback.json?orderid=$orderid&response_code=01&payment_type=Paytm&branch_id=810";
+            $url = "http://justbooksclc.com/api/v1/paytm_payment_callback.json?orderid=$orderid&response_code=01&payment_type=Paytm&branch_id=810";
 echo $url;
             $ch = curl_init();
             curl_setopt($ch, CURLOPT_URL, $url);
