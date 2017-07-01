@@ -65,7 +65,11 @@
         </form>
         <script type="text/javascript" src="http://www.the-art-of-web.com/hilitor.js"></script>
         <script type="text/javascript">
+            $(document).ready(function()
+            {
+                $('#faqMenu').addClass('current-menu-parent');
 
+            });
             var myHilitor2;
 
             document.addEventListener("DOMContentLoaded", function(e) {
@@ -316,10 +320,7 @@
     </div><!--/container -->
 
 </div>
+{{>footer}}
 <script>
-    $(document).ready(function()
-    {
-        $('#faqMenu').addClass('current-menu-parent');
 
-    })
 </script>

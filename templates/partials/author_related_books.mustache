@@ -24,7 +24,7 @@
 
                         </div>
                         <div id="frame_auth_arr" class="loader_fram">
-                            <div id="loader" style="display: block;margin-left: -25%">
+                            <div id="loader_auth_arr" style="display: block;margin-left: -25%">
                                 <img src="../../assets/img/loader.gif" id="loader_image">
                             </div>
                         </div>
@@ -118,7 +118,7 @@
                 var final_response = getCard(cardData, 3,data['ids'],data['wishlist']);
                 $('#authRelated').append(final_response);
                 $("#frame_auth_arr").hide();
-                $("#loader").hide();
+                $("#loader_auth_arr").hide();
                 $('.item').first().addClass('active');
                 $("#myCarousel").carousel();
 

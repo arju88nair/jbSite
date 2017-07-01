@@ -295,6 +295,7 @@
                         data_new = JSON.parse(data_new);
                         if (data_new['status'] === "2nd") {
                             data_new = data_new['data'];
+                            $(".planID").attr("id",data_new['planID'])
 
                             if (data_new.length != 0 || data_new != [] || data_new != '[]') {
                                 for (var i = 0; i < data_new.length; i++) {
@@ -307,6 +308,8 @@
                             }
                         }
                         else {
+                            $(".planID").attr("id",data_new['planID'])
+
                             $("#months").append('<option value="' + data_new['month'] + '">' + data_new['month'] + ' month(s)</option>')
 
                             $('#reg_fee h5').html("₹ " + data_new['available_balance']);
@@ -475,10 +478,11 @@
                 }
 
                 var membership = localStorage.getItem("membership");
+                var signupID = parseInt($('.planID').attr('id'));
 
                 $.ajax({
                     type: "GET",
-                    url: "http://justbooksclc.com/api/v1/change_plan_payment.json?email=" + email + "&membercard=" + membership + "&term=" + terms + "&new_plan_id=" + planid + "&coupon_code=" + coupon + "&gift_card_no=" + gift + "&pin=null",
+                    url: "http://justbooksclc.com/api/v1/change_plan_payment.json?email=" + email + "&membercard=" + membership + "&term=" + terms + "&new_plan_id=" + signupID + "&coupon_code=" + coupon + "&gift_card_no=" + gift + "&pin=null",
                     crossDomain: true,
                     success: function (data_new) {
                         console.log(data_new);

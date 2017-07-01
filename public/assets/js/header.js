@@ -5,7 +5,7 @@ function placeOrder(id) {
         url: "/placeOrder?id=" + id,
         success: function (data) {
             console.log(data);
-            if (JSON.parse(data) === "failure" ) {
+            if (JSON.parse(data) === "failure") {
                 $(".spinner").hide();
 
                 toastr.error('Please sign in to order the book !');
@@ -14,12 +14,11 @@ function placeOrder(id) {
             }
             else {
                 $(".spinner").hide();
-                data=JSON.parse(data);
+                data = JSON.parse(data);
                 console.log(data['success'])
-                if(data['success'] === "false")
-                {
+                if (data['success'] === "false") {
                     toastr.warning(data['errors'])
-                }else{
+                } else {
                     toastr.success('Successfully added !');
 
                 }
@@ -59,15 +58,14 @@ function wishlistAdd(id) {
     });
 }
 function logClick(type) {
-           $.ajax({
-               type: "GET",
-               url: "/insertLog?type=" + type + "",
-               success: function (data) {
-                   console.log(data)
-               },
+    $.ajax({
+        type: "GET",
+        url: "/insertLog?type=" + type + "",
+        success: function (data) {
+        },
 
 
-           });
+    });
 }
 
 
@@ -99,22 +97,25 @@ $(document).ready(function () {
         queryTokenizer: Bloodhound.tokenizers.whitespace,
         remote: {
             url: 'https://rec.justbooks.in/getSuggestBooks?',
-            replace: function(url, uriEncodedQuery){
+            replace: function (url, uriEncodedQuery) {
 
                 val = $('#srch-term').val();
-                if(!val) return url;
-                return url + 'text=' +encodeURIComponent(val) + '&page=1'
+                if (!val) return url;
+                return url + 'text=' + encodeURIComponent(val) + '&page=1'
             },
             filter: function (books) {
                 // Map the remote source JSON array to a JavaScript object array
                 return $.map(books, function (book) {
                     return {
                         value: book.name,
-                        link:book.id
+                        link: book.id
                     };
                 });
-            }
-        }
+            },
+
+        },
+        limit: 10,
+
     });
 
 // Initialize the Bloodhound suggestion engine
@@ -136,10 +137,10 @@ $(document).ready(function () {
                 console.log(data.value)
                 return ['<p><a href="/book_details/' + data.link + '/' + data.value + '">' + data.value + '</a></p>'].join('\n');
             },
+
         }
 
     });
-
 
 
 //            var movies = new Bloodhound({
@@ -186,34 +187,18 @@ $(document).ready(function () {
 //
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     $('#shareModal').on('show.bs.modal', function (e) {
 
         //get data-id attribute of the clicked element
         var id = $(e.relatedTarget).data('id');
         var title = $(e.relatedTarget).data('title');
         //populate the textbox
-        $("#sharefb").attr("href", "http://www.facebook.com/sharer.php?u=http://justbooks.in/book_details/"+id+"/"+title+"&t=Reading"+title+" rented from Justbooks" );
-        $("#sharegp").attr("href", "https://plus.google.com/share?url=http://justbooks.in/book_details/"+id+"/"+title);
-        $("#sharetw").attr("href", "https://twitter.com/share?url=http://justbooks.in/book_details/"+id+"/"+title+"&amp;text=Reading %20"+title+"%20,%20rented%20from%20JustBooks&amp;hashtags=justbookclc.com");
+        $("#sharefb").attr("href", "http://www.facebook.com/sharer.php?u=http://justbooks.in/book_details/" + id + "/" + title + "&title=Reading " + title + ", rented from JustBooks");
+        $("#sharegp").attr("href", "https://plus.google.com/share?url=http://justbooks.in/book_details/" + id + "/" + title);
+        $("#sharetw").attr("href", "https://twitter.com/share?url=http://justbooks.in/book_details/" + id + "/" + title + "&amp;text=Reading %20" + title + "%20,%20rented%20from%20JustBooks&amp;hashtags=justbookclc.com");
         // $("#shareen").attr("href", "mailto:me@domain.com?subject=Hi, This might interest you ! http://justbooksclc.com/book_details/"+id);
         // $("#sharefb").attr("href", "http://www.facebook.com/sharer.php?u=http://justbooksclc.com/book_details/"+id);
     });
-
-
 
 
     toastr.options = {

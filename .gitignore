@@ -1,2 +1,5 @@
 includes/
 includes/function.php
+!public/PaytmKit/
+public/PaytmKit/*
+

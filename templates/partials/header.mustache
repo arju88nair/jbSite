@@ -105,7 +105,7 @@
                         <li class="upper-links" id="blogMenu"><a class="links" href="/#blog">BLOG</a></li>
                         <li class="upper-links" id="franchise"><a class="links" href="/franchise">BECOME A FRANCHISEE</a></li>
                         <li class="upper-links" ><a class="links" target="_blank" href="http://culture.place">CULTURE.PLACE</a></li>
-                        <li class="upper-links" ><a class="links" href="/store-locator">STORE LOCATIONS</a></li>
+                        <li class="upper-links" id="storeMenu"><a class="links" href="/store-locator">STORE LOCATIONS</a></li>
                         <li class="upper-links" id="faqMenu"><a class="links" href="/faq">FAQs</a></li>
                         <!--<li class="upper-links" id="contactUsMenu"><a class="links" href="/#contactUs">CONTACT US</a></li>-->
                         <!--<li class="upper-links"><a class="links" href="" id="welcomeId">Welcome {{name}}</a></li>-->
@@ -149,7 +149,7 @@
                         </a>
                     </div>
                     <div class="col-sm-12 col-md-12 col-lg-12">
-                        <a class="links" href="" id="welcomeId" style="float:left;margin-left:2%; padding:5px; font-family:Playfair Display">Welcome {{name}}</a>
+                        <a class="links" href="/shelf" id="welcomeId" style="float:left;margin-left:3.1%; padding:5px; font-family:Playfair Display">Welcome {{name}}</a>
                     </div>
                 </div>
             {{/flag}}
@@ -256,6 +256,8 @@
 
         // Add smooth scrolling on all links inside the navbar
         if (location.pathname == "/" ||location.pathname == "/#whatsNew" ||location.pathname == "/#membershipPlans" ||location.pathname == "/#blog"  ) {
+//            $("#menuHeader li").removeClass("current-menu-parent");
+//            $(hash+"Menu").addClass('current-menu-parent');
 
             $("#menuHeader a").on('click', function (event) {
                 // Make sure this.hash has a value before overriding default behavior
@@ -297,6 +299,9 @@
             if (this.hash !== "") {
                 // Prevent default anchor click b
                 event.preventDefault();
+                $("#menuHeader li").removeClass("current-menu-parent");
+
+                $(hash+"Menu").addClass('current-menu-parent');
 
                 // Store hash
                 var hash = this.hash;

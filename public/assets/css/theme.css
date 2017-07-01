@@ -2501,7 +2501,7 @@ hr.respond_seperator {
 }
 .carousel_title_book h5{
 	white-space: nowrap;
-	width: 14em;
+	width: 11em;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	color: black;

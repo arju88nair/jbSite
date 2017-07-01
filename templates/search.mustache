@@ -13,7 +13,7 @@
             margin: 10px 0 10px 0;
         }
     </style>
-    <div class="container">
+    <div class="container" style="margin-left: 4%">
         <div class="spinner" style='display: none;z-index: 100000;opacity:0.55;background-color: grey'>
             <div class="double-bounce1"></div>
             <div class="double-bounce2"></div>
@@ -32,25 +32,55 @@
                     <br>
                     <br>
                     <br>
+                    <div id="searchDiv">
                     {{# data}}
-                        <div id="searchDiv">
+
+                        <div>
+
                             {{# _source}}
-                                <div class="col-lg-3 col-md-4 col-xs-12 thumb">
+                                <!-- <div class="col-lg-3 col-md-4 col-xs-12 thumb">
                                     {{#jb_info}}
-                                    <a class="thumbnail" href="/book_details/{{titleid}}/{{#author}}{{name}}{{/author}}" style="height: 320px;">
-                            {{/jb_info}}
-                                        <img class="img-responsive" src="{{image_url}}" width="150" height="160"
-                                             onerror="this.src='../../assets/images/Default_Book_Thumbnail.png'">
-                                             <!--onerror="this.src='https://www.safetybasics.com/v/vspfiles/photos/003-C-4L-Cover-0.jpg'">-->
+                                        <a class="thumbnail" href="/book_details/{{titleid}}/{{#author}}{{name}}{{/author}}" style="height: 320px;">
+                                            {{/jb_info}}
+
+                                            <img class="img-responsive" src="{{image_url}}" width="150" height="160"
+                                                     onerror="this.src='../../assets/images/Default_Book_Thumbnail.png'">
+
+                                            {{#jb_info}}
+
+                                            <h5 class="gallery_title">{{title}}</h5>
+
+                                            {{/jb_info}}
+                                        </a>
+                                </div> -->
+                                <div class="col-lg-2 col-md-2 col-xs-12 thumb">
+                                    <div class="item item_shadow">
                                         {{#jb_info}}
-                                        <h5 class="gallery_title">{{title}}</h5>
+                                        <div class="img_block_books">
+                                        <a href="/book_details/{{titleid}}/{{#author}}{{name}}{{/author}}">
                                         {{/jb_info}}
-                                    </a>
+
+                                        <img class="img-responsive" src="{{image_url}}" onerror="this.src='../../assets/images/Default_Book_Thumbnail.png'">
+                                        {{#jb_info}}
+                                        </a>
+                                        </div>
+                                            <div class="carousel_body_book">
+                                                <div class="carousel_title_book" style="margin-left: 9%;padding-bottom: 6%">
+                                                    <h5 title="{{title}}">{{title}}</h5>
+                                                </div>
+                                                <div class="carousel_desc">
+
+                                                    <div class="clear"></div>
+                                                </div>
+                                            </div>
+                                        {{/jb_info}}
+                                    </div>
                                 </div>
                             {{/_source}}
                         </div>
-                            {{/data}}
 
+                    {{/data}}
+                    </div>
                 </div>
             </div><!-- .contentarea -->
         </div>
@@ -67,7 +97,7 @@
         var count={{count}};
         if(count === 0)
         {
-           $("#load").hide();
+            $("#load").hide();
         }
         localStorage.setItem("countFlag", 2);
         $('#home').addClass('current-menu-parent');
@@ -87,17 +117,43 @@
             success: function (data) {
 
                 $(".spinner").hide();
-                if(data.length == 0)
+                if(data === "No Titles")
                 {
                     toastr.success("No more result to show !");
                     return false;
                 }
                 for (var i = 0; i < data.length; i++) {
 
-                    $("#searchDiv").append("<div class=\"col-lg-3 col-md-4 col-xs-12 thumb\" >" +
-                            "<a class=\"thumbnail\" href=\"/book_details/" + data[i]['_source']['jb_info']['titleid'] + "\"  style=\"height: 320px;\">" +
-                            " <img class=\"img-responsive\" src=\"" + data[i]['_source']["image_url"] + "\" onerror=\"this.src='https://www.safetybasics.com/v/vspfiles/photos/003-C-4L-Cover-0.jpg'\" >" +
-                            "        <h5 class=\"gallery_title\">" + data[i]['_source']['jb_info']["title"] + "</h5></a></div>");
+                    $("#searchDiv").append(
+
+                            // "<div class=\"col-lg-3 col-md-4 col-xs-12 thumb\" >" +
+                            //     "<a class=\"thumbnail\" href=\"/book_details/" + data[i]['_source']['jb_info']['titleid'] + "\"  style=\"height: 320px;\">" +
+                            //     " <img class=\"img-responsive\" src=\"" + data[i]['_source']["image_url"] + "\" onerror=\"this.src='https://www.safetybasics.com/v/vspfiles/photos/003-C-4L-Cover-0.jpg'\" >" +
+                            //     "        <h5 class=\"gallery_title\">" + data[i]['_source']['jb_info']["title"] + "</h5></a></div>"
+
+
+
+                            '<div class="col-lg-2 col-md-2 col-xs-12 thumb">'+
+                            '<div class="item item_shadow">'+
+                            '<div class="img_block_books">'+
+                            '<a href="/book_details/' + data[i]['_source']['jb_info']['titleid'] + '">'+
+
+                            '<img class="img-responsive" src="'+ data[i]['_source']["image_url"] +'" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'">'+
+
+                            '</a>'+
+                            '</div>'+
+                            '<div class="carousel_body_book">'+
+                            '<div class="carousel_title_book" style="margin-left: 9%;padding-bottom: 6%"><h5 title="' + data[i]['_source']['jb_info']['title'] + '">' + data[i]['_source']['jb_info']['title'] + '</h5></div>'+
+                            '<div class="carousel_desc">'+
+
+                            '<div class="clear"></div>'+
+                            '</div>'+
+                            '</div>'+
+                            '</div>'+
+                            '</div>'
+
+
+                    );
                 }
                 $("#countResult").text( "which have " +$("#searchDiv > div").length + " results");
             },

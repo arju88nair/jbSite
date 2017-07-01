@@ -614,7 +614,6 @@ $app->post('/insertSignup', function (Request $request, Response $response) {
 
     $response_data = json_decode($amnt_data);
     $data = $response_data->result;
-
     $total_amnt = $data->total_amount;
     $redeemed_amnt = $data->redeemed_amount;
     $sub_total = $data->sub_total;
@@ -623,15 +622,15 @@ $app->post('/insertSignup', function (Request $request, Response $response) {
 
 
     $raw_data = curlFunction("web_signup_create.json?city_id=$city&branch_id=1008&email=$email&gender=$gender&dob_year=$dob_new[2]&dob_month=$dob_new[1]&dob_day=$dob_new[0]&first_name=$first_name&last_name=$last_name&address=$address&pincode=$zip&primary_phone=$mobile&alternate_phone=$mobile&referred_by=$referal&about_justbooks_source=11&plan_id=$plan_id&membership_duration=$duration&delivery_option=1&coupon_code=$coupon_code&gift_card_no=$gift_card_no&pin=$pin&total_amount=$total_amnt&redeemed_amount=$redeemed_amnt&qc_flag=false&sub_total=$sub_total&discount=$discount&convenience_fee=0&payment_mode=card&delivery_fees=$delivery_fee&coupon_id=$coupon_code&password=$password&password_confirmation=$password");
-
     $response_data = json_decode($raw_data);
     $data = $response_data->result;
     if ($response_data->success == true) {
         $data = json_decode(json_encode($data), True);
         $_SESSION['order_number'] = $data['transaction']['transaction']['order_number'];
         $_SESSION['amount'] = $data['transaction']['transaction']['amount'];
+//        echo json_encode(array("success"=>true,'order'=>$data['transaction']['transaction']['order_number'],'amount'=>$data['transaction']['transaction']['amount']));
         echo json_encode($response_data);
-
+die;
     } else {
         echo json_encode($response_data);
     }
@@ -1576,7 +1575,7 @@ $app->post('/updateProfile', function (Request $request, Response $response) {
     $state = $_POST['state'];
     $city = $_POST['city'];
     $zip = $_POST['pin'];
-    $email=$_POST['email'];
+    $email="";
     $phone = $_POST['phone'];
 //echo "/updateMemberProfile?email=$email&membership_no=$membership_no&address1=$address1&address2=$address2&address3=$address3&city=$city&state=$state&pincode=$zip&mphone=$phone";die;
     $api_key = $_SESSION['api_key'];
@@ -2107,6 +2106,23 @@ $app->get('/getProfileDetails', function (Request $request, Response $response) 
 
     $plan_data = json_decode($plan_data_curl);
     echo json_encode(array('data'=>$plan_data));
+
+
+
+});
+$app->get('/terms-and-condition', function (Request $request, Response $response) {
+
+    if (isset($_SESSION['username'])) {
+        $flag = 1;
+        $slider = 0;
+        $name = $_SESSION['first_name'];
+    } else {
+        $flag = 0;
+        $slider = 1;
+        $name = "";
+    }
+
+    return $this->view->render($response, 'terms.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider));
 
 
 

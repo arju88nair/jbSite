@@ -35,7 +35,7 @@ $(document).ready(function () {
             $('.item_shelf_rec').first().addClass('active');
             $("#myCarousel").carousel();
             $("#frame_recomm").hide();
-            $("#loader").hide();
+            $("#loader_rec").hide();
 
 
         },
@@ -339,7 +339,6 @@ $(document).ready(function () {
             cache: false,
             success: function (data) {
                 $(".spinner").hide();
-                console.log(data);return false;
                 if(data === "Updated")
                 {
                     toastr.success("Updated successfully !");
