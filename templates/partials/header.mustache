@@ -98,20 +98,24 @@
     <div id="flipkart-navbar">
         <div class="container">
             <div class="row1">
-                <div class="col-sm-12" style="width: 104%;left:-13%">
+                <div class="col-sm-2">
+
+                </div>
+
+                <div class="col-sm-8">
                     <ul class="largenav pull-right menu" id="menuHeader">
                         <li class="upper-links" id="whatsNewMenu"><a class="links" href="/#whatsNew">WHAT'S NEW</a></li>
                         <li class="upper-links" id="membershipPlansMenu"><a class="links" href="/#membershipPlans">MEMBERSHIP PLANS</a></li>
                         <li class="upper-links" id="blogMenu"><a class="links" href="/#blog">BLOG</a></li>
-                        <li class="upper-links" id="franchise"><a class="links" href="/franchise">BECOME A FRANCHISEE</a></li>
                         <li class="upper-links" ><a class="links" target="_blank" href="http://culture.place">CULTURE.PLACE</a></li>
                         <li class="upper-links" id="storeMenu"><a class="links" href="/store-locator">STORE LOCATIONS</a></li>
                         <li class="upper-links" id="faqMenu"><a class="links" href="/faq">FAQs</a></li>
-                        <!--<li class="upper-links" id="contactUsMenu"><a class="links" href="/#contactUs">CONTACT US</a></li>-->
-                        <!--<li class="upper-links"><a class="links" href="" id="welcomeId">Welcome {{name}}</a></li>-->
-                        <!--<li class="upper-links"> <a class="links" href="/logout/"> Log Out-->
-                        <!--</a></li>-->
+
                     </ul>
+                </div>
+
+                <div class="col-sm-2" id="welcome_msg">
+                   {{#flag}}<p id="welcomeId">Hi, {{name}}</p>{{/flag}}
                 </div>
             </div>
             {{#flag}}
@@ -148,9 +152,9 @@
                             <!-- <span class="item-number ">3</span> -->
                         </a>
                     </div>
-                    <div class="col-sm-12 col-md-12 col-lg-12">
+                    <!-- <div class="col-sm-12 col-md-12 col-lg-12">
                         <a class="links" href="/shelf" id="welcomeId" style="float:left;margin-left:3.1%; padding:5px; font-family:Playfair Display">Welcome {{name}}</a>
-                    </div>
+                    </div> -->
                 </div>
             {{/flag}}
 

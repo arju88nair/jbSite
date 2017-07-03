@@ -221,11 +221,25 @@ header ul.menu > li > a {
 	/*background-color: rgba(0, 0, 0, 0.6);*/
 	color:#ee97a6;
 }
-
+#welcome_msg p{
+	display: inline-block;
+	padding: 0 11px;
+	line-height: 23px;
+	border: none;
+	outline: none;
+	font-size: 10px;
+	font-weight: normal;
+	color: rgb(0, 0, 0);
+	border-color: rgb(246, 246, 246);
+	letter-spacing: 0.2em;
+	font-family: Arial;
+	background-color: rgba(255, 255, 255, 0);
+	float: right;
+}
 
 #flipkart-navbar {
 	background: #ffffff !important;
-	/*padding: 20px 0px;*/
+	padding-bottom: 10px;
 	border-top: bisque !important;
 	box-shadow: 1px 1px 4px rgba(60, 60, 60, 0.44) !important;
 	border-bottom: 1px solid #D2D2D2 !important;
@@ -247,42 +261,69 @@ header ul.menu > li > a {
 .row2 {
 	padding-bottom: 20px;
 }
-
 .flipkart-navbar-input {
-	padding: 12px 16px !important;
+	/*padding: 12px 16px !important;
+    border-radius: 2px 0 0 2px !important;
+    border: 1px solid #a09191
+!important;
+    outline: 0 none !important;
+    font-size: 13px !important;
+    font-family: 'Playfair Display' !important;
+    display: inline-block !important;
+    color: rgb(0, 0, 0);
+    letter-spacing: 0em;*/
 	border-radius: 2px 0 0 2px !important;
-	border: 1px solid #a09191 !important;
+	border: 1px solid #a09191
+	!important;
 	outline: 0 none !important;
-	font-size: 13px !important;
-	font-family: 'Playfair Display' !important;
-
-
-	display: inline-block !important;
-	/*padding: 0 11px;*/
-
-	/*border: none;
-    outline: none;*/
-
-
-	/*font-size: 11px;*/
+	display: inline-block;
+	padding: 10px 10px !important;
+	line-height: 22px;
+	outline: none;
+	font-size: 10px;
 	font-weight: normal;
 	color: rgb(0, 0, 0);
-	/*border-color: rgb(246, 246, 246);*/
-	letter-spacing: 0em;
-	/*font-family: Arial;*/
-	/*background-color: rgba(255, 255, 255, 0);*/
+	letter-spacing: 0.2em;
+	font-family: Arial;
+	background-color: rgba(255, 255, 255, 0);
+	text-transform: uppercase;
+
 }
+/*.flipkart-navbar-input {*/
+/*padding: 12px 16px !important;*/
+/*border-radius: 2px 0 0 2px !important;*/
+/*border: 1px solid #a09191 !important;*/
+/*outline: 0 none !important;*/
+/*font-size: 13px !important;*/
+/*font-family: 'Playfair Display' !important;*/
+
+
+/*display: inline-block !important;*/
+/*!*padding: 0 11px;*!*/
+
+/*!*border: none;*/
+/*outline: none;*!*/
+
+
+/*!*font-size: 11px;*!*/
+/*font-weight: normal;*/
+/*color: rgb(0, 0, 0);*/
+/*!*border-color: rgb(246, 246, 246);*!*/
+/*letter-spacing: 0em;*/
+/*!*font-family: Arial;*!*/
+/*!*background-color: rgba(255, 255, 255, 0);*!*/
+/*}*/
 /*.flipkart-navbar-input:hover {*/
-	/*padding: 12px 16px !important;*/
-	/*border-radius: 2px 0 0 2px !important;*/
-	/*border: 1px solid #504848 !important;*/
-	/*outline: 0 none !important;*/
-	/*font-size: 15px !important;*/
-	/*font-family: 'Arial' !important;*/
+/*padding: 12px 16px !important;*/
+/*border-radius: 2px 0 0 2px !important;*/
+/*border: 1px solid #504848 !important;*/
+/*outline: 0 none !important;*/
+/*font-size: 15px !important;*/
+/*font-family: 'Arial' !important;*/
 /*}*/
 
 .flipkart-navbar-button {
-	background-color: #1d2123;
+	background-color: #323232;
 	border: 1px solid #a09191;
 	border-radius: 0 2px 2px 0;
 	color: #fff;
@@ -306,7 +347,7 @@ header ul.menu > li > a {
 }
 
 .cart-button {
-	background-color:  #1d2123;
+	background-color: #323232;
 	/*background-color: #a09191;*/
 	box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .23), inset 1px 1px 0 0 hsla(0, 0%, 100%, .2);
 	padding: 10px 0;
@@ -1042,10 +1083,10 @@ a.socialIcon:hover, .socialHoverClass {
 		background-color: #58B75B;
 	}
 
-	.twitter-typeahead{
-		display:block!important;
-		width:100%!important;
-	}
+.twitter-typeahead{
+	display:block!important;
+	width:100%!important;
+}
 
 /*
 * typehead.js-bootstrap3.less
@@ -1250,3 +1291,5 @@ fieldset[disabled] .twitter-typeahead .tt-input {
 .tt-menu .tt-suggestion p {
 	margin: 0;
 }
+
+

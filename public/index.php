@@ -59,6 +59,7 @@ function curlFunctionEs($url)
     curl_close($ch);
     return $raw_data;
 }
+
 //function curlFunctionPost($url)
 //{
 //    $ch = curl_init();
@@ -332,7 +333,7 @@ $app->get('/signup', function (Request $request, Response $response) {
 //        $query_city = "SELECT *  FROM memp.FN_HOME_PAGE_PLANS WHERE ACTIVE = 1 and FOR_VIRTUAL = 1";
 //
 //    }
-    $query_city = "SELECT *  FROM memp.FN_HOME_PAGE_PLANS WHERE ACTIVE = 1 and FOR_VIRTUAL = 1";
+    $query_city = "SELECT *  FROM memp.FN_HOME_PAGE_PLANS WHERE ACTIVE = 1 AND FOR_VIRTUAL = 1";
 
     $result_city = oci_parse($con, $query_city);
     oci_execute($result_city);
@@ -373,19 +374,17 @@ $app->get('/signup', function (Request $request, Response $response) {
     $temp_array = array();
     foreach ($data as $indPlan) {
         if (strtoupper($indPlan['web_signup_plan']['promo_code']) === strtoupper($planname) && $indPlan['web_signup_plan']['books'] === (int)$books) {
-            $monthTag=$indPlan['web_signup_plan']['frequency'];
-            $namePlan=$indPlan['web_signup_plan']['plan_name'];
+            $monthTag = $indPlan['web_signup_plan']['frequency'];
+            $namePlan = $indPlan['web_signup_plan']['plan_name'];
             $planid = $indPlan['web_signup_plan']['plan_id'];
         }
 
     }
 
-    if($monthTag == 'Y')
-    {
-        $monthTagText="year(s)";
-    }
-    else{
-        $monthTagText="month(s)";
+    if ($monthTag == 'Y') {
+        $monthTagText = "year(s)";
+    } else {
+        $monthTagText = "month(s)";
     }
     foreach ($data as $indPLan) {
         if (strtoupper($indPLan['web_signup_plan']['promo_code']) === strtoupper($planname)) {
@@ -423,7 +422,7 @@ $app->get('/signup', function (Request $request, Response $response) {
     }
 
 
-    $monthsArray=array_values(array_unique($monthsArray));
+    $monthsArray = array_values(array_unique($monthsArray));
     foreach ($array as $item) {
         if ($item['web_signup_plan']['books'] == $books) {
             foreach ($item['web_signup_plan']['plan_durations'] as $plans) {
@@ -437,7 +436,7 @@ $app->get('/signup', function (Request $request, Response $response) {
                         $slider = 1;
                         $name = "";
                     }
-                    $response = $this->view->render($response, 'signup.mustache', array('plan_data' => $planData, 'plan_dataJ' => json_encode($array_data), 'planid' => $planid, 'plan_books' => $count, 'planname' => $planname, 'planid' => $planid, "total" => $plans['plan_duration']['totalAmount_with_convenience_fee'], 'reading_fee' => $plans['plan_duration']['reading_fee_for_term'], 'reg_fee' => $item['web_signup_plan']['registration_fee'], 'sec_deposit' => $item['web_signup_plan']['security_deposit'], 'months' => $monthsArray, 'book' => $books, 'month' => $months, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider,'namePlan'=>$namePlan,'monthTagText'=>$monthTagText));
+                    $response = $this->view->render($response, 'signup.mustache', array('plan_data' => $planData, 'plan_dataJ' => json_encode($array_data), 'planid' => $planid, 'plan_books' => $count, 'planname' => $planname, 'planid' => $planid, "total" => $plans['plan_duration']['totalAmount_with_convenience_fee'], 'reading_fee' => $plans['plan_duration']['reading_fee_for_term'], 'reg_fee' => $item['web_signup_plan']['registration_fee'], 'sec_deposit' => $item['web_signup_plan']['security_deposit'], 'months' => $monthsArray, 'book' => $books, 'month' => $months, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'namePlan' => $namePlan, 'monthTagText' => $monthTagText));
                     return $response;
 
                 }
@@ -520,7 +519,7 @@ $app->get('/getPlan', function (Request $request, Response $response) {
 //        $query_city = "SELECT *  FROM memp.FN_HOME_PAGE_PLANS WHERE ACTIVE = 1 and FOR_VIRTUAL = 1";
 //
 //    }
-    $query_city = "SELECT *  FROM memp.FN_HOME_PAGE_PLANS WHERE ACTIVE = 1 and FOR_VIRTUAL = 1";
+    $query_city = "SELECT *  FROM memp.FN_HOME_PAGE_PLANS WHERE ACTIVE = 1 AND FOR_VIRTUAL = 1";
 
     $result_city = oci_parse($con, $query_city);
     oci_execute($result_city);
@@ -630,7 +629,7 @@ $app->post('/insertSignup', function (Request $request, Response $response) {
         $_SESSION['amount'] = $data['transaction']['transaction']['amount'];
 //        echo json_encode(array("success"=>true,'order'=>$data['transaction']['transaction']['order_number'],'amount'=>$data['transaction']['transaction']['amount']));
         echo json_encode($response_data);
-die;
+        die;
     } else {
         echo json_encode($response_data);
     }
@@ -758,7 +757,6 @@ $app->get('/getSubscription', function (Request $request, Response $response) {
     }
 
 
-
     foreach ($data as &$v) {
 
         if (!isset($temp_array_main[$v['change_plan_detail']['promo_code']]))
@@ -815,8 +813,8 @@ $app->get('/login/{username}/{password}', function (Request $request, Response $
         $_SESSION['username'] = $username;
         $_SESSION['uniqueId'] = uniqid();
         $_SESSION['membership_no'] = $arr[0]['membership_no'];
-        $branchID=$arr[0]['branch_id'];
-        $branchID= (int) substr($branchID, 0, strpos($branchID, '-'));
+        $branchID = $arr[0]['branch_id'];
+        $branchID = (int)substr($branchID, 0, strpos($branchID, '-'));
         $_SESSION['branchID'] = $branchID;
         $_SESSION['email'] = $arr[0]['email'];
         $_SESSION['first_name'] = $arr[0]['first_name'];
@@ -904,9 +902,6 @@ $app->get('/change_plan', function (Request $request, Response $response, $args)
     $array_data = array_values($temp_array_main);
 
 
-
-
-
     $temp_array = array();
     foreach ($data as $v) {
         if (strtoupper($v['change_plan_detail']['promo_code']) === strtoupper($planname) && $v['change_plan_detail']['books'] === (int)$books) {
@@ -949,7 +944,7 @@ $app->get('/change_plan', function (Request $request, Response $response, $args)
             }
         }
     }
-    $monthsArray=array_values(array_unique($monthsArray));
+    $monthsArray = array_values(array_unique($monthsArray));
     sort($monthsArray);
 
     foreach ($array as $item) {
@@ -965,7 +960,7 @@ $app->get('/change_plan', function (Request $request, Response $response, $args)
                         $slider = 1;
                         $name = "";
                     }
-                    $response = $this->view->render($response, 'change_plan.mustache', array('plan_data' => strtoupper($planname), 'plan_dataJ' => json_encode($array_data), 'planid' => $planid, 'plan_books' => $count, 'planname' => $planname, 'planid' => $planid, "available_balance" => $item['change_plan_detail']['available_balance'], 'balance_due' => $item['change_plan_detail']['balance_due'], 'reading_fee' => $item['change_plan_detail']['reading_fee'],'totalAMount'=>$plans['plan_duration']['payable_amount'],  'months' => $monthsArray, 'book' => $books, 'month' => $months, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider));
+                    $response = $this->view->render($response, 'change_plan.mustache', array('plan_data' => strtoupper($planname), 'plan_dataJ' => json_encode($array_data), 'planid' => $planid, 'plan_books' => $count, 'planname' => $planname, 'planid' => $planid, "available_balance" => $item['change_plan_detail']['available_balance'], 'balance_due' => $item['change_plan_detail']['balance_due'], 'reading_fee' => $item['change_plan_detail']['reading_fee'], 'totalAMount' => $plans['plan_duration']['payable_amount'], 'months' => $monthsArray, 'book' => $books, 'month' => $months, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider));
                     return $response;
 
                 }
@@ -1009,13 +1004,11 @@ $app->get('/getPlanYears', function (Request $request, Response $response, $args
     $count = [];
     foreach ($array as $item) {
         if ($item['web_signup_plan']['books'] == $book) {
-            $monthTag=$item['web_signup_plan']['frequency'];
-            if($monthTag == 'Y')
-            {
-                $monthTagText=" year(s)";
-            }
-            else{
-                $monthTagText=" month(s)";
+            $monthTag = $item['web_signup_plan']['frequency'];
+            if ($monthTag == 'Y') {
+                $monthTagText = " year(s)";
+            } else {
+                $monthTagText = " month(s)";
 
             }
             $planId = $item['web_signup_plan']['coupon_id'];
@@ -1025,14 +1018,14 @@ $app->get('/getPlanYears', function (Request $request, Response $response, $args
                     array_push($count, $plans['plan_duration']['signup_months']);
                 }
             } else {
-                echo json_encode(array('planID' => $planId, "status" => "1st", "total" => $item['web_signup_plan']['plan_durations'][0]['plan_duration']['totalAmount_with_convenience_fee'], 'reading_fee' => $item['web_signup_plan']['plan_durations'][0]['plan_duration']['reading_fee_for_term'], 'reg_fee' => $item['web_signup_plan']['registration_fee'], 'sec_deposit' => $item['web_signup_plan']['security_deposit'], 'month' => $item['web_signup_plan']['plan_durations'][0]['plan_duration']['signup_months'],'monthTag'=>$monthTagText));
+                echo json_encode(array('planID' => $planId, "status" => "1st", "total" => $item['web_signup_plan']['plan_durations'][0]['plan_duration']['totalAmount_with_convenience_fee'], 'reading_fee' => $item['web_signup_plan']['plan_durations'][0]['plan_duration']['reading_fee_for_term'], 'reg_fee' => $item['web_signup_plan']['registration_fee'], 'sec_deposit' => $item['web_signup_plan']['security_deposit'], 'month' => $item['web_signup_plan']['plan_durations'][0]['plan_duration']['signup_months'], 'monthTag' => $monthTagText));
                 die;
             }
         }
     }
 
 
-    echo json_encode(array('data' => array_unique($count), 'status' => '2nd', 'planID' => $planId,'monthTag'=>$monthTagText));
+    echo json_encode(array('data' => array_unique($count), 'status' => '2nd', 'planID' => $planId, 'monthTag' => $monthTagText));
 });
 
 
@@ -1422,7 +1415,7 @@ $app->get('/rentalHistory', function (Request $request, Response $response) {
     }
     $api_key = $_SESSION['api_key'];
     $result = curlFunction("rental_history.json?email=$mail&api_key=$api_key&membership_no=$membership_no");
-    echo "rental_history.json?email=$mail&api_key=$api_key&membership_no=$membership_no";die;
+//    echo "rental_history.json?email=$mail&api_key=$api_key&membership_no=$membership_no";die;
     $wishlist = wishlistIds();
     echo json_encode(array('data' => (array)json_decode($result), 'wishlist' => $wishlist));
 });
@@ -1468,11 +1461,10 @@ $app->post('/deleteBlog', function (Request $request, Response $response) {
     $con = $this->db;
     $query = "update memp.ADMIN_BLOG_PARAMETERS set active=0 where id =$id";
     $compiled = oci_parse($con, $query);
-    $res=oci_execute($compiled);
-    if($res)
-    {
+    $res = oci_execute($compiled);
+    if ($res) {
         echo json_encode("success");
-die;
+        die;
     }
     echo json_encode("failure");
 
@@ -1498,11 +1490,10 @@ $app->post('/submitAdminOffer', function (Request $request, Response $response) 
     $con = $this->db;
     $query = "insert into  memp.FN_HOME_PAGE_PLANS(PLAN_NAME,CATEGORY,REGISTRATION_FEE,READING_FEE,SECURITY_DEPOSIT,NO_OF_BOOKS,NO_OF_MONTHS,PROMO,MONTH_TAG,BOOK_TAG,SUITABLE_TAG,FOR_VIRTUAL) values ('$name','$category',$registraiton,$reading,$security,$books,$months,'$promo','$montTag','$bookTag','$suitable',$virtual) ";
     $compiled = oci_parse($con, $query);
-    $res=oci_execute($compiled);
-    if($res)
-    {
+    $res = oci_execute($compiled);
+    if ($res) {
         echo json_encode("success");
-die;
+        die;
     }
     echo json_encode("failure");
     die;
@@ -1522,11 +1513,10 @@ $app->post('/submitAdminBlog', function (Request $request, Response $response) {
     $query = "insert into  memp.ADMIN_BLOG_PARAMETERS(NAME,DESCRIPTION,IMAGE,LINK) values ('$name','$description','$image','$link') ";
 
     $compiled = oci_parse($con, $query);
-    $res=oci_execute($compiled);
-    if($res)
-    {
+    $res = oci_execute($compiled);
+    if ($res) {
         echo json_encode("success");
-die;
+        die;
     }
     echo json_encode("failure");
     die;
@@ -1560,7 +1550,7 @@ $app->get('/adminBlogs', function (Request $request, Response $response) {
 
 $app->get('/getBlog', function (Request $request, Response $response) {
     $con = $this->db;
-    $query = "SELECT *  FROM memp.ADMIN_BLOG_PARAMETERS WHERE active = 1 and rownum <4 order by id desc ";
+    $query = "SELECT *  FROM memp.ADMIN_BLOG_PARAMETERS WHERE active = 1 AND rownum <4 ORDER BY id DESC ";
     $result = oci_parse($con, $query);
     oci_execute($result);
     while ($row = oci_fetch_assoc($result)) {
@@ -1570,12 +1560,12 @@ $app->get('/getBlog', function (Request $request, Response $response) {
 });
 $app->post('/updateProfile', function (Request $request, Response $response) {
     $address1 = $_POST['address1'];
-    $address2= $_POST['address2'];
+    $address2 = $_POST['address2'];
     $address3 = $_POST['address3'];
     $state = $_POST['state'];
     $city = $_POST['city'];
     $zip = $_POST['pin'];
-    $email="";
+    $email = "";
     $phone = $_POST['phone'];
 //echo "/updateMemberProfile?email=$email&membership_no=$membership_no&address1=$address1&address2=$address2&address3=$address3&city=$city&state=$state&pincode=$zip&mphone=$phone";die;
     $api_key = $_SESSION['api_key'];
@@ -1591,8 +1581,7 @@ $app->post('/updateProfile', function (Request $request, Response $response) {
 //    {
 //        $_SESSION['email']=$email;
 //    }
-    echo json_encode(json_decode($raw_data)) ;
-
+    echo json_encode(json_decode($raw_data));
 
 
 //    $result = curlFunctionEs("/updateMemberProfile?email=$email&membership_no=$membership_no&address1=$address1&address2=$address2&address3=$address3&city=$city&state=$state&pincode=$zip&mphone=$phone");
@@ -1969,7 +1958,7 @@ $app->get('/store-locator', function (Request $request, Response $response) {
         $slider = 1;
         $name = "";
     }
-    return $this->view->render($response, 'store_location.mustache',array('flag'=>(int)$flag,'slider'=>(int)$slider,'name'=>$name));
+    return $this->view->render($response, 'store_location.mustache', array('flag' => (int)$flag, 'slider' => (int)$slider, 'name' => $name));
 
 
 });
@@ -1984,7 +1973,7 @@ $app->get('/storeLocator', function (Request $request, Response $response) {
 //		FROM JBGPS.V_STORELOCATIONS) a join memp.jb_branches jb on jb.id=a.branch_id
 //		where a.distance <= 5
 //		ORDER BY distance ASC";
-   $query = "select branchid id,a.distance,jb.branchname name,branchaddress address,a.latitude,a.longitude,jb.EMAILID,jb.CONTACTNUMBERS 
+    $query = "select branchid id,a.distance,jb.branchname name,branchaddress address,a.latitude,a.longitude,jb.EMAILID,jb.CONTACTNUMBERS 
 from (
 
 SELECT branchid, branchname,latitude,longitude,
@@ -2005,15 +1994,13 @@ SELECT branchid, branchname,latitude,longitude,
         $row['latitude'] = $row['LATITUDE'];
         $row['longitude'] = $row['LONGITUDE'];
         $row['name'] = $row['NAME'];
-        if($row['CONTACTNUMBERS'] == null)
-        {
-            $cont= "";
-        }
-        else{
-            $cont= "<br> Phone - ".$row['CONTACTNUMBERS'];
+        if ($row['CONTACTNUMBERS'] == null) {
+            $cont = "";
+        } else {
+            $cont = "<br> Phone - " . $row['CONTACTNUMBERS'];
         }
 
-        $row['address'] = $row['ADDRESS'] ."<br> Contact: ".$row['EMAILID'].$cont;
+        $row['address'] = $row['ADDRESS'] . "<br> Contact: " . $row['EMAILID'] . $cont;
         $row['id'] = $row['ID'];
 
 
@@ -2070,13 +2057,11 @@ $app->get('/getChangePlanYears', function (Request $request, Response $response)
     $count = [];
     foreach ($array as $item) {
         if ($item['change_plan_detail']['books'] == $book) {
-            $monthTag=$item['change_plan_detail']['frequency'];
-            if($monthTag == 'Y')
-            {
-                $monthTagText=" year(s)";
-            }
-            else{
-                $monthTagText=" month(s)";
+            $monthTag = $item['change_plan_detail']['frequency'];
+            if ($monthTag == 'Y') {
+                $monthTagText = " year(s)";
+            } else {
+                $monthTagText = " month(s)";
 
             }
             $planId = $item['change_plan_detail']['plan_id'];
@@ -2085,16 +2070,16 @@ $app->get('/getChangePlanYears', function (Request $request, Response $response)
 
                     array_push($count, $plans['plan_duration']['change_plan_months']);
                 }
-sort($count);
+                sort($count);
             } else {
-                echo json_encode(array('planID' => $planId, "status" => "1st", "total" => $item['change_plan_detail']['plan_durations'][0]['plan_duration']['payable_amount'], "available_balance" => $item['change_plan_detail']['available_balance'], 'balance_due' => $item['change_plan_detail']['balance_due'], 'reading_fee' => $item['change_plan_detail']['reading_fee'],'totalAMount'=>$plans['plan_duration']['payable_amount'],'monthTag'=>$monthTagText));
+                echo json_encode(array('planID' => $planId, "status" => "1st", "total" => $item['change_plan_detail']['plan_durations'][0]['plan_duration']['payable_amount'], "available_balance" => $item['change_plan_detail']['available_balance'], 'balance_due' => $item['change_plan_detail']['balance_due'], 'reading_fee' => $item['change_plan_detail']['reading_fee'], 'totalAMount' => $plans['plan_duration']['payable_amount'], 'monthTag' => $monthTagText));
                 die;
             }
         }
     }
 
 
-    echo json_encode(array('data' => array_unique($count), 'status' => '2nd', 'planID' => $planId,'monthTag'=>$monthTagText));
+    echo json_encode(array('data' => array_unique($count), 'status' => '2nd', 'planID' => $planId, 'monthTag' => $monthTagText));
 
 
 });
@@ -2102,11 +2087,10 @@ $app->get('/getProfileDetails', function (Request $request, Response $response) 
 
     $membership = $_SESSION['membership_no'];
 
-    $plan_data_curl = curlFunctionEs('/getMemberProfile?membership_no='.$membership);
+    $plan_data_curl = curlFunctionEs('/getMemberProfile?membership_no=' . $membership);
 
     $plan_data = json_decode($plan_data_curl);
-    echo json_encode(array('data'=>$plan_data));
-
+    echo json_encode(array('data' => $plan_data));
 
 
 });
@@ -2124,6 +2108,139 @@ $app->get('/terms-and-condition', function (Request $request, Response $response
 
     return $this->view->render($response, 'terms.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider));
 
+
+});
+$app->get('/renewal_payment', function (Request $request, Response $response) {
+    $term = $_GET['term'];
+    $delivery_fees = $_GET['delivery_fees'];
+    $coupon_code = $_GET['coupon_code'];
+    $gift_card_no = $_GET['gift_card_no'];
+
+    $membership_no = $_SESSION['membership_no'];
+    $api_key = $_SESSION['api_key'];
+    $email = $_SESSION['email'];
+
+    $raw_data = curlFunction("renewal_payment.json?email=$email&membercard=$membership_no&term=$term&delivery_option=null&delivery_fees=$delivery_fees&coupon_code=$coupon_code&gift_card_no=$gift_card_no&pin=null");
+    $data = json_decode($raw_data);
+    echo json_encode($data);
+
+
+});
+$app->get('/confirm_renewal', function (Request $request, Response $response) {
+
+    $payable_amount = $_GET['payable_amount'];
+    $convenience_fee = $_GET['convenience_fee'];
+    $renewal_payment_type = $_GET['renewal_payment_type'];
+    $plan_id = $_GET['plan_id'];
+    $card_number = $_GET['card_number'];
+    $member_id = $_GET['member_id'];
+    $delivery_fees = $_GET['delivery_fees'];
+    $delivery_fees_dormant = $_GET['delivery_fees_dormant'];
+    $delivery_option = $_GET['delivery_option'];
+    $term = $_GET['term'];
+    $member_branch_id = $_GET['member_branch_id'];
+    $overdue_adjustment = $_GET['overdue_adjustment'];
+    $reward_points = $_GET['reward_points'];
+    $gift_card_no = $_GET['gift_card_no'];
+    $qc_flag = $_GET['qc_flag'];
+    $redeemed_amount = $_GET['redeemed_amount'];
+    $pin = $_GET['pin'];
+
+
+    $membership_no = $_SESSION['membership_no'];
+    $api_key = $_SESSION['api_key'];
+    $email = $_SESSION['email'];
+//echo "confirm_renewal.json?email=$email&membercard=$membership_no&payable_amount=$payable_amount&convenience_fee=$convenience_fee&renewal_payment_type=$renewal_payment_type&plan_id=$plan_id&card_number=$card_number&member_id=$member_id&delivery_fees=$delivery_fees&delivery_fees_dormant=$delivery_fees_dormant&delivery_option=$delivery_option&term=$term&member_branch_id=$member_branch_id&overdue_adjustment=$overdue_adjustment&reward_points=$reward_points&gift_card_no=$gift_card_no&qc_flag=$qc_flag&redeemed_amount=$redeemed_amount&pin=$pin&coupon_no=null&coupon_id=null&coupon_amount=null";die;
+    $raw_data = curlFunction("confirm_renewal.json?email=$email&membercard=$membership_no&payable_amount=$payable_amount&convenience_fee=$convenience_fee&renewal_payment_type=$renewal_payment_type&plan_id=$plan_id&card_number=$card_number&member_id=$member_id&delivery_fees=$delivery_fees&delivery_fees_dormant=$delivery_fees_dormant&delivery_option=$delivery_option&term=$term&member_branch_id=$member_branch_id&overdue_adjustment=$overdue_adjustment&reward_points=$reward_points&gift_card_no=$gift_card_no&qc_flag=$qc_flag&redeemed_amount=$redeemed_amount&pin=$pin&coupon_no=null&coupon_id=null&coupon_amount=null");
+    $data = json_decode($raw_data);
+    echo json_encode($data);
+
+
+});
+$app->get('/sh_payment', function (Request $request, Response $response) {
+
+    $holiday_start_date = $_GET['holiday_start_date'];
+    $no_of_months = $_GET['no_of_months'];
+
+
+    $membership_no = $_SESSION['membership_no'];
+    $api_key = $_SESSION['api_key'];
+    $email = $_SESSION['email'];
+    $raw_data = curlFunction("sh_payment.json?email=$email&membercard=$membership_no&no_of_months=$no_of_months&holiday_start_date=$holiday_start_date");
+    $data = json_decode($raw_data);
+    echo json_encode($data);
+
+
+});
+$app->get('/confirm_sh', function (Request $request, Response $response) {
+
+    $holiday_start_date = $_GET['holiday_start_date'];
+    $no_of_months = $_GET['no_of_months'];
+    $holiday_end_date = $_GET['holiday_end_date'];
+    $paid_amount = $_GET['paid_amount'];
+    $payable_amount = $_GET['payable_amount'];
+
+
+    $membership_no = $_SESSION['membership_no'];
+    $api_key = $_SESSION['api_key'];
+    $email = $_SESSION['email'];
+    $raw_data = curlFunction("confirm_sh.json?email=$email&membercard=$membership_no&no_of_months=$no_of_months&holiday_start_date=$holiday_start_date&created_in=810&holiday_end_date=$holiday_end_date&paid_amount=$paid_amount&payable_amount=$payable_amount");
+    $data = json_decode($raw_data);
+    echo json_encode($data);
+
+
+});
+$app->get('/change_plan_payment', function (Request $request, Response $response) {
+
+    $term = $_GET['term'];
+    $new_plan_id = $_GET['new_plan_id'];
+    $coupon_code = $_GET['coupon_code'];
+    $gift_card_no = $_GET['gift_card_no'];
+
+
+    $membership_no = $_SESSION['membership_no'];
+    $api_key = $_SESSION['api_key'];
+    $email = $_SESSION['email'];
+    $raw_data = curlFunction("change_plan_payment.json?email=$email&membercard=$membership_no&term=$term&new_plan_id=$new_plan_id&coupon_code=$coupon_code&gift_card_no=$gift_card_no&pin=null");
+    $data = json_decode($raw_data);
+    echo json_encode($data);
+
+
+});
+$app->get('/confirm_change_plan', function (Request $request, Response $response) {
+
+    $member_id = $_GET['member_id'];
+    $membership_no = $_GET['membership_no'];
+    $amount=$_GET['amount'];
+    $old_plan_id = $_GET['old_plan_id'];
+    $new_plan_id = $_GET['new_plan_id'];
+    $created_in = $_GET['created_in'];
+    $member_branch_id = $_GET['member_branch_id'];
+    $old_expiry_date = $_GET['old_expiry_date'];
+    $term = $_GET['term'];
+    $new_expiry_date = $_GET['new_expiry_date'];
+    $old_security_deposit = $_GET['old_security_deposit'];
+    $new_security_deposit = $_GET['new_security_deposit'];
+    $old_reading_fee_balance = $_GET['old_reading_fee_balance'];
+    $convenience_fee = $_GET['convenience_fee'];
+    $delivery_fees = $_GET['delivery_fees'];
+    $delivery_option = $_GET['delivery_option'];
+    $overdue_adjustment = $_GET['overdue_adjustment'];
+    $adjustment_narration = $_GET['adjustment_narration'];
+    $reward_points = $_GET['reward_points'];
+    $coupon_no = $_GET['coupon_no'];
+    $coupon_id = $_GET['coupon_id'];
+    $coupon_amount = $_GET['coupon_amount'];
+    $change_plan_payment_type = $_GET['change_plan_payment_type'];
+
+
+
+    $membership_no_s = $_SESSION['membership_no'];
+    $api_key = $_SESSION['api_key'];
+    $email = $_SESSION['email'];
+    $raw_data = curlFunction("confirm_change_plan.json?email=$email&membercard=$membership_no_s&member_id=$member_id&membership_no=$membership_no&amount=$amount&old_plan_id=$old_plan_id&new_plan_id=$new_plan_id&term=$term&created_in=$created_in&member_branch_id=$member_branch_id&old_expiry_date=$old_expiry_date&new_expiry_date=$new_expiry_date&old_security_deposit=$old_security_deposit&new_security_deposit=$new_security_deposit&old_reading_fee_balance=$old_reading_fee_balance&convenience_fee=$convenience_fee&delivery_fees=$delivery_fees&delivery_option=$delivery_option&overdue_adjustment=$overdue_adjustment&adjustment_narration=$adjustment_narration&reward_points=$reward_points&coupon_no=$coupon_no&coupon_id=$coupon_id&coupon_amount=$coupon_amount&change_plan_payment_type=$change_plan_payment_type");
+    $data = json_decode($raw_data);
+    echo json_encode($data);
 
 
 });

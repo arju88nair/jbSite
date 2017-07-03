@@ -67,72 +67,6 @@ function getCard(data, visibleCardCount, ids, wishlist) {
     return final_response;
 }
 
-function getCardMostRead(data, visibleCardCount, ids, wishlist) {
-    var response = '', items = 0;
-
-    var final_response = '';
-
-    for (var i = 0; i < data.length; i++) {
-        items++;
-        var active = '';
-        if (i == 0) {
-            active = "active";
-        }
-        if (data[i]['_source'].image_url === null) {
-            var img = "../../assets/images/Default_Book_Thumbnail.png";
-        }
-        else {
-            var img = data[i]['_source'].image_url;
-        }
-
-        if (ids.indexOf(parseInt(data[i]['_source'].title_id)) != -1) {
-            var text = "Rented";
-            action = "";
-        }
-        else {
-            var action = "\'placeOrder(" + data[i]['_source'].title_id + ");\'"
-
-            text = "Rent";
-        }
-        if (wishlist.indexOf(parseInt(data[i]['_source'].title_id)) != -1) {
-            var image = "../../assets/img/Added_WL_Right.png"
-            wish = "";
-        }
-        else {
-            image = "../../assets/img/Added_WL_50.png";
-            var wish = "\'wishlistAdd(" + data[i]['_source'].title_id + ");\'";
-        }
-
-
-        response += '<div class="col-md-2" style=width:18%;>' +
-            '<div class="item item_shadow">' +
-            '<div class="img_block_books"><a href="/book_details/' + data[i]['_source'].title_id + '/' + data[i]['_source'].title + '"><img src="' + img + '" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
-            '<div class="carousel_body_book">' +
-            '<div class="carousel_title_book"><h5 title="' + data[i]['_source'].title + '">' + data[i]['_source'].title + '</h5></div>' +
-            '<div class="carousel_desc">' +
-            '<div class="fram_btn">' +
-            '<a    href="javascript:void(0)" class="shortcode_button btn_small btn_type1" title="Rent" onclick=' + action + ' id="rent_' + data[i]['_source'].title_id + '">' + text + '</a>' +
-            '<a href="javascript:void(0)" class="tiptip" title="Wishlist" onclick=' + wish + '><img id="wish_' + data[i]['_source'].title_id + '" class="wishlist_btn" src=' + image + ' alt="Smiley face" height="25" width="25"></a>' +
-            '<a href="javascript:void(0)" class="tiptip" title="Share" data-title="' + data[i]['_source'].title + '"  data-id="' + data[i]['_source'].title_id + '" data-toggle="modal" data-target="#shareModal"><img  class="share_btn" src=../../assets/img/Engage.png alt="Smiley face" height="25" width="25"></a>' +
-
-            // '<a href="/book_details/' + data[i].TITLEID + '" id="' + data[i].TITLEID + '" class="tiptip" title="Read">Read</a>' +
-            '<div class="clear"></div>' +
-            '</div></div></div></div></div>';
-
-        //if( i > 0 && i % 3 == 0){
-        if (items == visibleCardCount) {
-
-            final_response += '<div class="item item_mostread ' + active + '">' + response + '</div>';
-            response = "";
-            items = 0;
-        }
-
-    }
-    if (items < visibleCardCount && items > 0) {
-        final_response += '<div class="item item_mostread ' + active + '">' + response + '</div>';
-    }
-    return final_response;
-}
 
 function getCardAuthor(data, visibleCardCount) {
     var response = '', items = 0;
@@ -214,22 +148,6 @@ $(document).ready(function () {
     });
 
 
-    $.ajax({
-        type: "GET",
-        url: "/getMostRead",
-        success: function (data) {
-
-            $("#frame_mostRead").hide();
-            $("#loader_mostRead").hide();
-            data = JSON.parse(data);
-            cardData = data['data'];
-            var final_response = getCardMostRead(cardData, 5, data['ids'], data['wishlist']);
-            $('#mostRead').append(final_response);
-            $('.item_mostread').first().addClass('active');
-            $("#myCarousel1").carousel();
-        },
-
-    });
 
     $.ajax({
         type: "GET",

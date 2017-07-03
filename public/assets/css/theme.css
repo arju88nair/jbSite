@@ -68,9 +68,9 @@ a:hover {
 }
 
 /*ul {*/
-	/*list-style:none;*/
-	/*margin:0;*/
-	/*padding:0*/
+/*list-style:none;*/
+/*margin:0;*/
+/*padding:0*/
 /*}*/
 svg,
 svg rect {
@@ -2510,6 +2510,7 @@ hr.respond_seperator {
 	padding-bottom: 0px;
 	text-align: center;
 	font-size: 12px;
+	margin-left: 10%;
 }
 
 
@@ -6441,7 +6442,7 @@ transition: 500ms ease-in-out left;
 	margin-bottom:0px;
 }
 .login_form_fram_one .form-control {
-	font-size: 10px;
+	font-size: 11px;
 	letter-spacing: 0.2em;
 	padding-right: 5px;
 	padding-left: 5px;

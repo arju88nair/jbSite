@@ -150,7 +150,7 @@
                                                        placeholder="Coupon Code" name="coupon_code">
                                             </div>
                                             <div class="col-sm-2" style="padding-top:22px;">
-                                                <button type="submit" class="btn btn-warning" id="coupon_submit">Apply
+                                                <button type="submit" class="btn shortcode_button btn_small btn_type1" id="coupon_submit">Apply
                                                 </button>
                                             </div>
                                         </div>
@@ -169,7 +169,7 @@
                                                        name="gift_card_pin">
                                             </div>
                                             <div class="col-sm-2" style="padding-top:22px;">
-                                                <button type="submit" class="btn btn-warning" id="gift_card_submit">
+                                                <button type="submit" class="btn shortcode_button btn_small btn_type1" id="gift_card_submit">
                                                     Apply
                                                 </button>
                                             </div>
@@ -187,7 +187,7 @@
                                         <div class="form-group">
                                             <div class="col-sm-6">
                                                 <button type="button" onclick="changePlan()"
-                                                        class="btn btn-success btn-block"
+                                                        class="btn shortcode_button btn_medium btn_type1"
                                                         id="signup">Change Plan
                                                 </button>
                                             </div>
@@ -293,9 +293,10 @@
                         console.log(data_new);
                         console.log(JSON.parse(data_new));
                         data_new = JSON.parse(data_new);
+                        $(".planID").attr("id",data_new['planID'])
+
                         if (data_new['status'] === "2nd") {
                             data_new = data_new['data'];
-                            $(".planID").attr("id",data_new['planID'])
 
                             if (data_new.length != 0 || data_new != [] || data_new != '[]') {
                                 for (var i = 0; i < data_new.length; i++) {
@@ -482,11 +483,11 @@
 
                 $.ajax({
                     type: "GET",
-                    url: "http://justbooksclc.com/api/v1/change_plan_payment.json?email=" + email + "&membercard=" + membership + "&term=" + terms + "&new_plan_id=" + signupID + "&coupon_code=" + coupon + "&gift_card_no=" + gift + "&pin=null",
+                    url: "/change_plan_payment?term=" + terms + "&new_plan_id=" + signupID + "&coupon_code=" + coupon + "&gift_card_no=" + gift + "",
                     crossDomain: true,
                     success: function (data_new) {
                         console.log(data_new);
-                        console.log(data_new.success);
+                        data_new=JSON.parse(data_new);
 
                         if (data_new.success == true) {
 
@@ -501,8 +502,9 @@
                             $.ajax({
                                 type: "GET",
                                 crossDomain: true,
-                                url: "http://justbooksclc.com/api/v1/confirm_change_plan.json?email=" + email + "&membercard=" + membership + "&member_id=" + data_new.result.member_id + "&membership_no=" + data_new.result.membership_no + "&amount=" + data_new.result.amount + "&old_plan_id=" + data_new.result.old_plan_id + "&new_plan_id=" + data_new.result.new_plan_id + "&term=" + data_new.result.term + "&created_in=" + data_new.result.created_in + "&member_branch_id=" + data_new.result.member_branch_id + "&old_expiry_date=" + data_new.result.member_branch_id + "&new_expiry_date=" + data_new.result.new_expiry_date + "&old_security_deposit=" + data_new.result.old_security_deposit + "&new_security_deposit=" + data_new.result.new_security_deposit + "&old_reading_fee_balance=" + data_new.result.old_reading_fee_balance + "&convenience_fee=" + data_new.result.convenience_fee + "&delivery_fees=" + data_new.result.delivery_fees + "&delivery_option=" + data_new.result.delivery_option + "&overdue_adjustment=" + data_new.result.overdue_adjustment + "&adjustment_narration=" + data_new.result.adjustment_narration + "&reward_points=" + data_new.result.reward_points + "&coupon_no=" + data_new.result.coupon_no + "&coupon_id=" + data_new.result.coupon_id + "&coupon_amount=" + data_new.result.coupon_amount + "&change_plan_payment_type=" + data_new.result.change_plan_payment_type + "",
+                                url: "/confirm_change_plan?member_id=" + data_new.result.member_id + "&membership_no=" + data_new.result.membership_no + "&amount=" + data_new.result.amount + "&old_plan_id=" + data_new.result.old_plan_id + "&new_plan_id=" + data_new.result.new_plan_id + "&term=" + data_new.result.term + "&created_in=" + data_new.result.created_in + "&member_branch_id=" + data_new.result.member_branch_id + "&old_expiry_date=" + data_new.result.member_branch_id + "&new_expiry_date=" + data_new.result.new_expiry_date + "&old_security_deposit=" + data_new.result.old_security_deposit + "&new_security_deposit=" + data_new.result.new_security_deposit + "&old_reading_fee_balance=" + data_new.result.old_reading_fee_balance + "&convenience_fee=" + data_new.result.convenience_fee + "&delivery_fees=" + data_new.result.delivery_fees + "&delivery_option=" + data_new.result.delivery_option + "&overdue_adjustment=" + data_new.result.overdue_adjustment + "&adjustment_narration=" + data_new.result.adjustment_narration + "&reward_points=" + data_new.result.reward_points + "&coupon_no=" + data_new.result.coupon_no + "&coupon_id=" + data_new.result.coupon_id + "&coupon_amount=" + data_new.result.coupon_amount + "&change_plan_payment_type=" + data_new.result.change_plan_payment_type + "",
                                 success: function (data_new) {
+                                    data_new=JSON.parse(data_new)
                                     console.log(data_new + " 2nd");
                                     console.log(data_new.result.transaction.transaction.order_number);
                                     console.log(data_new.result.transaction);

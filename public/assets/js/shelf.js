@@ -176,7 +176,7 @@ function getRecommend(data, visibleCardCount, ids, wishlist) {
         }
 
 
-        response += '<div class="col-md-2" style=width:18%;>' +
+        response += '<div class="col-md-2" style=width:19%;>' +
             '<div class="item item_shadow">' +
             '<div class="img_block_books"><a href="/book_details/' + data[i]['_source'].title_id + '/' + data[i]['_source'].title + '"><img src="' + img + '" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
             '<div class="carousel_body_book">' +
@@ -194,14 +194,14 @@ function getRecommend(data, visibleCardCount, ids, wishlist) {
         //if( i > 0 && i % 3 == 0){
         if (items == visibleCardCount) {
 
-            final_response += '<div class="item item_shelf_rec' + active + '" style="margin-left: 4%;">' + response + '</div>';
+            final_response += '<div class="item item_shelf_rec' + active + '" style="margin-left: 4.2%;">' + response + '</div>';
             response = "";
             items = 0;
         }
 
     }
     if (items < visibleCardCount && items > 0) {
-        final_response += '<div class="item item_shelf_rec ' + active + '" style="margin-left: 4%;">' + response + '</div>';
+        final_response += '<div class="item item_shelf_rec ' + active + '" style="margin-left: 4.2%;">' + response + '</div>';
     }
     return final_response;
 }
@@ -459,8 +459,8 @@ function generateDIV(arr, funcName, idName, btnTxt, style, ids,statusKey,statusS
             '</div>' +
             // '<p><a href="/book_details/' + arr_data['id'] + '">Rate/Review</a></p>' +
             '<div class="shelf_sicial">' +
-            '<div class="col-md-3 col-xs-2" style="margin-right: 26%;margin-top: 4%;margin-left:-9%">' +
-            '<a class="shortcode_button btn_small btn_type10"  data-toggle="modal" data-id='+arr_data['id']+' data-title="'+arr_data['title']+'"  data-target="#rateModal">Rate/Review</a>' +
+            '<div class="col-md-3 col-xs-2" style="cursor:pointer;margin-right: 26%;margin-top: 4%;margin-left:-9%">' +
+            '<a class="shortcode_button btn_small btn_type10"  data-toggle="modal" data-id='+arr_data['id']+' data-title="'+arr_data['title']+'"  data-target="#rateModal" style="cursor:pointer;">Rate/Review</a>' +
             '</div>' +
             '<div class="col-md-3 col-xs-2" style="margin-right: -8%;margin-top: 4%;display: '+custStyle+'">' +
             '<a href="javascript:void(0)" class="shortcode_button btn_small btn_type10" onclick="' + funcName + '(this,' + arr_data['id'] + ')"  id="' + arr_data[idName] + '">' + btnTxt + '</a>' +
@@ -589,7 +589,7 @@ $('#currently_reading').click(function (e) {
             }
             $("#emptyResult").hide();
             $("#left_menu_recommend").show();
-            var final_response = generateDIV(new_data['data']['result'], 'placePickup', 'rental_id', 'Return', 'inline-block', new_data['wishlist'],'','none','margin-top: 6%;margin-left: -40%', 'inline-block','block');
+            var final_response = generateDIV(new_data['data']['result'], 'placePickup', 'rental_id', 'Return', 'none', new_data['wishlist'],'','none','margin-top: 34%;margin-left: -100%;', 'inline-block','block');
             $('#shelf_data').html('');
             $('#shelf_data').append(final_response);
             $("#left_menu_recommend").css('margin-top', '33%');
@@ -807,7 +807,7 @@ $('#subscription').click(function (e) {
                 '<div class="form-group"><div class="col-md-8"> <label>Apply coupon code, if any:</label><input type="text" class="form-control" id="coupon_code"' +
                 'placeholder="Coupon Code" name="coupon_code"></div><div class="col-sm-3" style="padding-top:22px;">' +
                 '<button type="button" class="btn btn-warning" id="coupon_submit" onclick="couponClick()">Apply</button></div></div></div>' +
-                '<br> <br><div class="col-md-12" style="margin-top: 12%;margin-left: -100%"> <div class="form-group"><div class="col-md-5"> <label>Apply gift card no, if any:</label><input class="form-control" id="gift_card" placeholder="Gift Card No." name="gift_card" type="text"></div><div class="col-md-5"> <label>Apply gift card pin, if any:</label><input class="form-control" id="gift_card_pin" placeholder="Gift Card Pin" name="gift_card_pin" type="text"></div><div style="padding-top:38px;" class="col-md-2"><button type="button" class="btn btn-warning" id="gift_card_submit" onclick="couponClick()">Apply</button></div></div><p id="textSpan" style="margin-top:28%;margin-left:6%;font-weight:bold;font-size:143%">You have to pay Rs ' + defValue + '</p></div><button id="renewBUtton" style="display: block;float: left;margin-top: 49%;margin-left:-92%;" type="button" class="btn btn-primary btn-md" onclick="proceedRenew()">Proceed</button></div></div><br>'
+                '<br> <br><div class="col-md-12" style="margin-top: 12%;margin-left: -100%"> <div class="form-group"><div class="col-md-5"> <label>Apply gift card no, if any:</label><input class="form-control" id="gift_card" placeholder="Gift Card No." name="gift_card" type="text"></div><div class="col-md-5"> <label>Apply gift card pin, if any:</label><input class="form-control" id="gift_card_pin" placeholder="Gift Card Pin" name="gift_card_pin" type="text"></div><div style="padding-top:38px;" class="col-md-2"><button type="button" class="btn btn-warning" id="gift_card_submit" onclick="couponClick()">Apply</button></div></div><p id="textSpan" style="margin-top:28%;margin-left:6%;font-weight:bold;font-size:143%">You have to pay Rs ' + defValue + '</p></div><button id="renewBUtton" style="display: block;float: left;margin-top: 49%;margin-left:-92%;margin-bottom-10%" type="button" class="btn btn-primary btn-md" onclick="proceedRenew()">Proceed</button></div></div><br>'
             )
 
 
@@ -906,6 +906,9 @@ function removeWishlist(elem, id) {
             $("#alertDiv").show();
             $("#alertText").text("Successfully removed")
             $('#div' + id).closest('.module_shelf').remove();
+            $('html, body').animate({
+                scrollTop: $('#alertDiv').offset().top - 150
+            }, 800);
             return false;
 
 
@@ -917,6 +920,11 @@ function removeWishlist(elem, id) {
 
 function placePickup(elem, title) {
 
+    var answer = confirm ("Are you sure you want to return the book?");
+
+    if (!answer) {
+    return false;
+    }
     $(".spinner").show();
 
     var id = $(elem).attr('id');
@@ -949,6 +957,11 @@ function placePickup(elem, title) {
     });
 }
 function cancelOrder(elem, id) {
+    var answer = confirm ("Are you sure you want to canel the order?");
+
+    if (!answer) {
+        return false;
+    }
     $(".spinner").show();
 
     var cancel = $(elem).attr('id');
@@ -1007,7 +1020,7 @@ function pastReads() {
             }
             $("#emptyResult").hide();
             if (data['data']['success'] == true) {
-                var final_response = generateDIV(data['data']['result'], 'placePickup', 'id', 'Pickup', 'none', data['wishlist'],'','none','margin-top: 34%;margin-left: -97%;', 'inline-block','none');
+                var final_response = generateDIV(data['data']['result'], 'placePickup', 'id', 'Pickup', 'none', data['wishlist'],'','none','margin-top: 34%;margin-left: -100%;', 'inline-block','none');
                 $('#shelf_data').html('');
                 $('#shelf_data').append(final_response);
                 $("#left_menu_recommend").css('margin-top', '33%');
@@ -1021,6 +1034,11 @@ function pastReads() {
 
 
 function cancelPickup(elem, title) {
+    var answer = confirm ("Are you sure you want to issue a pickup?");
+
+    if (!answer) {
+        return false;
+    }
     var id = $(elem).attr('id');
     $(".spinner").show();
 
@@ -1098,7 +1116,7 @@ function textChange() {
     $.ajax({
         type: "GET",
         dataType: "json",
-        url: "http://justbooksclc.com/api/v1/renewal_payment.json?email=" + email + "&membercard=" + membership + "&term=" + termSelected + "&delivery_option=null&delivery_fees=" + fee + "&coupon_code=" + coupon + "&gift_card_no=" + gift + "&pin=null",
+        url: "/renewal_payment?term=" + termSelected + "&delivery_fees=" + fee + "&coupon_code=" + coupon + "&gift_card_no=" + gift + "",
         success: function (data_new) {
             console.log(data_new);
 
@@ -1145,18 +1163,17 @@ function proceedRenew() {
     $.ajax({
         type: "GET",
         dataType: "json",
-        url: "http://justbooksclc.com/api/v1/renewal_payment.json?email=" + email + "&membercard=" + membership + "&term=" + termSelected + "&delivery_option=null&delivery_fees=" + fee + "&coupon_code=" + coupon + "&gift_card_no=" + gift + "&pin=null",
+        url: "/renewal_payment?term=" + termSelected + "&delivery_fees=" + fee + "&coupon_code=" + coupon + "&gift_card_no=" + gift + "",
         success: function (data_new) {
             console.log(data_new);
-
 
             if (data_new.success == true) {
                 $.ajax({
                     type: "GET",
                     dataType: "json",
-                    url: "http://justbooksclc.com/api/v1/confirm_renewal.json?email=" + email + "&membercard=" + membership + "&payable_amount=" + data_new.result.payable_amount + "&convenience_fee=" + data_new.result.convenience_fee + "&renewal_payment_type=" + data_new.result.renewal_payment_type + "&plan_id=" + data_new.result.plan_id + "&card_number=" + data_new.result.card_number + "&member_id=" + data_new.result.member_id + "&delivery_fees=" + data_new.result.delivery_fees + "&delivery_fees_dormant=" + data_new.result.delivery_fees_dormant + "&delivery_option=" + data_new.result.delivery_option + "&term=" + data_new.result.term + "&member_branch_id=" + data_new.result.term + "&member_branch_id=" + data_new.result.member_branch_id + "&overdue_adjustment=" + data_new.result.overdue_adjustment + "&reward_points=" + data_new.result.reward_points + "&gift_card_no=" + data_new.result.gift_card_no + "&qc_flag=" + data_new.result.qc_flag + "&redeemed_amount=" + data_new.result.redeemed_amount + "&pin=" + data_new.result.pin + "&coupon_no=null&coupon_id=null&coupon_amount=null",
+                    url: "/confirm_renewal?payable_amount=" + data_new.result.payable_amount + "&convenience_fee=" + data_new.result.convenience_fee + "&renewal_payment_type=" + data_new.result.renewal_payment_type + "&plan_id=" + data_new.result.plan_id + "&card_number=" + data_new.result.card_number + "&member_id=" + data_new.result.member_id + "&delivery_fees=" + data_new.result.delivery_fees + "&delivery_fees_dormant=" + data_new.result.delivery_fees_dormant + "&delivery_option=" + data_new.result.delivery_option + "&term=" + data_new.result.term + "&member_branch_id=" + data_new.result.member_branch_id + "&overdue_adjustment=" + data_new.result.overdue_adjustment + "&reward_points=" + data_new.result.reward_points + "&gift_card_no=" + data_new.result.gift_card_no + "&qc_flag=" + data_new.result.qc_flag + "&redeemed_amount=" + data_new.result.redeemed_amount + "&pin=" + data_new.result.pin + "",
                     success: function (data) {
-                        ;
+
 
                         if (data.success == true) {
                             var orderNumber = data.result.transaction.transaction.order_number;
@@ -1257,13 +1274,18 @@ function GiftClick() {
 function breakValidate() {
     $(".spinner").show();
     var month = $("#monthSel").val();
+    if(month === "" || month=== 0)
+    {
+        toastr.error("Please select a month");
+        return false;
+    }
     var date = $("#datePickInput").val();
     var email = localStorage.getItem("email");
     var membership = localStorage.getItem("membership");
     $.ajax({
         type: "GET",
         dataType: "json",
-        url: "http://justbooksclc.com/api/v1/sh_payment.json?email=" + email + "&membercard=" + membership + "&no_of_months=" + month + "&holiday_start_date=" + date + "",
+        url: "/sh_payment?no_of_months=" + month + "&holiday_start_date=" + date + "",
         success: function (data_new) {
             console.log(data_new);
 
@@ -1303,6 +1325,7 @@ function breakValidate() {
 
 
 function proceedBreak() {
+    $(".spinner").show();
     var amount = $(".breakAmount").text();
     var paid = $(".breakAMountPay").text();
     if (paid === null) {
@@ -1313,14 +1336,13 @@ function proceedBreak() {
     var date = $("#datePickInput").val();
     var email = localStorage.getItem("email");
     var membership = localStorage.getItem("membership");
-    console.log("http://justbooksclc.com/api/v1/confirm_sh.json?email=" + email + "&membercard=" + membership + "&no_of_months=" + month + "&holiday_start_date=" + date + "&created_in=810&holiday_end_date=" + Enddate + "&paid_amount=" + paid + "&payable_amount=" + amount + "");
     $.ajax({
         type: "GET",
         dataType: "json",
-        url: "http://justbooksclc.com/api/v1/confirm_sh.json?email=" + email + "&membercard=" + membership + "&no_of_months=" + month + "&holiday_start_date=" + date + "&created_in=810&holiday_end_date=" + Enddate + "&paid_amount=" + paid + "&payable_amount=" + amount + "",
+        url: "/confirm_sh?&no_of_months=" + month + "&holiday_start_date=" + date + "&created_in=810&holiday_end_date=" + Enddate + "&paid_amount=" + paid + "&payable_amount=" + amount + "",
         success: function (data_new) {
+            $(".spinner").hide();
             console.log(data_new);
-
             $(".spinner").hide();
             if (data_new.success == true) {
                 orderNumber = data_new.result.transaction.transaction.order_number;
@@ -1444,7 +1466,7 @@ $(".spinner").show();
             $(".spinner").hide();
             data_new = JSON.parse(data_new);
             $("#"+idTag).hide();
-            $("#message_"+id).show();
+            $("#message_"+id).css("display",'inline-block');
             $("#message_"+id).text(data_new)
 
         },
