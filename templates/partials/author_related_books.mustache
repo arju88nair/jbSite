@@ -1,5 +1,5 @@
 <div class="row-fluid" style="margin-left: -2%;width: 111%" id="relAuthDiv">
-    <div class="span12 module_cont module_teamslider">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 module_cont module_bookslider">
         {{#data}}
         <div class="bg_title"><h4 class="headInModule">BOOKS BY {{author_name}}</h4></div>
         {{/data}}
@@ -17,10 +17,10 @@
         <!--</div>&lt;!&ndash; .team_slider &ndash;&gt;-->
         <div class="container" >
 
-            <div class="row">
-                <div class="col-md-12">
+            <div class="row carousel_l_m">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div id="myCarousel" class="carousel slide multi-item-carousel">
-                        <div class="carousel-inner carouselslider" id="authRelated"  style="padding: 0px 0px 20px 0px; margin-left: 60px; margin-right: 60px;">
+                        <div class="carousel-inner carouselslider" id="authRelated" >
 
                         </div>
                         <div id="frame_auth_arr" class="loader_fram">
@@ -71,7 +71,7 @@
             }
 
 
-            response += '<div class="col-md-2" style=width:18%;>' +
+            response += '<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2" >' +
                     '<div class="item item_shadow">' +
                     '<div class="img_block_books"><a href="/book_details/' + data[i].id + '/' + data[i].title + '"><img src="' + data[i].image_url + '"  onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
                     '<div class="carousel_body_book">' +
@@ -115,7 +115,14 @@
                 {
                    $("#relAuthDiv").hide();
                 }
-                var final_response = getCard(cardData, 3,data['ids'],data['wishlist']);
+                var w = window.outerWidth;
+                var h = window.outerHeight;
+                if(w<750){
+                    var final_response = getCard(cardData, 2,data['ids'],data['wishlist']);
+                }else{
+                    var final_response = getCard(cardData, 3,data['ids'],data['wishlist']);
+                }
+
                 $('#authRelated').append(final_response);
                 $("#frame_auth_arr").hide();
                 $("#loader_auth_arr").hide();

@@ -1,18 +1,18 @@
 {{> header}}
 
 <!-- C O N T E N T -->
-<div class="content_wrapper" style="margin-top: 10%">
+<div class="content_wrapper" id="firstDiv" >
     <div class="page_title_block">
         <div class="container">
-            <div class="bg_title" id="bg_title_shelf"><h4 class="headInModule">Store Locator</h4></div>
+            <div class="bg_title" id="bg_title_shelf"><h4 class="headInModule">STORE LOCATOR</h4></div>
 
         </div>
     </div>
 
-    <div class="container" style="margin-top: 2%; margin-bottom: 2%">
+    <div class="container" style="margin-top: 2%; margin-bottom: 2%;overflow-y: scroll" >
 
         <link rel="stylesheet" type="text/css" href="../../assets/css/storeStyle.css">
-        <div id="storeLocator" class="storeLocator">
+        <div id="storeLocator" class="storeLocator col-md-12 col-xs-12">
 
             <!--
                 This is the autocomplete address search field.
@@ -24,7 +24,7 @@
                 This is the map div which will contain the map generated
                 by Google Maps. It must have the "map" class.
             -->
-            <div id="map-canvas" class="map"></div>
+            <div id="map-canvas" class="map col-xs-12 "></div>
 
             <!--
                 This is the store list. It must contain the "data-list-stores"

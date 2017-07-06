@@ -37,7 +37,7 @@ function getCard(data, visibleCardCount, ids, wishlist) {
         }
 
 
-        response += '<div class="col-md-2" style=width:18%;>' +
+        response += '<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">' +
             '<div class="item item_shadow">' +
             '<div class="img_block_books"><a href="/book_details/' + data[i]['_source'].title_id + '/' + data[i]['_source'].title + '"><img src="' + img + '" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
             '<div class="carousel_body_book">' +
@@ -80,7 +80,7 @@ function getCardAuthor(data, visibleCardCount) {
         }
 
 
-        response += '<div class="col-md-2" style="width: 18%;">' +
+        response += '<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">' +
             '<div class="item item_shadow">' +
             '<div class="img_block_books"><a href="/author_details/' + data[i]['_source'].author_id + '/' + data[i]['_source'].author_name + '"><img src="'+ data[i]['_source'].image_url+ '" onerror="this.src=\'../../assets/img/user.png\'"></a></div>' +
             '<div class="carousel_body_author">' +
@@ -138,7 +138,15 @@ $(document).ready(function () {
             $("#loader").hide();
             data = JSON.parse(data);
             cardData = data['data'];
-            var final_response = getCard(cardData, 5, data['ids'], data['wishlist']);
+
+            var w = window.outerWidth;
+            var h = window.outerHeight;
+            if(w<750){
+                var final_response = getCard(cardData, 2, data['ids'], data['wishlist']);
+            }else{
+                var final_response = getCard(cardData, 5, data['ids'], data['wishlist']);
+            }
+            
             $('#newArrivals').append(final_response);
             $('.item').first().addClass('active');
             $("#myCarousel").carousel();
@@ -157,7 +165,18 @@ $(document).ready(function () {
             $("#frame_authorCarousel1").hide();
             $("#loader").hide();
             data=JSON.parse(data);
-            var final_response = getCardAuthor(data['data'], 5);
+
+             var w = window.outerWidth;
+            var h = window.outerHeight;
+            if(w<750){
+                var final_response = getCardAuthor(data['data'], 2);
+            }else{
+                var final_response = getCardAuthor(data['data'], 5);
+            }
+
+
+            // var final_response = getCardAuthor(data['data'], 5);
+
             $('#authorCarousel1').append(final_response);
             $('.item_author').first().addClass('active');
             $("#authorCarousel").carousel();
@@ -223,20 +242,22 @@ $(document).ready(function () {
             data = JSON.parse(data);
 
             for (var i = 0; i < data.length; i++) {
-                $("#blogDiv").append('<li>  ' +
-                    '<div class="item">' +
+                $("#blogDiv").append(
+
+                    '<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 ">' +
                     '<div class="img_block wrapped_img"><img style="width: 100%;height: 17em;" src="' + data[i]['IMAGE'] + '" alt="" width="270" height="170"></div>' +
                     '<div class="carousel_body">' +
                     '<div class="carousel_title">' +
-                    '<h5><p  style="margin-left: -5%;font-family: \'Playfair Display\'">' + data[i]['NAME'] + '</p></h5>' +
+                    '<h5  style="margin-top:10px; text-align:left; font-family: \'Playfair Display\'">' + data[i]['NAME'] + '</h5>' +
                     '</div>' +
                     '<div class="carousel_desc">' +
-                    '<div class="exc" style="margin-left: -5%;font-family: \'Playfair Display\'">' + data[i]['DESCRIPTION'] + '</div>' +
+                    '<div class="exc" style="margin-bottom:10px; text-align:left; font-family: \'Playfair Display\'">' + data[i]['DESCRIPTION'] + '</div>' +
                     '</div>' +
-                    '</div>' +
+                    
                     '<a target="_blank" href="' + data[i]['LINK'] + '" class="shortcode_button btn_small btn_type1">Read More</a>' +
                     '</div>' +
-                    '</li>')
+                    '</div>'
+                    )
             }
 
         },

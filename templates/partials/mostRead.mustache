@@ -3,10 +3,10 @@
         <div class="bg_title"><h4 class="headInModule">MOST READ</h4></div>
 
         <div class="container" >
-            <div class="row">
-                <div class="col-md-12">
+            <div class="row carousel_l_m_8">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div id="myCarousel1" class="carousel slide multi-item-carousel">
-                        <div class="carousel-inner carouselslider" id="mostRead"  style="padding: 0px 0px 20px 0px; margin-left: 60px; margin-right: 60px;">
+                        <div class="carousel-inner carouselslider" id="mostRead">
 
 
                         </div>
@@ -37,7 +37,17 @@
                 $("#loader_mostRead").hide();
                 data = JSON.parse(data);
                 cardData = data['data'];
-                var final_response = getCardMostRead(cardData, 5, data['ids'], data['wishlist']);
+
+                var w = window.outerWidth;
+                var h = window.outerHeight;
+                if(w<750){
+                    var final_response = getCardMostRead(cardData, 2, data['ids'], data['wishlist']);
+                }else{
+                    var final_response = getCardMostRead(cardData, 5, data['ids'], data['wishlist']);
+                }
+
+                // var final_response = getCardMostRead(cardData, 5, data['ids'], data['wishlist']);
+
                 $('#mostRead').append(final_response);
                 $('.item_mostread').first().addClass('active');
                 $("#myCarousel1").carousel();
@@ -83,7 +93,7 @@
             }
 
 
-            response += '<div class="col-md-2" style=width:18%;>' +
+            response += '<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">' +
                     '<div class="item item_shadow">' +
                     '<div class="img_block_books"><a href="/book_details/' + data[i]['_source'].title_id + '/' + data[i]['_source'].title + '"><img src="' + img + '" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
                     '<div class="carousel_body_book">' +

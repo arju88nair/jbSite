@@ -497,42 +497,57 @@ header ul.menu > li > a {
 	height: 100%;
 	width: 0;
 	position: fixed;
-	z-index: 1;
+	z-index: 100;
 	top: 0;
 	left: 0;
 	background-color: #fff;
 	overflow-x: hidden;
 	transition: 0.5s;
 	box-shadow: 0 4px 8px -3px #555454;
-	padding-top: 0px;
+	padding-top: 36%;
+
+
 }
 
 .sidenav a {
 	padding: 8px 8px 8px 32px;
 	text-decoration: none;
-	font-size: 25px;
+	font-size: 16px;
 	color: #818181;
 	display: block;
 	transition: 0.3s
 }
 
 .sidenav .closebtn {
-	position: absolute;
-	top: 0;
-	right: 25px;
+	/*position: absolute;*/
+	/*
 	font-size: 36px;
-	margin-left: 50px;
-	color: #fff;
+	margin-left: 100px;
+	color: #fff;*/
 }
 
 @media screen and (max-height: 450px) {
-	.sidenav a {font-size: 18px;}
+
+	.sidenav a {
+		font-size: 18px;
+	}
 }
 
-.sidenav-heading{
+.sidenav-heading a{
+
 	font-size: 36px;
 	color: #fff;
+	float: left;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding-left: 0px;
+
 }
+
+.row2 p{
+	margin-top: 10px;
+}
+
 
 
 

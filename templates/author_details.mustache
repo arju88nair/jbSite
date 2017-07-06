@@ -1,5 +1,19 @@
 {{> header}}
-<div class="main_wrapper" style="margin-top: 10%">
+<script type="text/javascript"
+        src="../../assets/js/shorten.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        $("#comment").shorten({
+            "showChars" : 440,
+            "moreText"	: "Read More",
+            "lessText"	: "Less",
+        });
+
+    });
+</script>
+
+<div class="main_wrapper" id="firstDiv">
     <!-- C O N T E N T -->
     <div class="content_wrapper background_color_gray">
         <div class="container">
@@ -20,7 +34,7 @@
                                     </div>
                                     <div class="module_cont">
                                         <h4 style="margin-left: 1%; margin-top: 4%">{{author_name}}</h4>
-                                        <p>{{description}}
+                                        <p id="comment">{{description}}
                                     </div>
                                 </aside>
                             </div><!-- .left-sidebar -->
@@ -51,7 +65,14 @@
                 console.log(data)
 
                 cardData = data['data'];
-                var final_response = getRecommend(cardData, 5, data['ids'], data['wishlist']);
+                var w = window.outerWidth;
+                var h = window.outerHeight;
+                if(w<750){
+                    var final_response = getRecommend(cardData, 2, data['ids'], data['wishlist']);
+                }else{
+                    var final_response = getRecommend(cardData, 5, data['ids'], data['wishlist']);
+                }
+
                 $('#recommendedShelf').append(final_response);
                 $('.item_shelf_rec').first().addClass('active');
                 $("#myCarousel").carousel();

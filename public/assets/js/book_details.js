@@ -95,7 +95,7 @@ function getCardRelated(data, visibleCardCount,ids,wishlist) {
             var wish="\'wishlistAdd(" + data[i]['_source'].title_id + ");\'";
         }
 
-        response += '<div class="col-md-2" style=width:18%;>' +
+        response += '<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2" >' +
             '<div class="item item_shadow">' +
             '<div class="img_block_books"><a href="/book_details/' + data[i]['_source'].title_id + '/' + data[i]['_source'].title + '"><img src="' + data[i]['_source'].image_url + '"  onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
             '<div class="carousel_body_book">' +

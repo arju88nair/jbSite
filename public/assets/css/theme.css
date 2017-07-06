@@ -2300,6 +2300,9 @@ hr.respond_seperator {
 .carouselslider,
 .team_slider {
 	position:relative;
+	padding: 0px 0px 20px 0px;
+    margin-left: 60px;
+    margin-right: 60px;
 }
 .team_slider .img_block {
 	position:relative;
@@ -5415,7 +5418,7 @@ nav.mobile_header {
 	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=50);
 }
 .fullwidthbanner-container .tparrows  {
-	opacity: 0.5;
+	opacity: 1;
 	filter:progid:DXImageTransform.Microsoft.Alpha(opacity=50);
 }
 .fullwidthbanner-container{

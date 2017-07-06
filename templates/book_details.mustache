@@ -26,7 +26,7 @@
     margin-top: 0.2em;
     background: white;
 }</style>
-<div class="main_wrapper background_color_gray" style="margin-top:8%;">
+<div class="main_wrapper background_color_gray" id="firstDiv">
     <!-- C O N T E N T -->
     <div class="content_wrapper">
         <!--<div class="page_title_block">
@@ -41,9 +41,9 @@
                 <div class="double-bounce2"></div>
             </div>
             <div class="content_block no-sidebar row">
-                <div class="fl-container span12">
+                <div class="fl-container span12 col-xs-12">
                     <div class="row">
-                        <div class="posts-block span12">
+                        <div class="posts-block col-xs-12 span12">
                             <div class="contentarea">
                                 {{# data}}
                                     <div class="row-fluid">
@@ -55,7 +55,7 @@
                                                 <img src="{{image_url}}" alt="" align="middle"
                                                  onerror="this.src='../../assets/images/Default_Book_Thumbnail.png';"/>
                                             </div>
-                                            
+
 
 
                                             <div class="row">
@@ -76,7 +76,7 @@
                                             {{/author}}
                                             {{/jb_info}}
                                             <p  class="comment"> {{description}}</p>
-{{#jb_info}}
+                                            {{#jb_info}}
                                             <div class="row-fluid" id="pad_10px">
                                                 <div class="span3 module_cont module_text_area module_none_padding1">
                                                     <h4>{{times_rented}} Times</h4>
@@ -90,14 +90,15 @@
                                                 </div><!-- .module_cont -->
 
                                             </div><!-- .row-fluid -->
-{{/jb_info}}
+                                            {{/jb_info}}
                                         </div>
                                         <div class="span6 module_cont module_text_area">
 
-{{#flag}}
-    <a href="#reviews-anchor" class="shortcode_button btn_small btn_type10"
-       id="open-review-box" >Rate/Review</a>
-{{/flag}}
+                                        {{#flag}}
+                                            <a href="#reviews-anchor" class="shortcode_button btn_small btn_type10"
+                                               id="open-review-box" >Rate/Review</a>
+                                        {{/flag}}
+
                                             {{#slider}}
 
                                                 <a href="javascript:void(0)" class="shortcode_button btn_small btn_type10"
@@ -360,26 +361,26 @@
 
                                         </div>
                                     </div><!-- .row-fluid -->
-                                
+
 
                                     <div class="module_line_trigger" data-option=""
                                          data-background="#fff url(img/) no-repeat center"
                                          data-top-padding="top_padding_normal"
                                          data-bottom-padding="module_normal_padding">
                                         <div class="row-fluid">
-                                            <div class="span12 module_cont module_bookslider">
+                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 span12 module_cont module_bookslider">
                                                 <div class="bg_title"><a id="realted"></a><h4 class="headInModule">
                                                     Related Books</h4></div>
 
                                                 <div class="container">
 
-                                                    <div class="row">
-                                                        <div class="col-md-12">
+                                                    <div class="row carousel_l_m">
+                                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                                             <div id="myCarousel"
                                                                  class="carousel slide multi-item-carousel">
                                                                 <div class="carousel-inner carouselslider"
                                                                      id="releatedBooks"
-                                                                     style="padding: 0px 0px 20px 0px; margin-left: 60px; margin-right: 60px;">
+                                                                     >
 
                                                                 </div>
                                                                 <div id="frame_new_rel" class="loader_fram">
@@ -455,7 +456,15 @@
                 data = JSON.parse(data);
                 console.log(data);
                 cardData = data['data'];
-                var final_response = getCardRelated(cardData, 5, data['ids'], data['wishlist']);
+                var w = window.outerWidth;
+                var h = window.outerHeight;
+                if(w<750){
+                    var final_response = getCardRelated(cardData, 2, data['ids'], data['wishlist']);
+                }else{
+                    var final_response = getCardRelated(cardData, 5, data['ids'], data['wishlist']);
+                }
+
+
                 $('#releatedBooks').append(final_response);
                 $('.item').first().addClass('active');
                 $("#myCarousel").carousel();

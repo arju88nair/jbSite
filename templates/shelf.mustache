@@ -52,7 +52,7 @@
 <script src="../../assets/js/state.js"></script>
 <script src="../../assets/js/socialCircle.js"></script>
 
-<div class="main_wrapper"  style="margin-top: 10%">
+<div class="main_wrapper"  id="firstDiv">
 
     <!-- C O N T E N T -->
     <div class="content_wrapper">
@@ -68,7 +68,7 @@
                 <div class="double-bounce2"></div>
             </div>
             <div class="content_block right-sidebar row">
-                <div class="left-sidebar-block col-md-3 col-xs-12" id="module_shelf_menu" style="margin-left:-4%;margin-top:25px;">
+                <div class="left-sidebar-block col-md-3 col-xs-12" id="module_shelf_menu">
 
                     {{> left_menu}}
 
@@ -77,7 +77,7 @@
 
                 </div><!-- .right-sidebar -->
 
-                <div class="fl-container col-md-9 col-xs-12"><br><br>
+                <div class="fl-container col-md-9 col-xs-11"><br><br>
 
                     <div class="row">
                         <div class="contentarea">
@@ -330,15 +330,15 @@
                                                 <div class="form-group">
                                                     <label for="email">Address:</label>
                                                     <input type="text" maxlength="30" class="form-control" id="address1" placeholder="Address 1"
-                                                              required></input>
+                                                           required></input>
                                                 </div>
                                                 <div class="form-group">
                                                     <input type="text" maxlength="30" class="form-control" id="address2" placeholder="Address 2"
-                                                              required></input>
+                                                           required></input>
                                                 </div> <div class="form-group">
-                                                    <input type="text" maxlength="30" class="form-control" id="address3" placeholder="Address 3"
-                                                              required></input>
-                                                </div>
+                                                <input type="text" maxlength="30" class="form-control" id="address3" placeholder="Address 3"
+                                                       required></input>
+                                            </div>
                                                 <div class="form-group">
                                                     <div class="col-sm-4">
                                                         <label>State:</label>
@@ -358,15 +358,15 @@
 
                                                 <div class="form-group" style="margin-left: 25%;margin-top: 13%">
                                                     <div class="col-sm-8">
-                                                    <label for="phone">Phone :</label>
-                                                    <input type="number" class="form-control" id="phone" maxlength="10"
-                                                              required></input>
+                                                        <label for="phone">Phone :</label>
+                                                        <input type="number" class="form-control" id="phone" maxlength="10"
+                                                               required></input>
                                                     </div> </div>
                                                 <!--<div class="form-group">-->
                                                 <!--<label for="email">Email :</label>-->
                                                 <!--<input type="text" class="form-control" id="email"-->
-                                                          <!--required></input>-->
-                                            <!--</div>-->
+                                                <!--required></input>-->
+                                                <!--</div>-->
 
 
 
@@ -459,16 +459,15 @@
 {{> left_recmend_book}}
 
 <div class="row-fluid">
-    <div class="span12 module_cont module_bookslider">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 module_cont module_bookslider">
         <div class="bg_title"><a id="whatsNew"></a><h4 class="headInModule">NEW ARRIVALS</h4></div>
 
         <div class="container">
 
-            <div class="row">
-                <div class="col-md-12">
+            <div class="row carousel_l_m">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div id="myCarousel" class="carousel slide multi-item-carousel">
-                        <div class="carousel-inner carouselslider" id="newArrivalsShelf"
-                             style="padding: 0px 0px 20px 0px; margin-left: 60px; margin-right: 60px;">
+                        <div class="carousel-inner carouselslider" id="newArrivalsShelf">
 
                         </div>
                         <div id="frame_new_arr" class="loader_fram">
@@ -493,11 +492,10 @@
         <div class="bg_title"><h4 class="headInModule">MOST READ</h4></div>
 
         <div class="container">
-            <div class="row">
+            <div class="row carousel_l_m">
                 <div class="col-md-12">
                     <div id="myCarousel1" class="carousel slide multi-item-carousel">
-                        <div class="carousel-inner carouselslider" id="mostRead"
-                             style="padding: 0px 0px 20px 0px; margin-left: 60px; margin-right: 60px;">
+                        <div class="carousel-inner carouselslider" id="mostRead" >
 
 
                         </div>

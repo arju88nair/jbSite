@@ -80,6 +80,12 @@ $app->get('/', function (Request $request, Response $response) {
     while ($row = oci_fetch_assoc($result)) {
         $final_data[] = $row;
     }
+    $queryCat = "SELECT id,name FROM categories";
+    $resultCat = oci_parse($con, $queryCat);
+    oci_execute($resultCat);
+    while ($rowCat = oci_fetch_assoc($resultCat)) {
+        $Categories[] = $rowCat;
+    }
     $image1 = $final_data[0]['IMAGE_URL_1'];
     $image2 = $final_data[0]['IMAGE_URL_2'];
     $image3 = $final_data[0]['IMAGE_URL_3'];
@@ -96,7 +102,7 @@ $app->get('/', function (Request $request, Response $response) {
         $slider = 1;
         $name = "";
     }
-    $response = $this->view->render($response, 'home.mustache', array('loggedIn' => "true", 'session' => $_SESSION['username'], 'image1' => $image1, 'image2' => $image2, 'image3' => $image3, 'action1' => $action1, 'action2' => $action2, 'action3' => $action3, 'address' => $address, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider));
+    $response = $this->view->render($response, 'home.mustache', array('loggedIn' => "true", 'session' => $_SESSION['username'], 'image1' => $image1, 'image2' => $image2, 'image3' => $image3, 'action1' => $action1, 'action2' => $action2, 'action3' => $action3, 'address' => $address, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider,'cat'=>$Categories));
     return $response;
 });
 
@@ -149,9 +155,16 @@ $app->get('/book_details/{titleid}/{name}', function (Request $request, Response
         $slider = 1;
         $name = "";
     }
+    $con = $this->db;
 
+    $queryCat = "SELECT id,name FROM categories";
+    $resultCat = oci_parse($con, $queryCat);
+    oci_execute($resultCat);
+    while ($rowCat = oci_fetch_assoc($resultCat)) {
+        $Categories[] = $rowCat;
+    }
 
-    $response = $this->view->render($response, 'book_details.mustache', array('data' => $data, 'titleid' => $titleid, 'Currentflag' => $Currentflag, 'rental' => $rental_id, 'wishFlag' => $Wishflag, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider));
+    $response = $this->view->render($response, 'book_details.mustache', array('data' => $data, 'titleid' => $titleid, 'Currentflag' => $Currentflag, 'rental' => $rental_id, 'wishFlag' => $Wishflag, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider,'cat'=>$Categories));
     return $response;
 })->setName('book_details/');
 
@@ -181,7 +194,16 @@ $app->get('/author_details/{authorid}/{name}', function (Request $request, Respo
     }
 
 
-    $response = $this->view->render($response, 'author_details.mustache', array('data' => $data, 'id' => $authorid, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider));
+    $con = $this->db;
+
+    $queryCat = "SELECT id,name FROM categories";
+    $resultCat = oci_parse($con, $queryCat);
+    oci_execute($resultCat);
+    while ($rowCat = oci_fetch_assoc($resultCat)) {
+        $Categories[] = $rowCat;
+    }
+
+    $response = $this->view->render($response, 'author_details.mustache', array('data' => $data, 'id' => $authorid, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider,'cat'=>$Categories));
     return $response;
 });
 
@@ -206,8 +228,16 @@ $app->get('/search', function (Request $request, Response $response) {
         $slider = 1;
         $name = "";
     }
+    $con = $this->db;
 
-    $response = $this->view->render($response, 'search.mustache', array('data' => $data, 'query' => ucfirst($query), 'count' => $count, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider));
+    $queryCat = "SELECT id,name FROM categories";
+    $resultCat = oci_parse($con, $queryCat);
+    oci_execute($resultCat);
+    while ($rowCat = oci_fetch_assoc($resultCat)) {
+        $Categories[] = $rowCat;
+    }
+
+    $response = $this->view->render($response, 'search.mustache', array('data' => $data, 'query' => ucfirst($query), 'count' => $count, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider,'cat'=>$Categories));
     return $response;
 
 });
@@ -222,9 +252,16 @@ $app->get('/shelf', function (Request $request, Response $response) {
         $slider = 1;
         $name = "";
     }
+    $con = $this->db;
 
+    $queryCat = "SELECT id,name FROM categories";
+    $resultCat = oci_parse($con, $queryCat);
+    oci_execute($resultCat);
+    while ($rowCat = oci_fetch_assoc($resultCat)) {
+        $Categories[] = $rowCat;
+    }
 
-    $response = $this->view->render($response, 'shelf.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider));
+    $response = $this->view->render($response, 'shelf.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider,'cat'=>$Categories));
     return $response;
 })->add($authenticate);
 
@@ -436,7 +473,17 @@ $app->get('/signup', function (Request $request, Response $response) {
                         $slider = 1;
                         $name = "";
                     }
-                    $response = $this->view->render($response, 'signup.mustache', array('plan_data' => $planData, 'plan_dataJ' => json_encode($array_data), 'planid' => $planid, 'plan_books' => $count, 'planname' => $planname, 'planid' => $planid, "total" => $plans['plan_duration']['totalAmount_with_convenience_fee'], 'reading_fee' => $plans['plan_duration']['reading_fee_for_term'], 'reg_fee' => $item['web_signup_plan']['registration_fee'], 'sec_deposit' => $item['web_signup_plan']['security_deposit'], 'months' => $monthsArray, 'book' => $books, 'month' => $months, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'namePlan' => $namePlan, 'monthTagText' => $monthTagText));
+
+                    $con = $this->db;
+
+                    $queryCat = "SELECT id,name FROM categories";
+                    $resultCat = oci_parse($con, $queryCat);
+                    oci_execute($resultCat);
+                    while ($rowCat = oci_fetch_assoc($resultCat)) {
+                        $Categories[] = $rowCat;
+                    }
+
+                    $response = $this->view->render($response, 'signup.mustache', array('plan_data' => $planData, 'plan_dataJ' => json_encode($array_data), 'planid' => $planid, 'plan_books' => $count, 'planname' => $planname, 'planid' => $planid, "total" => $plans['plan_duration']['totalAmount_with_convenience_fee'], 'reading_fee' => $plans['plan_duration']['reading_fee_for_term'], 'reg_fee' => $item['web_signup_plan']['registration_fee'], 'sec_deposit' => $item['web_signup_plan']['security_deposit'], 'months' => $monthsArray, 'book' => $books, 'month' => $months, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'namePlan' => $namePlan, 'monthTagText' => $monthTagText,'cat'=>$Categories));
                     return $response;
 
                 }
@@ -960,7 +1007,18 @@ $app->get('/change_plan', function (Request $request, Response $response, $args)
                         $slider = 1;
                         $name = "";
                     }
-                    $response = $this->view->render($response, 'change_plan.mustache', array('plan_data' => strtoupper($planname), 'plan_dataJ' => json_encode($array_data), 'planid' => $planid, 'plan_books' => $count, 'planname' => $planname, 'planid' => $planid, "available_balance" => $item['change_plan_detail']['available_balance'], 'balance_due' => $item['change_plan_detail']['balance_due'], 'reading_fee' => $item['change_plan_detail']['reading_fee'], 'totalAMount' => $plans['plan_duration']['payable_amount'], 'months' => $monthsArray, 'book' => $books, 'month' => $months, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider));
+
+
+                    $con = $this->db;
+
+                    $queryCat = "SELECT id,name FROM categories";
+                    $resultCat = oci_parse($con, $queryCat);
+                    oci_execute($resultCat);
+                    while ($rowCat = oci_fetch_assoc($resultCat)) {
+                        $Categories[] = $rowCat;
+                    }
+
+                    $response = $this->view->render($response, 'change_plan.mustache', array('plan_data' => strtoupper($planname), 'plan_dataJ' => json_encode($array_data), 'planid' => $planid, 'plan_books' => $count, 'planname' => $planname, 'planid' => $planid, "available_balance" => $item['change_plan_detail']['available_balance'], 'balance_due' => $item['change_plan_detail']['balance_due'], 'reading_fee' => $item['change_plan_detail']['reading_fee'], 'totalAMount' => $plans['plan_duration']['payable_amount'], 'months' => $monthsArray, 'book' => $books, 'month' => $months, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider,'cat'=>$Categories));
                     return $response;
 
                 }
@@ -1052,8 +1110,16 @@ $app->get('/renewView', function (Request $request, Response $response) {
         $slider = 1;
         $name = "";
     }
+    $con = $this->db;
 
-    $response = $this->view->render($response, 'renew.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider));
+    $queryCat = "SELECT id,name FROM categories";
+    $resultCat = oci_parse($con, $queryCat);
+    oci_execute($resultCat);
+    while ($rowCat = oci_fetch_assoc($resultCat)) {
+        $Categories[] = $rowCat;
+    }
+
+    $response = $this->view->render($response, 'renew.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider,'cat'=>$Categories));
     return $response;
 
 
@@ -1345,7 +1411,15 @@ $app->get('/faq', function (Request $request, Response $response) {
         $name = "";
     }
 
-    return $this->view->render($response, 'faq.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider));
+    $con = $this->db;
+
+    $queryCat = "SELECT id,name FROM categories";
+    $resultCat = oci_parse($con, $queryCat);
+    oci_execute($resultCat);
+    while ($rowCat = oci_fetch_assoc($resultCat)) {
+        $Categories[] = $rowCat;
+    }
+    return $this->view->render($response, 'faq.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider,'cat'=>$Categories));
 
 });
 
@@ -1360,7 +1434,16 @@ $app->get('/contactUs', function (Request $request, Response $response) {
         $slider = 1;
         $name = "";
     }
-    return $this->view->render($response, 'contactUs.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider));
+
+    $con = $this->db;
+
+    $queryCat = "SELECT id,name FROM categories";
+    $resultCat = oci_parse($con, $queryCat);
+    oci_execute($resultCat);
+    while ($rowCat = oci_fetch_assoc($resultCat)) {
+        $Categories[] = $rowCat;
+    }
+    return $this->view->render($response, 'contactUs.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider,'cat'=>$Categories));
 
 });
 $app->get('/franchise', function (Request $request, Response $response) {
@@ -1374,8 +1457,15 @@ $app->get('/franchise', function (Request $request, Response $response) {
         $slider = 1;
         $name = "";
     }
+    $con = $this->db;
 
-    return $this->view->render($response, 'franchise.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider));
+    $queryCat = "SELECT id,name FROM categories";
+    $resultCat = oci_parse($con, $queryCat);
+    oci_execute($resultCat);
+    while ($rowCat = oci_fetch_assoc($resultCat)) {
+        $Categories[] = $rowCat;
+    }
+    return $this->view->render($response, 'franchise.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider,'cat'=>$Categories));
 
 });
 $app->get('/checkAvailability', function (Request $request, Response $response) {
@@ -1439,7 +1529,15 @@ $app->get('/adminCardsView', function (Request $request, Response $response) {
         $slider = 1;
         $name = "";
     }
-    return $this->view->render($response, 'adminCards.mustache', array('data' => $data, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider));
+    $con = $this->db;
+
+    $queryCat = "SELECT id,name FROM categories";
+    $resultCat = oci_parse($con, $queryCat);
+    oci_execute($resultCat);
+    while ($rowCat = oci_fetch_assoc($resultCat)) {
+        $Categories[] = $rowCat;
+    }
+    return $this->view->render($response, 'adminCards.mustache', array('data' => $data, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider,'cat'=>$Categories));
 
 })->add($adminAuthenticate);
 
@@ -1541,8 +1639,15 @@ $app->get('/adminBlogs', function (Request $request, Response $response) {
         $slider = 1;
         $name = "";
     }
+    $con = $this->db;
 
-    return $this->view->render($response, 'adminBlog.mustache', array('data' => $data, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider));
+    $queryCat = "SELECT id,name FROM categories";
+    $resultCat = oci_parse($con, $queryCat);
+    oci_execute($resultCat);
+    while ($rowCat = oci_fetch_assoc($resultCat)) {
+        $Categories[] = $rowCat;
+    }
+    return $this->view->render($response, 'adminBlog.mustache', array('data' => $data, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider,'cat'=>$Categories));
 
 
 })->add($adminAuthenticate);
@@ -1567,14 +1672,16 @@ $app->post('/updateProfile', function (Request $request, Response $response) {
     $zip = $_POST['pin'];
     $email = "";
     $phone = $_POST['phone'];
+    $dob = $_POST['dob'];
+    $gender = $_POST['gender'];
+    $emaill=$_SESSION['email'];
 //echo "/updateMemberProfile?email=$email&membership_no=$membership_no&address1=$address1&address2=$address2&address3=$address3&city=$city&state=$state&pincode=$zip&mphone=$phone";die;
     $api_key = $_SESSION['api_key'];
     $membership_no = $_SESSION['membership_no'];
-
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, API_URL_ES . "/updateMemberProfile?");
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, "email=$email&membership_no=$membership_no&address1=$address1&address2=$address2&address3=$address3&city=$city&state=$state&pincode=$zip&mphone=$phone");
+    curl_setopt($ch, CURLOPT_POSTFIELDS, "email=$email&membership_no=$membership_no&address1=$address1&address2=$address2&address3=$address3&city=$city&state=$state&pincode=$zip&mphone=$phone&dob=$dob&gender=$gender");
     $raw_data = curl_exec($ch);
     curl_close($ch);
 //    if(json_decode($raw_data) == "Updated")
@@ -1603,7 +1710,15 @@ $app->get('/break', function (Request $request, Response $response) {
         $slider = 1;
         $name = "";
     }
-    return $this->view->render($response, 'break.mustache', array('data' => $result, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider));
+    $con = $this->db;
+
+    $queryCat = "SELECT id,name FROM categories";
+    $resultCat = oci_parse($con, $queryCat);
+    oci_execute($resultCat);
+    while ($rowCat = oci_fetch_assoc($resultCat)) {
+        $Categories[] = $rowCat;
+    }
+    return $this->view->render($response, 'break.mustache', array('data' => $result, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider,'cat'=>$Categories));
 
 
 });
@@ -1917,6 +2032,7 @@ $app->get('/locations', function (Request $request, Response $response) {
     while ($row = oci_fetch_assoc($result_city)) {
         $data[] = $row;
     }
+
     return $this->view->render($response, 'adminLocations.mustache', array('data' => $data));
 
 
@@ -1942,7 +2058,26 @@ $app->get('/users/password/edit', function (Request $request, Response $response
         $formFlag = 0;
         $errorFlag = 1;
     }
-    $response = $this->view->render($response, 'forget-password.mustache', array('email' => $email, 'div' => $formFlag, 'error' => $errorFlag));
+
+    $con = $this->db;
+
+    $queryCat = "SELECT id,name FROM categories";
+    $resultCat = oci_parse($con, $queryCat);
+    oci_execute($resultCat);
+    while ($rowCat = oci_fetch_assoc($resultCat)) {
+        $Categories[] = $rowCat;
+    }
+    if (isset($_SESSION['username'])) {
+        $flag = 1;
+        $slider = 0;
+        $name = $_SESSION['first_name'];
+    } else {
+        $flag = 0;
+        $slider = 1;
+        $name = "";
+    }
+
+    $response = $this->view->render($response, 'forget-password.mustache', array('email' => $email, 'div' => $formFlag, 'error' => $errorFlag,'cat'=>$Categories,'flag' => (int)$flag, 'slider' => (int)$slider, 'name' => $name));
     return $response;
 
 });
@@ -1958,7 +2093,17 @@ $app->get('/store-locator', function (Request $request, Response $response) {
         $slider = 1;
         $name = "";
     }
-    return $this->view->render($response, 'store_location.mustache', array('flag' => (int)$flag, 'slider' => (int)$slider, 'name' => $name));
+
+    $con = $this->db;
+
+    $queryCat = "SELECT id,name FROM categories";
+    $resultCat = oci_parse($con, $queryCat);
+    oci_execute($resultCat);
+    while ($rowCat = oci_fetch_assoc($resultCat)) {
+        $Categories[] = $rowCat;
+    }
+
+    return $this->view->render($response, 'store_location.mustache', array('flag' => (int)$flag, 'slider' => (int)$slider, 'name' => $name,'cat'=>$Categories));
 
 
 });
@@ -2105,8 +2250,16 @@ $app->get('/terms-and-condition', function (Request $request, Response $response
         $slider = 1;
         $name = "";
     }
+    $con = $this->db;
 
-    return $this->view->render($response, 'terms.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider));
+    $queryCat = "SELECT id,name FROM categories";
+    $resultCat = oci_parse($con, $queryCat);
+    oci_execute($resultCat);
+    while ($rowCat = oci_fetch_assoc($resultCat)) {
+        $Categories[] = $rowCat;
+    }
+
+    return $this->view->render($response, 'terms.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider,'cat'=>$Categories));
 
 
 });

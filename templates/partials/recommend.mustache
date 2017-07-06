@@ -1,12 +1,12 @@
 
 
-<div class="span12 module_cont module_bookslider" id=""
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 module_cont module_bookslider" id=""
      style="margin-left:0%">
     <div class="bg_title"><a id="whatsNew"></a><h4 class="headInModule">You Might Also Like</h4></div>
 
     <div class="container" style="margin-left: -4%">
-        <div class="row">
-            <div class="col-md-12">
+        <div class="row carousel_l_m">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div id="myCarousel1" class="carousel slide multi-item-carousel">
                     <div class="carousel-inner carouselslider" id="recommendedShelf" style="padding: 0px 0px 20px 0px; margin-left: 60px; margin-right: 60px;">
 
@@ -36,7 +36,14 @@
                 console.log(data)
 
                 cardData = data['data'];
-                var final_response = getRecommend(cardData, 5, data['ids'], data['wishlist']);
+                var w = window.outerWidth;
+                var h = window.outerHeight;
+                if(w<750){
+                    var final_response = getRecommend(cardData, 3, data['ids'], data['wishlist']);
+                }else{
+                    var final_response = getRecommend(cardData, 5, data['ids'], data['wishlist']);
+                }
+
                 $('#recommendedShelf').append(final_response);
                 $('.item_shelf_rec').first().addClass('active');
                 $("#myCarousel").carousel();
@@ -93,7 +100,7 @@
             }
 
 
-            response += '<div class="col-md-2" style=width:19%;>' +
+            response += '<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2" id="responsive_crsl">' +
                     '<div class="item item_shadow">' +
                     '<div class="img_block_books"><a href="/book_details/' + data[i]['_source'].title_id + '/' + data[i]['_source'].title + '"><img src="' + img + '" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
                     '<div class="carousel_body_book">' +

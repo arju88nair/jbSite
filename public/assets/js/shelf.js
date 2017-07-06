@@ -1,6 +1,6 @@
 $(document).ready(function () {
     var $myGroup = $('#myGroup');
-    $myGroup.on('show','.collapse', function() {
+    $myGroup.on('show', '.collapse', function () {
         $myGroup.find('.collapse.in').collapse('hide');
     });
     $('#shelfMenu').addClass('current-menu-parent');
@@ -11,7 +11,17 @@ $(document).ready(function () {
         success: function (data) {
             data = JSON.parse(data);
             cardData = data['data'];
-            var final_response = getCard(cardData, 5, data['ids'], data['wishlist']);
+
+            var w = window.outerWidth;
+            var h = window.outerHeight;
+            if(w<750){
+                var final_response = getCard(cardData, 2, data['ids'], data['wishlist']);
+            }else{
+                var final_response = getCard(cardData, 5, data['ids'], data['wishlist']);
+            }
+
+            // var final_response = getCard(cardData, 5, data['ids'], data['wishlist']);
+
             $('#newArrivalsShelf').append(final_response);
             $('.item_shelf_new').first().addClass('active');
             $("#myCarousel").carousel();
@@ -30,7 +40,16 @@ $(document).ready(function () {
             console.log(data)
 
             cardData = data['data'];
-            var final_response = getRecommend(cardData, 5, data['ids'], data['wishlist']);
+
+            var w = window.outerWidth;
+            var h = window.outerHeight;
+            if(w<750){
+                var final_response = getRecommend(cardData, 2, data['ids'], data['wishlist']);
+            }else{
+                var final_response = getRecommend(cardData, 5, data['ids'], data['wishlist']);
+            }
+            // var final_response = getRecommend(cardData, 5, data['ids'], data['wishlist']);
+
             $('#recommendedShelf').append(final_response);
             $('.item_shelf_rec').first().addClass('active');
             $("#myCarousel").carousel();
@@ -49,8 +68,6 @@ $(document).ready(function () {
     });
 
 
-
-
     $.ajax({
         type: "GET",
         url: "/getMostRead",
@@ -59,7 +76,15 @@ $(document).ready(function () {
 
             data = JSON.parse(data)
             cardData = data['data'];
-            var final_response = getCardMostRead(cardData, 5, data['ids'], data['wishlist']);
+            var w = window.outerWidth;
+            var h = window.outerHeight;
+            if(w<750){
+                var final_response = getCardMostRead(cardData, 2, data['ids'], data['wishlist']);
+            }else{
+                var final_response = getCardMostRead(cardData, 5, data['ids'], data['wishlist']);
+            }
+            // var final_response = getCardMostRead(cardData, 5, data['ids'], data['wishlist']);
+
             $('#mostRead').append(final_response);
             $('.item_mostread_shelf').first().addClass('active');
             $("#frame_mostRead").hide();
@@ -109,7 +134,7 @@ function getCard(data, visibleCardCount, ids, wishlist) {
         }
 
 
-        response += '<div class="col-md-2" style=width:18%;>' +
+        response += '<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">' +
             '<div class="item item_shadow">' +
             '<div class="img_block_books"><a href="/book_details/' + data[i]['_source'].title_id + '/' + data[i]['_source'].title + '"><img src="' + img + '" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
             '<div class="carousel_body_book">' +
@@ -176,7 +201,7 @@ function getRecommend(data, visibleCardCount, ids, wishlist) {
         }
 
 
-        response += '<div class="col-md-2" style=width:19%;>' +
+        response += '<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">' +
             '<div class="item item_shadow">' +
             '<div class="img_block_books"><a href="/book_details/' + data[i]['_source'].title_id + '/' + data[i]['_source'].title + '"><img src="' + img + '" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
             '<div class="carousel_body_book">' +
@@ -242,7 +267,7 @@ function getCardMostRead(data, visibleCardCount, ids, wishlist) {
         }
 
 
-        response += '<div class="col-md-2" style=width:18%;>' +
+        response += '<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">' +
             '<div class="item item_shadow">' +
             '<div class="img_block_books"><a href="/book_details/' + data[i]['_source'].title_id + '/' + data[i]['_source'].title + '"><img src="' + img + '" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
             '<div class="carousel_body_book">' +
@@ -273,26 +298,34 @@ function getCardMostRead(data, visibleCardCount, ids, wishlist) {
 }
 
 $(document).ready(function () {
-
-
-
-
-
     $('li a#currently_reading').addClass('active');
     $('#profileUpdate').on('show.bs.modal', function (e) {
-
+        console.log(e)
         //get data-id attribute of the clicked element
         var address1 = $(e.relatedTarget).data('address1');
+        var dob = $(e.relatedTarget).data('datofbirth');
+        var dobDate= moment(dob, "DD-MMM-YY").add(1, 'days').toDate();
+
+        dobDate=dobDate.toISOString().replace(/T.*/,'').split('-').reverse().join('-');
+
         var address2 = $(e.relatedTarget).data('address2');
+        var gender = $(e.relatedTarget).data('gender');
         var address3 = $(e.relatedTarget).data('address3');
         var state = $(e.relatedTarget).data('state');
         var city = $(e.relatedTarget).data('city');
         var pincode = $(e.relatedTarget).data('pin');
         var phone = $(e.relatedTarget).data('phone');
         var email = $(e.relatedTarget).data('email');
-
+        $("#dob").datepicker({
+            dateFormat: 'dd-mm-yy',
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "-100:+0",
+            defaultDate: dobDate,
+        }).val(dobDate);
         //populate the textbox
         $('#address1').val(address1);
+        $('#gender').val(gender);
         $('#address2').val(address2);
         $('#address3').val(address3);
         $('#state').val(state);
@@ -311,13 +344,12 @@ $(document).ready(function () {
         var title = $(e.relatedTarget).data('title');
 
         //populate the textbox
-        $('#modalTitleRate').html("Rate <strong>'"+title+"'</strong>");
+        $('#modalTitleRate').html("Rate <strong>'" + title + "'</strong>");
         $('#book_id').val(id);
     });
 
 
     $('form').submit(function (e) {
-
         $(".spinner").show();
         $.ajax({
             type: "POST",
@@ -331,6 +363,8 @@ $(document).ready(function () {
                 'pin': $("#zip").val(),
                 'email': $("#email").val(),
                 'phone': $("#phone").val(),
+                'dob': $("#dob").val(),
+                'gender': $("#gender").val(),
 
             },
             async: true,
@@ -339,17 +373,15 @@ $(document).ready(function () {
             cache: false,
             success: function (data) {
                 $(".spinner").hide();
-                if(data === "Updated")
-                {
+                if (data === "Updated") {
                     toastr.success("Updated successfully !");
                     location.reload();
                     return false;
                 }
-                else{
+                else {
                     toastr.error("Something went wrong !");
                     return false;
                 }
-
 
 
                 $(".spinner").hide();
@@ -369,26 +401,6 @@ $(document).ready(function () {
 
 
     });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     $('#change_plan').html('');
@@ -415,10 +427,10 @@ $(document).ready(function () {
 
 
             $('#shelf_data').append(
-                '<div class="jumbotron">' +
+                '<div class="jumbotron col-xs-11">' +
                 '<div class="row">' +
 
-                '<div class="column column-66" style="cursor:default;"> <div style="font-size: 18px; color:#000 !important; font-family: Playfair Display;margin-top: -3%" class="col-sm-10">  <span class="">' + data_new['data'][0]['FIRST_NAME'] + '</span>  <a class="shortcode_button btn_small btn_type1" style="float:right;" href="" data-toggle="modal" data-address="' + data_new['data'][0]['EMAIL_ID'] + '"  data-address1="' + data_new['data'][0]['ADDRESS1'] + '"  data-address2="' + data_new['data'][0]['ADDRESS2'] + '"  data-address3="' + data_new['data'][0]['ADDRESS3'] + '"  data-state="' + data_new['data'][0]['STATE'] + '"  data-city="' + data_new['data'][0]['CITY'] + '"data-pin="' + data_new['data'][0]['PINCODE'] + '" data-phone="'+data_new['data'][0]['MPHONE']+'" data-email="'+data_new['data'][0]['EMAIL_ID']+'" data-target="#profileUpdate">Edit Profile</a></div></div>' + '<div class="column column-33"> <div class="card border-color-teal" style="cursor:default !important;border-top: 4px solid;padding:0;"> <table class="table table-striped" style="margin:0;font-family:Playfair Display;"> <tbody> <tr> <td>Member since</td> <td>' + data_new['data'][0]['REGISTER_TIME'] + '</td> </tr>   <tr> <td>E-mail</td> <td>' + data_new['data'][0]['EMAIL_ID'] + '</td> </tr>  <tr> <td>Phone No</td> <td>' + data_new['data'][0]['MPHONE'] + '</td> </tr> <tr> <td>Address</td>  <td>' + data_new['data'][0]['ADDRESS1']+data_new['data'][0]['ADDRESS2']+data_new['data'][0]['ADDRESS3']+", "+data_new['data'][0]['STATE']+", "+data_new['data'][0]['CITY']+", "+data_new['data'][0]['PINCODE'] + '</td>  </tr> </tbody> </table> </div> </div>' + '</div>' +
+                '<div class="column column-66" style="cursor:default;"> <div style="font-size: 18px; color:#000 !important; font-family: Playfair Display;margin-top: -3%" class="col-sm-10">  <span class="">' + data_new['data'][0]['FIRST_NAME'] + '</span>  <a class="shortcode_button btn_small btn_type1" style="float:right;" href="" data-toggle="modal" data-address="' + data_new['data'][0]['EMAIL_ID'] + '"  data-address1="' + data_new['data'][0]['ADDRESS1'] + '"  data-address2="' + data_new['data'][0]['ADDRESS2'] + '"  data-address3="' + data_new['data'][0]['ADDRESS3'] + '"  data-state="' + data_new['data'][0]['STATE'] + '"  data-city="' + data_new['data'][0]['CITY'] + '"data-pin="' + data_new['data'][0]['PINCODE'] + '" data-phone="' + data_new['data'][0]['MPHONE'] + '" data-email="' + data_new['data'][0]['EMAIL_ID'] + '"  data-datofbirth="' + data_new['data'][0]['DATE_OF_BIRTH'] + '"  data-gender="' + data_new['data'][0]['GENDER'] + '" data-target="#profileUpdate">Edit Profile</a></div></div>' + '<div class="column column-33"> <div class="card border-color-teal"> <table class="table table-striped" style="margin:0;font-family:Playfair Display;"> <tbody> <tr> <td>Member since</td> <td>' + data_new['data'][0]['REGISTER_TIME'] + '</td> </tr>   <tr> <td>E-mail</td> <td>' + data_new['data'][0]['EMAIL_ID'] + '</td> </tr>  <tr> <td>Date of birth</td> <td>' + data_new['data'][0]['DATE_OF_BIRTH'] + '</td> </tr>  <tr> <td>Phone No</td> <td>' + data_new['data'][0]['MPHONE'] + '</td> </tr> <tr> <td>Address</td>  <td>' + data_new['data'][0]['ADDRESS1'] + data_new['data'][0]['ADDRESS2'] + data_new['data'][0]['ADDRESS3'] + ", " + data_new['data'][0]['STATE'] + ", " + data_new['data'][0]['CITY'] + ", " + data_new['data'][0]['PINCODE'] + '</td>  </tr> </tbody> </table> </div> </div>' + '</div>' +
                 '</div>');
 
             $("#left_menu_recommend").css('margin-top', '15%');
@@ -429,7 +441,7 @@ $(document).ready(function () {
 });
 
 
-function generateDIV(arr, funcName, idName, btnTxt, style, ids,statusKey,statusStyle,shareStyle,wishStyle,custStyle) {
+function generateDIV(arr, funcName, idName, btnTxt, style, ids, statusKey, statusStyle, shareStyle, wishStyle, custStyle) {
     $('#change_plan').html('');
     var response = '';
     arr.forEach(function (arr_data) {
@@ -445,7 +457,7 @@ function generateDIV(arr, funcName, idName, btnTxt, style, ids,statusKey,statusS
         }
 
         response += '<div id="alertDiv" class="alert  alert-dismissable" style="display: none"><a  href="#" class="close"  aria-label="close" onclick="hideAlert()">&times;</a>' +
-            '<span id="alertText"></span></div><div id="div' + arr_data['id'] + '" class="col-md-6 col-xs-12 module_cont module_shelf shadow1" style="height: 180px;">' +
+            '<span id="alertText"></span></div><div id="div' + arr_data['id'] + '" class="col-md-6 col-xs-6 module_cont module_shelf shadow1" style="height: 180px;">' +
             '<div class="col-md-5 col-xs-5">' +
             '<a href="/book_details/' + arr_data['id'] + '/' + arr_data['title'] + '">' +
             '<img src="' + arr_data['image_url'] + '" class="img-responsive" alt="..." style="margin-top: -20px;height: 145px" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'">' +
@@ -460,18 +472,18 @@ function generateDIV(arr, funcName, idName, btnTxt, style, ids,statusKey,statusS
             // '<p><a href="/book_details/' + arr_data['id'] + '">Rate/Review</a></p>' +
             '<div class="shelf_sicial">' +
             '<div class="col-md-3 col-xs-2" style="cursor:pointer;margin-right: 26%;margin-top: 4%;margin-left:-9%">' +
-            '<a class="shortcode_button btn_small btn_type10"  data-toggle="modal" data-id='+arr_data['id']+' data-title="'+arr_data['title']+'"  data-target="#rateModal" style="cursor:pointer;">Rate/Review</a>' +
+            '<a class="shortcode_button btn_small btn_type10"  data-toggle="modal" data-id=' + arr_data['id'] + ' data-title="' + arr_data['title'] + '"  data-target="#rateModal" style="cursor:pointer;">Rate/Review</a>' +
             '</div>' +
-            '<div class="col-md-3 col-xs-2" style="margin-right: -8%;margin-top: 4%;display: '+custStyle+'">' +
+            '<div class="col-md-3 col-xs-2" style="margin-right: -8%;margin-top: 4%;display: ' + custStyle + '">' +
             '<a href="javascript:void(0)" class="shortcode_button btn_small btn_type10" onclick="' + funcName + '(this,' + arr_data['id'] + ')"  id="' + arr_data[idName] + '">' + btnTxt + '</a>' +
             '</div>' +
             '</div></div>' +
             '<a onclick="statusCheck(this,' + arr_data[statusKey] + ')" id="status_' + arr_data['id'] + '" style="text-decoration: underline; display:' + style + '" href="javascript:void(0)">Track Status</a><p id="message_' + arr_data[statusKey] + '" style="display: none;color:green;font-weight: bold" ></p>' +
-            '<div class="col-md-4" style="float: left;'+shareStyle+'">' +
+            '<div class="col-md-4 col-xs-6 shelf_logos" style="float: left;' + shareStyle + '">' +
             '<a href="javascript:void(0)" class="tiptip" title="Share" data-id="' + arr_data['id'] + '" data-title="' + arr_data['title'] + '" data-toggle="modal" data-target="#shareModal" style="margin-left: 10%">' +
             '<img class="share_btn" src=../../assets/img/Engage.png alt="Smiley face" height="25" width="25"></a>' +
             '<a   style="display:' + wishStyle + ';class="tiptip" onclick="addWishlist(' + arr_data['id'] + ')"  id="' + arr_data[idName] + '"><img id="wish_' + arr_data['id'] + '" class="wishlist_btn" src=' + image + ' alt="Smiley face" height="25" width="25"></a>' +
-            '</div>'+
+            '</div>' +
             '</div>';
     });
     return response;
@@ -507,7 +519,7 @@ $('#wishlist').click(function (e) {
 
             var response = '';
             var i = 0;
-            var final_response = generateDIV(new_data['data']['result'], 'removeWishlist', 'title_id', 'Remove', 'none', new_data['wishlist'],'','none','margin-top: 34%;margin-left: -97%;','none','block');
+            var final_response = generateDIV(new_data['data']['result'], 'removeWishlist', 'title_id', 'Remove', 'none', new_data['wishlist'], '', 'none', 'margin-top: 34%;margin-left: -97%;', 'none', 'block');
             $('#shelf_data').html('');
             $('#shelf_data').append(final_response);
             $("#left_menu_recommend").show();
@@ -550,7 +562,7 @@ $('#ordered_books').click(function (e) {
             } else {
                 var id = 'delivery_order_id';
             }
-            var final_response = generateDIV(new_data['data']['result'], 'cancelOrder', 'delivery_order_id', 'Cancel', 'inline-block', new_data['wishlist'],'delivery_order_id','block','margin-top: 6%;margin-left: -40%', 'inline-block','block');
+            var final_response = generateDIV(new_data['data']['result'], 'cancelOrder', 'delivery_order_id', 'Cancel', 'inline-block', new_data['wishlist'], 'delivery_order_id', 'block', 'margin-top: 6%;margin-left: -40%', 'inline-block', 'block');
             $('#shelf_data').append(final_response);
             $("#left_menu_recommend").css('margin-top', '33%');
 
@@ -589,7 +601,7 @@ $('#currently_reading').click(function (e) {
             }
             $("#emptyResult").hide();
             $("#left_menu_recommend").show();
-            var final_response = generateDIV(new_data['data']['result'], 'placePickup', 'rental_id', 'Return', 'none', new_data['wishlist'],'','none','margin-top: 34%;margin-left: -100%;', 'inline-block','block');
+            var final_response = generateDIV(new_data['data']['result'], 'placePickup', 'rental_id', 'Return', 'none', new_data['wishlist'], '', 'none', 'margin-top: 34%;margin-left: -100%;', 'inline-block', 'block');
             $('#shelf_data').html('');
             $('#shelf_data').append(final_response);
             $("#left_menu_recommend").css('margin-top', '33%');
@@ -629,7 +641,7 @@ $('#pick_up').click(function (e) {
             $("#emptyResult").hide();
 
 
-            var final_response = generateDIV(new_data['data']['result'], 'cancelPickup', 'rental_id', 'Cancel', 'inline-block', new_data['wishlist'],'delivery_order_id','block','margin-top: 6%;margin-left: -40%', 'inline-block','block');
+            var final_response = generateDIV(new_data['data']['result'], 'cancelPickup', 'rental_id', 'Cancel', 'inline-block', new_data['wishlist'], 'delivery_order_id', 'block', 'margin-top: 6%;margin-left: -40%', 'inline-block', 'block');
             $('#shelf_data').html('');
             $('#shelf_data').append(final_response);
             $("#left_menu_recommend").css('margin-top', '33%');
@@ -655,8 +667,6 @@ $('#profile').click(function (e) {
             $('#change_plan').html('');
 
             var data_new = JSON.parse(data);
-            console.log(data_new['data'][0]['EMAIL_ID']);
-
 
 
             $('#shelf_data').html('');
@@ -664,10 +674,10 @@ $('#profile').click(function (e) {
 
 
             $('#shelf_data').append(
-                '<div class="jumbotron">' +
+                '<div class="jumbotron col-xs-11">' +
                 '<div class="row">' +
 
-                '<div class="column column-66" style="cursor:default;"> <div style="font-size: 18px; color:#000 !important; font-family: Playfair Display;margin-top: -3%" class="col-sm-10">  <span class="">' + data_new['data'][0]['FIRST_NAME'] + '</span>  <a class="shortcode_button btn_small btn_type1" style="float:right;" href="" data-toggle="modal" data-address="' + data_new['data'][0]['EMAIL_ID'] + '"  data-address1="' + data_new['data'][0]['ADDRESS1'] + '"  data-address2="' + data_new['data'][0]['ADDRESS2'] + '"  data-address3="' + data_new['data'][0]['ADDRESS3'] + '"  data-state="' + data_new['data'][0]['STATE'] + '"  data-city="' + data_new['data'][0]['CITY'] + '"data-pin="' + data_new['data'][0]['PINCODE'] + '" data-phone="'+data_new['data'][0]['MPHONE']+'" data-email="'+data_new['data'][0]['EMAIL_ID']+'" data-target="#profileUpdate">Edit Profile</a></div></div>' + '<div class="column column-33"> <div class="card border-color-teal" style="cursor:default !important;border-top: 4px solid;padding:0;"> <table class="table table-striped" style="margin:0;font-family:Playfair Display;"> <tbody> <tr> <td>Member since</td> <td>' + data_new['data'][0]['REGISTER_TIME'] + '</td> </tr>   <tr> <td>E-mail</td> <td>' + data_new['data'][0]['EMAIL_ID'] + '</td> </tr>  <tr> <td>Phone No</td> <td>' + data_new['data'][0]['MPHONE'] + '</td> </tr> <tr> <td>Address</td>  <td>' + data_new['data'][0]['ADDRESS1']+", "+data_new['data'][0]['ADDRESS2']+", "+data_new['data'][0]['ADDRESS3']+", "+data_new['data'][0]['STATE']+", "+data_new['data'][0]['CITY']+", "+data_new['data'][0]['PINCODE'] + '</td>  </tr> </tbody> </table> </div> </div>' + '</div>' +
+                '<div class="column column-66" style="cursor:default;"> <div style="font-size: 18px; color:#000 !important; font-family: Playfair Display;margin-top: -3%" class="col-sm-10">  <span class="">' + data_new['data'][0]['FIRST_NAME'] + '</span>  <a class="shortcode_button btn_small btn_type1" style="float:right;" href="" data-toggle="modal" data-address="' + data_new['data'][0]['EMAIL_ID'] + '"  data-address1="' + data_new['data'][0]['ADDRESS1'] + '"  data-address2="' + data_new['data'][0]['ADDRESS2'] + '"  data-address3="' + data_new['data'][0]['ADDRESS3'] + '"  data-state="' + data_new['data'][0]['STATE'] + '"  data-city="' + data_new['data'][0]['CITY'] + '"data-pin="' + data_new['data'][0]['PINCODE'] + '" data-phone="' + data_new['data'][0]['MPHONE'] + '" data-email="' + data_new['data'][0]['EMAIL_ID'] + '"  data-datofbirth="' + data_new['data'][0]['DATE_OF_BIRTH'] + '"  data-gender="' + data_new['data'][0]['GENDER'] + '" data-target="#profileUpdate">Edit Profile</a></div></div>' + '<div class="column column-33"> <div class="card border-color-teal"> <table class="table table-striped" style="margin:0;font-family:Playfair Display;"> <tbody> <tr> <td>Member since</td> <td>' + data_new['data'][0]['REGISTER_TIME'] + '</td> </tr>   <tr> <td>E-mail</td> <td>' + data_new['data'][0]['EMAIL_ID'] + '</td> </tr>  <tr> <td>Date of birth</td> <td>' + data_new['data'][0]['DATE_OF_BIRTH'] + '</td> </tr>  <tr> <td>Phone No</td> <td>' + data_new['data'][0]['MPHONE'] + '</td> </tr> <tr> <td>Address</td>  <td>' + data_new['data'][0]['ADDRESS1'] + data_new['data'][0]['ADDRESS2'] + data_new['data'][0]['ADDRESS3'] + ", " + data_new['data'][0]['STATE'] + ", " + data_new['data'][0]['CITY'] + ", " + data_new['data'][0]['PINCODE'] + '</td>  </tr> </tbody> </table> </div> </div>' + '</div>' +
                 '</div>'
             );
 
@@ -727,30 +737,30 @@ $('#subscription').click(function (e) {
                 '<div data-reveal-group="relations22" class="column column-50" data-sr-id="4">' +
                 ' <div class="item clickable" style="margin:0;">' +
                 '<div class="article border-color-" style="border-top: 4px solid black;">' +
-                '<div class="article-body planIdDIV" id=' + current_plan['result']['member_cross_reference']['plan_id'] + '> '+
-                '<h4 style="font-family: Playfair Display; white-space:nowrap;height:35px;text-overflow:ellipsis;overflow:hidden;display:block; text-align:center;">Current Plan</h4> '+
-                '<div class="gray" style="white-space:nowrap;height:25px;text-overflow:ellipsis;overflow:hidden;display:block;text-align:center;">'+ current_plan['result']['member_cross_reference']['plan_name'] +'</div> '+
-                ' </div> '+
-                '</div> '+
-                '</div> '+
+                '<div class="article-body planIdDIV" id=' + current_plan['result']['member_cross_reference']['plan_id'] + '> ' +
+                '<h4 style="font-family: Playfair Display; white-space:nowrap;height:35px;text-overflow:ellipsis;overflow:hidden;display:block; text-align:center;">Current Plan</h4> ' +
+                '<div class="gray" style="white-space:nowrap;height:25px;text-overflow:ellipsis;overflow:hidden;display:block;text-align:center;">' + current_plan['result']['member_cross_reference']['plan_name'] + '</div> ' +
+                ' </div> ' +
                 '</div> ' +
-                '</div>'+
+                '</div> ' +
+                '</div> ' +
+                '</div>' +
 
-                '</div>'+
+                '</div>' +
 
                 '<div class="col-sm-3">' +
                 '<div class="gallery-view">' +
                 '<div data-reveal-group="relations22" class="column column-50" data-sr-id="4">' +
                 ' <div class="item clickable" style="margin:0;">' +
                 '<div class="article border-color-" style="border-top: 4px solid blue;">' +
-                '<div class="article-body">'+
-                '<h4 style="font-family: Playfair Display; white-space:nowrap;height:35px;text-overflow:ellipsis;overflow:hidden;display:block; text-align:center;">Duration</h4> '+
-                '<div class="gray" style="white-space:nowrap;height:25px;text-overflow:ellipsis;overflow:hidden;display:block;text-align:center;">' + Math.round(parseFloat(current_plan['result']['member_cross_reference']['term'])) + ' months</div> '+
-                ' </div> '+
-                '</div> '+
-                '</div> '+
+                '<div class="article-body">' +
+                '<h4 style="font-family: Playfair Display; white-space:nowrap;height:35px;text-overflow:ellipsis;overflow:hidden;display:block; text-align:center;">Duration</h4> ' +
+                '<div class="gray" style="white-space:nowrap;height:25px;text-overflow:ellipsis;overflow:hidden;display:block;text-align:center;">' + Math.round(parseFloat(current_plan['result']['member_cross_reference']['term'])) + ' months</div> ' +
+                ' </div> ' +
                 '</div> ' +
-                '</div>'+
+                '</div> ' +
+                '</div> ' +
+                '</div>' +
                 '</div>' +
 
                 '<div class="col-sm-3" >' +
@@ -759,14 +769,14 @@ $('#subscription').click(function (e) {
                 '<div data-reveal-group="relations22" class="column column-50" data-sr-id="4">' +
                 ' <div class="item clickable" style="margin:0;">' +
                 '<div class="article border-color-" style="border-top: 4px solid red;">' +
-                '<div class="article-body">'+
-                '<h4 style="white-space:nowrap;height:35px;text-overflow:ellipsis;overflow:hidden;display:block; text-align:center; font-family: Playfair Display;">Renewal Date</h4> '+
-                '<div class="gray" style="white-space:nowrap;height:25px;text-overflow:ellipsis;overflow:hidden;display:block;text-align:center;">' + current_plan['result']['member_cross_reference']['expiry_date'] + '</div> '+
-                ' </div> '+
-                '</div> '+
-                '</div> '+
+                '<div class="article-body">' +
+                '<h4 style="white-space:nowrap;height:35px;text-overflow:ellipsis;overflow:hidden;display:block; text-align:center; font-family: Playfair Display;">Renewal Date</h4> ' +
+                '<div class="gray" style="white-space:nowrap;height:25px;text-overflow:ellipsis;overflow:hidden;display:block;text-align:center;">' + current_plan['result']['member_cross_reference']['expiry_date'] + '</div> ' +
+                ' </div> ' +
                 '</div> ' +
-                '</div>'+
+                '</div> ' +
+                '</div> ' +
+                '</div>' +
                 '</div>' +
 
                 '<div class="col-sm-3" style="margin-top:3%">' +
@@ -830,7 +840,7 @@ $('#subscription').click(function (e) {
 //                            '</div></div>';
                 response = "";
                 if (plan_durations != null) {
-                    response += '<div class="col-md-4" style="margin-top:1%"><div class="block personal fl" style="text-align: center;width:100%/*! height: 314px; */"><h4 class="title">' + arr["change_plan_detail"]['plan_name'] + '</h4> <a href="/change_plan?id=' + arr["change_plan_detail"]['plan_id'] + '&planname=' + arr["change_plan_detail"]['promo_code'] + '"><div class="content_pt" style="margin: -9%;"> <p class="price"><sup>₹</sup><span> ' + arr["change_plan_detail"]['reading_fee'] + '</span><sub></sub></p></div></a><ul class="features" style="margin-top: 8%;height: 130px;list-style-type: none !important;padding: 0;/*! margin: 0; */margin-left: -5%;"><li style="line-height: 39px;">No of books -   ' + arr["change_plan_detail"]['books'] + '</li><li style="line-height: 39px;">Security Deposit - Rs ' + arr["change_plan_detail"]['security_deposit'] + ' </li><li style="line-height: 39px;">Registration Fee - Rs ' + arr["change_plan_detail"]['registration_fee'] + '</li></ul><div class="pt-footer" style="padding-bottom: 1%"><h4><a href="/change_plan?planname=' + arr["change_plan_detail"]['promo_code'] + '&books=' + arr["change_plan_detail"]['books'] + '&months='+arr["change_plan_detail"]['plan_durations'][0]['plan_duration']['change_plan_months']+'">UPGRADE NOW !</a></h4></div></div></div>';
+                    response += '<div class="col-md-4" style="margin-top:1%"><div class="block personal fl" style="text-align: center;width:100%/*! height: 314px; */"><h4 class="title">' + arr["change_plan_detail"]['plan_name'] + '</h4> <a href="/change_plan?id=' + arr["change_plan_detail"]['plan_id'] + '&planname=' + arr["change_plan_detail"]['promo_code'] + '"><div class="content_pt" style="margin: -9%;"> <p class="price"><sup>₹</sup><span> ' + arr["change_plan_detail"]['reading_fee'] + '</span><sub></sub></p></div></a><ul class="features" style="margin-top: 8%;height: 130px;list-style-type: none !important;padding: 0;/*! margin: 0; */margin-left: -5%;"><li style="line-height: 39px;">No of books -   ' + arr["change_plan_detail"]['books'] + '</li><li style="line-height: 39px;">Security Deposit - Rs ' + arr["change_plan_detail"]['security_deposit'] + ' </li><li style="line-height: 39px;">Registration Fee - Rs ' + arr["change_plan_detail"]['registration_fee'] + '</li></ul><div class="pt-footer" style="padding-bottom: 1%"><h4><a href="/change_plan?planname=' + arr["change_plan_detail"]['promo_code'] + '&books=' + arr["change_plan_detail"]['books'] + '&months=' + arr["change_plan_detail"]['plan_durations'][0]['plan_duration']['change_plan_months'] + '">UPGRADE NOW !</a></h4></div></div></div>';
                     i++;
                     if (i >= colors.length) {
                         i = 0;
@@ -912,7 +922,6 @@ function removeWishlist(elem, id) {
             return false;
 
 
-
         },
 
     });
@@ -920,10 +929,10 @@ function removeWishlist(elem, id) {
 
 function placePickup(elem, title) {
 
-    var answer = confirm ("Are you sure you want to return the book?");
+    var answer = confirm("Are you sure you want to return the book?");
 
     if (!answer) {
-    return false;
+        return false;
     }
     $(".spinner").show();
 
@@ -946,7 +955,7 @@ function placePickup(elem, title) {
                 $("#alertDiv").addClass("alert-success");
                 $("#alertDiv").show();
                 $("#alertText").text("Successfully requested !")
-                   $('#' + id).closest('.module_shelf').remove();
+                $('#' + id).closest('.module_shelf').remove();
 
             }
             else {
@@ -957,7 +966,7 @@ function placePickup(elem, title) {
     });
 }
 function cancelOrder(elem, id) {
-    var answer = confirm ("Are you sure you want to canel the order?");
+    var answer = confirm("Are you sure you want to canel the order?");
 
     if (!answer) {
         return false;
@@ -979,7 +988,7 @@ function cancelOrder(elem, id) {
                 $("#alertDiv").show();
                 $("#alertText").text("Successfully cancelled")
             }
-            else{
+            else {
 
                 $("#alertDiv").addClass("alert-danger");
                 $("#alertDiv").show();
@@ -1006,9 +1015,6 @@ function pastReads() {
             $("#left_menu_recommend").show();
 
 
-
-
-
             if (data['data']['result'].length == 0) {
                 $('#shelf_data').html('');
 
@@ -1020,7 +1026,7 @@ function pastReads() {
             }
             $("#emptyResult").hide();
             if (data['data']['success'] == true) {
-                var final_response = generateDIV(data['data']['result'], 'placePickup', 'id', 'Pickup', 'none', data['wishlist'],'','none','margin-top: 34%;margin-left: -100%;', 'inline-block','none');
+                var final_response = generateDIV(data['data']['result'], 'placePickup', 'id', 'Pickup', 'none', data['wishlist'], '', 'none', 'margin-top: 34%;margin-left: -100%;', 'inline-block', 'none');
                 $('#shelf_data').html('');
                 $('#shelf_data').append(final_response);
                 $("#left_menu_recommend").css('margin-top', '33%');
@@ -1034,7 +1040,7 @@ function pastReads() {
 
 
 function cancelPickup(elem, title) {
-    var answer = confirm ("Are you sure you want to issue a pickup?");
+    var answer = confirm("Are you sure you want to issue a pickup?");
 
     if (!answer) {
         return false;
@@ -1274,8 +1280,7 @@ function GiftClick() {
 function breakValidate() {
     $(".spinner").show();
     var month = $("#monthSel").val();
-    if(month === "" || month=== 0)
-    {
+    if (month === "" || month === 0) {
         toastr.error("Please select a month");
         return false;
     }
@@ -1393,19 +1398,17 @@ function placeOrder(id) {
 }
 
 
-function hideAlert()
-{
+function hideAlert() {
     $("#alertDiv").hide();
 }
 
 
-function breakButton()
-{
-$("#demo").collapse('hide');
-}function RenewButton()
-{
+function breakButton() {
+    $("#demo").collapse('hide');
+}
+function RenewButton() {
 
-$("#break").collapse('hide');
+    $("#break").collapse('hide');
 }
 function giveReviewStar() {
     var id = $("#book_id").val();
@@ -1454,24 +1457,23 @@ function giveReviewStar() {
 }
 
 
-function statusCheck(elem,id) {
-$(".spinner").show();
+function statusCheck(elem, id) {
+    $(".spinner").show();
 
     var idTag = $(elem).attr('id');
 
     $.ajax({
         type: "GET",
-        url: "/getStatusDelivery?id="+id,
+        url: "/getStatusDelivery?id=" + id,
         success: function (data_new) {
             $(".spinner").hide();
             data_new = JSON.parse(data_new);
-            $("#"+idTag).hide();
-            $("#message_"+id).css("display",'inline-block');
-            $("#message_"+id).text(data_new)
+            $("#" + idTag).hide();
+            $("#message_" + id).css("display", 'inline-block');
+            $("#message_" + id).text(data_new)
 
         },
-        error:function(err)
-        {
+        error: function (err) {
             console.log(err);
             toastr.error("Something went wrong.Please try again !")
         }
