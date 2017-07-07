@@ -128,7 +128,7 @@ $(document).ready(function () {
         templates: {
             empty: [
                 '<div class="empty-message text-center">',
-                'No movies found.<br>',
+                'No titles found.<br>',
                 '<a href="/search" class="text-center">More Advanced Search</a>',
                 '</div>',
             ].join('\n'),

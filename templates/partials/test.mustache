@@ -1,0 +1,33 @@
+'<div class="col-xs-10 col-sm-6 col-md-6 col-lg-6">' +
+    '<div class="col-md-12 col-sm-12 col-lg-12 col-xs-12">' +
+    	'<div class="form-group">
+    		<div class="col-md-8"> 
+    			<label>Apply coupon code, if any:</label>
+    			<input type="text" class="form-control" id="coupon_code" placeholder="Coupon Code" name="coupon_code">
+    		</div>
+	    	<div class="col-sm-3">' +
+	    		'<button type="button" class="btn btn-warning" id="coupon_submit" onclick="couponClick()">Apply</button>
+	    	</div>
+	    </div>
+	</div>' +
+    '<br><br>
+    <div class="col-md-12"> 
+    	<div class="form-group">
+    		<div class="col-md-5"> 
+    			<label>Apply gift card no, if any:</label>
+    				<input class="form-control" id="gift_card" placeholder="Gift Card No." name="gift_card" type="text">
+    			</div>
+    			<div class="col-md-5"> 
+    			<label>Apply gift card pin, if any:</label>
+    			<input class="form-control" id="gift_card_pin" placeholder="Gift Card Pin" name="gift_card_pin" type="text">
+    		</div>
+    		<div class="col-md-2">
+    			<button type="button" class="btn btn-warning" id="gift_card_submit" onclick="couponClick()">Apply</button>
+    		</div>
+    	</div>
+    	<p id="textSpan">You have to pay Rs ' + defValue + '</p>
+    </div>
+    <button id="renewBUtton"  type="button" class="btn btn-primary btn-md" onclick="proceedRenew()">Proceed</button>'+
+
+'</div></div><br>'
+)

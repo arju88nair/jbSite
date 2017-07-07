@@ -1,7 +1,7 @@
 {{> header}}
 
 <!-- C O N T E N T -->
-<div class="content_wrapper background_color_gray"  style="margin-top: 10%">
+<div class="content_wrapper search_div"  id="firstDiv">
     <!--<div class="page_title_block">
         <div class="container">
             <h2 class="title">Portfolio. 4 Columns</h2>
@@ -13,7 +13,7 @@
             margin: 10px 0 10px 0;
         }
     </style>
-    <div class="container" style="margin-left: 4%">
+    <div class="container">
         <div class="spinner" style='display: none;z-index: 100000;opacity:0.55;background-color: grey'>
             <div class="double-bounce1"></div>
             <div class="double-bounce2"></div>
@@ -22,7 +22,7 @@
             <div class="fl-container span12">
                 <div class="row">
 
-                    <div class="col-lg-12">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                         <h4 class="page-header">
                             <small>You searched for</small>
                             <b>" {{query}} " </b>
@@ -38,7 +38,7 @@
                         <div>
 
                             {{# _source}}
-                                <!-- <div class="col-lg-3 col-md-4 col-xs-12 thumb">
+                                <!-- <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6 thumb">
                                     {{#jb_info}}
                                         <a class="thumbnail" href="/book_details/{{titleid}}/{{#author}}{{name}}{{/author}}" style="height: 320px;">
                                             {{/jb_info}}
@@ -53,7 +53,7 @@
                                             {{/jb_info}}
                                         </a>
                                 </div> -->
-                                <div class="col-lg-2 col-md-2 col-xs-12 thumb">
+                                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 thumb">
                                     <div class="item item_shadow">
                                         {{#jb_info}}
                                         <div class="img_block_books">
@@ -65,7 +65,7 @@
                                         </a>
                                         </div>
                                             <div class="carousel_body_book">
-                                                <div class="carousel_title_book" style="margin-left: 9%;padding-bottom: 6%">
+                                                <div class="carousel_title_book" style="padding-bottom: 6%">
                                                     <h5 title="{{title}}">{{title}}</h5>
                                                 </div>
                                                 <div class="carousel_desc">
@@ -111,7 +111,7 @@
         var query = "{{query}}";
         localStorage.setItem("countFlag", parseInt(count) + 1);
         $.ajax({
-            url: "https://rec.justbooks.in/getSuggestBooksDetails?text="+query+"&page="+count,
+            url: "http://rec.justbooksclc.com/getSuggestBooksDetails?text="+query+"&page="+count,
             type: 'GET',
 
             success: function (data) {
@@ -133,7 +133,7 @@
 
 
 
-                            '<div class="col-lg-2 col-md-2 col-xs-12 thumb">'+
+                            '<div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 thumb">'+
                             '<div class="item item_shadow">'+
                             '<div class="img_block_books">'+
                             '<a href="/book_details/' + data[i]['_source']['jb_info']['titleid'] + '">'+
@@ -143,7 +143,7 @@
                             '</a>'+
                             '</div>'+
                             '<div class="carousel_body_book">'+
-                            '<div class="carousel_title_book" style="margin-left: 9%;padding-bottom: 6%"><h5 title="' + data[i]['_source']['jb_info']['title'] + '">' + data[i]['_source']['jb_info']['title'] + '</h5></div>'+
+                            '<div class="carousel_title_book" style="padding-bottom: 6%"><h5 title="' + data[i]['_source']['jb_info']['title'] + '">' + data[i]['_source']['jb_info']['title'] + '</h5></div>'+
                             '<div class="carousel_desc">'+
 
                             '<div class="clear"></div>'+

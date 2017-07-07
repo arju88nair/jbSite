@@ -154,6 +154,13 @@
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
 	/* Styles */
 	/* Styles */
+	.modalStyle{
+		top:0% !important;;
+		width:250% !important;
+		left:-78% !important;
+	}.modalStyleProfile{top:0% !important;;
+		 width:250% !important;
+		 left:-26%!important;}
 	#firstDiv{
 		margin-top: 22%;
 	}
@@ -193,6 +200,13 @@ iPad 3
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio : 2) {
 	/* Styles */
 	/* Styles */
+	.modalStyle{
+		top:0% !important;;
+		width:250% !important;
+		left:-78% !important;
+	}.modalStyleProfile{top:0% !important;;
+		 width:250% !important;
+		 left:-26%!important;}
 	#firstDiv{
 		margin-top: 22%;
 	}
@@ -229,6 +243,13 @@ iPad 3
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio : 2) {
 	/* Styles */
 	/* Styles */
+
+	.modalStyle{
+		top:0% !important;;
+		width:250% !important;
+		left:-78% !important;
+	}
+
 	#firstDiv{
 		margin-top: 22%;
 	}
@@ -266,12 +287,29 @@ iPad 3
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
 	/* Styles */
+
+	.search_div concontainer{
+		padding-left: 0px!important;
+	}
+	#welcome_msg{
+		display:none;
+	}
+	.shelf_return_btn{
+		margin-left:20%;
+	}
+	.modalStyle{
+		top:0% !important;;
+		width:250% !important;
+		left:-78% !important;
+	}.modalStyleProfile{top:0% !important;;
+		 width:250% !important;
+		 left:-26%!important;}
 	#firstDiv{
 		margin-top: 46%;
 	}
-.shelf_logos{
-	margin-top: 42% !important;
-}
+	.shelf_logos{
+		margin-top: 42% !important;
+	}
 	.border-color-teal{
 
 		cursor: default !important;
@@ -320,6 +358,47 @@ iPad 3
 		width:50%;
 	}
 
+	#plansCard .block{
+		width: 63%;
+		margin: 0 15px;
+		overflow: hidden;
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+		margin-bottom: 15px;
+	}
+
+	#plansCard .pricing-table .block h4{
+		margin-bottom: 0px;
+		font-family: 'Playfair Display';
+		font-size: 15px;
+
+
+	}
+
+	#plansCard .price span{
+		font-size: 3rem;
+		letter-spacing: 2px;
+		font-weight: bold;
+	}
+
+	#plansCard .features li {
+		padding: 6px 0;
+		width: 100%;
+		font-size: 13px;
+		font-family: 'Playfair Display';
+	}
+
+	#plansCard .content_pt{
+		position: relative;
+		color: #FEFEFE;
+		padding: 5px 0 10px 0;
+	}
+
+	#responsive_crsl{
+		width:50%;
+	}
+
 
 
 }
@@ -329,6 +408,24 @@ iPad 3
 /* iPhone 5 ----------- */
 @media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
 	/* Styles */
+
+	.search_div concontainer{
+		padding-left: 0px!important;
+	}
+
+	#welcome_msg{
+		display:none;
+	}
+	.shelf_return_btn{
+		margin-left:20%;
+	}
+	.modalStyle{
+		top:0% !important;;
+		width:250% !important;
+		left:-78% !important;
+	}.modalStyleProfile{top:0% !important;;
+		 width:250% !important;
+		 left:-26%!important;}
 	#firstDiv{
 		margin-top: 46%;
 	}
@@ -422,6 +519,21 @@ iPad 3
 
 @media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
 	/* Styles */
+
+	.search_div concontainer{
+		padding-left: 0px!important;
+	}
+
+	.shelf_return_btn{
+		margin-left:20%;
+	}
+	.modalStyle{
+		top:0% !important;;
+		width:250% !important;
+		left:-78% !important;
+	}.modalStyleProfile{top:0% !important;;
+		 width:250% !important;
+		 left:-26%!important;}
 	#firstDiv{
 		margin-top: 22%;
 
@@ -530,6 +642,20 @@ iPad 3
 /* iPhone 6 ----------- */
 @media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
 	/* Styles */
+
+	.search_div concontainer{
+		padding-left: 0px!important;
+	}
+	.shelf_return_btn{
+		margin-left:20%;
+	}
+	.modalStyle{
+		top:0% !important;;
+		width:250% !important;
+		left:-78% !important;
+	}.modalStyleProfile{top:0% !important;;
+		 width:250% !important;
+		 left:-26%!important;}
 	#firstDiv{
 		margin-top: 46%;
 	}
@@ -625,6 +751,20 @@ iPad 3
 
 @media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
 	/* Styles */
+
+	.search_div concontainer{
+		padding-left: 0px!important;
+	}
+	.shelf_return_btn{
+		margin-left:20%;
+	}
+	.modalStyle{
+		top:0% !important;;
+		width:250% !important;
+		left:-78% !important;
+	}.modalStyleProfile{top:0% !important;;
+		 width:250% !important;
+		 left:-26%!important;}
 	#firstDiv{
 		margin-top: 22%;
 	}
@@ -720,6 +860,20 @@ iPad 3
 /* iPhone 6+ ----------- */
 @media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
 	/* Styles */
+
+	#welcome_msg{
+		display:none;
+	}
+	.shelf_return_btn{
+		margin-left:20%;
+	}
+	.modalStyle{
+		top:0% !important;;
+		width:250% !important;
+		left:-78% !important;
+	}.modalStyleProfile{top:0% !important;;
+		 width:250% !important;
+		 left:-26%!important;}
 	#firstDiv{
 		margin-top: 46%;
 	}
@@ -814,6 +968,19 @@ iPad 3
 
 @media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
 	/* Styles */
+	#welcome_msg{
+		display:none;
+	}
+	.shelf_return_btn{
+		margin-left:20%;
+	}
+	.modalStyle{
+		top:0% !important;;
+		width:250% !important;
+		left:-78% !important;
+	}.modalStyleProfile{top:0% !important;;
+		 width:250% !important;
+		 left:-26%!important;}
 	#firstDiv{
 		margin-top: 46%;
 	}
@@ -908,6 +1075,28 @@ iPad 3
 /* Samsung Galaxy S3 ----------- */
 @media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
 	/* Styles */
+
+
+	.search_div concontainer{
+		padding-left: 0px!important;
+	}
+
+
+	#welcome_msg{
+		display:none;
+	}
+
+
+	.shelf_return_btn{
+		margin-left:20%;
+	}
+	.modalStyle{
+		top:0% !important;;
+		width:250% !important;
+		left:-78% !important;
+	}.modalStyleProfile{top:0% !important;;
+		 width:250% !important;
+		 left:-26%!important;}
 	#firstDiv{
 		margin-top: 22%;
 	}
@@ -1001,6 +1190,28 @@ iPad 3
 
 @media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
 	/* Styles */
+
+
+	.search_div concontainer{
+		padding-left: 0px!important;
+	}
+
+
+	#welcome_msg{
+		display:none;
+	}
+
+
+	.shelf_return_btn{
+		margin-left:20%;
+	}
+	.modalStyle{
+		top:0% !important;;
+		width:250% !important;
+		left:-78% !important;
+	}.modalStyleProfile{top:0% !important;;
+		 width:250% !important;
+		 left:-26%!important;}
 	#firstDiv{
 		margin-top: 22%;
 	}
@@ -1096,6 +1307,26 @@ iPad 3
 /* Samsung Galaxy S4 ----------- */
 @media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 3){
 	/* Styles */
+
+	.search_div concontainer{
+		padding-left: 0px!important;
+	}
+
+	#welcome_msg{
+		display:none;
+	}
+
+
+	.shelf_return_btn{
+		margin-left:20%;
+	}
+	.modalStyle{
+		top:0% !important;;
+		width:250% !important;
+		left:-78% !important;
+	}.modalStyleProfile{top:0% !important;;
+		 width:250% !important;
+		 left:-26%!important;}
 	#firstDiv{
 		margin-top: 22%;
 	}
@@ -1191,6 +1422,27 @@ iPad 3
 
 @media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3){
 	/* Styles */
+
+	.search_div concontainer{
+		padding-left: 0px!important;
+	}
+
+
+	#welcome_msg{
+		display:none;
+	}
+
+
+	.shelf_return_btn{
+		margin-left:20%;
+	}
+	.modalStyle{
+		top:0% !important;;
+		width:250% !important;
+		left:-78% !important;
+	}.modalStyleProfile{top:0% !important;;
+		 width:250% !important;
+		 left:-26%!important;}
 	#firstDiv{
 		margin-top: 22%;
 	}
@@ -1285,6 +1537,25 @@ iPad 3
 /* Samsung Galaxy S5 ----------- */
 @media only screen and (min-device-width: 360px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 3){
 	/* Styles */
+
+	.search_div concontainer{
+		padding-left: 0px!important;
+	}
+
+	#welcome_msg{
+		display:none;
+	}
+
+	.shelf_return_btn{
+		margin-left:20%;
+	}
+	.modalStyle{
+		top:0% !important;;
+		width:250% !important;
+		left:-78% !important;
+	}.modalStyleProfile{top:0% !important;;
+		 width:250% !important;
+		 left:-26%!important;}
 	#firstDiv{
 		margin-top: 22%;
 	}
@@ -1379,6 +1650,24 @@ iPad 3
 
 @media only screen and (min-device-width: 360px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3){
 	/* Styles */
+
+	.search_div concontainer{
+		padding-left: 0px!important;
+	}
+
+	#welcome_msg{
+		display:none;
+	}
+	.shelf_return_btn{
+		margin-left:20%;
+	}
+	.modalStyle{
+		top:0% !important;;
+		width:250% !important;
+		left:-78% !important;
+	}.modalStyleProfile{top:0% !important;;
+		 width:250% !important;
+		 left:-26%!important;}
 	#firstDiv{
 		margin-top: 22%;
 	}

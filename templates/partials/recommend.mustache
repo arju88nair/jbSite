@@ -8,7 +8,7 @@
         <div class="row carousel_l_m">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <div id="myCarousel1" class="carousel slide multi-item-carousel">
-                    <div class="carousel-inner carouselslider" id="recommendedShelf" style="padding: 0px 0px 20px 0px; margin-left: 60px; margin-right: 60px;">
+                    <div class="carousel-inner carouselslider" id="recommendedShelf" >
 
 
                         <div id="frame_recomm" class="loader_fram" style="margin-left: 43%">
@@ -39,7 +39,7 @@
                 var w = window.outerWidth;
                 var h = window.outerHeight;
                 if(w<750){
-                    var final_response = getRecommend(cardData, 3, data['ids'], data['wishlist']);
+                    var final_response = getRecommend(cardData, 2, data['ids'], data['wishlist']);
                 }else{
                     var final_response = getRecommend(cardData, 5, data['ids'], data['wishlist']);
                 }
