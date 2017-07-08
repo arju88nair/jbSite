@@ -122,7 +122,7 @@
      * @param {object} store The store.
      */
     function openInfoWindowForStore(store) {
-        getInfoWindowForStore(store).open(map, markers[store.id]);
+        // getInfoWindowForStore(store).open(map, markers[store.id]);
 
         $this.find('[data-store-id=' + store.id + ']').addClass('active');
         $this.find('[data-store-id!=' + store.id + ']').removeClass('active');

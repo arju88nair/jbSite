@@ -43,7 +43,7 @@
 
                                                 <div class="span9 l_content">
                                                     <div class="row">
-                                                        <div class='col-md-10 col-md-offset-2 card bordered' id="box_{{PROMO}}_{{NO_OF_BOOKS}}_{{NO_OF_MONTHS}}" style="padding-top: 7%;padding-bottom: 4%;text-indent: 8%">
+                                                        <div class='col-md-10 col-md-offset-2 card bordered' id="box_{{PROMO}}_{{NO_OF_BOOKS}}_{{NO_OF_MONTHS}}" style="padding-top: 7%;padding-bottom: 4%;">
                                                             <div class="col-md-12 text-left">
                                                                 <div class="row bottom">
                                                                     <div class="col-md-12 left">
@@ -95,35 +95,35 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-sm-11" id="border_bottom">
-                                            <div class="col-sm-6">
-                                                <h5 style="float: left">One Time Registration Fee:</h5>
+                                        <div class="col-sm-11  col-xs-12" id="border_bottom">
+                                            <div class="col-sm-6 col-xs-6">
+                                                <h5 style="float: left">Registration Fee:</h5>
                                             </div>
-                                            <div class="col-sm-4" id="reg_fee">
+                                            <div class="col-sm-4 col-xs-6" id="reg_fee">
                                                 <h5>₹ {{reg_fee}}</h5>
                                             </div>
                                         </div>
-                                        <div class="col-sm-11" id="border_bottom">
-                                            <div class="col-sm-6">
+                                        <div class="col-sm-11 col-xs-12" id="border_bottom">
+                                            <div class="col-sm-6 col-xs-6">
                                                 <h5 style="float: left">Security Deposit:</h5>
                                             </div>
-                                            <div class="col-sm-4" id="sec_deposit_fee">
+                                            <div class="col-sm-4 col-xs-6" id="sec_deposit_fee">
                                                 <h5>₹ {{sec_deposit}}</h5>
                                             </div>
                                         </div>
-                                        <div class="col-sm-11" id="border_bottom">
-                                            <div class="col-sm-6">
+                                        <div class="col-sm-11  col-xs-12" id="border_bottom">
+                                            <div class="col-sm-6 col-xs-6">
                                                 <h5 style="float: left">Reading Fee:</h5>
                                             </div>
-                                            <div class="col-sm-4" id="reading_fee">
+                                            <div class="col-sm-4 col-xs-6" id="reading_fee">
                                                 <h5>₹ {{reading_fee}}</h5>
                                             </div>
                                         </div>
-                                        <div class="col-sm-11" id="border_none">
-                                            <div class="col-sm-6">
+                                        <div class="col-sm-11  col-xs-12" id="border_none">
+                                            <div class="col-sm-6 col-xs-6">
                                                 <h5 style="float: left">Total:</h5>
                                             </div>
-                                            <div class="col-sm-4" id="total_fee">
+                                            <div class="col-sm-4 col-xs-6" id="total_fee">
                                                 <h5>₹ {{total}}</h5>
                                             </div>
                                         </div>
@@ -142,14 +142,14 @@
                 </div>
                 <div class="row">
                     
-                    <div class="span12 module_cont module_text_area"></br>
+                    <div class="span12 module_cont module_text_area" id="formDivMain"></br>
                         <h4 class="module_cont" id="tagHead">Fill Your Personal Details Here</h4>
                         <hr>
                         <form class="form-horizontal" id="signup_form" >
 
                             <h4 class="dark-grey" style="font-weight: normalfont-family: 'Playfair Display'">Account Information</h4>
 
-                            <div class="col-md-6">
+                            <div class="col-md-6 col-xs-12">
                                 <div class="form-group">
                                     <div class="col-sm-6">
                                         <label>First Name:</label>
@@ -323,6 +323,11 @@
 
     $(document).ready(function(){
 
+        var w = window.outerWidth;
+        var h = window.outerHeight;
+        if(w<750){
+            $("#formDivMain").css('margin-left','-2%');
+        }
 //            var texts=$(".htag_starter").text().toUpperCase();
 //    console.log(texts);
 //        $(".htag_starter").text(texts);

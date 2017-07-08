@@ -2519,7 +2519,7 @@ hr.respond_seperator {
 
 .carousel_title_author h5{
 	white-space: nowrap;
-	width: 15em;
+	/*width: 15em;*/
 	overflow: hidden;
 	text-overflow: ellipsis;
 	color: #fff;
@@ -2529,7 +2529,8 @@ hr.respond_seperator {
 	text-align: center;
 	font-size: 14px;
 	font-family: 'Playfair Display';
-	margin-left:-9%
+	/*margin-left:-9%*/
+	text-align: center;
 }
 .carousel_body_author{
 	background-color:#E3536C

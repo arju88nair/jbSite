@@ -45,8 +45,7 @@ $(document).ready(function () {
             $('.item_shelf_new').first().addClass('active');
             $("#myCarousel").carousel();
             if(w<750){
-                console.log("Ds")
-                $("div#shelfNewArr").css('margin-left','10%')
+                $("div#shelfNewArr").css('margin-left','6%')
             }
             $("#frame_new_arr").hide();
             $("#loader").hide();
@@ -158,7 +157,7 @@ function getCard(data, visibleCardCount, ids, wishlist) {
         }
 
 
-        response += '<div class="col-xs-5 col-sm-2 col-md-2 col-lg-2 sliderDIv">' +
+        response += '<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2 sliderDIv">' +
             '<div class="item item_shadow">' +
             '<div class="img_block_books"><a rel="external" data-ajax="false" href="/book_details/' + data[i]['_source'].title_id + '/' + data[i]['_source'].title + '"><img src="' + img + '" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
             '<div class="carousel_body_book">' +
@@ -431,39 +430,46 @@ $(document).ready(function () {
 
     $(".spinner").show();
     $("li a").removeClass('active');
-    $("li a#profile").addClass('active');
+    $("li a#currently_reading").addClass('active');
     $(".spinner").show();
     $.ajax({
         type: "GET",
-        url: "/getProfileDetails",
+        url: "/getCurrentReading",
         success: function (data) {
+
+            $(".spinner").hide();
+            var new_data = JSON.parse(data);
+            $('#change_plan').html('');
+            $("#left_menu_recommend").show();
+
+
+            if (new_data['data']['result'].length == 0) {
+                $('#shelf_data').html('');
+                $("#left_menu_recommend").show();
+
+                $("#emptyResult").show();
+                $("#emptyResult").text("No books to show !");
+                $('html, body').animate({
+                    scrollTop: $('#shelf_data').offset().top - 150
+                }, 800);
+
+                return false;
+            }
             $("#emptyResult").hide();
             $("#left_menu_recommend").show();
-            $(".spinner").hide();
+            var final_response = generateDIV(new_data['data']['result'], 'placePickup', 'rental_id', 'Return', 'none', new_data['wishlist'], '', 'none', 'margin-top: 34%;margin-left: -100%;', 'inline-block', 'block');
             $('#shelf_data').html('');
-            $('#change_plan').html('');
-            var data_new = JSON.parse(data);
-            console.log(data_new);
-
-
-            $('#shelf_data').html('');
-//
-
-
-            $('#shelf_data').append(
-                '<div class="jumbotron col-xs-11">' +
-                '<div class="row">' +
-
-                '<div class="column column-66" style="cursor:default;"> <div style="font-size: 18px; color:#000 !important; font-family: Playfair Display;margin-top: -3%" class="col-sm-10">  <span class="">' + data_new['data'][0]['FIRST_NAME'] + '</span>  <a class="shortcode_button btn_small btn_type1" style="float:right;" href="" data-toggle="modal" data-address="' + data_new['data'][0]['EMAIL_ID'] + '"  data-address1="' + data_new['data'][0]['ADDRESS1'] + '"  data-address2="' + data_new['data'][0]['ADDRESS2'] + '"  data-address3="' + data_new['data'][0]['ADDRESS3'] + '"  data-state="' + data_new['data'][0]['STATE'] + '"  data-city="' + data_new['data'][0]['CITY'] + '"data-pin="' + data_new['data'][0]['PINCODE'] + '" data-phone="' + data_new['data'][0]['MPHONE'] + '" data-email="' + data_new['data'][0]['EMAIL_ID'] + '"  data-datofbirth="' + data_new['data'][0]['DATE_OF_BIRTH'] + '"  data-gender="' + data_new['data'][0]['GENDER'] + '" data-target="#profileUpdate">Edit Profile</a></div></div>' + '<div class="column column-33"> <div class="card border-color-teal"> <table class="table table-striped" style="margin:0;font-family:Playfair Display;"> <tbody> <tr> <td>Member since</td> <td>' + data_new['data'][0]['REGISTER_TIME'] + '</td> </tr>   <tr> <td>E-mail</td> <td>' + data_new['data'][0]['EMAIL_ID'] + '</td> </tr>  <tr> <td>Date of birth</td> <td>' + data_new['data'][0]['DATE_OF_BIRTH'] + '</td> </tr>  <tr> <td>Phone No</td> <td>' + data_new['data'][0]['MPHONE'] + '</td> </tr> <tr> <td>Address</td>  <td>' + data_new['data'][0]['ADDRESS1'] + data_new['data'][0]['ADDRESS2'] + data_new['data'][0]['ADDRESS3'] + ", " + data_new['data'][0]['STATE'] + ", " + data_new['data'][0]['CITY'] + ", " + data_new['data'][0]['PINCODE'] + '</td>  </tr> </tbody> </table> </div> </div>' + '</div>' +
-                '</div>');
+            $('#shelf_data').append(final_response);
             $('html, body').animate({
                 scrollTop: $('#shelf_data').offset().top - 150
             }, 800);
-            $("#left_menu_recommend").css('margin-top', '15%');
+            $("#left_menu_recommend").css('margin-top', '33%');
 
-        }
+
+        },
 
     });
+
 });
 
 
@@ -934,7 +940,7 @@ $('#subscription').click(function (e) {
 //                            '</div></div>';
                 response = "";
                 if (plan_durations != null) {
-                    response += '<div class="col-md-4" style="margin-top:2%; margin-bottom: 2%;"><div class="block personal fl" style="text-align: center;width:100%/*! height: 314px; */"><h4 class="title">' + arr["change_plan_detail"]['plan_name'] + '</h4> <a href="/change_plan?id=' + arr["change_plan_detail"]['plan_id'] + '&planname=' + arr["change_plan_detail"]['promo_code'] + '"><div class="content_pt" style="margin: -9%;"> <p class="price"><sup>₹</sup><span> ' + arr["change_plan_detail"]['reading_fee'] + '</span><sub></sub></p></div></a><ul class="features" style="margin-top: 8%;height: 130px;list-style-type: none !important;padding: 0;/*! margin: 0; */margin-left: -5%;"><li style="line-height: 39px;">No of books -   ' + arr["change_plan_detail"]['books'] + '</li><li style="line-height: 39px;">Security Deposit - Rs ' + arr["change_plan_detail"]['security_deposit'] + ' </li><li style="line-height: 39px;">Registration Fee - Rs ' + arr["change_plan_detail"]['registration_fee'] + '</li></ul><div class="pt-footer" style="padding-bottom: 1%"><h4><a href="/change_plan?planname=' + arr["change_plan_detail"]['promo_code'] + '&books=' + arr["change_plan_detail"]['books'] + '&months=' + arr["change_plan_detail"]['plan_durations'][0]['plan_duration']['change_plan_months'] + '">UPGRADE NOW !</a></h4></div></div></div>';
+                    response += '<div class="col-md-4" style="margin-top:2%; margin-bottom: 2%;"><div class="block personal fl" style="text-align: center;width:100%/*! height: 314px; */"><h4 class="title">' + arr["change_plan_detail"]['plan_name'] + '</h4> <a href="/change_plan?id=' + arr["change_plan_detail"]['plan_id'] + '&planname=' + arr["change_plan_detail"]['promo_code'] + '"><div class="content_pt" style="margin: -9%;"> <p class="price"><sup>₹</sup><span> ' + arr["change_plan_detail"]['reading_fee'] + '</span><sub></sub></p></div></a><ul class="features" style="margin-top: 8%;height: 130px;list-style-type: none !important;padding: 0;/*! margin: 0; */margin-left: -5%;"><li style="line-height: 39px;">No of books -   ' + arr["change_plan_detail"]['books'] + '</li><li style="line-height: 39px;">Security Deposit - Rs ' + arr["change_plan_detail"]['security_deposit'] + ' </li><li style="line-height: 39px;">Registration Fee - Rs ' + arr["change_plan_detail"]['registration_fee'] + '</li></ul><div class="pt-footer" style="padding-bottom: 1%"><h4><a rel="external" data-ajax="false" href="/change_plan?planname=' + arr["change_plan_detail"]['promo_code'] + '&books=' + arr["change_plan_detail"]['books'] + '&months=' + arr["change_plan_detail"]['plan_durations'][0]['plan_duration']['change_plan_months'] + '">UPGRADE NOW !</a></h4></div></div></div>';
                     i++;
                     if (i >= colors.length) {
                         i = 0;

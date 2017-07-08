@@ -95,66 +95,68 @@
 
     </script>
 
-
-
 </head>
 <body data-enhance="false" data-role="page">
 
 <header class="" >
+    <div class="overlayDiv" style="display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index:99;
+        display: none;
+        background-color: rgba(0, 0, 0, 0.3);"  onclick="closeNav()"></div>
+
 
     <!-- <!DOCTYPE html>
-    
+
     <html lang="en" class="ie ie9"> -->
 
     <div id="flipkart-navbar">
-        <div class="container">
-            <div class="row1">
-                <div class="col-sm-2 col-md-2 col-lg-2">
+        <div class="container-fluid">
 
-                </div>
-
-                <div class="col-sm-8 col-md-8 col-lg-8">
-                    <ul class="largenav pull-right menu" id="menuHeader">
-                        <li class="upper-links" id="whatsNewMenu"><a  class="links" href="/#whatsNew">WHAT'S NEW</a></li>
-                        <li class="upper-links" id="membershipPlansMenu"><a  class="links" href="/#membershipPlans">MEMBERSHIP PLANS</a></li>
-                        <li class="upper-links" id="blogMenu"><a class="links"  href="/#blog">BLOG</a></li>
-                        <li class="upper-links" ><a class="links" target="_blank" rel="external" data-ajax="false"  href="http://culture.place">CULTURE.PLACE</a></li>
-                        <li class="upper-links" id="storeMenu"><a class="links" rel="external" data-ajax="false" href="/store-locator">STORE LOCATOR</a></li>
-                        <li class="upper-links" id="faqMenu"><a class="links" rel="external" data-ajax="false" href="/faq">FAQs</a></li>
-                    </ul>
-                </div>
-
-                <div class="col-sm-2 col-md-2 col-lg-2" id="welcome_msg">
-                    {{#flag}}<p id="welcomeId">Hi, {{name}} <a href="/logout/" rel="external" data-ajax="false"title="Logout" style="font-size: 14px; color: #000; margin-left: 10px;"><i class="fa fa-sign-out" aria-hidden="true"></i></a></p>{{/flag}}
-                </div>
-            </div>
             {{#flag}}
+                <div class="row1">
+                    <div class="col-sm-3 col-md-3 col-lg-3">
+
+                    </div>
+
+                    <div class="col-sm-7 col-md-7 col-lg-7">
+                        <ul class="largenav pull-left menu" id="menuHeader">
+                            <li class="upper-links" id="whatsNewMenu"><a  rel="external" data-ajax="false" class="links" href="/#whatsNew">WHAT'S NEW</a></li>
+                            <li class="upper-links" id="membershipPlansMenu"><a  rel="external" data-ajax="false" class="links" href="/#membershipPlans">MEMBERSHIP PLANS</a></li>
+                            <li class="upper-links" id="blogMenu"><a class="links" rel="external" data-ajax="false" href="/#blog">BLOG</a></li>
+                            <li class="upper-links" ><a class="links" target="_blank" rel="external" data-ajax="false"  href="http://culture.place">CULTURE.PLACE</a></li>
+                            <li class="upper-links" id="storeMenu"><a class="links" rel="external" data-ajax="false" href="/store-locator">STORE LOCATOR</a></li>
+                            <li class="upper-links" id="faqMenu"><a class="links" rel="external" data-ajax="false" href="/faq">FAQs</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-sm-2 col-md-2 col-lg-2 pull-left" id="welcome_msg">
+                        <p id="welcomeId">Hi, {{name}} <a href="/logout/" rel="external" data-ajax="false"title="Logout" style="font-size: 14px; color: #000; margin-left: 10px;"><i class="fa fa-sign-out" aria-hidden="true"></i></a></p>
+                    </div>
+                </div>
                 <div class="row row2">
                     <div class="mobile_header col-xs-12 col-sm-3 col-md-3 col-lg-3">
-                        <div class="col-xs-4">
+                        <div class="col-xs-4 smallnav menu" style="margin-left: -12px;" >
+                            <a href="/" class="logo" rel="external" data-ajax="false">
+                                <img src="../../../assets/img/logo.png" alt=""  class="logo_def" width="190px">
+                                <img src="../../../assets/img/retina/logo.png" alt="" class="logo_retina" width="120px">
+                            </a>
+                        </div>
 
-                            <h3 style="margin:0px;">
-                                <span class="smallnav menu" onclick="openNav()">
-                                   <a href="/" class="logo">
-                                        <img src="../../../assets/img/logo.png" alt=""  class="logo_def" width="190px">
-                                        <img src="../../../assets/img/retina/logo.png" alt="" class="logo_retina" width="120px">
-                                    </a>
-                                </span>
-                            </h3>
+                        <div class="col-xs-7 smallnav menu">
+                            <p id="welcomeId">Hi, {{name}} <a href="/logout/" rel="external" data-ajax="false" title="Logout" style="font-size: 14px; color: #000; margin-left: 10px;"><i class="fa fa-sign-out" aria-hidden="true"></i></a></p>
 
                         </div>
 
-                        {{#flag}}
-                            <div class="col-xs-7 smallnav menu">
-                                <p id="welcomeId">Hi, {{name}} <a href="/logout/" rel="external" data-ajax="false" title="Logout" style="font-size: 14px; color: #000; margin-left: 10px;"><i class="fa fa-sign-out" aria-hidden="true"></i></a></p>
-
-                            </div>
-                        {{/flag}}
                         <h1 style="margin:0px;">
-                            <span class="largenav">
-                                <a href="/" class="logo">
+                            <span class="largenav" style="margin-top: -8%;">
+                                <a href="/" class="logo" rel="external" data-ajax="false">
                                     <img src="../../../assets/img/logo.png" alt=""  class="logo_def" width="190px">
-                                    <img src="../../../assets/img/retina/logo.png" alt="" class="logo_retina" width="190px">
+                                    <img src="../../../assets/img/retina/logo.png" alt="" class="logo_retina" width="100px">
                                 </a>
                             </span>
                         </h1>
@@ -173,19 +175,31 @@
                                 </span>
                             </div>
                         </div>
+                        <div class="cart largenav col-sm-1 col-md-1 col-lg-1">
+                            <a class="cart-button" href="javascript:void(0)" data-toggle="modal" data-target="#catModal">
+                                <!-- Category -->
+                                <i class="fa fa-filter" aria-hidden="true"></i> Category
+                                <!-- <span class="item-number ">3</span> -->
+                            </a>
+                        </div>
                     </div>
-                    <div class="cart largenav col-sm-1 col-md-1 col-lg-1">
-                        <a class="cart-button" href="">
-                            <!-- Category -->
-                            <i class="fa fa-filter" aria-hidden="true"></i> Category
-                            <!-- <span class="item-number ">3</span> -->
-                        </a>
-                    </div>
+
                     <div class="cart largenav col-sm-1 col-md-1 col-lg-1" id="shelfButton" style="margin-left: 2%" >
                         <a class="cart-button" rel="external" data-ajax="false" href="/shelf">
                             <i class="fa fa-book" aria-hidden="true"></i> My Shelf
                             <!-- <span class="item-number ">3</span> -->
                         </a>
+                    </div>
+                    <div class="cart largenav col-sm-1 col-md-1 col-lg-1">
+                        <!--<a class="cart-button" href="">-->
+                        <!--&lt;!&ndash; Category &ndash;&gt;-->
+                        <!--<i class="fa fa-filter" aria-hidden="true"></i> Category-->
+                        <!--&lt;!&ndash; <span class="item-number ">3</span> &ndash;&gt;-->
+                        <!--</a>-->
+                        <a rel="external" data-ajax="false" target="_blank"href='https://play.google.com/store/apps/details?id=com.justbooks.in&utm_source=website&utm_campaign=website&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img style="width: 140px;margin-top: -12%;" alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/></a>
+                        <!--<a rel="external" data-ajax="false" target="_blank" href='https://play.google.com/store/apps/details?id=com.strata.justbooksclc&utm_source=website&utm_campaign=website&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>-->
+                            <!--<img style="width: 140px;margin-top: -12%;" alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/>-->
+                        <!--</a>-->
                     </div>
                     <!--  <div class="cart largenav col-sm-1 col-md-1 col-lg-1" style="margin-left: 2%" >
                          <a class="cart-button" href="/logout/">
@@ -201,7 +215,26 @@
             {{/flag}}
 
             {{#slider}}
+                <div class="row1">
+                    <div class="col-sm-3 col-md-3 col-lg-3">
 
+                    </div>
+
+                    <div class="col-sm-7 col-md-7 col-lg-7">
+                        <ul class="largenav pull-left menu" id="menuHeader" style="margin-left: -13px">
+                            <li class="upper-links" id="whatsNewMenu"><a  rel="external" data-ajax="false" class="links" href="/#whatsNew">WHAT'S NEW</a></li>
+                            <li class="upper-links" id="membershipPlansMenu"><a rel="external" data-ajax="false" class="links" href="/#membershipPlans">MEMBERSHIP PLANS</a></li>
+                            <li class="upper-links" id="blogMenu"><a class="links" rel="external" data-ajax="false"  href="/#blog">BLOG</a></li>
+                            <li class="upper-links" ><a class="links" target="_blank" rel="external" data-ajax="false"  href="http://culture.place">CULTURE.PLACE</a></li>
+                            <li class="upper-links" id="storeMenu"><a class="links" rel="external" data-ajax="false" href="/store-locator">STORE LOCATOR</a></li>
+                            <li class="upper-links" id="faqMenu"><a class="links" rel="external" data-ajax="false" href="/faq">FAQs</a></li>
+                        </ul>
+                    </div>
+
+                    <!--<div class="col-sm-2 col-md-2 col-lg-2" id="welcome_msg">-->
+                    <!--{{#flag}}<p id="welcomeId">Hi, {{name}} <a href="/logout/" rel="external" data-ajax="false"title="Logout" style="font-size: 14px; color: #000; margin-left: 10px;"><i class="fa fa-sign-out" aria-hidden="true"></i></a></p>{{/flag}}-->
+                    <!--</div>-->
+                </div>
                 <div class="row row2">
                     <!-- <div class="col-xs-7">
                         <h2 style="margin:0px;"><span class="smallnav menu" onclick="openNav()">☰ JustBooks</span></h2>
@@ -210,37 +243,28 @@
                         <p>hi, User..</p>
                     </div> -->
                     <div class="mobile_header col-xs-12 col-sm-3 col-md-3 col-lg-3">
-                        <div class="col-xs-4">
+                        <div class="col-xs-4 smallnav menu" style="margin-left: -12px; margin-bottom: 10px;">
 
-                            <h3 style="margin:0px;">
-                                <span class="smallnav menu" onclick="openNav()" style="margin-bottom: 10px; margin-left: -15px;">
-                                   <a href="/" class="logo">
-                                        <img src="../../../assets/img/logo.png" alt=""  class="logo_def" width="190px">
-                                        <img src="../../../assets/img/retina/logo.png" alt="" class="logo_retina" width="120px">
-                                    </a>
-                                </span>
-                            </h3>
+                            <a href="/" class="logo" rel="external" data-ajax="false">
+                                <img src="../../../assets/img/logo.png" alt=""  class="logo_def" width="190px">
+                                <img src="../../../assets/img/retina/logo.png" alt="" class="logo_retina" width="120px">
+                            </a>
 
                         </div>
-                        <div class="col-xs-6">
-                            {{#flag}}<p class="smallnav menu" id="welcomeId">Hi, {{name}} <a href="/logout/" title="Logout" style="font-size: 14px; color: #000; margin-left: 10px;"></a></p>{{/flag}}
 
-                        </div>
-                        <h1 style="margin:0px;">
-                            <span class="largenav">
-                                <a href="/" class="logo">
-                                    <img src="../../../assets/img/logo.png" alt=""  class="logo_def" width="190px">
-                                    <img src="../../../assets/img/retina/logo.png" alt="" class="logo_retina" width="100px">
-                                </a>
-                            </span>
-                        </h1>
+                        <span class="largenav" style="margin-top: -5%;">
+                            <a href="/" class="logo" rel="external" data-ajax="false">
+                                <img src="../../../assets/img/logo.png" alt=""  class="logo_def" width="190px">
+                                <img src="../../../assets/img/retina/logo.png" alt="" class="logo_retina" width="100px">
+                            </a>
+                        </span>
                     </div>
                     <div class="flipkart-navbar-search smallsearch col-xs-12 col-sm-7 col-md-7 col-lg-7" >
                         <div class="col-xs-1 smallnav menu" style="margin:0px; padding: 0px;">
                             <h3><span class="smallnav menu" onclick="openNav()">☰</span></h3>
                         </div>
 
-                        <div class="col-xs-11">
+                        <div class="col-xs-11 ">
                             <div class="input-group">
                                 <input class="form-control flipkart-navbar-input" placeholder="Search..." name="srch-term" id="srch-term" type="text" value="{{query}}">
                                 <span class="input-group-btn">
@@ -248,18 +272,26 @@
                                 </span>
                             </div>
                         </div>
-
-
+                        <div class="cart largenav col-sm-1 col-md-1 col-lg-1">
+                            <a class="cart-button" href="javascript:void(0)" data-toggle="modal" data-target="#catModal">
+                                <!-- Category -->
+                                <i class="fa fa-filter" aria-hidden="true"></i> Category
+                                <!-- <span class="item-number ">3</span> -->
+                            </a>
+                        </div>
                     </div>
-                    <div class="cart largenav col-sm-1 col-md-1 col-lg-1">
-                        <a class="cart-button" href="">
-                            Category
-                            <!-- <i class="fa fa-search" aria-hidden="true"></i> Category -->
-                            <!-- <span class="item-number ">3</span> -->
-                        </a>
+                    <div class="cart largenav col-sm-1 col-md-1 col-lg-1" style="margin-left: 2%;">
+                        <!--<a class="cart-button" href="">-->
+                        <!--&lt;!&ndash; Category &ndash;&gt;-->
+                        <!--<i class="fa fa-filter" aria-hidden="true"></i> Category-->
+                        <!--&lt;!&ndash; <span class="item-number ">3</span> &ndash;&gt;-->
+                        <!--</a>-->
+                        <a rel="external" data-ajax="false" target="_blank"href='https://play.google.com/store/apps/details?id=com.justbooks.in&utm_source=website&utm_campaign=website&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'><img style="width: 140px;margin-top: -12%;" alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/></a>
+
                     </div>
 
                 </div>
+
 
 
 
@@ -277,9 +309,9 @@
 
         </div>
         <ul id="menuHeader" style="text-align: left">
-            <li class="upper-links" id="whatsNewMenu"><a class="links" href="/#whatsNew">WHAT'S NEW</a></li><br>
-            <li class="upper-links" id="membershipPlansMenu"><a class="links" href="/#membershipPlans">MEMBERSHIP PLANS</a></li><br>
-            <li class="upper-links" id="blogMenu"><a class="links" href="/#blog">BLOG</a></li><br>
+            <li class="upper-links" id="whatsNewMenu"><a class="links" rel="external" data-ajax="false" href="/#whatsNew">WHAT'S NEW</a></li><br>
+            <li class="upper-links" id="membershipPlansMenu"><a class="links" rel="external" data-ajax="false" href="/#membershipPlans">MEMBERSHIP PLANS</a></li><br>
+            <li class="upper-links" id="blogMenu"><a class="links" rel="external" data-ajax="false" href="/#blog">BLOG</a></li><br>
             <li class="upper-links" ><a class="links" target="_blank" href="http://culture.place">CULTURE.PLACE</a></li><br>
             <li class="upper-links" id="storeMenu"><a class="links" rel="external" data-ajax="false"href="/store-locator">STORE LOCATOR</a></li><br>
             <li class="upper-links" id="faqMenu"><a class="links" rel="external" data-ajax="false" href="/faq">FAQs</a></li><br>
@@ -290,6 +322,9 @@
 
         </ul>
     </div>
+
+
+
     <div id="shareModal" class="modal fade " role="dialog" style="z-index: 10000">
         <div class="modal-dialog modalStyle" style="top:-60%;width:100%">
 
@@ -351,7 +386,7 @@
                     <!--</div>-->
                     <div class ="row" style="margin-left: 8%">
                         {{#cat}}
-                            <div class="col-xs-6 col-md-3 checkBox" style="margin-bottom: 1%;text-align: left">
+                            <div class="col-xs-6 col-md-3 col-lg-3 checkBox" style="margin-bottom: 1%;text-align: left">
                                 <label class="checkbox-inline" style="font-size: 100%">
                                     <input type="checkbox"  style="font-size: 120%"value="{{ID}}" name="Checkbox[]">{{NAME}}</label>
                             </div>
@@ -381,6 +416,7 @@
 
     <script type="text/javascript">
         function openNav() {
+            $(".overlayDiv").show();
             document.getElementById("mySidenav").style.width = "70%";
             // document.getElementById("flipkart-navbar").style.width = "50%";
             document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
@@ -389,6 +425,7 @@
         function closeNav() {
             document.getElementById("mySidenav").style.width = "0";
             document.body.style.backgroundColor = "rgba(0,0,0,0)";
+            $(".overlayDiv").hide();
         }
     </script>
 
@@ -399,7 +436,8 @@
                 $(':checkbox:checked').each(function(i){
                     val[i] = $(this).val();
                 });
-                console.log(val)
+                console.log(val.join());
+                window.location.href="/searchByCategory?id="+val.join();
             });
 
             // Add scrollspy to <body>

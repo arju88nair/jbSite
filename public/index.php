@@ -97,6 +97,8 @@ $app->get('/', function (Request $request, Response $response) {
         $flag = 1;
         $slider = 0;
         $name = $_SESSION['first_name'];
+        $arr = explode(' ',trim($name));
+        $name= $arr[0]; // will print name
     } else {
         $flag = 0;
         $slider = 1;
@@ -150,6 +152,9 @@ $app->get('/book_details/{titleid}/{name}', function (Request $request, Response
         $flag = 1;
         $slider = 0;
         $name = $_SESSION['first_name'];
+        $arr = explode(' ',trim($name));
+        $name= $arr[0];
+
     } else {
         $flag = 0;
         $slider = 1;
@@ -187,6 +192,8 @@ $app->get('/author_details/{authorid}/{name}', function (Request $request, Respo
         $flag = 1;
         $slider = 0;
         $name = $_SESSION['first_name'];
+        $arr = explode(' ',trim($name));
+        $name= $arr[0]; 
     } else {
         $flag = 0;
         $slider = 1;
@@ -247,6 +254,8 @@ $app->get('/shelf', function (Request $request, Response $response) {
         $flag = 1;
         $slider = 0;
         $name = $_SESSION['first_name'];
+        $arr = explode(' ',trim($name));
+        $name= $arr[0];
     } else {
         $flag = 0;
         $slider = 1;
@@ -468,6 +477,8 @@ $app->get('/signup', function (Request $request, Response $response) {
                         $flag = 1;
                         $slider = 0;
                         $name = $_SESSION['first_name'];
+                        $arr = explode(' ',trim($name));
+                        $name= $arr[0];
                     } else {
                         $flag = 0;
                         $slider = 1;
@@ -1004,6 +1015,8 @@ $app->get('/change_plan', function (Request $request, Response $response, $args)
                         $flag = 1;
                         $slider = 0;
                         $name = $_SESSION['first_name'];
+                        $arr = explode(' ',trim($name));
+                        $name= $arr[0];
                     } else {
                         $flag = 0;
                         $slider = 1;
@@ -1107,6 +1120,8 @@ $app->get('/renewView', function (Request $request, Response $response) {
         $flag = 1;
         $slider = 0;
         $name = $_SESSION['first_name'];
+        $arr = explode(' ',trim($name));
+        $name= $arr[0];
     } else {
         $flag = 0;
         $slider = 1;
@@ -1407,6 +1422,8 @@ $app->get('/faq', function (Request $request, Response $response) {
         $flag = 1;
         $slider = 0;
         $name = $_SESSION['first_name'];
+        $arr = explode(' ',trim($name));
+        $name= $arr[0];
     } else {
         $flag = 0;
         $slider = 1;
@@ -1431,6 +1448,8 @@ $app->get('/contactUs', function (Request $request, Response $response) {
         $flag = 1;
         $slider = 0;
         $name = $_SESSION['first_name'];
+        $arr = explode(' ',trim($name));
+        $name= $arr[0];
     } else {
         $flag = 0;
         $slider = 1;
@@ -1454,6 +1473,8 @@ $app->get('/franchise', function (Request $request, Response $response) {
         $flag = 1;
         $slider = 0;
         $name = $_SESSION['first_name'];
+        $arr = explode(' ',trim($name));
+        $name= $arr[0];
     } else {
         $flag = 0;
         $slider = 1;
@@ -1526,6 +1547,8 @@ $app->get('/adminCardsView', function (Request $request, Response $response) {
         $flag = 1;
         $slider = 0;
         $name = $_SESSION['first_name'];
+        $arr = explode(' ',trim($name));
+        $name= $arr[0];
     } else {
         $flag = 0;
         $slider = 1;
@@ -1636,6 +1659,8 @@ $app->get('/adminBlogs', function (Request $request, Response $response) {
         $flag = 1;
         $slider = 0;
         $name = $_SESSION['first_name'];
+        $arr = explode(' ',trim($name));
+        $name= $arr[0];
     } else {
         $flag = 0;
         $slider = 1;
@@ -1707,6 +1732,8 @@ $app->get('/break', function (Request $request, Response $response) {
         $flag = 1;
         $slider = 0;
         $name = $_SESSION['first_name'];
+        $arr = explode(' ',trim($name));
+        $name= $arr[0];
     } else {
         $flag = 0;
         $slider = 1;
@@ -2073,6 +2100,8 @@ $app->get('/users/password/edit', function (Request $request, Response $response
         $flag = 1;
         $slider = 0;
         $name = $_SESSION['first_name'];
+        $arr = explode(' ',trim($name));
+        $name= $arr[0];
     } else {
         $flag = 0;
         $slider = 1;
@@ -2090,6 +2119,8 @@ $app->get('/store-locator', function (Request $request, Response $response) {
         $flag = 1;
         $slider = 0;
         $name = $_SESSION['first_name'];
+        $arr = explode(' ',trim($name));
+        $name= $arr[0];
     } else {
         $flag = 0;
         $slider = 1;
@@ -2130,7 +2161,7 @@ SELECT branchid, branchname,latitude,longitude,
       FROM JBGPS.branchlocations
       
       ) a join memp.jb_branches jb on jb.id=a.branchid where operational = 'Y'
-        and a.distance <= 5 
+        and a.distance <= 50 
         ORDER BY distance ASC
 ";
     $result_city = oci_parse($con, $query);
@@ -2247,6 +2278,8 @@ $app->get('/terms-and-condition', function (Request $request, Response $response
         $flag = 1;
         $slider = 0;
         $name = $_SESSION['first_name'];
+        $arr = explode(' ',trim($name));
+        $name= $arr[0];
     } else {
         $flag = 0;
         $slider = 1;
@@ -2420,6 +2453,38 @@ $app->get('/confirm_change_plan', function (Request $request, Response $response
     else{
         echo $_POST['RESPMSG'];
     }
+
+
+});
+$app->get('/searchByCategory', function (Request $request, Response $response) {
+
+    $ids = $_GET['id'];
+
+//echo "/getCategoryWise?page=1&categories=$ids";die;
+    $raw_data = curlFunctionEs("/getCategoryWise?page=1&categories=$ids");
+    $data = json_decode($raw_data);
+
+    if (isset($_SESSION['username'])) {
+        $flag = 1;
+        $slider = 0;
+        $name = $_SESSION['first_name'];
+        $arr = explode(' ',trim($name));
+        $name= $arr[0];
+    } else {
+        $flag = 0;
+        $slider = 1;
+        $name = "";
+    }
+    $con = $this->db;
+
+    $queryCat = "SELECT id,name FROM categories";
+    $resultCat = oci_parse($con, $queryCat);
+    oci_execute($resultCat);
+    while ($rowCat = oci_fetch_assoc($resultCat)) {
+        $Categories[] = $rowCat;
+    }
+    return $this->view->render($response, 'catSearch.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider,'cat'=>$Categories,'data'=>$data,'ids'=>$ids,'count'=>count($data)));
+
 
 
 });
