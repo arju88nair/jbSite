@@ -95,9 +95,9 @@ function getCardRelated(data, visibleCardCount,ids,wishlist) {
             var wish="\'wishlistAdd(" + data[i]['_source'].title_id + ");\'";
         }
 
-        response += '<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2" >' +
+        response += '<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2 sliderDIv" >' +
             '<div class="item item_shadow">' +
-            '<div class="img_block_books"><a href="/book_details/' + data[i]['_source'].title_id + '/' + data[i]['_source'].title + '"><img src="' + data[i]['_source'].image_url + '"  onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
+            '<div class="img_block_books"><a rel="external" data-ajax="false" href="/book_details/' + data[i]['_source'].title_id + '/' + data[i]['_source'].title + '"><img src="' + data[i]['_source'].image_url + '"  onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
             '<div class="carousel_body_book">' +
             '<div class="carousel_title_book"><h5 title="' + data[i]['_source'].title + '">' + data[i]['_source'].title + '</h5></div>' +
             '<div class="carousel_desc">' +
@@ -145,7 +145,7 @@ function placeOrder(id) {
                 console.log(data['success'])
                 if(data['success'] === "false")
                 {
-                    toastr.warning(data['errors'])
+                    toastr.warning(data['errors']).css('width','500px')
                 }else{
                     $("#rent_"+id).text("Rented")
 

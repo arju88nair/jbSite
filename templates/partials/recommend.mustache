@@ -1,12 +1,12 @@
 
 
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 module_cont module_bookslider" id=""
-     style="margin-left:0%">
+     style="margin-left:0%;padding-left: 0 !important;">
     <div class="bg_title"><a id="whatsNew"></a><h4 class="headInModule">You Might Also Like</h4></div>
 
     <div class="container" style="margin-left: -4%">
         <div class="row carousel_l_m">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-left: 0 !important;">
                 <div id="myCarousel1" class="carousel slide multi-item-carousel">
                     <div class="carousel-inner carouselslider" id="recommendedShelf" >
 
@@ -26,6 +26,14 @@
     </div>
 </div>
 <script>
+    $(document).ready(function() {
+        $("#myCarousel1").swiperight(function() {
+            $(this).carousel('prev');
+        });
+        $("#myCarousel1").swipeleft(function() {
+            $(this).carousel('next');
+        });
+    });
     $(document).ready(function()
     {
         $.ajax({
@@ -102,7 +110,7 @@
 
             response += '<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2" id="responsive_crsl">' +
                     '<div class="item item_shadow">' +
-                    '<div class="img_block_books"><a href="/book_details/' + data[i]['_source'].title_id + '/' + data[i]['_source'].title + '"><img src="' + img + '" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
+                    '<div class="img_block_books"><a rel="external" data-ajax="false" href="/book_details/' + data[i]['_source'].title_id + '/' + data[i]['_source'].title + '"><img src="' + img + '" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
                     '<div class="carousel_body_book">' +
                     '<div class="carousel_title_book"><h5 title="' + data[i]['_source'].title + '">' + data[i]['_source'].title + '</h5></div>' +
                     '<div class="carousel_desc">' +

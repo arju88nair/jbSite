@@ -1,12 +1,12 @@
 
 <div class="row-fluid" id="whatsNew">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 module_cont module_bookslider">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 module_cont module_bookslider" style="padding-left: 0 !important;">
         <div class="bg_title"><h4 class="headInModule" >NEW ARRIVALS</h4></div>
 
         <div class="container" >
 
             <div class="row carousel_l_m">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"  style="padding-left: 0 !important;">
                     <div id="myCarousel" class="carousel slide multi-item-carousel">
                         <div class="carousel-inner carouselslider" id="newArrivals">
 
@@ -25,7 +25,14 @@
     </div>
 </div>
 <script>
-
+    $(document).ready(function() {
+        $("#myCarousel").swiperight(function() {
+            $(this).carousel('prev');
+        });
+        $("#myCarousel").swipeleft(function() {
+            $(this).carousel('next');
+        });
+    });
     function placeOrder(id) {
         $(".spinner").show();
         $.ajax({
@@ -46,7 +53,7 @@
                     console.log(data['success'])
                     if(data['success'] === "false")
                     {
-                        toastr.warning(data['errors'])
+                        toastr.warning(data['errors']).css('width','500px')
                     }else{
                         $("#rent_"+id).text("Rented")
 

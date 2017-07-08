@@ -1,5 +1,5 @@
-<div class="row-fluid" style="margin-left: -2%;width: 111%" id="relAuthDiv">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 module_cont module_bookslider">
+<div class="row-fluid" style="margin-left: 0%;width: 111%" id="relAuthDiv">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 module_cont module_bookslider" style="padding-left: 0 !important;">
         {{#data}}
         <div class="bg_title"><h4 class="headInModule">BOOKS BY {{author_name}}</h4></div>
         {{/data}}
@@ -18,7 +18,7 @@
         <div class="container" >
 
             <div class="row carousel_l_m">
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-left: 0 !important;">
                     <div id="myCarousel" class="carousel slide multi-item-carousel">
                         <div class="carousel-inner carouselslider" id="authRelated" >
 
@@ -39,6 +39,14 @@
     </div>
 </div><!-- .row-fluid -->
 <script>
+    $(document).ready(function() {
+        $("#myCarousel").swiperight(function() {
+            $(this).carousel('prev');
+        });
+        $("#myCarousel").swipeleft(function() {
+            $(this).carousel('next');
+        });
+    });
     function getCard(data, visibleCardCount,ids,wishlist) {
         var response = '', items = 0;
         var final_response = '';
@@ -71,9 +79,9 @@
             }
 
 
-            response += '<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2" >' +
+            response += '<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2 " >' +
                     '<div class="item item_shadow">' +
-                    '<div class="img_block_books"><a href="/book_details/' + data[i].id + '/' + data[i].title + '"><img src="' + data[i].image_url + '"  onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
+                    '<div class="img_block_books"><a rel="external" data-ajax="false" href="/book_details/' + data[i].id + '/' + data[i].title + '"><img src="' + data[i].image_url + '"  onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
                     '<div class="carousel_body_book">' +
                     '<div class="carousel_title_book"><h5 title="' + data[i].title + '">' + data[i].title + '</h5></div>' +
                     '<div class="carousel_desc">' +
@@ -175,7 +183,7 @@
                     console.log(data['success'])
                     if(data['success'] === "false")
                     {
-                        toastr.warning(data['errors'])
+                        toastr.warning(data['errors']).css('width','500px')
                     }else{
                         $("#rent_"+id).text("Rented")
 

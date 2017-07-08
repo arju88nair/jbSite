@@ -39,7 +39,7 @@ function getCard(data, visibleCardCount, ids, wishlist) {
 
         response += '<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">' +
             '<div class="item item_shadow">' +
-            '<div class="img_block_books"><a href="/book_details/' + data[i]['_source'].title_id + '/' + data[i]['_source'].title + '"><img src="' + img + '" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
+            '<div class="img_block_books"><a rel="external" data-ajax="false" href="/book_details/' + data[i]['_source'].title_id + '/' + data[i]['_source'].title + '"><img src="' + img + '" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
             '<div class="carousel_body_book">' +
             '<div class="carousel_title_book"><h5 title="' + data[i]['_source'].title + '">' + data[i]['_source'].title + '</h5></div>' +
             '<div class="carousel_desc">' +
@@ -80,9 +80,9 @@ function getCardAuthor(data, visibleCardCount) {
         }
 
 
-        response += '<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">' +
+        response += '<div class="col-xs-5 col-sm-2 col-md-2 col-lg-2">' +
             '<div class="item item_shadow">' +
-            '<div class="img_block_books"><a href="/author_details/' + data[i]['_source'].author_id + '/' + data[i]['_source'].author_name + '"><img src="'+ data[i]['_source'].image_url+ '" onerror="this.src=\'../../assets/img/user.png\'"></a></div>' +
+            '<div class="img_block_books"><a rel="external" data-ajax="false" href="/author_details/' + data[i]['_source'].author_id + '/' + data[i]['_source'].author_name + '"><img src="'+ data[i]['_source'].image_url+ '" onerror="this.src=\'../../assets/img/user.png\'"></a></div>' +
             '<div class="carousel_body_author">' +
             '<div class="carousel_title_author"><h5 title="' + data[i]['_source'].author_name + '">' + data[i]['_source'].author_name + '</h5></div>' +
             '<div class="carousel_desc">' +
@@ -146,7 +146,7 @@ $(document).ready(function () {
             }else{
                 var final_response = getCard(cardData, 5, data['ids'], data['wishlist']);
             }
-            
+
             $('#newArrivals').append(final_response);
             $('.item').first().addClass('active');
             $("#myCarousel").carousel();
@@ -166,7 +166,7 @@ $(document).ready(function () {
             $("#loader").hide();
             data=JSON.parse(data);
 
-             var w = window.outerWidth;
+            var w = window.outerWidth;
             var h = window.outerHeight;
             if(w<750){
                 var final_response = getCardAuthor(data['data'], 2);
@@ -219,7 +219,7 @@ $(document).ready(function () {
                     '<p class="hint">' + arr['MONTH_TAG'] + '</p></div></a><ul class="features">' +
                     '<li style="color: black;">' + arr['BOOK_TAG'] + '</li><li style="background-color:#666666;padding: 12px;color: white;">' + arr['SUITABLE_TAG'] + '</li><li style="color: black;">Security Deposit - ₹ ' + Math.round(parseFloat(arr['SECURITY_DEPOSIT'])) + ' </li>' +
                     '<li style="color: black;">Registration Fee - ₹ ' + Math.round(parseFloat(arr['REGISTRATION_FEE'])) + '</li></ul><div class="pt-footer">' +
-                    '<a href="/signup?planname=' + arr['PROMO'] + '&books=' + arr['NO_OF_BOOKS'] + '&months=' + arr['NO_OF_MONTHS'] + '"><h4>GET IT NOW !</h4></a></div></div>'
+                    '<a rel="external" data-ajax="false" href="/signup?planname=' + arr['PROMO'] + '&books=' + arr['NO_OF_BOOKS'] + '&months=' + arr['NO_OF_MONTHS'] + '"><h4>GET IT NOW !</h4></a></div></div>'
 
 
                 i++;
@@ -244,7 +244,7 @@ $(document).ready(function () {
             for (var i = 0; i < data.length; i++) {
                 $("#blogDiv").append(
 
-                    '<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 ">' +
+                    '<div class="col-xs-11 col-sm-4 col-md-4 col-lg-4 ">' +
                     '<div class="img_block wrapped_img"><img style="width: 100%;height: 17em;" src="' + data[i]['IMAGE'] + '" alt="" width="270" height="170"></div>' +
                     '<div class="carousel_body">' +
                     '<div class="carousel_title">' +
@@ -253,11 +253,11 @@ $(document).ready(function () {
                     '<div class="carousel_desc">' +
                     '<div class="exc" style="margin-bottom:10px; text-align:left; font-family: \'Playfair Display\'">' + data[i]['DESCRIPTION'] + '</div>' +
                     '</div>' +
-                    
+
                     '<a target="_blank" href="' + data[i]['LINK'] + '" class="shortcode_button btn_small btn_type1">Read More</a>' +
                     '</div>' +
                     '</div>'
-                    )
+                )
             }
 
         },
@@ -348,7 +348,7 @@ $(document).ready(function(){
     // on click signin It Hide Registration Form and Display Login Form
     $(".signin").click(function(){
 
-        
+
 
         $(".login_form_fram_second").slideUp("slow",function(){
             $(".loginDIv").slideDown("slow");
@@ -383,7 +383,7 @@ function signupClick() {
         success: function (data) {
             $(".spinner").hide();
 
-            
+
 
             if (data != false) {
                 data = JSON.parse(data)
@@ -450,7 +450,7 @@ function forgotPassword()
         toastr.error("Please enter an email !");
         return false;
     }
-$(".spinner").show();
+    $(".spinner").show();
     $.ajax({
         type: "GET",
         url: "/sendResetMail?email=" + email,
@@ -476,7 +476,6 @@ $(".spinner").show();
     });
 
 }
-
 
 
 

@@ -71,7 +71,7 @@
                                             {{#jb_info}}
                                             <h4 style="margin-top: -10px;">{{title}}</h4>
                                             {{#author}}
-                                            <p><strong>By: </strong><a
+                                            <p><strong>By: </strong><a rel="external" data-ajax="false"
                                                     href="/author_details/{{id}}/{{name}}">{{name}} </a></p>
                                             {{/author}}
                                             {{/jb_info}}
@@ -366,16 +366,16 @@
                                     <div class="module_line_trigger" data-option=""
                                          data-background="#fff url(img/) no-repeat center"
                                          data-top-padding="top_padding_normal"
-                                         data-bottom-padding="module_normal_padding" style="margin-left: -5%">
-                                        <div class="row-fluid">
-                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 span12 module_cont module_bookslider">
+                                         data-bottom-padding="module_normal_padding" style="margin-left: -10%">
+                                        <div class="row-fluid" id="relatedBooks">
+                                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 span12 module_cont module_bookslider" style="padding-left: 0 !important;">
                                                 <div class="bg_title"><a id="realted"></a><h4 class="headInModule">
                                                     Related Books</h4></div>
 
                                                 <div class="container">
 
                                                     <div class="row carousel_l_m">
-                                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding-left: 0 !important;">
                                                             <div id="myCarousel"
                                                                  class="carousel slide multi-item-carousel">
                                                                 <div class="carousel-inner carouselslider"
@@ -434,6 +434,17 @@
 {{> footer}}
 
 <script type="text/javascript">
+
+    $(document).ready(function() {
+        $("#myCarousel").swiperight(function() {
+            $(this).carousel('prev');
+        });
+        $("#myCarousel").swipeleft(function() {
+            $(this).carousel('next');
+        });
+    });
+
+
     $(document).ready(function() {
 
         $(".comment").shorten({
@@ -456,6 +467,18 @@
                 data = JSON.parse(data);
                 console.log(data);
                 cardData = data['data'];
+                if (data['wishlist'].indexOf(parseInt(id)) != -1) {
+                    $("#wishlistMain").attr("src", "../../assets/img/Added_WL_Right.png");
+                }
+                else {
+                    $("#wishlistMain").attr("src", "../../assets/img/Added_WL_50.png");
+
+                }
+                if(cardData== "No Titles")
+                {
+$("#relatedBooks").hide();
+return false;
+                }
                 var w = window.outerWidth;
                 var h = window.outerHeight;
                 if(w<750){
@@ -470,13 +493,7 @@
                 $("#myCarousel").carousel();
                 $("#frame_new_rel").hide();
                 $("#loader_rel").hide();
-                if (data['wishlist'].indexOf(parseInt(id)) != -1) {
-                    $("#wishlistMain").attr("src", "../../assets/img/Added_WL_Right.png");
-                }
-                else {
-                    $("#wishlistMain").attr("src", "../../assets/img/Added_WL_50.png");
 
-                }
 
 
                 $(".spinner").hide()

@@ -708,7 +708,9 @@ $app->get('/getWishList', function (Request $request, Response $response) {
     $mail = $_SESSION['email'];
     $result = curlFunction("wishlists.json?email=$mail&membership_no=$membership_no&api_key=$api_key");
     $wishlist = wishlistIds();
-    echo json_encode(array('data' => (array)json_decode($result), 'wishlist' => $wishlist));
+    $array = presentIds();
+
+    echo json_encode(array('data' => (array)json_decode($result), 'wishlist' => $wishlist,'ids'=>$array));
 });
 
 $app->post('/removeWishList', function (Request $request, Response $response) {
@@ -2394,6 +2396,30 @@ $app->get('/confirm_change_plan', function (Request $request, Response $response
     $raw_data = curlFunction("confirm_change_plan.json?email=$email&membercard=$membership_no_s&member_id=$member_id&membership_no=$membership_no&amount=$amount&old_plan_id=$old_plan_id&new_plan_id=$new_plan_id&term=$term&created_in=$created_in&member_branch_id=$member_branch_id&old_expiry_date=$old_expiry_date&new_expiry_date=$new_expiry_date&old_security_deposit=$old_security_deposit&new_security_deposit=$new_security_deposit&old_reading_fee_balance=$old_reading_fee_balance&convenience_fee=$convenience_fee&delivery_fees=$delivery_fees&delivery_option=$delivery_option&overdue_adjustment=$overdue_adjustment&adjustment_narration=$adjustment_narration&reward_points=$reward_points&coupon_no=$coupon_no&coupon_id=$coupon_id&coupon_amount=$coupon_amount&change_plan_payment_type=$change_plan_payment_type");
     $data = json_decode($raw_data);
     echo json_encode($data);
+
+
+});$app->get('/noAmountBreak', function (Request $request, Response $response) {
+
+    $order = $_GET['order'];
+
+
+    $orderid = $_POST['ORDERID'];
+    $url = "http://justbooksclc.com/api/v1/paytm_payment_callback.json?orderid=$order&response_code=01&payment_type=Paytm&branch_id=810";
+    echo $url;
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_HEADER, 0);            // No header in the result
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // Return, do not echo result
+    $raw_data = curl_exec($ch);
+    curl_close($ch);
+    print_r($raw_data);
+    if($raw_data['success']=true)
+    {
+        echo "success";
+    }
+    else{
+        echo $_POST['RESPMSG'];
+    }
 
 
 });

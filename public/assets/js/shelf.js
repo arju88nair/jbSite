@@ -1,3 +1,22 @@
+$(document).ready(function() {
+    $("#myCarousel1").swiperight(function() {
+        $(this).carousel('prev');
+    });
+    $("#myCarousel1").swipeleft(function() {
+        $(this).carousel('next');
+    }); $("#myCarousel2").swiperight(function() {
+        $(this).carousel('prev');
+    });
+    $("#myCarousel2").swipeleft(function() {
+        $(this).carousel('next');
+    }); $("#myCarousel").swiperight(function() {
+        $(this).carousel('prev');
+    });
+    $("#myCarousel").swipeleft(function() {
+        $(this).carousel('next');
+    });
+});
+
 $(document).ready(function () {
     var $myGroup = $('#myGroup');
     $myGroup.on('show', '.collapse', function () {
@@ -25,6 +44,10 @@ $(document).ready(function () {
             $('#newArrivalsShelf').append(final_response);
             $('.item_shelf_new').first().addClass('active');
             $("#myCarousel").carousel();
+            if(w<750){
+                console.log("Ds")
+                $("div#shelfNewArr").css('margin-left','10%')
+            }
             $("#frame_new_arr").hide();
             $("#loader").hide();
         },
@@ -37,7 +60,6 @@ $(document).ready(function () {
         url: "/getShelfRecommendedBooks",
         success: function (data) {
             data = JSON.parse(data);
-            console.log(data)
 
             cardData = data['data'];
 
@@ -55,7 +77,9 @@ $(document).ready(function () {
             $("#myCarousel").carousel();
             $("#frame_recomm").hide();
             $("#loader_rec").hide();
-
+            if(w<750){
+                $("div#leftRecommned").css("margin-left"," 10% ")
+            }
 
         },
         error: function (err) {
@@ -89,7 +113,7 @@ $(document).ready(function () {
             $('.item_mostread_shelf').first().addClass('active');
             $("#frame_mostRead").hide();
             $("#loader_mostRead").hide();
-            $("#myCarousel1").carousel();
+            $("#myCarousel2").carousel();
         },
 
     });
@@ -134,9 +158,9 @@ function getCard(data, visibleCardCount, ids, wishlist) {
         }
 
 
-        response += '<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">' +
+        response += '<div class="col-xs-5 col-sm-2 col-md-2 col-lg-2 sliderDIv">' +
             '<div class="item item_shadow">' +
-            '<div class="img_block_books"><a href="/book_details/' + data[i]['_source'].title_id + '/' + data[i]['_source'].title + '"><img src="' + img + '" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
+            '<div class="img_block_books"><a rel="external" data-ajax="false" href="/book_details/' + data[i]['_source'].title_id + '/' + data[i]['_source'].title + '"><img src="' + img + '" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
             '<div class="carousel_body_book">' +
             '<div class="carousel_title_book"><h5 title="' + data[i]['_source'].title + '">' + data[i]['_source'].title + '</h5></div>' +
             '<div class="carousel_desc">' +
@@ -201,9 +225,9 @@ function getRecommend(data, visibleCardCount, ids, wishlist) {
         }
 
 
-        response += '<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">' +
+        response += '<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2 sliderDIv">' +
             '<div class="item item_shadow">' +
-            '<div class="img_block_books"><a href="/book_details/' + data[i]['_source'].title_id + '/' + data[i]['_source'].title + '"><img src="' + img + '" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
+            '<div class="img_block_books"><a rel="external" data-ajax="false" href="/book_details/' + data[i]['_source'].title_id + '/' + data[i]['_source'].title + '"><img src="' + img + '" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
             '<div class="carousel_body_book">' +
             '<div class="carousel_title_book"><h5 title="' + data[i]['_source'].title + '">' + data[i]['_source'].title + '</h5></div>' +
             '<div class="carousel_desc">' +
@@ -219,14 +243,14 @@ function getRecommend(data, visibleCardCount, ids, wishlist) {
         //if( i > 0 && i % 3 == 0){
         if (items == visibleCardCount) {
 
-            final_response += '<div class="item item_shelf_rec' + active + '" style="margin-left: 4.2%;">' + response + '</div>';
+            final_response += '<div class="item item_shelf_rec' + active + '" style="">' + response + '</div>';
             response = "";
             items = 0;
         }
 
     }
     if (items < visibleCardCount && items > 0) {
-        final_response += '<div class="item item_shelf_rec ' + active + '" style="margin-left: 4.2%;">' + response + '</div>';
+        final_response += '<div class="item item_shelf_rec ' + active + '" style="">' + response + '</div>';
     }
     return final_response;
 }
@@ -269,7 +293,7 @@ function getCardMostRead(data, visibleCardCount, ids, wishlist) {
 
         response += '<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">' +
             '<div class="item item_shadow">' +
-            '<div class="img_block_books"><a href="/book_details/' + data[i]['_source'].title_id + '/' + data[i]['_source'].title + '"><img src="' + img + '" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
+            '<div class="img_block_books"><a  rel="external" data-ajax="false" href="/book_details/' + data[i]['_source'].title_id + '/' + data[i]['_source'].title + '"><img src="' + img + '" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
             '<div class="carousel_body_book">' +
             '<div class="carousel_title_book"><h5 title="' + data[i]['_source'].title + '">' + data[i]['_source'].title + '</h5></div>' +
             '<div class="carousel_desc">' +
@@ -461,7 +485,7 @@ function generateDIV(arr, funcName, idName, btnTxt, style, ids, statusKey, statu
         response += '<div id="alertDiv" class="alert  alert-dismissable" style="display: none"><a  href="#" class="close"  aria-label="close" onclick="hideAlert()">&times;</a>' +
             '<span id="alertText"></span></div><div id="div' + arr_data['id'] + '" class="col-md-6 col-xs-6 module_cont module_shelf shadow1" style="height: 180px;">' +
             '<div class="col-md-5 col-xs-5">' +
-            '<a href="/book_details/' + arr_data['id'] + '/' + arr_data['title'] + '">' +
+            '<a rel="external" data-ajax="false" href="/book_details/' + arr_data['id'] + '/' + arr_data['title'] + '">' +
             '<img src="' + arr_data['image_url'] + '" class="img-responsive" alt="..." style="margin-top: -20px;height: 145px" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'">' +
             '</a>' +
             '</div>' +
@@ -490,6 +514,62 @@ function generateDIV(arr, funcName, idName, btnTxt, style, ids, statusKey, statu
     });
     return response;
 }
+function generateWishDIV(arr,ids,rent) {
+    $('#change_plan').html('');
+    var response = '';
+    arr.forEach(function (arr_data) {
+//            console.log(arr_data['id']);
+//            console.log(ids.indexOf(arr_data['id']))
+//         if (ids.indexOf(arr_data['id']) != -1) {
+//             var image = "../../assets/img/Added_WL_Right.png"
+//             wish = "";
+//         }
+//         else {
+//             image = "../../assets/img/Added_WL_50.png";
+//             var wish = "\'wishlistAdd(" + arr_data['id'] + ");\'";
+//         }
+
+        if (rent.indexOf(parseInt(arr_data['id'])) != -1) {
+            var text = "Rented";
+            action = "";
+        }
+        else {
+            var action = "\'placeOrder(" + arr_data['id'] + ");\'"
+
+            text = "Rent";
+        }
+        response += '<div id="alertDiv" class="alert  alert-dismissable" style="display: none"><a  href="#" class="close"  aria-label="close" onclick="hideAlert()">&times;</a>' +
+            '<span id="alertText"></span></div><div id="div' + arr_data['id'] + '" class="col-md-6 col-xs-6 module_cont module_shelf shadow1" style="height: 180px;">' +
+            '<div class="col-md-5 col-xs-5">' +
+            '<a rel="external" data-ajax="false" href="/book_details/' + arr_data['id'] + '/' + arr_data['title'] + '">' +
+            '<img src="' + arr_data['image_url'] + '" class="img-responsive" alt="..." style="margin-top: -20px;height: 145px" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'">' +
+            '</a>' +
+            '</div>' +
+
+            '<div class="col-md-7 col-xs-7" id="module_shelf">' +
+            '<h4 style=" width: 100%;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;">' + arr_data['title'] + '</h4>' +
+            '<p>' + arr_data['author'] + '</p>' +
+            '<br><div class="rating" id="rating1">' +
+            '</div>' +
+            // '<p><a href="/book_details/' + arr_data['id'] + '">Rate/Review</a></p>' +
+            '<div class="shelf_sicial">' +
+            '<div class="col-md-3 col-xs-2" style="cursor:pointer;margin-right: 26%;margin-top: 4%;margin-left:-9%">' +
+            '<a class="shortcode_button btn_small btn_type10"  data-toggle="modal" data-id=' + arr_data['id'] + ' data-title="' + arr_data['title'] + '"  data-target="#rateModal" style="cursor:pointer;">Rate/Review</a>' +
+            '</div>' +
+            '<div class="col-md-3 col-xs-2 shelf_return_btn" style="margin-right: -8%;margin-top: 4%;display:inline-block">' +
+            '<a href="javascript:void(0)" class="shortcode_button btn_small btn_type10" onclick=' + action + '  id="rent_' + arr_data['id'] + '">' + text + '</a>' +
+            '</div>' +
+            '</div></div>' +
+            '<div class="col-md-4 col-xs-6 shelf_logos" style="float: left;margin-top: 37% ;margin-left: -100%">' +
+            '<a href="javascript:void(0)" class="tiptip" title="Share" data-id="' + arr_data['id'] + '" data-title="' + arr_data['title'] + '" data-toggle="modal" data-target="#shareModal" style="margin-left: 10%">' +
+            '<img class="share_btn" src=../../assets/img/Engage.png alt="Smiley face" height="25" width="25"></a>' +
+            '&nbsp;<a   style="display:inline-block;cursor: default"class="tiptip" onclick="removeWishlist(this,' + arr_data['id'] + ')"  id="' + arr_data['id'] + '"><img class="share_btn" src=../../assets/img/Delete.png alt="Smiley face" height="23" width="23"></i>'+
+            '</a>' +
+            '</div>' +
+            '</div>';
+    });
+    return response;
+}
 
 $('#wishlist').click(function (e) {
     $("li a").removeClass('active');
@@ -505,6 +585,7 @@ $('#wishlist').click(function (e) {
 
             $(".spinner").hide();
             var new_data = JSON.parse(data);
+            console.log(new_data)
 
             if (new_data['data']['result'].length == 0) {
                 $('#shelf_data').html('');
@@ -523,7 +604,7 @@ $('#wishlist').click(function (e) {
 
             var response = '';
             var i = 0;
-            var final_response = generateDIV(new_data['data']['result'], 'removeWishlist', 'title_id', 'Remove', 'none', new_data['wishlist'], '', 'none', 'margin-top: 34%;margin-left: -97%;', 'none', 'block');
+            var final_response = generateWishDIV(new_data['data']['result'], new_data['wishlist'],new_data['ids']);
             $('#shelf_data').html('');
             $('#shelf_data').append(final_response);
             $("#left_menu_recommend").show();
@@ -721,7 +802,9 @@ $('#subscription').click(function (e) {
     $("#datePickInput").datepicker({
         dateFormat: 'dd-mm-yy',
         changeMonth: true,
-        yearRange: "-100:+0"
+        yearRange: "-100:+0",
+        minDate: new Date()
+
     }).val();
     $("li a").removeClass('active');
     $("li a#subscription").addClass('active');
@@ -827,9 +910,9 @@ $('#subscription').click(function (e) {
                 '<option value= "2">2 months</option><option value="3">3 months</option></select>' +
                 '</div><div class="form-group" style="margin-right: 3%;">' +
                 '<label for="pwd">Start Date:</label><input class="form-control" type="text" id="datePickInput" readonly required="required" name="datePickInput" required>' +
-                '</div><button type="button" class="btn btn-default" onclick="breakValidate()">Submit</button><br><br><hr><p id="textSpanBreak" style="margin-left:0%;display:none;font-weight:bold;font-size:143%"></p><br><p id="textSpanBreakDate" style="margin-left:0%;display:none;font-weight:bold;font-size:143%"></p><br><button id="BreakBUtton" style="display: none;float: left;" type="button" class="btn btn-primary btn-md" onclick="proceedBreak()">Proceed</button><span class="breakAmount" style="display: none"></span><span class="breakAMountPay" style="display: none"></span><span class="breakDate" style="display: none"></span><br><br><br><br><hr style="display:none" id="hrTag"><div id="aboutBreak" style= "display:none" class="col-md-12"><p><b>What\'s \'Take a break\' ?</b></p><p>Through a feature called “Subscription Holiday”, JustBooksclc allows the member to pause the membership (temporary suspension), for a duration of 1 month, 2 months or 3 months before expiration of membership. During Subscription Holiday period, a member will not be able to use the library. To utilise this feature, a member is required to fill up the Subscription Holiday Form either at the branch or online. All issued books and magazines should be returned to the JustBooksclc branch before the start date of Subscription Holiday. Members who pay for Yearly and Half-yearly terms will receive free Subscription Holidays of 2 months and 1 month respectively, and are required to pay Rs. 50/- per month there after. Quarterly members are required to pay Rs. 50/- per month to avail the feature.</p></div></div></div></form></div>' +
+                '</div><button type="button" class="btn btn-default" onclick="breakValidate()">Submit</button><br><br><hr><p id="textSpanBreak" style="margin-left:0%;display:none;font-weight:bold;font-size:143%"></p><br><p id="textSpanBreakDate" style="margin-left:0%;display:none;font-weight:bold;font-size:143%"></p><br><button id="BreakBUtton" style="display: none;float: left;" type="button" class="shortcode_button btn_small btn_type10" onclick="proceedBreak()">Proceed</button><span class="breakAmount" style="display: none"></span><span class="breakAMountPay" style="display: none"></span><span class="breakDate" style="display: none"></span><br><br><br><br><hr style="display:none" id="hrTag"><div id="aboutBreak" style= "display:none" class="col-md-12"><p><b>What\'s \'Take a break\' ?</b></p><p>Through a feature called “Subscription Holiday”, JustBooksclc allows the member to pause the membership (temporary suspension), for a duration of 1 month, 2 months or 3 months before expiration of membership. During Subscription Holiday period, a member will not be able to use the library. To utilise this feature, a member is required to fill up the Subscription Holiday Form either at the branch or online. All issued books and magazines should be returned to the JustBooksclc branch before the start date of Subscription Holiday. Members who pay for Yearly and Half-yearly terms will receive free Subscription Holidays of 2 months and 1 month respectively, and are required to pay Rs. 50/- per month there after. Quarterly members are required to pay Rs. 50/- per month to avail the feature.</p></div></div></div></form></div>' +
                 '<div class="row collapse" id=\"demo\" >' +
-                '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> <form> <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> <div class="form-group" style="width:50%"> <label for="sel1">Select a renewal duration :</label> <select class="form-control" id="sel1" onchange="textChange()">'+response2+' </select> </div> </div> <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10"> <div class="form-group"> <input type="text" class="form-control" id="coupon_code" placeholder="Coupon code if any" name="coupon_code"> <span class="input-group-btn"> </div> </div> <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"> <div class="form-group"> <button type="button" class="btn btn-warning" id="coupon_submit" onclick="couponClick()">Apply</button> </div> </div> <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5"> <div class="form-group"> <input class="form-control" id="gift_card" placeholder="Gift Card No." name="gift_card" type="text"> </div> </div> <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5"> <div class="form-group"> <input class="form-control" id="gift_card_pin" placeholder="Gift Card Pin" name="gift_card_pin" type="text"> </div> </div> <div class="col-xs-6 col-sm-2 col-md-2 col-lg-2"> <div class="form-group"> <button type="button" class="btn btn-warning" id="gift_card_submit" onclick="couponClick()">Apply</button> </div> </div> <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> <p style="font-weight: bold" id="textSpan"> You have to pay Rs ' + defValue + '</p> <button type="submit" class="btn btn-primary">Submit</button> </div> </form> </div></div><br>'
+                '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> <form> <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> <div class="form-group" style="width:50%"> <label for="sel1">Select a renewal duration :</label> <select class="form-control" id="sel1" onchange="textChange()">'+response2+' </select> </div> </div> <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10"> <div class="form-group"> <input type="text" class="form-control" id="coupon_code" placeholder="Coupon code if any" name="coupon_code"> <span class="input-group-btn"> </div> </div> <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"> <div class="form-group"> <button type="button" class="btn btn-warning" id="coupon_submit" onclick="couponClick()">Apply</button> </div> </div> <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5"> <div class="form-group"> <input class="form-control" id="gift_card" placeholder="Gift Card No." name="gift_card" type="text"> </div> </div> <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5"> <div class="form-group"> <input class="form-control" id="gift_card_pin" placeholder="Gift Card Pin" name="gift_card_pin" type="text"> </div> </div> <div class="col-xs-6 col-sm-2 col-md-2 col-lg-2"> <div class="form-group"> <button type="button" class="btn btn-warning" id="gift_card_submit" onclick="couponClick()">Apply</button> </div> </div> <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> <p style="font-weight: bold" id="textSpan"> You have to pay Rs ' + defValue + '</p> <button type="submit" class="shortcode_button btn_small btn_type10">Submit</button> </div> </form> </div></div><br>'
             )
 
             var colors = ['block personal fl', 'block professional fl', 'block business fl'];
@@ -872,7 +955,8 @@ $('#subscription').click(function (e) {
             $("#datePickInput").datepicker({
                 dateFormat: 'dd-mm-yy',
                 changeMonth: true,
-                yearRange: "-100:+0"
+                yearRange: "-100:+0",
+                minDate: new Date()
             }).val();
 //
 
@@ -916,6 +1000,12 @@ $('#subscription').click(function (e) {
 })
 
 function removeWishlist(elem, id) {
+
+    var answer = confirm("Are you sure you want to return the book?");
+
+    if (!answer) {
+        return false;
+    }
     $(".spinner").show();
 
     var id = id;
@@ -1060,7 +1150,7 @@ function pastReads() {
 
 
 function cancelPickup(elem, title) {
-    var answer = confirm("Are you sure you want to issue a pickup?");
+    var answer = confirm("Are you sure you want to cancel a pickup?");
 
     if (!answer) {
         return false;
@@ -1076,8 +1166,9 @@ function cancelPickup(elem, title) {
         success: function (data) {
             $(".spinner").hide();
 
-            ;
-            if (data == 'success') {
+            console.log(data)
+            data=JSON.parse(data);
+            if (data['success'] === true) {
                 $('#' + id).closest('.module_shelf').remove();
                 $("#alertDiv").addClass("alert-success");
                 $("#alertDiv").show();
@@ -1372,6 +1463,25 @@ function proceedBreak() {
             if (data_new.success == true) {
                 orderNumber = data_new.result.transaction.transaction.order_number;
                 amountTotal = data_new.result.transaction.transaction.amount;
+                if(parseInt(amountTotal) ===0 )
+                {
+                    $.ajax({
+                        type: "GET",
+                        dataType: "json",
+                        url: "/noAmountBreak?order=" + orderNumber,
+                        success: function (data_new) {
+                            console.log(data_new);
+                            if(data_new=="success")
+                            {
+                                toastr.success('Successfully applied').css('width','500px')
+                            }
+                            else{
+                                toastr.error('Something went wrong! ').css('width','500px')
+
+                            }
+                        },
+                    });
+                }
                 saveSession(orderNumber, amount);
 
             }
@@ -1436,11 +1546,11 @@ function giveReviewStar() {
     var review = $("#new-review").val();
 
     if (ratings === "" || ratings === 0) {
-        toastr.error('Please give a rating in order to submit  !');
+        toastr.error('Please give a rating in order to submit!').css("width","500px");;
         return false;
     }
     if (review === "" || review === 0) {
-        toastr.error('Please give a review in order to submit  !');
+        toastr.error('Please give a review in order to submit!').css("width","500px");;
         return false;
     }
     $(".spinner").show();
@@ -1453,14 +1563,15 @@ function giveReviewStar() {
         success: function (data) {
             console.log(JSON.parse(data));
             $(".spinner").hide();
+            $(".spinner").hide();
             if (JSON.parse(data) === "failure") {
-                toastr.error('Please sign in to submit a review  !');
+                toastr.error('Please sign in to submit a review!').css("width","500px");;
                 $('#rateModal').modal('hide');
 
                 return false;
             }
             else {
-                toastr.success('Successfully submitted your review, Thank you  !');
+                toastr.success('Successfully submitted your review, Thank you!') .css("width","500px");;
                 $('#rateModal').modal('hide');
 
             }

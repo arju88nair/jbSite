@@ -8,6 +8,11 @@
 /* Large screens ----------- */
 @media only screen  and (min-width : 1824px) {
 	/* Styles */
+
+	.flickr_widget_wrapper{
+		padding-top: 18%!important;
+	}
+
 	#firstDiv{
 		margin-top: 10%;
 	}
@@ -42,8 +47,12 @@
 }
 
 /* Desktops and laptops ----------- */
-@media only screen  and (min-width : 1224px) {
+@media only screen and (min-device-width : 900px) and (max-device-width : 1440px) {
 	/* Styles */
+	.flickr_widget_wrapper{
+		padding-top: 18%!important;
+	}
+
 	#firstDiv{
 		margin-top: 10%;
 	}
@@ -77,11 +86,159 @@
 	}
 }
 
+/* Desktops and laptops ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1366px) {
+	/* Styles */
+	.flickr_widget_wrapper{
+		padding-top: 18%!important;
+	}
+
+	#firstDiv{
+		margin-top: 10%;
+	}
+	.border-color-teal{
+
+		cursor:default !important;
+		border-top: 4px solid;
+		padding:0;
+	}
+
+	#module_shelf_menu{
+		margin-left:-4%;
+		margin-top:25px;
+	}
+
+
+	.carouselslider .col-sm-2{
+		width:18%;
+	}
+	.carouselslider .col-md-2{
+		width:18%;
+	}
+	.carouselslider .col-lg-2{
+		width:18%;
+	}
+
+
+	.rs-fullscreen{
+		margin-left: -80.5px;
+		width: 1300px;
+	}
+}
+
+@media only screen and (min-device-width : 800px) and (max-device-width : 1280px) {
+	/* Styles */
+	.flickr_widget_wrapper{
+		padding-top: 18%!important;
+	}
+
+	#firstDiv{
+		margin-top: 10%;
+	}
+	.border-color-teal{
+
+		cursor:default !important;
+		border-top: 4px solid;
+		padding:0;
+	}
+
+	#module_shelf_menu{
+		margin-left:-4%;
+		margin-top:25px;
+	}
+
+
+	.carouselslider .col-sm-2{
+		width:18%;
+	}
+	.carouselslider .col-md-2{
+		width:18%;
+	}
+	.carouselslider .col-lg-2{
+		width:18%;
+	}
+
+
+	.rs-fullscreen{
+		margin-left: -75.5px;
+		width: 1290px;
+	}
+}
+
+@media only screen and (min-device-width : 950px) and (max-device-width : 1280px) {
+	/* Styles */
+	.flickr_widget_wrapper{
+		padding-top: 18%!important;
+	}
+
+	#firstDiv{
+		margin-top: 10%;
+	}
+	.border-color-teal{
+
+		cursor:default !important;
+		border-top: 4px solid;
+		padding:0;
+	}
+
+	#module_shelf_menu{
+		margin-left:-4%;
+		margin-top:25px;
+	}
+
+
+	.carouselslider .col-sm-2{
+		width:18%;
+	}
+	.carouselslider .col-md-2{
+		width:18%;
+	}
+	.carouselslider .col-lg-2{
+		width:18%;
+	}
+
+
+	.rs-fullscreen{
+		margin-left: -75.5px;
+		width: 1290px;
+	}
+}
+
+
+
+
+
+
 /* iPads (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
 	/* Styles */
+	.flickr_widget_wrapper{
+		padding-top: 18%!important;
+	}
+
+	.pricing-table {
+		width: 100%!important;
+		margin-top: 50px!important;
+		margin-bottom: 50px!important;
+		margin-left: auto!important;
+		margin-right: auto!important;
+		text-align: center!important;
+		padding: 10px 10px 10px 10px!important;
+	}
+
+	#plansCard .block{
+		width: 28%;
+		margin: 0 15px;
+		overflow: hidden;
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+		margin-bottom: 15px;
+	}
+
+
 	#firstDiv{
-		margin-top: 22%;
+		margin-top: 29%;
 	}
 	.border-color-teal{
 
@@ -117,8 +274,33 @@
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
 	/* Styles */
 	/* Styles */
+
+	.flickr_widget_wrapper{
+		padding-top: 18%!important;
+	}
+
+	.pricing-table {
+		width: 100%!important;
+		margin-top: 50px!important;
+		margin-bottom: 50px!important;
+		margin-left: auto!important;
+		margin-right: auto!important;
+		text-align: center!important;
+		padding: 10px 10px 10px 10px!important;
+	}
+
+	#plansCard .block{
+		width: 28%;
+		margin: 0 15px;
+		overflow: hidden;
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+		margin-bottom: 15px;
+	}
+
 	#firstDiv{
-		margin-top: 22%;
+		margin-top: 29%;
 	}
 	.border-color-teal{
 
@@ -154,6 +336,31 @@
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
 	/* Styles */
 	/* Styles */
+
+	.flickr_widget_wrapper{
+		padding-top: 18%!important;
+	}
+
+	.pricing-table {
+		width: 100%!important;
+		margin-top: 50px!important;
+		margin-bottom: 50px!important;
+		margin-left: auto!important;
+		margin-right: auto!important;
+		text-align: center!important;
+		padding: 10px 10px 10px 10px!important;
+	}
+
+	#plansCard .block{
+		width: 28%;
+		margin: 0 15px;
+		overflow: hidden;
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+		margin-bottom: 15px;
+	}
+
 	.modalStyle{
 		top:0% !important;;
 		width:250% !important;
@@ -162,7 +369,7 @@
 		 width:250% !important;
 		 left:-26%!important;}
 	#firstDiv{
-		margin-top: 22%;
+		margin-top: 29%;
 	}
 	.border-color-teal{
 
@@ -194,12 +401,40 @@
 	}
 
 }
+
+
 /**********
 iPad 3
 **********/
+
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio : 2) {
 	/* Styles */
 	/* Styles */
+
+	.flickr_widget_wrapper{
+		padding-top: 18%!important;
+	}
+
+	.pricing-table {
+		width: 100%!important;
+		margin-top: 50px!important;
+		margin-bottom: 50px!important;
+		margin-left: auto!important;
+		margin-right: auto!important;
+		text-align: center!important;
+		padding: 10px 10px 10px 10px!important;
+	}
+
+	#plansCard .block{
+		width: 28%;
+		margin: 0 15px;
+		overflow: hidden;
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+		margin-bottom: 15px;
+	}
+
 	.modalStyle{
 		top:0% !important;;
 		width:250% !important;
@@ -208,7 +443,7 @@ iPad 3
 		 width:250% !important;
 		 left:-26%!important;}
 	#firstDiv{
-		margin-top: 22%;
+		margin-top: 29%;
 	}
 	.border-color-teal{
 
@@ -244,6 +479,30 @@ iPad 3
 	/* Styles */
 	/* Styles */
 
+	.flickr_widget_wrapper{
+		padding-top: 18%!important;
+	}
+
+	.pricing-table {
+		width: 100%!important;
+		margin-top: 50px!important;
+		margin-bottom: 50px!important;
+		margin-left: auto!important;
+		margin-right: auto!important;
+		text-align: center!important;
+		padding: 10px 10px 10px 10px!important;
+	}
+
+	#plansCard .block{
+		width: 28%;
+		margin: 0 15px;
+		overflow: hidden;
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+		margin-bottom: 15px;
+	}
+
 	.modalStyle{
 		top:0% !important;;
 		width:250% !important;
@@ -251,7 +510,7 @@ iPad 3
 	}
 
 	#firstDiv{
-		margin-top: 22%;
+		margin-top: 29%;
 	}
 	.border-color-teal{
 
@@ -284,16 +543,82 @@ iPad 3
 }
 
 
+
+
+
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
 	/* Styles */
 
-	.search_div concontainer{
-		padding-left: 0px!important;
-	}
+
+
+
+
 	#welcome_msg{
 		display:none;
 	}
+
+	.flickr_widget_wrapper h3{
+		font-size: 13px!important;
+	}
+
+	.flickr_widget_wrapper h2{
+		font-size: 18px!important;
+	}
+
+
+	.carousel-control.left{
+		display: none!important;
+	}
+
+	.carousel-control.right{
+		display: none!important;
+	}
+
+
+	.smallnav .logo{
+		margin-bottom: 10px!important;
+	}
+
+
+	.row2{
+		padding-bottom: 0px!important;
+	}
+	.smallsearch {
+		margin-left: 0px!important;
+		margin-top: 0px!important;
+	}
+
+	#flipkart-navbar{
+		padding-bottom: 0px!important;
+	}
+
+
+	.row2 p{
+		margin-top: 0px!important;
+	}
+
+	.flickr_widget_wrapper{
+		padding-top: 0%!important;
+	}
+
+	.row2 .col-xs-11{
+		width:85%!important;
+	}
+
+	.pricing-table {
+		width: 80%!important;
+		margin-top: 0px!important;
+		margin-bottom: 0px!important;
+		margin-left: 5%!important;
+		margin-right: auto!important;
+		text-align: center!important;
+		padding: 0px 10px 0px 10px!important;
+	}
+	.search_div concontainer{
+		padding-left: 0px!important;
+	}
+
 	.shelf_return_btn{
 		margin-left:20%;
 	}
@@ -346,11 +671,18 @@ iPad 3
 		margin-right: 10px;
 	}
 
-	.rs-fullscreen{
-		margin-left: -142.5px;
-		width: 1425px;
-		margin-top: 100px;
+	.carouselslider .col-xs-6{
+		width:45%!important;
+		padding-left: 0px!important;
 	}
+
+
+	.rs-fullscreen{
+		margin-left: -125px;
+		width: 1425px;
+		margin-top: 70px;
+	}
+
 
 
 
@@ -359,7 +691,7 @@ iPad 3
 	}
 
 	#plansCard .block{
-		width: 63%;
+		width: 88%;
 		margin: 0 15px;
 		overflow: hidden;
 		-webkit-border-radius: 5px;
@@ -404,7 +736,6 @@ iPad 3
 }
 
 
-
 /* iPhone 5 ----------- */
 @media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
 	/* Styles */
@@ -413,8 +744,64 @@ iPad 3
 		padding-left: 0px!important;
 	}
 
+
 	#welcome_msg{
 		display:none;
+	}
+
+	.flickr_widget_wrapper h3{
+		font-size: 13px!important;
+	}
+
+	.flickr_widget_wrapper h2{
+		font-size: 18px!important;
+	}
+
+	.carousel-control.left{
+		display: none!important;
+	}
+
+	.carousel-control.right{
+		display: none!important;
+	}
+
+
+	.smallnav .logo{
+		margin-bottom: 10px!important;
+	}
+
+	.row2{
+		padding-bottom: 0px!important;
+	}
+	.smallsearch {
+		margin-left: 0px!important;
+		margin-top: 0px!important;
+	}
+
+	#flipkart-navbar{
+		padding-bottom: 0px!important;
+	}
+
+	.row2 p{
+		margin-top: 0px!important;
+	}
+
+	.flickr_widget_wrapper{
+		padding-top: 0%!important;
+	}
+
+	.row2 .col-xs-11{
+		width:80%!important;
+	}
+
+	.pricing-table {
+		width: 80%!important;
+		margin-top: 0px!important;
+		margin-bottom: 0px!important;
+		margin-left: 5%!important;
+		margin-right: auto!important;
+		text-align: center!important;
+		padding: 0px 10px 0px 10px!important;
 	}
 	.shelf_return_btn{
 		margin-left:20%;
@@ -467,10 +854,15 @@ iPad 3
 		margin-right: 10px;
 	}
 
+	.carouselslider .col-xs-6{
+		width:45%!important;
+		padding-left: 0px!important;
+	}
+
 	.rs-fullscreen{
-		margin-left: -142.5px;
+		margin-left: -125px;
 		width: 1425px;
-		margin-top: 100px;
+		margin-top: 70px;
 	}
 
 
@@ -516,6 +908,7 @@ iPad 3
 		width:50%;
 	}
 }
+
 
 @media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
 	/* Styles */
@@ -578,10 +971,15 @@ iPad 3
 		margin-right: 10px;
 	}
 
+	.carouselslider .col-xs-6{
+		width:45%!important;
+		padding-left: 0px!important;
+	}
+
 	.rs-fullscreen{
-		margin-left: -142.5px;
+		margin-left: -125px;
 		width: 1425px;
-		margin-top: 100px;
+		margin-top: 70px;
 	}
 
 
@@ -636,7 +1034,6 @@ iPad 3
 		border-radius: 5px;
 	}
 
-
 }
 
 /* iPhone 6 ----------- */
@@ -676,7 +1073,7 @@ iPad 3
 	}
 
 	#loader_plan .block{
-		width: 63%;
+		width: 84%;
 		margin: 0 15px;
 		overflow: hidden;
 		-webkit-border-radius: 5px;
@@ -699,10 +1096,15 @@ iPad 3
 		margin-right: 10px;
 	}
 
+	.carouselslider .col-xs-6{
+		width:45%!important;
+		padding-left: 0px!important;
+	}
+
 	.rs-fullscreen{
-		margin-left: -142.5px;
+		margin-left: -125px;
 		width: 1425px;
-		margin-top: 100px;
+		margin-top: 70px;
 	}
 
 
@@ -766,7 +1168,7 @@ iPad 3
 		 width:250% !important;
 		 left:-26%!important;}
 	#firstDiv{
-		margin-top: 22%;
+		margin-top: 29%;
 	}
 	.shelf_logos{
 		margin-top: 42% !important;
@@ -807,16 +1209,21 @@ iPad 3
 		margin-right: 10px;
 	}
 
+	.carouselslider .col-xs-6{
+		width:45%!important;
+		padding-left: 0px!important;
+	}
+
 	.rs-fullscreen{
-		margin-left: -142.5px;
+		margin-left: -125px;
 		width: 1425px;
-		margin-top: 100px;
+		margin-top: 70px;
 	}
 
 
 
 	#plansCard .block{
-		width: 63%;
+		width: 84%;
 		margin: 0 15px;
 		overflow: hidden;
 		-webkit-border-radius: 5px;
@@ -861,8 +1268,64 @@ iPad 3
 @media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
 	/* Styles */
 
+
 	#welcome_msg{
 		display:none;
+	}
+
+	.flickr_widget_wrapper h3{
+		font-size: 13px!important;
+	}
+
+	.flickr_widget_wrapper h2{
+		font-size: 18px!important;
+	}
+
+	.carousel-control.left{
+		display: none!important;
+	}
+
+	.carousel-control.right{
+		display: none!important;
+	}
+
+
+	.smallnav .logo{
+		margin-bottom: 10px!important;
+	}
+
+	.row2{
+		padding-bottom: 0px!important;
+	}
+	.smallsearch {
+		margin-left: 0px!important;
+		margin-top: 0px!important;
+	}
+
+	#flipkart-navbar{
+		padding-bottom: 0px!important;
+	}
+
+	.row2 p{
+		margin-top: 0px!important;
+	}
+
+	.flickr_widget_wrapper{
+		padding-top: 0%!important;
+	}
+
+	.row2 .col-xs-11{
+		width:80%!important;
+	}
+
+	.pricing-table {
+		width: 80%!important;
+		margin-top: 0px!important;
+		margin-bottom: 0px!important;
+		margin-left: 5%!important;
+		margin-right: auto!important;
+		text-align: center!important;
+		padding: 0px 10px 0px 10px!important;
 	}
 	.shelf_return_btn{
 		margin-left:20%;
@@ -916,10 +1379,15 @@ iPad 3
 		margin-right: 10px;
 	}
 
+	.carouselslider .col-xs-6{
+		width:45%!important;
+		padding-left: 0px!important;
+	}
+
 	.rs-fullscreen{
-		margin-left: -142.5px;
+		margin-left: -125px;
 		width: 1425px;
-		margin-top: 100px;
+		margin-top: 70px;
 	}
 
 
@@ -968,8 +1436,64 @@ iPad 3
 
 @media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
 	/* Styles */
+
 	#welcome_msg{
 		display:none;
+	}
+
+	.flickr_widget_wrapper h3{
+		font-size: 13px!important;
+	}
+
+	.flickr_widget_wrapper h2{
+		font-size: 18px!important;
+	}
+
+	.carousel-control.left{
+		display: none!important;
+	}
+
+	.carousel-control.right{
+		display: none!important;
+	}
+
+
+	.smallnav .logo{
+		margin-bottom: 10px!important;
+	}
+
+	.row2{
+		padding-bottom: 0px!important;
+	}
+	.smallsearch {
+		margin-left: 0px!important;
+		margin-top: 0px!important;
+	}
+
+	#flipkart-navbar{
+		padding-bottom: 0px!important;
+	}
+
+	.row2 p{
+		margin-top: 0px!important;
+	}
+
+	.flickr_widget_wrapper{
+		padding-top: 0%!important;
+	}
+
+	.row2 .col-xs-11{
+		width:80%!important;
+	}
+
+	.pricing-table {
+		width: 80%!important;
+		margin-top: 0px!important;
+		margin-bottom: 0px!important;
+		margin-left: 5%!important;
+		margin-right: auto!important;
+		text-align: center!important;
+		padding: 0px 10px 0px 10px!important;
 	}
 	.shelf_return_btn{
 		margin-left:20%;
@@ -1022,10 +1546,15 @@ iPad 3
 		margin-right: 10px;
 	}
 
+	.carouselslider .col-xs-6{
+		width:45%!important;
+		padding-left: 0px!important;
+	}
+
 	.rs-fullscreen{
-		margin-left: -142.5px;
+		margin-left: -125px;
 		width: 1425px;
-		margin-top: 100px;
+		margin-top: 70px;
 	}
 
 
@@ -1082,8 +1611,64 @@ iPad 3
 	}
 
 
+
 	#welcome_msg{
 		display:none;
+	}
+
+	.flickr_widget_wrapper h3{
+		font-size: 13px!important;
+	}
+
+	.flickr_widget_wrapper h2{
+		font-size: 18px!important;
+	}
+
+	.carousel-control.left{
+		display: none!important;
+	}
+
+	.carousel-control.right{
+		display: none!important;
+	}
+
+
+	.smallnav .logo{
+		margin-bottom: 10px!important;
+	}
+
+	.row2{
+		padding-bottom: 0px!important;
+	}
+	.smallsearch {
+		margin-left: 0px!important;
+		margin-top: 0px!important;
+	}
+
+	#flipkart-navbar{
+		padding-bottom: 0px!important;
+	}
+
+	.row2 p{
+		margin-top: 0px!important;
+	}
+
+	.flickr_widget_wrapper{
+		padding-top: 0%!important;
+	}
+
+	.row2 .col-xs-11{
+		width:80%!important;
+	}
+
+	.pricing-table {
+		width: 80%!important;
+		margin-top: 0px!important;
+		margin-bottom: 0px!important;
+		margin-left: 5%!important;
+		margin-right: auto!important;
+		text-align: center!important;
+		padding: 0px 10px 0px 10px!important;
 	}
 
 
@@ -1098,7 +1683,7 @@ iPad 3
 		 width:250% !important;
 		 left:-26%!important;}
 	#firstDiv{
-		margin-top: 22%;
+		margin-top: 29%;
 	}
 	.shelf_logos{
 		margin-top: 42% !important;
@@ -1138,10 +1723,15 @@ iPad 3
 		margin-right: 10px;
 	}
 
+	.carouselslider .col-xs-6{
+		width:45%!important;
+		padding-left: 0px!important;
+	}
+
 	.rs-fullscreen{
-		margin-left: -142.5px;
+		margin-left: -125px;
 		width: 1425px;
-		margin-top: 100px;
+		margin-top: 70px;
 	}
 
 
@@ -1197,8 +1787,64 @@ iPad 3
 	}
 
 
+
 	#welcome_msg{
 		display:none;
+	}
+
+	.flickr_widget_wrapper h3{
+		font-size: 13px!important;
+	}
+
+	.flickr_widget_wrapper h2{
+		font-size: 18px!important;
+	}
+
+	.carousel-control.left{
+		display: none!important;
+	}
+
+	.carousel-control.right{
+		display: none!important;
+	}
+
+
+	.smallnav .logo{
+		margin-bottom: 10px!important;
+	}
+
+	.row2{
+		padding-bottom: 0px!important;
+	}
+	.smallsearch {
+		margin-left: 0px!important;
+		margin-top: 0px!important;
+	}
+
+	#flipkart-navbar{
+		padding-bottom: 0px!important;
+	}
+
+	.row2 p{
+		margin-top: 0px!important;
+	}
+
+	.flickr_widget_wrapper{
+		padding-top: 0%!important;
+	}
+
+	.row2 .col-xs-11{
+		width:80%!important;
+	}
+
+	.pricing-table {
+		width: 80%!important;
+		margin-top: 0px!important;
+		margin-bottom: 0px!important;
+		margin-left: 5%!important;
+		margin-right: auto!important;
+		text-align: center!important;
+		padding: 0px 10px 0px 10px!important;
 	}
 
 
@@ -1213,7 +1859,7 @@ iPad 3
 		 width:250% !important;
 		 left:-26%!important;}
 	#firstDiv{
-		margin-top: 22%;
+		margin-top: 29%;
 	}
 	.shelf_logos{
 		margin-top: 42% !important;
@@ -1254,16 +1900,21 @@ iPad 3
 		margin-right: 10px;
 	}
 
+	.carouselslider .col-xs-6{
+		width:45%!important;
+		padding-left: 0px!important;
+	}
+
 	.rs-fullscreen{
-		margin-left: -142.5px;
+		margin-left: -125px;
 		width: 1425px;
-		margin-top: 100px;
+		margin-top: 70px;
 	}
 
 
 
 	#plansCard .block{
-		width: 63%;
+		width: 83%;
 		margin: 0 15px;
 		overflow: hidden;
 		-webkit-border-radius: 5px;
@@ -1312,8 +1963,64 @@ iPad 3
 		padding-left: 0px!important;
 	}
 
+
 	#welcome_msg{
 		display:none;
+	}
+
+	.flickr_widget_wrapper h3{
+		font-size: 13px!important;
+	}
+
+	.flickr_widget_wrapper h2{
+		font-size: 18px!important;
+	}
+
+	.carousel-control.left{
+		display: none!important;
+	}
+
+	.carousel-control.right{
+		display: none!important;
+	}
+
+
+	.smallnav .logo{
+		margin-bottom: 10px!important;
+	}
+
+	.row2{
+		padding-bottom: 0px!important;
+	}
+	.smallsearch {
+		margin-left: 0px!important;
+		margin-top: 0px!important;
+	}
+
+	#flipkart-navbar{
+		padding-bottom: 0px!important;
+	}
+
+	.row2 p{
+		margin-top: 0px!important;
+	}
+
+	.flickr_widget_wrapper{
+		padding-top: 0%!important;
+	}
+
+	.row2 .col-xs-11{
+		width:80%!important;
+	}
+
+	.pricing-table {
+		width: 80%!important;
+		margin-top: 0px!important;
+		margin-bottom: 0px!important;
+		margin-left: 5%!important;
+		margin-right: auto!important;
+		text-align: center!important;
+		padding: 0px 10px 0px 10px!important;
 	}
 
 
@@ -1328,7 +2035,7 @@ iPad 3
 		 width:250% !important;
 		 left:-26%!important;}
 	#firstDiv{
-		margin-top: 22%;
+		margin-top: 29%;
 	}
 	.shelf_logos{
 		margin-top: 42% !important;
@@ -1370,10 +2077,15 @@ iPad 3
 		margin-right: 10px;
 	}
 
+	.carouselslider .col-xs-6{
+		width:45%!important;
+		padding-left: 0px!important;
+	}
+
 	.rs-fullscreen{
-		margin-left: -142.5px;
+		margin-left: -125px;
 		width: 1425px;
-		margin-top: 100px;
+		margin-top: 70px;
 	}
 
 
@@ -1428,8 +2140,64 @@ iPad 3
 	}
 
 
+
 	#welcome_msg{
 		display:none;
+	}
+
+	.flickr_widget_wrapper h3{
+		font-size: 13px!important;
+	}
+
+	.flickr_widget_wrapper h2{
+		font-size: 18px!important;
+	}
+
+	.carousel-control.left{
+		display: none!important;
+	}
+
+	.carousel-control.right{
+		display: none!important;
+	}
+
+
+	.smallnav .logo{
+		margin-bottom: 10px!important;
+	}
+
+	.row2{
+		padding-bottom: 0px!important;
+	}
+	.smallsearch {
+		margin-left: 0px!important;
+		margin-top: 0px!important;
+	}
+
+	#flipkart-navbar{
+		padding-bottom: 0px!important;
+	}
+
+	.row2 p{
+		margin-top: 0px!important;
+	}
+
+	.flickr_widget_wrapper{
+		padding-top: 0%!important;
+	}
+
+	.row2 .col-xs-11{
+		width:80%!important;
+	}
+
+	.pricing-table {
+		width: 80%!important;
+		margin-top: 0px!important;
+		margin-bottom: 0px!important;
+		margin-left: 5%!important;
+		margin-right: auto!important;
+		text-align: center!important;
+		padding: 0px 10px 0px 10px!important;
 	}
 
 
@@ -1444,7 +2212,7 @@ iPad 3
 		 width:250% !important;
 		 left:-26%!important;}
 	#firstDiv{
-		margin-top: 22%;
+		margin-top: 29%;
 	}
 	.shelf_logos{
 		margin-top: 42% !important;
@@ -1484,10 +2252,15 @@ iPad 3
 		margin-right: 10px;
 	}
 
+	.carouselslider .col-xs-6{
+		width:45%!important;
+		padding-left: 0px!important;
+	}
+
 	.rs-fullscreen{
-		margin-left: -142.5px;
+		margin-left: -125px;
 		width: 1425px;
-		margin-top: 100px;
+		margin-top: 70px;
 	}
 
 
@@ -1542,8 +2315,64 @@ iPad 3
 		padding-left: 0px!important;
 	}
 
+
 	#welcome_msg{
 		display:none;
+	}
+
+	.flickr_widget_wrapper h3{
+		font-size: 13px!important;
+	}
+
+	.flickr_widget_wrapper h2{
+		font-size: 18px!important;
+	}
+
+	.carousel-control.left{
+		display: none!important;
+	}
+
+	.carousel-control.right{
+		display: none!important;
+	}
+
+
+	.smallnav .logo{
+		margin-bottom: 10px!important;
+	}
+
+	.row2{
+		padding-bottom: 0px!important;
+	}
+	.smallsearch {
+		margin-left: 0px!important;
+		margin-top: 0px!important;
+	}
+
+	#flipkart-navbar{
+		padding-bottom: 0px!important;
+	}
+
+	.row2 p{
+		margin-top: 0px!important;
+	}
+
+	.flickr_widget_wrapper{
+		padding-top: 0%!important;
+	}
+
+	.row2 .col-xs-11{
+		width:80%!important;
+	}
+
+	.pricing-table {
+		width: 80%!important;
+		margin-top: 0px!important;
+		margin-bottom: 0px!important;
+		margin-left: 5%!important;
+		margin-right: auto!important;
+		text-align: center!important;
+		padding: 0px 10px 0px 10px!important;
 	}
 
 	.shelf_return_btn{
@@ -1557,7 +2386,7 @@ iPad 3
 		 width:250% !important;
 		 left:-26%!important;}
 	#firstDiv{
-		margin-top: 22%;
+		margin-top: 29%;
 	}
 	.shelf_logos{
 		margin-top: 42% !important;
@@ -1597,11 +2426,14 @@ iPad 3
 		margin-left: 10px;
 		margin-right: 10px;
 	}
-
+	.carouselslider .col-xs-6{
+		width:45%!important;
+		padding-left: 0px!important;
+	}
 	.rs-fullscreen{
-		margin-left: -142.5px;
+		margin-left: -125px;
 		width: 1425px;
-		margin-top: 100px;
+		margin-top: 70px;
 	}
 
 
@@ -1655,8 +2487,64 @@ iPad 3
 		padding-left: 0px!important;
 	}
 
+
 	#welcome_msg{
 		display:none;
+	}
+
+	.flickr_widget_wrapper h3{
+		font-size: 13px!important;
+	}
+
+	.flickr_widget_wrapper h2{
+		font-size: 18px!important;
+	}
+
+	.carousel-control.left{
+		display: none!important;
+	}
+
+	.carousel-control.right{
+		display: none!important;
+	}
+
+
+	.smallnav .logo{
+		margin-bottom: 10px!important;
+	}
+
+	.row2{
+		padding-bottom: 0px!important;
+	}
+	.smallsearch {
+		margin-left: 0px!important;
+		margin-top: 0px!important;
+	}
+
+	#flipkart-navbar{
+		padding-bottom: 0px!important;
+	}
+
+	.row2 p{
+		margin-top: 0px!important;
+	}
+
+	.flickr_widget_wrapper{
+		padding-top: 0%!important;
+	}
+
+	.row2 .col-xs-11{
+		width:80%!important;
+	}
+
+	.pricing-table {
+		width: 80%!important;
+		margin-top: 0px!important;
+		margin-bottom: 0px!important;
+		margin-left: 5%!important;
+		margin-right: auto!important;
+		text-align: center!important;
+		padding: 0px 10px 0px 10px!important;
 	}
 	.shelf_return_btn{
 		margin-left:20%;
@@ -1669,7 +2557,7 @@ iPad 3
 		 width:250% !important;
 		 left:-26%!important;}
 	#firstDiv{
-		margin-top: 22%;
+		margin-top: 29%;
 	}
 	.shelf_logos{
 		margin-top: 42% !important;
@@ -1701,16 +2589,21 @@ iPad 3
 		margin-right: 10px;
 	}
 
+	.carouselslider .col-xs-6{
+		width:45%!important;
+		padding-left: 0px!important;
+	}
+
 	.rs-fullscreen{
-		margin-left: -142.5px;
+		margin-left: -103px;
 		width: 1425px;
-		margin-top: 100px;
+		margin-top: 70px;
 	}
 
 
 
 	#plansCard .block{
-		width: 63%;
+		width: 83%;
 		margin: 0 15px;
 		overflow: hidden;
 		-webkit-border-radius: 5px;
@@ -2680,9 +3573,9 @@ a.menu_toggler {
 		margin: 10px;
 		background-color: #fff;
 	}
-	.container {
+	/*.container {
 		width:400px!important;
-	}
+	}*/
 
 
 	.pre_footer {

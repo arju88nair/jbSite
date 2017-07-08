@@ -57,7 +57,7 @@
                                     <div class="item item_shadow">
                                         {{#jb_info}}
                                         <div class="img_block_books">
-                                        <a href="/book_details/{{titleid}}/{{#author}}{{name}}{{/author}}">
+                                        <a rel="external" data-ajax="false" href="/book_details/{{titleid}}/{{#author}}{{name}}{{/author}}">
                                         {{/jb_info}}
 
                                         <img class="img-responsive" src="{{image_url}}" onerror="this.src='../../assets/images/Default_Book_Thumbnail.png'">
@@ -136,7 +136,7 @@
                             '<div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 thumb">'+
                             '<div class="item item_shadow">'+
                             '<div class="img_block_books">'+
-                            '<a href="/book_details/' + data[i]['_source']['jb_info']['titleid'] + '">'+
+                            '<a rel="external" data-ajax="false" href="/book_details/' + data[i]['_source']['jb_info']['titleid'] + '">'+
 
                             '<img class="img-responsive" src="'+ data[i]['_source']["image_url"] +'" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'">'+
 

@@ -1,3 +1,4 @@
+
 function placeOrder(id) {
     $(".spinner").show();
     $.ajax({
@@ -17,7 +18,7 @@ function placeOrder(id) {
                 data = JSON.parse(data);
                 console.log(data['success'])
                 if (data['success'] === "false") {
-                    toastr.warning(data['errors'])
+                    toastr.warning(data['errors']).css('width','500px')
                 } else {
                     toastr.success('Successfully added !');
 
@@ -96,7 +97,7 @@ $(document).ready(function () {
         },
         queryTokenizer: Bloodhound.tokenizers.whitespace,
         remote: {
-            url: 'https://rec.justbooks.in/getSuggestBooks?',
+            url: 'http://rec.justbooksclc.com/getSuggestBooks?',
             replace: function (url, uriEncodedQuery) {
 
                 val = $('#srch-term').val();

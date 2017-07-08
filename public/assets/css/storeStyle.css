@@ -3,33 +3,33 @@
 	height: 400px;
 }
 .storeLocator * {
-	font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
-	font-size: 10pt;
+	font-family: 'Arial';
+	font-size: 8pt;
 }
 .storeLocator .controls {
-    margin-top: 10px;
-    border: 1px solid transparent;
-    border-radius: 2px 0 0 2px;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    height: 32px;
-    outline: none;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+	margin-top: 10px;
+	border: 1px solid transparent;
+	border-radius: 2px 0 0 2px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	height: 32px;
+	outline: none;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 .storeLocator .input {
-    background-color: #fff;
-    padding: 0 11px 0 13px;
-    width: 300px;
-    font-family: Roboto;
-    font-size: 15px;
-    font-weight: 300;
-    text-overflow: ellipsis;
+	background-color: #fff;
+	padding: 0 11px 0 13px;
+	width: 300px;
+	font-family: Roboto;
+	font-size: 15px;
+	font-weight: 300;
+	text-overflow: ellipsis;
 }
 .storeLocator .input:focus {
-    border-color: #4d90fe;
-    margin-left: -1px;
-    padding-left: 14px;
-    width: 301px;
+	border-color: #4d90fe ;
+	margin-left: -1px;
+	padding-left: 14px;
+	width: 301px;
 }
 .storeLocator #stores {
 	background-color: #fff;
@@ -37,15 +37,15 @@
 	list-style-type: none;
 	margin: 0;
 	float: right;
-	width: 33%;
+	width: 100%;
 	max-height: 100%;
 	overflow-y: auto;
 }
 .storeLocator .store {
 	padding: 5px;
-	margin-bottom: 5px;
+	/* margin-bottom: 5px; */
 	cursor: pointer;
-	border: 1px solid transparent;
+	border: 1px solid rgba(0, 0, 0, 0.21);
 }
 .storeLocator .store:hover {
 	background-color: #eee;
@@ -54,8 +54,8 @@
 	border-color: lightgray;
 }
 .storeLocator .map {
-	width: 65%;
-	height: 100%; 
+	width: 100%;
+	height: 50%;
 	border: 1px solid lightgray;
 	float: left;
 }
@@ -73,5 +73,5 @@
 #stores li{
 	text-align: justify;
 	font-family: 'Arial';
-	
+
 }

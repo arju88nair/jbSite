@@ -272,13 +272,12 @@ header ul.menu > li > a {
     display: inline-block !important;
     color: rgb(0, 0, 0);
     letter-spacing: 0em;*/
-	border-radius: 2px 0 0 2px !important;
-	border: 1px solid #a09191
-	!important;
+	/*border-radius: 2px 0 0 2px !important;*/
+	/*border: 1px solid #a09191!important;*/
 	outline: 0 none !important;
 	display: inline-block;
-	padding: 10px 10px !important;
-	line-height: 22px;
+	/*padding: 10px 10px !important;*/
+	/*line-height: 22px;*/
 	outline: none;
 	font-size: 10px;
 	font-weight: normal;
@@ -504,18 +503,18 @@ header ul.menu > li > a {
 	overflow-x: hidden;
 	transition: 0.5s;
 	box-shadow: 0 4px 8px -3px #555454;
-	padding-top: 36%;
+	padding-top: 28%;
 
 
 }
 
 .sidenav a {
-	padding: 8px 8px 8px 32px;
+	padding: 8px 8px 8px 20px;
 	text-decoration: none;
-	font-size: 16px;
+	font-size: 11px;
 	color: #818181;
 	display: block;
-	transition: 0.3s
+	transition: 0.3s;
 }
 
 .sidenav .closebtn {
@@ -1306,5 +1305,4 @@ fieldset[disabled] .twitter-typeahead .tt-input {
 .tt-menu .tt-suggestion p {
 	margin: 0;
 }
-
 

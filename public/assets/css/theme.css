@@ -2301,8 +2301,8 @@ hr.respond_seperator {
 .team_slider {
 	position:relative;
 	padding: 0px 0px 20px 0px;
-    margin-left: 60px;
-    margin-right: 60px;
+	margin-left: 60px;
+	margin-right: 60px;
 }
 .team_slider .img_block {
 	position:relative;
