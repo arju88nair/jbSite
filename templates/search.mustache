@@ -111,10 +111,12 @@
         var query = "{{query}}";
         localStorage.setItem("countFlag", parseInt(count) + 1);
         $.ajax({
-            url: "http://rec.justbooksclc.com/getSuggestBooksDetails?text="+query+"&page="+count,
+            url: "/loadMoreSearch?text="+query+"&page="+count,
             type: 'GET',
 
             success: function (data) {
+console.log(data);
+                data=JSON.parse(data)
 
                 $(".spinner").hide();
                 if(data === "No Titles")
@@ -136,7 +138,7 @@
                             '<div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 thumb">'+
                             '<div class="item item_shadow">'+
                             '<div class="img_block_books">'+
-                            '<a rel="external" data-ajax="false" href="/book_details/' + data[i]['_source']['jb_info']['titleid'] + '">'+
+                            '<a rel="external" data-ajax="false" href="/book_details/' + data[i]['_source']['jb_info']['titleid'] + '/' + data[i]['_source']['jb_info']['title'] + '">'+
 
                             '<img class="img-responsive" src="'+ data[i]['_source']["image_url"] +'" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'">'+
 

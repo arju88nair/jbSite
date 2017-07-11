@@ -18,10 +18,10 @@
             <div class="double-bounce1"></div>
             <div class="double-bounce2"></div>
         </div>
-        <div class="">
+        <div class="" style="margin-left: -2%">
             <div class="fl-container span12">
                 <div class="row">
-
+                    <h3 id="countResult"></h3>
                     <!--<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">-->
                         <!--<h4 class="page-header">-->
 
@@ -94,8 +94,9 @@
 <script>
     $(document).ready(function () {
         var count={{count}};
-        if(count === 0)
+        if(parseInt(count) === 0 )
         {
+            $("#countResult").text("No results to show !")
             $("#load").hide();
         }
         localStorage.setItem("countFlag", 2);
@@ -111,11 +112,11 @@
         var query = "{{query}}";
         localStorage.setItem("countFlag", parseInt(count) + 1);
         $.ajax({
-            url: "http://rec.justbooksclc.com/getCategoryWise?page="+count+"&categories="+ids,
+            url: "/loadMoreCatSearch?page="+count+"&categories="+ids,
             type: 'GET',
 
             success: function (data) {
-
+data=JSON.parse(data)
                 $(".spinner").hide();
                 if(data === "No Titles")
                 {
@@ -136,7 +137,7 @@
                             '<div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 thumb">'+
                             '<div class="item item_shadow">'+
                             '<div class="img_block_books">'+
-                            '<a rel="external" data-ajax="false" href="/book_details/' + data[i]['_source']['jb_info']['titleid'] + '">'+
+                            '<a rel="external" data-ajax="false" href="/book_details/' + data[i]['_source']['jb_info']['titleid'] + '/' + data[i]['_source']['jb_info']['title'] + '">'+
 
                             '<img class="img-responsive" src="'+ data[i]['_source']["image_url"] +'" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'">'+
 

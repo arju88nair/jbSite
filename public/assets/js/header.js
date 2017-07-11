@@ -97,7 +97,7 @@ $(document).ready(function () {
         },
         queryTokenizer: Bloodhound.tokenizers.whitespace,
         remote: {
-            url: 'http://rec.justbooksclc.com/getSuggestBooks?',
+            url: '/typeahead?',
             replace: function (url, uriEncodedQuery) {
 
                 val = $('#srch-term').val();
@@ -130,13 +130,13 @@ $(document).ready(function () {
             empty: [
                 '<div class="empty-message text-center">',
                 'No titles found.<br>',
-                '<a href="/search" class="text-center">More Advanced Search</a>',
+                '<a rel="external" data-ajax="false" href="/search" class="text-center">More Advanced Search</a>',
                 '</div>',
             ].join('\n'),
             suggestion: function (data) {
                 console.log(data.link)
                 console.log(data.value)
-                return ['<p><a href="/book_details/' + data.link + '/' + data.value + '">' + data.value + '</a></p>'].join('\n');
+                return ['<p><a rel="external" data-ajax="false" href="/book_details/' + data.link + '/' + data.value + '">' + data.value + '</a></p>'].join('\n');
             },
 
         }
@@ -194,31 +194,54 @@ $(document).ready(function () {
         var id = $(e.relatedTarget).data('id');
         var title = $(e.relatedTarget).data('title');
         //populate the textbox
-        $("#sharefb").attr("href", "http://www.facebook.com/sharer.php?u=http://justbooks.in/book_details/" + id + "/" + title + "&title=Reading " + title + ", rented from JustBooks");
+        $("#sharefb").attr("href", "http://www.facebook.com/sharer.php?u=http://justbooks.in/book_details/" + id + "/" + title + "&title=Reading " + title + ". Get it from JustBooks.in");
         $("#sharegp").attr("href", "https://plus.google.com/share?url=http://justbooks.in/book_details/" + id + "/" + title);
-        $("#sharetw").attr("href", "https://twitter.com/share?url=http://justbooks.in/book_details/" + id + "/" + title + "&amp;text=Reading %20" + title + "%20,%20rented%20from%20JustBooks&amp;hashtags=justbookclc.com");
+        $("#sharetw").attr("href", "https://twitter.com/share?url=http://justbooks.in/book_details/" + id + "/" + title + "&amp;text=Reading %20" + title + ".Get%20it%20from%20JustBooks.in&amp;hashtags=justbookclc.com");
         // $("#shareen").attr("href", "mailto:me@domain.com?subject=Hi, This might interest you ! http://justbooksclc.com/book_details/"+id);
         // $("#sharefb").attr("href", "http://www.facebook.com/sharer.php?u=http://justbooksclc.com/book_details/"+id);
     });
+    var w = window.outerWidth;
+    if(w<750){
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass":"toast-top-center",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
 
+    }else{
+        toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-bottom-center",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
 
-    toastr.options = {
-        "closeButton": true,
-        "debug": false,
-        "newestOnTop": false,
-        "progressBar": false,
-        "positionClass": "toast-bottom-center",
-        "preventDuplicates": false,
-        "onclick": null,
-        "showDuration": "300",
-        "hideDuration": "1000",
-        "timeOut": "5000",
-        "extendedTimeOut": "1000",
-        "showEasing": "swing",
-        "hideEasing": "linear",
-        "showMethod": "fadeIn",
-        "hideMethod": "fadeOut"
     }
+
+
     $('#srch-term').keypress(function (e) {
         var key = e.which;
         if (key == 13) // the enter key code

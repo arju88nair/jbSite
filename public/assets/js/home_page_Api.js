@@ -149,7 +149,7 @@ $(document).ready(function () {
 
             $('#newArrivals').append(final_response);
             $('.item').first().addClass('active');
-            $("#myCarousel").carousel();
+            $("#myCarouselnew").carousel();
 
         },
 
@@ -246,12 +246,12 @@ $(document).ready(function () {
 
                     '<div class="col-xs-11 col-sm-4 col-md-4 col-lg-4 ">' +
                     '<div class="img_block wrapped_img"><img style="width: 100%;height: 17em;" src="' + data[i]['IMAGE'] + '" alt="" width="270" height="170"></div>' +
-                    '<div class="carousel_body">' +
+                    '<div class="carousel_body" style="margin-left: 15px;">' +
                     '<div class="carousel_title">' +
-                    '<h5  style="margin-top:10px; text-align:left; font-family: \'Playfair Display\'">' + data[i]['NAME'] + '</h5>' +
+                    '<h5  style="margin-top:10px; text-align: left; font-family: \'Playfair Display\'">' + data[i]['NAME'] + '</h5>' +
                     '</div>' +
                     '<div class="carousel_desc">' +
-                    '<div class="exc" style="margin-bottom:10px; text-align:left; font-family: \'Playfair Display\'">' + data[i]['DESCRIPTION'] + '</div>' +
+                    '<div class="exc" style="margin-bottom:10px; text-align: left; font-family: \'Playfair Display\'">' + data[i]['DESCRIPTION'] + '</div>' +
                     '</div>' +
 
                     '<a target="_blank" href="' + data[i]['LINK'] + '" class="shortcode_button btn_small btn_type1">Read More</a>' +

@@ -557,9 +557,7 @@ header ul.menu > li > a {
 
 
 /*Rating style*/
-a:hover{
-	color: #37878d;
-}
+
 .animated {
 	-webkit-transition: height 0.2s;
 	-moz-transition: height 0.2s;

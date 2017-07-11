@@ -9,10 +9,19 @@
 @media only screen  and (min-width : 1824px) {
 	/* Styles */
 
+	.carousel_book_details{
+		margin-left: 5%!important;
+	}
+
+	#plansCard{
+		margin-left: 12.5%!important;
+	}
 	.flickr_widget_wrapper{
 		/*padding-top: 18%!important;*/
 	}
-
+	#firstDivHome{
+		margin-top: 6%!important;
+	}
 	#firstDiv{
 		margin-top: 10%;
 	}
@@ -23,10 +32,10 @@
 		padding:0;
 	}
 
-	#module_shelf_menu{
+	/*#module_shelf_menu{
 		margin-left:-4%;
 		margin-top:25px;
-	}
+	}*/
 
 	.carouselslider .col-sm-2{
 
@@ -49,12 +58,24 @@
 /* Desktops and laptops ----------- */
 @media only screen and (min-width : 900px) and (max-width : 1440px) {
 	/* Styles */
+
+	.carousel_book_details{
+		margin-left: 4%!important;
+	}
+
+	#plansCard{
+		margin-left: 11%!important;
+	}
+
 	.flickr_widget_wrapper{
 		/*padding-top: 18%!important;*/
 	}
 
+	#firstDivHome{
+		margin-top: 6%!important;
+	}
 	#firstDiv{
-		margin-top: 7.5%;
+		margin-top: 9%;
 	}
 	.border-color-teal{
 
@@ -63,11 +84,11 @@
 		padding:0;
 	}
 
-	#module_shelf_menu{
+	/*#module_shelf_menu{
 		margin-left:-4%;
 		margin-top:25px;
 	}
-
+	*/
 
 	.carouselslider .col-sm-2{
 		width:18%;
@@ -89,12 +110,23 @@
 /* Desktops and laptops ----------- */
 @media only screen and (min-width : 768px) and (max-width : 1366px) {
 	/* Styles */
+	.carousel_book_details{
+		margin-left: 5%!important;
+	}
+
+	#plansCard{
+		margin-left: 11%!important;
+	}
+
+	#firstDivHome{
+		margin-top: 6%!important;
+	}
 	.flickr_widget_wrapper{
 		/*padding-top: 18%!important;*/
 	}
 
 	#firstDiv{
-		margin-top: 7.5%;
+		margin-top: 9.5%;
 	}
 	.border-color-teal{
 
@@ -103,10 +135,10 @@
 		padding:0;
 	}
 
-	#module_shelf_menu{
+	/*#module_shelf_menu{
 		margin-left:-4%;
 		margin-top:25px;
-	}
+	}*/
 
 
 	.carouselslider .col-sm-2{
@@ -121,15 +153,28 @@
 
 
 	.rs-fullscreen{
-		margin-left: -80.5px;
-		width: 1300px;
+		margin-left: -114px;
+		width: 1366px;
 	}
 }
 
 @media only screen and (min-width : 800px) and (max-width : 1280px) {
 	/* Styles */
+
+	.carousel_book_details{
+		margin-left: 5%!important;
+	}
+
+	#plansCard{
+		margin-left: 12.5%!important;
+	}
+
 	.flickr_widget_wrapper{
 		/*padding-top: 18%!important;*/
+	}
+
+	#firstDivHome{
+		margin-top: 6%!important;
 	}
 
 	#firstDiv{
@@ -142,10 +187,10 @@
 		padding:0;
 	}
 
-	#module_shelf_menu{
+	/*#module_shelf_menu{
 		margin-left:-4%;
 		margin-top:25px;
-	}
+	}*/
 
 
 	.carouselslider .col-sm-2{
@@ -167,6 +212,19 @@
 
 @media only screen and (min-width : 950px) and (max-width : 1280px) {
 	/* Styles */
+
+	.carousel_book_details{
+		margin-left: 5%!important;
+	}
+
+	#plansCard{
+		margin-left: 11%!important;
+	}
+
+
+	#firstDivHome{
+		margin-top: 6%!important;
+	}
 	.flickr_widget_wrapper{
 		/*padding-top: 18%!important;*/
 	}
@@ -181,10 +239,10 @@
 		padding:0;
 	}
 
-	#module_shelf_menu{
+	/*#module_shelf_menu{
 		margin-left:-4%;
 		margin-top:25px;
-	}
+	}*/
 
 
 	.carouselslider .col-sm-2{
@@ -212,6 +270,13 @@
 /* iPads (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
 	/* Styles */
+	#plansCard{
+		margin-left: 12.5%!important;
+	}
+
+	#firstDivHome{
+		margin-top: 12%!important;
+	}
 	.flickr_widget_wrapper{
 		padding-top: 18%!important;
 	}
@@ -252,10 +317,10 @@
 		padding:0;
 	}
 
-	#module_shelf_menu{
+	/*#module_shelf_menu{
 		margin-left:-4%;
 		margin-top:25px;
-	}
+	}*/
 
 	.carouselslider .col-sm-2{
 
@@ -280,6 +345,13 @@
 	/* Styles */
 	/* Styles */
 
+	#plansCard{
+		margin-left: 12.5%!important;
+	}
+
+	#firstDivHome{
+		margin-top: 12%!important;
+	}
 	h5{
 		font-size: 14px;
 		line-height: 16px;
@@ -318,10 +390,10 @@
 		padding:0;
 	}
 
-	#module_shelf_menu{
+	/*#module_shelf_menu{
 		margin-left:-4%;
 		margin-top:25px;
-	}
+	}*/
 
 	.carouselslider .col-sm-2{
 
@@ -346,6 +418,13 @@
 	/* Styles */
 	/* Styles */
 
+	#plansCard{
+		margin-left: 12.5%!important;
+	}
+
+	#firstDivHome{
+		margin-top: 12%!important;
+	}
 	.flickr_widget_wrapper{
 		padding-top: 18%!important;
 	}
@@ -387,10 +466,10 @@
 		padding:0;
 	}
 
-	#module_shelf_menu{
+	/*#module_shelf_menu{
 		margin-left:-4%;
 		margin-top:25px;
-	}
+	}*/
 
 	.carouselslider .col-sm-2{
 
@@ -420,6 +499,13 @@ iPad 3
 	/* Styles */
 	/* Styles */
 
+	#plansCard{
+		margin-left: 12.5%!important;
+	}
+
+	#firstDivHome{
+		margin-top: 12%!important;
+	}
 	.flickr_widget_wrapper{
 		padding-top: 18%!important;
 	}
@@ -461,10 +547,10 @@ iPad 3
 		padding:0;
 	}
 
-	#module_shelf_menu{
+	/*#module_shelf_menu{
 		margin-left:-4%;
 		margin-top:25px;
-	}
+	}*/
 	.carouselslider .col-sm-2{
 
 		width:18%;
@@ -488,6 +574,13 @@ iPad 3
 	/* Styles */
 	/* Styles */
 
+	#plansCard{
+		margin-left: 0%!important;
+	}
+
+	#firstDivHome{
+		margin-top: 12%!important;
+	}
 	.flickr_widget_wrapper{
 		padding-top: 18%!important;
 	}
@@ -528,10 +621,11 @@ iPad 3
 		padding:0;
 	}
 
-	#module_shelf_menu{
+	/*#module_shelf_menu{
 		margin-left:-4%;
 		margin-top:25px;
-	}
+	}*/
+
 	.carouselslider .col-sm-2{
 
 		width:18%;
@@ -560,6 +654,18 @@ iPad 3
 	/* Styles */
 
 
+	.smallnav .logo img{
+		width:120px!important;
+	}
+
+
+	#plansCard{
+		margin-left: 12.5%!important;
+	}
+
+	#firstDivHome{
+		margin-top: 5%!important;
+	}
 
 
 
@@ -652,10 +758,10 @@ iPad 3
 		margin-right: 15px !important;
 	}
 
-	#module_shelf_menu{
+	/*/*#module_shelf_menu{
 
 		margin-top:25px;
-	}
+	}*/*/
 
 	#loader_plan .block{
 		width: 40%;
@@ -749,6 +855,17 @@ iPad 3
 @media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
 	/* Styles */
 
+	.smallnav .logo img{
+		width:120px!important;
+	}
+
+	#plansCard{
+		margin-left: 12.5%!important;
+	}
+
+	#firstDivHome{
+		margin-top: 5%!important;
+	}
 	.search_div concontainer{
 		padding-left: 0px!important;
 	}
@@ -836,10 +953,10 @@ iPad 3
 		margin-right: 15px !important;
 	}
 
-	#module_shelf_menu{
+	/*#module_shelf_menu{
 
 		margin-top:25px;
-	}
+	}*/
 
 	#loader_plan .block{
 		width: 63%;
@@ -922,6 +1039,18 @@ iPad 3
 @media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
 	/* Styles */
 
+	.smallnav .logo img{
+		width:120px!important;
+	}
+
+
+	#plansCard{
+		margin-left: 12.5%!important;
+	}
+
+	#firstDivHome{
+		margin-top: 5%!important;
+	}
 	.search_div concontainer{
 		padding-left: 0px!important;
 	}
@@ -951,10 +1080,10 @@ iPad 3
 		margin-right: 15px !important;
 	}
 
-	#module_shelf_menu{
+	/*#module_shelf_menu{
 
 		margin-top:25px;
-	}
+	}*/
 
 
 	#loader_plan .block{
@@ -1049,6 +1178,16 @@ iPad 3
 @media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
 	/* Styles */
 
+
+	.smallnav .logo img{
+		width:120px!important;
+	}
+
+
+	#firstDivHome{
+		margin-top: 5%!important;
+	}
+
 	.search_div concontainer{
 		padding-left: 0px!important;
 	}
@@ -1076,10 +1215,10 @@ iPad 3
 		margin-right: 15px !important;
 	}
 
-	#module_shelf_menu{
+	/*#module_shelf_menu{
 
 		margin-top:25px;
-	}
+	}*/
 
 	#loader_plan .block{
 		width: 84%;
@@ -1163,6 +1302,15 @@ iPad 3
 @media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
 	/* Styles */
 
+
+	.smallnav .logo img{
+		width:120px!important;
+	}
+
+
+	#firstDivHome{
+		margin-top: 5%!important;
+	}
 	.search_div concontainer{
 		padding-left: 0px!important;
 	}
@@ -1190,10 +1338,10 @@ iPad 3
 		margin-right: 15px !important;
 	}
 
-	#module_shelf_menu{
+	/*#module_shelf_menu{
 
 		margin-top:25px;
-	}
+	}*/
 
 	#loader_plan .block{
 		width: 63%;
@@ -1278,6 +1426,19 @@ iPad 3
 	/* Styles */
 
 
+	.smallnav .logo img{
+		width:120px!important;
+	}
+
+
+	#plansCard{
+		margin-left: 12.5%!important;
+	}
+
+	#firstDivHome{
+		margin-top: 5%!important;
+	}
+
 	#welcome_msg{
 		display:none;
 	}
@@ -1360,10 +1521,10 @@ iPad 3
 		margin-right: 15px !important;
 	}
 
-	#module_shelf_menu{
+	/*#module_shelf_menu{
 
 		margin-top:25px;
-	}
+	}*/
 
 	#loader_plan .block{
 		width: 63%;
@@ -1446,6 +1607,19 @@ iPad 3
 @media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
 	/* Styles */
 
+	.smallnav .logo img{
+		width:120px!important;
+	}
+
+
+	#plansCard{
+		margin-left: 12.5%!important;
+	}
+
+	#firstDivHome{
+		margin-top: 5%!important;
+	}
+
 	#welcome_msg{
 		display:none;
 	}
@@ -1528,10 +1702,10 @@ iPad 3
 		margin-right: 15px !important;
 	}
 
-	#module_shelf_menu{
+	/*#module_shelf_menu{
 
 		margin-top:25px;
-	}
+	}*/
 
 	#loader_plan .block{
 		width: 63%;
@@ -1614,6 +1788,18 @@ iPad 3
 @media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 2){
 	/* Styles */
 
+	.smallnav .logo img{
+		width:120px!important;
+	}
+
+
+	#plansCard{
+		margin-left: 12.5%!important;
+	}
+
+	#firstDivHome{
+		margin-top: 5%!important;
+	}
 
 	.search_div concontainer{
 		padding-left: 0px!important;
@@ -1705,10 +1891,10 @@ iPad 3
 		margin-right: 15px !important;
 	}
 
-	#module_shelf_menu{
+	/*#module_shelf_menu{
 
 		margin-top:25px;
-	}
+	}*/
 
 	#loader_plan .block{
 		width: 63%;
@@ -1790,6 +1976,18 @@ iPad 3
 @media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 2){
 	/* Styles */
 
+	.smallnav .logo img{
+		width:120px!important;
+	}
+
+
+	#plansCard{
+		margin-left: 12.5%!important;
+	}
+
+	#firstDivHome{
+		margin-top: 5%!important;
+	}
 
 	.search_div concontainer{
 		padding-left: 0px!important;
@@ -1881,10 +2079,10 @@ iPad 3
 		margin-right: 15px !important;
 	}
 
-	#module_shelf_menu{
+	/*#module_shelf_menu{
 
 		margin-top:25px;
-	}
+	}*/
 
 	#loader_plan .block{
 		width: 63%;
@@ -1968,6 +2166,20 @@ iPad 3
 @media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 3){
 	/* Styles */
 
+
+	.smallnav .logo img{
+		width:120px!important;
+	}
+
+
+	#plansCard{
+		margin-left: 12.5%!important;
+	}
+
+	#firstDivHome{
+		margin-top: 5%!important;
+	}
+
 	.search_div concontainer{
 		padding-left: 0px!important;
 	}
@@ -2057,10 +2269,10 @@ iPad 3
 		margin-right: 15px !important;
 	}
 
-	#module_shelf_menu{
+	/*#module_shelf_menu{
 
 		margin-top:25px;
-	}
+	}*/
 
 	#loader_plan .block{
 		width: 63%;
@@ -2144,6 +2356,20 @@ iPad 3
 @media only screen and (min-device-width: 320px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3){
 	/* Styles */
 
+
+	.smallnav .logo img{
+		width:120px!important;
+	}
+
+
+	#plansCard{
+		margin-left: 12.5%!important;
+	}
+
+	#firstDivHome{
+		margin-top: 5%!important;
+	}
+
 	.search_div concontainer{
 		padding-left: 0px!important;
 	}
@@ -2234,10 +2460,10 @@ iPad 3
 		margin-right: 15px !important;
 	}
 
-	#module_shelf_menu{
+	/*#module_shelf_menu{
 
 		margin-top:25px;
-	}
+	}*/
 
 	#loader_plan .block{
 		width: 63%;
@@ -2320,6 +2546,17 @@ iPad 3
 @media only screen and (min-device-width: 360px) and (max-device-height: 640px) and (orientation : landscape) and (-webkit-device-pixel-ratio: 3){
 	/* Styles */
 
+	.smallnav .logo img{
+		width:120px!important;
+	}
+
+	#plansCard{
+		margin-left: 12.5%!important;
+	}
+
+	#firstDivHome{
+		margin-top: 5%!important;
+	}
 	.search_div concontainer{
 		padding-left: 0px!important;
 	}
@@ -2408,10 +2645,10 @@ iPad 3
 		margin-right: 15px !important;
 	}
 
-	#module_shelf_menu{
+	/*#module_shelf_menu{
 
 		margin-top:25px;
-	}
+	}*/
 
 	#loader_plan .block{
 		width: 63%;
@@ -2491,6 +2728,18 @@ iPad 3
 
 @media only screen and (min-device-width: 360px) and (max-device-height: 640px) and (orientation : portrait) and (-webkit-device-pixel-ratio: 3){
 	/* Styles */
+
+	.smallnav .logo img{
+		width:120px!important;
+	}
+
+	#plansCard{
+		margin-left: 12.5%!important;
+	}
+
+	#firstDivHome{
+		margin-top: 5%!important;
+	}
 
 	.search_div concontainer{
 		padding-left: 0px!important;
@@ -2579,10 +2828,10 @@ iPad 3
 		margin-right: 15px !important;
 	}
 
-	#module_shelf_menu{
+	/*#module_shelf_menu{
 
 		margin-top:25px;
-	}
+	}*/
 
 	.carousel_l_m{
 		margin-left: -12%;
@@ -4982,12 +5231,6 @@ a.menu_toggler {
 
 /*RETINA*/
 @media only screen and (-webkit-min-device-pixel-ratio: 2) {
-	header .logo img.logo_def {
-		display:none!important;
-	}
-	header .logo img.logo_retina {
-		display:block!important;
-	}
 
 	.shortcode_accordion_item_title .ico,
 	.shortcode_toggles_item_title .ico,

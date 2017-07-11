@@ -43,7 +43,7 @@ $(document).ready(function () {
 
             $('#newArrivalsShelf').append(final_response);
             $('.item_shelf_new').first().addClass('active');
-            $("#myCarousel").carousel();
+            $("#myCarouselnew").carousel();
             if(w<750){
                 $("div#shelfNewArr").css('margin-left','6%')
             }

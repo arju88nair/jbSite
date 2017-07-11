@@ -1,7 +1,5 @@
-/* *** MAIN COLOR: #37878d *** */
-
-::selection {background:#37878d;}
-::-moz-selection {background:#37878d;}
+::selection {background:#37878d ;}
+::-moz-selection {background:#37878d ;}
 
 .shortcode_promoblock .promo_button_block a:hover,
 blockquote.type1:before,
@@ -28,7 +26,7 @@ ul.mobile_menu li .sub-menu li:hover .sub-menu li:hover > a,
 .ie8 .btn2top-wrapper,
 .ie8 .iconbox-ie8,
 .price_item.most_popular .price_ico {
-	background-color:#37878d;
+	background-color:#37878d ;
 }
 .view-tenth .mask,
 .dropcap.colored,
@@ -40,17 +38,10 @@ ul.sub-menu li.current-menu-item > a,
 .shortcode_button.btn_type2:hover,
 .shortcode_button.btn_type3:hover,
 .widget_tag_cloud a:hover {
-	background-color:#db241c!important;
+	background-color:#db241c !important;
 }
 
-a,
-.shortcode_tab_item_title:hover,
-.testimonials_list .author,
-.recent_posts_content .post_title,
-.blogpost_title:hover,
-a.menu_toggler:hover {
-	color:#37878d;
-}
+
 header ul.menu > li > a:hover,
 header ul.menu > li:hover > a,
 header ul.menu > li.current-menu-item > a,
@@ -59,11 +50,11 @@ header ul.menu > li.current-menu-parent > a,
 blockquote .author,
 .blogpost_date-block a:hover,
 .recent_posts .post_title:hover {
-	color:#D32F2F!important;
+	color:#D32F2F !important;
 }
 
 hr.colored {
-	border-color:#37878d;
+	border-color:#37878d ;
 }
 
 header nav ul.menu > li > .sub-menu > li.current-menu-item:before,
@@ -71,7 +62,7 @@ header nav ul.menu > li > .sub-menu > li.current-menu-parent:before,
 header nav ul.menu > li > .sub-menu > li:hover:before {
 	border-left: 5px solid transparent;
 	border-right: 5px solid transparent;
-	border-bottom: 5px solid #37878d;
+	border-bottom: 5px solid #37878d ;
 }
 
 .btn2top rect,
@@ -79,18 +70,18 @@ header nav ul.menu > li > .sub-menu > li:hover:before {
 .blogpost_type_ico .blogpost-svg rect,
 .post_type_ico,
 .price_ico rect {
-	fill:#37878d;
+	fill:#37878d ;
 }
 
 .ie8 .btn2top-wrapper:before,
 .ie8 .iconbox-ie8:before,
 .ie8 .gallery_item .iconbox-ie8:before,
 .price_item.most_popular .price_ico:before {
-	border-bottom-color:#37878d;
+	border-bottom-color:#37878d ;
 }
 .ie8 .btn2top-wrapper:after,
 .ie8 .iconbox-ie8:after,
 .ie8 .gallery_item .iconbox-ie8:after,
 .price_item.most_popular .price_ico:after {
-	border-top-color:#37878d;
+	border-top-color:#37878d ;
 }

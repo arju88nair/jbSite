@@ -55,16 +55,16 @@ table td { padding:0;}
 .h100 { height:100%;}
 
 a {
-	color:#464d52;
-	text-decoration:none;
-	transition: color 400ms;
-	-webkit-transition: color 400ms;
-	-moz-transition: color 400ms;
-	-o-transition: color 400ms;
+	color:#fff!important;
+	text-decoration:none!important;
+	transition: color 400ms!important;
+	-webkit-transition: color 400ms!important;
+	-moz-transition: color 400ms!important;
+	-o-transition: color 400ms!important;
 }
 a:hover {
-	text-decoration:none;
-	color:#464d52;
+	text-decoration:none!important;
+	color:#D32F2F!important;
 }
 
 /*ul {*/
@@ -6609,5 +6609,4 @@ article, .item {
  }.gray {
 	  color: #999999 !important;
   }
-
 

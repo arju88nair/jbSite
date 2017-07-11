@@ -80,7 +80,7 @@ $app->get('/', function (Request $request, Response $response) {
     while ($row = oci_fetch_assoc($result)) {
         $final_data[] = $row;
     }
-    $queryCat = "SELECT id,name FROM categories";
+    $queryCat = "SELECT id,name FROM categories order by name";
     $resultCat = oci_parse($con, $queryCat);
     oci_execute($resultCat);
     while ($rowCat = oci_fetch_assoc($resultCat)) {
@@ -162,7 +162,7 @@ $app->get('/book_details/{titleid}/{name}', function (Request $request, Response
     }
     $con = $this->db;
 
-    $queryCat = "SELECT id,name FROM categories";
+    $queryCat = "SELECT id,name FROM categories order by name";
     $resultCat = oci_parse($con, $queryCat);
     oci_execute($resultCat);
     while ($rowCat = oci_fetch_assoc($resultCat)) {
@@ -203,7 +203,7 @@ $app->get('/author_details/{authorid}/{name}', function (Request $request, Respo
 
     $con = $this->db;
 
-    $queryCat = "SELECT id,name FROM categories";
+    $queryCat = "SELECT id,name FROM categories order by name";
     $resultCat = oci_parse($con, $queryCat);
     oci_execute($resultCat);
     while ($rowCat = oci_fetch_assoc($resultCat)) {
@@ -237,7 +237,7 @@ $app->get('/search', function (Request $request, Response $response) {
     }
     $con = $this->db;
 
-    $queryCat = "SELECT id,name FROM categories";
+    $queryCat = "SELECT id,name FROM categories order by name";
     $resultCat = oci_parse($con, $queryCat);
     oci_execute($resultCat);
     while ($rowCat = oci_fetch_assoc($resultCat)) {
@@ -263,7 +263,7 @@ $app->get('/shelf', function (Request $request, Response $response) {
     }
     $con = $this->db;
 
-    $queryCat = "SELECT id,name FROM categories";
+    $queryCat = "SELECT id,name FROM categories order by name";
     $resultCat = oci_parse($con, $queryCat);
     oci_execute($resultCat);
     while ($rowCat = oci_fetch_assoc($resultCat)) {
@@ -487,7 +487,7 @@ $app->get('/signup', function (Request $request, Response $response) {
 
                     $con = $this->db;
 
-                    $queryCat = "SELECT id,name FROM categories";
+                    $queryCat = "SELECT id,name FROM categories order by name";
                     $resultCat = oci_parse($con, $queryCat);
                     oci_execute($resultCat);
                     while ($rowCat = oci_fetch_assoc($resultCat)) {
@@ -1026,7 +1026,7 @@ $app->get('/change_plan', function (Request $request, Response $response, $args)
 
                     $con = $this->db;
 
-                    $queryCat = "SELECT id,name FROM categories";
+                    $queryCat = "SELECT id,name FROM categories order by name";
                     $resultCat = oci_parse($con, $queryCat);
                     oci_execute($resultCat);
                     while ($rowCat = oci_fetch_assoc($resultCat)) {
@@ -1129,7 +1129,7 @@ $app->get('/renewView', function (Request $request, Response $response) {
     }
     $con = $this->db;
 
-    $queryCat = "SELECT id,name FROM categories";
+    $queryCat = "SELECT id,name FROM categories order by name";
     $resultCat = oci_parse($con, $queryCat);
     oci_execute($resultCat);
     while ($rowCat = oci_fetch_assoc($resultCat)) {
@@ -1432,7 +1432,7 @@ $app->get('/faq', function (Request $request, Response $response) {
 
     $con = $this->db;
 
-    $queryCat = "SELECT id,name FROM categories";
+    $queryCat = "SELECT id,name FROM categories order by name";
     $resultCat = oci_parse($con, $queryCat);
     oci_execute($resultCat);
     while ($rowCat = oci_fetch_assoc($resultCat)) {
@@ -1458,7 +1458,7 @@ $app->get('/contactUs', function (Request $request, Response $response) {
 
     $con = $this->db;
 
-    $queryCat = "SELECT id,name FROM categories";
+    $queryCat = "SELECT id,name FROM categories order by name";
     $resultCat = oci_parse($con, $queryCat);
     oci_execute($resultCat);
     while ($rowCat = oci_fetch_assoc($resultCat)) {
@@ -1482,7 +1482,7 @@ $app->get('/franchise', function (Request $request, Response $response) {
     }
     $con = $this->db;
 
-    $queryCat = "SELECT id,name FROM categories";
+    $queryCat = "SELECT id,name FROM categories order by name";
     $resultCat = oci_parse($con, $queryCat);
     oci_execute($resultCat);
     while ($rowCat = oci_fetch_assoc($resultCat)) {
@@ -1556,7 +1556,7 @@ $app->get('/adminCardsView', function (Request $request, Response $response) {
     }
     $con = $this->db;
 
-    $queryCat = "SELECT id,name FROM categories";
+    $queryCat = "SELECT id,name FROM categories order by name";
     $resultCat = oci_parse($con, $queryCat);
     oci_execute($resultCat);
     while ($rowCat = oci_fetch_assoc($resultCat)) {
@@ -1668,7 +1668,7 @@ $app->get('/adminBlogs', function (Request $request, Response $response) {
     }
     $con = $this->db;
 
-    $queryCat = "SELECT id,name FROM categories";
+    $queryCat = "SELECT id,name FROM categories order by name";
     $resultCat = oci_parse($con, $queryCat);
     oci_execute($resultCat);
     while ($rowCat = oci_fetch_assoc($resultCat)) {
@@ -1741,7 +1741,7 @@ $app->get('/break', function (Request $request, Response $response) {
     }
     $con = $this->db;
 
-    $queryCat = "SELECT id,name FROM categories";
+    $queryCat = "SELECT id,name FROM categories order by name";
     $resultCat = oci_parse($con, $queryCat);
     oci_execute($resultCat);
     while ($rowCat = oci_fetch_assoc($resultCat)) {
@@ -2090,7 +2090,7 @@ $app->get('/users/password/edit', function (Request $request, Response $response
 
     $con = $this->db;
 
-    $queryCat = "SELECT id,name FROM categories";
+    $queryCat = "SELECT id,name FROM categories order by name";
     $resultCat = oci_parse($con, $queryCat);
     oci_execute($resultCat);
     while ($rowCat = oci_fetch_assoc($resultCat)) {
@@ -2129,7 +2129,7 @@ $app->get('/store-locator', function (Request $request, Response $response) {
 
     $con = $this->db;
 
-    $queryCat = "SELECT id,name FROM categories";
+    $queryCat = "SELECT id,name FROM categories order by name";
     $resultCat = oci_parse($con, $queryCat);
     oci_execute($resultCat);
     while ($rowCat = oci_fetch_assoc($resultCat)) {
@@ -2287,7 +2287,7 @@ $app->get('/terms-and-condition', function (Request $request, Response $response
     }
     $con = $this->db;
 
-    $queryCat = "SELECT id,name FROM categories";
+    $queryCat = "SELECT id,name FROM categories order by name";
     $resultCat = oci_parse($con, $queryCat);
     oci_execute($resultCat);
     while ($rowCat = oci_fetch_assoc($resultCat)) {
@@ -2477,7 +2477,7 @@ $app->get('/searchByCategory', function (Request $request, Response $response) {
     }
     $con = $this->db;
 
-    $queryCat = "SELECT id,name FROM categories";
+    $queryCat = "SELECT id,name FROM categories order by name";
     $resultCat = oci_parse($con, $queryCat);
     oci_execute($resultCat);
     while ($rowCat = oci_fetch_assoc($resultCat)) {
@@ -2486,6 +2486,37 @@ $app->get('/searchByCategory', function (Request $request, Response $response) {
     return $this->view->render($response, 'catSearch.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider,'cat'=>$Categories,'data'=>$data,'ids'=>$ids,'count'=>count($data)));
 
 
+
+});
+$app->get('/loadMoreCatSearch', function (Request $request, Response $response) {
+
+    $ids = $_GET['categories'];
+    $page=$_GET['page'];
+
+    $raw_data = curlFunctionEs("/getCategoryWise?page=$page&categories=$ids");
+    $data = json_decode($raw_data);
+    echo json_encode($data);
+
+
+
+});
+$app->get('/loadMoreSearch', function (Request $request, Response $response) {
+
+    $text = $_GET['text'];
+    $page=$_GET['page'];
+
+    $raw_data = curlFunctionEs("/getSuggestBooksDetails?text=$text&page=$page");
+    $data = json_decode($raw_data);
+
+
+    echo json_encode($data);
+
+});$app->get('/typeahead', function (Request $request, Response $response) {
+
+    $text = $_GET['text'];
+    $raw_data = curlFunctionEs("/getSuggestBooks?text=$text&page=1");
+    $data = json_decode($raw_data);
+    echo json_encode($data);
 
 });
 
