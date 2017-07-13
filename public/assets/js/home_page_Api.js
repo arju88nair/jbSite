@@ -82,14 +82,14 @@ function getCardAuthor(data, visibleCardCount) {
 
         response += '<div class="col-xs-5 col-sm-2 col-md-2 col-lg-2">' +
             '<div class="item item_shadow">' +
-            '<div class="img_block_books"><a rel="external" data-ajax="false" href="/author_details/' + data[i]['_source'].author_id + '/' + data[i]['_source'].author_name + '"><img src="'+ data[i]['_source'].image_url+ '" onerror="this.src=\'../../assets/img/user.png\'"></a></div>' +
+            '<div class="img_block_books"><a rel="external" data-ajax="false" href="/author_details/' + data[i]['_source'].author_id + '/' + data[i]['_source'].author_name + '"><img src="' + data[i]['_source'].image_url + '" onerror="this.src=\'../../assets/img/user.png\'"></a></div>' +
             '<div class="carousel_body_author">' +
             '<div class="carousel_title_author"><h5 title="' + data[i]['_source'].author_name + '">' + data[i]['_source'].author_name + '</h5></div>' +
             '<div class="carousel_desc">' +
             '<div class="text-center">' +
             // '<a href="/author_details/' + data[i].ID + '" id="' + data[i].ID + '" class="shortcode_button btn_small btn_type1" title="Read">Read</a>' +
             '<div class="clear"></div>' +
-            '</div>'+
+            '</div>' +
             '</div></div></div></div>';
 
         //if( i > 0 && i % 3 == 0){
@@ -141,9 +141,9 @@ $(document).ready(function () {
 
             var w = window.outerWidth;
             var h = window.outerHeight;
-            if(w<750){
+            if (w < 750) {
                 var final_response = getCard(cardData, 2, data['ids'], data['wishlist']);
-            }else{
+            } else {
                 var final_response = getCard(cardData, 5, data['ids'], data['wishlist']);
             }
 
@@ -156,7 +156,6 @@ $(document).ready(function () {
     });
 
 
-
     $.ajax({
         type: "GET",
         url: "/getAuthor",
@@ -164,13 +163,13 @@ $(document).ready(function () {
 
             $("#frame_authorCarousel1").hide();
             $("#loader").hide();
-            data=JSON.parse(data);
+            data = JSON.parse(data);
 
             var w = window.outerWidth;
             var h = window.outerHeight;
-            if(w<750){
+            if (w < 750) {
                 var final_response = getCardAuthor(data['data'], 2);
-            }else{
+            } else {
                 var final_response = getCardAuthor(data['data'], 5);
             }
 
@@ -195,7 +194,7 @@ $(document).ready(function () {
             var response = '';
             var i = 0;
             var plans = val;
-            var colors = ['block personal fl', 'block professional fl', 'block business fl','block third fl'];
+            var colors = ['block personal fl', 'block professional fl', 'block business fl', 'block third fl'];
             plans.forEach(function (arr) {
                 // response += '<div class="price_item" style="width:33.33%">' +
                 //     '<div class="price_item_wrapper">' +
@@ -211,7 +210,7 @@ $(document).ready(function () {
                 //     '</div></div>';
 
 
-                var sec_colors = ['#78CFBF', '#3EC6E0', '#E3536C','#7470b9']
+                var sec_colors = ['#78CFBF', '#3EC6E0', '#E3536C', '#7470b9']
                 response += '   <div class="block personal fl">' +
                     '<h4 class="title">' + arr['PLAN_NAME'].toUpperCase() + '</h4>' +
                     ' <a href="/signup?planname=' + arr['PROMO'] + '&books=' + arr['NO_OF_BOOKS'] + '&months=' + arr['NO_OF_MONTHS'] + '"><div class="content_pt">' +
@@ -243,7 +242,6 @@ $(document).ready(function () {
 
             for (var i = 0; i < data.length; i++) {
                 $("#blogDiv").append(
-
                     '<div class="col-xs-11 col-sm-4 col-md-4 col-lg-4 ">' +
                     '<div class="img_block wrapped_img"><img style="width: 100%;height: 17em;" src="' + data[i]['IMAGE'] + '" alt="" width="270" height="170"></div>' +
                     '<div class="carousel_body" style="margin-left: 15px;">' +
@@ -286,7 +284,7 @@ function wishlistAdd(id) {
             }
             else {
                 $("#wish_" + id).attr("src", "../../assets/img/Added_WL_Right.png")
-                toastr.success('Successfully added into your wish list !').css("width","500px");
+                toastr.success('Successfully added into your wish list !').css("width", "500px");
             }
         },
         error: function (err) {
@@ -332,25 +330,23 @@ function placeOrder(id) {
 }
 
 
-$(document).ready(function(){
+$(document).ready(function () {
     // on click SignIn Button checks for valid email and all field should be filled
 
 
-
     // on click signup It Hide Login Form and Display Registration Form
-    $(".signup").click(function(){
+    $(".signup").click(function () {
 
-        $(".loginDIv").slideUp("slow", function(){
+        $(".loginDIv").slideUp("slow", function () {
             $(".login_form_fram_second").slideDown("slow");
         });
     });
 
     // on click signin It Hide Registration Form and Display Login Form
-    $(".signin").click(function(){
+    $(".signin").click(function () {
 
 
-
-        $(".login_form_fram_second").slideUp("slow",function(){
+        $(".login_form_fram_second").slideUp("slow", function () {
             $(".loginDIv").slideDown("slow");
         });
     });
@@ -358,20 +354,16 @@ $(document).ready(function(){
 });
 
 
-
-
 function signupClick() {
 
     var username = $("#username").val();
-    if(username == "" || username == 0)
-    {
+    if (username == "" || username == 0) {
         toastr.error("Please enter an email !");
         return false;
     }
 
     var password = $("#password").val();
-    if(password == "" || username == 0)
-    {
+    if (password == "" || username == 0) {
         toastr.error("Please enter password !");
         return false;
     }
@@ -384,43 +376,179 @@ function signupClick() {
             $(".spinner").hide();
 
 
+            if (data === false || data === 'false') {
+                toastr.error('Wrong credentials, Please try again !');
+                $(".spinner").hide();
+                return false
 
-            if (data != false) {
-                data = JSON.parse(data)
-                $("#welcomeId").text(" Welcome " + data['name']);
-                $("#userTile").show();
-                $(".login_form_fram_one").hide();
-                $("#main").hide();
-                $("#first").hide();
-                $("#shelfButton").show();
-                toastr.success('Successfully signed in !');
-                localStorage.setItem("flag", true)
-                $("#first").hide();
-                $("#main").hide();
-                logClick("Log in click");
-
-                (function (i, s, o, g, r, a, m) {
-                    i['GoogleAnalyticsObject'] = r;
-                    i[r] = i[r] || function () {
-                            (i[r].q = i[r].q || []).push(arguments)
-                        }, i[r].l = 1 * new Date();
-                    a = s.createElement(o),
-                        m = s.getElementsByTagName(o)[0];
-                    a.async = 1;
-                    a.src = g;
-                    m.parentNode.insertBefore(a, m)
-                })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-                ga('create', 'UA-93821751-1', 'none');
-                ga('send', 'event', 'Clicks', 'Login of user ' + username + '', 'First Screen');
-
-                logClick('Login of user ' + username + '');
-                window.location.href = "/shelf";
-
-                return false;
             }
-            toastr.error('Wrong credentials, Please try again !');
+            else {
+                data = JSON.parse(data)
+                if (data.length === 1) {
+
+                    $(".login_form_fram_one").hide();
+                    $("#main").hide();
+                    $("#first").hide();
+                    $("#shelfButton").show();
+                    toastr.success('Successfully signed in !');
+                    localStorage.setItem("flag", true)
+                    $("#first").hide();
+                    $("#main").hide();
+                    logClick("Log in click");
+                    (function (i, s, o, g, r, a, m) {
+                        i['GoogleAnalyticsObject'] = r;
+                        i[r] = i[r] || function () {
+                                (i[r].q = i[r].q || []).push(arguments)
+                            }, i[r].l = 1 * new Date();
+                        a = s.createElement(o),
+                            m = s.getElementsByTagName(o)[0];
+                        a.async = 1;
+                        a.src = g;
+                        m.parentNode.insertBefore(a, m)
+                    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+                    ga('create', 'UA-93821751-1', 'none');
+                    ga('send', 'event', 'Clicks', 'Login of user ' + username + '', 'First Screen');
+
+                    logClick('Login of user ' + username + '');
+                    window.location.href = "/shelf";
+
+                    return false;
+                }
+                else{
+                    (function (i, s, o, g, r, a, m) {
+                        i['GoogleAnalyticsObject'] = r;
+                        i[r] = i[r] || function () {
+                                (i[r].q = i[r].q || []).push(arguments)
+                            }, i[r].l = 1 * new Date();
+                        a = s.createElement(o),
+                            m = s.getElementsByTagName(o)[0];
+                        a.async = 1;
+                        a.src = g;
+                        m.parentNode.insertBefore(a, m)
+                    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+                    ga('create', 'UA-93821751-1', 'none');
+                    ga('send', 'event', 'Clicks', 'Login of user ' + username + '', 'First Screen');
+
+                    logClick('Login of user ' + username + '');
+                    for(var i=0;i<data.length;i++)
+                    {
+                        $("#memberContent").append('<div class="radio"><label><input type="radio" name="memberRadio" value="'+data[i]['MEMBERSHIP_NO']+'">'+data[i]['MEMBERSHIP_NO']+'</label></div>')
+
+                    }
+                    $('#memberModel').modal('show');
+
+
+
+                }
+            }
+
+
+        },
+        error: function (err) {
             $(".spinner").hide();
+
+            // toastr.error('Something went wrong, Please try again !');
+            console.log(err.responseText);
+            $("#frame_sign_in").hide();
+            $("#loader").hide();
+        }
+
+
+    });
+
+
+}
+function signupClick2() {
+
+    var username = $("#username2").val();
+    if (username == "" || username == 0) {
+        toastr.error("Please enter an email !");
+        return false;
+    }
+
+    var password = $("#password2").val();
+    if (password == "" || username == 0) {
+        toastr.error("Please enter password !");
+        return false;
+    }
+    $(".spinner").show();
+
+    $.ajax({
+        type: "GET",
+        url: "/login/" + username + "/" + password + "",
+        success: function (data) {
+            $(".spinner").hide();
+
+
+            if (data === false || data === 'false') {
+                toastr.error('Wrong credentials, Please try again !');
+                $(".spinner").hide();
+                return false
+
+            }
+            else {
+                data = JSON.parse(data)
+                if (data.length === 1) {
+
+                    $(".login_form_fram_one").hide();
+                    $("#main").hide();
+                    $("#first").hide();
+                    $("#shelfButton").show();
+                    toastr.success('Successfully signed in !');
+                    localStorage.setItem("flag", true)
+                    $("#first").hide();
+                    $("#main").hide();
+                    logClick("Log in click");
+                    (function (i, s, o, g, r, a, m) {
+                        i['GoogleAnalyticsObject'] = r;
+                        i[r] = i[r] || function () {
+                                (i[r].q = i[r].q || []).push(arguments)
+                            }, i[r].l = 1 * new Date();
+                        a = s.createElement(o),
+                            m = s.getElementsByTagName(o)[0];
+                        a.async = 1;
+                        a.src = g;
+                        m.parentNode.insertBefore(a, m)
+                    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+                    ga('create', 'UA-93821751-1', 'none');
+                    ga('send', 'event', 'Clicks', 'Login of user ' + username + '', 'First Screen');
+
+                    logClick('Login of user ' + username + '');
+                    window.location.href = "/shelf";
+
+                    return false;
+                }
+                else{
+                    (function (i, s, o, g, r, a, m) {
+                        i['GoogleAnalyticsObject'] = r;
+                        i[r] = i[r] || function () {
+                                (i[r].q = i[r].q || []).push(arguments)
+                            }, i[r].l = 1 * new Date();
+                        a = s.createElement(o),
+                            m = s.getElementsByTagName(o)[0];
+                        a.async = 1;
+                        a.src = g;
+                        m.parentNode.insertBefore(a, m)
+                    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+                    ga('create', 'UA-93821751-1', 'none');
+                    ga('send', 'event', 'Clicks', 'Login of user ' + username + '', 'First Screen');
+
+                    logClick('Login of user ' + username + '');
+                    for(var i=0;i<data.length;i++)
+                    {
+                        $("#memberContent").append('<div class="radio"><label><input type="radio" name="memberRadio" value="'+data[i]['MEMBERSHIP_NO']+'">'+data[i]['MEMBERSHIP_NO']+'</label></div>')
+
+                    }
+                    $('#memberModel').modal('show');
+
+
+
+                }
+            }
 
 
         },
@@ -440,13 +568,43 @@ function signupClick() {
 }
 
 
+function forgotPassword() {
 
-function forgotPassword()
-{
+    var email = $("#forgetEmail").val();
+    if (email == "" || email == 0) {
+        toastr.error("Please enter an email !");
+        return false;
+    }
+    $(".spinner").show();
+    $.ajax({
+        type: "GET",
+        url: "/sendResetMail?email=" + email,
+        success: function (data) {
+            $(".spinner").hide();
 
-    var email=$("#forgetEmail").val();
-    if(email == "" || email == 0)
-    {
+            console.log(data)
+            if (JSON.parse(data) === "success") {
+                $(".spinner").hide();
+
+                toastr.success('Please check your mail for further instructions!');
+
+            }
+            else {
+                $(".spinner").hide();
+
+                toastr.warning("Something went wrong!")
+
+
+            }
+        },
+
+    });
+
+}
+function forgotPassword2() {
+
+    var email = $("#forgetEmail2").val();
+    if (email == "" || email == 0) {
         toastr.error("Please enter an email !");
         return false;
     }

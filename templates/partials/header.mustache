@@ -187,7 +187,7 @@
                             </div>
                         </div>
                         <div class="cart largenav col-sm-1 col-md-1 col-lg-1">
-                            <a class="cart-button" href="javascript:void(0)" data-toggle="modal" data-target="#catModal">
+                            <a class="cart-button" href="javascript:void(0)" data-toggle="modal" data-target="#catModal" style="color: white!important;">
                                 <!-- Category -->
                                 <i class="fa fa-filter" aria-hidden="true"></i> Category
                                 <!-- <span class="item-number ">3</span> -->
@@ -196,7 +196,7 @@
                     </div>
 
                     <div class="cart largenav col-sm-1 col-md-1 col-lg-1" id="shelfButton" style="margin-left: 40px;" >
-                        <a class="cart-button" rel="external" data-ajax="false" href="/shelf">
+                        <a class="cart-button" rel="external" data-ajax="false" href="/shelf" style="color: white!important;">
                             <i class="fa fa-book" aria-hidden="true"></i> My Shelf
                             <!-- <span class="item-number ">3</span> -->
                         </a>
@@ -280,7 +280,7 @@
                             </div>
                         </div>
                         <div class="cart largenav col-sm-1 col-md-1 col-lg-1">
-                            <a class="cart-button" href="javascript:void(0)" data-toggle="modal" data-target="#catModal">
+                            <a class="cart-button" href="javascript:void(0)" data-toggle="modal" data-target="#catModal" style="color: white!important;">
                                 <!-- Category -->
                                 <i class="fa fa-filter" aria-hidden="true"></i> Category
                                 <!-- <span class="item-number ">3</span> -->
@@ -305,23 +305,23 @@
     <div id="mySidenav" class="sidenav">
         <div class="container" style="background-color: #323232;">
 
-        <span class="sidenav-heading">
-            <a href="/" rel="external" data-ajax="false" style="margin-top: 0px; margin-bottom: 0px; margin-left: 15px;"><i class="fa fa-home" aria-hidden="true"></i></a>
-            <!--<a href="javascript:void(0)" onclick="closeNav()" style="margin-left: 60%; margin-top: 8px;">×</a>-->
-        </span>
+            <span class="sidenav-heading">
+                <a href="/" rel="external" data-ajax="false" style="margin-top: 0px; margin-bottom: 0px; margin-left: 15px;"><i class="fa fa-home" aria-hidden="true"></i></a>
+                <!--<a href="javascript:void(0)" onclick="closeNav()" style="margin-left: 60%; margin-top: 8px;">×</a>-->
+            </span>
 
         </div>
         <ul id="menuHeader" style="text-align: left">
-            <li class="upper-links" id="whatsNewMenu"><a class="links" rel="external" data-ajax="false" href="/#whatsNew">WHAT'S NEW</a></li><br>
-            <li class="upper-links" id="membershipPlansMenu"><a class="links" rel="external" data-ajax="false" href="/#membershipPlans">MEMBERSHIP PLANS</a></li><br>
-            <li class="upper-links" id="blogMenu"><a class="links" rel="external" data-ajax="false" href="/#blog">BLOG</a></li><br>
-            <li class="upper-links" ><a class="links" target="_blank" href="http://culture.place">CULTURE.PLACE</a></li><br>
-            <li class="upper-links" id="storeMenu"><a class="links" rel="external" data-ajax="false"href="/store-locator">STORE LOCATOR</a></li><br>
-            <li class="upper-links" id="faqMenu"><a class="links" rel="external" data-ajax="false" href="/faq">FAQs</a></li><br>
+            <li class="upper-links" id="whatsNewMenu"><a class="links" rel="external" data-ajax="false" href="/#whatsNew" style="color: black!important;">WHAT'S NEW</a></li><br>
+            <li class="upper-links" id="membershipPlansMenu"><a class="links" rel="external" data-ajax="false" href="/#membershipPlans" style="color: black!important;">MEMBERSHIP PLANS</a></li><br>
+            <li class="upper-links" id="blogMenu"><a class="links" rel="external" data-ajax="false" href="/#blog" style="color: black!important;">BLOG</a></li><br>
+            <li class="upper-links" ><a class="links" target="_blank" href="http://culture.place" style="color: black!important;">CULTURE.PLACE</a></li><br>
+            <li class="upper-links" id="storeMenu"><a class="links" rel="external" data-ajax="false"href="/store-locator" style="color: black!important;">STORE LOCATOR</a></li><br>
+            <li class="upper-links" id="faqMenu"><a class="links" rel="external" data-ajax="false" href="/faq" style="color: black!important;">FAQs</a></li><br>
             {{#flag}}
-                <li class="upper-links"><a class="links" rel="external" data-ajax="false" href="/shelf">MY SHELF</a></li><br>
+                <li class="upper-links"><a class="links" rel="external" data-ajax="false" href="/shelf" style="color: black!important;">MY SHELF</a></li><br>
             {{/flag}}
-            <li class="upper-links"><a class="links" rel="external" data-ajax="false" href="/logout/">LOG OUT </a></li>
+            <li class="upper-links"><a class="links" rel="external" data-ajax="false" href="/logout/" style="color: black!important;">LOG OUT </a></li>
 
         </ul>
     </div>
@@ -362,14 +362,42 @@
 
         </div>
     </div>
+    <div id="memberModel" class="modal fade modalStyle" role="dialog" style="z-index: 10000">
+        <div class="modal-dialog" style="top:-60%;width:100%;">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">There are multiple accounts associated with this ID. Please select one to proceed</h4>
+                </div>
+
+                <div class="modal-body">
+
+                    <div class="row text-left" style="margin-left: 15px;" id="memberContent">
+
+                    </div>
+
+                    <br><br>
+                    <div class="row " style="margin-left: 35%">
+                        <div class="col-sm-6">
+                            <button class="btn shortcode_button btn_medium btn_type1" type="button" id="save_member_value">Submit</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
     <div id="catModal" class="modal fade modalStyle" role="dialog" style="z-index: 10000">
         <div class="modal-dialog" style="top:-60%;width:300%;left:-100%">
 
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Search by category</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Search by category</h4>
                 </div>
 
                 <div class="modal-body">

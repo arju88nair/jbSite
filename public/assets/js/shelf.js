@@ -242,14 +242,14 @@ function getRecommend(data, visibleCardCount, ids, wishlist) {
         //if( i > 0 && i % 3 == 0){
         if (items == visibleCardCount) {
 
-            final_response += '<div class="item item_shelf_rec' + active + '" style="">' + response + '</div>';
+            final_response += '<div class="item item_shelf_rec' + active + '" style="margin-left: 8%">' + response + '</div>';
             response = "";
             items = 0;
         }
 
     }
     if (items < visibleCardCount && items > 0) {
-        final_response += '<div class="item item_shelf_rec ' + active + '" style="">' + response + '</div>';
+        final_response += '<div class="item item_shelf_rec ' + active + '" style="margin-left: 8%">' + response + '</div>';
     }
     return final_response;
 }
@@ -327,9 +327,29 @@ $(document).ready(function () {
         //get data-id attribute of the clicked element
         var address1 = $(e.relatedTarget).data('address1');
         var dob = $(e.relatedTarget).data('datofbirth');
-        var dobDate= moment(dob, "DD-MMM-YY").add(1, 'days').toDate();
+        if(dob === null || dob === "null")
+        {
+            $("#dob").datepicker({
+                dateFormat: 'dd-mm-yy',
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-100:+0",
+                defaultDate: new Date()
+            })
+        }
+        else{
 
-        dobDate=dobDate.toISOString().replace(/T.*/,'').split('-').reverse().join('-');
+            var dobDate= moment(dob, "DD-MMM-YY").add(1, 'days').toDate();
+
+            dobDate=dobDate.toISOString().replace(/T.*/,'').split('-').reverse().join('-');
+            $("#dob").datepicker({
+                dateFormat: 'dd-mm-yy',
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-100:+0",
+                defaultDate: dobDate,
+            }).val(dobDate);
+        }
 
         var address2 = $(e.relatedTarget).data('address2');
         var gender = $(e.relatedTarget).data('gender');
@@ -339,13 +359,7 @@ $(document).ready(function () {
         var pincode = $(e.relatedTarget).data('pin');
         var phone = $(e.relatedTarget).data('phone');
         var email = $(e.relatedTarget).data('email');
-        $("#dob").datepicker({
-            dateFormat: 'dd-mm-yy',
-            changeMonth: true,
-            changeYear: true,
-            yearRange: "-100:+0",
-            defaultDate: dobDate,
-        }).val(dobDate);
+
         //populate the textbox
         $('#address1').val(address1);
         $('#gender').val(gender);
@@ -449,9 +463,14 @@ $(document).ready(function () {
 
                 $("#emptyResult").show();
                 $("#emptyResult").text("No books to show !");
-                $('html, body').animate({
-                    scrollTop: $('#shelf_data').offset().top - 150
-                }, 800);
+
+
+                var w = window.outerWidth;
+                if(w<750){
+                    $('html, body').animate({
+                        scrollTop: $('#shelf_data').offset().top - 150
+                    }, 800);
+                }
 
                 return false;
             }
@@ -460,9 +479,13 @@ $(document).ready(function () {
             var final_response = generateDIV(new_data['data']['result'], 'placePickup', 'rental_id', 'Return', 'none', new_data['wishlist'], '', 'none', 'margin-top: 34%;margin-left: -100%;', 'inline-block', 'block');
             $('#shelf_data').html('');
             $('#shelf_data').append(final_response);
-            $('html, body').animate({
-                scrollTop: $('#shelf_data').offset().top - 150
-            }, 800);
+            var w = window.outerWidth;
+            var h = window.outerHeight;
+            if(w<750){
+                $('html, body').animate({
+                    scrollTop: $('#shelf_data').offset().top - 150
+                }, 800);
+            }
             $("#left_menu_recommend").css('margin-top', '33%');
 
 
@@ -569,7 +592,7 @@ function generateWishDIV(arr,ids,rent) {
             '<div class="col-md-4 col-xs-6 shelf_logos" style="float: left;margin-top: 37% ;margin-left: -100%">' +
             '<a href="javascript:void(0)" class="tiptip" title="Share" data-id="' + arr_data['id'] + '" data-title="' + arr_data['title'] + '" data-toggle="modal" data-target="#shareModal" style="margin-left: 10%">' +
             '<img class="share_btn" src=../../assets/img/Engage.png alt="Smiley face" height="25" width="25"></a>' +
-            '&nbsp;<a   style="display:inline-block;cursor: default"class="tiptip" onclick="removeWishlist(this,' + arr_data['id'] + ')"  id="' + arr_data['id'] + '"><img class="share_btn" src=../../assets/img/Delete.png alt="Smiley face" height="23" width="23"></i>'+
+            '&nbsp;<a   style="display:inline-block;cursor: hand"class="tiptip" onclick="removeWishlist(this,' + arr_data['id'] + ')"  id="' + arr_data['id'] + '"><img class="share_btn" src=../../assets/img/Delete.png alt="Smiley face" height="23" width="23"></i>'+
             '</a>' +
             '</div>' +
             '</div>';
@@ -599,9 +622,18 @@ $('#wishlist').click(function (e) {
                 $("#emptyResult").show();
                 $("#emptyResult").text("No books to show !");
                 $("#left_menu_recommend").css('margin-top', '33%');
-                $('html, body').animate({
-                    scrollTop: $('#shelf_data').offset().top - 150
-                }, 800);
+
+                var w = window.outerWidth;
+                var h = window.outerHeight;
+                if(w<750){
+                    $('html, body').animate({
+                        scrollTop: $('#shelf_data').offset().top - 150
+                    }, 800);
+                }
+
+
+
+
                 $("#left_menu_recommend").show();
 
                 return false;
@@ -614,9 +646,13 @@ $('#wishlist').click(function (e) {
             $('#shelf_data').html('');
             $('#shelf_data').append(final_response);
             $("#left_menu_recommend").show();
-            $('html, body').animate({
-                scrollTop: $('#shelf_data').offset().top - 150
-            }, 800);
+            var w = window.outerWidth;
+            var h = window.outerHeight;
+            if(w<750){
+                $('html, body').animate({
+                    scrollTop: $('#shelf_data').offset().top - 150
+                }, 800);
+            }
             $("#left_menu_recommend").css('margin-top', '33%');
 
         },
@@ -644,9 +680,17 @@ $('#ordered_books').click(function (e) {
 
                 $("#emptyResult").show();
                 $("#emptyResult").text("No books to show !");
-                $('html, body').animate({
-                    scrollTop: $('#shelf_data').offset().top - 150
-                }, 800);
+
+
+                var w = window.outerWidth;
+                var h = window.outerHeight;
+                if(w<750){
+                    $('html, body').animate({
+                        scrollTop: $('#shelf_data').offset().top - 150
+                    }, 800);
+                }
+
+
                 $("#left_menu_recommend").css('margin-top', '33%');
 
                 return false;
@@ -661,9 +705,13 @@ $('#ordered_books').click(function (e) {
             }
             var final_response = generateDIV(new_data['data']['result'], 'cancelOrder', 'delivery_order_id', 'Cancel', 'inline-block', new_data['wishlist'], 'delivery_order_id', 'block', 'margin-top: 6% !important;margin-left: -40%', 'inline-block', 'block');
             $('#shelf_data').append(final_response);
-            $('html, body').animate({
-                scrollTop: $('#shelf_data').offset().top - 150
-            }, 800);
+            var w = window.outerWidth;
+            var h = window.outerHeight;
+            if(w<750){
+                $('html, body').animate({
+                    scrollTop: $('#shelf_data').offset().top - 150
+                }, 800);
+            }
             $("#left_menu_recommend").css('margin-top', '33%');
 
         },
@@ -696,9 +744,15 @@ $('#currently_reading').click(function (e) {
 
                 $("#emptyResult").show();
                 $("#emptyResult").text("No books to show !");
-                $('html, body').animate({
-                    scrollTop: $('#shelf_data').offset().top - 150
-                }, 800);
+
+
+                var w = window.outerWidth;
+                var h = window.outerHeight;
+                if(w<750){
+                    $('html, body').animate({
+                        scrollTop: $('#shelf_data').offset().top - 150
+                    }, 800);
+                }
 
                 return false;
             }
@@ -707,9 +761,13 @@ $('#currently_reading').click(function (e) {
             var final_response = generateDIV(new_data['data']['result'], 'placePickup', 'rental_id', 'Return', 'none', new_data['wishlist'], '', 'none', 'margin-top: 34%;margin-left: -100%;', 'inline-block', 'block');
             $('#shelf_data').html('');
             $('#shelf_data').append(final_response);
-            $('html, body').animate({
-                scrollTop: $('#shelf_data').offset().top - 150
-            }, 800);
+            var w = window.outerWidth;
+            var h = window.outerHeight;
+            if(w<750){
+                $('html, body').animate({
+                    scrollTop: $('#shelf_data').offset().top - 150
+                }, 800);
+            }
             $("#left_menu_recommend").css('margin-top', '33%');
 
 
@@ -741,9 +799,15 @@ $('#pick_up').click(function (e) {
 
                 $("#emptyResult").show();
                 $("#emptyResult").text("No pickup requests !");
-                $('html, body').animate({
-                    scrollTop: $('#shelf_data').offset().top - 150
-                }, 800);
+
+
+                var w = window.outerWidth;
+                var h = window.outerHeight;
+                if(w<750){
+                    $('html, body').animate({
+                        scrollTop: $('#shelf_data').offset().top - 150
+                    }, 800);
+                }
 
                 return false;
             }
@@ -753,9 +817,13 @@ $('#pick_up').click(function (e) {
             var final_response = generateDIV(new_data['data']['result'], 'cancelPickup', 'rental_id', 'Cancel', 'inline-block', new_data['wishlist'], 'delivery_order_id', 'block', 'margin-top: 6% !important;margin-left: -40%', 'inline-block', 'block');
             $('#shelf_data').html('');
             $('#shelf_data').append(final_response);
-            $('html, body').animate({
-                scrollTop: $('#shelf_data').offset().top - 150
-            }, 800);
+            var w = window.outerWidth;
+            var h = window.outerHeight;
+            if(w<750){
+                $('html, body').animate({
+                    scrollTop: $('#shelf_data').offset().top - 150
+                }, 800);
+            }
             $("#left_menu_recommend").css('margin-top', '33%');
 
         },
@@ -789,12 +857,16 @@ $('#profile').click(function (e) {
                 '<div class="jumbotron col-xs-11">' +
                 '<div class="row">' +
 
-                '<div class="column column-66" style="cursor:default;"> <div style="font-size: 18px; color:#000 !important; font-family: Playfair Display;margin-top: -3%" class="col-sm-10">  <span class="">' + data_new['data'][0]['FIRST_NAME'] + '</span>  <a class="shortcode_button btn_small btn_type1" style="float:right;" href="" data-toggle="modal" data-address="' + data_new['data'][0]['EMAIL_ID'] + '"  data-address1="' + data_new['data'][0]['ADDRESS1'] + '"  data-address2="' + data_new['data'][0]['ADDRESS2'] + '"  data-address3="' + data_new['data'][0]['ADDRESS3'] + '"  data-state="' + data_new['data'][0]['STATE'] + '"  data-city="' + data_new['data'][0]['CITY'] + '"data-pin="' + data_new['data'][0]['PINCODE'] + '" data-phone="' + data_new['data'][0]['MPHONE'] + '" data-email="' + data_new['data'][0]['EMAIL_ID'] + '"  data-datofbirth="' + data_new['data'][0]['DATE_OF_BIRTH'] + '"  data-gender="' + data_new['data'][0]['GENDER'] + '" data-target="#profileUpdate">Edit Profile</a></div></div>' + '<div class="column column-33"> <div class="card border-color-teal"> <table class="table table-striped" style="margin:0;font-family:Playfair Display;"> <tbody> <tr> <td>Member since</td> <td>' + data_new['data'][0]['REGISTER_TIME'] + '</td> </tr>   <tr> <td>E-mail</td> <td>' + data_new['data'][0]['EMAIL_ID'] + '</td> </tr>  <tr> <td>Date of birth</td> <td>' + data_new['data'][0]['DATE_OF_BIRTH'] + '</td> </tr>  <tr> <td>Phone No</td> <td>' + data_new['data'][0]['MPHONE'] + '</td> </tr> <tr> <td>Address</td>  <td>' + data_new['data'][0]['ADDRESS1'] + data_new['data'][0]['ADDRESS2'] + data_new['data'][0]['ADDRESS3'] + ", " + data_new['data'][0]['STATE'] + ", " + data_new['data'][0]['CITY'] + ", " + data_new['data'][0]['PINCODE'] + '</td>  </tr> </tbody> </table> </div> </div>' + '</div>' +
+                '<div class="column column-66" style="cursor:default;"> <div style="font-size: 18px; color:#000 !important; font-family: Playfair Display;margin-top: -3%" class="col-sm-10">  <span class="">' + data_new['data'][0]['FIRST_NAME'] + '( Membership Number - '+data_new['data'][0]['MEMBERSHIP_NO']+')</span>  <a class="shortcode_button btn_small btn_type1" style="float:right;" href="" data-toggle="modal" data-address="' + data_new['data'][0]['EMAIL_ID'] + '"  data-address1="' + data_new['data'][0]['ADDRESS1'] + '"  data-address2="' + data_new['data'][0]['ADDRESS2'] + '"  data-address3="' + data_new['data'][0]['ADDRESS3'] + '"  data-state="' + data_new['data'][0]['STATE'] + '"  data-city="' + data_new['data'][0]['CITY'] + '"data-pin="' + data_new['data'][0]['PINCODE'] + '" data-phone="' + data_new['data'][0]['MPHONE'] + '" data-email="' + data_new['data'][0]['EMAIL_ID'] + '"  data-datofbirth="' + data_new['data'][0]['DATE_OF_BIRTH'] + '"  data-gender="' + data_new['data'][0]['GENDER'] + '" data-target="#profileUpdate">Edit Profile</a></div></div>' + '<div class="column column-33"> <div class="card border-color-teal"> <table class="table table-striped" style="margin:0;font-family:Playfair Display;"> <tbody> <tr> <td>Member since</td> <td>' + data_new['data'][0]['REGISTER_TIME'] + '</td> </tr>   <tr> <td>E-mail</td> <td>' + data_new['data'][0]['EMAIL_ID'] + '</td> </tr>  <tr> <td>Date of birth</td> <td>' + data_new['data'][0]['DATE_OF_BIRTH'] + '</td> </tr>  <tr> <td>Phone No</td> <td>' + data_new['data'][0]['MPHONE'] + '</td> </tr> <tr> <td>Address</td>  <td>' + data_new['data'][0]['ADDRESS1'] + data_new['data'][0]['ADDRESS2'] + data_new['data'][0]['ADDRESS3'] + ", " + data_new['data'][0]['STATE'] + ", " + data_new['data'][0]['CITY'] + ", " + data_new['data'][0]['PINCODE'] + '</td>  </tr><tr> <td>Status</td>  <td>' + data_new['data'][0]['STATUS'] + '</td>  </tr> </tbody> </table> </div> </div>' + '</div>' +
                 '</div>'
             );
-            $('html, body').animate({
-                scrollTop: $('#shelf_data').offset().top - 150
-            }, 800);
+            var w = window.outerWidth;
+            var h = window.outerHeight;
+            if(w<750){
+                $('html, body').animate({
+                    scrollTop: $('#shelf_data').offset().top - 150
+                }, 800);
+            }
             $("#left_menu_recommend").css('margin-top', '15%');
 
         }
@@ -832,8 +904,8 @@ $('#subscription').click(function (e) {
             var change_plan = data_new['change_plan']
             var terms = data_new['terms'];
             $("#left_menu_recommend").show();
-
             console.log(data_new);
+
             $('#change_plan').html('');
             var response = '';
             var i = 0;
@@ -844,6 +916,18 @@ $('#subscription').click(function (e) {
             //
             //     return false;
             // }
+
+            if(data_new['cards'].length >1)
+            {
+                var divStyle1='margin-top:0.7%';
+                var divStyle2='display:block';
+
+            }
+            else{
+                var divStyle1='margin-top:3%';
+                var divStyle2='display:none';
+            }
+
 
 
             $('#shelf_data').append('<br><div class="row" style="margin-left: 0px !important;">' +
@@ -895,11 +979,28 @@ $('#subscription').click(function (e) {
                 '</div>' +
                 '</div>' +
 
-                '<div class="col-sm-3" style="margin-top:3%">' +
+                '<div class="col-sm-3" style="'+divStyle1+'">' +
                 '<div class="text-right">' +
                 '<button data-toggle="collapse" data-target="#demo" class="shortcode_button btn_small btn_type10" role="button" onclick="RenewButton()">Renew Plan &nbsp;&nbsp;</button>' +
                 '<br><br><button  data-toggle="collapse" data-target="#break" class="shortcode_button btn_small btn_type10" role="button" onclick="breakButton()">Take a break</button>' +
-                '</div></div></div><br><hr>');
+
+                '</div>' +
+                '<div style="'+divStyle2+'"><form class="form-inline" onsubmit="return false"><div class="form-group"><select style="border-radius: 0px !important;" class="form-control" id="memberSelect">' +
+                '' +'</select>' +
+                '</div><button type="button" class="btn btn-default memberBut" onclick="updateMember()">Update</button>' +
+                '</form></div>'+
+                '</div></div><br><hr>');
+            if(data_new['cards'].length >1)
+            {
+                for(var j=0;j<data_new['cards'].length;j++)
+                {
+                    console.log(data_new['cards'][j]['MEMBERSHIP_NO'])
+                    $("#memberSelect").append('<option value="'+data_new['cards'][j]['MEMBERSHIP_NO']+'">'+data_new['cards'][j]['MEMBERSHIP_NO']+'</option>')
+                }
+            }
+
+            $("#memberSelect").val(data_new['member']);
+
             var response2 = '';
             terms.forEach(function (arr) {
                 response2 += '<option value=' + arr['fee'] + ' id=' + arr['term'] + '>' + arr['months'] + '</option>';
@@ -916,15 +1017,13 @@ $('#subscription').click(function (e) {
                 '<option value= "2">2 months</option><option value="3">3 months</option></select>' +
                 '</div><div class="form-group" style="margin-right: 3%;">' +
                 '<label for="pwd">Start Date:</label><input class="form-control" type="text" id="datePickInput" readonly required="required" name="datePickInput" required>' +
-                '</div><button type="button" class="btn btn-default" onclick="breakValidate()">Submit</button><br><br><hr><p id="textSpanBreak" style="margin-left:0%;display:none;font-weight:bold;font-size:143%"></p><br><p id="textSpanBreakDate" style="margin-left:0%;display:none;font-weight:bold;font-size:143%"></p><br><button id="BreakBUtton" style="display: none;float: left;" type="button" class="shortcode_button btn_small btn_type10" onclick="proceedBreak()">Proceed</button><span class="breakAmount" style="display: none"></span><span class="breakAMountPay" style="display: none"></span><span class="breakDate" style="display: none"></span><br><br><br><br><hr style="display:none" id="hrTag"><div id="aboutBreak" style= "display:none" class="col-md-12"><p><b>What\'s \'Take a break\' ?</b></p><p>Through a feature called “Subscription Holiday”, JustBooksclc allows the member to pause the membership (temporary suspension), for a duration of 1 month, 2 months or 3 months before expiration of membership. During Subscription Holiday period, a member will not be able to use the library. To utilise this feature, a member is required to fill up the Subscription Holiday Form either at the branch or online. All issued books and magazines should be returned to the JustBooksclc branch before the start date of Subscription Holiday. Members who pay for Yearly and Half-yearly terms will receive free Subscription Holidays of 2 months and 1 month respectively, and are required to pay Rs. 50/- per month there after. Quarterly members are required to pay Rs. 50/- per month to avail the feature.</p></div></div></div></form></div>' +
+                '</div><button type="button" class="btn btn-default memberBut" onclick="breakValidate()">Submit</button><br><br><hr><p id="textSpanBreak" style="margin-left:0%;display:none;font-weight:bold;font-size:143%"></p><br><p id="textSpanBreakDate" style="margin-left:0%;display:none;font-weight:bold;font-size:143%"></p><br><button id="BreakBUtton" style="display: none;float: left;" type="button" class="shortcode_button btn_small btn_type10" onclick="proceedBreak()">Proceed</button><span class="breakAmount" style="display: none"></span><span class="breakAMountPay" style="display: none"></span><span class="breakDate" style="display: none"></span><br><br><br><br><hr style="display:none" id="hrTag"><div id="aboutBreak" style= "display:none" class="col-md-12"><p><b>What\'s \'Take a break\' ?</b></p><p>Through a feature called “Subscription Holiday”, JustBooksclc allows the member to pause the membership (temporary suspension), for a duration of 1 month, 2 months or 3 months before expiration of membership. During Subscription Holiday period, a member will not be able to use the library. To utilise this feature, a member is required to fill up the Subscription Holiday Form either at the branch or online. All issued books and magazines should be returned to the JustBooksclc branch before the start date of Subscription Holiday. Members who pay for Yearly and Half-yearly terms will receive free Subscription Holidays of 2 months and 1 month respectively, and are required to pay Rs. 50/- per month there after. Quarterly members are required to pay Rs. 50/- per month to avail the feature.</p></div></div></div></form></div>' +
                 '<div class="row collapse" id=\"demo\" >' +
                 '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> <form> <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> <div class="form-group" style="width:50%"> <label for="sel1">Select a renewal duration :</label> <select class="form-control" id="sel1" onchange="textChange()">'+response2+' </select> </div> </div> <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10"> <div class="form-group"> <input type="text" class="form-control" id="coupon_code" placeholder="Coupon code if any" name="coupon_code"> <span class="input-group-btn"> </div> </div> <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"> <div class="form-group"> <button type="button" class="btn btn-warning" id="coupon_submit" onclick="couponClick()">Apply</button> </div> </div> <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5"> <div class="form-group"> <input class="form-control" id="gift_card" placeholder="Gift Card No." name="gift_card" type="text"> </div> </div> <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5"> <div class="form-group"> <input class="form-control" id="gift_card_pin" placeholder="Gift Card Pin" name="gift_card_pin" type="text"> </div> </div> <div class="col-xs-6 col-sm-2 col-md-2 col-lg-2"> <div class="form-group"> <button type="button" class="btn btn-warning" id="gift_card_submit" onclick="couponClick()">Apply</button> </div> </div> <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> <p style="font-weight: bold" id="textSpan"> You have to pay Rs ' + defValue + '</p> <button type="submit" class="shortcode_button btn_small btn_type10">Submit</button> </div> </form> </div></div><br>'
             )
 
             var colors = ['block personal fl', 'block professional fl', 'block business fl'];
-
-
-            change_plan.forEach(function (arr) {
+           change_plan.forEach(function (arr) {
                 var i = 0;
                 var plan_durations = arr['change_plan_detail']['plan_durations'];
 //                    response += '<h4>Upgrade your current plan</h4><div class="price_item" style="width:20%">' +
@@ -940,16 +1039,20 @@ $('#subscription').click(function (e) {
 //                            '</div></div>';
                 response = "";
                 if (plan_durations != null) {
-                    response += '<div class="col-md-4" style="margin-top:2%; margin-bottom: 2%;"><div class="block personal fl" style="text-align: center;width:100%/*! height: 314px; */"><h4 class="title">' + arr["change_plan_detail"]['plan_name'] + '</h4> <a href="/change_plan?id=' + arr["change_plan_detail"]['plan_id'] + '&planname=' + arr["change_plan_detail"]['promo_code'] + '"><div class="content_pt" style="margin: -9%;"> <p class="price"><sup>₹</sup><span> ' + arr["change_plan_detail"]['reading_fee'] + '</span><sub></sub></p></div></a><ul class="features" style="margin-top: 8%;height: 130px;list-style-type: none !important;padding: 0;/*! margin: 0; */margin-left: -5%;"><li style="line-height: 39px;">No of books -   ' + arr["change_plan_detail"]['books'] + '</li><li style="line-height: 39px;">Security Deposit - Rs ' + arr["change_plan_detail"]['security_deposit'] + ' </li><li style="line-height: 39px;">Registration Fee - Rs ' + arr["change_plan_detail"]['registration_fee'] + '</li></ul><div class="pt-footer" style="padding-bottom: 1%"><h4><a rel="external" data-ajax="false" href="/change_plan?planname=' + arr["change_plan_detail"]['promo_code'] + '&books=' + arr["change_plan_detail"]['books'] + '&months=' + arr["change_plan_detail"]['plan_durations'][0]['plan_duration']['change_plan_months'] + '">UPGRADE NOW !</a></h4></div></div></div>';
+                    response += '<div class="col-md-4" style="margin-top:2%; margin-bottom: 2%;"><div class="block personal fl" style="text-align: center;width:100%/*! height: 314px; */"><h4 class="title">' + arr["change_plan_detail"]['plan_name'].toUpperCase() + '</h4> <a href="/change_plan?id=' + arr["change_plan_detail"]['plan_id'] + '&planname=' + arr["change_plan_detail"]['promo_code'] + '"><div class="content_pt" style="margin: -9%;"> <p class="price"><sup>₹</sup><span style="font-size: 3rem !important; font-family: "Playfair Display" !important"> ' + arr["change_plan_detail"]['reading_fee'] + '</span><sub></sub></p></div></a><ul class="features" style="margin-top: 8%;height: 130px;list-style-type: none !important;padding: 0;/*! margin: 0; */margin-left: -5%;"><li style="line-height: 39px;">No of books -   ' + arr["change_plan_detail"]['books'] + '</li><li style="line-height: 39px;">Security Deposit - Rs ' + arr["change_plan_detail"]['security_deposit'] + ' </li><li style="line-height: 39px;">Registration Fee - Rs ' + arr["change_plan_detail"]['registration_fee'] + '</li></ul><div class="pt-footer" style="padding-bottom: 1%"><h4><a rel="external" data-ajax="false" href="/change_plan?planname=' + arr["change_plan_detail"]['promo_code'] + '&books=' + arr["change_plan_detail"]['books'] + '&months=' + arr["change_plan_detail"]['plan_durations'][0]['plan_duration']['change_plan_months'] + '">UPGRADE NOW !</a></h4></div></div></div>';
                     i++;
                     if (i >= colors.length) {
                         i = 0;
                     }
                     $("#left_menu_recommend").css('margin-top', '3%');
                     $('#change_plan').append(response);
-                    $('html, body').animate({
-                        scrollTop: $('#shelf_data').offset().top - 150
-                    }, 800);
+                    var w = window.outerWidth;
+                    var h = window.outerHeight;
+                    if(w<750){
+                        $('html, body').animate({
+                            scrollTop: $('#shelf_data').offset().top - 150
+                        }, 800);
+                    }
                 }
                 else {
                     $("#left_menu_recommend").css('margin-top', '40%');
@@ -1007,7 +1110,7 @@ $('#subscription').click(function (e) {
 
 function removeWishlist(elem, id) {
 
-    var answer = confirm("Are you sure you want to return the book?");
+    var answer = confirm("Are you sure you want to remove the book from your wishlist ?");
 
     if (!answer) {
         return false;
@@ -1131,9 +1234,15 @@ function pastReads() {
                 $("#emptyResult").show();
                 $("#emptyResult").text("No past reads yet !");
                 $("#left_menu_recommend").css('margin-top', '33%');
-                $('html, body').animate({
-                    scrollTop: $('#shelf_data').offset().top - 150
-                }, 800);
+
+
+                var w = window.outerWidth;
+                var h = window.outerHeight;
+                if(w<750){
+                    $('html, body').animate({
+                        scrollTop: $('#shelf_data').offset().top - 150
+                    }, 800);
+                }
 
                 return false;
             }
@@ -1142,9 +1251,17 @@ function pastReads() {
                 var final_response = generateDIV(data['data']['result'], 'placePickup', 'id', 'Pickup', 'none', data['wishlist'], '', 'none', 'margin-top: 34%;margin-left: -100%;', 'inline-block', 'none');
                 $('#shelf_data').html('');
                 $('#shelf_data').append(final_response);
-                $('html, body').animate({
-                    scrollTop: $('#shelf_data').offset().top - 150
-                }, 800);
+
+
+                var w = window.outerWidth;
+                var h = window.outerHeight;
+                if(w<750){
+                    $('html, body').animate({
+                        scrollTop: $('#shelf_data').offset().top - 150
+                    }, 800);
+                }
+
+
                 $("#left_menu_recommend").css('margin-top', '33%');
 
 
@@ -1463,36 +1580,45 @@ function proceedBreak() {
         dataType: "json",
         url: "/confirm_sh?&no_of_months=" + month + "&holiday_start_date=" + date + "&created_in=810&holiday_end_date=" + Enddate + "&paid_amount=" + paid + "&payable_amount=" + amount + "",
         success: function (data_new) {
-            $(".spinner").hide();
             console.log(data_new);
-            $(".spinner").hide();
             if (data_new.success == true) {
                 orderNumber = data_new.result.transaction.transaction.order_number;
                 amountTotal = data_new.result.transaction.transaction.amount;
-                if(parseInt(amountTotal) ===0 )
+                console.log(amountTotal)
+                if(parseInt(amountTotal) == 0 )
                 {
                     $.ajax({
                         type: "GET",
                         dataType: "json",
                         url: "/noAmountBreak?order=" + orderNumber,
                         success: function (data_new) {
+                            $(".spinner").hide();
+
                             console.log(data_new);
-                            if(data_new=="success")
+                            if(data_new  === 1)
                             {
                                 toastr.success('Successfully applied').css('width','500px')
+                                $("#break").collapse('hide');
+
                             }
                             else{
+                                console.log("df")
                                 toastr.error('Something went wrong! ').css('width','500px')
 
                             }
                         },
                     });
+                    return false;
                 }
                 saveSession(orderNumber, amount);
+                $(".spinner").hide();
+
 
             }
             else {
-                toastr.error(data_new.errors)
+                toastr.error(data_new.errors);
+                $(".spinner").hide();
+
             }
 
 
@@ -1617,3 +1743,26 @@ function statusCheck(elem, id) {
 
     });
 };
+
+
+function updateMember()
+{
+    var card=$('#memberSelect').val();
+    $.ajax({
+        type: "GET",
+        url: "/updateMemberSession?membership=" + card,
+        success: function (data) {
+            $(".spinner").hide();
+            window.location.href = '/shelf';
+
+
+        },
+        error: function (err) {
+            $(".spinner").hide();
+            toastr.error('Something went wrong, Please try again !').css('width', '500px');
+            console.log(err.responseText)
+        }
+
+    });
+
+}

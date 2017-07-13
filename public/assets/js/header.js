@@ -1,4 +1,3 @@
-
 function placeOrder(id) {
     $(".spinner").show();
     $.ajax({
@@ -18,7 +17,7 @@ function placeOrder(id) {
                 data = JSON.parse(data);
                 console.log(data['success'])
                 if (data['success'] === "false") {
-                    toastr.warning(data['errors']).css('width','500px')
+                    toastr.warning(data['errors']).css('width', '500px')
                 } else {
                     toastr.success('Successfully added !');
 
@@ -89,6 +88,35 @@ function searchClick() {
 
 }
 $(document).ready(function () {
+    $('#memberModel').on('hidden.bs.modal', function () {
+        window.location.href = '/shelf';
+    })
+    $('#save_member_value').click(function () {
+        $('.spinner').show();
+        var radioValue = $("input[name='memberRadio']:checked").val();
+        if (radioValue) {
+            $.ajax({
+                type: "GET",
+                url: "/updateMemberSession?membership=" + radioValue,
+                success: function (data) {
+                    $(".spinner").hide();
+                    window.location.href = '/shelf';
+
+
+                },
+                error: function (err) {
+                    $(".spinner").hide();
+                    toastr.error('Something went wrong, Please try again !').css('width', '500px');
+                    console.log(err.responseText)
+                }
+
+            });
+
+        }
+        else {
+            toastr.error("Please select a card number to proceed")
+        }
+    });
 
     //Instantiate the Bloodhound suggestion engine
     var books = new Bloodhound({
@@ -201,13 +229,13 @@ $(document).ready(function () {
         // $("#sharefb").attr("href", "http://www.facebook.com/sharer.php?u=http://justbooksclc.com/book_details/"+id);
     });
     var w = window.outerWidth;
-    if(w<750){
+    if (w < 750) {
         toastr.options = {
             "closeButton": true,
             "debug": false,
             "newestOnTop": false,
             "progressBar": false,
-            "positionClass":"toast-top-center",
+            "positionClass": "toast-top-center",
             "preventDuplicates": false,
             "onclick": null,
             "showDuration": "300",
@@ -220,7 +248,7 @@ $(document).ready(function () {
             "hideMethod": "fadeOut"
         }
 
-    }else{
+    } else {
         toastr.options = {
             "closeButton": true,
             "debug": false,

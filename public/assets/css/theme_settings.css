@@ -1,5 +1,6 @@
 /* *** F O N T   F A M I L I E S  *** */
 
+
 @font-face {
 	font-family: 'CoreIconsRegular';
 	src: url('fonts/coreicons-webfont.eot');
@@ -251,6 +252,14 @@ header ul.menu > li > a {
 	width: 100% !important;
 	left: 0px !important;
 }
+
+/*#flipkart-navbar a{
+	color: #000!important;
+}
+
+#flipkart-navbar a:hover{
+	color: red!important;
+}*/
 
 
 .row1{

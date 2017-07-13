@@ -54,7 +54,7 @@ table { border-collapse:collapse;}
 table td { padding:0;}
 .h100 { height:100%;}
 
-a {
+/*a {
 	color:#fff!important;
 	text-decoration:none!important;
 	transition: color 400ms!important;
@@ -65,7 +65,7 @@ a {
 a:hover {
 	text-decoration:none!important;
 	color:#D32F2F!important;
-}
+}*/
 
 /*ul {*/
 /*list-style:none;*/
@@ -6610,3 +6610,17 @@ article, .item {
 	  color: #999999 !important;
   }
 
+
+
+
+  .memberBut{
+
+	  margin-left: 3%;
+	  border-radius: 0px !important;
+	  color: white;
+	  background-color: #464d52;
+
+  }  .memberBut:hover {
+		   background:#db241c!important;
+		   color:#ffffff;
+	   }
