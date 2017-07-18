@@ -121,7 +121,7 @@
                                         </div>
                                         <div class="col-sm-11  col-xs-12" id="border_none">
                                             <div class="col-sm-6 col-xs-6">
-                                                <h5 style="float: left">Total:</h5>
+                                                <h5 style="float: left">Net Amount:</h5>
                                             </div>
                                             <div class="col-sm-4 col-xs-6" id="total_fee">
                                                 <h5>₹ {{total}}</h5>
@@ -456,7 +456,7 @@
         //        updateFees();
     });
     function updateFees() {
-        console.log(planid + "assas" + mon + "aasass" + book);
+//        console.log(planid + "assas" + mon + "aasass" + book);
         if (mon != '' && book != '') {
             $.ajax({
                 type: "GET",

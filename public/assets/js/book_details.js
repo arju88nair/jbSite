@@ -75,36 +75,36 @@ function getCardRelated(data, visibleCardCount,ids,wishlist) {
             active = "active";
         }
 
-        if(ids.indexOf(parseInt(data[i]['_source'].title_id)) != -1)
+        if(ids.indexOf(parseInt(data[i]['_source']['jb_info'].titleid)) != -1)
         {
             var text="Rented";
             action="";
         }
         else{
-            var action="\'placeOrder("+ data[i]['_source'].title_id + ");\'"
+            var action="\'placeOrder("+ data[i]['_source']['jb_info'].titleid + ");\'"
 
             text="Rent";
         }
-        if(wishlist.indexOf(parseInt(data[i]['_source'].title_id)) != -1)
+        if(wishlist.indexOf(parseInt(data[i]['_source']['jb_info'].titleid)) != -1)
         {
             var images="../../assets/img/Added_WL_Right.png"
             wish="";
         }
         else{
             images="../../assets/img/Added_WL_50.png";
-            var wish="\'wishlistAdd(" + data[i]['_source'].title_id + ");\'";
+            var wish="\'wishlistAdd(" + data[i]['_source']['jb_info'].titleid + ");\'";
         }
 
         response += '<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2 sliderDIv" >' +
             '<div class="item item_shadow">' +
-            '<div class="img_block_books"><a rel="external" data-ajax="false" href="/book_details/' + data[i]['_source'].title_id + '/' + data[i]['_source'].title + '"><img src="' + data[i]['_source'].image_url + '"  onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
+            '<div class="img_block_books"><a rel="external" data-ajax="false" href="/book_details/' + data[i]['_source']['jb_info'].titleid + '/' + data[i]['_source']['jb_info'].title + '"><img src="' + data[i]['_source'].image_url + '"  onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
             '<div class="carousel_body_book">' +
-            '<div class="carousel_title_book"><h5 title="' + data[i]['_source'].title + '">' + data[i]['_source'].title + '</h5></div>' +
+            '<div class="carousel_title_book"><h5 title="' + data[i]['_source']['jb_info'].title + '">' + data[i]['_source']['jb_info'].title + '</h5></div>' +
             '<div class="carousel_desc">' +
             '<div class="fram_btn">' +
-            '<a    href="javascript:void(0)" class="shortcode_button btn_small btn_type1" title="Rent" onclick='+action+' id="rent_'+data[i]['_source'].title_id+'">'+text+'</a>' +
-            '<a href="javascript:void(0)" class="tiptip" title="Wishlist" onclick='+wish+'><img id="wish_'+data[i]['_source'].title_id+'" class="wishlist_btn" src='+images+' alt="Smiley face" height="25" width="25"></a>' +
-            '<a href="javascript:void(0)" class="tiptip" title="Share" data-id="' + data[i]['_source'].title_id + '"data-title="' + data[i]['_source'].title + '" data-toggle="modal" data-target="#shareModal"><img  class="share_btn" src=../../assets/img/Engage.png alt="Smiley face" height="25" width="25"></a>' +
+            '<a    href="javascript:void(0)" class="shortcode_button btn_small btn_type1" title="Rent" onclick='+action+' id="rent_'+data[i]['_source']['jb_info'].titleid+'">'+text+'</a>' +
+            '<a href="javascript:void(0)" class="tiptip" title="Wishlist" onclick='+wish+'><img id="wish_'+data[i]['_source']['jb_info'].titleid+'" class="wishlist_btn" src='+images+' alt="Smiley face" height="25" width="25"></a>' +
+            '<a href="javascript:void(0)" class="tiptip" title="Share" data-id="' + data[i]['_source']['jb_info'].titleid + '"data-title="' + data[i]['_source']['jb_info'].title + '" data-toggle="modal" data-target="#shareModal"><img  class="share_btn" src=../../assets/img/Engage.png alt="Smiley face" height="25" width="25"></a>' +
 
             // '<a href="/book_details/' + data[i].id + '" id="' + data[i].id + '" class="tiptip" title="Read">Read</a>' +
             '<div class="clear"></div>' +

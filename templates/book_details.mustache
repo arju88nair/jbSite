@@ -425,7 +425,7 @@
         </div>
     </div>
     <div id="catModal" class="modal fade modalStyle" role="dialog" style="z-index: 10000">
-        <div class="modal-dialog" style="top:-70%;width:300%;left:-100%">
+        <div class="modal-dialog" style="top:-60%;width:300%;left:-100%">
 
             <!-- Modal content-->
             <div class="modal-content">
@@ -1031,12 +1031,13 @@
                                                 });
                                             </script>
 
-
-                                            {{#wishFlag}}
-                                                <a href="javascript:void(0)" id="availibilityCheck"
-                                                   class="shortcode_button btn_small btn_type10"
-                                                   onclick="checkAvailability({{titleid}})">Check Availability</a>
-                                            {{/wishFlag}}
+                                            {{#flag}}
+                                                {{#wishFlag}}
+                                                    <a href="javascript:void(0)" id="availibilityCheck"
+                                                       class="shortcode_button btn_small btn_type10"
+                                                       onclick="checkAvailability({{titleid}})">Check Availability</a>
+                                                {{/wishFlag}}
+                                            {{/flag}}
                                             {{#Currentflag}}
                                                 <a href="javascript:void(0)" id="{{rental}}"
                                                    class="shortcode_button btn_small btn_type10 returnClass "
@@ -1178,7 +1179,7 @@
 
         $.ajax({
             type: "GET",
-            url: "/getRelatedBooks?id=" + id,
+            url: "/getRelatedBooksNew?id=" + id,
             success: function (data) {
                 data = JSON.parse(data);
                 console.log(data);

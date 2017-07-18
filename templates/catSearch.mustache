@@ -72,6 +72,12 @@
                                                         <div class="clear"></div>
                                                     </div>
                                                 </div>
+                                                <div class="fram_btn">
+                                                    <a href="javascript:void(0)" class="shortcode_button btn_small btn_type1" title="Rent" onclick='placeOrder({{titleid}})' id="rent_{{titleid}}">Rent</a>
+                                                    <a href="javascript:void(0)" class="tiptip" title="Wishlist" onclick="wishlistAdd({{titleid}})"><img id="wish_{{titleid}}" class="wishlist_btn" src='../../assets/img/Added_WL_50.png' alt="Smiley face" height="25" width="25"></a>
+                                                    <a href="javascript:void(0)" class="tiptip" title="Share" data-title="{{title}}"  data-id="{{titleid}}" data-toggle="modal" data-target="#shareModal"><img  class="share_btn" src=../../assets/img/Engage.png alt="Smiley face" height="25" width="25"></a>
+                                                    <div class="clear"></div>
+                                                </div>
                                             {{/jb_info}}
                                         </div>
                                     </div>
@@ -104,7 +110,76 @@
         <!--$("#count").text(" which have" {{result}}.length);-->
 
     })
+    function placeOrder(id) {
+        $(".spinner").show();
+        $.ajax({
+            type: "GET",
+            url: "/placeOrder?id=" + id,
+            success: function (data) {
 
+                if (JSON.parse(data) === "failure") {
+                    $(".spinner").hide();
+
+                    toastr.error('Please sign in to order the book! Redirecting to select plans. ');
+//                    var target = '/#membershipPlans';
+//                    $('html, body').animate({
+//                        scrollTop: $('#membershipPlans').offset().top - 150
+//                    }, 800);
+//                     $(window).scrollTop($('#membershipPlans').offset());
+                    window.location.href = '/#membershipPlans';
+
+                } else if(JSON.parse(data) === "NoDelivery"){
+                    $(".spinner").hide();
+
+                    toastr.error('Sorry! You have not opted for door delivery service. Kindly contact your branch or customer care to enable the same.');
+                    $('html, body').animate({
+                        scrollTop: $('#membershipPlans').offset().top - 150
+                    }, 800);
+                }
+                else {
+                    $(".spinner").hide();
+                    data = JSON.parse(data);
+                    console.log(data['success'])
+                    if (data['success'] === "false") {
+                        toastr.warning(data['errors'])
+                    } else {
+                        $("#rent_" + id).text("Rented")
+
+                        toastr.success('Successfully added !');
+
+                    }
+                }
+            },
+
+        });
+    }
+    function wishlistAdd(id) {
+        $(".spinner").show();
+
+        $.ajax({
+            type: "GET",
+            url: "/updateWishlist?id=" + id,
+            success: function (data) {
+                ;
+                $(".spinner").hide();
+                if (JSON.parse(data) === "failure") {
+
+                    toastr.error('Please sign in to update your wish list');
+                    $('html, body').animate({
+                        scrollTop: $('#membershipPlans').offset().top - 150
+                    }, 800);
+                }
+                else {
+                    $("#wish_" + id).attr("src", "../../assets/img/Added_WL_Right.png");
+                    toastr.success('Successfully added into your wish list !').css("width", "500px");
+                }
+            },
+            error: function (err) {
+                console.log(err);
+            }
+
+        });
+    }
     function loadMore() {
         var ids="{{ids}}"
         $(".spinner").show();

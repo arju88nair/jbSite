@@ -24,6 +24,58 @@ $(document).ready(function () {
     });
     $('#shelfMenu').addClass('current-menu-parent');
 
+    $('#change_plan').html('');
+
+    $("li a").removeClass('active');
+    $("li a#currently_reading").addClass('active');
+    $(".spinner").show();
+    $.ajax({
+        type: "GET",
+        url: "/getCurrentReading",
+        success: function (data) {
+            $(".spinner").hide();            console.log(data)
+
+            var new_data = JSON.parse(data);
+
+            $('#change_plan').html('');
+            $("#left_menu_recommend").show();
+
+
+            if (new_data['data'].length == 0) {
+                $('#shelf_data').html('');
+                $("#left_menu_recommend").show();
+
+                $("#emptyResult").show();
+                $("#emptyResult").text("No books to show !");
+
+
+                var w = window.outerWidth;
+                if(w<750){
+                    $('html, body').animate({
+                        scrollTop: $('#shelf_data').offset().top - 150
+                    }, 800);
+                }
+
+                return false;
+            }
+            $("#emptyResult").hide();
+            $("#left_menu_recommend").show();
+            var final_response = generateDIV(new_data['data'], 'placePickup', 'rental_id', 'Return', 'none', new_data['wishlist'], '', 'none', 'margin-top: 34%;margin-left: -100%;', 'inline-block', 'block');
+            $('#shelf_data').html('');
+            $('#shelf_data').append(final_response);
+            var w = window.outerWidth;
+            var h = window.outerHeight;
+            if(w<750){
+                $('html, body').animate({
+                    scrollTop: $('#shelf_data').offset().top - 150
+                }, 800);
+            }
+            $("#left_menu_recommend").css('margin-top', '33%');
+
+
+        },
+
+    });
     $.ajax({
         type: "GET",
         url: "/newArrivals",
@@ -58,6 +110,7 @@ $(document).ready(function () {
         type: "GET",
         url: "/getShelfRecommendedBooks",
         success: function (data) {
+            console.log(data);
             data = JSON.parse(data);
 
             cardData = data['data'];
@@ -242,14 +295,14 @@ function getRecommend(data, visibleCardCount, ids, wishlist) {
         //if( i > 0 && i % 3 == 0){
         if (items == visibleCardCount) {
 
-            final_response += '<div class="item item_shelf_rec' + active + '" style="margin-left: 8%">' + response + '</div>';
+            final_response += '<div class="item item_shelf_rec' + active + '" >' + response + '</div>';
             response = "";
             items = 0;
         }
 
     }
     if (items < visibleCardCount && items > 0) {
-        final_response += '<div class="item item_shelf_rec ' + active + '" style="margin-left: 8%">' + response + '</div>';
+        final_response += '<div class="item item_shelf_rec ' + active + '" >' + response + '</div>';
     }
     return final_response;
 }
@@ -440,58 +493,6 @@ $(document).ready(function () {
     });
 
 
-    $('#change_plan').html('');
-
-    $(".spinner").show();
-    $("li a").removeClass('active');
-    $("li a#currently_reading").addClass('active');
-    $(".spinner").show();
-    $.ajax({
-        type: "GET",
-        url: "/getCurrentReading",
-        success: function (data) {
-
-            $(".spinner").hide();
-            var new_data = JSON.parse(data);
-            $('#change_plan').html('');
-            $("#left_menu_recommend").show();
-
-
-            if (new_data['data']['result'].length == 0) {
-                $('#shelf_data').html('');
-                $("#left_menu_recommend").show();
-
-                $("#emptyResult").show();
-                $("#emptyResult").text("No books to show !");
-
-
-                var w = window.outerWidth;
-                if(w<750){
-                    $('html, body').animate({
-                        scrollTop: $('#shelf_data').offset().top - 150
-                    }, 800);
-                }
-
-                return false;
-            }
-            $("#emptyResult").hide();
-            $("#left_menu_recommend").show();
-            var final_response = generateDIV(new_data['data']['result'], 'placePickup', 'rental_id', 'Return', 'none', new_data['wishlist'], '', 'none', 'margin-top: 34%;margin-left: -100%;', 'inline-block', 'block');
-            $('#shelf_data').html('');
-            $('#shelf_data').append(final_response);
-            var w = window.outerWidth;
-            var h = window.outerHeight;
-            if(w<750){
-                $('html, body').animate({
-                    scrollTop: $('#shelf_data').offset().top - 150
-                }, 800);
-            }
-            $("#left_menu_recommend").css('margin-top', '33%');
-
-
-        },
-
-    });
 
 });
 
@@ -502,13 +503,13 @@ function generateDIV(arr, funcName, idName, btnTxt, style, ids, statusKey, statu
     arr.forEach(function (arr_data) {
 //            console.log(arr_data['id']);
 //            console.log(ids.indexOf(arr_data['id']))
-        if (ids.indexOf(arr_data['id']) != -1) {
+        if (ids.indexOf( arr_data['id']) != -1) {
             var image = "../../assets/img/Added_WL_Right.png"
             wish = "";
         }
         else {
             image = "../../assets/img/Added_WL_50.png";
-            var wish = "\'wishlistAdd(" + arr_data['id'] + ");\'";
+            var wish = "wishlistAdd(" + arr_data['id'] + ");";
         }
 
         response += '<div id="alertDiv" class="alert  alert-dismissable" style="display: none"><a  href="#" class="close"  aria-label="close" onclick="hideAlert()">&times;</a>' +
@@ -537,7 +538,7 @@ function generateDIV(arr, funcName, idName, btnTxt, style, ids, statusKey, statu
             '<div class="col-md-4 col-xs-6 shelf_logos" style="float: left;' + shareStyle + '">' +
             '<a href="javascript:void(0)" class="tiptip" title="Share" data-id="' + arr_data['id'] + '" data-title="' + arr_data['title'] + '" data-toggle="modal" data-target="#shareModal" style="margin-left: 10%">' +
             '<img class="share_btn" src=../../assets/img/Engage.png alt="Smiley face" height="25" width="25"></a>' +
-            '<a   style="display:' + wishStyle + ';class="tiptip" onclick="addWishlist(' + arr_data['id'] + ')"  id="' + arr_data[idName] + '"><img id="wish_' + arr_data['id'] + '" class="wishlist_btn" src=' + image + ' alt="Smiley face" height="25" width="25"></a>' +
+            '<a href="javascript:void(0)"  style="display:' + wishStyle + ';" class="tiptip" onclick="'+wish+'"  id="' + arr_data[idName] + '"><img id="wish_' + arr_data['id'] + '" class="wishlist_btn" src=' + image + ' alt="Smiley face" height="25" width="25"></a>' +
             '</div>' +
             '</div>';
     });
@@ -592,7 +593,7 @@ function generateWishDIV(arr,ids,rent) {
             '<div class="col-md-4 col-xs-6 shelf_logos" style="float: left;margin-top: 37% ;margin-left: -100%">' +
             '<a href="javascript:void(0)" class="tiptip" title="Share" data-id="' + arr_data['id'] + '" data-title="' + arr_data['title'] + '" data-toggle="modal" data-target="#shareModal" style="margin-left: 10%">' +
             '<img class="share_btn" src=../../assets/img/Engage.png alt="Smiley face" height="25" width="25"></a>' +
-            '&nbsp;<a   style="display:inline-block;cursor: hand"class="tiptip" onclick="removeWishlist(this,' + arr_data['id'] + ')"  id="' + arr_data['id'] + '"><img class="share_btn" src=../../assets/img/Delete.png alt="Smiley face" height="23" width="23"></i>'+
+            '&nbsp;<a   style="display:inline-block;cursor: hand"class="tiptip" onclick="removeWishlist(this,' + arr_data['id'] + ')"  id="' + arr_data['id'] + '"><img style="cursor: pointer !important;" class="share_btn" src=../../assets/img/Delete.png alt="Smiley face" height="23" width="23"></i>'+
             '</a>' +
             '</div>' +
             '</div>';
@@ -731,14 +732,13 @@ $('#currently_reading').click(function (e) {
         type: "GET",
         url: "/getCurrentReading",
         success: function (data) {
-
             $(".spinner").hide();
             var new_data = JSON.parse(data);
             $('#change_plan').html('');
             $("#left_menu_recommend").show();
 
 
-            if (new_data['data']['result'].length == 0) {
+            if (new_data['data'].length == 0) {
                 $('#shelf_data').html('');
                 $("#left_menu_recommend").show();
 
@@ -758,7 +758,7 @@ $('#currently_reading').click(function (e) {
             }
             $("#emptyResult").hide();
             $("#left_menu_recommend").show();
-            var final_response = generateDIV(new_data['data']['result'], 'placePickup', 'rental_id', 'Return', 'none', new_data['wishlist'], '', 'none', 'margin-top: 34%;margin-left: -100%;', 'inline-block', 'block');
+            var final_response = generateDIV(new_data['data'], 'placePickup', 'rental_id', 'Return', 'none', new_data['wishlist'], '', 'none', 'margin-top: 34%;margin-left: -100%;', 'inline-block', 'block');
             $('#shelf_data').html('');
             $('#shelf_data').append(final_response);
             var w = window.outerWidth;
@@ -814,7 +814,7 @@ $('#pick_up').click(function (e) {
             $("#emptyResult").hide();
 
 
-            var final_response = generateDIV(new_data['data']['result'], 'cancelPickup', 'rental_id', 'Cancel', 'inline-block', new_data['wishlist'], 'delivery_order_id', 'block', 'margin-top: 6% !important;margin-left: -40%', 'inline-block', 'block');
+            var final_response = generateDIV(new_data['data']['result'], 'cancelPickup', 'rental_id', 'Cancel', 'inline-block', new_data['wishlist'], 'rental_id', 'block', 'margin-top: 6% !important;margin-left: -40%', 'inline-block', 'block');
             $('#shelf_data').html('');
             $('#shelf_data').append(final_response);
             var w = window.outerWidth;
@@ -901,10 +901,10 @@ $('#subscription').click(function (e) {
             $('#shelf_data').html('');
             var data_new = JSON.parse(data);
             var current_plan = data_new['curent_plan'];
-            var change_plan = data_new['change_plan']
+            var change_plan = data_new['change_plan'];
             var terms = data_new['terms'];
             $("#left_menu_recommend").show();
-            console.log(data_new);
+            //console.log('-----------'+data_new['change_plan']['change_plan_detail']);
 
             $('#change_plan').html('');
             var response = '';
@@ -929,13 +929,14 @@ $('#subscription').click(function (e) {
             }
 
 
-
+            var expiry_mnth = new Date(current_plan['result']['member_cross_reference']['expiry_date']);
+            var expiry_mnth_new = (expiry_mnth.getDate()) + '/' + (expiry_mnth.getMonth() + 1) + '/' +  expiry_mnth.getFullYear();
             $('#shelf_data').append('<br><div class="row" style="margin-left: 0px !important;">' +
 
-                '<div class="col-sm-3">' +
+                '<div class="col-sm-3" style="cursor: ">' +
                 '<div class="gallery-view">' +
                 '<div data-reveal-group="relations22" class="column column-50" data-sr-id="4">' +
-                ' <div class="item clickable" style="margin:0;">' +
+                ' <div class="item clickable" style="margin:0;cursor: default !important;">' +
                 '<div class="article border-color-" style="border-top: 4px solid black;">' +
                 '<div class="article-body planIdDIV" id=' + current_plan['result']['member_cross_reference']['plan_id'] + '> ' +
                 '<h4 style="font-family: Playfair Display; white-space:nowrap;height:35px;text-overflow:ellipsis;overflow:hidden;display:block; text-align:center;">Current Plan</h4> ' +
@@ -951,7 +952,7 @@ $('#subscription').click(function (e) {
                 '<div class="col-sm-3">' +
                 '<div class="gallery-view">' +
                 '<div data-reveal-group="relations22" class="column column-50" data-sr-id="4">' +
-                ' <div class="item clickable" style="margin:0;">' +
+                ' <div class="item clickable" style="margin:0;cursor: default !important;">' +
                 '<div class="article border-color-" style="border-top: 4px solid blue;">' +
                 '<div class="article-body">' +
                 '<h4 style="font-family: Playfair Display; white-space:nowrap;height:35px;text-overflow:ellipsis;overflow:hidden;display:block; text-align:center;">Duration</h4> ' +
@@ -967,11 +968,11 @@ $('#subscription').click(function (e) {
 
                 '<div class="gallery-view">' +
                 '<div data-reveal-group="relations22" class="column column-50" data-sr-id="4">' +
-                ' <div class="item clickable" style="margin:0;">' +
+                ' <div class="item clickable" style="margin:0;cursor: default !important;">' +
                 '<div class="article border-color-" style="border-top: 4px solid red;">' +
                 '<div class="article-body">' +
                 '<h4 style="white-space:nowrap;height:35px;text-overflow:ellipsis;overflow:hidden;display:block; text-align:center; font-family: Playfair Display;">Renewal Date</h4> ' +
-                '<div class="gray" style="white-space:nowrap;height:25px;text-overflow:ellipsis;overflow:hidden;display:block;text-align:center;">' + current_plan['result']['member_cross_reference']['expiry_date'] + '</div> ' +
+                '<div class="gray" style="white-space:nowrap;height:25px;text-overflow:ellipsis;overflow:hidden;display:block;text-align:center;">' + expiry_mnth_new + '</div> ' +
                 ' </div> ' +
                 '</div> ' +
                 '</div> ' +
@@ -998,15 +999,14 @@ $('#subscription').click(function (e) {
                     $("#memberSelect").append('<option value="'+data_new['cards'][j]['MEMBERSHIP_NO']+'">'+data_new['cards'][j]['MEMBERSHIP_NO']+'</option>')
                 }
             }
-
             $("#memberSelect").val(data_new['member']);
 
             var response2 = '';
             terms.forEach(function (arr) {
-                response2 += '<option value=' + arr['fee'] + ' id=' + arr['term'] + '>' + arr['months'] + '</option>';
+                response2 += '<option value=' + arr['term']*50 + ' id=' + arr['term'] + '>' + arr['months'] + '</option>';
 
             })
-            var defValue = terms[0]['fee'];
+            var defValue = terms[0]['fee']+50;
 //                console.log(response2);
 //                $('#shelf_data').append('<br> <div class="collapse form-group" id=\"demo\" >' +
 //                        '<label for="sel1">Select list:</label>' +
@@ -1019,7 +1019,7 @@ $('#subscription').click(function (e) {
                 '<label for="pwd">Start Date:</label><input class="form-control" type="text" id="datePickInput" readonly required="required" name="datePickInput" required>' +
                 '</div><button type="button" class="btn btn-default memberBut" onclick="breakValidate()">Submit</button><br><br><hr><p id="textSpanBreak" style="margin-left:0%;display:none;font-weight:bold;font-size:143%"></p><br><p id="textSpanBreakDate" style="margin-left:0%;display:none;font-weight:bold;font-size:143%"></p><br><button id="BreakBUtton" style="display: none;float: left;" type="button" class="shortcode_button btn_small btn_type10" onclick="proceedBreak()">Proceed</button><span class="breakAmount" style="display: none"></span><span class="breakAMountPay" style="display: none"></span><span class="breakDate" style="display: none"></span><br><br><br><br><hr style="display:none" id="hrTag"><div id="aboutBreak" style= "display:none" class="col-md-12"><p><b>What\'s \'Take a break\' ?</b></p><p>Through a feature called “Subscription Holiday”, JustBooksclc allows the member to pause the membership (temporary suspension), for a duration of 1 month, 2 months or 3 months before expiration of membership. During Subscription Holiday period, a member will not be able to use the library. To utilise this feature, a member is required to fill up the Subscription Holiday Form either at the branch or online. All issued books and magazines should be returned to the JustBooksclc branch before the start date of Subscription Holiday. Members who pay for Yearly and Half-yearly terms will receive free Subscription Holidays of 2 months and 1 month respectively, and are required to pay Rs. 50/- per month there after. Quarterly members are required to pay Rs. 50/- per month to avail the feature.</p></div></div></div></form></div>' +
                 '<div class="row collapse" id=\"demo\" >' +
-                '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> <form> <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> <div class="form-group" style="width:50%"> <label for="sel1">Select a renewal duration :</label> <select class="form-control" id="sel1" onchange="textChange()">'+response2+' </select> </div> </div> <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10"> <div class="form-group"> <input type="text" class="form-control" id="coupon_code" placeholder="Coupon code if any" name="coupon_code"> <span class="input-group-btn"> </div> </div> <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"> <div class="form-group"> <button type="button" class="btn btn-warning" id="coupon_submit" onclick="couponClick()">Apply</button> </div> </div> <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5"> <div class="form-group"> <input class="form-control" id="gift_card" placeholder="Gift Card No." name="gift_card" type="text"> </div> </div> <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5"> <div class="form-group"> <input class="form-control" id="gift_card_pin" placeholder="Gift Card Pin" name="gift_card_pin" type="text"> </div> </div> <div class="col-xs-6 col-sm-2 col-md-2 col-lg-2"> <div class="form-group"> <button type="button" class="btn btn-warning" id="gift_card_submit" onclick="couponClick()">Apply</button> </div> </div> <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> <p style="font-weight: bold" id="textSpan"> You have to pay Rs ' + defValue + '</p> <button type="submit" class="shortcode_button btn_small btn_type10">Submit</button> </div> </form> </div></div><br>'
+                '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> <form> <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> <div class="form-group" style="width:50%"> <label for="sel1">Select a renewal duration :</label> <select class="form-control" id="sel1" onchange="textChange()">'+response2+' </select> </div> </div> <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10"> <div class="form-group"> <input type="text" class="form-control" id="coupon_code" placeholder="Coupon code if any" name="coupon_code"> <span class="input-group-btn"> </div> </div> <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"> <div class="form-group"> <button type="button" class="btn btn-warning" id="coupon_submit" onclick="couponClick()">Apply</button> </div> </div> <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5"> <div class="form-group"> <input class="form-control" id="gift_card" placeholder="Gift Card No." name="gift_card" type="text"> </div> </div> <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5"> <div class="form-group"> <input class="form-control" id="gift_card_pin" placeholder="Gift Card Pin" name="gift_card_pin" type="text"> </div> </div> <div class="col-xs-6 col-sm-2 col-md-2 col-lg-2"> <div class="form-group"> <button type="button" class="btn btn-warning" id="gift_card_submit" onclick="couponClick()">Apply</button> </div> </div> <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> <p style="font-weight: bold" id="textSpan"> You have to pay Rs ' + defValue + '</p> <button type="submit" class="shortcode_button btn_small btn_type10" onclick="proceedRenew()">Submit</button> </div> </form> </div></div><br>'
             )
 
             var colors = ['block personal fl', 'block professional fl', 'block business fl'];
@@ -1039,7 +1039,7 @@ $('#subscription').click(function (e) {
 //                            '</div></div>';
                 response = "";
                 if (plan_durations != null) {
-                    response += '<div class="col-md-4" style="margin-top:2%; margin-bottom: 2%;"><div class="block personal fl" style="text-align: center;width:100%/*! height: 314px; */"><h4 class="title">' + arr["change_plan_detail"]['plan_name'].toUpperCase() + '</h4> <a href="/change_plan?id=' + arr["change_plan_detail"]['plan_id'] + '&planname=' + arr["change_plan_detail"]['promo_code'] + '"><div class="content_pt" style="margin: -9%;"> <p class="price"><sup>₹</sup><span style="font-size: 3rem !important; font-family: "Playfair Display" !important"> ' + arr["change_plan_detail"]['reading_fee'] + '</span><sub></sub></p></div></a><ul class="features" style="margin-top: 8%;height: 130px;list-style-type: none !important;padding: 0;/*! margin: 0; */margin-left: -5%;"><li style="line-height: 39px;">No of books -   ' + arr["change_plan_detail"]['books'] + '</li><li style="line-height: 39px;">Security Deposit - Rs ' + arr["change_plan_detail"]['security_deposit'] + ' </li><li style="line-height: 39px;">Registration Fee - Rs ' + arr["change_plan_detail"]['registration_fee'] + '</li></ul><div class="pt-footer" style="padding-bottom: 1%"><h4><a rel="external" data-ajax="false" href="/change_plan?planname=' + arr["change_plan_detail"]['promo_code'] + '&books=' + arr["change_plan_detail"]['books'] + '&months=' + arr["change_plan_detail"]['plan_durations'][0]['plan_duration']['change_plan_months'] + '">UPGRADE NOW !</a></h4></div></div></div>';
+                    response += '<div class="col-md-4" style="margin-top:2%; margin-bottom: 2%;"><div class="block personal fl" style="text-align: center;width:100%;font-family: "Playfair Display" /*! height: 314px; */"><h4 class="title" style="font-family: \'Playfair Display\';">' + arr["change_plan_detail"]['plan_name'].toUpperCase() + '</h4> <a href="/change_plan?id=' + arr["change_plan_detail"]['plan_id'] + '&planname=' + arr["change_plan_detail"]['promo_code'] + '"><div class="content_pt" style="margin: -9%;"> <p class="price"><sup>₹</sup><span style="font-size: 3rem !important; font-family: "Playfair Display" !important"> ' + arr["change_plan_detail"]['reading_fee'] + '</span><sub></sub></p></div></a><ul class="features" style="margin-top: 8%;height: 130px;list-style-type: none !important;padding: 0;/*! margin: 0; */margin-left: -5%;"><li style="line-height: 39px;">No of books -   ' + arr["change_plan_detail"]['books'] + '</li><li style="line-height: 39px;">No of Magazines -   ' + arr["change_plan_detail"]['magazines'] + '</li></ul><div class="pt-footer" style="padding-bottom: 1%"><h4><a rel="external" data-ajax="false" href="/change_plan?planname=' + arr["change_plan_detail"]['promo_code'] + '&books=' + arr["change_plan_detail"]['books'] + '&months=' + arr["change_plan_detail"]['plan_durations'][0]['plan_duration']['change_plan_months'] + '">UPGRADE NOW !</a></h4></div></div></div>';
                     i++;
                     if (i >= colors.length) {
                         i = 0;
@@ -1179,7 +1179,7 @@ function placePickup(elem, title) {
     });
 }
 function cancelOrder(elem, id) {
-    var answer = confirm("Are you sure you want to canel the order?");
+    var answer = confirm("Are you sure you want to cancel the order?");
 
     if (!answer) {
         return false;
@@ -1247,7 +1247,6 @@ function pastReads() {
                 return false;
             }
             $("#emptyResult").hide();
-            if (data['data']['success'] == true) {
                 var final_response = generateDIV(data['data']['result'], 'placePickup', 'id', 'Pickup', 'none', data['wishlist'], '', 'none', 'margin-top: 34%;margin-left: -100%;', 'inline-block', 'none');
                 $('#shelf_data').html('');
                 $('#shelf_data').append(final_response);
@@ -1265,7 +1264,7 @@ function pastReads() {
                 $("#left_menu_recommend").css('margin-top', '33%');
 
 
-            }
+
         },
 
     });
@@ -1310,7 +1309,6 @@ function addWishlist(id) {
         type: "GET",
         url: "/updateWishlist?id=" + id,
         success: function (data) {
-            ;
             console.log(JSON.parse(data));
             $(".spinner").hide();
             if (JSON.parse(data) === "failure") {
@@ -1318,8 +1316,35 @@ function addWishlist(id) {
 
             }
             else {
-                $("#wish_" + id).attr("src", "../../assets/img/Added_WL_Right.png")
+                console.log(id);
+                $("#wish_" + id).attr("src", "../../assets/img/Added_WL_Right.png");
+                toastr.success('Successfully added into your wish list ');
+            }
+        },
+        error: function (err) {
+            console.log(err);
+            toastr.error("Something went wrong.Please try again !")
+        }
 
+    });
+}
+
+function wishlistAdd(id) {
+    $(".spinner").show();
+
+    $.ajax({
+        type: "GET",
+        url: "/updateWishlist?id=" + id,
+        success: function (data) {
+            console.log(JSON.parse(data));
+            $(".spinner").hide();
+            if (JSON.parse(data) === "failure") {
+                toastr.error('Please sign in to update your wish list !');
+
+            }
+            else {
+                console.log(id);
+                $("#wish_" + id).attr("src", "../../assets/img/Added_WL_Right.png");
                 toastr.success('Successfully added into your wish list ');
             }
         },
@@ -1640,6 +1665,13 @@ function placeOrder(id) {
 
                 toastr.error('Please sign in to order the book !');
 
+            }else if(JSON.parse(data) === "NoDelivery"){
+                $(".spinner").hide();
+
+                toastr.error('Sorry! You have not opted for door delivery service. Kindly contact your branch or customer care to enable the same.');
+                $('html, body').animate({
+                    scrollTop: $('#membershipPlans').offset().top - 150
+                }, 800);
             }
             else {
                 $(".spinner").hide();
@@ -1724,7 +1756,7 @@ function statusCheck(elem, id) {
     $(".spinner").show();
 
     var idTag = $(elem).attr('id');
-
+	console.log(id);
     $.ajax({
         type: "GET",
         url: "/getStatusDelivery?id=" + id,

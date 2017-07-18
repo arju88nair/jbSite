@@ -217,7 +217,7 @@ $app->get('/author_details/{authorid}/{name}', function (Request $request, Respo
 
 $app->get('/search', function (Request $request, Response $response) {
 
-    $query = $_GET['q'];
+    $query = $request->getQueryParams()['q'];
 //    $result = curlFunction("8990/api/v1/search.json?q=$query&page=1&per_page=20");
 //    $count = count(json_decode($result)->result);
     $raw_data = curlFunctionEs("/getSuggestBooksDetails?text=$query&page=1");
@@ -592,7 +592,7 @@ $app->get('/getPlan', function (Request $request, Response $response) {
 });
 
 $app->get('/updateWishlist', function (Request $request, Response $response, $args) {
-    $titleid = $_GET['id'];
+    $titleid = $request->getQueryParams()['id'];
     $membership_no = $_SESSION['membership_no'];
     if ($membership_no == "" && empty($membership_no) || !isset($_SESSION['membership_no'])) {
         return json_encode("failure");
@@ -683,6 +683,9 @@ $app->post('/insertSignup', function (Request $request, Response $response) {
     $response_data = json_decode($raw_data);
     $data = $response_data->result;
     if ($response_data->success == true) {
+        $query_update = "update webstore.users set created_at=trunc(sysdate) where email='$email'";
+        $result_update = oci_parse($con, $query_update);
+        oci_execute($result_update);
         $data = json_decode(json_encode($data), True);
         $_SESSION['order_number'] = $data['transaction']['transaction']['order_number'];
         $_SESSION['amount'] = $data['transaction']['transaction']['amount'];
@@ -718,11 +721,11 @@ $app->get('/getWishList', function (Request $request, Response $response) {
     $membership_no = $_SESSION['membership_no'];
     $api_key = $_SESSION['api_key'];
     $mail = $_SESSION['email'];
-    $result = curlFunction("wishlists.json?email=$mail&membership_no=$membership_no&api_key=$api_key");
-    $wishlist = wishlistIds();
+    $result = curlFunctionEs("/getWishList?membership_no=$membership_no");
+//    $wishlist = wishlistIds();
     $array = presentIds();
 
-    echo json_encode(array('data' => (array)json_decode($result), 'wishlist' => $wishlist, 'ids' => $array));
+    echo json_encode(array('data' => (array)json_decode($result), 'ids' => $array));
 });
 
 $app->post('/removeWishList', function (Request $request, Response $response) {
@@ -740,7 +743,7 @@ $app->get('/getOrderList', function (Request $request, Response $response) {
     $membership_no = $_SESSION['membership_no'];
     $api_key = $_SESSION['api_key'];
     $email = $_SESSION['email'];
-    $result = curlFunction("pending_delivery_order.json?email=$email&membership_no=$membership_no&api_key=$api_key");
+    $result = curlFunctionEs("/getOrderList?membership_no=$membership_no");
     $wishlist = wishlistIds();
     echo json_encode(array('data' => (array)json_decode($result), 'wishlist' => $wishlist));
 });
@@ -749,7 +752,8 @@ $app->get('/getCurrentReading', function (Request $request, Response $response) 
     $membership_no = $_SESSION['membership_no'];
     $api_key = $_SESSION['api_key'];
     $email = $_SESSION['email'];
-    $result = curlFunction("books_at_home.json?membership_no=$membership_no&api_key=$api_key&email=$email");
+//    $result = curlFunction("books_at_home.json?membership_no=$membership_no&api_key=$api_key&email=$email");
+    $result = curlFunctionEs("/getCurrentReading?membership_no=$membership_no");
     $wishlist = wishlistIds();
     echo json_encode(array('data' => (array)json_decode($result), 'wishlist' => $wishlist));
 });
@@ -769,7 +773,7 @@ $app->get('/getPickupList', function (Request $request, Response $response) {
     $membership_no = $_SESSION['membership_no'];
     $api_key = $_SESSION['api_key'];
     $email = $_SESSION['email'];
-    $result = curlFunction("pending_pickup_order.json?email=$email&membership_no=$membership_no&api_key=$api_key");
+    $result = curlFunctionEs("/getPickupRequest?membership_no=$membership_no");
     $wishlist = wishlistIds();
     echo json_encode(array('data' => (array)json_decode($result), 'wishlist' => $wishlist));
 });
@@ -802,6 +806,13 @@ $app->get('/getMyProfile', function (Request $request, Response $response) {
 });
 
 $app->get('/getSubscription', function (Request $request, Response $response) {
+    if((isset($_SESSION['subscription'])))
+    {
+        $subsArray=$_SESSION['subscription'];
+            echo json_encode($subsArray);
+            die;
+    }
+
     $membership_no = $_SESSION['membership_no'];
     $api_key = $_SESSION['api_key'];
     $mail = $_SESSION['email'];
@@ -847,9 +858,9 @@ $app->get('/getSubscription', function (Request $request, Response $response) {
 //        $_SESSION['email']=$email;
 //    }
     $final_result['cards'] =  json_decode($raw_data);
-    $final_result['memeber'] =  $_SESSION['membership_no'];
+    $final_result['member'] =  $_SESSION['membership_no'];
 
-
+$_SESSION['subscription']=$final_result;
     echo json_encode($final_result);
 });
 
@@ -863,8 +874,16 @@ $app->post('/addWishlist', function (Request $request, Response $response) {
 });
 
 $app->get('/placeOrder', function (Request $request, Response $response, $args) {
-    $titleid = $_GET['id'];
-    $membership_no = $_SESSION['membership_no'];
+    $titleid = $request->getQueryParams()['id'];
+    $isset='';$membership_no='';
+    if(isset($_SESSION['membership_no']))
+        $membership_no = $_SESSION['membership_no'];
+    if(isset($_SESSION['rentedBool']))
+        $isset=$_SESSION['rentedBool'];
+    if($isset == "0" && $isset == false )
+    {
+        echo json_encode('NoDelivery');die;
+    }
     if ($membership_no == "" && empty($membership_no) || !isset($_SESSION['membership_no'])) {
         return json_encode("failure");
     }
@@ -876,10 +895,9 @@ $app->get('/placeOrder', function (Request $request, Response $response, $args) 
 
 
 $app->get('/login/{username}/{password}', function (Request $request, Response $response, $args) {
-    $username = $args['username'];
+    $username = strtolower($args['username']);
     $password = $args['password'];
     $result = curlFunction("sessions_email.json?email=$username&password=$password");
-
     if (json_decode($result)->success == true) {
         $authToken = json_decode($result)->auth_token;
         $_SESSION['api_key'] = $authToken;
@@ -904,6 +922,18 @@ $app->get('/login/{username}/{password}', function (Request $request, Response $
 //    {
 //        $_SESSION['email']=$email;
 //    }
+
+        $array=[];
+        $memberData=json_decode($raw_data);
+        foreach ($memberData as $item)
+        {
+            if($item->MEMBERSHIP_NO == $arr[0]['membership_no'] )
+            {
+                $_SESSION['rentedBool']=$item->DELIVERY_OPTION;
+            }
+        }
+
+
         echo json_encode(json_decode($raw_data));
         die;
 
@@ -1532,6 +1562,7 @@ $app->get('/checkAvailability', function (Request $request, Response $response) 
 });
 
 $app->post('/submitReview', function (Request $request, Response $response) {
+    $con = $this->db;
     $stars = $_POST['rate'];
     $title = $_POST['title'];
     $review = $_POST['review'];
@@ -1541,9 +1572,20 @@ $app->post('/submitReview', function (Request $request, Response $response) {
         return json_encode("failure");
     }
     $api_key = $_SESSION['api_key'];
-    $result = curlFunction("rate_title.json?email=$mail&api_key=$api_key&membership_no=$membership_no&stars=$stars&title_id=$title");
+    $query_get_id = "select id from webstore.users where email='$mail'";
+    $result_id = oci_parse($con, $query_get_id);
+    oci_execute($result_id);
+    while($row_id = oci_fetch_assoc($result_id)){
+        $id = $row_id['ID'];
+    }
+    $query_insert_rating = "insert into webstore.rates (id,rater_id,rateable_id,rateable_type,stars,created_at,updated_at) values
+    (WEBSTORE.RATES_SEQ.NEXTVAL,'$id','$title','Title','$stars',trunc(sysdate),trunc(sysdate))";
+    $result_insert = oci_parse($con, $query_insert_rating);
+    oci_execute($result_insert);
+//    $result = json_encode('');
+//    $result = curlFunction("rate_title.json?email=$mail&api_key=$api_key&membership_no=$membership_no&stars=$stars&title_id=$title");
     $resultReview = curlFunction("reviews/create.json?email=$mail&api_key=$api_key&membership_no=$membership_no&title_id=$title&header=hello&content=$review");
-    echo json_encode(array('result' => $result, 'review' => $resultReview));
+    echo json_encode(array('review' => $resultReview));
 });
 
 
@@ -1554,7 +1596,7 @@ $app->get('/rentalHistory', function (Request $request, Response $response) {
         return json_encode("failure");
     }
     $api_key = $_SESSION['api_key'];
-    $result = curlFunction("rental_history.json?email=$mail&api_key=$api_key&membership_no=$membership_no");
+    $result = curlFunctionEs("/getPastReads?membership_no=$membership_no");
 //    echo "rental_history.json?email=$mail&api_key=$api_key&membership_no=$membership_no";die;
     $wishlist = wishlistIds();
     echo json_encode(array('data' => (array)json_decode($result), 'wishlist' => $wishlist));
@@ -1829,6 +1871,12 @@ $app->get('/break', function (Request $request, Response $response) {
 
 function presentIds()
 {
+    if(isset( $_SESSION['presentIDs']))
+    {
+        $present = $_SESSION['presentIDs'];
+        return $present ;
+    }
+
     $array = [];
     if (isset($_SESSION['username'])) {
 
@@ -1868,7 +1916,7 @@ function presentIds()
 
             array_push($array, $order['id']);
         }
-        $result = curlFunction("wishlists.json?email=$email&membership_no=$membership_no&api_key=$api_key");
+        $result = curlFunctionEs("/getWishList?membership_no=$membership_no");
         $pickupData = json_decode($result);
         $OrderData = $OrderData->result;
 
@@ -1879,12 +1927,20 @@ function presentIds()
 
             array_push($array, $order['id']);
         }
+        $_SESSION['presentIDs']=$array;
+
     }
     return $array;
 }
 
 function wishlistIds()
 {
+    if(isset($_SESSION['wishlists']))
+    {
+        $wish=$_SESSION['wishlists'];
+
+        return $wish ;
+    }
     $array = [];
     if (isset($_SESSION['username'])) {
 
@@ -1892,7 +1948,8 @@ function wishlistIds()
         $api_key = $_SESSION['api_key'];
         $email = $_SESSION['email'];
 
-        $result = curlFunction("wishlists.json?email=$email&membership_no=$membership_no&api_key=$api_key");
+        $result = curlFunctionEs("/getWishList?membership_no=$membership_no");
+
         $wishlist = json_decode($result);
         $wishlist = $wishlist->result;
 
@@ -1903,7 +1960,10 @@ function wishlistIds()
 
             array_push($array, $wish['id']);
         }
+        $_SESSION['wishlists']=$array;
+
     }
+
     return $array;
 }
 
@@ -1918,6 +1978,19 @@ $app->get('/getRelatedBooks', function (Request $request, Response $response) {
     echo json_encode(array("data" => $data, 'ids' => (array)$array, 'wishlist' => (array)$wishlist));
 
 });
+
+$app->get('/getRelatedBooksNew', function (Request $request, Response $response) {
+
+    $params = $request->getQueryParams();
+    $id = $params['id'];
+    $raw_data = curlFunctionEs("/getRelatedTitlesNew?title_id=$id");
+    $data = json_decode($raw_data);
+    $array = presentIds();
+    $wishlist = wishlistIds();
+    echo json_encode(array("data" => $data, 'ids' => (array)$array, 'wishlist' => (array)$wishlist));
+
+});
+
 $app->get('/getAuthorRelatedBooks', function (Request $request, Response $response) {
 
     $params = $request->getQueryParams();
@@ -2013,8 +2086,9 @@ $app->get('/getStatusDelivery', function (Request $request, Response $response) 
     $data = json_decode($raw_data);
     $data = $data->result;
     $data = json_decode(json_encode($data), True);
-    if (count($data['order_details']) == 0) {
-        echo json_encode("Tracking info not available !");
+//    echo json_encode($data);die;
+    if (isset($data['order_details'])) {
+        echo json_encode("Tracking info not yet available!");
         die;
     }
     echo json_encode($data['order_details'][0]['message']);
@@ -2025,9 +2099,8 @@ $app->get('/getStatusDelivery', function (Request $request, Response $response) 
 
 $app->get('/getShelfRecommendedBooks', function (Request $request, Response $response) {
 
-    $params = $request->getQueryParams();
-    $id = $params['id'];
-    $raw_data = curlFunctionEs("/getRecommendedTitles?membership_no=A000255");
+    $membership_no = $_SESSION['membership_no'];
+    $raw_data = curlFunctionEs("/getRecommendedTitles?membership_no=$membership_no");
     $data = json_decode($raw_data);
     $array = presentIds();
     $wishlist = wishlistIds();
@@ -2326,10 +2399,10 @@ $app->get('/terms-and-condition', function (Request $request, Response $response
 
 });
 $app->get('/renewal_payment', function (Request $request, Response $response) {
-    $term = $_GET['term'];
-    $delivery_fees = $_GET['delivery_fees'];
-    $coupon_code = $_GET['coupon_code'];
-    $gift_card_no = $_GET['gift_card_no'];
+    $term = $request->getQueryParams()['term'];
+    $delivery_fees = $request->getQueryParams()['delivery_fees'];
+    $coupon_code = $request->getQueryParams()['coupon_code'];
+    $gift_card_no = $request->getQueryParams()['gift_card_no'];
 
     $membership_no = $_SESSION['membership_no'];
     $api_key = $_SESSION['api_key'];
@@ -2482,7 +2555,7 @@ $app->get('/noAmountBreak', function (Request $request, Response $response) {
 });
 $app->get('/searchByCategory', function (Request $request, Response $response) {
 
-    $ids = $_GET['id'];
+    $ids = $request->getQueryParams()['id'];
 
 //echo "/getCategoryWise?page=1&categories=$ids";die;
     $raw_data = curlFunctionEs("/getCategoryWise?page=1&categories=$ids");
@@ -2513,8 +2586,8 @@ $app->get('/searchByCategory', function (Request $request, Response $response) {
 });
 $app->get('/loadMoreCatSearch', function (Request $request, Response $response) {
 
-    $ids = $_GET['categories'];
-    $page = $_GET['page'];
+    $ids = $request->getQueryParams()['categories'];
+    $page = $request->getQueryParams()['page'];
 
     $raw_data = curlFunctionEs("/getCategoryWise?page=$page&categories=$ids");
     $data = json_decode($raw_data);
@@ -2536,7 +2609,7 @@ $app->get('/loadMoreSearch', function (Request $request, Response $response) {
 });
 $app->get('/typeahead', function (Request $request, Response $response) {
 
-    $text = $_GET['text'];
+    $text = $request->getQueryParams()['text'];
     $raw_data = curlFunctionEs("/getSuggestBooks?text=$text&page=1");
     $data = json_decode($raw_data);
     echo json_encode($data);
@@ -2545,8 +2618,29 @@ $app->get('/typeahead', function (Request $request, Response $response) {
 
 
 $app->get('/updateMemberSession', function (Request $request, Response $response) {
-    $number = $_GET['membership'];
-    $_SESSION['membership_no'] = $number;
+    $username = $_GET['membership'];
+    $email=$_SESSION['username'];
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, API_URL_ES . "/getMembershipNumbers?");
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, "email_id=$email");
+    $raw_data = curl_exec($ch);
+    curl_close($ch);
+//    if(json_decode($raw_data) == "Updated")
+//    {
+//        $_SESSION['email']=$email;
+//    }
+
+    $array=[];
+    $memberData=json_decode($raw_data);
+    foreach ($memberData as $item)
+    {
+        if($item->MEMBERSHIP_NO == $username )
+        {
+            $_SESSION['rentedBool']=$item->DELIVERY_OPTION;
+        }
+    }
+    $_SESSION['membership_no'] = $username;
     echo $_SESSION['membership_no'];
     die;
 

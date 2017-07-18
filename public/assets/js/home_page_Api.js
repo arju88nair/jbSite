@@ -216,8 +216,8 @@ $(document).ready(function () {
                     ' <a href="/signup?planname=' + arr['PROMO'] + '&books=' + arr['NO_OF_BOOKS'] + '&months=' + arr['NO_OF_MONTHS'] + '"><div class="content_pt">' +
                     ' <p class="price"><sup>₹</sup><span> ' + Math.round(parseFloat(arr['READING_FEE'])) + '</span><sub></sub></p>' +
                     '<p class="hint">' + arr['MONTH_TAG'] + '</p></div></a><ul class="features">' +
-                    '<li style="color: black;">' + arr['BOOK_TAG'] + '</li><li style="background-color:#666666;padding: 12px;color: white;">' + arr['SUITABLE_TAG'] + '</li><li style="color: black;">Security Deposit - ₹ ' + Math.round(parseFloat(arr['SECURITY_DEPOSIT'])) + ' </li>' +
-                    '<li style="color: black;">Registration Fee - ₹ ' + Math.round(parseFloat(arr['REGISTRATION_FEE'])) + '</li></ul><div class="pt-footer">' +
+                    '<li style="color: black;">' + arr['BOOK_TAG'] + '</li>' +
+                    '</ul><div class="pt-footer">' +
                     '<a rel="external" data-ajax="false" href="/signup?planname=' + arr['PROMO'] + '&books=' + arr['NO_OF_BOOKS'] + '&months=' + arr['NO_OF_MONTHS'] + '"><h4>GET IT NOW !</h4></a></div></div>'
 
 
@@ -300,7 +300,7 @@ function placeOrder(id) {
         type: "GET",
         url: "/placeOrder?id=" + id,
         success: function (data) {
-            ;
+
             if (JSON.parse(data) === "failure") {
                 $(".spinner").hide();
 
@@ -310,6 +310,13 @@ function placeOrder(id) {
                 }, 800);
                 // $(window).scrollTop($('#membershipPlans').offset().top);
 
+            } else if(JSON.parse(data) === "NoDelivery"){
+                $(".spinner").hide();
+
+                toastr.error('Sorry! You have not opted for door delivery service. Kindly contact your branch or customer care to enable the same.');
+                $('html, body').animate({
+                    scrollTop: $('#membershipPlans').offset().top - 150
+                }, 800);
             }
             else {
                 $(".spinner").hide();
@@ -376,7 +383,7 @@ function signupClick() {
             $(".spinner").hide();
 
 
-            if (data === false || data === 'false') {
+            if (!data || data === false || data === 'false' || data == 'null') {
                 toastr.error('Wrong credentials, Please try again !');
                 $(".spinner").hide();
                 return false
@@ -432,8 +439,11 @@ function signupClick() {
                     ga('send', 'event', 'Clicks', 'Login of user ' + username + '', 'First Screen');
 
                     logClick('Login of user ' + username + '');
+
                     for(var i=0;i<data.length;i++)
                     {
+                        console.log(data);console.log(data[i])
+
                         $("#memberContent").append('<div class="radio"><label><input type="radio" name="memberRadio" value="'+data[i]['MEMBERSHIP_NO']+'">'+data[i]['MEMBERSHIP_NO']+'</label></div>')
 
                     }

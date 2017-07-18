@@ -1,327 +1,125 @@
-function placeOrder(id) {
-    $(".spinner").show();
-    $.ajax({
-        type: "GET",
-        url: "/placeOrder?id=" + id,
-        success: function (data) {
-            console.log(data);
-            if (JSON.parse(data) === "failure") {
-                $(".spinner").hide();
-
-                toastr.error('Please sign in to order the book !');
-                $(window).scrollTop($('#signin').offset().top);
-
-            }
-            else {
-                $(".spinner").hide();
-                data = JSON.parse(data);
-                console.log(data['success'])
-                if (data['success'] === "false") {
-                    toastr.warning(data['errors']).css('width', '500px')
-                } else {
-                    toastr.success('Successfully added !');
-
-                }
-            }
-        },
-
-    });
-}
-function wishlistAdd(id) {
-    var flag = localStorage.getItem("flag");
-    if (flag === "false") {
-        toastr.error("Please sign in to wish list a book !");
-        return false;
-    }
-
-    $(".spinner").show();
-
-    $.ajax({
-        type: "GET",
-        url: "/updateWishlist?id=" + id,
-        success: function (data) {
-            if (JSON.parse(data) === "failure") {
-                toastr.error('Please sign in to update wish list  !');
-            }
-            else {
-                toastr.success("Successfully updated your wishlist !")
-            }
-            $(".spinner").hide()
-        },
-        error: function (err) {
-            console.log(err);
-            toastr.error('Something went wrong  !');
-            $(".spinner").hide();
-
+function placeOrder(e) {
+    $(".spinner").show(), $.ajax({
+        type: "GET", url: "/placeOrder?id=" + e, success: function (e) {
+            console.log(e), "failure" === JSON.parse(e) ? ($(".spinner").hide(), toastr.error("Please sign in to order the book !"), $(window).scrollTop($("#signin").offset().top)) : ($(".spinner").hide(), e = JSON.parse(e), console.log(e.success), "false" === e.success ? toastr.warning(e.errors).css("width", "500px") : toastr.success("Successfully added !"))
         }
-
-    });
-}
-function logClick(type) {
-    $.ajax({
-        type: "GET",
-        url: "/insertLog?type=" + type + "",
-        success: function (data) {
-        },
-
-
-    });
-}
-
-
-$(document).on('click', 'a', function (e) {
-    logClick("Navigation  clicked on " + $(this).attr('href') + "");
-    ga('send', 'event', 'Navigation', $(this).attr('href'), 'First Screen');
-
-});
-
-
-var membership;
-var email;
-function searchClick() {
-
-    var term = $("#srch-term").val();
-    if (term !== "") {
-        window.location.href = "/search?q=" + term + "";
-
-    }
-
-}
-$(document).ready(function () {
-    $('#memberModel').on('hidden.bs.modal', function () {
-        window.location.href = '/shelf';
     })
-    $('#save_member_value').click(function () {
-        $('.spinner').show();
-        var radioValue = $("input[name='memberRadio']:checked").val();
-        if (radioValue) {
-            $.ajax({
-                type: "GET",
-                url: "/updateMemberSession?membership=" + radioValue,
-                success: function (data) {
-                    $(".spinner").hide();
-                    window.location.href = '/shelf';
-
-
-                },
-                error: function (err) {
-                    $(".spinner").hide();
-                    toastr.error('Something went wrong, Please try again !').css('width', '500px');
-                    console.log(err.responseText)
-                }
-
-            });
-
-        }
-        else {
-            toastr.error("Please select a card number to proceed")
-        }
-    });
-
-    //Instantiate the Bloodhound suggestion engine
-    var books = new Bloodhound({
-        datumTokenizer: function (datum) {
-            return Bloodhound.tokenizers.whitespace(datum.value);
-        },
-        queryTokenizer: Bloodhound.tokenizers.whitespace,
-        remote: {
-            url: '/typeahead?',
-            replace: function (url, uriEncodedQuery) {
-
-                val = $('#srch-term').val();
-                if (!val) return url;
-                return url + 'text=' + encodeURIComponent(val) + '&page=1'
-            },
-            filter: function (books) {
-                // Map the remote source JSON array to a JavaScript object array
-                return $.map(books, function (book) {
-                    return {
-                        value: book.name,
-                        link: book.id
-                    };
-                });
-            },
-
-        },
-        limit: 10,
-
-    });
-
-// Initialize the Bloodhound suggestion engine
-    books.initialize();
-
-// Instantiate the Typeahead UI
-    $('#srch-term').typeahead(null, {
-        displayKey: 'value',
-        source: books.ttAdapter(),
-        templates: {
-            empty: [
-                '<div class="empty-message text-center">',
-                'No titles found.<br>',
-                '<a rel="external" data-ajax="false" href="/search" class="text-center">More Advanced Search</a>',
-                '</div>',
-            ].join('\n'),
-            suggestion: function (data) {
-                console.log(data.link)
-                console.log(data.value)
-                return ['<p><a rel="external" data-ajax="false" href="/book_details/' + data.link + '/' + data.value + '">' + data.value + '</a></p>'].join('\n');
-            },
-
-        }
-
-    });
-
-
-//            var movies = new Bloodhound({
-//                datumTokenizer: function (datum) {
-//                    return Bloodhound.tokenizers.whitespace(datum.value);
-//                },
-//                queryTokenizer: Bloodhound.tokenizers.whitespace,
-//                remote: {
-//                    url: 'http://rec.justbooksclc.com/getSuggestBooks?',
-//                    filter: function (movies) {
-//                        // Map the remote source JSON array to a JavaScript object array
-//                        return $.map(movies.results, function (movie) {
-//                            console.log(movie.name)
-//                            return {
-//                                value: movie.name,
-//                                link: movie.id
-//                            };
-//                        });
-//                    }
-//                }
-//            });
-//
-//// Initialize the Bloodhound suggestion engine
-//            movies.initialize();
-//
-//// Instantiate the Typeahead UI
-//            $('#srch-term').typeahead(null, {
-//                displayKey: 'value',
-//                source: movies.ttAdapter(),
-//                templates: {
-//                    empty: [
-//                        '<div class="empty-message text-center">',
-//                        'No movies found.<br>',
-//                        '<a href="/search" class="text-center">More Advanced Search</a>',
-//                        '</div>',
-//                    ].join('\n'),
-//                    suggestion: function (data) {
-//                        return ['<p><a href="' + data.link + '">' + data.value + '</a></p>'].join('\n');
-//                    },
-//                }
-//            });
-//
-//
-//
-
-
-    $('#shareModal').on('show.bs.modal', function (e) {
-
-        //get data-id attribute of the clicked element
-        var id = $(e.relatedTarget).data('id');
-        var title = $(e.relatedTarget).data('title');
-        //populate the textbox
-        $("#sharefb").attr("href", "http://www.facebook.com/sharer.php?u=http://justbooks.in/book_details/" + id + "/" + title + "&title=Reading " + title + ". Get it from JustBooks.in");
-        $("#sharegp").attr("href", "https://plus.google.com/share?url=http://justbooks.in/book_details/" + id + "/" + title);
-        $("#sharetw").attr("href", "https://twitter.com/share?url=http://justbooks.in/book_details/" + id + "/" + title + "&amp;text=Reading %20" + title + ".Get%20it%20from%20JustBooks.in&amp;hashtags=justbookclc.com");
-        // $("#shareen").attr("href", "mailto:me@domain.com?subject=Hi, This might interest you ! http://justbooksclc.com/book_details/"+id);
-        // $("#sharefb").attr("href", "http://www.facebook.com/sharer.php?u=http://justbooksclc.com/book_details/"+id);
-    });
-    var w = window.outerWidth;
-    if (w < 750) {
-        toastr.options = {
-            "closeButton": true,
-            "debug": false,
-            "newestOnTop": false,
-            "progressBar": false,
-            "positionClass": "toast-top-center",
-            "preventDuplicates": false,
-            "onclick": null,
-            "showDuration": "300",
-            "hideDuration": "1000",
-            "timeOut": "5000",
-            "extendedTimeOut": "1000",
-            "showEasing": "swing",
-            "hideEasing": "linear",
-            "showMethod": "fadeIn",
-            "hideMethod": "fadeOut"
-        }
-
-    } else {
-        toastr.options = {
-            "closeButton": true,
-            "debug": false,
-            "newestOnTop": false,
-            "progressBar": false,
-            "positionClass": "toast-bottom-center",
-            "preventDuplicates": false,
-            "onclick": null,
-            "showDuration": "300",
-            "hideDuration": "1000",
-            "timeOut": "5000",
-            "extendedTimeOut": "1000",
-            "showEasing": "swing",
-            "hideEasing": "linear",
-            "showMethod": "fadeIn",
-            "hideMethod": "fadeOut"
-        }
-
-    }
-
-
-    $('#srch-term').keypress(function (e) {
-        var key = e.which;
-        if (key == 13) // the enter key code
-        {
-            searchClick();
-            return false;
-        }
-    });
-
-    $('.loginPwd').keypress(function (e) {
-        var key = e.which;
-        if (key == 13) // the enter key code
-        {
-            signupClick();
-            return false;
-        }
-    });
-
-
-//            $('header nav ul.menu > li > a').click(function(e) {
-//                var $this = $(this);
-//                $this.parent().siblings().removeClass('current-menu-parent').end().addClass('current-menu-parent');
-//                e.preventDefault();
-//            })
-//
-
-    $.ajax({
+}
+function wishlistAdd(e) {
+    var t = localStorage.getItem("flag");
+    return "false" === t ? (toastr.error("Please sign in to wish list a book !"), !1) : ($(".spinner").show(), void $.ajax({
         type: "GET",
-        url: "/getSessions",
-        success: function (data) {
-            data = JSON.parse(data);
-            membership = data.session;
-            localStorage.setItem("membership", membership);
-            localStorage.setItem("email", data.email);
-            console.log(membership);
+        url: "/updateWishlist?id=" + e,
+        success: function (e) {
+            "failure" === JSON.parse(e) ? toastr.error("Please sign in to update wish list  !") : toastr.success("Successfully updated your wishlist !"), $(".spinner").hide()
         },
-
+        error: function (e) {
+            console.log(e), toastr.error("Something went wrong  !"), $(".spinner").hide()
+        }
+    }))
+}
+function logClick(e) {
+    $.ajax({
+        type: "GET", url: "/insertLog?type=" + e, success: function (e) {
+        }
+    })
+}
+function searchClick() {
+    var e = $("#srch-term").val();
+    "" !== e && (window.location.href = "/search?q=" + e)
+}
+$(document).on("click", "a", function (e) {
+    logClick("Navigation  clicked on " + $(this).attr("href")), ga("send", "event", "Navigation", $(this).attr("href"), "First Screen")
+});
+var membership, email;
+$(document).ready(function () {
+    $("#memberModel").on("hidden.bs.modal", function () {
+        window.location.href = "/shelf"
+    }), $("#save_member_value").click(function () {
+        $(".spinner").show();
+        var e = $("input[name='memberRadio']:checked").val();
+        e ? $.ajax({
+            type: "GET", url: "/updateMemberSession?membership=" + e, success: function (e) {
+                $(".spinner").hide(), window.location.href = "/shelf"
+            }, error: function (e) {
+                $(".spinner").hide(), toastr.error("Something went wrong, Please try again !").css("width", "500px"), console.log(e.responseText)
+            }
+        }) : toastr.error("Please select a card number to proceed")
     });
-});
-
-$.ajax({
-    type: "GET",
-    url: "/loginValidate",
-    success: function (data) {
-        console.log(data);
-
-
-    },
-    error: function (err) {
-        toastr.error('Wrong credentials, Please try again !');
-        console.log(err.responseText)
+    var e = new Bloodhound({
+        datumTokenizer: function (e) {
+            return Bloodhound.tokenizers.whitespace(e.value)
+        }, queryTokenizer: Bloodhound.tokenizers.whitespace, remote: {
+            url: "/typeahead?", replace: function (e, t) {
+                return val = $("#srch-term").val(), val ? e + "text=" + encodeURIComponent(val) + "&page=1" : e
+            }, filter: function (e) {
+                return $.map(e, function (e) {
+                    return {value: e.name, link: e.id}
+                })
+            }
+        }, limit: 10
+    });
+    e.initialize(), $("#srch-term").typeahead(null, {
+        displayKey: "value",
+        source: e.ttAdapter(),
+        templates: {
+            empty: ['<div class="empty-message text-center">', "No titles found.<br>", '<a rel="external" data-ajax="false" href="/search" class="text-center">More Advanced Search</a>', "</div>"].join("\n"),
+            suggestion: function (e) {
+                return console.log(e.link), console.log(e.value), ['<p><a rel="external" data-ajax="false" href="/book_details/' + e.link + "/" + e.value + '">' + e.value + "</a></p>"].join("\n")
+            }
+        }
+    }), $("#shareModal").on("show.bs.modal", function (e) {
+        var t = $(e.relatedTarget).data("id"), o = $(e.relatedTarget).data("title");
+        $("#sharefb").attr("href", "http://www.facebook.com/sharer.php?u=http://justbooks.in/book_details/" + t + "/" + o + "&title=Reading " + o + ". Get it from JustBooks.in"), $("#sharegp").attr("href", "https://plus.google.com/share?url=http://justbooks.in/book_details/" + t + "/" + o), $("#sharetw").attr("href", "https://twitter.com/share?url=http://justbooks.in/book_details/" + t + "/" + o + "&amp;text=Reading %20" + o + ".Get%20it%20from%20JustBooks.in&amp;hashtags=justbookclc.com")
+    });
+    var t = window.outerWidth;
+    750 > t ? toastr.options = {
+        closeButton: !0,
+        debug: !1,
+        newestOnTop: !1,
+        progressBar: !1,
+        positionClass: "toast-top-center",
+        preventDuplicates: !1,
+        onclick: null,
+        showDuration: "300",
+        hideDuration: "1000",
+        timeOut: "5000",
+        extendedTimeOut: "1000",
+        showEasing: "swing",
+        hideEasing: "linear",
+        showMethod: "fadeIn",
+        hideMethod: "fadeOut"
+    } : toastr.options = {
+        closeButton: !0,
+        debug: !1,
+        newestOnTop: !1,
+        progressBar: !1,
+        positionClass: "toast-bottom-center",
+        preventDuplicates: !1,
+        onclick: null,
+        showDuration: "300",
+        hideDuration: "1000",
+        timeOut: "5000",
+        extendedTimeOut: "1000",
+        showEasing: "swing",
+        hideEasing: "linear",
+        showMethod: "fadeIn",
+        hideMethod: "fadeOut"
+    }, $("#srch-term").keypress(function (e) {
+        var t = e.which;
+        return 13 == t ? (searchClick(), !1) : void 0
+    }), $(".loginPwd").keypress(function (e) {
+        var t = e.which;
+        return 13 == t ? (signupClick(), !1) : void 0
+    }), $.ajax({
+        type: "GET", url: "/getSessions", success: function (e) {
+            e = JSON.parse(e), membership = e.session, localStorage.setItem("membership", membership), localStorage.setItem("email", e.email), console.log(membership)
+        }
+    })
+}), $.ajax({
+    type: "GET", url: "/loginValidate", success: function (e) {
+        console.log(e)
+    }, error: function (e) {
+        toastr.error("Wrong credentials, Please try again !"), console.log(e.responseText)
     }
-
 });
-
