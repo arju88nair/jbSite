@@ -123,3 +123,312 @@ $(document).ready(function () {
         toastr.error("Wrong credentials, Please try again !"), console.log(e.responseText)
     }
 });
+
+
+$(document).ready(function () {
+    // on click SignIn Button checks for valid email and all field should be filled
+
+
+    // on click signup It Hide Login Form and Display Registration Form
+    $(".signup").click(function () {
+
+        $(".loginDIv").slideUp("slow", function () {
+            $(".login_form_fram_second").slideDown("slow");
+        });
+    });
+
+    // on click signin It Hide Registration Form and Display Login Form
+    $(".signin").click(function () {
+
+
+        $(".login_form_fram_second").slideUp("slow", function () {
+            $(".loginDIv").slideDown("slow");
+        });
+    });
+
+});
+
+
+function signupClick() {
+
+    var username = $("#username").val();
+    if (username == "" || username == 0) {
+        toastr.error("Please enter an email !");
+        return false;
+    }
+
+    var password = $("#password").val();
+    if (password == "" || username == 0) {
+        toastr.error("Please enter password !");
+        return false;
+    }
+    $(".spinner").show();
+
+    $.ajax({
+        type: "GET",
+        url: "/login/" + username + "/" + password + "",
+        success: function (data) {
+            $(".spinner").hide();
+
+
+            if (!data || data === false || data === 'false' || data == 'null') {
+                toastr.error('Wrong credentials, Please try again !');
+                $(".spinner").hide();
+                return false
+
+            }
+            else {
+                data = JSON.parse(data)
+                if (data.length === 1) {
+
+                    $(".login_form_fram_one").hide();
+                    $("#main").hide();
+                    $("#first").hide();
+                    $("#shelfButton").show();
+                    toastr.success('Successfully signed in !');
+                    localStorage.setItem("flag", true)
+                    $("#first").hide();
+                    $("#main").hide();
+                    logClick("Log in click");
+                    (function (i, s, o, g, r, a, m) {
+                        i['GoogleAnalyticsObject'] = r;
+                        i[r] = i[r] || function () {
+                                (i[r].q = i[r].q || []).push(arguments)
+                            }, i[r].l = 1 * new Date();
+                        a = s.createElement(o),
+                            m = s.getElementsByTagName(o)[0];
+                        a.async = 1;
+                        a.src = g;
+                        m.parentNode.insertBefore(a, m)
+                    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+                    ga('create', 'UA-93821751-1', 'none');
+                    ga('send', 'event', 'Clicks', 'Login of user ' + username + '', 'First Screen');
+
+                    logClick('Login of user ' + username + '');
+                    window.location.href = "/shelf";
+
+                    return false;
+                }
+                else{
+                    (function (i, s, o, g, r, a, m) {
+                        i['GoogleAnalyticsObject'] = r;
+                        i[r] = i[r] || function () {
+                                (i[r].q = i[r].q || []).push(arguments)
+                            }, i[r].l = 1 * new Date();
+                        a = s.createElement(o),
+                            m = s.getElementsByTagName(o)[0];
+                        a.async = 1;
+                        a.src = g;
+                        m.parentNode.insertBefore(a, m)
+                    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+                    ga('create', 'UA-93821751-1', 'none');
+                    ga('send', 'event', 'Clicks', 'Login of user ' + username + '', 'First Screen');
+
+                    logClick('Login of user ' + username + '');
+
+                    for(var i=0;i<data.length;i++)
+                    {
+                        console.log(data);console.log(data[i])
+
+                        $("#memberContent").append('<div class="radio"><label><input type="radio" name="memberRadio" value="'+data[i]['MEMBERSHIP_NO']+'">'+data[i]['MEMBERSHIP_NO']+'</label></div>')
+
+                    }
+                    $('#memberModel').modal('show');
+
+
+
+                }
+            }
+
+
+        },
+        error: function (err) {
+            $(".spinner").hide();
+
+            // toastr.error('Something went wrong, Please try again !');
+            console.log(err.responseText);
+            $("#frame_sign_in").hide();
+            $("#loader").hide();
+        }
+
+
+    });
+
+
+}
+function signupClick2() {
+
+    var username = $("#username2").val();
+    if (username == "" || username == 0) {
+        toastr.error("Please enter an email !");
+        return false;
+    }
+
+    var password = $("#password2").val();
+    if (password == "" || username == 0) {
+        toastr.error("Please enter password !");
+        return false;
+    }
+    $(".spinner").show();
+
+    $.ajax({
+        type: "GET",
+        url: "/login/" + username + "/" + password + "",
+        success: function (data) {
+            $(".spinner").hide();
+
+
+            if (data === false || data === 'false') {
+                toastr.error('Wrong credentials, Please try again !');
+                $(".spinner").hide();
+                return false
+
+            }
+            else {
+                data = JSON.parse(data)
+                if (data.length === 1) {
+
+                    $(".login_form_fram_one").hide();
+                    $("#main").hide();
+                    $("#first").hide();
+                    $("#shelfButton").show();
+                    toastr.success('Successfully signed in !');
+                    localStorage.setItem("flag", true)
+                    $("#first").hide();
+                    $("#main").hide();
+                    logClick("Log in click");
+                    (function (i, s, o, g, r, a, m) {
+                        i['GoogleAnalyticsObject'] = r;
+                        i[r] = i[r] || function () {
+                                (i[r].q = i[r].q || []).push(arguments)
+                            }, i[r].l = 1 * new Date();
+                        a = s.createElement(o),
+                            m = s.getElementsByTagName(o)[0];
+                        a.async = 1;
+                        a.src = g;
+                        m.parentNode.insertBefore(a, m)
+                    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+                    ga('create', 'UA-93821751-1', 'none');
+                    ga('send', 'event', 'Clicks', 'Login of user ' + username + '', 'First Screen');
+
+                    logClick('Login of user ' + username + '');
+                    window.location.href = "/shelf";
+
+                    return false;
+                }
+                else{
+                    (function (i, s, o, g, r, a, m) {
+                        i['GoogleAnalyticsObject'] = r;
+                        i[r] = i[r] || function () {
+                                (i[r].q = i[r].q || []).push(arguments)
+                            }, i[r].l = 1 * new Date();
+                        a = s.createElement(o),
+                            m = s.getElementsByTagName(o)[0];
+                        a.async = 1;
+                        a.src = g;
+                        m.parentNode.insertBefore(a, m)
+                    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+                    ga('create', 'UA-93821751-1', 'none');
+                    ga('send', 'event', 'Clicks', 'Login of user ' + username + '', 'First Screen');
+
+                    logClick('Login of user ' + username + '');
+                    for(var i=0;i<data.length;i++)
+                    {
+                        $("#memberContent").append('<div class="radio"><label><input type="radio" name="memberRadio" value="'+data[i]['MEMBERSHIP_NO']+'">'+data[i]['MEMBERSHIP_NO']+'</label></div>')
+
+                    }
+                    $('#memberModel').modal('show');
+
+
+
+                }
+            }
+
+
+        },
+        error: function (err) {
+            $(".spinner").hide();
+
+            // toastr.error('Something went wrong, Please try again !');
+            console.log(err.responseText);
+            $("#frame_sign_in").hide();
+            $("#loader").hide();
+        }
+
+
+    });
+
+
+}
+
+
+function forgotPassword() {
+
+    var email = $("#forgetEmail").val();
+    if (email == "" || email == 0) {
+        toastr.error("Please enter an email !");
+        return false;
+    }
+    $(".spinner").show();
+    $.ajax({
+        type: "GET",
+        url: "/sendResetMail?email=" + email,
+        success: function (data) {
+            $(".spinner").hide();
+
+            console.log(data)
+            if (JSON.parse(data) === "success") {
+                $(".spinner").hide();
+
+                toastr.success('Please check your mail for further instructions!');
+
+            }
+            else {
+                $(".spinner").hide();
+
+                toastr.warning("Something went wrong!")
+
+
+            }
+        },
+
+    });
+
+}
+function forgotPassword2() {
+
+    var email = $("#forgetEmail2").val();
+    if (email == "" || email == 0) {
+        toastr.error("Please enter an email !");
+        return false;
+    }
+    $(".spinner").show();
+    $.ajax({
+        type: "GET",
+        url: "/sendResetMail?email=" + email,
+        success: function (data) {
+            $(".spinner").hide();
+
+            console.log(data)
+            if (JSON.parse(data) === "success") {
+                $(".spinner").hide();
+
+                toastr.success('Please check your mail for further instructions!');
+
+            }
+            else {
+                $(".spinner").hide();
+
+                toastr.warning("Something went wrong!")
+
+
+            }
+        },
+
+    });
+
+}

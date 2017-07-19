@@ -169,7 +169,42 @@ $app->get('/book_details/{titleid}/{name}', function (Request $request, Response
         $Categories[] = $rowCat;
     }
 
-    $response = $this->view->render($response, 'book_details.mustache', array('data' => $data, 'titleid' => $titleid, 'Currentflag' => $Currentflag, 'rental' => $rental_id, 'wishFlag' => $Wishflag, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories));
+
+    $query_rate = "select * from webstore.rates where rateable_id=$titleid and rater_id=(select id from webstore.users where email='$email')";
+    $result_rate = oci_parse($con, $query_rate);
+    oci_execute($result_rate);
+    while ($rowRate = oci_fetch_assoc($result_rate)) {
+        $ratedata[] = $rowRate;
+    }
+
+    $rateFlag=1;
+    $review="";
+    if(!isset($ratedata) || count($ratedata) == 0 || $ratedata == null)
+    {
+        $rateFlag=0;
+
+    }
+    else{
+
+        $email = $_SESSION['email'];
+        $reviewResult = curlFunction("reviews.json?membership_no=$membership_no&api_key=$api_key&email=$email&title_id=$titleid");
+        $reviewData = json_decode($reviewResult);
+        $reviewData = $reviewData->result;
+        $reviewData = json_decode(json_encode($reviewData), True);
+        $reviewData= $reviewData['reviews'];
+        $reviewArray=[];
+foreach ($reviewData as $reviews)
+{
+    if($reviews['publisher'] == $email)
+    {
+
+        array_push($reviewArray,$reviews['content']);
+    }
+}
+        $review= $reviewArray[0];
+    }
+
+    $response = $this->view->render($response, 'book_details.mustache', array('data' => $data, 'titleid' => $titleid, 'Currentflag' => $Currentflag, 'rental' => $rental_id, 'wishFlag' => $Wishflag, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories,'review'=>$review,'rateFlag'=>$rateFlag));
     return $response;
 })->setName('book_details/');
 
@@ -721,11 +756,19 @@ $app->get('/getWishList', function (Request $request, Response $response) {
     $membership_no = $_SESSION['membership_no'];
     $api_key = $_SESSION['api_key'];
     $mail = $_SESSION['email'];
+
+    $con=$this->db;
+    $query_rate = "select * from webstore.rates where  rater_id=(select id from webstore.users where email='$email')";
+    $result_rate = oci_parse($con, $query_rate);
+    oci_execute($result_rate);
+    while ($rowRate = oci_fetch_assoc($result_rate)) {
+        $ratedata[] = $rowRate['RATEABLE_ID'];
+    }
     $result = curlFunctionEs("/getWishList?membership_no=$membership_no");
 //    $wishlist = wishlistIds();
     $array = presentIds();
 
-    echo json_encode(array('data' => (array)json_decode($result), 'ids' => $array));
+    echo json_encode(array('data' => (array)json_decode($result), 'ids' => $array,'rateIDs'=>$ratedata));
 });
 
 $app->post('/removeWishList', function (Request $request, Response $response) {
@@ -743,19 +786,34 @@ $app->get('/getOrderList', function (Request $request, Response $response) {
     $membership_no = $_SESSION['membership_no'];
     $api_key = $_SESSION['api_key'];
     $email = $_SESSION['email'];
+    $con=$this->db;
+    $query_rate = "select * from webstore.rates where  rater_id=(select id from webstore.users where email='$email')";
+    $result_rate = oci_parse($con, $query_rate);
+    oci_execute($result_rate);
+    while ($rowRate = oci_fetch_assoc($result_rate)) {
+        $ratedata[] = $rowRate['RATEABLE_ID'];
+    }
     $result = curlFunctionEs("/getOrderList?membership_no=$membership_no");
     $wishlist = wishlistIds();
-    echo json_encode(array('data' => (array)json_decode($result), 'wishlist' => $wishlist));
+    echo json_encode(array('data' => (array)json_decode($result), 'wishlist' => $wishlist,'rateIDs'=>$ratedata));
 });
 
 $app->get('/getCurrentReading', function (Request $request, Response $response) {
     $membership_no = $_SESSION['membership_no'];
     $api_key = $_SESSION['api_key'];
     $email = $_SESSION['email'];
+$con=$this->db;
+    $query_rate = "select * from webstore.rates where  rater_id=(select id from webstore.users where email='$email')";
+    $result_rate = oci_parse($con, $query_rate);
+    oci_execute($result_rate);
+    while ($rowRate = oci_fetch_assoc($result_rate)) {
+        $ratedata[] = $rowRate['RATEABLE_ID'];
+    }
+
 //    $result = curlFunction("books_at_home.json?membership_no=$membership_no&api_key=$api_key&email=$email");
     $result = curlFunctionEs("/getCurrentReading?membership_no=$membership_no");
     $wishlist = wishlistIds();
-    echo json_encode(array('data' => (array)json_decode($result), 'wishlist' => $wishlist));
+    echo json_encode(array('data' => (array)json_decode($result), 'wishlist' => $wishlist,'rateIDs'=>$ratedata));
 });
 
 $app->post('/placePickup', function (Request $request, Response $response) {
@@ -773,9 +831,17 @@ $app->get('/getPickupList', function (Request $request, Response $response) {
     $membership_no = $_SESSION['membership_no'];
     $api_key = $_SESSION['api_key'];
     $email = $_SESSION['email'];
+
+    $con=$this->db;
+    $query_rate = "select * from webstore.rates where  rater_id=(select id from webstore.users where email='$email')";
+    $result_rate = oci_parse($con, $query_rate);
+    oci_execute($result_rate);
+    while ($rowRate = oci_fetch_assoc($result_rate)) {
+        $ratedata[] = $rowRate['RATEABLE_ID'];
+    }
     $result = curlFunctionEs("/getPickupRequest?membership_no=$membership_no");
     $wishlist = wishlistIds();
-    echo json_encode(array('data' => (array)json_decode($result), 'wishlist' => $wishlist));
+    echo json_encode(array('data' => (array)json_decode($result), 'wishlist' => $wishlist,'rateIDs'=>$ratedata));
 });
 
 $app->post('/cancelOrder', function (Request $request, Response $response) {
@@ -1023,8 +1089,18 @@ $app->get('/change_plan', function (Request $request, Response $response, $args)
     foreach ($data as $v) {
         if (strtoupper($v['change_plan_detail']['promo_code']) === strtoupper($planname) && $v['change_plan_detail']['books'] === (int)$books) {
 
+            $frequency =$v['change_plan_detail']['frequency'];
             $planid = $v['change_plan_detail']['plan_id'];
         }
+
+    }
+
+    if($frequency == 'Y')
+    {
+        $monthTag= "Year(s)";
+    }
+    else{
+        $monthTag= "Month(s)";
 
     }
 
@@ -1090,7 +1166,7 @@ $app->get('/change_plan', function (Request $request, Response $response, $args)
                         $Categories[] = $rowCat;
                     }
 
-                    $response = $this->view->render($response, 'change_plan.mustache', array('plan_data' => strtoupper($planname), 'plan_dataJ' => json_encode($array_data), 'planid' => $planid, 'plan_books' => $count, 'planname' => $planname, 'planid' => $planid, "available_balance" => $item['change_plan_detail']['available_balance'], 'balance_due' => $item['change_plan_detail']['balance_due'], 'reading_fee' => $item['change_plan_detail']['reading_fee'], 'totalAMount' => $plans['plan_duration']['payable_amount'], 'months' => $monthsArray, 'book' => $books, 'month' => $months, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories));
+                    $response = $this->view->render($response, 'change_plan.mustache', array('plan_data' => strtoupper($planname), 'plan_dataJ' => json_encode($array_data), 'planid' => $planid, 'plan_books' => $count, 'planname' => $planname, 'planid' => $planid, "available_balance" => $item['change_plan_detail']['available_balance'], 'balance_due' => $item['change_plan_detail']['balance_due'], 'reading_fee' => $item['change_plan_detail']['reading_fee'], 'totalAMount' => $plans['plan_duration']['payable_amount'], 'months' => $monthsArray, 'book' => $books, 'month' => $months, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories,'monthTag'=>$monthTag));
                     return $response;
 
                 }
@@ -1592,6 +1668,14 @@ $app->post('/submitReview', function (Request $request, Response $response) {
 $app->get('/rentalHistory', function (Request $request, Response $response) {
     $mail = $_SESSION['email'];
     $membership_no = $_SESSION['membership_no'];
+    $api_key = $_SESSION['api_key'];
+    $con=$this->db;
+    $query_rate = "select * from webstore.rates where  rater_id=(select id from webstore.users where email='$email')";
+    $result_rate = oci_parse($con, $query_rate);
+    oci_execute($result_rate);
+    while ($rowRate = oci_fetch_assoc($result_rate)) {
+        $ratedata[] = $rowRate['RATEABLE_ID'];
+    }
     if ($membership_no == "" && empty($membership_no) || !isset($_SESSION['membership_no'])) {
         return json_encode("failure");
     }
@@ -1599,7 +1683,7 @@ $app->get('/rentalHistory', function (Request $request, Response $response) {
     $result = curlFunctionEs("/getPastReads?membership_no=$membership_no");
 //    echo "rental_history.json?email=$mail&api_key=$api_key&membership_no=$membership_no";die;
     $wishlist = wishlistIds();
-    echo json_encode(array('data' => (array)json_decode($result), 'wishlist' => $wishlist));
+    echo json_encode(array('data' => (array)json_decode($result), 'wishlist' => $wishlist,'rateIDs'=>$ratedata));
 });
 
 
@@ -2613,6 +2697,30 @@ $app->get('/typeahead', function (Request $request, Response $response) {
     $raw_data = curlFunctionEs("/getSuggestBooks?text=$text&page=1");
     $data = json_decode($raw_data);
     echo json_encode($data);
+
+});
+$app->get('/getReview', function (Request $request, Response $response) {
+
+    $id = $request->getQueryParams()['id'];
+    $membership_no = $_SESSION['membership_no'];
+    $api_key = $_SESSION['api_key'];
+    $email = $_SESSION['email'];
+    $reviewResult = curlFunction("reviews.json?membership_no=$membership_no&api_key=$api_key&email=$email&title_id=$id");
+    $reviewData = json_decode($reviewResult);
+    $reviewData = $reviewData->result;
+    $reviewData = json_decode(json_encode($reviewData), True);
+    $reviewData= $reviewData['reviews'];
+    $reviewArray=[];
+    foreach ($reviewData as $reviews)
+    {
+        if($reviews['publisher'] == $email)
+        {
+
+            array_push($reviewArray,$reviews['content']);
+        }
+    }
+    $review= $reviewArray[0];
+    echo json_encode($review);
 
 });
 

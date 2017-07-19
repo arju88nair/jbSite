@@ -200,3 +200,15 @@ function checkRate()
 
 
 }
+$(document).ready(function()
+{
+    $('#reviewModal').on('show.bs.modal', function (e) {
+
+        //get data-id attribute of the clicked element
+        var text = $(e.relatedTarget).data('text');
+
+        //populate the textbox
+        $('#reviewText').html("You wrote -  <strong>'" + text + "'</strong>");
+    });
+
+});

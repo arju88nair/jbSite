@@ -1,18 +1,20 @@
-$(document).ready(function() {
-    $("#myCarousel1").swiperight(function() {
+$(document).ready(function () {
+    $("#myCarousel1").swiperight(function () {
         $(this).carousel('prev');
     });
-    $("#myCarousel1").swipeleft(function() {
+    $("#myCarousel1").swipeleft(function () {
         $(this).carousel('next');
-    }); $("#myCarousel2").swiperight(function() {
+    });
+    $("#myCarousel2").swiperight(function () {
         $(this).carousel('prev');
     });
-    $("#myCarousel2").swipeleft(function() {
+    $("#myCarousel2").swipeleft(function () {
         $(this).carousel('next');
-    }); $("#myCarousel").swiperight(function() {
+    });
+    $("#myCarousel").swiperight(function () {
         $(this).carousel('prev');
     });
-    $("#myCarousel").swipeleft(function() {
+    $("#myCarousel").swipeleft(function () {
         $(this).carousel('next');
     });
 });
@@ -33,7 +35,8 @@ $(document).ready(function () {
         type: "GET",
         url: "/getCurrentReading",
         success: function (data) {
-            $(".spinner").hide();            console.log(data)
+            $(".spinner").hide();
+            console.log(data)
 
             var new_data = JSON.parse(data);
 
@@ -50,7 +53,7 @@ $(document).ready(function () {
 
 
                 var w = window.outerWidth;
-                if(w<750){
+                if (w < 750) {
                     $('html, body').animate({
                         scrollTop: $('#shelf_data').offset().top - 150
                     }, 800);
@@ -60,12 +63,12 @@ $(document).ready(function () {
             }
             $("#emptyResult").hide();
             $("#left_menu_recommend").show();
-            var final_response = generateDIV(new_data['data'], 'placePickup', 'rental_id', 'Return', 'none', new_data['wishlist'], '', 'none', 'margin-top: 34%;margin-left: -100%;', 'inline-block', 'block');
+            var final_response = generateDIV(new_data['data'], 'placePickup', 'rental_id', 'Return', 'none', new_data['wishlist'], '', 'none', 'margin-top: 34%;margin-left: -100%;', 'inline-block', 'block', new_data['rateIDs']);
             $('#shelf_data').html('');
             $('#shelf_data').append(final_response);
             var w = window.outerWidth;
             var h = window.outerHeight;
-            if(w<750){
+            if (w < 750) {
                 $('html, body').animate({
                     scrollTop: $('#shelf_data').offset().top - 150
                 }, 800);
@@ -85,9 +88,9 @@ $(document).ready(function () {
 
             var w = window.outerWidth;
             var h = window.outerHeight;
-            if(w<750){
+            if (w < 750) {
                 var final_response = getCard(cardData, 2, data['ids'], data['wishlist']);
-            }else{
+            } else {
                 var final_response = getCard(cardData, 5, data['ids'], data['wishlist']);
             }
 
@@ -96,8 +99,8 @@ $(document).ready(function () {
             $('#newArrivalsShelf').append(final_response);
             $('.item_shelf_new').first().addClass('active');
             $("#myCarouselnew").carousel();
-            if(w<750){
-                $("div#shelfNewArr").css('margin-left','6%')
+            if (w < 750) {
+                $("div#shelfNewArr").css('margin-left', '6%')
             }
             $("#frame_new_arr").hide();
             $("#loader").hide();
@@ -117,9 +120,9 @@ $(document).ready(function () {
 
             var w = window.outerWidth;
             var h = window.outerHeight;
-            if(w<750){
+            if (w < 750) {
                 var final_response = getRecommend(cardData, 2, data['ids'], data['wishlist']);
-            }else{
+            } else {
                 var final_response = getRecommend(cardData, 5, data['ids'], data['wishlist']);
             }
             // var final_response = getRecommend(cardData, 5, data['ids'], data['wishlist']);
@@ -129,8 +132,8 @@ $(document).ready(function () {
             $("#myCarousel").carousel();
             $("#frame_recomm").hide();
             $("#loader_rec").hide();
-            if(w<750){
-                $("div#leftRecommned").css("margin-left"," 10% ")
+            if (w < 750) {
+                $("div#leftRecommned").css("margin-left", " 10% ")
             }
 
         },
@@ -154,9 +157,9 @@ $(document).ready(function () {
             cardData = data['data'];
             var w = window.outerWidth;
             var h = window.outerHeight;
-            if(w<750){
+            if (w < 750) {
                 var final_response = getCardMostRead(cardData, 2, data['ids'], data['wishlist']);
-            }else{
+            } else {
                 var final_response = getCardMostRead(cardData, 5, data['ids'], data['wishlist']);
             }
             // var final_response = getCardMostRead(cardData, 5, data['ids'], data['wishlist']);
@@ -380,8 +383,7 @@ $(document).ready(function () {
         //get data-id attribute of the clicked element
         var address1 = $(e.relatedTarget).data('address1');
         var dob = $(e.relatedTarget).data('datofbirth');
-        if(dob === null || dob === "null")
-        {
+        if (dob === null || dob === "null") {
             $("#dob").datepicker({
                 dateFormat: 'dd-mm-yy',
                 changeMonth: true,
@@ -390,11 +392,11 @@ $(document).ready(function () {
                 defaultDate: new Date()
             })
         }
-        else{
+        else {
 
-            var dobDate= moment(dob, "DD-MMM-YY").add(1, 'days').toDate();
+            var dobDate = moment(dob, "DD-MMM-YY").add(1, 'days').toDate();
 
-            dobDate=dobDate.toISOString().replace(/T.*/,'').split('-').reverse().join('-');
+            dobDate = dobDate.toISOString().replace(/T.*/, '').split('-').reverse().join('-');
             $("#dob").datepicker({
                 dateFormat: 'dd-mm-yy',
                 changeMonth: true,
@@ -493,23 +495,29 @@ $(document).ready(function () {
     });
 
 
-
 });
 
 
-function generateDIV(arr, funcName, idName, btnTxt, style, ids, statusKey, statusStyle, shareStyle, wishStyle, custStyle) {
+function generateDIV(arr, funcName, idName, btnTxt, style, ids, statusKey, statusStyle, shareStyle, wishStyle, custStyle, rateIds) {
     $('#change_plan').html('');
     var response = '';
     arr.forEach(function (arr_data) {
 //            console.log(arr_data['id']);
 //            console.log(ids.indexOf(arr_data['id']))
-        if (ids.indexOf( arr_data['id']) != -1) {
+        if (ids.indexOf(arr_data['id']) != -1) {
             var image = "../../assets/img/Added_WL_Right.png"
             wish = "";
         }
         else {
             image = "../../assets/img/Added_WL_50.png";
             var wish = "wishlistAdd(" + arr_data['id'] + ");";
+        }
+        if (rateIds.indexOf(arr_data['id']) != -1) {
+            var rate_lin = "<a class=\"shortcode_button btn_small btn_type10\"    style=\"cursor:pointer;\" onclick='getReview(" + arr_data["id"] + ")'>Rate/Review</a>";
+
+        }
+        else {
+            var rate_lin = "<a class=\"shortcode_button btn_small btn_type10\"  data-toggle=\"modal\" data-id=" + arr_data["id"] + " data-title= '" + arr_data["title"] + "'  data-target=\"#rateModal\" style=\"cursor:pointer;\">Rate/Review</a>";
         }
 
         response += '<div id="alertDiv" class="alert  alert-dismissable" style="display: none"><a  href="#" class="close"  aria-label="close" onclick="hideAlert()">&times;</a>' +
@@ -528,7 +536,7 @@ function generateDIV(arr, funcName, idName, btnTxt, style, ids, statusKey, statu
             // '<p><a href="/book_details/' + arr_data['id'] + '">Rate/Review</a></p>' +
             '<div class="shelf_sicial">' +
             '<div class="col-md-3 col-xs-2" style="cursor:pointer;margin-right: 26%;margin-top: 4%;margin-left:-9%">' +
-            '<a class="shortcode_button btn_small btn_type10"  data-toggle="modal" data-id=' + arr_data['id'] + ' data-title="' + arr_data['title'] + '"  data-target="#rateModal" style="cursor:pointer;">Rate/Review</a>' +
+            '' + rate_lin + '' +
             '</div>' +
             '<div class="col-md-3 col-xs-2 shelf_return_btn" style="margin-right: -8%;margin-top: 4%;display: ' + custStyle + '">' +
             '<a href="javascript:void(0)" class="shortcode_button btn_small btn_type10" onclick="' + funcName + '(this,' + arr_data['id'] + ')"  id="' + arr_data[idName] + '">' + btnTxt + '</a>' +
@@ -538,13 +546,13 @@ function generateDIV(arr, funcName, idName, btnTxt, style, ids, statusKey, statu
             '<div class="col-md-4 col-xs-6 shelf_logos" style="float: left;' + shareStyle + '">' +
             '<a href="javascript:void(0)" class="tiptip" title="Share" data-id="' + arr_data['id'] + '" data-title="' + arr_data['title'] + '" data-toggle="modal" data-target="#shareModal" style="margin-left: 10%">' +
             '<img class="share_btn" src=../../assets/img/Engage.png alt="Smiley face" height="25" width="25"></a>' +
-            '<a href="javascript:void(0)"  style="display:' + wishStyle + ';" class="tiptip" onclick="'+wish+'"  id="' + arr_data[idName] + '"><img id="wish_' + arr_data['id'] + '" class="wishlist_btn" src=' + image + ' alt="Smiley face" height="25" width="25"></a>' +
+            '<a href="javascript:void(0)"  style="display:' + wishStyle + ';" class="tiptip" onclick="' + wish + '"  id="' + arr_data[idName] + '"><img id="wish_' + arr_data['id'] + '" class="wishlist_btn" src=' + image + ' alt="Smiley face" height="25" width="25"></a>' +
             '</div>' +
             '</div>';
     });
     return response;
 }
-function generateWishDIV(arr,ids,rent) {
+function generateWishDIV(arr, ids, rent,rateIds) {
     $('#change_plan').html('');
     var response = '';
     arr.forEach(function (arr_data) {
@@ -568,6 +576,13 @@ function generateWishDIV(arr,ids,rent) {
 
             text = "Rent";
         }
+        if (rateIds.indexOf(arr_data['id']) != -1) {
+            var rate_lin = "<a class=\"shortcode_button btn_small btn_type10\"    style=\"cursor:pointer;\" onclick='getReview(" + arr_data["id"] + ")'>Rate/Review</a>";
+
+        }
+        else {
+            var rate_lin = "<a class=\"shortcode_button btn_small btn_type10\"  data-toggle=\"modal\" data-id=" + arr_data["id"] + " data-title= '" + arr_data["title"] + "'  data-target=\"#rateModal\" style=\"cursor:pointer;\">Rate/Review</a>";
+        }
         response += '<div id="alertDiv" class="alert  alert-dismissable" style="display: none"><a  href="#" class="close"  aria-label="close" onclick="hideAlert()">&times;</a>' +
             '<span id="alertText"></span></div><div id="div' + arr_data['id'] + '" class="col-md-6 col-xs-6 module_cont module_shelf shadow1" style="height: 180px;">' +
             '<div class="col-md-5 col-xs-5">' +
@@ -584,7 +599,7 @@ function generateWishDIV(arr,ids,rent) {
             // '<p><a href="/book_details/' + arr_data['id'] + '">Rate/Review</a></p>' +
             '<div class="shelf_sicial">' +
             '<div class="col-md-3 col-xs-2" style="cursor:pointer;margin-right: 26%;margin-top: 4%;margin-left:-9%">' +
-            '<a class="shortcode_button btn_small btn_type10"  data-toggle="modal" data-id=' + arr_data['id'] + ' data-title="' + arr_data['title'] + '"  data-target="#rateModal" style="cursor:pointer;">Rate/Review</a>' +
+            ''+rate_lin+'' +
             '</div>' +
             '<div class="col-md-3 col-xs-2 shelf_return_btn" style="margin-right: -8%;margin-top: 4%;display:inline-block">' +
             '<a href="javascript:void(0)" class="shortcode_button btn_small btn_type10" onclick=' + action + '  id="rent_' + arr_data['id'] + '">' + text + '</a>' +
@@ -593,7 +608,7 @@ function generateWishDIV(arr,ids,rent) {
             '<div class="col-md-4 col-xs-6 shelf_logos" style="float: left;margin-top: 37% ;margin-left: -100%">' +
             '<a href="javascript:void(0)" class="tiptip" title="Share" data-id="' + arr_data['id'] + '" data-title="' + arr_data['title'] + '" data-toggle="modal" data-target="#shareModal" style="margin-left: 10%">' +
             '<img class="share_btn" src=../../assets/img/Engage.png alt="Smiley face" height="25" width="25"></a>' +
-            '&nbsp;<a   style="display:inline-block;cursor: hand"class="tiptip" onclick="removeWishlist(this,' + arr_data['id'] + ')"  id="' + arr_data['id'] + '"><img style="cursor: pointer !important;" class="share_btn" src=../../assets/img/Delete.png alt="Smiley face" height="23" width="23"></i>'+
+            '&nbsp;<a   style="display:inline-block;cursor: hand"class="tiptip" onclick="removeWishlist(this,' + arr_data['id'] + ')"  id="' + arr_data['id'] + '"><img style="cursor: pointer !important;" class="share_btn" src=../../assets/img/Delete.png alt="Smiley face" height="23" width="23"></i>' +
             '</a>' +
             '</div>' +
             '</div>';
@@ -626,13 +641,11 @@ $('#wishlist').click(function (e) {
 
                 var w = window.outerWidth;
                 var h = window.outerHeight;
-                if(w<750){
+                if (w < 750) {
                     $('html, body').animate({
                         scrollTop: $('#shelf_data').offset().top - 150
                     }, 800);
                 }
-
-
 
 
                 $("#left_menu_recommend").show();
@@ -643,13 +656,13 @@ $('#wishlist').click(function (e) {
 
             var response = '';
             var i = 0;
-            var final_response = generateWishDIV(new_data['data']['result'], new_data['wishlist'],new_data['ids']);
+            var final_response = generateWishDIV(new_data['data']['result'], new_data['wishlist'], new_data['ids'],new_data['rateIDs']);
             $('#shelf_data').html('');
             $('#shelf_data').append(final_response);
             $("#left_menu_recommend").show();
             var w = window.outerWidth;
             var h = window.outerHeight;
-            if(w<750){
+            if (w < 750) {
                 $('html, body').animate({
                     scrollTop: $('#shelf_data').offset().top - 150
                 }, 800);
@@ -685,7 +698,7 @@ $('#ordered_books').click(function (e) {
 
                 var w = window.outerWidth;
                 var h = window.outerHeight;
-                if(w<750){
+                if (w < 750) {
                     $('html, body').animate({
                         scrollTop: $('#shelf_data').offset().top - 150
                     }, 800);
@@ -704,11 +717,11 @@ $('#ordered_books').click(function (e) {
             } else {
                 var id = 'delivery_order_id';
             }
-            var final_response = generateDIV(new_data['data']['result'], 'cancelOrder', 'delivery_order_id', 'Cancel', 'inline-block', new_data['wishlist'], 'delivery_order_id', 'block', 'margin-top: 6% !important;margin-left: -40%', 'inline-block', 'block');
+            var final_response = generateDIV(new_data['data']['result'], 'cancelOrder', 'delivery_order_id', 'Cancel', 'inline-block', new_data['wishlist'], 'delivery_order_id', 'block', 'margin-top: 6% !important;margin-left: -40%', 'inline-block', 'block',new_data['rateIDs']);
             $('#shelf_data').append(final_response);
             var w = window.outerWidth;
             var h = window.outerHeight;
-            if(w<750){
+            if (w < 750) {
                 $('html, body').animate({
                     scrollTop: $('#shelf_data').offset().top - 150
                 }, 800);
@@ -748,7 +761,7 @@ $('#currently_reading').click(function (e) {
 
                 var w = window.outerWidth;
                 var h = window.outerHeight;
-                if(w<750){
+                if (w < 750) {
                     $('html, body').animate({
                         scrollTop: $('#shelf_data').offset().top - 150
                     }, 800);
@@ -758,12 +771,12 @@ $('#currently_reading').click(function (e) {
             }
             $("#emptyResult").hide();
             $("#left_menu_recommend").show();
-            var final_response = generateDIV(new_data['data'], 'placePickup', 'rental_id', 'Return', 'none', new_data['wishlist'], '', 'none', 'margin-top: 34%;margin-left: -100%;', 'inline-block', 'block');
+            var final_response = generateDIV(new_data['data'], 'placePickup', 'rental_id', 'Return', 'none', new_data['wishlist'], '', 'none', 'margin-top: 34%;margin-left: -100%;', 'inline-block', 'block', new_data['rateIDs']);
             $('#shelf_data').html('');
             $('#shelf_data').append(final_response);
             var w = window.outerWidth;
             var h = window.outerHeight;
-            if(w<750){
+            if (w < 750) {
                 $('html, body').animate({
                     scrollTop: $('#shelf_data').offset().top - 150
                 }, 800);
@@ -803,7 +816,7 @@ $('#pick_up').click(function (e) {
 
                 var w = window.outerWidth;
                 var h = window.outerHeight;
-                if(w<750){
+                if (w < 750) {
                     $('html, body').animate({
                         scrollTop: $('#shelf_data').offset().top - 150
                     }, 800);
@@ -814,12 +827,12 @@ $('#pick_up').click(function (e) {
             $("#emptyResult").hide();
 
 
-            var final_response = generateDIV(new_data['data']['result'], 'cancelPickup', 'rental_id', 'Cancel', 'inline-block', new_data['wishlist'], 'rental_id', 'block', 'margin-top: 6% !important;margin-left: -40%', 'inline-block', 'block');
+            var final_response = generateDIV(new_data['data']['result'], 'cancelPickup', 'rental_id', 'Cancel', 'inline-block', new_data['wishlist'], 'rental_id', 'block', 'margin-top: 6% !important;margin-left: -40%', 'inline-block', 'block',new_data['rateIDs']);
             $('#shelf_data').html('');
             $('#shelf_data').append(final_response);
             var w = window.outerWidth;
             var h = window.outerHeight;
-            if(w<750){
+            if (w < 750) {
                 $('html, body').animate({
                     scrollTop: $('#shelf_data').offset().top - 150
                 }, 800);
@@ -857,12 +870,12 @@ $('#profile').click(function (e) {
                 '<div class="jumbotron col-xs-11">' +
                 '<div class="row">' +
 
-                '<div class="column column-66" style="cursor:default;"> <div style="font-size: 18px; color:#000 !important; font-family: Playfair Display;margin-top: -3%" class="col-sm-10">  <span class="">' + data_new['data'][0]['FIRST_NAME'] + '( Membership Number - '+data_new['data'][0]['MEMBERSHIP_NO']+')</span>  <a class="shortcode_button btn_small btn_type1" style="float:right;" href="" data-toggle="modal" data-address="' + data_new['data'][0]['EMAIL_ID'] + '"  data-address1="' + data_new['data'][0]['ADDRESS1'] + '"  data-address2="' + data_new['data'][0]['ADDRESS2'] + '"  data-address3="' + data_new['data'][0]['ADDRESS3'] + '"  data-state="' + data_new['data'][0]['STATE'] + '"  data-city="' + data_new['data'][0]['CITY'] + '"data-pin="' + data_new['data'][0]['PINCODE'] + '" data-phone="' + data_new['data'][0]['MPHONE'] + '" data-email="' + data_new['data'][0]['EMAIL_ID'] + '"  data-datofbirth="' + data_new['data'][0]['DATE_OF_BIRTH'] + '"  data-gender="' + data_new['data'][0]['GENDER'] + '" data-target="#profileUpdate">Edit Profile</a></div></div>' + '<div class="column column-33"> <div class="card border-color-teal"> <table class="table table-striped" style="margin:0;font-family:Playfair Display;"> <tbody> <tr> <td>Member since</td> <td>' + data_new['data'][0]['REGISTER_TIME'] + '</td> </tr>   <tr> <td>E-mail</td> <td>' + data_new['data'][0]['EMAIL_ID'] + '</td> </tr>  <tr> <td>Date of birth</td> <td>' + data_new['data'][0]['DATE_OF_BIRTH'] + '</td> </tr>  <tr> <td>Phone No</td> <td>' + data_new['data'][0]['MPHONE'] + '</td> </tr> <tr> <td>Address</td>  <td>' + data_new['data'][0]['ADDRESS1'] + data_new['data'][0]['ADDRESS2'] + data_new['data'][0]['ADDRESS3'] + ", " + data_new['data'][0]['STATE'] + ", " + data_new['data'][0]['CITY'] + ", " + data_new['data'][0]['PINCODE'] + '</td>  </tr><tr> <td>Status</td>  <td>' + data_new['data'][0]['STATUS'] + '</td>  </tr> </tbody> </table> </div> </div>' + '</div>' +
+                '<div class="column column-66" style="cursor:default;"> <div style="font-size: 18px; color:#000 !important; font-family: Playfair Display;margin-top: -3%" class="col-sm-10">  <span class="">' + data_new['data'][0]['FIRST_NAME'] + '( Membership Number - ' + data_new['data'][0]['MEMBERSHIP_NO'] + ')</span>  <a class="shortcode_button btn_small btn_type1" style="float:right;" href="" data-toggle="modal" data-address="' + data_new['data'][0]['EMAIL_ID'] + '"  data-address1="' + data_new['data'][0]['ADDRESS1'] + '"  data-address2="' + data_new['data'][0]['ADDRESS2'] + '"  data-address3="' + data_new['data'][0]['ADDRESS3'] + '"  data-state="' + data_new['data'][0]['STATE'] + '"  data-city="' + data_new['data'][0]['CITY'] + '"data-pin="' + data_new['data'][0]['PINCODE'] + '" data-phone="' + data_new['data'][0]['MPHONE'] + '" data-email="' + data_new['data'][0]['EMAIL_ID'] + '"  data-datofbirth="' + data_new['data'][0]['DATE_OF_BIRTH'] + '"  data-gender="' + data_new['data'][0]['GENDER'] + '" data-target="#profileUpdate">Edit Profile</a></div></div>' + '<div class="column column-33"> <div class="card border-color-teal"> <table class="table table-striped" style="margin:0;font-family:Playfair Display;"> <tbody> <tr> <td>Member since</td> <td>' + data_new['data'][0]['REGISTER_TIME'] + '</td> </tr>   <tr> <td>E-mail</td> <td>' + data_new['data'][0]['EMAIL_ID'] + '</td> </tr>  <tr> <td>Date of birth</td> <td>' + data_new['data'][0]['DATE_OF_BIRTH'] + '</td> </tr>  <tr> <td>Phone No</td> <td>' + data_new['data'][0]['MPHONE'] + '</td> </tr> <tr> <td>Address</td>  <td>' + data_new['data'][0]['ADDRESS1'] + data_new['data'][0]['ADDRESS2'] + data_new['data'][0]['ADDRESS3'] + ", " + data_new['data'][0]['STATE'] + ", " + data_new['data'][0]['CITY'] + ", " + data_new['data'][0]['PINCODE'] + '</td>  </tr><tr> <td>Status</td>  <td>' + data_new['data'][0]['STATUS'] + '</td>  </tr> </tbody> </table> </div> </div>' + '</div>' +
                 '</div>'
             );
             var w = window.outerWidth;
             var h = window.outerHeight;
-            if(w<750){
+            if (w < 750) {
                 $('html, body').animate({
                     scrollTop: $('#shelf_data').offset().top - 150
                 }, 800);
@@ -917,20 +930,19 @@ $('#subscription').click(function (e) {
             //     return false;
             // }
 
-            if(data_new['cards'].length >1)
-            {
-                var divStyle1='margin-top:0.7%';
-                var divStyle2='display:block';
+            if (data_new['cards'].length > 1) {
+                var divStyle1 = 'margin-top:0.7%';
+                var divStyle2 = 'display:block';
 
             }
-            else{
-                var divStyle1='margin-top:3%';
-                var divStyle2='display:none';
+            else {
+                var divStyle1 = 'margin-top:3%';
+                var divStyle2 = 'display:none';
             }
 
 
             var expiry_mnth = new Date(current_plan['result']['member_cross_reference']['expiry_date']);
-            var expiry_mnth_new = (expiry_mnth.getDate()) + '/' + (expiry_mnth.getMonth() + 1) + '/' +  expiry_mnth.getFullYear();
+            var expiry_mnth_new = (expiry_mnth.getDate()) + '/' + (expiry_mnth.getMonth() + 1) + '/' + expiry_mnth.getFullYear();
             $('#shelf_data').append('<br><div class="row" style="margin-left: 0px !important;">' +
 
                 '<div class="col-sm-3" style="cursor: ">' +
@@ -980,33 +992,31 @@ $('#subscription').click(function (e) {
                 '</div>' +
                 '</div>' +
 
-                '<div class="col-sm-3" style="'+divStyle1+'">' +
+                '<div class="col-sm-3" style="' + divStyle1 + '">' +
                 '<div class="text-right">' +
                 '<button data-toggle="collapse" data-target="#demo" class="shortcode_button btn_small btn_type10" role="button" onclick="RenewButton()">Renew Plan &nbsp;&nbsp;</button>' +
                 '<br><br><button  data-toggle="collapse" data-target="#break" class="shortcode_button btn_small btn_type10" role="button" onclick="breakButton()">Take a break</button>' +
 
                 '</div>' +
-                '<div style="'+divStyle2+'"><form class="form-inline" onsubmit="return false"><div class="form-group"><select style="border-radius: 0px !important;" class="form-control" id="memberSelect">' +
-                '' +'</select>' +
+                '<div style="' + divStyle2 + '"><form class="form-inline" onsubmit="return false"><div class="form-group"><select style="border-radius: 0px !important;" class="form-control" id="memberSelect">' +
+                '' + '</select>' +
                 '</div><button type="button" class="btn btn-default memberBut" onclick="updateMember()">Update</button>' +
-                '</form></div>'+
+                '</form></div>' +
                 '</div></div><br><hr>');
-            if(data_new['cards'].length >1)
-            {
-                for(var j=0;j<data_new['cards'].length;j++)
-                {
+            if (data_new['cards'].length > 1) {
+                for (var j = 0; j < data_new['cards'].length; j++) {
                     console.log(data_new['cards'][j]['MEMBERSHIP_NO'])
-                    $("#memberSelect").append('<option value="'+data_new['cards'][j]['MEMBERSHIP_NO']+'">'+data_new['cards'][j]['MEMBERSHIP_NO']+'</option>')
+                    $("#memberSelect").append('<option value="' + data_new['cards'][j]['MEMBERSHIP_NO'] + '">' + data_new['cards'][j]['MEMBERSHIP_NO'] + '</option>')
                 }
             }
             $("#memberSelect").val(data_new['member']);
 
             var response2 = '';
             terms.forEach(function (arr) {
-                response2 += '<option value=' + arr['term']*50 + ' id=' + arr['term'] + '>' + arr['months'] + '</option>';
+                response2 += '<option value=' + arr['term'] * 50 + ' id=' + arr['term'] + '>' + arr['months'] + '</option>';
 
             })
-            var defValue = terms[0]['fee']+50;
+            var defValue = terms[0]['fee'] + 50;
 //                console.log(response2);
 //                $('#shelf_data').append('<br> <div class="collapse form-group" id=\"demo\" >' +
 //                        '<label for="sel1">Select list:</label>' +
@@ -1019,11 +1029,11 @@ $('#subscription').click(function (e) {
                 '<label for="pwd">Start Date:</label><input class="form-control" type="text" id="datePickInput" readonly required="required" name="datePickInput" required>' +
                 '</div><button type="button" class="btn btn-default memberBut" onclick="breakValidate()">Submit</button><br><br><hr><p id="textSpanBreak" style="margin-left:0%;display:none;font-weight:bold;font-size:143%"></p><br><p id="textSpanBreakDate" style="margin-left:0%;display:none;font-weight:bold;font-size:143%"></p><br><button id="BreakBUtton" style="display: none;float: left;" type="button" class="shortcode_button btn_small btn_type10" onclick="proceedBreak()">Proceed</button><span class="breakAmount" style="display: none"></span><span class="breakAMountPay" style="display: none"></span><span class="breakDate" style="display: none"></span><br><br><br><br><hr style="display:none" id="hrTag"><div id="aboutBreak" style= "display:none" class="col-md-12"><p><b>What\'s \'Take a break\' ?</b></p><p>Through a feature called “Subscription Holiday”, JustBooksclc allows the member to pause the membership (temporary suspension), for a duration of 1 month, 2 months or 3 months before expiration of membership. During Subscription Holiday period, a member will not be able to use the library. To utilise this feature, a member is required to fill up the Subscription Holiday Form either at the branch or online. All issued books and magazines should be returned to the JustBooksclc branch before the start date of Subscription Holiday. Members who pay for Yearly and Half-yearly terms will receive free Subscription Holidays of 2 months and 1 month respectively, and are required to pay Rs. 50/- per month there after. Quarterly members are required to pay Rs. 50/- per month to avail the feature.</p></div></div></div></form></div>' +
                 '<div class="row collapse" id=\"demo\" >' +
-                '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> <form> <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> <div class="form-group" style="width:50%"> <label for="sel1">Select a renewal duration :</label> <select class="form-control" id="sel1" onchange="textChange()">'+response2+' </select> </div> </div> <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10"> <div class="form-group"> <input type="text" class="form-control" id="coupon_code" placeholder="Coupon code if any" name="coupon_code"> <span class="input-group-btn"> </div> </div> <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"> <div class="form-group"> <button type="button" class="btn btn-warning" id="coupon_submit" onclick="couponClick()">Apply</button> </div> </div> <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5"> <div class="form-group"> <input class="form-control" id="gift_card" placeholder="Gift Card No." name="gift_card" type="text"> </div> </div> <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5"> <div class="form-group"> <input class="form-control" id="gift_card_pin" placeholder="Gift Card Pin" name="gift_card_pin" type="text"> </div> </div> <div class="col-xs-6 col-sm-2 col-md-2 col-lg-2"> <div class="form-group"> <button type="button" class="btn btn-warning" id="gift_card_submit" onclick="couponClick()">Apply</button> </div> </div> <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> <p style="font-weight: bold" id="textSpan"> You have to pay Rs ' + defValue + '</p> <button type="submit" class="shortcode_button btn_small btn_type10" onclick="proceedRenew()">Submit</button> </div> </form> </div></div><br>'
+                '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> <form> <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> <div class="form-group" style="width:50%"> <label for="sel1">Select a renewal duration :</label> <select class="form-control" id="sel1" onchange="textChange()">' + response2 + ' </select> </div> </div> <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10"> <div class="form-group"> <input type="text" class="form-control" id="coupon_code" placeholder="Coupon code if any" name="coupon_code"> <span class="input-group-btn"> </div> </div> <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"> <div class="form-group"> <button type="button" class="btn btn-warning" id="coupon_submit" onclick="couponClick()">Apply</button> </div> </div> <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5"> <div class="form-group"> <input class="form-control" id="gift_card" placeholder="Gift Card No." name="gift_card" type="text"> </div> </div> <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5"> <div class="form-group"> <input class="form-control" id="gift_card_pin" placeholder="Gift Card Pin" name="gift_card_pin" type="text"> </div> </div> <div class="col-xs-6 col-sm-2 col-md-2 col-lg-2"> <div class="form-group"> <button type="button" class="btn btn-warning" id="gift_card_submit" onclick="couponClick()">Apply</button> </div> </div> <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> <p style="font-weight: bold" id="textSpan"> You have to pay Rs ' + defValue + '</p> <button type="submit" class="shortcode_button btn_small btn_type10" onclick="proceedRenew()">Submit</button> </div> </form> </div></div><br>'
             )
 
             var colors = ['block personal fl', 'block professional fl', 'block business fl'];
-           change_plan.forEach(function (arr) {
+            change_plan.forEach(function (arr) {
                 var i = 0;
                 var plan_durations = arr['change_plan_detail']['plan_durations'];
 //                    response += '<h4>Upgrade your current plan</h4><div class="price_item" style="width:20%">' +
@@ -1048,7 +1058,7 @@ $('#subscription').click(function (e) {
                     $('#change_plan').append(response);
                     var w = window.outerWidth;
                     var h = window.outerHeight;
-                    if(w<750){
+                    if (w < 750) {
                         $('html, body').animate({
                             scrollTop: $('#shelf_data').offset().top - 150
                         }, 800);
@@ -1238,7 +1248,7 @@ function pastReads() {
 
                 var w = window.outerWidth;
                 var h = window.outerHeight;
-                if(w<750){
+                if (w < 750) {
                     $('html, body').animate({
                         scrollTop: $('#shelf_data').offset().top - 150
                     }, 800);
@@ -1247,22 +1257,21 @@ function pastReads() {
                 return false;
             }
             $("#emptyResult").hide();
-                var final_response = generateDIV(data['data']['result'], 'placePickup', 'id', 'Pickup', 'none', data['wishlist'], '', 'none', 'margin-top: 34%;margin-left: -100%;', 'inline-block', 'none');
-                $('#shelf_data').html('');
-                $('#shelf_data').append(final_response);
+            var final_response = generateDIV(data['data']['result'], 'placePickup', 'id', 'Pickup', 'none', data['wishlist'], '', 'none', 'margin-top: 34%;margin-left: -100%;', 'inline-block', 'none',new_data['rateIDs']);
+            $('#shelf_data').html('');
+            $('#shelf_data').append(final_response);
 
 
-                var w = window.outerWidth;
-                var h = window.outerHeight;
-                if(w<750){
-                    $('html, body').animate({
-                        scrollTop: $('#shelf_data').offset().top - 150
-                    }, 800);
-                }
+            var w = window.outerWidth;
+            var h = window.outerHeight;
+            if (w < 750) {
+                $('html, body').animate({
+                    scrollTop: $('#shelf_data').offset().top - 150
+                }, 800);
+            }
 
 
-                $("#left_menu_recommend").css('margin-top', '33%');
-
+            $("#left_menu_recommend").css('margin-top', '33%');
 
 
         },
@@ -1289,7 +1298,7 @@ function cancelPickup(elem, title) {
             $(".spinner").hide();
 
             console.log(data)
-            data=JSON.parse(data);
+            data = JSON.parse(data);
             if (data['success'] === true) {
                 $('#' + id).closest('.module_shelf').remove();
                 $("#alertDiv").addClass("alert-success");
@@ -1610,8 +1619,7 @@ function proceedBreak() {
                 orderNumber = data_new.result.transaction.transaction.order_number;
                 amountTotal = data_new.result.transaction.transaction.amount;
                 console.log(amountTotal)
-                if(parseInt(amountTotal) == 0 )
-                {
+                if (parseInt(amountTotal) == 0) {
                     $.ajax({
                         type: "GET",
                         dataType: "json",
@@ -1620,15 +1628,14 @@ function proceedBreak() {
                             $(".spinner").hide();
 
                             console.log(data_new);
-                            if(data_new  === 1)
-                            {
-                                toastr.success('Successfully applied').css('width','500px')
+                            if (data_new === 1) {
+                                toastr.success('Successfully applied').css('width', '500px')
                                 $("#break").collapse('hide');
 
                             }
-                            else{
+                            else {
                                 console.log("df")
-                                toastr.error('Something went wrong! ').css('width','500px')
+                                toastr.error('Something went wrong! ').css('width', '500px')
 
                             }
                         },
@@ -1665,7 +1672,7 @@ function placeOrder(id) {
 
                 toastr.error('Please sign in to order the book !');
 
-            }else if(JSON.parse(data) === "NoDelivery"){
+            } else if (JSON.parse(data) === "NoDelivery") {
                 $(".spinner").hide();
 
                 toastr.error('Sorry! You have not opted for door delivery service. Kindly contact your branch or customer care to enable the same.');
@@ -1710,11 +1717,13 @@ function giveReviewStar() {
     var review = $("#new-review").val();
 
     if (ratings === "" || ratings === 0) {
-        toastr.error('Please give a rating in order to submit!').css("width","500px");;
+        toastr.error('Please give a rating in order to submit!').css("width", "500px");
+        ;
         return false;
     }
     if (review === "" || review === 0) {
-        toastr.error('Please give a review in order to submit!').css("width","500px");;
+        toastr.error('Please give a review in order to submit!').css("width", "500px");
+        ;
         return false;
     }
     $(".spinner").show();
@@ -1729,13 +1738,15 @@ function giveReviewStar() {
             $(".spinner").hide();
             $(".spinner").hide();
             if (JSON.parse(data) === "failure") {
-                toastr.error('Please sign in to submit a review!').css("width","500px");;
+                toastr.error('Please sign in to submit a review!').css("width", "500px");
+                ;
                 $('#rateModal').modal('hide');
 
                 return false;
             }
             else {
-                toastr.success('Successfully submitted your review, Thank you!') .css("width","500px");;
+                toastr.success('Successfully submitted your review, Thank you!').css("width", "500px");
+                ;
                 $('#rateModal').modal('hide');
 
             }
@@ -1756,7 +1767,7 @@ function statusCheck(elem, id) {
     $(".spinner").show();
 
     var idTag = $(elem).attr('id');
-	console.log(id);
+    console.log(id);
     $.ajax({
         type: "GET",
         url: "/getStatusDelivery?id=" + id,
@@ -1777,15 +1788,39 @@ function statusCheck(elem, id) {
 };
 
 
-function updateMember()
-{
-    var card=$('#memberSelect').val();
+function updateMember() {
+    var card = $('#memberSelect').val();
     $.ajax({
         type: "GET",
         url: "/updateMemberSession?membership=" + card,
         success: function (data) {
             $(".spinner").hide();
             window.location.href = '/shelf';
+
+
+        },
+        error: function (err) {
+            $(".spinner").hide();
+            toastr.error('Something went wrong, Please try again !').css('width', '500px');
+            console.log(err.responseText)
+        }
+
+    });
+
+}
+
+
+function getReview(id) {
+    $(".spinner").show();
+    $.ajax({
+        type: "GET",
+        url: "/getReview?id="+ id,
+        success: function (data) {
+            $(".spinner").hide();
+console.log(data);
+            $('#reviewModal').modal('show');
+            $('#reviewText').html("You wrote -  <strong>'" + data + "'</strong>");
+
 
 
         },

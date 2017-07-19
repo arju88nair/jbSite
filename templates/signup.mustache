@@ -221,7 +221,7 @@
                                 <div class="form-group">
                                     <div class="col-sm-6">
                                         <label>Create Password:</label>
-                                        <input type="password" class="form-control" id="password" name="password"
+                                        <input type="password" class="form-control" id="signpassword" name="password"
                                                required>
                                     </div>
                                     <div class="col-sm-6">
@@ -345,7 +345,7 @@
 
     function passwordval() {
 
-        if ($("#Cpassword").val() !== $("#password").val()) {
+        if ($("#Cpassword").val() !== $("#signpassword").val()) {
             $("#error").text("Passwords does not match!");
             $("#error").show();
             return false;
@@ -535,10 +535,10 @@
             toastr.error("Please enter a proper mobile number");
             return false;
         }
-        if ($("#password").val() !== $("#Cpassword").val()) {
+        if ($("#signpassword").val() !== $("#Cpassword").val()) {
             toastr.error("Passwords do not match");
             return false;
-        } if ($("#password").val() <6 ) {
+        } if ($("#signpassword").val() <6 ) {
             toastr.error("Password is too short");
             return false;
         }if ($("#Cpassword").val() <6 ) {
@@ -557,6 +557,7 @@
         var signupID = parseInt($('.planID').attr('id'));
 
         var signup_data = $('#signup_form').serialize();
+        console.log(signup_data);return false;
         signup_data += '&reg_fee=' + $('#reg_fee h5').html() + '&reading_fee=' + $('#reading_fee h5').html() + '&security_deposit=' + $('#sec_deposit_fee h5').html() + '&plan_id=' + signupID+'&duration=' + $('#months').val();
         $(".spinner").show();
         $.ajax({
