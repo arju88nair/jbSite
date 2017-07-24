@@ -45,13 +45,14 @@
                 $("#loader_mostRead").hide();
                 data = JSON.parse(data);
                 cardData = data['data'];
+                var flag = data['flag'];
 
                 var w = window.outerWidth;
                 var h = window.outerHeight;
                 if(w<750){
-                    var final_response = getCardMostRead(cardData, 2, data['ids'], data['wishlist']);
+                    var final_response = getCardMostRead(cardData, 2, data['ids'], data['wishlist'], flag);
                 }else{
-                    var final_response = getCardMostRead(cardData, 5, data['ids'], data['wishlist']);
+                    var final_response = getCardMostRead(cardData, 5, data['ids'], data['wishlist'], flag);
                 }
 
                 // var final_response = getCardMostRead(cardData, 5, data['ids'], data['wishlist']);
@@ -64,11 +65,11 @@
         });
 
     });
-    function getCardMostRead(data, visibleCardCount, ids, wishlist) {
+    function getCardMostRead(data, visibleCardCount, ids, wishlist, flag) {
         var response = '', items = 0;
 
         var final_response = '';
-
+        var wishlist_opt = '';
         for (var i = 0; i < data.length; i++) {
             items++;
             var active = '';
@@ -99,7 +100,11 @@
                 image = "../../assets/img/Added_WL_50.png";
                 var wish = "\'wishlistAdd(" + data[i]['_source'].title_id + ");\'";
             }
-
+            if(flag == 1){
+                wishlist_opt = '<a href="javascript:void(0)" class="tiptip" title="Wishlist" onclick=' + wish + '><img id="wish_' + data[i]['_source'].title_id + '" class="wishlist_btn" src=' + image + ' alt="Smiley face" height="25" width="25"></a>';
+            }else{
+                wishlist_opt = '';
+            }
 
             response += '<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2 ">' +
                     '<div class="item item_shadow">' +
@@ -108,8 +113,7 @@
                     '<div class="carousel_title_book"><h5 title="' + data[i]['_source'].title + '">' + data[i]['_source'].title + '</h5></div>' +
                     '<div class="carousel_desc">' +
                     '<div class="fram_btn">' +
-                    '<a href="javascript:void(0)" class="shortcode_button btn_small btn_type1" title="Rent" onclick=' + action + ' id="rent_' + data[i]['_source'].title_id + '">' + text + '</a>' +
-                    '<a href="javascript:void(0)" class="tiptip" title="Wishlist" onclick=' + wish + '><img id="wish_' + data[i]['_source'].title_id + '" class="wishlist_btn" src=' + image + ' alt="Smiley face" height="25" width="25"></a>' +
+                    '<a href="javascript:void(0)" class="shortcode_button btn_small btn_type1" title="Rent" onclick=' + action + ' id="rent_' + data[i]['_source'].title_id + '">' + text + '</a>' + wishlist_opt +
                     '<a href="javascript:void(0)" class="tiptip" title="Share" data-title="' + data[i]['_source'].title + '"  data-id="' + data[i]['_source'].title_id + '" data-toggle="modal" data-target="#shareModal"><img  class="share_btn" src=../../assets/img/Engage.png alt="Smiley face" height="25" width="25"></a>' +
 
                     // '<a href="/book_details/' + data[i].TITLEID + '" id="' + data[i].TITLEID + '" class="tiptip" title="Read">Read</a>' +

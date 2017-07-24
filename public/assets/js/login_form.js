@@ -6,17 +6,20 @@ $(document).ready(function(){
 
         if( $("#username").val()==''|| $("#email").val()=='' || $("#password").val()=='')
         {
-            alert("Please enter all the credentials");
+            //alert("Please enter all the credentials");
+            toastr.error("Please enter all the credentials");
         }
 
         else if(!($("#email").val()).match(email))
         {
-            alert("Please enter a valid Email Id");
+            //alert("Please enter a valid Email Id");
+            toastr.error("Please enter a valid Email Id");
         }
 
         else
         {
-            alert("You have successfully Logged in...!!!!!!");
+            //alert("You have successfully Logged in...!!!!!!");
+            toastr.error("You have successfully Logged in...!!!!!!");
             $("form")[0].reset();
         }
 
@@ -27,17 +30,20 @@ $(document).ready(function(){
 
         if( $("#name").val()=='' || $("#registeremail").val()=='' || $("#registerpassword").val()=='' || $("#contact").val()=='')
         {
-            alert("Please fill all fields...!!!!!!");
+            //alert("Please fill all fields...!!!!!!");
+            toastr.error("Please fill all fields...!!!!!!");
         }
 
         else if(!($("#registeremail").val()).match(email))
         {
-            alert("Please enter valid Email...!!!!!!");
+            //alert("Please enter valid Email...!!!!!!");
+            toastr.error("Please enter valid Email...!!!!!!");
         }
 
         else
         {
-            alert("You have successfully Sign Up, Now you can login...!!!!!!");
+            //alert("You have successfully Sign Up, Now you can login...!!!!!!");
+            toastr.success("You have successfully Sign Up, Now you can login...!!!!!!");
             $("#form")[0].reset();
             $("#second").slideUp("slow",function(){
                 $("#first").slideDown("slow");
@@ -55,10 +61,10 @@ $(document).ready(function(){
     });
 
     // on click signin It Hide Registration Form and Display Login Form
-    $("#signin").click(function(){
-        $("#second").slideUp("slow",function(){
-            $("#first").slideDown("slow");
-        });
-    });
+    //$("#signin").click(function(){
+    //    $("#second").slideUp("slow",function(){
+    //        $("#first").slideDown("slow");
+    //    });
+    //});
 
 });

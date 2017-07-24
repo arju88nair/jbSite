@@ -1,9 +1,10 @@
-function getCard(data, visibleCardCount, ids, wishlist) {
+function getCard(data, visibleCardCount, ids, wishlist, flag) {
     var response = '', items = 0;
     var final_response = '';
     for (var i = 0; i < data.length; i++) {
         items++;
         var active = '';
+        var wishlist_opt = '';
         if (i == 0) {
             active = "active";
         }
@@ -35,7 +36,11 @@ function getCard(data, visibleCardCount, ids, wishlist) {
             image = "../../assets/img/Added_WL_50.png";
             var wish = "\'wishlistAdd(" + data[i]['_source'].title_id + ");\'";
         }
-
+        if(flag == 1){
+            wishlist_opt = '<a href="javascript:void(0)" class="tiptip" title="Wishlist" onclick=' + wish + '><img id="wish_' + data[i]['_source'].title_id + '" class="wishlist_btn" src=' + image + ' alt="Smiley face" height="25" width="25"></a>';
+        }else{
+            wishlist_opt = '';
+        }
 
         response += '<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">' +
             '<div class="item item_shadow">' +
@@ -44,8 +49,7 @@ function getCard(data, visibleCardCount, ids, wishlist) {
             '<div class="carousel_title_book"><h5 title="' + data[i]['_source'].title + '">' + data[i]['_source'].title + '</h5></div>' +
             '<div class="carousel_desc">' +
             '<div class="fram_btn">' +
-            '<a href="javascript:void(0)" class="shortcode_button btn_small btn_type1" title="Rent" onclick=' + action + ' id="rent_' + data[i]['_source'].title_id + '">' + text + '</a>' +
-            '<a href="javascript:void(0)" class="tiptip" title="Wishlist" onclick=' + wish + '><img id="wish_' + data[i]['_source'].title_id + '" class="wishlist_btn" src=' + image + ' alt="Smiley face" height="25" width="25"></a>' +
+            '<a href="javascript:void(0)" class="shortcode_button btn_small btn_type1" title="Rent" onclick=' + action + ' id="rent_' + data[i]['_source'].title_id + '">' + text + '</a>' + wishlist_opt +
             '<a href="javascript:void(0)" class="tiptip" title="Share"  data-id="' + data[i]['_source'].title_id + '" data-title="' + data[i]['_source'].title + '" data-toggle="modal" data-target="#shareModal"><img  class="share_btn" src=../../assets/img/Engage.png alt="Smiley face" height="25" width="25"></a>' +
 
             // '<a href="/book_details/' + data[i].id + '" id="' + data[i].id + '" class="tiptip" title="Read">Read</a>' +
@@ -138,13 +142,14 @@ $(document).ready(function () {
             $("#loader").hide();
             data = JSON.parse(data);
             cardData = data['data'];
+            var flag = data['flag'];
 
             var w = window.outerWidth;
             var h = window.outerHeight;
             if (w < 750) {
-                var final_response = getCard(cardData, 2, data['ids'], data['wishlist']);
+                var final_response = getCard(cardData, 2, data['ids'], data['wishlist'], flag);
             } else {
-                var final_response = getCard(cardData, 5, data['ids'], data['wishlist']);
+                var final_response = getCard(cardData, 5, data['ids'], data['wishlist'], flag);
             }
 
             $('#newArrivals').append(final_response);
@@ -217,8 +222,12 @@ $(document).ready(function () {
                     ' <p class="price"><sup>₹</sup><span> ' + Math.round(parseFloat(arr['READING_FEE'])) + '</span><sub></sub></p>' +
                     '<p class="hint">' + arr['MONTH_TAG'] + '</p></div></a><ul class="features">' +
                     '<li style="color: black;">' + arr['BOOK_TAG'] + '</li>' +
+                    '<li style="color: black;">Min. ' + arr['NO_OF_MONTHS'] + ' Month(s) Duration</li>' +
+                    '<li style="color: black;">' + arr['DD_FEE'] + ' Door Delivery </li>' +
+                    '<li style="color: black;">' + arr['HALF_YEARLY_DISCOUNT'] + '</li>' +
+                    '<li style="color: black;">' + arr['YEARLY_DISCOUNT'] + '</li>' +
                     '</ul><div class="pt-footer">' +
-                    '<a rel="external" data-ajax="false" href="/signup?planname=' + arr['PROMO'] + '&books=' + arr['NO_OF_BOOKS'] + '&months=' + arr['NO_OF_MONTHS'] + '"><h4>GET IT NOW !</h4></a></div></div>'
+                    '<a rel="external" data-ajax="false" href="/signup?planname=' + arr['PROMO'] + '&books=' + arr['NO_OF_BOOKS'] + '&months=' + arr['NO_OF_MONTHS'] + '"><h4>SIGN-UP NOW !</h4></a></div></div>'
 
 
                 i++;
@@ -304,12 +313,12 @@ function placeOrder(id) {
             if (JSON.parse(data) === "failure") {
                 $(".spinner").hide();
 
-                toastr.error('Please sign in to order the book !');
+                toastr.error('Become a member to rent books!');
                 $('html, body').animate({
-                    scrollTop: $('#membershipPlans').offset().top - 150
+                    scrollTop: $('#promo_section_desktop').offset().top - 150
                 }, 800);
                 // $(window).scrollTop($('#membershipPlans').offset().top);
-
+                //window.location.href = '/';
             } else if(JSON.parse(data) === "NoDelivery"){
                 $(".spinner").hide();
 
@@ -335,315 +344,4 @@ function placeOrder(id) {
 
     });
 }
-
-
-$(document).ready(function () {
-    // on click SignIn Button checks for valid email and all field should be filled
-
-
-    // on click signup It Hide Login Form and Display Registration Form
-    $(".signup").click(function () {
-
-        $(".loginDIv").slideUp("slow", function () {
-            $(".login_form_fram_second").slideDown("slow");
-        });
-    });
-
-    // on click signin It Hide Registration Form and Display Login Form
-    $(".signin").click(function () {
-
-
-        $(".login_form_fram_second").slideUp("slow", function () {
-            $(".loginDIv").slideDown("slow");
-        });
-    });
-
-});
-
-
-function signupClick() {
-
-    var username = $("#username").val();
-    if (username == "" || username == 0) {
-        toastr.error("Please enter an email !");
-        return false;
-    }
-
-    var password = $("#password").val();
-    if (password == "" || username == 0) {
-        toastr.error("Please enter password !");
-        return false;
-    }
-    $(".spinner").show();
-
-    $.ajax({
-        type: "GET",
-        url: "/login/" + username + "/" + password + "",
-        success: function (data) {
-            $(".spinner").hide();
-
-
-            if (!data || data === false || data === 'false' || data == 'null') {
-                toastr.error('Wrong credentials, Please try again !');
-                $(".spinner").hide();
-                return false
-
-            }
-            else {
-                data = JSON.parse(data)
-                if (data.length === 1) {
-
-                    $(".login_form_fram_one").hide();
-                    $("#main").hide();
-                    $("#first").hide();
-                    $("#shelfButton").show();
-                    toastr.success('Successfully signed in !');
-                    localStorage.setItem("flag", true)
-                    $("#first").hide();
-                    $("#main").hide();
-                    logClick("Log in click");
-                    (function (i, s, o, g, r, a, m) {
-                        i['GoogleAnalyticsObject'] = r;
-                        i[r] = i[r] || function () {
-                                (i[r].q = i[r].q || []).push(arguments)
-                            }, i[r].l = 1 * new Date();
-                        a = s.createElement(o),
-                            m = s.getElementsByTagName(o)[0];
-                        a.async = 1;
-                        a.src = g;
-                        m.parentNode.insertBefore(a, m)
-                    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-                    ga('create', 'UA-93821751-1', 'none');
-                    ga('send', 'event', 'Clicks', 'Login of user ' + username + '', 'First Screen');
-
-                    logClick('Login of user ' + username + '');
-                    window.location.href = "/shelf";
-
-                    return false;
-                }
-                else{
-                    (function (i, s, o, g, r, a, m) {
-                        i['GoogleAnalyticsObject'] = r;
-                        i[r] = i[r] || function () {
-                                (i[r].q = i[r].q || []).push(arguments)
-                            }, i[r].l = 1 * new Date();
-                        a = s.createElement(o),
-                            m = s.getElementsByTagName(o)[0];
-                        a.async = 1;
-                        a.src = g;
-                        m.parentNode.insertBefore(a, m)
-                    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-                    ga('create', 'UA-93821751-1', 'none');
-                    ga('send', 'event', 'Clicks', 'Login of user ' + username + '', 'First Screen');
-
-                    logClick('Login of user ' + username + '');
-
-                    for(var i=0;i<data.length;i++)
-                    {
-                        console.log(data);console.log(data[i])
-
-                        $("#memberContent").append('<div class="radio"><label><input type="radio" name="memberRadio" value="'+data[i]['MEMBERSHIP_NO']+'">'+data[i]['MEMBERSHIP_NO']+'</label></div>')
-
-                    }
-                    $('#memberModel').modal('show');
-
-
-
-                }
-            }
-
-
-        },
-        error: function (err) {
-            $(".spinner").hide();
-
-            // toastr.error('Something went wrong, Please try again !');
-            console.log(err.responseText);
-            $("#frame_sign_in").hide();
-            $("#loader").hide();
-        }
-
-
-    });
-
-
-}
-function signupClick2() {
-
-    var username = $("#username2").val();
-    if (username == "" || username == 0) {
-        toastr.error("Please enter an email !");
-        return false;
-    }
-
-    var password = $("#password2").val();
-    if (password == "" || username == 0) {
-        toastr.error("Please enter password !");
-        return false;
-    }
-    $(".spinner").show();
-
-    $.ajax({
-        type: "GET",
-        url: "/login/" + username + "/" + password + "",
-        success: function (data) {
-            $(".spinner").hide();
-
-
-            if (data === false || data === 'false') {
-                toastr.error('Wrong credentials, Please try again !');
-                $(".spinner").hide();
-                return false
-
-            }
-            else {
-                data = JSON.parse(data)
-                if (data.length === 1) {
-
-                    $(".login_form_fram_one").hide();
-                    $("#main").hide();
-                    $("#first").hide();
-                    $("#shelfButton").show();
-                    toastr.success('Successfully signed in !');
-                    localStorage.setItem("flag", true)
-                    $("#first").hide();
-                    $("#main").hide();
-                    logClick("Log in click");
-                    (function (i, s, o, g, r, a, m) {
-                        i['GoogleAnalyticsObject'] = r;
-                        i[r] = i[r] || function () {
-                                (i[r].q = i[r].q || []).push(arguments)
-                            }, i[r].l = 1 * new Date();
-                        a = s.createElement(o),
-                            m = s.getElementsByTagName(o)[0];
-                        a.async = 1;
-                        a.src = g;
-                        m.parentNode.insertBefore(a, m)
-                    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-                    ga('create', 'UA-93821751-1', 'none');
-                    ga('send', 'event', 'Clicks', 'Login of user ' + username + '', 'First Screen');
-
-                    logClick('Login of user ' + username + '');
-                    window.location.href = "/shelf";
-
-                    return false;
-                }
-                else{
-                    (function (i, s, o, g, r, a, m) {
-                        i['GoogleAnalyticsObject'] = r;
-                        i[r] = i[r] || function () {
-                                (i[r].q = i[r].q || []).push(arguments)
-                            }, i[r].l = 1 * new Date();
-                        a = s.createElement(o),
-                            m = s.getElementsByTagName(o)[0];
-                        a.async = 1;
-                        a.src = g;
-                        m.parentNode.insertBefore(a, m)
-                    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-                    ga('create', 'UA-93821751-1', 'none');
-                    ga('send', 'event', 'Clicks', 'Login of user ' + username + '', 'First Screen');
-
-                    logClick('Login of user ' + username + '');
-                    for(var i=0;i<data.length;i++)
-                    {
-                        $("#memberContent").append('<div class="radio"><label><input type="radio" name="memberRadio" value="'+data[i]['MEMBERSHIP_NO']+'">'+data[i]['MEMBERSHIP_NO']+'</label></div>')
-
-                    }
-                    $('#memberModel').modal('show');
-
-
-
-                }
-            }
-
-
-        },
-        error: function (err) {
-            $(".spinner").hide();
-
-            // toastr.error('Something went wrong, Please try again !');
-            console.log(err.responseText);
-            $("#frame_sign_in").hide();
-            $("#loader").hide();
-        }
-
-
-    });
-
-
-}
-
-
-function forgotPassword() {
-
-    var email = $("#forgetEmail").val();
-    if (email == "" || email == 0) {
-        toastr.error("Please enter an email !");
-        return false;
-    }
-    $(".spinner").show();
-    $.ajax({
-        type: "GET",
-        url: "/sendResetMail?email=" + email,
-        success: function (data) {
-            $(".spinner").hide();
-
-            console.log(data)
-            if (JSON.parse(data) === "success") {
-                $(".spinner").hide();
-
-                toastr.success('Please check your mail for further instructions!');
-
-            }
-            else {
-                $(".spinner").hide();
-
-                toastr.warning("Something went wrong!")
-
-
-            }
-        },
-
-    });
-
-}
-function forgotPassword2() {
-
-    var email = $("#forgetEmail2").val();
-    if (email == "" || email == 0) {
-        toastr.error("Please enter an email !");
-        return false;
-    }
-    $(".spinner").show();
-    $.ajax({
-        type: "GET",
-        url: "/sendResetMail?email=" + email,
-        success: function (data) {
-            $(".spinner").hide();
-
-            console.log(data)
-            if (JSON.parse(data) === "success") {
-                $(".spinner").hide();
-
-                toastr.success('Please check your mail for further instructions!');
-
-            }
-            else {
-                $(".spinner").hide();
-
-                toastr.warning("Something went wrong!")
-
-
-            }
-        },
-
-    });
-
-}
-
-
 

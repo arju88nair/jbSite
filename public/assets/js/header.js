@@ -18,7 +18,7 @@ function wishlistAdd(e) {
         }
     }))
 }
-function logClick(e) {
+function logClick(e,page,reference) {
     $.ajax({
         type: "GET", url: "/insertLog?type=" + e, success: function (e) {
         }
@@ -29,7 +29,7 @@ function searchClick() {
     "" !== e && (window.location.href = "/search?q=" + e)
 }
 $(document).on("click", "a", function (e) {
-    logClick("Navigation  clicked on " + $(this).attr("href")), ga("send", "event", "Navigation", $(this).attr("href"), "First Screen")
+    logClick("Navigation  clicked on " + $(this).attr("href"),'Navigation',$(this).attr("href")), ga("send", "event", "Navigation", $(this).attr("href"), "First Screen")
 });
 var membership, email;
 $(document).ready(function () {
@@ -70,7 +70,13 @@ $(document).ready(function () {
         }
     }), $("#shareModal").on("show.bs.modal", function (e) {
         var t = $(e.relatedTarget).data("id"), o = $(e.relatedTarget).data("title");
-        $("#sharefb").attr("href", "http://www.facebook.com/sharer.php?u=http://justbooks.in/book_details/" + t + "/" + o + "&title=Reading " + o + ". Get it from JustBooks.in"), $("#sharegp").attr("href", "https://plus.google.com/share?url=http://justbooks.in/book_details/" + t + "/" + o), $("#sharetw").attr("href", "https://twitter.com/share?url=http://justbooks.in/book_details/" + t + "/" + o + "&amp;text=Reading %20" + o + ".Get%20it%20from%20JustBooks.in&amp;hashtags=justbookclc.com")
+        //$("#sharefb").attr("href", "http://www.facebook.com/sharer.php?u=http://justbooks.in/book_details/" + t + "/" + o + "&title=Reading " + o + ". I found"+ t +" Rented from Justbooks."), $("#sharegp").attr("href", "https://plus.google.com/share?url=http://justbooks.in/book_details/" + t + "/" + o), $("#sharetw").attr("href", "https://twitter.com/share?url=http://justbooks.in/book_details/" + t + "/" + o + "&amp;text=Reading %20" + o + ".Get%20it%20from%20JustBooks.in&amp;hashtags=justbookclc.com")
+        $("#shareModal").on("show.bs.modal", function (e) {
+            var t = $(e.relatedTarget).data("id"), o = $(e.relatedTarget).data("title");
+            $("#sharefb").attr("href", "http://www.facebook.com/sharer.php?u=http://justbooks.in/book_details/" + t + "/" + o + "&title=I found " + o + " on JustBooks and thought you might find it interesting! Sign up today to read"),
+            $("#sharegp").attr("href","https://plus.google.com/share?url=http://justbooks.in/book_details/" + t + "/" + o),
+            $("#sharetw").attr("href", "https://twitter.com/share?url=http://justbooks.in/book_details/" + t  + "/" + o + "&amp;text=I found" + o + "  From @JustBooksCLC&amp;hashtags=justbookclc.com")
+        });
     });
     var t = window.outerWidth;
     750 > t ? toastr.options = {
@@ -123,7 +129,6 @@ $(document).ready(function () {
         toastr.error("Wrong credentials, Please try again !"), console.log(e.responseText)
     }
 });
-
 
 $(document).ready(function () {
     // on click SignIn Button checks for valid email and all field should be filled

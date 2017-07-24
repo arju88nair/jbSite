@@ -742,7 +742,7 @@ aside p {
 }
 
 .page_title_block {
-    background-color: #323232;
+    background-color: #424242;
     padding: 15px 0 5px;
     color: #fff;
     margin-bottom: 0
@@ -2249,7 +2249,7 @@ hr.respond_seperator {
 }
 
 .img_block_books {
-    height: 225px;
+    height: 180px;
     overflow: hidden
 }
 
@@ -2363,8 +2363,8 @@ hr.respond_seperator {
 }
 
 .carousel_title_author h5, .carousel_title_book h5 {
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    /*white-space: nowrap;*/
+    /*text-overflow: ellipsis;*/
     padding-bottom: 0;
     text-align: center;
     overflow: hidden
@@ -2379,6 +2379,9 @@ hr.respond_seperator {
     color: #000
 }
 
+.carousel_title_book{
+    height: 50px;
+}
 .carousel_title_book h5 {
     width: 11em;
     color: #000;

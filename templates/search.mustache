@@ -75,7 +75,9 @@
                                             </div>
                                             <div class="fram_btn">
                                                 <a href="javascript:void(0)" class="shortcode_button btn_small btn_type1" title="Rent" onclick='placeOrder({{titleid}})' id="rent_{{titleid}}">Rent</a>
-                                                <a href="javascript:void(0)" class="tiptip" title="Wishlist" onclick="wishlistAdd({{titleid}})"><img id="wish_{{titleid}}" class="wishlist_btn" src='../../assets/img/Added_WL_50.png' alt="Smiley face" height="25" width="25"></a>
+                                                {{#flag}}
+                                                    <a href="javascript:void(0)" class="tiptip" title="Wishlist" onclick="wishlistAdd({{titleid}})"><img id="wish_{{titleid}}" class="wishlist_btn" src='../../assets/img/Added_WL_50.png' alt="Smiley face" height="25" width="25"></a>
+                                                {{/flag}}
                                                 <a href="javascript:void(0)" class="tiptip" title="Share" data-title="{{title}}"  data-id="{{titleid}}" data-toggle="modal" data-target="#shareModal"><img  class="share_btn" src=../../assets/img/Engage.png alt="Smiley face" height="25" width="25"></a>
                                                 <div class="clear"></div>
                                             </div>
@@ -100,6 +102,9 @@
 {{> footer}}
 <script>
     $(document).ready(function () {
+        var search ="{{query}}"
+        logClick("On load","Search",search);
+
         var count={{count}};
         if(count === 0)
         {
@@ -120,13 +125,8 @@
                 if (JSON.parse(data) === "failure") {
                     $(".spinner").hide();
 
-                    toastr.error('Please sign in to order the book! Redirecting to select plans. ');
-//                    var target = '/#membershipPlans';
-//                    $('html, body').animate({
-//                        scrollTop: $('#membershipPlans').offset().top - 150
-//                    }, 800);
-//                     $(window).scrollTop($('#membershipPlans').offset());
-                    window.location.href = '/#membershipPlans';
+                    toastr.error('Become a member to rent books!').css("width","500px");
+                    window.location.href = '/#promo_section_desktop';
 
                 } else if(JSON.parse(data) === "NoDelivery"){
                     $(".spinner").hide();
@@ -165,9 +165,10 @@
                 if (JSON.parse(data) === "failure") {
 
                     toastr.error('Please sign in to update your wish list');
-                    $('html, body').animate({
-                        scrollTop: $('#membershipPlans').offset().top - 150
-                    }, 800);
+        //            $('html, body').animate({
+          //              scrollTop: $('#membershipPlans').offset().top - 150
+            //        }, 800);
+			window.location.href = '/#membershipPlans';
                 }
                 else {
                     $("#wish_" + id).attr("src", "../../assets/img/Added_WL_Right.png");
@@ -181,6 +182,9 @@
         });
     }
     function loadMore() {
+        var flag= {{flag}};
+        flag=parseInt(flag);
+
         $(".spinner").show();
         var count = localStorage.getItem("countFlag");
         var query = "{{query}}";
@@ -190,7 +194,6 @@
             type: 'GET',
 
             success: function (data) {
-console.log(data);
                 data=JSON.parse(data)
 
                 $(".spinner").hide();
@@ -200,34 +203,44 @@ console.log(data);
                     return false;
                 }
                 for (var i = 0; i < data.length; i++) {
+                    if(flag == 1)
+                    {
+                       var wish= '<a href="javascript:void(0)" class="tiptip" title="Wishlist" onclick="wishlistAdd({{titleid}})"><img id="wish_{{titleid}}" class="wishlist_btn" src=\'../../assets/img/Added_WL_50.png\' alt="Smiley face" height="25" width="25"></a>'
 
-                    $("#searchDiv").append(
+                    }
+                    else
+                    {
+                        var wish=''
+                    }
+                    $("#searchDiv").append( '<div><div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 thumb"><div class="item item_shadow">' +
+                   '<div class="img_block_books"><a rel="external" data-ajax="false" href="/book_details/' + encodeURI(data[i]['_source']['jb_info']['titleid']) + '/' + data[i]['_source']['jb_info']['title'] + '">' +
+                   '<img class="img-responsive" src="'+ data[i]['_source']["image_url"] +'" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'">' +
+                    '</a></div><div class="carousel_body_book"><div class="carousel_title_book" style="padding-bottom: 6%">' +
+                    '<h5 title="' + data[i]['_source']['jb_info']['title'] + '">' + data[i]['_source']['jb_info']['title'] + '</h5></div><div class="carousel_desc">' +
+                   '<div class="clear"></div></div></div><div class="fram_btn"><a href="javascript:void(0)" class="shortcode_button btn_small btn_type1" title="Rent" onclick="placeOrder(' + data[i]['_source']['jb_info']['titleid'] + ')" id="rent_' + data[i]['_source']['jb_info']['titleid'] + '">Rent</a>' +
+                   ''+wish+'<a href="javascript:void(0)" class="tiptip" title="Share" data-title="' + data[i]['_source']['jb_info']['title'] + '" data-id="' + data[i]['_source']['jb_info']['titleid'] + '" data-toggle="modal" data-target="#shareModal"><img class="share_btn" src="../../assets/img/Engage.png" alt="Smiley face" height="25" width="25"></a><div class="clear"></div>' +
+                   '</div></div></div></div>'
 
-                            // "<div class=\"col-lg-3 col-md-4 col-xs-12 thumb\" >" +
-                            //     "<a class=\"thumbnail\" href=\"/book_details/" + data[i]['_source']['jb_info']['titleid'] + "\"  style=\"height: 320px;\">" +
-                            //     " <img class=\"img-responsive\" src=\"" + data[i]['_source']["image_url"] + "\" onerror=\"this.src='https://www.safetybasics.com/v/vspfiles/photos/003-C-4L-Cover-0.jpg'\" >" +
-                            //     "        <h5 class=\"gallery_title\">" + data[i]['_source']['jb_info']["title"] + "</h5></a></div>"
 
 
-
-                            '<div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 thumb">'+
-                            '<div class="item item_shadow">'+
-                            '<div class="img_block_books">'+
-                            '<a rel="external" data-ajax="false" href="/book_details/' + data[i]['_source']['jb_info']['titleid'] + '/' + data[i]['_source']['jb_info']['title'] + '">'+
-
-                            '<img class="img-responsive" src="'+ data[i]['_source']["image_url"] +'" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'">'+
-
-                            '</a>'+
-                            '</div>'+
-                            '<div class="carousel_body_book">'+
-                            '<div class="carousel_title_book" style="padding-bottom: 6%"><h5 title="' + data[i]['_source']['jb_info']['title'] + '">' + data[i]['_source']['jb_info']['title'] + '</h5></div>'+
-                            '<div class="carousel_desc">'+
-
-                            '<div class="clear"></div>'+
-                            '</div>'+
-                            '</div>'+
-                            '</div>'+
-                            '</div>'
+//                            '<div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 thumb">'+
+//                            '<div class="item item_shadow">'+
+//                            '<div class="img_block_books">'+
+//                            '<a rel="external" data-ajax="false" href="/book_details/' + data[i]['_source']['jb_info']['titleid'] + '/' + data[i]['_source']['jb_info']['title'] + '">'+
+//
+//                            '<img class="img-responsive" src="'+ data[i]['_source']["image_url"] +'" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'">'+
+//
+//                            '</a>'+
+//                            '</div>'+
+//                            '<div class="carousel_body_book">'+
+//                            '<div class="carousel_title_book" style="padding-bottom: 6%"><h5 title="' + data[i]['_source']['jb_info']['title'] + '">' + data[i]['_source']['jb_info']['title'] + '</h5></div>'+
+//                            '<div class="carousel_desc">'+
+//
+//                            '<div class="clear"></div>'+
+//                            '</div>'+
+//                            '</div>'+
+//                            '</div>'+
+//                            '</div>'
 
 
                     );

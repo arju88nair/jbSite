@@ -1,7 +1,7 @@
 /**
- * Simple jQuery store locator plugin.
- * (c) Sébastien Castiel (@scastiel)
- */
+* Simple jQuery store locator plugin.
+* (c) Sébastien Castiel (@scastiel)
+*/
 
 (function ($) {
     var $this = null;
@@ -87,8 +87,8 @@
      */
     function placeMarkerForStore(store, bounds) {
         var id = store.id;
-
         var latLng = new google.maps.LatLng(store.latitude, store.longitude);
+        console.log(store.latitude)
         if (!bounds || bounds.contains(latLng)) {
             // The marker is in the bounds (or no bounds is provided)
             // => we show the marker.
@@ -122,7 +122,7 @@
      * @param {object} store The store.
      */
     function openInfoWindowForStore(store) {
-        // getInfoWindowForStore(store).open(map, markers[store.id]);
+        getInfoWindowForStore(store).open(map, markers[store.id]);
 
         $this.find('[data-store-id=' + store.id + ']').addClass('active');
         $this.find('[data-store-id!=' + store.id + ']').removeClass('active');
@@ -142,7 +142,9 @@
         if (stores.length > 0) {
             for (var i in stores) {
                 var store = stores[i];
+                console.log(store)
 
+                placeMarkerForStore(store);
                 var $store = $storeTemplate.clone();
                 $store.removeAttr('data-store-template')
                     .attr('data-store', JSON.stringify(store))
@@ -310,7 +312,6 @@
             zoom: 13,
             center: new google.maps.LatLng(defaultLocation.latitude, defaultLocation.longitude)
         });
-
         if ($this.find('.input').length == 0) {
             error("Unable to find the input field.");
             return;
@@ -325,16 +326,23 @@
             navigator.geolocation.getCurrentPosition(function (position) {
                 var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
                 map.setCenter(pos);
-
                 loadStores(pos.lat(), pos.lng());
             });
         }
         else {
             var pos = new google.maps.LatLng(12.92846, 77.5673713);
             map.setCenter(pos);
+            console.log(pos+"D")
+
             loadStores(pos.lat(), pos.lng());
         }
+        var myLatLng = {lat: -25.363, lng: 131.044};
 
+        var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: 'Hello World!'
+        });
         loadStores(map.getCenter().lat(), map.getCenter().lng());
 
         return this;

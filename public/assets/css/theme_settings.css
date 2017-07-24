@@ -16,7 +16,7 @@
 
 * {
     font-family: Arial, Helvetica, sans-serif;
-    font-weight: 400
+    /*font-weight: 400*/
 }
 
 .call_us .ico, .ico, .shortcode_iconbox .ico span {
@@ -1091,4 +1091,141 @@ select[multiple].input-group.input-group-lg .twitter-typeahead .tt-hint, select[
 
 .tt-dropdown-menu .tt-suggestion p, .tt-menu .tt-suggestion p {
     margin: 0
+}
+
+
+.border_right{
+    border-right: 1px solid #ccc;
+}
+
+.playstore_section{
+    background-color: #fff;
+    width:600px;
+    height: auto;
+    margin-top: 20%;
+    margin-left: 30%;
+    border-radius: 5px;
+}
+
+.playstore_section a img{
+    width:200px;
+    float: right;
+    /*padding-right: 10px;*/
+}
+
+.playstore_section p{
+
+    color: #000;
+    padding: 0px;
+    margin: 0px;
+    font-size: 19px;
+    line-height: 25px;
+    font-family: copperplate;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 2px;
+
+}
+
+.playstore_section .playstore_content{
+    border-right: 1px solid #404040;
+    /*margin-top: 3%;*/
+    margin-top: 3%;
+    margin-bottom: 3%;
+    padding-left: 10%;
+}
+.playstore_section .playstore_img{
+    margin-top: 1%;
+    /* margin-bottom: 3%; */
+    /* padding-left: 14%; */
+    margin-left: -5%;
+}
+
+.frame_membership_content{
+    margin-left: 20%;
+    margin-top: -2%;
+    font-family: Arial;
+}
+
+.content_wrapper{
+    min-height: 570px!important;
+}
+
+@media screen and (min-width: 0px) and (max-width: 800px) {
+    /*sinup form mobile*/
+.table td .input_field{
+    padding-left:0px;
+    padding-right:0px;
+}
+.table td tr .input{
+    padding-left:0px;
+    padding-right:0px;
+}
+.input_field .input{
+    padding-left:0px;
+    padding-right:0px;
+}
+.input input{
+    margin: 0px;
+    padding: 5px;
+
+}
+.module_price_table .row .col-xs-12{
+    padding-left: 0px;
+}
+
+/*end*/
+    .frame_membership_content{
+        margin-left: 0%;
+        margin-top: -2%;
+        font-family: Arial;
+    }
+
+    .playstore_section {
+        background-color: #fff;
+        width: 250px;
+        height: auto;
+        margin-top: 13%;
+        margin-left: 20%;
+        border-radius: 5px;
+    }
+
+    .playstore_section p {
+        font-weight: bolder;
+        color: #000;
+        padding: 0px 0px 0px 10px;
+        margin: 0px;
+        font-size: 6px;
+        font-family: copperplate;
+        text-align: center;
+        line-height: 13px;
+    }
+
+    .playstore_section a img{
+        width:200px;
+        float: right
+    }
+    .playstore_section .playstore_content{
+        border-right: 1px solid #404040;
+        /*margin-top: 3%;*/
+        margin-top: 3%;
+        margin-bottom: 3%;
+        padding-left: 5%;
+    }
+    .playstore_section .playstore_img{
+        margin-top: 3%;
+        /* margin-bottom: 3%; */
+        /* padding-left: 14%; */
+        margin-left: -6%;
+    }
+    .border_right{
+        border-right: 1px solid #fff;
+    }
+
+    #bg_title_shelf h4 {
+        color: #fff;
+        margin-bottom: 10px;
+        font-size: 19px;
+        line-height: 7px;
+    }
 }

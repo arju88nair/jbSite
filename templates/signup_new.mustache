@@ -1,0 +1,839 @@
+{{> header}}
+
+<!-- C O N T E N T -->
+<!--<script src="../../assets/js/state.js"></script>-->
+<style type="text/css">
+    .registration-container{
+        position: relative;
+        background: rgba(240, 248, 255, 0.5);
+        width: 90%;
+        /*margin:0px auto;*/
+        /*padding-top: 3%;*/
+
+    }
+    .franchisee p{
+        text-align: justify;
+        color: #464d52;
+        font-size: 12px;
+        font-family: arial;
+    }
+    .franchisee ul {
+
+        font-size: 12px;
+        font-weight: 400!important;
+        margin-bottom: 8px;
+        padding-left: 60px;
+        color: #464d52;
+        font-family: arial;
+    }
+
+    .franchisee h4{
+        font-family: playfair display;
+        text-align: left;
+        padding-left: 10px;
+
+    }
+
+    .franchisee1 h4{
+        font-family: playfair display;
+        text-align: center;
+
+    }
+    .panel-default > .panel-heading {
+        color: #424242;
+        /*background-color: #504848;*/
+        /*border-color: #504848;*/
+    }
+
+    .table > tbody > tr > td,
+    .table > tbody > tr > th,
+    .table > tfoot > tr > td,
+    .table > tfoot > tr > th,
+    .table > thead > tr > td,
+    .table > thead > tr > th {
+        padding: 12px!important;
+        line-height: 1.42857143;
+        vertical-align: top;
+        border-top: 1px solid #ddd;
+    }
+    #payment_form label{
+        /*font-weight: 700;*/
+    }
+
+
+
+</style>
+<div class="content_wrapper" id="firstDiv">
+    <div class="page_title_block">
+        <div class="container">
+            <div class="bg_title" id="bg_title_shelf"><h4 class="headInModule">PLAN DETAILS </h4></div>
+
+        </div>
+    </div>
+
+    <div class="container" >
+        <div class="spinner"  style='display: none;z-index: 100;opacity:0.55;background-color: grey'>
+            <div class="double-bounce1"></div>
+            <div class="double-bounce2"></div>
+        </div>
+        <div class="content_block no-sidebar row">
+            <div class="fl-container span12">
+                <div id="{{planname}}" class="planid"></div>
+                <div id="{{planid}}" class="planID"></div>
+                <div id="{{planname}}_{{book}}_{{month}}" class="namePlan"></div>
+
+                <div class="contentarea">
+                    <div class="module_line_trigger" data-option="" data-background="#323232 url(img/) no-repeat center"
+                         data-top-padding="top_padding_normal">
+
+                        <div class="row-fluid">
+                            <div class="span12 module_cont module_price_table">
+                                <div class="bg_title bg_title_price" style="text-align: center;">
+                                    <!-- <h4 class="headInModule">PLAN DETAILS</h4> -->
+                                </div>
+                                <div class="row">
+
+
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th colspan="2">
+                                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                                            <select class="form-control" id="books">
+                                                                <option value="">Select No of Books:</option>
+                                                                {{# plan_books}}
+                                                                    <option value="{{.}}">{{.}}  book(s)</option>
+                                                                {{/plan_books}}
+                                                            </select></br>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                                            <select class="form-control" id="months" >
+                                                                <option value="">Select No of Months:</option>
+                                                                {{# months}}
+                                                                    <option value="{{.}}">{{.}}  {{monthTagText}}</option>
+                                                                {{/months}}
+                                                            </select></br>
+                                                        </div>
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody >
+                                                <tr>
+                                                    <td>One time Registration Fee:</td>
+                                                    <td id="reg_fee">₹ {{reg_fee}}</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td>One time Security Deposit:</td>
+                                                    <td id="sec_deposit_fee">₹ {{sec_deposit}}</td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td id="readingfee_mnths">Reading Fee for:</td>
+                                                    <td  id="reading_fee">₹ {{reading_fee}}</td>
+
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="input_field">
+                                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 input">
+                                                            <input type="text" class="form-control" id="referral_code"
+                                                                   placeholder="Enter Referral code, if any" name="referral_code">
+                                                        </div>
+                                                    </td>
+                                                    <td id="coupon_fields" class="input_field">
+                                                        <div class="col-xs-8 col-sm-9 col-md-9 col-lg-9 input">
+                                                            <input type="text" class="form-control" id="coupon_code"
+                                                                   placeholder="Enter coupon code, if any" name="coupon_code">
+                                                        </div>
+                                                        <div class="col-xs-3 col-sm-2 col-md-2 col-lg-2" style="padding-top: 5px;">
+                                                            <button type="button" class="btn shortcode_button btn_small btn_type1" id="coupon_submit">Apply</button>
+                                                        </div>
+                                                    </td>
+
+                                                </tr>
+
+                                                <tr>
+                                                    <td>Net Amount Payable:</td>
+                                                    <td id="total_fee">₹ {{total}}</td>
+
+                                                </tr>
+
+                                            </tbody>
+
+                                        </table>
+                                        <hr style="color: #ddd;">
+
+                                        <!--<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">-->
+                                            <!--<h4 class="dark-grey" style="font-weight: normal;font-family: 'Playfair Display'">Coupon Information</h4>-->
+                                        <!--</div>-->
+
+
+                                        <!--<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">-->
+                                            <!--<div class="form-group">-->
+                                                <!--<div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">-->
+                                                    <!--<label>Enter Referral code, if any:</label>-->
+                                                    <!--<input type="text" class="form-control" id="referral code"-->
+                                                           <!--placeholder="Member Card No." name="referral_code">-->
+                                                <!--</div>-->
+                                                <!--<div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">-->
+                                                    <!--<label>Enter coupon code, if any:</label>-->
+                                                    <!--<input type="text" class="form-control" id="coupon_code"-->
+                                                           <!--placeholder="Coupon Code" name="coupon_code">-->
+                                                <!--</div>-->
+                                                <!--<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2" style="padding-top:22px;">-->
+                                                    <!--<button type="button" class="btn shortcode_button btn_small btn_type1" id="coupon_submit">Apply</button>-->
+                                                <!--</div>-->
+                                            <!--</div>-->
+                                        <!--</div>-->
+                                        <!--/////////////////////END/////////////////////////-->
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                        <!-- 1st row verticaly centered text in the square columns -->
+
+                                        <div class="registration-container">
+                                            <div class="panel panel-default" style="box-shadow: 5px 5px 10px #888888;">
+                                                <div class="panel-heading franchisee1"><h4 style="margin-bottom: 0px; color: #000;">Fill Your Details</h4></div>
+                                                <div class="panel-body">
+
+                                                    <form class="col-sm-12 text-left" id="payment_form">
+
+                                                        <div class="form-group col-sm-12">
+                                                            <label for="exampleInputEmail1">Pin Code </label>
+                                                            <input type="text" class="form-control"  id="zip" maxlength="6" name="zip">
+                                                        </div>
+
+                                                        <div class="form-group col-sm-12">
+                                                            <label for="exampleInputPassword1">Email </label>
+                                                            <input type="email" class="form-control"  id="email" name="email">
+                                                        </div>
+
+                                                        <div class="form-group col-sm-12">
+                                                            <label for="exampleInputPassword1">Mobile No </label>
+                                                            <input type="number" class="form-control"  id="mobile" pattern="[789][0-9]{9}" maxlength="10" name="mobile">
+                                                        </div>
+
+                                                        <div class="form-group col-sm-12 text-center">
+                                                            <button type="button" class="shortcode_button btn_small btn_type1" id="paymentBtn">PAY NOW</button>
+                                                        </div>
+                                                    </form>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div><!-- .module_cont -->
+                        </div><!-- .row-fluid -->
+                    </div>
+                </div>
+                <!--<div class="row">-->
+
+                <!--<div class="span12 module_cont module_text_area" id="formDivMain"></br>-->
+
+                <!--<h4 class="module_cont" id="tagHead">Fill Your Personal Details Here</h4>-->
+                <!--<hr>-->
+                <!--<form class="form-horizontal" id="signup_form" >-->
+                <!--<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">-->
+                <!--<h4 class="dark-grey" style="font-weight: normalfont-family: 'Playfair Display'">Account Information</h4>-->
+                <!--</div>-->
+
+
+                <!--<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">-->
+                <!--<div class="form-group">-->
+                <!--<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">-->
+                <!--<label>First Name:</label>-->
+                <!--<input type="text" class="form-control" id="firstnameForm" name="firstname" required>-->
+                <!--</div>-->
+                <!--<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">-->
+                <!--<label>Last Name:</label>-->
+                <!--<input type="text" class="form-control" id="lastname" name="lastname">-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                <!--<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">-->
+                <!--<label>Address:</label>-->
+                <!--<input type="text" class="form-control" id="address" name="address" required>-->
+                <!--</div>-->
+
+                <!--</div>-->
+
+                <!--</div>-->
+
+                <!--<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">-->
+                <!--<div class="form-group">-->
+                <!--<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">-->
+                <!--<label>Date Of Birth:</label>-->
+                <!--&lt;!&ndash;<input type="text" class="form-control" id="dob" name="dob">&ndash;&gt;-->
+                <!--<input class="form-control" type="text" id="dob" readonly required="required" name="dob" required>-->
+                <!--</div>-->
+                <!--<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">-->
+                <!--<label>Gender:</label>-->
+                <!--<select class="form-control" id="gender" name="gender">-->
+                <!--<option value="M">Male</option>-->
+                <!--<option value="F">Female</option>-->
+                <!--</select>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+                <!--<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">-->
+                <!--<label>State:</label>-->
+                <!--<select class="form-control" id="state" name="state" >-->
+                <!--</select>-->
+                <!--</div>-->
+                <!--<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">-->
+                <!--<label>City:</label>-->
+                <!--<select class="form-control" id="city" name="city">-->
+                <!--</select>-->
+                <!--</div>-->
+                <!--<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">-->
+                <!--<label>Zip/Post:</label>-->
+                <!--<input type="text" class="form-control" id="zip" name="zip" pattern="[0-9]{6}" title="Six digit zip code" required>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--&lt;!&ndash;/////////////////////END/////////////////////////&ndash;&gt;-->
+                <!--<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">-->
+                <!--<div class="form-group">-->
+                <!--<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">-->
+                <!--<label>Email:</label>-->
+                <!--<input type="email" class="form-control" id="email" name="email" required>-->
+                <!--</div>-->
+                <!--<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">-->
+                <!--<label>Mobile:</label>-->
+                <!--<input type="number" class="form-control" id="mobile" required name="mobile"-->
+                <!--maxlength="10" minlength="10">-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">-->
+                <!--<div class="form-group">-->
+                <!--<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">-->
+                <!--<label>Create Password:</label>-->
+                <!--<input type="password" class="form-control" id="password1" name="password"-->
+                <!--required>-->
+                <!--</div>-->
+                <!--<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">-->
+                <!--<label>Confirm Password:</label>-->
+                <!--<input type="password" class="form-control" id="Cpassword" name="password1"-->
+                <!--required oninput="passwordval()">-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<span id="error" style="color :red;display: block;margin-right: 10%;float:right"></span>-->
+
+                <!--</div>-->
+                <!--&lt;!&ndash;/////////////////////END/////////////////////////&ndash;&gt;-->
+
+                <!--<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">-->
+                <!--<h4 class="dark-grey" style="font-weight: normal;font-family: 'Playfair Display'">Coupon Information</h4>-->
+                <!--</div>-->
+
+
+                <!--<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">-->
+                <!--<div class="form-group">-->
+                <!--<div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">-->
+                <!--<label>Apply Referral code, if any:</label>-->
+                <!--<input type="text" class="form-control" id="referral code"-->
+                <!--placeholder="Member Card No." name="referral_code">-->
+                <!--</div>-->
+                <!--<div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">-->
+                <!--<label>Apply coupon code, if any:</label>-->
+                <!--<input type="text" class="form-control" id="coupon_code"-->
+                <!--placeholder="Coupon Code" name="coupon_code">-->
+                <!--</div>-->
+                <!--<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2" style="padding-top:22px;">-->
+                <!--<button type="button" class="btn shortcode_button btn_small btn_type1" id="coupon_submit">Apply</button>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+
+                <!--<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">-->
+                <!--<div class="form-group">-->
+                <!--<div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">-->
+                <!--<label>Apply gift card, if any:</label>-->
+                <!--<input type="text" class="form-control" id="gift_card"-->
+                <!--placeholder="Gift Card No." name="gift_card">-->
+                <!--</div>-->
+                <!--<div class="col-xs-12 col-sm-5 col-md-5 col-lg-5" style="padding-top:22px;">-->
+                <!--<input type="text" class="form-control" id="gift_card_pin" placeholder="PIN"-->
+                <!--name="gift_card_pin">-->
+                <!--</div>-->
+                <!--<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2" style="padding-top:22px;">-->
+                <!--<button type="button" class="btn shortcode_button btn_small btn_type1" id="gift_card_submit">Apply-->
+                <!--</button>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<div class="form-group">-->
+
+                <!--</div>-->
+                <!--<div class="form-group">-->
+
+                <!--</div>-->
+                <!--</div>-->
+                <!--&lt;!&ndash;/////////////////////END/////////////////////////&ndash;&gt;-->
+
+
+                <!--<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">-->
+                <!--<div class="form-group">-->
+                <!--<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">-->
+                <!--<div class="checkbox">-->
+                <!--<label>-->
+                <!--<input type="checkbox" id="checkbox">I accept <a href="/terms-and-condition">Terms & Conditions</a>-->
+                <!--</label>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div> &lt;!&ndash; /.form-group &ndash;&gt;-->
+
+                <!--</div>-->
+
+                <!--<div class="col-xs-12 col-sm-6 col-md-12 col-lg-12">-->
+                <!--<div class="form-group">-->
+                <!--<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">-->
+                <!--<button type="button"  class="btn shortcode_button btn_medium btn_type1" id="signupBtn" disabled>Register-->
+                <!--</button>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+
+
+                <!--</form>-->
+                <!--</div>-->
+                <!--</div>-->
+                <div class="alert alert-danger alert-dismissable" style="display: none" id="alertDiv">
+                    <a href="#" class="close" onclick="hideAlert()" aria-label="close">&times;</a>
+                    <span id="alertMsg"></span>
+                </div>
+            </div>
+        </div><!-- .contentarea -->
+    </div>
+</div>
+<div class="clear"><!-- ClearFix --></div>
+
+<div class="clear"><!-- ClearFix --></div>
+<script type="application/javascript">
+
+    $(document).ready(function(){
+        logClick("On load","Signup Page","User");
+
+        var w = window.outerWidth;
+        var h = window.outerHeight;
+        if(w<750){
+            $("#formDivMain").css('margin-left','-2%');
+        }
+
+
+        $("#books").val("{{book}}");
+        $("#months ").val("{{month}}");
+
+        var mnth = $("#months option:selected").text();
+        $('#readingfee_mnths').text('Reading fee for '+mnth);
+        $('#plansHeader').addClass('current-menu-parent');
+
+    });
+
+
+
+    function passwordval() {
+// console.log($('#password1').val()+'----'+$('#Cpassword').val());
+        if ($("#Cpassword").val() !== $("#password1").val()) {
+            $("#error").text("Passwords does not match!");
+            $("#error").show();
+            return false;
+        }
+        else {
+            $("#error").hide();
+        }
+    }
+
+    var reg_fee;
+    var secDeposit;
+    $(document).ready(function () {
+
+        $('header nav ul.menu > li #plans').addClass('current-menu-parent');
+
+
+
+        $('#checkbox').click(function(){
+            $("#signupBtn").attr("disabled", !this.checked);
+        });
+        var planname = "{{planname}}";
+        var planid = "{{planid}}";
+
+
+        var planid = $('.planid').attr('id');
+
+        $("#dob").datepicker({
+            dateFormat: 'dd-mm-yy',
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "-100:+0"
+        }).val();
+    });
+
+    var planid = $('.planid').attr('id');
+    var namePLan = $('.namePlan').attr('id');
+    var mon = '';
+    var book = '';
+    $('#box_'+namePLan).css({
+
+        'display': 'block',
+        'background-color': '#fff',
+        'box-shadow':' 1px 1px 5px #999',
+        'cursor': 'pointer',
+        'border-bottom': '4px solid red'
+
+    });
+    $('#months').on('change', function () {
+        $(".spinner").show();
+        mon = this.value;
+        book = $("#books").val();
+        var mnth = $("#months option:selected").text();
+        $('#readingfee_mnths').text('Reading fee for '+mnth);
+        $("#coupon_submit").show();
+        $("#coupon_code").removeAttr("disabled");
+        updateFees();
+    });
+
+
+    $('#books').on('change', function () {
+        $("#months").hide();
+        $(".spinner").show();
+        $("#months").empty();
+        book = this.value;
+        $.ajax({
+            type: "GET",
+            url: "/getPlanYears?book=" + book + "&planname=" + "{{planname}}",
+            success: function (data_new) {
+                $("#coupon_submit").show();
+                $("#coupon_code").removeAttr("disabled");
+                $(".spinner").hide();
+                $("#months").show();
+                console.log(data_new);
+                console.log(JSON.parse(data_new));
+                data_new = JSON.parse(data_new);
+                var  monthTag=data_new['monthTag']
+
+                if (data_new['status'] === "2nd") {
+                    $(".planID").attr("id",data_new['planID']);
+                    data_new = data_new['data'];
+
+                    if (data_new.length != 0 || data_new != [] || data_new != '[]') {
+                        for (var i = 0; i < data_new.length; i++) {
+
+                            $("#months").append('<option value="' + data_new[i] + '">' + data_new[i] + '  '+monthTag+'</option>')
+
+                        }
+                        $("#months").prepend("<option value=''>Select months</option>").val('');
+
+                    }
+                }
+                else {
+                    $(".planID").attr("id",data_new['planID'])
+
+                    $("#months").append('<option value="' + data_new['month'] + '">' + data_new['month'] + ' '+monthTag+'</option>')
+
+                    $('#reg_fee h5').html("₹ "+data_new['reg_fee'] );
+                    $('#sec_deposit_fee h5').html("₹ "+data_new['sec_deposit']);
+                    $('#reading_fee h5').html("₹ "+data_new['reading_fee']);
+                    $('#total_fee h5').html("₹ "+data_new['total']);
+
+                }
+
+
+            },
+            error: function (err) {
+                $(".spinner").hide();
+
+                console.log(err.responseText)
+            }
+
+        });
+
+
+        //        updateFees();
+    });
+    function updateFees() {
+        console.log(planid + "assas" + mon + "aasass" + book);
+        if (mon != '' && book != '') {
+            $.ajax({
+            type: "GET",
+                url: "/getPlanFees?book=" + book + "&months=" + mon + "&planname=" + "{{planname}}",
+                success: function (data_new) {
+                    $(".spinner").hide();
+                    console.log(data_new);
+                    data_new = JSON.parse(data_new);
+                    console.log(data_new);
+//                        console.log(data_new['reg_fee']);
+                    $('#reg_fee').text("₹ "+data_new['reg_fee']);
+                    $('#sec_deposit_fee').text("₹ "+data_new['sec_deposit']);
+                    $('#reading_fee').text("₹ "+data_new['reading_fee']);
+                    $('#total_fee').text("₹ "+data_new['total']);
+                },
+                error: function (err) {
+                    $(".spinner").hide();
+                    console.log(err.responseText)
+                }
+
+            });
+        }
+    }
+
+
+    $.ajax({
+        type: "GET",
+        url: "/getCitiesAndState",
+        success: function (data_new) {
+            data_new = JSON.parse(data_new);
+            console.log(data_new);
+            console.log(data_new[0]['city']);
+            data_new[0]['city'].forEach(function (arr) {
+                $('#city').append("<option value=" + arr['CITYID'] + ">" + arr['CITYNAME'] + "</option>");
+            });
+            data_new[0]['state'].forEach(function (arr) {
+                $('#state').append("<option value=" + arr['STATEID'] + ">" + arr['STATENAME'] + "</option>");
+            });
+        },
+
+    });
+
+    $('#paymentBtn').click(function(e){
+        e.preventDefault();
+
+        if ($("#months").val().trim() == "") {
+            toastr.error("Please select No. of months");
+            return false;
+        }
+
+        if ($("#zip").val().length < 6) {
+            toastr.error("Please enter a valid zip code");
+            return false;
+        }
+
+        if ($("#email").val() == "") {
+            toastr.error("Please enter an E-mail address");
+            return false;
+        }
+        if ($("#mobile").val().length < 10) {
+            toastr.error("Please enter a proper mobile number");
+            return false;
+        }
+        logClick("Signup Click","Signup First",$("#email").val());
+
+        $("#error").hide();
+        var signupID = parseInt($('.planID').attr('id'));
+        var coupon = $('#coupon_code').val();
+        var signup_data = $('#payment_form').serialize();
+        signup_data += '&plan_id=' + signupID+'&duration=' + $('#months').val()+'&coupon_code='+coupon;
+        $(".spinner").show();
+        $.ajax({
+            type: "POST",
+            url: "/insertSignupNew",
+            data: {'signup_data': JSON.stringify(signup_data)},
+            success: function (data_new) {
+                $(".spinner").hide();
+                console.log(data_new)
+//                console.log(JSON.parse(data_new));
+                console.log(data_new['success'])
+//                data_new = JSON.parse(data_new);
+                logClick("Sign up click")
+                if (data_new['success'] == 'true') {
+
+                    window.location.href = "/PaytmKit/pgRedirect.php"
+
+                }
+                else {
+                    console.log(data_new['errors'])
+                    var errorString=data_new['errors'];//.join()
+                    $("#alertDiv").show();
+                    $("#alertMsg").text(errorString);
+                    $('html, body').animate({
+                        scrollTop: $('#alertDiv').offset().top
+                    }, 800);
+
+                    $(".planID").attr("id",signupID);
+                    return false;
+                }
+            },
+
+        });
+    });
+
+
+    $('#signupBtn').click(function (e) {
+
+        e.preventDefault();
+        if ($("#gender").val() == "") {
+            toastr.error("Please specify a gender");
+            return false;
+        }
+        if ($("#firstnameForm").val() == "") {
+            toastr.error("Please enter a proper first name");
+            return false;
+        }
+        if ($("#lastname").val() == "") {
+            toastr.error("Please enter a proper last name");
+            return false;
+        }
+        if ($("#address").val() == "") {
+            toastr.error("Please enter a proper address");
+            return false;
+        }
+        if ($("#dob").val() == "") {
+            toastr.error("Please enter a DOB");
+            return false;
+        }
+
+        if ($("#zip").val().length < 6) {
+            toastr.error("Please enter a valid zip code");
+            return false;
+        }
+        if ($("#email").val() == "") {
+            toastr.error("Please enter an E-mail address");
+            return false;
+        }
+        if ($("#mobile").val().length < 10) {
+            toastr.error("Please enter a proper mobile number");
+            return false;
+        }
+        if ($("#password1").val() !== $("#Cpassword").val()) {
+            toastr.error("Passwords do not match");
+            return false;
+        } if ($("#password1").val() <6 ) {
+            toastr.error("Password is too short");
+            return false;
+        }if ($("#Cpassword").val() <6 ) {
+            toastr.error("Password is too short");
+            return false;
+        }
+        $("#error").hide();
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-93821751-1', 'none');
+        var username=$("#email").val()
+        ga('send', 'event', 'Clicks', 'Signup of user '+username+'', 'First Screen');
+        var signupID = parseInt($('.planID').attr('id'));
+
+        var signup_data = $('#signup_form').serialize();
+        signup_data += '&reg_fee=' + $('#reg_fee h5').html() + '&reading_fee=' + $('#reading_fee h5').html() + '&security_deposit=' + $('#sec_deposit_fee h5').html() + '&plan_id=' + signupID+'&duration=' + $('#months').val();
+        $(".spinner").show();
+        $.ajax({
+            type: "POST",
+            url: "/insertSignup",
+            data: {'signup_data': JSON.stringify(signup_data)},
+            success: function (data_new) {
+                $(".spinner").hide();
+                console.log(data_new)
+                console.log(JSON.parse(data_new));
+                console.log(data_new['success'])
+                data_new = JSON.parse(data_new);
+                logClick("Sign up click")
+                if (data_new['success'] == true) {
+
+
+//
+
+
+                    window.location.href = "/PaytmKitSignup/pgRedirect.php"
+
+                }
+                else {
+                    console.log(data_new['errors'])
+                    var errorString=data_new['errors'].join()
+                    $("#alertDiv").show();
+                    $("#alertMsg").text(errorString);
+                    $('html, body').animate({
+                        scrollTop: $('#alertDiv').offset().top
+                    }, 800);
+
+
+                    return false;
+                }
+            },
+
+        });
+    });
+
+    $('#coupon_submit').click(function (e) {
+        $(".spinner").show();
+        var planId={{planid}};
+        mon=$("#months").val();
+        e.preventDefault();
+        var coupon = $('#coupon_code').val();
+        $.ajax({
+            type: "POST",
+            url: "/couponValidate",
+            data: {'coupon': coupon, 'planid': planId, 'months': mon},
+            success: function (data_new) {
+                $(".spinner").hide();
+                data_new = JSON.parse(data_new);
+                console.log(data_new);
+                if (data_new['success'] == true) {
+
+                    var net_amnt = $('#total_fee').text();
+
+                    net_amnt = net_amnt.replace('₹','').trim();
+                    console.log(net_amnt);
+                    var discount=data_new['result']['discount'];
+                    var final_amnt = parseInt(net_amnt)-parseInt(discount);
+                    $('#total_fee').text('₹ '+final_amnt);
+                    $("#coupon_submit").hide();
+                    $("#coupon_code").attr("disabled","disabled");
+                    toastr.success('Coupon Accepted. Coupon discount amount is '+discount);
+                }
+                else {
+                    toastr.error(data_new['errors']);
+                }
+            },
+
+        });
+    });
+
+    $('#gift_card_submit').click(function (e) {
+        $(".spinner").show();
+        e.preventDefault();
+        var gift_card = $('#gift_card').val();
+        var gift_card_pin = $('#gift_card_pin').val();
+        var total_amnt = $('#total_fee h5').html();
+        $.ajax({
+            type: "POST",
+            url: "/giftcardValidate",
+            data: {'gift_card': gift_card, 'gift_card_pin': gift_card_pin, 'total_amnt': total_amnt},
+            success: function (data_new) {
+                $(".spinner").hide()
+                data_new = JSON.parse(data_new);
+                console.log(data_new);
+                if (data_new['success'] == true) {
+                    toastr.success(data_new['result']['error']);
+                }
+                else {
+
+                    toastr.error(data_new['errors']);
+
+
+                }
+
+            },
+
+        });
+    });
+
+
+    function planFees() {
+        var readingFee = $("#months").val();
+        $('#reg_fee').text(reg_fee);
+        $('#sec_deposit_fee').text(secDeposit);
+        $('#reading_fee').text(readingFee);
+        $('#total_fee').text(parseFloat(reg_fee) + parseFloat(secDeposit) + parseFloat(readingFee));
+    }
+
+    function hideAlert()
+    {
+        $("#alertDiv").hide();
+    }
+</script>
+{{> footer}}

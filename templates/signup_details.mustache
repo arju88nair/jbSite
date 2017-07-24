@@ -1,0 +1,338 @@
+{{> header}}
+
+<style type="text/css">
+    .registration-container{
+        position: relative;
+        background: rgba(240, 248, 255, 0.5);
+        width: 80%;
+        margin:0px auto;
+        /*padding-top: 3%;*/
+
+    }
+    .franchisee p{
+        text-align: justify;
+        color: #464d52;
+        font-size: 12px;
+        font-family: arial;
+    }
+    .franchisee ul {
+
+        font-size: 12px;
+        font-weight: 400!important;
+        margin-bottom: 8px;
+        padding-left: 60px;
+        color: #464d52;
+        font-family: arial;
+    }
+
+    .franchisee h4{
+        font-family: playfair display;
+        text-align: left;
+        padding-left: 10px;
+
+    }
+
+    .franchisee1 h4{
+        font-family: playfair display;
+        text-align: center;
+
+    }
+    .panel-default > .panel-heading {
+        color: #fff;
+        background-color: #504848;
+        border-color: #504848;
+    }
+
+    /*#success_payment {*/
+        /*margin-bottom: 0px!important;*/
+    /*}*/
+
+
+</style>
+
+<div class="content_wrapper"  id="franchiseeDiv" data-orderid="{{orderid}}">
+
+    <div class="spinner" style='display: none;z-index: 100;opacity:0.55;background-color: grey'>
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+    </div>
+    <div class="registration-container">
+        <div class="panel panel-default" style="box-shadow: 5px 5px 10px #888888;">
+            <div class="alert alert-warning" id="payment_approved">
+                <strong>Congratulations!</strong> Your payment is approved.<br>
+                Please give us more information to help us serve you better. (Mandatory)
+            </div>
+
+            <div class="panel-heading franchisee1" id="signup_form_title"><h4 style="margin-bottom: 0px; color: #fff;">Update Personal Details</h4></div>
+            <div class="panel-body" id="signup_form_body">
+
+                <form class="text-left" class="form-horizontal" id="signup_form">
+
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                <label>First Name:*</label>
+                                <input type="text" class="form-control" id="firstnameForm" name="firstname" required>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                <label>Last Name:*</label>
+                                <input type="text" class="form-control" id="lastname" name="lastname">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <label>Address:*</label>
+                                <input type="text" class="form-control" id="address" name="address" required maxlength="40">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <label>Shipping Address:*</label>
+                                <input type="text" class="form-control" id="shipping_address" name="shipping_address" pattern="[A-Za-z0-9]" title="No quotes allowed" required>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                        <div class="form-group">
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                <label>Date Of Birth:*</label>
+                                <!--<input type="text" class="form-control" id="dob" name="dob">-->
+                                <input class="form-control" type="text" name="dob" id="dob" required>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                <label>Gender:*</label>
+                                <select class="form-control" id="gender" name="gender">
+                                    <option value="M">Male</option>
+                                    <option value="F">Female</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                <label>State:*</label>
+                                <select class="form-control" id="state" name="state" >
+                                </select>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                <label>City:*</label>
+                                <select class="form-control" id="city" name="city">
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                <label>Password:*</label>
+                                <input type="password" class="form-control" id="password1" name="password1" required>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                                <label>Confirm Password:*</label>
+                                <input type="password" class="form-control" id="password2" name="password2" required oninput="passwordval()">
+                            </div>
+                            <span id="error" style="color :red;display: block;margin-right: 10%;float:right"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center" style="margin-top: 2%;margin-left: 1.6%;">
+                        <button type="button" class="shortcode_button btn_small btn_type1" id="complete_signup">COMPLETE ORDER</button>
+                    </div>
+                </form>
+
+            </div>
+            <div class="alert alert-warning" id="success_payment">
+                <strong>Success!</strong> Thanks for registering. You will receive an e-mail from us shortly. For any queries please call our customer care
+            </div>
+        </div>
+    </div><br><br><br>
+
+</div>
+
+
+
+<script>
+    var room = 1;
+    function add_fields() {
+        room++;
+        var objTo = document.getElementById('room_fileds')
+        var divtest = document.createElement("div");
+        divtest.innerHTML = '<div class="form-group" style="padding-top: 3%;"><div class="col-xs-6 col-sm-3 col-md-3 col-lg-3"><input type="text" class="form-control" id="firstnameForm" name="firstname" placeholder="First Name" required></div><div class="col-xs-6 col-sm-3 col-md-3 col-lg-3"><input type="text" class="form-control" id="mobile" name="mobile" placeholder="Mobile No." required></div><div class="col-xs-6 col-sm-3 col-md-3 col-lg-3"><input type="email" class="form-control" id="email" name="email" placeholder="Email" required></div><div class="col-xs-6 col-sm-3 col-md-3 col-lg-3"><input type="text" class="form-control" id="age" name="age" placeholder="Age" required></div></div>';
+
+        objTo.appendChild(divtest)
+    }
+
+
+
+</script>
+
+<script type="application/javascript">
+
+    function passwordval() {
+        // console.log($('#password1').val()+'----'+$('#Cpassword').val());
+        if ($("#password1").val() !== $("#password2").val()) {
+            $("#error").text("Passwords does not match!");
+            $("#error").show();
+            return false;
+        }
+        else {
+            $("#error").hide();
+        }
+    }
+
+    var reg_fee;
+    var secDeposit;
+    $(document).ready(function () {
+        logClick("Signup Confirm","Signup Final","{{orderid}}");
+
+        $('#success_payment').hide();
+        $('header nav ul.menu > li #plans').addClass('current-menu-parent');
+
+
+
+        $('#checkbox').click(function(){
+            $("#signupBtn").attr("disabled", !this.checked);
+        });
+
+
+        $("#dob").datepicker({
+            dateFormat: 'dd-mm-yy',
+            changeMonth: true,
+            changeYear: true,
+            yearRange: "-100:+0"
+        }).val();
+    });
+
+
+
+    $.ajax({
+        type: "GET",
+        url: "/getCitiesAndState",
+        success: function (data_new) {
+            data_new = JSON.parse(data_new);
+            console.log(data_new);
+            console.log(data_new[0]['city']);
+            data_new[0]['city'].forEach(function (arr) {
+                $('#city').append("<option value=" + arr['CITYID'] + ">" + arr['CITYNAME'] + "</option>");
+            });
+            data_new[0]['state'].forEach(function (arr) {
+                $('#state').append("<option value=" + arr['STATEID'] + ">" + arr['STATENAME'] + "</option>");
+            });
+        },
+
+    });
+
+    $('#complete_signup').click(function (e) {
+
+        e.preventDefault();
+
+
+
+        if ($("#firstnameForm").val() == "") {
+
+            toastr.error("Please enter a proper first name");
+            return false;
+        }
+        if ($("#lastname").val() == "") {
+            toastr.error("Please enter a proper last name");
+            return false;
+        }
+        if ($("#address").val() == "") {
+            toastr.error("Please enter a proper address");
+            return false;
+        }
+        if ($("#shipping_address").val() == "") {
+            toastr.error("Please enter a proper shipping address");
+            return false;
+        }
+
+        if ($("#dob").val() == "") {
+            toastr.error("Please enter a DOB");
+            return false;
+        }
+
+        if ($("#gender").val() == "") {
+            toastr.error("Please specify a gender");
+            return false;
+        }
+
+
+
+        if ($("#password1").val() !== $("#password2").val()) {
+            toastr.error("Passwords do not match");
+            return false;
+        }
+        if ($("#password1").val() <6 ) {
+            toastr.error("Password is too short");
+            return false;
+        }
+        if ($("#password2").val() <6 ) {
+            toastr.error("Password is too short");
+            return false;
+        }
+        $("#error").hide();
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-93821751-1', 'none');
+
+        ga('send', 'event', 'Clicks', 'Signup of user '+username+'', 'First Screen');
+
+        var signup_data = $('#signup_form').serialize();
+
+        $(".spinner").show();
+        var orderid = $('#franchiseeDiv').attr('data-orderid');
+        signup_data += '&orderid='+orderid;
+        $('#complete_signup').hide();
+        $.ajax({
+            type: "POST",
+            url: "/insertSignupDetails",
+            data: {'signup_data': JSON.stringify(signup_data)},
+            success: function (data_new) {
+
+                $(".spinner").hide();
+                $("#payment_approved").hide();
+                $("#signup_form :input").attr("disabled",true);
+
+                console.log(data_new)
+                logClick("Sign up click")
+                if (data_new == 'success') {
+                    $('#success_payment').show();
+
+//                    window.location.href = "/"
+                    $.ajax({
+                        type: "GET",
+                        url: "/signup_updateorderid?orderid="+orderid,
+                        success: function(data){
+                            if(data == 'success') {
+
+                            }else{
+
+                            }
+                        }
+                    })
+                }
+                else {
+                    $('#complete_signup').show();
+                    console.log(data_new['errors'])
+                    var errorString=data_new['errors'].join()
+                    $("#alertDiv").show();
+                    $("#alertMsg").text(errorString);
+                    $('html, body').animate({
+                        scrollTop: $('#alertDiv').offset().top
+                    }, 800);
+
+
+                    return false;
+                }
+            },
+
+        });
+    });
+
+</script>
+
+{{>footer}}

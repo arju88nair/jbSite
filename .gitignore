@@ -2,4 +2,8 @@ includes/
 includes/function.php
 !public/PaytmKit/
 public/PaytmKit/*
+!public/PaytmKitSignup/
+public/PaytmKitSignup/*
+!public/PaytmKitStaging/
+public/PaytmKitStaging/*
 

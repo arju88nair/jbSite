@@ -152,6 +152,12 @@
 <script>
     $(document).ready(function()
     {
+        logClick("On load","Franchise Page","User");
+
+    })
+    $(document).ready(function()
+    {
+
         $("form").submit(false)
         $('#franchise').addClass('current-menu-parent');
 
@@ -159,6 +165,8 @@
 
     function sendEnq()
     {
+        logClick("On Click Franchisee","Franchisee Subnit",$("#fname").val());
+
         $(".spinner").show();
         $.ajax({
             type: "POST",

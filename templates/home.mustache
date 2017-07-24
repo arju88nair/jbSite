@@ -5,7 +5,7 @@
     <!-- C O N T E N T -->
     <div class="content_wrapper">
         <div class="container">
-            <div class="spinner"  style='display: none;z-index: 100;opacity:0.55;background-color: grey'>
+            <div class="spinner"  style='display: none;z-index: 10000;opacity:0.55;background-color: grey'>
                 <div class="double-bounce1"></div>
                 <div class="double-bounce2"></div>
             </div>
@@ -22,11 +22,21 @@
 
                                 {{> slider}}
 
-                                {{#slider}}
 
-                                    {{> promo_section}}
 
-                                {{/slider}}
+                                    <div class="module_line_trigger" data-option="" data-top-padding="top_padding_normal" data-bottom-padding="module_normal_padding">
+
+                                        <div class="row-fluid" id="">
+                                            <div class="module_cont module_feature_posts" id="promo_section_mobile">
+                                                <a href="/#membershipPlans" class="links" rel="external" data-ajax="false" ><img src="assets/images/mobile_site_image.png" alt=""></a>
+                                            </div><!-- .module_cont -->
+                                            <div class="span12 module_cont module_feature_posts" id="promo_section_desktop">
+                                                <a href="/#membershipPlans" class="links" rel="external" data-ajax="false" ><img src="assets/images/desktop_image.png" alt=""></a>
+                                            </div><!-- .module_cont -->
+                                        </div><!-- .row-fluid -->
+                                    </div><!-- .module_line_tr3igger -->
+
+
 
                                 {{> newArrivals}}
 
@@ -64,7 +74,7 @@
         </div><!-- .module_line_trigger -->
     </div><!-- .container -->
 </div><!-- .content_wrapper -->
-<!--<iframe src="http://culture.place/iframe_culture_place/index.php" align="center" width="100%" height="500" frameborder="yes" scrolling="yes" name="CPScroll" id="cpIframe"></iframe>-->
+<iframe src="https://culture.place/iframe_culture_place/index.php" align="center" width="100%" height="500" frameborder="yes" scrolling="yes" name="CPScroll" id="cpIframe"></iframe>
 </div><!-- .main_wrapper -->
 
     {{> preFooter}}<!-- .pre_footer -->
@@ -85,6 +95,17 @@
         }else{
             var target = location.hash;
         }
+//        if(target == "#membershipPlans")
+//        {
+//            $('html, body').animate({
+//                scrollTop: $(target).offset().top - 150
+//            },800);
+//            location.hash = target;
+//
+//
+//            $(target+"Menu").addClass('current-menu-parent');
+//
+//        }
 
         $('html,body').animate(
                 {
@@ -97,7 +118,8 @@
     }
     $(document).ready(function()
     {
-        $('a[href^=#]').bind("click", jump);
+        logClick("On load","Home","Home");
+        $('a[href^=#membershipPlans]').bind("click", jump);
 
         if (location.hash){
             setTimeout(function(){

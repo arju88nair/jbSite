@@ -1,5 +1,13 @@
 @media only screen and (min-width: 1824px) {
 
+    #welcomeId{
+        margin-right: 10%;
+    }
+
+    .hide_in_desktop{
+        display: none!important;
+    }
+
     #promo_section_mobile{
         display: none;
     }
@@ -49,6 +57,14 @@
 }
 
 @media only screen and (min-width: 900px) and (max-width: 1440px) {
+
+    #welcomeId{
+        margin-right: 10%;
+    }
+
+    .hide_in_desktop{
+        display: none!important;
+    }
 
     #promo_section_mobile{
         display: none;
@@ -100,6 +116,14 @@
 
 @media only screen and (min-width: 768px) and (max-width: 1366px) {
 
+    #welcomeId{
+        margin-right: 6%;
+    }
+
+    .hide_in_desktop{
+        display: none!important;
+    }
+
     #promo_section_mobile{
         display: none;
     }
@@ -149,6 +173,14 @@
 }
 
 @media only screen and (min-width: 800px) and (max-width: 1280px) {
+
+    #welcomeId{
+        margin-right: 1%;
+    }
+
+    .hide_in_desktop{
+        display: none!important;
+    }
 
     #promo_section_mobile{
         display: none;
@@ -200,6 +232,14 @@
 }
 
 @media only screen and (min-width: 950px) and (max-width: 1280px) {
+
+    #welcomeId{
+        margin-right: 1%;
+    }
+
+    .hide_in_desktop{
+        display: none!important;
+    }
 
     #promo_section_mobile{
         display: none;
@@ -254,6 +294,10 @@
 }
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+
+    .hide_in_desktop{
+        display: none!important;
+    }
 
     #promo_section_mobile{
         display: none;
@@ -326,6 +370,10 @@
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
 
+    .hide_in_desktop{
+        display: none!important;
+    }
+
     #promo_section_mobile{
         display: none;
     }
@@ -397,6 +445,10 @@
 }
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
+
+    .hide_in_desktop{
+        display: none!important;
+    }
 
     #promo_section_mobile{
         display: none;
@@ -478,6 +530,10 @@
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
 
+    .hide_in_desktop{
+        display: none!important;
+    }
+
     #promo_section_mobile{
         display: none;
     }
@@ -558,6 +614,10 @@
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
 
+    .hide_in_desktop{
+        display: none!important;
+    }
+
     #promo_section_mobile{
         display: none;
     }
@@ -631,7 +691,18 @@
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
 
+    #promo_section_desktop{
+        display: none;
+    }
 
+    #promo_section_mobile{
+        margin-left: -1%;
+        margin-top: -4%;
+    }
+
+    #promo_section_mobile img{
+        width:93%;
+    }
 
     .hide_in_mobile{
         display: none;
@@ -695,7 +766,7 @@
     }
 
     .row2 .col-xs-11 {
-        width: 85% !important
+        width: 87% !important
     }
 
     .pricing-table {
@@ -770,9 +841,10 @@
     }
 
     .rs-fullscreen {
-        margin-left: -125px;
-        width: 500px;
-        margin-top: 70px
+
+        margin-left: 0px;
+        width: 450px;
+        margin-top: 75px;
     }
 
     #plansCard .block {
@@ -1308,12 +1380,12 @@
 
     #promo_section_mobile{
         margin-left: -1%;
+        margin-top: -4%;
     }
 
     #promo_section_mobile img{
         width:93%;
     }
-
     .hide_in_mobile{
         display: none;
     }
@@ -1400,9 +1472,9 @@
     }
 
     .rs-fullscreen {
-        margin-left: -125px;
-        width: 500px;
-        margin-top: 70px
+        margin-left: 0px;
+        width: 450px;
+        margin-top: 75px;
     }
 
     #plansCard .block {
@@ -2026,6 +2098,7 @@
 
     #promo_section_mobile{
         margin-left: -1%;
+        margin-top: -4%;
     }
 
     #promo_section_mobile img{
@@ -2053,7 +2126,7 @@
     }
 
     .pricing-table, .row2 .col-xs-11 {
-        width: 80% !important
+        width: 86% !important
     }
 
     #plansCard {
@@ -2168,9 +2241,9 @@
     }
 
     .rs-fullscreen {
-        margin-left: -125px;
-        width: 500px;
-        margin-top: 70px
+        margin-left: -45px;
+        width: 450px;
+        margin-top: 75px;
     }
 
     #plansCard .block {
@@ -2801,6 +2874,7 @@
 
     #promo_section_mobile{
         margin-left: -1%;
+        margin-top: -4%;
     }
 
     #promo_section_mobile img{
@@ -2828,7 +2902,7 @@
     }
 
     .pricing-table, .row2 .col-xs-11 {
-        width: 80% !important
+        width: 86% !important
     }
 
     #plansCard {
@@ -2933,9 +3007,9 @@
     }
 
     .rs-fullscreen {
-        margin-left: -103px;
-        width: 500px;
-        margin-top: 70px
+        margin-left: -30px;
+        width: 450px;
+        margin-top: 75px;
     }
 
     #plansCard .block {
@@ -3535,7 +3609,7 @@ a.menu_toggler {
     }
 
     .left-sidebar-block, .right-sidebar-block {
-        padding-top: 20px
+        /*padding-top: 20px*/
     }
 
     .module_cont, .module_medium_padding, .module_normal_padding, .module_small_padding {
