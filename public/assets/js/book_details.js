@@ -1,5 +1,7 @@
 
 function wishlistAdd(id) {
+    logClick("Action","Wishlist",id);
+
     $(".spinner").show();
 
     $.ajax({
@@ -131,6 +133,8 @@ function getCardRelated(data, visibleCardCount,ids,wishlist,flag) {
 }
 
 function placeOrder(id) {
+    logClick("Action","Rent",id);
+
     $(".spinner").show();
     $.ajax({
         type: "GET",

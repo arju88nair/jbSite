@@ -1,4 +1,6 @@
 function placeOrder(e) {
+    logClick("Action","Rent",e);
+
     $(".spinner").show(), $.ajax({
         type: "GET", url: "/placeOrder?id=" + e, success: function (e) {
             console.log(e), "failure" === JSON.parse(e) ? ($(".spinner").hide(), toastr.error("Please sign in to order the book !"), $(window).scrollTop($("#signin").offset().top)) : ($(".spinner").hide(), e = JSON.parse(e), console.log(e.success), "false" === e.success ? toastr.warning(e.errors).css("width", "500px") : toastr.success("Successfully added !"))
@@ -6,6 +8,8 @@ function placeOrder(e) {
     })
 }
 function wishlistAdd(e) {
+    logClick("Action","Wishlist",e);
+
     var t = localStorage.getItem("flag");
     return "false" === t ? (toastr.error("Please sign in to wish list a book !"), !1) : ($(".spinner").show(), void $.ajax({
         type: "GET",
@@ -20,7 +24,7 @@ function wishlistAdd(e) {
 }
 function logClick(e,page,reference) {
     $.ajax({
-        type: "GET", url: "/insertLog?type=" + e, success: function (e) {
+        type: "GET", url: "/insertLog?type=" + e+"&page="+page+"&refer="+reference, success: function (e) {
         }
     })
 }
@@ -28,9 +32,7 @@ function searchClick() {
     var e = $("#srch-term").val();
     "" !== e && (window.location.href = "/search?q=" + e)
 }
-$(document).on("click", "a", function (e) {
-    logClick("Navigation  clicked on " + $(this).attr("href"),'Navigation',$(this).attr("href")), ga("send", "event", "Navigation", $(this).attr("href"), "First Screen")
-});
+
 var membership, email;
 $(document).ready(function () {
     $("#memberModel").on("hidden.bs.modal", function () {
@@ -194,7 +196,7 @@ function signupClick() {
                     localStorage.setItem("flag", true)
                     $("#first").hide();
                     $("#main").hide();
-                    logClick("Log in click");
+                    logClick("Log in click",'Login','User');
                     (function (i, s, o, g, r, a, m) {
                         i['GoogleAnalyticsObject'] = r;
                         i[r] = i[r] || function () {
@@ -210,7 +212,7 @@ function signupClick() {
                     ga('create', 'UA-93821751-1', 'none');
                     ga('send', 'event', 'Clicks', 'Login of user ' + username + '', 'First Screen');
 
-                    logClick('Login of user ' + username + '');
+                    logClick('Login of user ' + username + '','Login',username);
                     window.location.href = "/shelf";
 
                     return false;
@@ -231,7 +233,7 @@ function signupClick() {
                     ga('create', 'UA-93821751-1', 'none');
                     ga('send', 'event', 'Clicks', 'Login of user ' + username + '', 'First Screen');
 
-                    logClick('Login of user ' + username + '');
+                    logClick('Login of user ' + username + '','Login',username);
 
                     for(var i=0;i<data.length;i++)
                     {
@@ -303,7 +305,7 @@ function signupClick2() {
                     localStorage.setItem("flag", true)
                     $("#first").hide();
                     $("#main").hide();
-                    logClick("Log in click");
+                    logClick("Log in click",'Login','User');
                     (function (i, s, o, g, r, a, m) {
                         i['GoogleAnalyticsObject'] = r;
                         i[r] = i[r] || function () {
@@ -319,7 +321,7 @@ function signupClick2() {
                     ga('create', 'UA-93821751-1', 'none');
                     ga('send', 'event', 'Clicks', 'Login of user ' + username + '', 'First Screen');
 
-                    logClick('Login of user ' + username + '');
+                    logClick('Login of user ' + username + '','Login',username);
                     window.location.href = "/shelf";
 
                     return false;
@@ -340,7 +342,7 @@ function signupClick2() {
                     ga('create', 'UA-93821751-1', 'none');
                     ga('send', 'event', 'Clicks', 'Login of user ' + username + '', 'First Screen');
 
-                    logClick('Login of user ' + username + '');
+                    logClick('Login of user ' + username + '','Login',username);
                     for(var i=0;i<data.length;i++)
                     {
                         $("#memberContent").append('<div class="radio"><label><input type="radio" name="memberRadio" value="'+data[i]['MEMBERSHIP_NO']+'">'+data[i]['MEMBERSHIP_NO']+'</label></div>')

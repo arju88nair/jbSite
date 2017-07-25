@@ -11,8 +11,8 @@
                         <div class="carousel-inner carouselslider" id="newArrivals">
 
                         </div>
-                        <div id="frame_new_arr" class="loader_fram">
-                            <div id="loader" style="display: block">
+                        <div id="frame_new_arr" class="loader_fram" style="margin-left: 43%">
+                            <div id="loader_new_arr" style="display: block">
                                 <img src="../../assets/img/loader.gif" id="loader_image">
                             </div>
                         </div>
@@ -34,6 +34,8 @@
         });
     });
     function placeOrder(id) {
+        logClick("Action","Rent",id);
+
         $(".spinner").show();
         $.ajax({
             type: "GET",

@@ -72,7 +72,6 @@ function curlFunctionEs($url)
 //}
 
 $app->get('/', function (Request $request, Response $response) {
-
     $con = $this->db;
     $query = "SELECT * FROM website_parameters";
     $result = oci_parse($con, $query);
@@ -80,32 +79,32 @@ $app->get('/', function (Request $request, Response $response) {
     while ($row = oci_fetch_assoc($result)) {
         $final_data[] = $row;
     }
-    $queryCat = "SELECT id,name FROM categories order by name";
-    $resultCat = oci_parse($con, $queryCat);
-    oci_execute($resultCat);
-    while ($rowCat = oci_fetch_assoc($resultCat)) {
-        $Categories[] = $rowCat;
-    }
-    $slider=1;
+
+
+    $Categories=categoriesList($con);
+    $slider = 1;
     $image1 = $final_data[0]['IMAGE_URL_1'];
-    $image2 = $final_data[0]['IMAGE_URL_2'];
-    $image3 = $final_data[0]['IMAGE_URL_3'];
-    $action1 = $final_data[0]['ACTION_1"'];
-    $action2 = $final_data[0]['ACTI0N_2"'];
-    $action3 = $final_data[0]['ACTION_3"'];
+//    $image2 = $final_data[0]['IMAGE_URL_2'];
+//    $image3 = $final_data[0]['IMAGE_URL_3'];
+//    $action1 = $final_data[0]['ACTION_1"'];
+//    $action2 = $final_data[0]['ACTI0N_2"'];
+//    $action3 = $final_data[0]['ACTION_3"'];
     $address = $final_data[0]['ADDRESS'];
     if (isset($_SESSION['username'])) {
+        $username = $_SESSION['username'];
         $flag = 1;
         $slider = 0;
         $name = $_SESSION['first_name'];
         $arr = explode(' ', trim($name));
         $name = $arr[0]; // will print name
     } else {
+        $username = "";
         $flag = 0;
         $slider = 1;
         $name = "";
     }
-    $response = $this->view->render($response, 'home.mustache', array('loggedIn' => "true", 'session' => $_SESSION['username'], 'image1' => $image1, 'image2' => $image2, 'image3' => $image3, 'action1' => $action1, 'action2' => $action2, 'action3' => $action3, 'address' => $address, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories));
+    $response = $this->view->render($response, 'home.mustache', array('loggedIn' => "true", 'session' => $username, 'image1' => $image1, 'address' => $address, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories));
+//    $response = $this->view->render($response, 'home.mustache', array('loggedIn' => "true", 'session' => $_SESSION['username'], 'image1' => $image1, 'image2' => $image2, 'image3' => $image3, 'action1' => $action1, 'action2' => $action2, 'action3' => $action3, 'address' => $address, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories));
     return $response;
 });
 
@@ -117,8 +116,11 @@ $app->get('/book_details/{titleid}/{name}', function (Request $request, Response
     $raw_data = curlFunctionEs("/getTitleDetails?title_id=$titleid");
     $data = json_decode($raw_data);
 
+    $membership_no = "";
+    if (isset($_SESSION['membership_no'])) {
+        $membership_no = $_SESSION['membership_no'];
 
-    $membership_no = $_SESSION['membership_no'];
+    }
     $api_key = $_SESSION['api_key'];
     $email = $_SESSION['email'];
     $result = curlFunctionEs("/getOrderList?membership_no=$membership_no");
@@ -165,12 +167,8 @@ $app->get('/book_details/{titleid}/{name}', function (Request $request, Response
     }
     $con = $this->db;
 
-    $queryCat = "SELECT id,name FROM categories order by name";
-    $resultCat = oci_parse($con, $queryCat);
-    oci_execute($resultCat);
-    while ($rowCat = oci_fetch_assoc($resultCat)) {
-        $Categories[] = $rowCat;
-    }
+        $Categories=categoriesList($con);
+
     $query_rate = "select * from webstore.rates where rateable_id=$titleid and rater_id=(select id from webstore.users where email='$email')";
     $result_rate = oci_parse($con, $query_rate);
     oci_execute($result_rate);
@@ -178,36 +176,31 @@ $app->get('/book_details/{titleid}/{name}', function (Request $request, Response
         $ratedata[] = $rowRate;
     }
 
-    $rateFlag=1;
-    $review="";
-    if(!isset($ratedata) || count($ratedata) == 0 || $ratedata == null)
-    {
-        $rateFlag=0;
+    $rateFlag = 1;
+    $review = "";
+    if (!isset($ratedata) || count($ratedata) == 0 || $ratedata == null) {
+        $rateFlag = 0;
 
-    }
-    else{
+    } else {
 
         $email = $_SESSION['email'];
         $reviewResult = curlFunction("reviews.json?membership_no=$membership_no&api_key=$api_key&email=$email&title_id=$titleid");
         $reviewData = json_decode($reviewResult);
         $reviewData = $reviewData->result;
         $reviewData = json_decode(json_encode($reviewData), True);
-        $reviewData= $reviewData['reviews'];
-        $reviewArray=[];
-        foreach ($reviewData as $reviews)
-        {
-            if($reviews['publisher'] == $email)
-            {
+        $reviewData = $reviewData['reviews'];
+        $reviewArray = [];
+        foreach ($reviewData as $reviews) {
+            if ($reviews['publisher'] == $email) {
 
-                array_push($reviewArray,$reviews['content']);
+                array_push($reviewArray, $reviews['content']);
             }
         }
-        $review= $reviewArray[0];
+        $review = $reviewArray[0];
     }
 
 
-
-    $response = $this->view->render($response, 'book_details.mustache', array('data' => $data, 'titleid' => $titleid, 'Currentflag' => $Currentflag, 'rental' => $rental_id, 'wishFlag' => $Wishflag, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories,'review'=>$review,'rateFlag'=>$rateFlag));
+    $response = $this->view->render($response, 'book_details.mustache', array('data' => $data, 'titleid' => $titleid, 'Currentflag' => $Currentflag, 'rental' => $rental_id, 'wishFlag' => $Wishflag, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories, 'review' => $review, 'rateFlag' => $rateFlag));
     return $response;
 })->setName('book_details/');
 /*
@@ -265,12 +258,8 @@ $app->get('/book_details/{titleid}/{name}', function (Request $request, Response
     }
     $con = $this->db;
 
-    $queryCat = "SELECT id,name FROM categories order by name";
-    $resultCat = oci_parse($con, $queryCat);
-    oci_execute($resultCat);
-    while ($rowCat = oci_fetch_assoc($resultCat)) {
-        $Categories[] = $rowCat;
-    }
+        $Categories=categoriesList($con);
+
 
     $response = $this->view->render($response, 'book_details.mustache', array('data' => $data, 'titleid' => $titleid, 'Currentflag' => $Currentflag, 'rental' => $rental_id, 'wishFlag' => $Wishflag, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories));
     return $response;
@@ -307,12 +296,8 @@ $app->get('/author_details/{authorid}/{name}', function (Request $request, Respo
 
     $con = $this->db;
 
-    $queryCat = "SELECT id,name FROM categories order by name";
-    $resultCat = oci_parse($con, $queryCat);
-    oci_execute($resultCat);
-    while ($rowCat = oci_fetch_assoc($resultCat)) {
-        $Categories[] = $rowCat;
-    }
+        $Categories=categoriesList($con);
+
 
     $response = $this->view->render($response, 'author_details.mustache', array('data' => $data, 'id' => $authorid, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories));
     return $response;
@@ -341,12 +326,8 @@ $app->get('/search', function (Request $request, Response $response) {
     }
     $con = $this->db;
 
-    $queryCat = "SELECT id,name FROM categories order by name";
-    $resultCat = oci_parse($con, $queryCat);
-    oci_execute($resultCat);
-    while ($rowCat = oci_fetch_assoc($resultCat)) {
-        $Categories[] = $rowCat;
-    }
+        $Categories=categoriesList($con);
+
 
     $response = $this->view->render($response, 'search.mustache', array('data' => $data, 'query' => ucfirst($query), 'count' => $count, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories));
     return $response;
@@ -367,12 +348,8 @@ $app->get('/shelf', function (Request $request, Response $response) {
     }
     $con = $this->db;
 
-    $queryCat = "SELECT id,name FROM categories order by name";
-    $resultCat = oci_parse($con, $queryCat);
-    oci_execute($resultCat);
-    while ($rowCat = oci_fetch_assoc($resultCat)) {
-        $Categories[] = $rowCat;
-    }
+        $Categories=categoriesList($con);
+
 
     $response = $this->view->render($response, 'shelf.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories));
     return $response;
@@ -611,7 +588,7 @@ $app->get('/signup', function (Request $request, Response $response) {
 
 $app->get('/newArrivals', function (Request $request, Response $response) {
 
-    if(isset($_SESSION['username'])) {
+    if (isset($_SESSION['username'])) {
         $flag = 1;
     } else {
         $flag = 0;
@@ -620,13 +597,13 @@ $app->get('/newArrivals', function (Request $request, Response $response) {
     $data = json_decode($raw_data);
     $array = presentIds();
     $wishlist = wishlistIds();
-    echo json_encode(array("data" => $data, 'ids' => (array)$array, 'wishlist' => (array)$wishlist,'flag'=>(int)$flag));
+    echo json_encode(array("data" => $data, 'ids' => (array)$array, 'wishlist' => (array)$wishlist, 'flag' => (int)$flag));
 
 });
 
 $app->get('/getMostRead', function (Request $request, Response $response) {
 
-    if(isset($_SESSION['username'])) {
+    if (isset($_SESSION['username'])) {
         $flag = 1;
     } else {
         $flag = 0;
@@ -635,7 +612,7 @@ $app->get('/getMostRead', function (Request $request, Response $response) {
     $data = json_decode($raw_data);
     $array = presentIds();
     $wishlist = wishlistIds();
-    echo json_encode(array("data" => $data, 'ids' => (array)$array, 'wishlist' => (array)$wishlist,'flag'=>(int)$flag));
+    echo json_encode(array("data" => $data, 'ids' => (array)$array, 'wishlist' => (array)$wishlist, 'flag' => (int)$flag));
 });
 
 $app->get('/getAuthor', function (Request $request, Response $response) {
@@ -702,6 +679,7 @@ $app->get('/updateWishlist', function (Request $request, Response $response, $ar
     }
     $api_key = $_SESSION['api_key'];
     $email = $_SESSION['email'];
+    array_push($_SESSION['wishlists'], $titleid);
     $result = curlFunction("wishlists/create.json?email=$email&membership_no=$membership_no&api_key=$api_key&title_id=$titleid");
     echo $result;
 });
@@ -803,7 +781,7 @@ $app->post('/insertSignup', function (Request $request, Response $response) {
 
 });
 
-$app->get('/signup_details', function(Request $request, Response $response){
+$app->get('/signup_details', function (Request $request, Response $response) {
     $con = $this->db;
     $orderid = $request->getQueryParams()['orderid'];
 
@@ -825,14 +803,10 @@ $app->get('/signup_details', function(Request $request, Response $response){
     }
     $con = $this->db;
 
-    $queryCat = "SELECT id,name FROM categories order by name";
-    $resultCat = oci_parse($con, $queryCat);
-    oci_execute($resultCat);
-    while ($rowCat = oci_fetch_assoc($resultCat)) {
-        $Categories[] = $rowCat;
-    }
+        $Categories=categoriesList($con);
 
-    return $this->view->render($response, 'signup_details.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories,'orderid'=>$orderid));
+
+    return $this->view->render($response, 'signup_details.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories, 'orderid' => $orderid));
     return $response;
 });
 
@@ -864,13 +838,13 @@ $app->post('/insertSignupDetails', function (Request $request, Response $respons
 
 });
 
-$app->get('/signup_updateorderid', function(Request $request, Response $response){
+$app->get('/signup_updateorderid', function (Request $request, Response $response) {
     $orderid = $request->getQueryParams()['orderid'];
     $con = $this->db;
     $query_get = "select * from fn_signup_details where orderid=$orderid and trunc(tdate)=trunc(sysdate)";
     $result_get = oci_parse($con, $query_get);
     oci_execute($result_get);
-    while($row = oci_fetch_assoc($result_get)) {
+    while ($row = oci_fetch_assoc($result_get)) {
         $state = valData($row['STATE_ID']);
         $zip = valData($row['ZIP']);
         $email = valData($row['EMAIL']);
@@ -937,7 +911,6 @@ $app->get('/signup_updateorderid', function(Request $request, Response $response
 $app->post('/insertSignupNew', function (Request $request, Response $response) {
     $con = $this->db;
     $data = $request->getParsedBody();
-
     $data_new = json_decode($data['signup_data']);
     parse_str($data_new, $output);
     $zip = valData($output['zip']);
@@ -946,6 +919,7 @@ $app->post('/insertSignupNew', function (Request $request, Response $response) {
     $plan_id = valData($output['plan_id']);
     $duration = valData($output['duration']);
     $coupon_code = valData($output['coupon_code']);
+    $_SESSION['mobile'] = $mobile;
     $gift_card_no = '';
     $pin = '';
     $referal = '';
@@ -953,7 +927,7 @@ $app->post('/insertSignupNew', function (Request $request, Response $response) {
     $resultCat = oci_parse($con, $queryCat);
     oci_execute($resultCat);
     while ($rowCat = oci_fetch_assoc($resultCat)) {
-        return $response->withJson(array('errors'=>'Emails is already used. please choose another email ID'));
+        return $response->withJson(array('errors' => 'Emails is already used. please choose another email ID'));
     }
 
     $amnt_data = curlFunction("web_signups/compute.json?plan_id=$plan_id&membership_duration=$duration&coupon_code=$coupon_code&gift_card_no=$gift_card_no&pin=$pin");
@@ -965,15 +939,15 @@ $app->post('/insertSignupNew', function (Request $request, Response $response) {
     $delivery_fee = $data->delivery_fee;
     $discount = $data->discount;
 
-    $_SESSION['order_number'] = rand(100000,999999);
+    $_SESSION['order_number'] = time();
     $_SESSION['amount'] = $total_amnt;
     $orderid = $_SESSION['order_number'];
-    $query_insert  = "insert into fn_signup_details (orderid,planid,duration,coupon_code,zip,email,mobile,total_amnt,redeemed_amnt,
+    $query_insert = "insert into fn_signup_details (orderid,planid,duration,coupon_code,zip,email,mobile,total_amnt,redeemed_amnt,
           sub_total,discount,delivery_fee,tdate) values ('$orderid','$plan_id','$duration','$coupon_code','$zip','$email',
           '$mobile','$total_amnt','$redeemed_amnt','$sub_total','$discount','$delivery_fee',sysdate)";
     $result_insert = oci_parse($con, $query_insert);
     oci_execute($result_insert);
-    return $response->withJson(array('success'=>'true'));
+    return $response->withJson(array('success' => 'true'));
 
 });
 
@@ -996,21 +970,21 @@ $app->post('/giftcardValidate', function (Request $request, Response $response) 
 });
 
 $app->get('/getWishList', function (Request $request, Response $response) {
+    if(!isset($_SESSION['membership_no']))
+    {
+        echo json_encode(false);die;
+    }
     $membership_no = $_SESSION['membership_no'];
     $api_key = $_SESSION['api_key'];
     $email = $_SESSION['email'];
-    $con=$this->db;
-    $query_rate = "select * from webstore.rates where  rater_id=(select id from webstore.users where email='$email')";
-    $result_rate = oci_parse($con, $query_rate);
-    oci_execute($result_rate);
-    while ($rowRate = oci_fetch_assoc($result_rate)) {
-        $ratedata[] = $rowRate['RATEABLE_ID'];
-    }
+    $con = $this->db;
+    $ratedata=ratedata($con);
+
     $result = curlFunctionEs("/getWishList?membership_no=$membership_no");
 //    $wishlist = wishlistIds();
     $array = presentIds();
 
-    echo json_encode(array('data' => (array)json_decode($result), 'ids' => $array,'rateIDs'=>$ratedata));
+    echo json_encode(array('data' => (array)json_decode($result), 'ids' => $array, 'rateIDs' => $ratedata));
 });
 
 $app->post('/removeWishList', function (Request $request, Response $response) {
@@ -1019,43 +993,47 @@ $app->post('/removeWishList', function (Request $request, Response $response) {
     $titleid = $data['titleid'];
     $api_key = $_SESSION['api_key'];
     $email = $_SESSION['email'];
+
+
 //    $result = curlFunction("wishlists/destroy.json?email=$email&membership_no=$membership_no&api_key=$api_key&id=$titleid");
     $result = curlFunctionEs("/removeWishlist?membership_no=$membership_no&title_id=$titleid");
     echo json_encode($result);
 });
 
 $app->get('/getOrderList', function (Request $request, Response $response) {
+    if(!isset($_SESSION['membership_no']))
+    {
+        echo json_encode(false);die;
+    }
     $membership_no = $_SESSION['membership_no'];
     $api_key = $_SESSION['api_key'];
     $email = $_SESSION['email'];
-    $con=$this->db;
-    $query_rate = "select * from webstore.rates where  rater_id=(select id from webstore.users where email='$email')";
-    $result_rate = oci_parse($con, $query_rate);
-    oci_execute($result_rate);
-    while ($rowRate = oci_fetch_assoc($result_rate)) {
-        $ratedata[] = $rowRate['RATEABLE_ID'];
-    }
+    $con = $this->db;
+     $ratedata=ratedata($con);
+
+
     $result = curlFunctionEs("/getOrderList?membership_no=$membership_no");
     $wishlist = wishlistIds();
-    echo json_encode(array('data' => (array)json_decode($result), 'wishlist' => $wishlist,'rateIDs'=>$ratedata));
+    echo json_encode(array('data' => (array)json_decode($result), 'wishlist' => $wishlist, 'rateIDs' => $ratedata));
 });
 
 $app->get('/getCurrentReading', function (Request $request, Response $response) {
+    if(!isset($_SESSION['membership_no']))
+    {
+        echo json_encode(false);die;
+    }
     $membership_no = $_SESSION['membership_no'];
     $api_key = $_SESSION['api_key'];
     $email = $_SESSION['email'];
-    $con=$this->db;
-    $query_rate = "select * from webstore.rates where  rater_id=(select id from webstore.users where email='$email')";
-    $result_rate = oci_parse($con, $query_rate);
-    oci_execute($result_rate);
-    while ($rowRate = oci_fetch_assoc($result_rate)) {
-        $ratedata[] = $rowRate['RATEABLE_ID'];
-    }
+    $con = $this->db;
+    $ratedata=ratedata($con);
+
+
 
 //    $result = curlFunction("books_at_home.json?membership_no=$membership_no&api_key=$api_key&email=$email");
     $result = curlFunctionEs("/getCurrentReading?membership_no=$membership_no");
     $wishlist = wishlistIds();
-    echo json_encode(array('data' => (array)json_decode($result), 'wishlist' => $wishlist,'rateIDs'=>$ratedata));
+    echo json_encode(array('data' => (array)json_decode($result), 'wishlist' => $wishlist, 'rateIDs' => $ratedata));
 });
 
 $app->post('/placePickup', function (Request $request, Response $response) {
@@ -1070,20 +1048,20 @@ $app->post('/placePickup', function (Request $request, Response $response) {
 });
 
 $app->get('/getPickupList', function (Request $request, Response $response) {
+    if(!isset($_SESSION['membership_no']))
+    {
+        echo json_encode(false);die;
+    }
     $membership_no = $_SESSION['membership_no'];
     $api_key = $_SESSION['api_key'];
     $email = $_SESSION['email'];
 
-    $con=$this->db;
-    $query_rate = "select * from webstore.rates where  rater_id=(select id from webstore.users where email='$email')";
-    $result_rate = oci_parse($con, $query_rate);
-    oci_execute($result_rate);
-    while ($rowRate = oci_fetch_assoc($result_rate)) {
-        $ratedata[] = $rowRate['RATEABLE_ID'];
-    }
+    $con = $this->db;
+    $ratedata=ratedata($con);
+
     $result = curlFunctionEs("/getPickupRequest?membership_no=$membership_no");
     $wishlist = wishlistIds();
-    echo json_encode(array('data' => (array)json_decode($result), 'wishlist' => $wishlist,'rateIDs'=>$ratedata));
+    echo json_encode(array('data' => (array)json_decode($result), 'wishlist' => $wishlist, 'rateIDs' => $ratedata));
 });
 
 $app->post('/cancelOrder', function (Request $request, Response $response) {
@@ -1114,11 +1092,14 @@ $app->get('/getMyProfile', function (Request $request, Response $response) {
 });
 
 $app->get('/getSubscription', function (Request $request, Response $response) {
-    if((isset($_SESSION['subscription'])))
+    if(!isset($_SESSION['membership_no']))
     {
-        $subsArray=$_SESSION['subscription'];
-            echo json_encode($subsArray);
-            die;
+        echo json_encode(false);die;
+    }
+    if ((isset($_SESSION['subscription']))) {
+        $subsArray = $_SESSION['subscription'];
+        echo json_encode($subsArray);
+        die;
     }
 
     $membership_no = $_SESSION['membership_no'];
@@ -1152,7 +1133,7 @@ $app->get('/getSubscription', function (Request $request, Response $response) {
     foreach ($termData['result'] as $data) {
         $main[] = array("months" => $data['renewal_month']['term_description'], 'fee' => $data['renewal_month']['renewal_amount'], 'term' => $data['renewal_month']['signup_months']);
     }
-    $username=$_SESSION['username'];
+    $username = $_SESSION['username'];
 
     $final_result['terms'] = $main;
     $ch = curl_init();
@@ -1165,10 +1146,10 @@ $app->get('/getSubscription', function (Request $request, Response $response) {
 //    {
 //        $_SESSION['email']=$email;
 //    }
-    $final_result['cards'] =  json_decode($raw_data);
-    $final_result['member'] =  $_SESSION['membership_no'];
+    $final_result['cards'] = json_decode($raw_data);
+    $final_result['member'] = $_SESSION['membership_no'];
 
-$_SESSION['subscription']=$final_result;
+    $_SESSION['subscription'] = $final_result;
     echo json_encode($final_result);
 });
 
@@ -1183,14 +1164,15 @@ $app->post('/addWishlist', function (Request $request, Response $response) {
 
 $app->get('/placeOrder', function (Request $request, Response $response, $args) {
     $titleid = $request->getQueryParams()['id'];
-    $isset='';$membership_no='';
-    if(isset($_SESSION['membership_no']))
+    $isset = '';
+    $membership_no = '';
+    if (isset($_SESSION['membership_no']))
         $membership_no = $_SESSION['membership_no'];
-    if(isset($_SESSION['rentedBool']))
-        $isset=$_SESSION['rentedBool'];
-    if($isset == "0" && $isset == false )
-    {
-        echo json_encode('NoDelivery');die;
+    if (isset($_SESSION['rentedBool']))
+        $isset = $_SESSION['rentedBool'];
+    if ($isset == "0" && $isset == false) {
+        echo json_encode('NoDelivery');
+        die;
     }
     if ($membership_no == "" && empty($membership_no) || !isset($_SESSION['membership_no'])) {
         return json_encode("failure");
@@ -1206,52 +1188,52 @@ $app->get('/login/{username}/{password}', function (Request $request, Response $
     $username = strtolower($args['username']);
     $password = $args['password'];
 
-/*    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, API_URL_ES . "/validateLogin?");
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, "email=$username&password=$password");
-    $raw_data = curl_exec($ch);
-    curl_close($ch);
-    $final_data = json_decode($raw_data, true);
-
-
-    if ($final_data['success'] == 'ok') {
-
-        $authToken = $final_data['data']['AUTHENTICATION_TOKEN'];
-        $_SESSION['api_key'] = $authToken;
-        $_SESSION['username'] = $username;
-        $_SESSION['uniqueId'] = uniqid();
-        $_SESSION['membership_no'] = $final_data['data']['MEMBERSHIP_NO'];
-        $branchID = $final_data['data']['BRANCH_ID'];
-        $_SESSION['branchID'] = $branchID;
-        $_SESSION['email'] = $final_data['data']['EMAIL'];
-        $_SESSION['first_name'] = $final_data['data']['FIRST_NAME'];
-        $membership_no = $_SESSION['membership_no'];
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, API_URL_ES . "/getMembershipNumbers?");
+    /*    $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, API_URL_ES . "/validateLogin?");
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, "email_id=$username");
+        curl_setopt($ch, CURLOPT_POSTFIELDS, "email=$username&password=$password");
         $raw_data = curl_exec($ch);
         curl_close($ch);
+        $final_data = json_decode($raw_data, true);
 
-        $array=[];
-        $memberData=json_decode($raw_data);
-        foreach ($memberData as $item)
-        {
-            if($item->MEMBERSHIP_NO == $final_data['data']['MEMBERSHIP_NO'] )
+
+        if ($final_data['success'] == 'ok') {
+
+            $authToken = $final_data['data']['AUTHENTICATION_TOKEN'];
+            $_SESSION['api_key'] = $authToken;
+            $_SESSION['username'] = $username;
+            $_SESSION['uniqueId'] = uniqid();
+            $_SESSION['membership_no'] = $final_data['data']['MEMBERSHIP_NO'];
+            $branchID = $final_data['data']['BRANCH_ID'];
+            $_SESSION['branchID'] = $branchID;
+            $_SESSION['email'] = $final_data['data']['EMAIL'];
+            $_SESSION['first_name'] = $final_data['data']['FIRST_NAME'];
+            $membership_no = $_SESSION['membership_no'];
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, API_URL_ES . "/getMembershipNumbers?");
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, "email_id=$username");
+            $raw_data = curl_exec($ch);
+            curl_close($ch);
+
+            $array=[];
+            $memberData=json_decode($raw_data);
+            foreach ($memberData as $item)
             {
-                $_SESSION['rentedBool']=$item->DELIVERY_OPTION;
+                if($item->MEMBERSHIP_NO == $final_data['data']['MEMBERSHIP_NO'] )
+                {
+                    $_SESSION['rentedBool']=$item->DELIVERY_OPTION;
+                }
             }
-        }
 
 
-        echo json_encode(json_decode($raw_data));
-        die;
+            echo json_encode(json_decode($raw_data));
+            die;
 
-    } else {
-        echo json_encode(json_decode($final_data));
-        die;
-    }*/
+        } else {
+            echo json_encode(json_decode($final_data));
+            die;
+        }*/
 
     $result = curlFunction("sessions_email.json?email=$username&password=$password");
     if (json_decode($result)->success == true) {
@@ -1275,15 +1257,14 @@ $app->get('/login/{username}/{password}', function (Request $request, Response $
         $raw_data = curl_exec($ch);
         curl_close($ch);
 
-        $array=[];
+        $array = [];
 
-        $memberData=json_decode($raw_data);
-        echo json_encode($memberData);die;
-        foreach ($memberData as $item)
-        {
-            if($item->MEMBERSHIP_NO == $arr[0]['membership_no'] )
-            {
-                $_SESSION['rentedBool']=$item->DELIVERY_OPTION;
+        $memberData = json_decode($raw_data);
+        echo json_encode($memberData);
+        die;
+        foreach ($memberData as $item) {
+            if ($item->MEMBERSHIP_NO == $arr[0]['membership_no']) {
+                $_SESSION['rentedBool'] = $item->DELIVERY_OPTION;
             }
         }
 
@@ -1504,18 +1485,16 @@ $app->get('/change_plan', function (Request $request, Response $response, $args)
     foreach ($data as $v) {
         if (strtoupper($v['change_plan_detail']['promo_code']) === strtoupper($planname) && $v['change_plan_detail']['books'] === (int)$books) {
 
-            $frequency =$v['change_plan_detail']['frequency'];
+            $frequency = $v['change_plan_detail']['frequency'];
             $planid = $v['change_plan_detail']['plan_id'];
         }
 
     }
 
-    if($frequency == 'Y')
-    {
-        $monthTag= "Year(s)";
-    }
-    else{
-        $monthTag= "Month(s)";
+    if ($frequency == 'Y') {
+        $monthTag = "Year(s)";
+    } else {
+        $monthTag = "Month(s)";
 
     }
 
@@ -1581,7 +1560,7 @@ $app->get('/change_plan', function (Request $request, Response $response, $args)
                         $Categories[] = $rowCat;
                     }
 
-                    $response = $this->view->render($response, 'change_plan.mustache', array('plan_data' => strtoupper($planname), 'plan_dataJ' => json_encode($array_data), 'planid' => $planid, 'plan_books' => $count, 'planname' => $planname, 'planid' => $planid, "available_balance" => $item['change_plan_detail']['available_balance'], 'balance_due' => $item['change_plan_detail']['balance_due'], 'reading_fee' => $item['change_plan_detail']['reading_fee'], 'totalAMount' => $plans['plan_duration']['payable_amount'], 'months' => $monthsArray, 'book' => $books, 'month' => $months, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories,'monthTag'=>$monthTag));
+                    $response = $this->view->render($response, 'change_plan.mustache', array('plan_data' => strtoupper($planname), 'plan_dataJ' => json_encode($array_data), 'planid' => $planid, 'plan_books' => $count, 'planname' => $planname, 'planid' => $planid, "available_balance" => $item['change_plan_detail']['available_balance'], 'balance_due' => $item['change_plan_detail']['balance_due'], 'reading_fee' => $item['change_plan_detail']['reading_fee'], 'totalAMount' => $plans['plan_duration']['payable_amount'], 'months' => $monthsArray, 'book' => $books, 'month' => $months, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories, 'monthTag' => $monthTag));
                     return $response;
 
                 }
@@ -1621,7 +1600,7 @@ $app->get('/getPlanYears', function (Request $request, Response $response, $args
 
     }
 
-   // print_r($temp_array); die;
+    // print_r($temp_array); die;
     $array = array_values($temp_array);
     $count = [];
     foreach ($array as $item) {
@@ -1695,8 +1674,16 @@ $app->get('/saveSession', function (Request $request, Response $response) {
 
 $app->get('/getSessions', function (Request $request, Response $response) {
 
-    $member = $_SESSION['membership_no'];
-    $email = $_SESSION['email'];
+    $member = "";
+    $email = "";
+    if (isset($_SESSION['membership_no'])) {
+        $member = $_SESSION['membership_no'];
+
+    }
+    if (isset($_SESSION['email'])) {
+        $email = $_SESSION['email'];
+
+    }
     echo json_encode(array('email' => $email, 'session' => $member));
 
 
@@ -1705,6 +1692,8 @@ $app->get('/getSessions', function (Request $request, Response $response) {
 $app->get('/insertLog', function (Request $request, Response $response) {
 
     $type = $_GET['type'];
+    $page = $_GET['page'];
+    $reference = $_GET['refer'];
     $userAgent = $_SERVER['HTTP_USER_AGENT'];
     $ip = $_SERVER['REMOTE_ADDR'];
     $referer = $_SERVER['HTTP_REFERER'];
@@ -1720,16 +1709,14 @@ $app->get('/insertLog', function (Request $request, Response $response) {
         $userId = "";
     }
     $con = $this->db;
-    $query = "insert into memp.logs (UNIQUE_ID,USERAGENT,IPADDRESS,MAC_ADDRESS,MAKE,MODEL,ACTION_TYPE,APP_TYPE,REFERRER,DEVICE_OS,USER_ID,CREATED_AT) values('$uId','$userAgent','$ip','$ip','','','$type','Website','$referer','$userAgent','$userId',sysdate) ";
-    echo $query;die;
+    $query = "insert into memp.logs (UNIQUE_ID,USERAGENT,IPADDRESS,MAC_ADDRESS,MAKE,MODEL,ACTION_TYPE,APP_TYPE,REFERRER,DEVICE_OS,USER_ID,CREATED_AT,PAGE,PAGE_REFERENCE) values('$uId','$userAgent','$ip','$ip','','','$type','Website','$referer','$userAgent','$userId',sysdate,'$page','$reference') ";
+
     $compiled = oci_parse($con, $query);
-    $res=oci_execute($compiled);
-    if($res)
-    {
+    $res = oci_execute($compiled);
+    if ($res) {
         echo json_encode("success");
-die;
-    }
-    else{
+        die;
+    } else {
         echo json_encode("failure");
 
     }
@@ -1991,12 +1978,8 @@ $app->get('/faq', function (Request $request, Response $response) {
 
     $con = $this->db;
 
-    $queryCat = "SELECT id,name FROM categories order by name";
-    $resultCat = oci_parse($con, $queryCat);
-    oci_execute($resultCat);
-    while ($rowCat = oci_fetch_assoc($resultCat)) {
-        $Categories[] = $rowCat;
-    }
+        $Categories=categoriesList($con);
+
     return $this->view->render($response, 'faq.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories));
 
 });
@@ -2016,12 +1999,8 @@ $app->get('/privacy_policy', function (Request $request, Response $response) {
 
     $con = $this->db;
 
-    $queryCat = "SELECT id,name FROM categories order by name";
-    $resultCat = oci_parse($con, $queryCat);
-    oci_execute($resultCat);
-    while ($rowCat = oci_fetch_assoc($resultCat)) {
-        $Categories[] = $rowCat;
-    }
+        $Categories=categoriesList($con);
+
     return $this->view->render($response, 'privacy_policy.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories));
 
 });
@@ -2042,12 +2021,8 @@ $app->get('/contactUs', function (Request $request, Response $response) {
 
     $con = $this->db;
 
-    $queryCat = "SELECT id,name FROM categories order by name";
-    $resultCat = oci_parse($con, $queryCat);
-    oci_execute($resultCat);
-    while ($rowCat = oci_fetch_assoc($resultCat)) {
-        $Categories[] = $rowCat;
-    }
+        $Categories=categoriesList($con);
+
     return $this->view->render($response, 'contactUs.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories));
 
 });
@@ -2066,12 +2041,8 @@ $app->get('/franchise', function (Request $request, Response $response) {
     }
     $con = $this->db;
 
-    $queryCat = "SELECT id,name FROM categories order by name";
-    $resultCat = oci_parse($con, $queryCat);
-    oci_execute($resultCat);
-    while ($rowCat = oci_fetch_assoc($resultCat)) {
-        $Categories[] = $rowCat;
-    }
+        $Categories=categoriesList($con);
+
     return $this->view->render($response, 'franchise.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories));
 
 });
@@ -2102,9 +2073,10 @@ $app->post('/submitReview', function (Request $request, Response $response) {
     $query_get_id = "select id from webstore.users where email='$mail'";
     $result_id = oci_parse($con, $query_get_id);
     oci_execute($result_id);
-    while($row_id = oci_fetch_assoc($result_id)){
+    while ($row_id = oci_fetch_assoc($result_id)) {
         $id = $row_id['ID'];
     }
+    array_push($_SESSION['review'], $title);
     $query_insert_rating = "insert into webstore.rates (id,rater_id,rateable_id,rateable_type,stars,created_at,updated_at) values
     (WEBSTORE.RATES_SEQ.NEXTVAL,'$id','$title','Title','$stars',trunc(sysdate),trunc(sysdate))";
     $result_insert = oci_parse($con, $query_insert_rating);
@@ -2117,16 +2089,16 @@ $app->post('/submitReview', function (Request $request, Response $response) {
 
 
 $app->get('/rentalHistory', function (Request $request, Response $response) {
+    if(!isset($_SESSION['membership_no']))
+    {
+        echo json_encode(false);die;
+    }
     $mail = $_SESSION['email'];
     $membership_no = $_SESSION['membership_no'];
     $api_key = $_SESSION['api_key'];
-    $con=$this->db;
-    $query_rate = "select * from webstore.rates where  rater_id=(select id from webstore.users where email='$email')";
-    $result_rate = oci_parse($con, $query_rate);
-    oci_execute($result_rate);
-    while ($rowRate = oci_fetch_assoc($result_rate)) {
-        $ratedata[] = $rowRate['RATEABLE_ID'];
-    }
+    $con = $this->db;
+    $ratedata=ratedata($con);
+
     if ($membership_no == "" && empty($membership_no) || !isset($_SESSION['membership_no'])) {
         return json_encode("failure");
     }
@@ -2134,7 +2106,7 @@ $app->get('/rentalHistory', function (Request $request, Response $response) {
     $result = curlFunctionEs("/getPastReads?membership_no=$membership_no");
 //    echo "rental_history.json?email=$mail&api_key=$api_key&membership_no=$membership_no";die;
     $wishlist = wishlistIds();
-    echo json_encode(array('data' => (array)json_decode($result), 'wishlist' => $wishlist,'rateIDs'=>$ratedata));
+    echo json_encode(array('data' => (array)json_decode($result), 'wishlist' => $wishlist, 'rateIDs' => $ratedata));
 });
 
 
@@ -2160,12 +2132,8 @@ $app->get('/adminCardsView', function (Request $request, Response $response) {
     }
     $con = $this->db;
 
-    $queryCat = "SELECT id,name FROM categories order by name";
-    $resultCat = oci_parse($con, $queryCat);
-    oci_execute($resultCat);
-    while ($rowCat = oci_fetch_assoc($resultCat)) {
-        $Categories[] = $rowCat;
-    }
+        $Categories=categoriesList($con);
+
     return $this->view->render($response, 'adminCards.mustache', array('data' => $data, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories));
 
 })->add($adminAuthenticate);
@@ -2272,12 +2240,8 @@ $app->get('/adminBlogs', function (Request $request, Response $response) {
     }
     $con = $this->db;
 
-    $queryCat = "SELECT id,name FROM categories order by name";
-    $resultCat = oci_parse($con, $queryCat);
-    oci_execute($resultCat);
-    while ($rowCat = oci_fetch_assoc($resultCat)) {
-        $Categories[] = $rowCat;
-    }
+        $Categories=categoriesList($con);
+
     return $this->view->render($response, 'adminBlog.mustache', array('data' => $data, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories));
 
 
@@ -2345,12 +2309,8 @@ $app->get('/break', function (Request $request, Response $response) {
     }
     $con = $this->db;
 
-    $queryCat = "SELECT id,name FROM categories order by name";
-    $resultCat = oci_parse($con, $queryCat);
-    oci_execute($resultCat);
-    while ($rowCat = oci_fetch_assoc($resultCat)) {
-        $Categories[] = $rowCat;
-    }
+        $Categories=categoriesList($con);
+
     return $this->view->render($response, 'break.mustache', array('data' => $result, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories));
 
 
@@ -2406,10 +2366,9 @@ $app->get('/break', function (Request $request, Response $response) {
 
 function presentIds()
 {
-    if(isset( $_SESSION['presentIDs']))
-    {
+    if (isset($_SESSION['presentIDs'])) {
         $present = $_SESSION['presentIDs'];
-        return $present ;
+        return $present;
     }
 
     $array = [];
@@ -2421,48 +2380,43 @@ function presentIds()
         $result = curlFunction("books_at_home.json?membership_no=$membership_no&api_key=$api_key&email=$email");
         $plan_data = json_decode($result);
         $currentData = $plan_data->result;
-
-
         $currentData = json_decode(json_encode($currentData), True);
-
         foreach ($currentData as $current) {
 
             array_push($array, $current['id']);
         }
-        $result = curlFunction("pending_delivery_order.json?email=$email&membership_no=$membership_no&api_key=$api_key");
-        $orderData = json_decode($result);
-        $OrderData = $orderData->result;
+        $resultdo = curlFunction("pending_delivery_order.json?email=$email&membership_no=$membership_no&api_key=$api_key");
+        $orderDatado = json_decode($resultdo);
+        $orderDatado = $orderDatado->result;
+        $orderDatado = json_decode(json_encode($orderDatado), True);
 
-
-        $OrderData = json_decode(json_encode($OrderData), True);
-
-        foreach ($OrderData as $order) {
+        foreach ($orderDatado as $order) {
 
             array_push($array, $order['id']);
         }
-        $result = curlFunction("pending_pickup_order.json?email=$email&membership_no=$membership_no&api_key=$api_key");
-        $pickupData = json_decode($result);
-        $OrderData = $OrderData->result;
+        $resultpo = curlFunction("pending_pickup_order.json?email=$email&membership_no=$membership_no&api_key=$api_key");
+        $pickupData = json_decode($resultpo);
+        $pickupData = $pickupData->result;
 
 
-        $OrderData = json_decode(json_encode($OrderData), True);
+        $pickupData = json_decode(json_encode($pickupData), True);
 
-        foreach ($OrderData as $order) {
-
-            array_push($array, $order['id']);
-        }
-        $result = curlFunctionEs("/getWishList?membership_no=$membership_no");
-        $pickupData = json_decode($result);
-        $OrderData = $OrderData->result;
-
-
-        $OrderData = json_decode(json_encode($OrderData), True);
-
-        foreach ($OrderData as $order) {
+        foreach ($pickupData as $order) {
 
             array_push($array, $order['id']);
         }
-        $_SESSION['presentIDs']=$array;
+        $resultgw = curlFunctionEs("/getWishList?membership_no=$membership_no");
+        $resultgw = json_decode($resultgw);
+        $resultgw = $resultgw->result;
+
+
+        $resultgw = json_decode(json_encode($resultgw), True);
+
+        foreach ($resultgw as $order) {
+
+            array_push($array, $order['id']);
+        }
+        $_SESSION['presentIDs'] = $array;
 
     }
     return $array;
@@ -2470,11 +2424,10 @@ function presentIds()
 
 function wishlistIds()
 {
-    if(isset($_SESSION['wishlists']))
-    {
-        $wish=$_SESSION['wishlists'];
+    if (isset($_SESSION['wishlists'])) {
+        $wish = $_SESSION['wishlists'];
 
-        return $wish ;
+        return $wish;
     }
     $array = [];
     if (isset($_SESSION['username'])) {
@@ -2495,7 +2448,7 @@ function wishlistIds()
 
             array_push($array, $wish['id']);
         }
-        $_SESSION['wishlists']=$array;
+        $_SESSION['wishlists'] = $array;
 
     }
 
@@ -2526,7 +2479,7 @@ $app->get('/getRelatedBooksNew', function (Request $request, Response $response)
     $data = json_decode($raw_data);
     $array = presentIds();
     $wishlist = wishlistIds();
-    echo json_encode(array("data" => $data, 'ids' => (array)$array, 'wishlist' => (array)$wishlist, 'flag'=>$flag));
+    echo json_encode(array("data" => $data, 'ids' => (array)$array, 'wishlist' => (array)$wishlist, 'flag' => $flag));
 
 });
 
@@ -2550,7 +2503,7 @@ $app->get('/getAuthorRelatedBooks', function (Request $request, Response $respon
     $wishlist = wishlistIds();
 
 
-    echo json_encode(array("data" => $titles, 'ids' => (array)$array, 'wishlist' => (array)$wishlist,'flag'=>$flag));
+    echo json_encode(array("data" => $titles, 'ids' => (array)$array, 'wishlist' => (array)$wishlist, 'flag' => $flag));
 
 });
 $app->get('/getRelatedAuthors', function (Request $request, Response $response) {
@@ -2733,12 +2686,8 @@ $app->get('/users/password/edit', function (Request $request, Response $response
 
     $con = $this->db;
 
-    $queryCat = "SELECT id,name FROM categories order by name";
-    $resultCat = oci_parse($con, $queryCat);
-    oci_execute($resultCat);
-    while ($rowCat = oci_fetch_assoc($resultCat)) {
-        $Categories[] = $rowCat;
-    }
+        $Categories=categoriesList($con);
+
     if (isset($_SESSION['username'])) {
         $flag = 1;
         $slider = 0;
@@ -2772,12 +2721,8 @@ $app->get('/store-locator', function (Request $request, Response $response) {
 
     $con = $this->db;
 
-    $queryCat = "SELECT id,name FROM categories order by name";
-    $resultCat = oci_parse($con, $queryCat);
-    oci_execute($resultCat);
-    while ($rowCat = oci_fetch_assoc($resultCat)) {
-        $Categories[] = $rowCat;
-    }
+        $Categories=categoriesList($con);
+
 
     return $this->view->render($response, 'store_location.mustache', array('flag' => (int)$flag, 'slider' => (int)$slider, 'name' => $name, 'cat' => $Categories));
 
@@ -2905,23 +2850,24 @@ $app->get('/getChangePlanYears', function (Request $request, Response $response)
 
 });
 $app->get('/getProfileDetails', function (Request $request, Response $response) {
-
+    if(!isset($_SESSION['membership_no']))
+    {
+        echo json_encode(false);die;
+    }
     $membership = $_SESSION['membership_no'];
 
     $plan_data_curl = curlFunctionEs('/getMemberProfile?membership_no=' . $membership);
 
     $plan_data = json_decode($plan_data_curl);
-    if(isset($_SESSION['rentedBool']))
-        $isset=$_SESSION['rentedBool'];
-    if($isset == "0" && $isset == false )
-    {
+    if (isset($_SESSION['rentedBool']))
+        $isset = $_SESSION['rentedBool'];
+    if ($isset == "0" && $isset == false) {
         $option = "No";
-    }
-    else{
+    } else {
         $option = "Yes";
 
     }
-    echo json_encode(array('data' => $plan_data,'door'=>$option));
+    echo json_encode(array('data' => $plan_data, 'door' => $option));
 
 
 });
@@ -2940,12 +2886,8 @@ $app->get('/terms-and-condition', function (Request $request, Response $response
     }
     $con = $this->db;
 
-    $queryCat = "SELECT id,name FROM categories order by name";
-    $resultCat = oci_parse($con, $queryCat);
-    oci_execute($resultCat);
-    while ($rowCat = oci_fetch_assoc($resultCat)) {
-        $Categories[] = $rowCat;
-    }
+        $Categories=categoriesList($con);
+
 
     return $this->view->render($response, 'terms.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories));
 
@@ -3127,12 +3069,8 @@ $app->get('/searchByCategory', function (Request $request, Response $response) {
     }
     $con = $this->db;
 
-    $queryCat = "SELECT id,name FROM categories order by name";
-    $resultCat = oci_parse($con, $queryCat);
-    oci_execute($resultCat);
-    while ($rowCat = oci_fetch_assoc($resultCat)) {
-        $Categories[] = $rowCat;
-    }
+        $Categories=categoriesList($con);
+
     return $this->view->render($response, 'catSearch.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories, 'data' => $data, 'ids' => $ids, 'count' => count($data)));
 
 
@@ -3172,7 +3110,7 @@ $app->get('/typeahead', function (Request $request, Response $response) {
 
 $app->get('/updateMemberSession', function (Request $request, Response $response) {
     $username = $_GET['membership'];
-    $email=$_SESSION['username'];
+    $email = $_SESSION['username'];
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, API_URL_ES . "/getMembershipNumbers?");
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -3184,13 +3122,11 @@ $app->get('/updateMemberSession', function (Request $request, Response $response
 //        $_SESSION['email']=$email;
 //    }
 
-    $array=[];
-    $memberData=json_decode($raw_data);
-    foreach ($memberData as $item)
-    {
-        if($item->MEMBERSHIP_NO == $username )
-        {
-            $_SESSION['rentedBool']=$item->DELIVERY_OPTION;
+    $array = [];
+    $memberData = json_decode($raw_data);
+    foreach ($memberData as $item) {
+        if ($item->MEMBERSHIP_NO == $username) {
+            $_SESSION['rentedBool'] = $item->DELIVERY_OPTION;
         }
     }
     $_SESSION['membership_no'] = $username;
@@ -3199,7 +3135,7 @@ $app->get('/updateMemberSession', function (Request $request, Response $response
 
 });
 
-$app->get('/getReview', function (Request $request, Response $response){
+$app->get('/getReview', function (Request $request, Response $response) {
 
     $membership_no = $_SESSION['membership_no'];
     $api_key = $_SESSION['api_key'];
@@ -3209,6 +3145,48 @@ $app->get('/getReview', function (Request $request, Response $response){
     echo $resultReview;
 });
 
+function categoriesList($con)
+{
+
+    if(isset($_SESSION['categories']))
+    {
+        $cat=$_SESSION['categories'];
+        return $cat;
+    }
+    $queryCat = "SELECT id,name FROM categories order by name";
+    $resultCat = oci_parse($con, $queryCat);
+    oci_execute($resultCat);
+    while ($rowCat = oci_fetch_assoc($resultCat)) {
+        $Categories[] = $rowCat;
+    }
+
+    $_SESSION['categories'] = $Categories;
+    return $Categories;
+}
+
+
+
+
+function ratedata($con)
+{
+    if(isset($_SESSION['review']))
+    {
+        $review=$_SESSION['review'];
+        return $review;
+    }
+    $email=$_SESSION['email'];
+    $query_rate = "select * from webstore.rates where  rater_id=(select id from webstore.users where email='$email')";
+    $result_rate = oci_parse($con, $query_rate);
+    oci_execute($result_rate);
+    $ratedata = [];
+    while ($rowRate = oci_fetch_assoc($result_rate)) {
+
+        $ratedata[] = $rowRate['RATEABLE_ID'];
+    }
+    $_SESSION['review'] = $ratedata;
+
+    return $ratedata;
+}
 $app->run();
 
 ?>

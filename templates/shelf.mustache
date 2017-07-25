@@ -350,15 +350,15 @@
                                             <form >
                                                 <div class="form-group">
                                                     <label for="email">Address:</label>
-                                                    <input type="text" maxlength="30" class="form-control" id="address1" placeholder="Address 1"
-                                                           required></input>
+                                                    <input type="text" maxlength="50" class="form-control" id="address1" placeholder="Address 1"
+                                                           required>
                                                 </div>
                                                 <div class="form-group">
                                                     <input type="text" maxlength="30" class="form-control" id="address2" placeholder="Address 2"
-                                                           required></input>
+                                                           required>
                                                 </div> <div class="form-group">
                                                 <input type="text" maxlength="30" class="form-control" id="address3" placeholder="Address 3"
-                                                       required></input>
+                                                       required>
                                             </div>
                                                 <div class="form-group">
                                                     <div class="col-sm-4">
@@ -438,33 +438,6 @@
                             </div>
 
 
-                            <script>
-                                // Get the modal
-                                var modal = document.getElementById('myModal');
-
-                                // Get the button that opens the modal
-                                var btn = document.getElementById("myBtn");
-
-                                // Get the <span> element that closes the modal
-                                var span = document.getElementsByClassName("close")[0];
-
-                                // When the user clicks the button, open the modal
-                                btn.onclick = function () {
-                                    modal.style.display = "block";
-                                }
-
-                                // When the user clicks on <span> (x), close the modal
-                                span.onclick = function () {
-                                    modal.style.display = "none";
-                                }
-
-                                // When the user clicks anywhere outside of the modal, close it
-                                window.onclick = function (event) {
-                                    if (event.target == modal) {
-                                        modal.style.display = "none";
-                                    }
-                                }
-                            </script>
 
                             <!-- popup end  -->
 
@@ -566,9 +539,9 @@
                                 <img src="../../assets/img/loader.gif" id="loader_image">
                             </div>
                         </div>
-                        <a class="left carousel-control" href="#myCarousel1" data-slide="prev"><i
+                        <a class="left carousel-control" href="#myCarousel2" data-slide="prev"><i
                                 class="glyphicon glyphicon-chevron-left"></i></a>
-                        <a class="right carousel-control" href="#myCarousel1" data-slide="next"><i
+                        <a class="right carousel-control" href="#myCarousel2" data-slide="next"><i
                                 class="glyphicon glyphicon-chevron-right"></i></a>
                     </div>
                 </div>
@@ -579,7 +552,7 @@
     </div>
 </div>
 
-<script src="../../assets/js/shelf.js?v=1"></script>
+<script src="../../assets/js/shelf.js?ver=3"></script>
 
 
 {{> footer}}

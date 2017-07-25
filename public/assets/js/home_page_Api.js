@@ -3,6 +3,8 @@ function getCard(data, visibleCardCount, ids, wishlist, flag) {
     var final_response = '';
     for (var i = 0; i < data.length; i++) {
         items++;
+
+
         var active = '';
         var wishlist_opt = '';
         if (i == 0) {
@@ -139,8 +141,9 @@ $(document).ready(function () {
         url: "/newArrivals",
         success: function (data) {
             $("#frame_new_arr").hide();
-            $("#loader").hide();
+            $("#loader_new_arr").hide();
             data = JSON.parse(data);
+            console.log(data)
             cardData = data['data'];
             var flag = data['flag'];
 
@@ -276,6 +279,8 @@ $(document).ready(function () {
 });
 
 function wishlistAdd(id) {
+    logClick("Action","Wishlist",id);
+
     $(".spinner").show();
 
     $.ajax({
@@ -304,6 +309,8 @@ function wishlistAdd(id) {
 }
 
 function placeOrder(id) {
+    logClick("Action","Rent",id);
+
     $(".spinner").show();
     $.ajax({
         type: "GET",
