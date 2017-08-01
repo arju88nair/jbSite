@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     var id = localStorage.getItem("membership")
     logClick("On load", "Shelf", id);
 
@@ -955,6 +956,7 @@ $('#subscription').click(function (e) {
             $(".spinner").hide();
             $('#shelf_data').html('');
             var data_new = JSON.parse(data);
+            console.log(data_new)
             if (data_new == false) {
                 toastr.error("Session expired.Please log in to continue!").css('width', '500px');
                 localStorage.clear();
@@ -1055,7 +1057,6 @@ $('#subscription').click(function (e) {
                 '</div></div><br><hr>');
             if (data_new['cards'].length > 1) {
                 for (var j = 0; j < data_new['cards'].length; j++) {
-                    console.log(data_new['cards'][j]['MEMBERSHIP_NO'])
                     $("#memberSelect").append('<option value="' + data_new['cards'][j]['MEMBERSHIP_NO'] + '">' + data_new['cards'][j]['MEMBERSHIP_NO'] + '</option>')
                 }
             }
@@ -1064,7 +1065,7 @@ $('#subscription').click(function (e) {
             var response2 = '';
 
             if (terms.length > 0) {
-                var defValue = parseInt(terms[0]['fee'] + 50);
+                var defValue = parseInt(terms[0]['fee']) + (parseInt(terms[0]['term'])*parseInt(data_new['delFee']));
                 terms.forEach(function (arr) {
                     response2 += '<option value=' + arr['term'] * 50 + ' id=' + arr['term'] + '>' + arr['months'] + '</option>';
 
@@ -1090,9 +1091,17 @@ $('#subscription').click(function (e) {
                 '<label for="pwd">Start Date:</label><input class="form-control" type="text" id="datePickInput" readonly required="required" name="datePickInput" required>' +
                 '</div><button type="button" class="btn btn-default memberBut" onclick="breakValidate()">Submit</button><br><br><hr><p id="textSpanBreak" style="margin-left:0%;display:none;font-weight:bold;font-size:143%"></p><br><p id="textSpanBreakDate" style="margin-left:0%;display:none;font-weight:bold;font-size:143%"></p><br><button id="BreakBUtton" style="display: none;float: left;" type="button" class="shortcode_button btn_small btn_type10" onclick="proceedBreak()">Proceed</button><span class="breakAmount" style="display: none"></span><span class="breakAMountPay" style="display: none"></span><span class="breakDate" style="display: none"></span><br><br><br><br><hr style="display:none" id="hrTag"><div id="aboutBreak" style= "display:none" class="col-md-12"><p><b>What\'s \'Take a break\' ?</b></p><p>Through a feature called “Subscription Holiday”, JustBooksclc allows the member to pause the membership (temporary suspension), for a duration of 1 month, 2 months or 3 months before expiration of membership. During Subscription Holiday period, a member will not be able to use the library. To utilise this feature, a member is required to fill up the Subscription Holiday Form either at the branch or online. All issued books and magazines should be returned to the JustBooksclc branch before the start date of Subscription Holiday. Members who pay for Yearly and Half-yearly terms will receive free Subscription Holidays of 2 months and 1 month respectively, and are required to pay Rs. 50/- per month there after. Quarterly members are required to pay Rs. 50/- per month to avail the feature.</p></div></div></div></form></div>' +
                 '<div class="row collapse" id=\"demo\" >' +
-                '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> <form> <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> <div class="form-group" style="width:50%"> <label for="sel1">Select a renewal duration :</label> <select class="form-control" id="sel1" onchange="textChange()">' + response2 + ' </select> </div> </div> <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10"> <div class="form-group"> <input type="text" class="form-control" id="coupon_code" placeholder="Coupon code if any" name="coupon_code"> <span class="input-group-btn"> </div> </div> <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"> <div class="form-group"> <button type="button" class="btn btn-warning" id="coupon_submit" onclick="couponClick()">Apply</button> </div> </div> <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5"> <div class="form-group"> <input class="form-control" id="gift_card" placeholder="Gift Card No." name="gift_card" type="text"> </div> </div> <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5"> <div class="form-group"> <input class="form-control" id="gift_card_pin" placeholder="Gift Card Pin" name="gift_card_pin" type="text"> </div> </div> <div class="col-xs-6 col-sm-2 col-md-2 col-lg-2"> <div class="form-group"> <button type="button" class="btn btn-warning" id="gift_card_submit" onclick="couponClick()">Apply</button> </div> </div> <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> <p style="font-weight: bold" id="textSpan"> You have to pay Rs ' + defValue + '</p> <button type="submit" id="proceedRenewButton"class="btn shortcode_button btn_small btn_type10" onclick="proceedRenew()" >Submit</button> </div> </form> </div></div><br>'
+                '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> <form> <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> <div class="form-group" style="width:50%"> <label for="sel1">Select a renewal duration :</label> <select class="form-control" id="sel1" onchange="textChange()">' + response2 + ' </select> </div> </div> <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10"> <div class="form-group"> <input type="text" class="form-control" id="coupon_code" placeholder="Coupon code if any" name="coupon_code"> <span class="input-group-btn"> </div> </div> <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2"> <div class="form-group"> <button type="button" class="btn btn-warning" id="coupon_submit" onclick="couponClick()">Apply</button> </div> </div> <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5"> <div class="form-group"> <input class="form-control" id="gift_card" placeholder="Gift Card No." name="gift_card" type="text"> </div> </div> <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5"> <div class="form-group"> <input class="form-control" id="gift_card_pin" placeholder="Gift Card Pin" name="gift_card_pin" type="text"> </div> </div> <div class="col-xs-6 col-sm-2 col-md-2 col-lg-2"> <div class="form-group"> <button type="button" class="btn btn-warning" id="gift_card_submit" onclick="couponClick()">Apply</button> </div> </div> <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> <p style="font-weight:bold">Opt for door delivery?</p><p><label><input  type="radio" name="del" id="yesRadio" value="yes" onchange="yesRadioF()">&nbsp;&nbsp;Yes</label>&nbsp;&nbsp;&nbsp;&nbsp; <label><input id="noRadio" type="radio" name="del" value="no" onchange="noRadionF()">&nbsp;&nbsp;No</label> </p></div><div class="col-xs-12 col-sm-12 col-md-12 col-lg-12"> <p style="font-weight: bold" > You have to pay Rs <span id="textSpan">' + defValue + '</span></p> <button type="submit" id="proceedRenewButton"class="btn shortcode_button btn_small btn_type10" onclick="proceedRenew()" >Submit</button> </div> </form> </div></div><br>'
             )
 
+
+            if (parseInt(data_new['delFee']) === 0) {
+                $("#noRadio").prop("checked", true)
+            }
+            else {
+                $("#yesRadio").prop("checked", true)
+
+            }
 
             var colors = ['block personal fl', 'block professional fl', 'block business fl'];
             if (change_plan != null) {
@@ -1667,8 +1676,13 @@ function wishlistAdd(id) {
 }
 
 function textChange() {
-
-    $(".spinner").show();
+    var radioValue = $("input[name='del']:checked").val();
+    if (radioValue === "no") {
+        var delFee = 0;
+    }
+    else {
+        var delFee = 50;
+    }
     var coupon = $("#coupon_code").val();
     var gift = $("#gift_card").val();
     if (coupon == "") {
@@ -1679,6 +1693,7 @@ function textChange() {
         gift = "null";
     }
     var termSelected = $('#sel1 option:selected').attr('id');
+    delFee = parseInt(delFee) * parseInt(termSelected);
     if (termSelected === 0 || termSelected === null) {
         toastr.error("Please select a month to renew !");
         return false;
@@ -1686,18 +1701,17 @@ function textChange() {
     var fee = $("#sel1").val();
     var email = localStorage.getItem("email");
     var membership = localStorage.getItem("membership");
+    $(".spinner").show();
 
     $.ajax({
         type: "GET",
         dataType: "json",
-        url: "/renewal_payment?term=" + termSelected + "&delivery_fees=0&coupon_code=" + coupon + "&gift_card_no=" + gift + "",
+        url: "/renewal_payment?term=" + termSelected + "&delivery_fees=" + delFee + "&coupon_code=" + coupon + "&gift_card_no=" + gift + "",
         success: function (data_new) {
-            console.log(data_new);
-
+console.log(data_new)
             $(".spinner").hide();
             if (data_new.success == true) {
-                console.log(data_new.result.payable_amount);
-                $("#textSpan").text("You have to pay Rs  " + data_new.result.payable_amount);
+                $("#textSpan").text(data_new.result.payable_amount);
                 $("#renewBUtton").show();
 
             }
@@ -1715,6 +1729,13 @@ function textChange() {
 
 
 function proceedRenew() {
+    var radioValue = $("input[name='del']:checked").val();
+    if (radioValue === "no") {
+        var delFee = 0;
+    }
+    else {
+        var delFee = 50;
+    }
     var coupon = $("#coupon_code").val();
     var gift = $("#gift_card").val();
     if (coupon == "") {
@@ -1733,11 +1754,12 @@ function proceedRenew() {
     var email = localStorage.getItem("email");
     var membership = localStorage.getItem("membership");
     $(".spinner").show();
+    delFee = parseInt(delFee) * parseInt(termSelected);
 
     $.ajax({
         type: "GET",
         dataType: "json",
-        url: "/renewal_payment?term=" + termSelected + "&delivery_fees=0&coupon_code=" + coupon + "&gift_card_no=" + gift + "",
+        url: "/renewal_payment?term=" + termSelected + "&delivery_fees=" + delFee + "&coupon_code=" + coupon + "&gift_card_no=" + gift + "",
         success: function (data_new) {
             console.log(data_new);
 
@@ -2141,4 +2163,17 @@ function getReview(id) {
 
     });
 
+}
+
+function noRadionF() {
+    var term=$('#sel1 option:selected').attr('id')
+    var val=parseInt($("#textSpan").text())
+
+    $("#textSpan").text(val-(50*parseInt(term)))
+}
+function yesRadioF() {
+    var term=$('#sel1 option:selected').attr('id')
+    var val=parseInt($("#textSpan").text())
+
+    $("#textSpan").text(val+(50*parseInt(term)))
 }

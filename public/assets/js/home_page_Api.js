@@ -335,6 +335,13 @@ function placeOrder(id) {
                 }, 800);
             }
             else {
+                if (JSON.parse(data) === "NoStock" ) {
+                    $(".spinner").hide();
+
+                    toastr.error('No stock available!').css("width","500px");
+                    return false;
+
+                }
                 $(".spinner").hide();
                 data = JSON.parse(data);
                 console.log(data['success'])

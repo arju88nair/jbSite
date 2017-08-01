@@ -178,7 +178,7 @@ function signupClick() {
             $(".spinner").hide();
 
 
-            if (!data || data === false || data === 'false' || data == 'null') {
+            if (!data || data === false || data === 'false' || data == 'null' || data.length === 0 || parseInt(data) === 0 ) {
                 toastr.error('Wrong credentials, Please try again !');
                 $(".spinner").hide();
                 return false

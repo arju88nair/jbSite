@@ -436,7 +436,12 @@ $app->get('/getChangePlanFees', function (Request $request, Response $response) 
             foreach ($item['change_plan_detail']['plan_durations'] as $plans) {
 
                 if ($plans['plan_duration']['change_plan_months'] == $months) {
-                    echo json_encode(array("total" => $plans['plan_duration']['payable_amount'], 'reading_fee' => $item['change_plan_detail']['reading_fee'], 'available_balance' => $item['change_plan_detail']['available_balance'], 'balance_due' => $item['change_plan_detail']['balance_due']));
+                    $delFee=$plans['plan_duration']['delivery_fees'];
+                    if($delFee == null ||$delFee == 0){
+                        $delFee=0;
+                    }
+
+                    echo json_encode(array("total" => $plans['plan_duration']['payable_amount'], 'reading_fee' => $item['change_plan_detail']['reading_fee'], 'available_balance' => $item['change_plan_detail']['available_balance'], 'balance_due' => $item['change_plan_detail']['balance_due'],'delFee'=>$delFee));
                     die;
 
                 }
@@ -1096,11 +1101,11 @@ $app->get('/getSubscription', function (Request $request, Response $response) {
     {
         echo json_encode(false);die;
     }
-    if ((isset($_SESSION['subscription']))) {
-        $subsArray = $_SESSION['subscription'];
-        echo json_encode($subsArray);
-        die;
-    }
+//    if ((isset($_SESSION['subscription']))) {
+//        $subsArray = $_SESSION['subscription'];
+//        echo json_encode($subsArray);
+//        die;
+//    }
 
     $membership_no = $_SESSION['membership_no'];
     $api_key = $_SESSION['api_key'];
@@ -1150,6 +1155,18 @@ $app->get('/getSubscription', function (Request $request, Response $response) {
     $final_result['member'] = $_SESSION['membership_no'];
 
     $_SESSION['subscription'] = $final_result;
+    if (isset($_SESSION['rentedBool']))
+        $isset = $_SESSION['rentedBool'];
+    if ($isset == "0" && $isset == false) {
+        $delFee=0;
+    }
+    else{
+        $delFee=50;
+    }
+    $final_result['delFee']=$delFee;
+    $final_result['delivery']=$isset;
+    $_SESSION['subscription'] = $final_result;
+
     echo json_encode($final_result);
 });
 
@@ -1174,6 +1191,20 @@ $app->get('/placeOrder', function (Request $request, Response $response, $args) 
         echo json_encode('NoDelivery');
         die;
     }
+    $con=$this->db;
+    $query="select stock from fn_stock where titleid=$titleid";
+    $result_rate = oci_parse($con, $query);
+    oci_execute($result_rate);
+    $dataAr = [];
+    while ($data = oci_fetch_assoc($result_rate)) {
+
+        $dataAr[] = $data['STOCK'];
+    }
+    if($dataAr[0] == "0" || $dataAr[0] == null || $dataAr[0] == "")
+    {
+        echo json_encode("NoStock");die;
+    }
+
     if ($membership_no == "" && empty($membership_no) || !isset($_SESSION['membership_no'])) {
         return json_encode("failure");
     }
@@ -1185,8 +1216,8 @@ $app->get('/placeOrder', function (Request $request, Response $response, $args) 
 
 
 $app->get('/login/{username}/{password}', function (Request $request, Response $response, $args) {
-    $username = strtolower($args['username']);
-    $password = $args['password'];
+    $username = trim(strtolower($args['username']));
+    $password = trim($args['password']);
 
     /*    $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, API_URL_ES . "/validateLogin?");
@@ -1260,8 +1291,11 @@ $app->get('/login/{username}/{password}', function (Request $request, Response $
         $array = [];
 
         $memberData = json_decode($raw_data);
-        echo json_encode($memberData);
-        die;
+        if(sizeof($memberData) == 0)
+{
+    echo json_encode(0);
+    die;
+}
         foreach ($memberData as $item) {
             if ($item->MEMBERSHIP_NO == $arr[0]['membership_no']) {
                 $_SESSION['rentedBool'] = $item->DELIVERY_OPTION;
@@ -1443,7 +1477,10 @@ $app->get('/change_plan', function (Request $request, Response $response, $args)
     $books = $allGetVars['books'];
     $months = $allGetVars['months'];
     $planname = $allGetVars['planname'];
-
+    if (isset($_SESSION['rentedBool']))
+        $isset = $_SESSION['rentedBool'];
+   else
+       $isset=0;
     $con = $this->db;
 //    if(isset($_SESSION['branchID']))
 //    {
@@ -1458,6 +1495,7 @@ $app->get('/change_plan', function (Request $request, Response $response, $args)
 //    $query_city = "SELECT *  FROM memp.FN_HOME_PAGE_PLANS WHERE ACTIVE = 1 and FOR_VIRTUAL = 1  and promo= '$planname'";
 //
 //
+
 ////    $query_city = "SELECT *  FROM memp.FN_HOME_PAGE_PLANS WHERE active = 1 and rownum<4 and promo= '$planname'";
 //    $result_city = oci_parse($con, $query_city);
 //    oci_execute($result_city);
@@ -1538,6 +1576,11 @@ $app->get('/change_plan', function (Request $request, Response $response, $args)
         if ($item['change_plan_detail']['books'] == $books) {
             foreach ($item['change_plan_detail']['plan_durations'] as $plans) {
                 if ($plans['plan_duration']['change_plan_months'] == $months) {
+
+                    $delFee=$plans['plan_duration']['delivery_fees'];
+                    if($delFee == null ||$delFee == 0){
+                        $delFee=0;
+                    }
                     if (isset($_SESSION['username'])) {
                         $flag = 1;
                         $slider = 0;
@@ -1550,7 +1593,6 @@ $app->get('/change_plan', function (Request $request, Response $response, $args)
                         $name = "";
                     }
 
-
                     $con = $this->db;
 
                     $queryCat = "SELECT id,name FROM categories order by name";
@@ -1560,7 +1602,7 @@ $app->get('/change_plan', function (Request $request, Response $response, $args)
                         $Categories[] = $rowCat;
                     }
 
-                    $response = $this->view->render($response, 'change_plan.mustache', array('plan_data' => strtoupper($planname), 'plan_dataJ' => json_encode($array_data), 'planid' => $planid, 'plan_books' => $count, 'planname' => $planname, 'planid' => $planid, "available_balance" => $item['change_plan_detail']['available_balance'], 'balance_due' => $item['change_plan_detail']['balance_due'], 'reading_fee' => $item['change_plan_detail']['reading_fee'], 'totalAMount' => $plans['plan_duration']['payable_amount'], 'months' => $monthsArray, 'book' => $books, 'month' => $months, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories, 'monthTag' => $monthTag));
+                    $response = $this->view->render($response, 'change_plan.mustache', array('plan_data' => strtoupper($planname), 'plan_dataJ' => json_encode($array_data), 'planid' => $planid, 'plan_books' => $count, 'planname' => $planname, 'planid' => $planid, "available_balance" => $item['change_plan_detail']['available_balance'], 'balance_due' => $item['change_plan_detail']['balance_due'], 'reading_fee' => $item['change_plan_detail']['reading_fee'], 'totalAMount' => $plans['plan_duration']['payable_amount'], 'months' => $monthsArray, 'book' => $books, 'month' => $months, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories, 'monthTag' => $monthTag,'delFee'=>$delFee,'isset'=>(int)$isset));
                     return $response;
 
                 }
@@ -1744,8 +1786,8 @@ $app->get('/adminLogin/', function (Request $request, Response $response) {
 $app->post('/login_validate', function (Request $request, Response $response) {
 //    $con = $this->db;
     $data = $request->getParsedBody();
-    $username = $data['username'];
-    $password = $data['password'];
+    $username = trim($data['username']);
+    $password = trim($data['password']);
     if ($username != "" && $password != "") {
         $_SESSION['adminUser'] = $username;
         if ($username == "jbweb_admin" && $password == "admin_website") {
@@ -2583,9 +2625,13 @@ $app->get('/getStatusDelivery', function (Request $request, Response $response) 
     $data = $data->result;
     $data = json_decode(json_encode($data), True);
 //    echo json_encode($data);die;
-    if (isset($data['order_details'])) {
-        echo json_encode("Tracking info not yet available!");
+    if (!isset($data['order_details'])) {
+        echo json_encode("In Progress");
         die;
+    }
+    if ($data['order_details'] == "Member Order Not Found") {
+    	echo json_encode("In Progress");
+    	die;
     }
     echo json_encode($data['order_details'][0]['message']);
     die;
@@ -2617,7 +2663,7 @@ $app->get('/sendResetMail', function (Request $request, Response $response) {
 //    echo json_encode("failure");die;
     $params = $request->getQueryParams();
 
-    $email = $params['email'];
+    $email = trim($params['email']);
 
     $result = curlFunction("send_reset_email?email=$email");
     $data = json_decode($result);
@@ -2632,8 +2678,8 @@ $app->get('/sendResetMail', function (Request $request, Response $response) {
 });
 $app->get('/verifyResetMail', function (Request $request, Response $response) {
     $params = $request->getQueryParams();
-    $email = $params['email'];
-    $passwrod = $params['password'];
+    $email = trim($params['email']);
+    $passwrod = trim($params['password']);
     $result = curlFunction("reset_pwd?email=$email&password=$passwrod");
     $data = json_decode($result);
     if ($data->success == true) {
@@ -2643,8 +2689,8 @@ $app->get('/verifyResetMail', function (Request $request, Response $response) {
     echo json_encode("failure");
     die;
 
-    echo json_encode($data->success);
-    die;
+    //echo json_encode($data->success);
+    //die;
 
 
 });
@@ -2665,7 +2711,7 @@ $app->get('/locations', function (Request $request, Response $response) {
 
 
 $app->get('/users/password/edit', function (Request $request, Response $response) {
-    $email = $_GET['email'];
+    $email = trim($_GET['email']);
     $token = $_GET['reset_password_token'];
 
     $con = $this->db;
@@ -2979,12 +3025,14 @@ $app->get('/change_plan_payment', function (Request $request, Response $response
     $new_plan_id = $_GET['new_plan_id'];
     $coupon_code = $_GET['coupon_code'];
     $gift_card_no = $_GET['gift_card_no'];
+    $delFee = $_GET['delFee'];
+    $flag = $_GET['flag'];
 
 
     $membership_no = $_SESSION['membership_no'];
     $api_key = $_SESSION['api_key'];
     $email = $_SESSION['email'];
-    $raw_data = curlFunction("change_plan_payment.json?email=$email&membercard=$membership_no&term=$term&new_plan_id=$new_plan_id&coupon_code=$coupon_code&gift_card_no=$gift_card_no&pin=null");
+    $raw_data = curlFunction("change_plan_payment.json?email=$email&membercard=$membership_no&term=$term&new_plan_id=$new_plan_id&coupon_code=$coupon_code&gift_card_no=$gift_card_no&pin=null&delivery_option=$flag&delivery_fee_amt=$delFee");
     $data = json_decode($raw_data);
     echo json_encode($data);
 
