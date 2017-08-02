@@ -622,6 +622,8 @@
         logClick("Signup Click","Signup First",$("#email").val());
 
         $("#error").hide();
+        var plannames = "{{planname}}";
+
         var signupID = parseInt($('.planID').attr('id'));
         var coupon = $('#coupon_code').val();
         var signup_data = $('#payment_form').serialize();
@@ -630,7 +632,7 @@
         $.ajax({
             type: "POST",
             url: "/insertSignupNew",
-            data: {'signup_data': JSON.stringify(signup_data)},
+            data: {'signup_data': JSON.stringify(signup_data),'name':plannames},
             success: function (data_new) {
                 $(".spinner").hide();
                 console.log(data_new)
@@ -639,8 +641,8 @@
 //                data_new = JSON.parse(data_new);
                 logClick("Sign up click")
                 if (data_new['success'] == 'true') {
-
-                    window.location.href = "/PaytmKitSignup/pgRedirect.php"
+                    window.location.href = "/PaytmKitStaging/pgRedirect.php"
+//                    window.location.href = "/PaytmKitSignup/pgRedirect.php"
 
                 }
                 else {
@@ -713,7 +715,7 @@
                 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
         })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-        ga('create', 'UA-93821751-1', 'none');
+        ga('create', 'UA-102352169-1', 'none');
         var username=$("#email").val()
         ga('send', 'event', 'Clicks', 'Signup of user '+username+'', 'First Screen');
         var signupID = parseInt($('.planID').attr('id'));

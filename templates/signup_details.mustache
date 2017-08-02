@@ -1,42 +1,45 @@
 {{> header}}
 
 <style type="text/css">
-    .registration-container{
+    .registration-container {
         position: relative;
         background: rgba(240, 248, 255, 0.5);
         width: 80%;
-        margin:0px auto;
+        margin: 0px auto;
         /*padding-top: 3%;*/
 
     }
-    .franchisee p{
+
+    .franchisee p {
         text-align: justify;
         color: #464d52;
         font-size: 12px;
         font-family: arial;
     }
+
     .franchisee ul {
 
         font-size: 12px;
-        font-weight: 400!important;
+        font-weight: 400 !important;
         margin-bottom: 8px;
         padding-left: 60px;
         color: #464d52;
         font-family: arial;
     }
 
-    .franchisee h4{
+    .franchisee h4 {
         font-family: playfair display;
         text-align: left;
         padding-left: 10px;
 
     }
 
-    .franchisee1 h4{
+    .franchisee1 h4 {
         font-family: playfair display;
         text-align: center;
 
     }
+
     .panel-default > .panel-heading {
         color: #fff;
         background-color: #504848;
@@ -44,13 +47,13 @@
     }
 
     /*#success_payment {*/
-        /*margin-bottom: 0px!important;*/
+    /*margin-bottom: 0px!important;*/
     /*}*/
 
 
 </style>
 
-<div class="content_wrapper"  id="franchiseeDiv" data-orderid="{{orderid}}">
+<div class="content_wrapper" id="franchiseeDiv" data-orderid="{{orderid}}">
 
     <div class="spinner" style='display: none;z-index: 100;opacity:0.55;background-color: grey'>
         <div class="double-bounce1"></div>
@@ -63,7 +66,8 @@
                 Please give us more information to help us serve you better. (Mandatory)
             </div>
 
-            <div class="panel-heading franchisee1" id="signup_form_title"><h4 style="margin-bottom: 0px; color: #fff;">Update Personal Details</h4></div>
+            <div class="panel-heading franchisee1" id="signup_form_title"><h4 style="margin-bottom: 0px; color: #fff;">
+                Update Personal Details</h4></div>
             <div class="panel-body" id="signup_form_body">
 
                 <form class="text-left" class="form-horizontal" id="signup_form">
@@ -82,13 +86,15 @@
                         <div class="form-group">
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                 <label>Address:*</label>
-                                <input type="text" class="form-control" id="address" name="address" required maxlength="40">
+                                <input type="text" class="form-control" id="address" name="address" required
+                                       maxlength="40">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                                 <label>Shipping Address:*</label>
-                                <input type="text" class="form-control" id="shipping_address" name="shipping_address" pattern="[A-Za-z0-9]" title="No quotes allowed" required>
+                                <input type="text" class="form-control" id="shipping_address" name="shipping_address"
+                                       pattern="[A-Za-z0-9]" title="No quotes allowed" required>
                             </div>
                         </div>
 
@@ -112,7 +118,7 @@
                         <div class="form-group">
                             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                                 <label>State:*</label>
-                                <select class="form-control" id="state" name="state" >
+                                <select class="form-control" id="state" name="state">
                                 </select>
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
@@ -130,27 +136,77 @@
                             </div>
                             <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                                 <label>Confirm Password:*</label>
-                                <input type="password" class="form-control" id="password2" name="password2" required oninput="passwordval()">
+                                <input type="password" class="form-control" id="password2" name="password2" required
+                                       oninput="passwordval()">
                             </div>
                             <span id="error" style="color :red;display: block;margin-right: 10%;float:right"></span>
                         </div>
                     </div>
 
-                    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center" style="margin-top: 2%;margin-left: 1.6%;">
-                        <button type="button" class="shortcode_button btn_small btn_type1" id="complete_signup">COMPLETE ORDER</button>
+                    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center"
+                         style="margin-top: 2%;margin-left: 1.6%;">
+                        <button type="button" class="shortcode_button btn_small btn_type1" id="complete_signup">COMPLETE
+                            ORDER
+                        </button>
                     </div>
                 </form>
 
             </div>
             <div class="alert alert-warning" id="success_payment">
-                <strong>Success!</strong> Thanks for registering. You will receive an e-mail from us shortly. For any queries please call our customer care
+                <strong>Success!</strong> Thanks for registering. You will receive an e-mail from us shortly. For any
+                queries please call our customer care
             </div>
         </div>
-    </div><br><br><br>
+    </div>
+    <br><br><br>
 
 </div>
 
+<script type="text/javascript">
+    $(document).ready(function()
+    {
 
+
+        var orderNumber = "{{orderNumber}}";
+        var amount = "{{amount}}";
+        var sku = "{{sku}}";
+        var pName = "{{pName}}";
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                        (i[r].q = i[r].q || []).push(arguments)
+                    }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+
+        ga('create', 'UA-102352169-1', 'none');
+        ga('send', 'ecommerce');
+        ga('require', 'ecommerce', 'ecommerce.js');
+        ga('ecommerce:addTransaction', {
+            'id': orderNumber,                     // Transaction ID. Required.
+            'affiliation': 'JustBooks',   // Affiliation or store name.
+            'revenue': amount,               // Grand Total.
+            'shipping': '0',                  // Shipping.
+            'tax': '0'                     // Tax.
+        });
+
+        ga('ecommerce:addItem', {
+            'id': orderNumber,                     // Transaction ID. Required.
+            'name': pName,    // Product name. Required.
+            'sku': sku,                 // SKU/code.
+            'category': 'Signup',         // Category or variation.
+            'price': amount,                 // Unit price.
+            'quantity': '1'                   // Quantity.
+        });
+        ga('ecommerce:send');
+
+    });
+</script>
 
 <script>
     var room = 1;
@@ -162,7 +218,6 @@
 
         objTo.appendChild(divtest)
     }
-
 
 
 </script>
@@ -184,14 +239,13 @@
     var reg_fee;
     var secDeposit;
     $(document).ready(function () {
-        logClick("Signup Confirm","Signup Final","{{orderid}}");
+        logClick("Signup Confirm", "Signup Final", "{{orderid}}");
 
         $('#success_payment').hide();
         $('header nav ul.menu > li #plans').addClass('current-menu-parent');
 
 
-
-        $('#checkbox').click(function(){
+        $('#checkbox').click(function () {
             $("#signupBtn").attr("disabled", !this.checked);
         });
 
@@ -203,7 +257,6 @@
             yearRange: "-100:+0"
         }).val();
     });
-
 
 
     $.ajax({
@@ -226,7 +279,6 @@
     $('#complete_signup').click(function (e) {
 
         e.preventDefault();
-
 
 
         if ($("#firstnameForm").val() == "") {
@@ -258,34 +310,40 @@
         }
 
 
-
         if ($("#password1").val() !== $("#password2").val()) {
             toastr.error("Passwords do not match");
             return false;
         }
-        if ($("#password1").val() <6 ) {
+        if ($("#password1").val() < 6) {
             toastr.error("Password is too short");
             return false;
         }
-        if ($("#password2").val() <6 ) {
+        if ($("#password2").val() < 6) {
             toastr.error("Password is too short");
             return false;
         }
         $("#error").hide();
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                        (i[r].q = i[r].q || []).push(arguments)
+                    }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-        ga('create', 'UA-93821751-1', 'none');
+        ga('create', 'UA-102352169-1', 'none');
 
-        ga('send', 'event', 'Clicks', 'Signup of user '+username+'', 'First Screen');
+        ga('send', 'event', 'Clicks', 'Signup of user ' + username + '', 'First Screen');
 
         var signup_data = $('#signup_form').serialize();
 
         $(".spinner").show();
         var orderid = $('#franchiseeDiv').attr('data-orderid');
-        signup_data += '&orderid='+orderid;
+        signup_data += '&orderid=' + orderid;
         $('#complete_signup').hide();
         $.ajax({
             type: "POST",
@@ -295,7 +353,7 @@
 
                 $(".spinner").hide();
                 $("#payment_approved").hide();
-                $("#signup_form :input").attr("disabled",true);
+                $("#signup_form :input").attr("disabled", true);
 
                 console.log(data_new)
                 logClick("Sign up click")
@@ -305,11 +363,11 @@
 //                    window.location.href = "/"
                     $.ajax({
                         type: "GET",
-                        url: "/signup_updateorderid?orderid="+orderid,
-                        success: function(data){
-                            if(data == 'success') {
+                        url: "/signup_updateorderid?orderid=" + orderid,
+                        success: function (data) {
+                            if (data == 'success') {
 
-                            }else{
+                            } else {
 
                             }
                         }
@@ -318,7 +376,7 @@
                 else {
                     $('#complete_signup').show();
                     console.log(data_new['errors'])
-                    var errorString=data_new['errors'].join()
+                    var errorString = data_new['errors'].join()
                     $("#alertDiv").show();
                     $("#alertMsg").text(errorString);
                     $('html, body').animate({

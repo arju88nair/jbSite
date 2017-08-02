@@ -46,7 +46,7 @@ function getCard(data, visibleCardCount, ids, wishlist, flag) {
 
         response += '<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">' +
             '<div class="item item_shadow">' +
-            '<div class="img_block_books"><a rel="external" data-ajax="false" href="/book_details/' + data[i]['_source'].title_id + '/' + data[i]['_source'].title + '"><img src="' + img + '" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
+            '<div class="img_block_books"><a rel="external" data-ajax="false" href="/' + data[i]['_source'].title.replace(/\s+/g, '-') + '-by-'+ data[i]['_source'].author.replace(/\s+/g, '-') +'/book_details/' + data[i]['_source'].title_id + '"><img src="' + img + '" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
             '<div class="carousel_body_book">' +
             '<div class="carousel_title_book"><h5 title="' + data[i]['_source'].title + '">' + data[i]['_source'].title + '</h5></div>' +
             '<div class="carousel_desc">' +
@@ -88,7 +88,7 @@ function getCardAuthor(data, visibleCardCount) {
 
         response += '<div class="col-xs-5 col-sm-2 col-md-2 col-lg-2">' +
             '<div class="item item_shadow">' +
-            '<div class="img_block_books"><a rel="external" data-ajax="false" href="/author_details/' + data[i]['_source'].author_id + '/' + data[i]['_source'].author_name + '"><img src="' + data[i]['_source'].image_url + '" onerror="this.src=\'../../assets/img/user.png\'"></a></div>' +
+            '<div class="img_block_books"><a rel="external" data-ajax="false" href="/Books-by-' + data[i]['_source'].author_name.replace(/\s+/g, '-') + '/author_details/' + data[i]['_source'].author_id + '"><img src="' + data[i]['_source'].image_url + '" onerror="this.src=\'../../assets/img/user.png\'"></a></div>' +
             '<div class="carousel_body_author">' +
             '<div class="carousel_title_author"><h5 title="' + data[i]['_source'].author_name + '">' + data[i]['_source'].author_name + '</h5></div>' +
             '<div class="carousel_desc">' +
@@ -115,10 +115,9 @@ function getCardAuthor(data, visibleCardCount) {
 
 $(document).ready(function () {
 
-
     // Instantiate the Bootstrap carousel
 
-
+        document.title = 'JustBooks | Book Rental Library Service | Subscribe Rent Read| Education Reference | Genres Fiction Non-Fiction Kids Teens Children\'s Comics Classics Regional Business Management | Popular Authors| Popular Titles| New Releases | Bestsellers | Reviews';
     // for every slide in carousel, copy the next slide's item in the slide.
     // Do the same for the next, next item.
     $('.multi-item-carousel .item').each(function () {
@@ -251,8 +250,14 @@ $(document).ready(function () {
             $("#frame_blog").hide();
             $("#loader_blog").hide();
             data = JSON.parse(data);
+            var w = window.outerWidth;
 
-            for (var i = 0; i < data.length; i++) {
+            if (w < 750) {
+                var no_of_blog = 1;
+            } else {
+                var no_of_blog = data.length;
+            }
+            for (var i = 0; i < no_of_blog; i++) {
                 $("#blogDiv").append(
                     '<div class="col-xs-11 col-sm-4 col-md-4 col-lg-4 ">' +
                     '<div class="img_block wrapped_img"><img style="width: 100%;height: 17em;" src="' + data[i]['IMAGE'] + '" alt="" width="270" height="170"></div>' +

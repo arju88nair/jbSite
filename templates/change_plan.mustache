@@ -490,7 +490,7 @@
                 m.parentNode.insertBefore(a, m)
             })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-            ga('create', 'UA-93821751-1', 'none');
+            ga('create', 'UA-102352169-1', 'none');
             ga('send', 'event', 'Clicks', 'Change Plan', 'First Screen');
             var planid = $('.planid').attr('id');
             var email = localStorage.getItem("email");
@@ -514,10 +514,11 @@
             var membership = localStorage.getItem("membership");
             var signupID = parseInt($('.planID').attr('id'));
             logClick("Change plan Confirm","Change plan Confirm",membership);
+            var planname = "{{planname}}";
 
             $.ajax({
                 type: "GET",
-                url: "/change_plan_payment?term=" + terms + "&new_plan_id=" + signupID + "&coupon_code=" + coupon + "&gift_card_no=" + gift + "&delFee="+delFee+"&flag="+falg,
+                url: "/change_plan_payment?term=" + terms + "&new_plan_id=" + signupID + "&coupon_code=" + coupon + "&gift_card_no=" + gift + "&delFee="+delFee+"&flag="+falg+"&planname="+planname,
                 crossDomain: true,
                 success: function (data_new) {
                     console.log(data_new);

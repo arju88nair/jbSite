@@ -81,7 +81,7 @@ $app->get('/', function (Request $request, Response $response) {
     }
 
 
-    $Categories=categoriesList($con);
+    $Categories = categoriesList($con);
     $slider = 1;
     $image1 = $final_data[0]['IMAGE_URL_1'];
 //    $image2 = $final_data[0]['IMAGE_URL_2'];
@@ -108,7 +108,7 @@ $app->get('/', function (Request $request, Response $response) {
     return $response;
 });
 
-$app->get('/book_details/{titleid}/{name}', function (Request $request, Response $response, $args) {
+$app->get('/{name}/book_details/{titleid}', function (Request $request, Response $response, $args) {
     $titleid = $args['titleid'];
 //    $result1 = curlFunction("8990/api/v1/title_info.json?title_id=$titleid");
 //    $result1 = str_replace("NaN", 0, $result1);
@@ -167,7 +167,7 @@ $app->get('/book_details/{titleid}/{name}', function (Request $request, Response
     }
     $con = $this->db;
 
-        $Categories=categoriesList($con);
+    $Categories = categoriesList($con);
 
     $query_rate = "select * from webstore.rates where rateable_id=$titleid and rater_id=(select id from webstore.users where email='$email')";
     $result_rate = oci_parse($con, $query_rate);
@@ -265,7 +265,7 @@ $app->get('/book_details/{titleid}/{name}', function (Request $request, Response
     return $response;
 })->setName('book_details/');
 */
-$app->get('/author_details/{authorid}/{name}', function (Request $request, Response $response, $args) {
+$app->get('/{name}/author_details/{authorid}', function (Request $request, Response $response, $args) {
     $authorid = $args['authorid'];
 //    $con = $this->db;
 //    $final_data = [];
@@ -296,7 +296,7 @@ $app->get('/author_details/{authorid}/{name}', function (Request $request, Respo
 
     $con = $this->db;
 
-        $Categories=categoriesList($con);
+    $Categories = categoriesList($con);
 
 
     $response = $this->view->render($response, 'author_details.mustache', array('data' => $data, 'id' => $authorid, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories));
@@ -326,7 +326,7 @@ $app->get('/search', function (Request $request, Response $response) {
     }
     $con = $this->db;
 
-        $Categories=categoriesList($con);
+    $Categories = categoriesList($con);
 
 
     $response = $this->view->render($response, 'search.mustache', array('data' => $data, 'query' => ucfirst($query), 'count' => $count, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories));
@@ -348,7 +348,7 @@ $app->get('/shelf', function (Request $request, Response $response) {
     }
     $con = $this->db;
 
-        $Categories=categoriesList($con);
+    $Categories = categoriesList($con);
 
 
     $response = $this->view->render($response, 'shelf.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories));
@@ -436,12 +436,12 @@ $app->get('/getChangePlanFees', function (Request $request, Response $response) 
             foreach ($item['change_plan_detail']['plan_durations'] as $plans) {
 
                 if ($plans['plan_duration']['change_plan_months'] == $months) {
-                    $delFee=$plans['plan_duration']['delivery_fees'];
-                    if($delFee == null ||$delFee == 0){
-                        $delFee=0;
+                    $delFee = $plans['plan_duration']['delivery_fees'];
+                    if ($delFee == null || $delFee == 0) {
+                        $delFee = 0;
                     }
 
-                    echo json_encode(array("total" => $plans['plan_duration']['payable_amount'], 'reading_fee' => $item['change_plan_detail']['reading_fee'], 'available_balance' => $item['change_plan_detail']['available_balance'], 'balance_due' => $item['change_plan_detail']['balance_due'],'delFee'=>$delFee));
+                    echo json_encode(array("total" => $plans['plan_duration']['payable_amount'], 'reading_fee' => $item['change_plan_detail']['reading_fee'], 'available_balance' => $item['change_plan_detail']['available_balance'], 'balance_due' => $item['change_plan_detail']['balance_due'], 'delFee' => $delFee));
                     die;
 
                 }
@@ -808,10 +808,13 @@ $app->get('/signup_details', function (Request $request, Response $response) {
     }
     $con = $this->db;
 
-        $Categories=categoriesList($con);
+    $Categories = categoriesList($con);
+    $orderNumber= $_SESSION['order_number'];
+    $amount=(float) $_SESSION['amount'];
+    $sku= $_SESSION['SKU'];
+    $pNmae= $_SESSION['planname'];
 
-
-    return $this->view->render($response, 'signup_details.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories, 'orderid' => $orderid));
+    return $this->view->render($response, 'signup_details.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories, 'orderid' => $orderid,'orderNumber'=>$orderNumber,'amount'=>$amount,'sku'=>$sku,'pName'=>$pNmae));
     return $response;
 });
 
@@ -917,11 +920,14 @@ $app->post('/insertSignupNew', function (Request $request, Response $response) {
     $con = $this->db;
     $data = $request->getParsedBody();
     $data_new = json_decode($data['signup_data']);
+    $pName = $data['name'];
     parse_str($data_new, $output);
     $zip = valData($output['zip']);
     $email = valData($output['email']);
     $mobile = valData($output['mobile']);
     $plan_id = valData($output['plan_id']);
+    $_SESSION['planname'] = $pName;
+    $_SESSION['SKU'] = "SIGNUP-" . $pName."_" . $plan_id;
     $duration = valData($output['duration']);
     $coupon_code = valData($output['coupon_code']);
     $_SESSION['mobile'] = $mobile;
@@ -975,15 +981,15 @@ $app->post('/giftcardValidate', function (Request $request, Response $response) 
 });
 
 $app->get('/getWishList', function (Request $request, Response $response) {
-    if(!isset($_SESSION['membership_no']))
-    {
-        echo json_encode(false);die;
+    if (!isset($_SESSION['membership_no'])) {
+        echo json_encode(false);
+        die;
     }
     $membership_no = $_SESSION['membership_no'];
     $api_key = $_SESSION['api_key'];
     $email = $_SESSION['email'];
     $con = $this->db;
-    $ratedata=ratedata($con);
+    $ratedata = ratedata($con);
 
     $result = curlFunctionEs("/getWishList?membership_no=$membership_no");
 //    $wishlist = wishlistIds();
@@ -1006,15 +1012,15 @@ $app->post('/removeWishList', function (Request $request, Response $response) {
 });
 
 $app->get('/getOrderList', function (Request $request, Response $response) {
-    if(!isset($_SESSION['membership_no']))
-    {
-        echo json_encode(false);die;
+    if (!isset($_SESSION['membership_no'])) {
+        echo json_encode(false);
+        die;
     }
     $membership_no = $_SESSION['membership_no'];
     $api_key = $_SESSION['api_key'];
     $email = $_SESSION['email'];
     $con = $this->db;
-     $ratedata=ratedata($con);
+    $ratedata = ratedata($con);
 
 
     $result = curlFunctionEs("/getOrderList?membership_no=$membership_no");
@@ -1023,16 +1029,15 @@ $app->get('/getOrderList', function (Request $request, Response $response) {
 });
 
 $app->get('/getCurrentReading', function (Request $request, Response $response) {
-    if(!isset($_SESSION['membership_no']))
-    {
-        echo json_encode(false);die;
+    if (!isset($_SESSION['membership_no'])) {
+        echo json_encode(false);
+        die;
     }
     $membership_no = $_SESSION['membership_no'];
     $api_key = $_SESSION['api_key'];
     $email = $_SESSION['email'];
     $con = $this->db;
-    $ratedata=ratedata($con);
-
+    $ratedata = ratedata($con);
 
 
 //    $result = curlFunction("books_at_home.json?membership_no=$membership_no&api_key=$api_key&email=$email");
@@ -1053,16 +1058,16 @@ $app->post('/placePickup', function (Request $request, Response $response) {
 });
 
 $app->get('/getPickupList', function (Request $request, Response $response) {
-    if(!isset($_SESSION['membership_no']))
-    {
-        echo json_encode(false);die;
+    if (!isset($_SESSION['membership_no'])) {
+        echo json_encode(false);
+        die;
     }
     $membership_no = $_SESSION['membership_no'];
     $api_key = $_SESSION['api_key'];
     $email = $_SESSION['email'];
 
     $con = $this->db;
-    $ratedata=ratedata($con);
+    $ratedata = ratedata($con);
 
     $result = curlFunctionEs("/getPickupRequest?membership_no=$membership_no");
     $wishlist = wishlistIds();
@@ -1097,9 +1102,9 @@ $app->get('/getMyProfile', function (Request $request, Response $response) {
 });
 
 $app->get('/getSubscription', function (Request $request, Response $response) {
-    if(!isset($_SESSION['membership_no']))
-    {
-        echo json_encode(false);die;
+    if (!isset($_SESSION['membership_no'])) {
+        echo json_encode(false);
+        die;
     }
 //    if ((isset($_SESSION['subscription']))) {
 //        $subsArray = $_SESSION['subscription'];
@@ -1158,13 +1163,12 @@ $app->get('/getSubscription', function (Request $request, Response $response) {
     if (isset($_SESSION['rentedBool']))
         $isset = $_SESSION['rentedBool'];
     if ($isset == "0" && $isset == false) {
-        $delFee=0;
+        $delFee = 0;
+    } else {
+        $delFee = 50;
     }
-    else{
-        $delFee=50;
-    }
-    $final_result['delFee']=$delFee;
-    $final_result['delivery']=$isset;
+    $final_result['delFee'] = $delFee;
+    $final_result['delivery'] = $isset;
     $_SESSION['subscription'] = $final_result;
 
     echo json_encode($final_result);
@@ -1191,8 +1195,8 @@ $app->get('/placeOrder', function (Request $request, Response $response, $args) 
         echo json_encode('NoDelivery');
         die;
     }
-    $con=$this->db;
-    $query="select stock from fn_stock where titleid=$titleid";
+    $con = $this->db;
+    $query = "select stock from fn_stock where titleid=$titleid";
     $result_rate = oci_parse($con, $query);
     oci_execute($result_rate);
     $dataAr = [];
@@ -1200,9 +1204,9 @@ $app->get('/placeOrder', function (Request $request, Response $response, $args) 
 
         $dataAr[] = $data['STOCK'];
     }
-    if($dataAr[0] == "0" || $dataAr[0] == null || $dataAr[0] == "")
-    {
-        echo json_encode("NoStock");die;
+    if ($dataAr[0] == "0" || $dataAr[0] == null || $dataAr[0] == "") {
+        echo json_encode("NoStock");
+        die;
     }
 
     if ($membership_no == "" && empty($membership_no) || !isset($_SESSION['membership_no'])) {
@@ -1291,11 +1295,10 @@ $app->get('/login/{username}/{password}', function (Request $request, Response $
         $array = [];
 
         $memberData = json_decode($raw_data);
-        if(sizeof($memberData) == 0)
-{
-    echo json_encode(0);
-    die;
-}
+        if (sizeof($memberData) == 0) {
+            echo json_encode(0);
+            die;
+        }
         foreach ($memberData as $item) {
             if ($item->MEMBERSHIP_NO == $arr[0]['membership_no']) {
                 $_SESSION['rentedBool'] = $item->DELIVERY_OPTION;
@@ -1479,8 +1482,8 @@ $app->get('/change_plan', function (Request $request, Response $response, $args)
     $planname = $allGetVars['planname'];
     if (isset($_SESSION['rentedBool']))
         $isset = $_SESSION['rentedBool'];
-   else
-       $isset=0;
+    else
+        $isset = 0;
     $con = $this->db;
 //    if(isset($_SESSION['branchID']))
 //    {
@@ -1577,9 +1580,9 @@ $app->get('/change_plan', function (Request $request, Response $response, $args)
             foreach ($item['change_plan_detail']['plan_durations'] as $plans) {
                 if ($plans['plan_duration']['change_plan_months'] == $months) {
 
-                    $delFee=$plans['plan_duration']['delivery_fees'];
-                    if($delFee == null ||$delFee == 0){
-                        $delFee=0;
+                    $delFee = $plans['plan_duration']['delivery_fees'];
+                    if ($delFee == null || $delFee == 0) {
+                        $delFee = 0;
                     }
                     if (isset($_SESSION['username'])) {
                         $flag = 1;
@@ -1602,7 +1605,7 @@ $app->get('/change_plan', function (Request $request, Response $response, $args)
                         $Categories[] = $rowCat;
                     }
 
-                    $response = $this->view->render($response, 'change_plan.mustache', array('plan_data' => strtoupper($planname), 'plan_dataJ' => json_encode($array_data), 'planid' => $planid, 'plan_books' => $count, 'planname' => $planname, 'planid' => $planid, "available_balance" => $item['change_plan_detail']['available_balance'], 'balance_due' => $item['change_plan_detail']['balance_due'], 'reading_fee' => $item['change_plan_detail']['reading_fee'], 'totalAMount' => $plans['plan_duration']['payable_amount'], 'months' => $monthsArray, 'book' => $books, 'month' => $months, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories, 'monthTag' => $monthTag,'delFee'=>$delFee,'isset'=>(int)$isset));
+                    $response = $this->view->render($response, 'change_plan.mustache', array('plan_data' => strtoupper($planname), 'plan_dataJ' => json_encode($array_data), 'planid' => $planid, 'plan_books' => $count, 'planname' => $planname, 'planid' => $planid, "available_balance" => $item['change_plan_detail']['available_balance'], 'balance_due' => $item['change_plan_detail']['balance_due'], 'reading_fee' => $item['change_plan_detail']['reading_fee'], 'totalAMount' => $plans['plan_duration']['payable_amount'], 'months' => $monthsArray, 'book' => $books, 'month' => $months, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories, 'monthTag' => $monthTag, 'delFee' => $delFee, 'isset' => (int)$isset));
                     return $response;
 
                 }
@@ -2020,7 +2023,7 @@ $app->get('/faq', function (Request $request, Response $response) {
 
     $con = $this->db;
 
-        $Categories=categoriesList($con);
+    $Categories = categoriesList($con);
 
     return $this->view->render($response, 'faq.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories));
 
@@ -2041,7 +2044,7 @@ $app->get('/privacy_policy', function (Request $request, Response $response) {
 
     $con = $this->db;
 
-        $Categories=categoriesList($con);
+    $Categories = categoriesList($con);
 
     return $this->view->render($response, 'privacy_policy.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories));
 
@@ -2063,7 +2066,7 @@ $app->get('/contactUs', function (Request $request, Response $response) {
 
     $con = $this->db;
 
-        $Categories=categoriesList($con);
+    $Categories = categoriesList($con);
 
     return $this->view->render($response, 'contactUs.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories));
 
@@ -2083,7 +2086,7 @@ $app->get('/franchise', function (Request $request, Response $response) {
     }
     $con = $this->db;
 
-        $Categories=categoriesList($con);
+    $Categories = categoriesList($con);
 
     return $this->view->render($response, 'franchise.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories));
 
@@ -2131,15 +2134,15 @@ $app->post('/submitReview', function (Request $request, Response $response) {
 
 
 $app->get('/rentalHistory', function (Request $request, Response $response) {
-    if(!isset($_SESSION['membership_no']))
-    {
-        echo json_encode(false);die;
+    if (!isset($_SESSION['membership_no'])) {
+        echo json_encode(false);
+        die;
     }
     $mail = $_SESSION['email'];
     $membership_no = $_SESSION['membership_no'];
     $api_key = $_SESSION['api_key'];
     $con = $this->db;
-    $ratedata=ratedata($con);
+    $ratedata = ratedata($con);
 
     if ($membership_no == "" && empty($membership_no) || !isset($_SESSION['membership_no'])) {
         return json_encode("failure");
@@ -2174,7 +2177,7 @@ $app->get('/adminCardsView', function (Request $request, Response $response) {
     }
     $con = $this->db;
 
-        $Categories=categoriesList($con);
+    $Categories = categoriesList($con);
 
     return $this->view->render($response, 'adminCards.mustache', array('data' => $data, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories));
 
@@ -2282,7 +2285,7 @@ $app->get('/adminBlogs', function (Request $request, Response $response) {
     }
     $con = $this->db;
 
-        $Categories=categoriesList($con);
+    $Categories = categoriesList($con);
 
     return $this->view->render($response, 'adminBlog.mustache', array('data' => $data, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories));
 
@@ -2351,7 +2354,7 @@ $app->get('/break', function (Request $request, Response $response) {
     }
     $con = $this->db;
 
-        $Categories=categoriesList($con);
+    $Categories = categoriesList($con);
 
     return $this->view->render($response, 'break.mustache', array('data' => $result, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories));
 
@@ -2616,29 +2619,56 @@ $app->get('/getStatusDelivery', function (Request $request, Response $response) 
 
     $params = $request->getQueryParams();
     $id = $params['id'];
-
     $membership_no = $_SESSION['membership_no'];
     $api_key = $_SESSION['api_key'];
     $email = $_SESSION['email'];
+
     $raw_data = curlFunction("get_order_details_for_mobile.json?email=$email&api_key=$api_key&membership_no=$membership_no&order_id=$id");
     $data = json_decode($raw_data);
     $data = $data->result;
     $data = json_decode(json_encode($data), True);
 //    echo json_encode($data);die;
     if (!isset($data['order_details'])) {
-        echo json_encode("In Progress");
+        echo json_encode("In progress !");
         die;
     }
     if ($data['order_details'] == "Member Order Not Found") {
-    	echo json_encode("In Progress");
-    	die;
+        echo json_encode("In progress !");
+        die;
+    }
+    if ($data['order_details'] == "Under process") {
+        echo json_encode("In progress !");
+        die;
+    }
+    if ($data['order_details'] == "Fulfilled") {
+        echo json_encode("In progress !");
+        die;
+    }
+    if ($data['order_details'] == "Order is being Processed") {
+        echo json_encode("In progress !");
+        die;
+    }
+    if ($data['order_details'] == "Received at Cluster") {
+        echo json_encode("In progress !");
+        die;
+    }
+    if ($data['order_details'] == "Purchase Order Placed") {
+        echo json_encode("In progress !");
+        die;
+    }
+    if (!strpos("Order is assigned to", $data['order_details'])) {
+        echo json_encode("In progress !");
+        die;
+    }
+    if (!strpos("Confirmed Availability. Dispatched to", $data['order_details'])) {
+        echo json_encode("In progress !");
+        die;
     }
     echo json_encode($data['order_details'][0]['message']);
     die;
 
 
 });
-
 $app->get('/getShelfRecommendedBooks', function (Request $request, Response $response) {
 
     $membership_no = $_SESSION['membership_no'];
@@ -2732,7 +2762,7 @@ $app->get('/users/password/edit', function (Request $request, Response $response
 
     $con = $this->db;
 
-        $Categories=categoriesList($con);
+    $Categories = categoriesList($con);
 
     if (isset($_SESSION['username'])) {
         $flag = 1;
@@ -2767,7 +2797,7 @@ $app->get('/store-locator', function (Request $request, Response $response) {
 
     $con = $this->db;
 
-        $Categories=categoriesList($con);
+    $Categories = categoriesList($con);
 
 
     return $this->view->render($response, 'store_location.mustache', array('flag' => (int)$flag, 'slider' => (int)$slider, 'name' => $name, 'cat' => $Categories));
@@ -2832,7 +2862,7 @@ $app->post('/insertFranchisee', function (Request $request, Response $response) 
     $ticket = rand();
     $description = $_POST['description'];
     $con = $this->db;
-    $query = "insert into webstore.franchise_enquiries (NAME,EMAIL,CONTACT_NO,TICKET,CREATED_AT,UPDATED_AT,CITY,LOCATION) values('$fname$lname','$email','$phone','$ticket',sysdate,sysdate,'$city','$city') ";
+    $query = "insert into webstore.franchise_enquiries (ID,NAME,EMAIL,CONTACT_NO,TICKET,CREATED_AT,UPDATED_AT,CITY,LOCATION) values(webstore.FRANCHISE_ENQUIRIES_SEQ.NEXTVAL,'$fname$lname','$email','$phone','$ticket',sysdate,sysdate,'$city','$city') ";
     $compiled = oci_parse($con, $query);
     $res = oci_execute($compiled);
     if ($res) {
@@ -2896,9 +2926,9 @@ $app->get('/getChangePlanYears', function (Request $request, Response $response)
 
 });
 $app->get('/getProfileDetails', function (Request $request, Response $response) {
-    if(!isset($_SESSION['membership_no']))
-    {
-        echo json_encode(false);die;
+    if (!isset($_SESSION['membership_no'])) {
+        echo json_encode(false);
+        die;
     }
     $membership = $_SESSION['membership_no'];
 
@@ -2932,7 +2962,7 @@ $app->get('/terms-and-condition', function (Request $request, Response $response
     }
     $con = $this->db;
 
-        $Categories=categoriesList($con);
+    $Categories = categoriesList($con);
 
 
     return $this->view->render($response, 'terms.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories));
@@ -2974,6 +3004,8 @@ $app->get('/confirm_renewal', function (Request $request, Response $response) {
     $qc_flag = $_GET['qc_flag'];
     $redeemed_amount = $_GET['redeemed_amount'];
     $pin = $_GET['pin'];
+    $_SESSION['SKU'] = "Renewal - " . $plan_id;
+    $_SESSION['planname'] = "Renewal";
 
 
     $membership_no = $_SESSION['membership_no'];
@@ -3009,8 +3041,9 @@ $app->get('/confirm_sh', function (Request $request, Response $response) {
     $paid_amount = $_GET['paid_amount'];
     $payable_amount = $_GET['payable_amount'];
 
-
     $membership_no = $_SESSION['membership_no'];
+    $_SESSION['SKU'] = "Break - " . $membership_no;
+    $_SESSION['planname'] = "Take a break";
     $api_key = $_SESSION['api_key'];
     $email = $_SESSION['email'];
     $raw_data = curlFunction("confirm_sh.json?email=$email&membercard=$membership_no&no_of_months=$no_of_months&holiday_start_date=$holiday_start_date&created_in=810&holiday_end_date=$holiday_end_date&paid_amount=$paid_amount&payable_amount=$payable_amount");
@@ -3025,9 +3058,11 @@ $app->get('/change_plan_payment', function (Request $request, Response $response
     $new_plan_id = $_GET['new_plan_id'];
     $coupon_code = $_GET['coupon_code'];
     $gift_card_no = $_GET['gift_card_no'];
+    $pname = $_GET['planname'];
     $delFee = $_GET['delFee'];
     $flag = $_GET['flag'];
-
+    $_SESSION['SKU'] ="Upgrade - ".$pname."_".$new_plan_id ;
+    $_SESSION['planname'] = "Upgrade";
 
     $membership_no = $_SESSION['membership_no'];
     $api_key = $_SESSION['api_key'];
@@ -3117,7 +3152,7 @@ $app->get('/searchByCategory', function (Request $request, Response $response) {
     }
     $con = $this->db;
 
-        $Categories=categoriesList($con);
+    $Categories = categoriesList($con);
 
     return $this->view->render($response, 'catSearch.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories, 'data' => $data, 'ids' => $ids, 'count' => count($data)));
 
@@ -3196,9 +3231,8 @@ $app->get('/getReview', function (Request $request, Response $response) {
 function categoriesList($con)
 {
 
-    if(isset($_SESSION['categories']))
-    {
-        $cat=$_SESSION['categories'];
+    if (isset($_SESSION['categories'])) {
+        $cat = $_SESSION['categories'];
         return $cat;
     }
     $queryCat = "SELECT id,name FROM categories order by name";
@@ -3213,16 +3247,13 @@ function categoriesList($con)
 }
 
 
-
-
 function ratedata($con)
 {
-    if(isset($_SESSION['review']))
-    {
-        $review=$_SESSION['review'];
+    if (isset($_SESSION['review'])) {
+        $review = $_SESSION['review'];
         return $review;
     }
-    $email=$_SESSION['email'];
+    $email = $_SESSION['email'];
     $query_rate = "select * from webstore.rates where  rater_id=(select id from webstore.users where email='$email')";
     $result_rate = oci_parse($con, $query_rate);
     oci_execute($result_rate);
@@ -3235,6 +3266,10 @@ function ratedata($con)
 
     return $ratedata;
 }
+
+
+
+
 $app->run();
 
 ?>

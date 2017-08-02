@@ -749,8 +749,9 @@
         font-size: 18px !important
     }
 
-    .carousel-control.left, .carousel-control.right {
-        display: none !important
+    .carousel-control.left {
+        left: 25px;
+
     }
 
     .smallnav .logo {
@@ -952,8 +953,9 @@
         font-size: 18px !important
     }
 
-    .carousel-control.left, .carousel-control.right {
-        display: none !important
+    .carousel-control.left {
+        left: 25px;
+
     }
 
     .smallnav .logo {
@@ -1578,8 +1580,9 @@
         font-size: 18px !important
     }
 
-    .carousel-control.left, .carousel-control.right {
-        display: none !important
+    .carousel-control.left {
+        left: 25px;
+
     }
 
     .smallnav .logo {
@@ -1768,8 +1771,9 @@
         font-size: 18px !important
     }
 
-    .carousel-control.left, .carousel-control.right {
-        display: none !important
+    .carousel-control.left {
+        left: 25px;
+
     }
 
     .smallnav .logo {
@@ -1962,8 +1966,9 @@
         font-size: 18px !important
     }
 
-    .carousel-control.left, .carousel-control.right {
-        display: none !important
+    .carousel-control.left {
+        left: 25px;
+
     }
 
     .smallnav .logo {
@@ -2157,8 +2162,9 @@
         font-size: 18px !important
     }
 
-    .carousel-control.left, .carousel-control.right {
-        display: none !important
+    .carousel-control.left {
+        left: 25px;
+
     }
 
     .smallnav .logo {
@@ -2351,8 +2357,9 @@
         font-size: 18px !important
     }
 
-    .carousel-control.left, .carousel-control.right {
-        display: none !important
+    .carousel-control.left {
+        left: 25px;
+
     }
 
     .smallnav .logo {
@@ -2545,8 +2552,9 @@
         font-size: 18px !important
     }
 
-    .carousel-control.left, .carousel-control.right {
-        display: none !important
+    .carousel-control.left {
+        left: 25px;
+
     }
 
     .smallnav .logo {
@@ -2738,8 +2746,9 @@
         font-size: 18px !important
     }
 
-    .carousel-control.left, .carousel-control.right {
-        display: none !important
+    .carousel-control.left {
+        left: 25px;
+
     }
 
     .smallnav .logo {
@@ -2933,8 +2942,9 @@
         font-size: 18px !important
     }
 
-    .carousel-control.left, .carousel-control.right {
-        display: none !important
+    .carousel-control.left {
+        left: 25px;
+
     }
 
     .smallnav .logo {
@@ -5030,35 +5040,35 @@ a.menu_toggler {
         background-size: 6px 10px
     }
 
-    .contentarea ul.list_type1 li:before, ul.sitemap_list li:before {
-        background: url(../img/retina/marker_list1.png) no-repeat;
-        background-size: 8px 11px
-    }
+    /*.contentarea ul.list_type1 li:before, ul.sitemap_list li:before {*/
+    /*background: url(../img/retina/marker_list1.png) no-repeat;*/
+    /*background-size: 8px 11px*/
+    /*}*/
 
-    .contentarea ul.list_type2 li:before {
-        background: url(../img/retina/marker_list2.png) no-repeat;
-        background-size: 9px 11px
-    }
+    /*.contentarea ul.list_type2 li:before {*/
+    /*background: url(../img/retina/marker_list2.png) no-repeat;*/
+    /*background-size: 9px 11px*/
+    /*}*/
 
-    .contentarea ul.list_type3 li:before {
-        background: url(../img/retina/marker_list3.png) no-repeat;
-        background-size: 8px 11px
-    }
+    /*.contentarea ul.list_type3 li:before {*/
+    /*background: url(../img/retina/marker_list3.png) no-repeat;*/
+    /*background-size: 8px 11px*/
+    /*}*/
 
-    .contentarea ul.list_type4 li:before {
-        background: url(../img/retina/marker_list4.png) no-repeat;
-        background-size: 12px 11px
-    }
+    /*.contentarea ul.list_type4 li:before {*/
+    /*background: url(../img/retina/marker_list4.png) no-repeat;*/
+    /*background-size: 12px 11px*/
+    /*}*/
 
-    .contentarea ul.list_type5 li:before {
-        background: url(../img/retina/marker_list5.png) no-repeat;
-        background-size: 8px 11px
-    }
+    /*.contentarea ul.list_type5 li:before {*/
+    /*background: url(../img/retina/marker_list5.png) no-repeat;*/
+    /*background-size: 8px 11px*/
+    /*}*/
 
-    .contentarea ul.list_type6 li:before {
-        background: url(../img/retina/marker_list6.png) no-repeat;
-        background-size: 8px 11px
-    }
+    /*.contentarea ul.list_type6 li:before {*/
+    /*background: url(../img/retina/marker_list6.png) no-repeat;*/
+    /*background-size: 8px 11px*/
+    /*}*/
 
     .tp-leftarrow {
         background-image: url(../img/retina/slider_prev.png) !important;
@@ -5080,15 +5090,15 @@ a.menu_toggler {
         background-size: 20px 20px
     }
 
-    .carouselslider ul li .smallproflinks a.tumbler_link:before {
-        background-image: url(../img/retina/icons/ico_carousel_tumbler.png);
-        background-size: 20px 20px
-    }
+    /*.carouselslider ul li .smallproflinks a.tumbler_link:before {*/
+    /*background-image: url(../img/retina/icons/ico_carousel_tumbler.png);*/
+    /*background-size: 20px 20px*/
+    /*}*/
 
-    .carouselslider ul li .smallproflinks a.linkedin_link:before {
-        background-image: url(../img/retina/icons/ico_carousel_linked.png);
-        background-size: 20px 20px
-    }
+    /*.carouselslider ul li .smallproflinks a.linkedin_link:before {*/
+    /*background-image: url(../img/retina/icons/ico_carousel_linked.png);*/
+    /*background-size: 20px 20px*/
+    /*}*/
 
     .carouselslider ul li .smallproflinks a.member_email:before {
         background-image: url(../img/retina/icons/ico_carousel_mail.png);

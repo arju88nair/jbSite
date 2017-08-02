@@ -94,7 +94,7 @@
             }
             response += '<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2" >' +
                     '<div class="item item_shadow">' +
-                    '<div class="img_block_books"><a rel="external" data-ajax="false"  href="/author_details/' + data[i]['_source'].author_id + '/' + data[i]['_source'].author_name + '"><img src="'+data[i]['_source'].image_url+'"  onerror="this.src=\'../../assets/img/user.png\'"></a></div>' +
+                    '<div class="img_block_books"><a rel="external" data-ajax="false"  href="/Books-by-' + data[i]['_source'].author_name.replace(/\s+/g, '-') + '/author_details/' + data[i]['_source'].author_id + '"><img src="'+data[i]['_source'].image_url+'"  onerror="this.src=\'../../assets/img/user.png\'"></a></div>' +
                     '<div class="carousel_body_author">' +
                     '<div class="carousel_title_author"><h5 title="' + data[i]['_source'].author_name + '">' + data[i]['_source'].author_name + '</h5></div>' +
                     '<div class="carousel_desc">' +

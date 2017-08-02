@@ -67,7 +67,7 @@ $(document).ready(function () {
         templates: {
             empty: ['<div class="empty-message text-center">', "No titles found.<br>", '<a rel="external" data-ajax="false" href="/search" class="text-center">More Advanced Search</a>', "</div>"].join("\n"),
             suggestion: function (e) {
-                return console.log(e.link), console.log(e.value), ['<p><a rel="external" data-ajax="false" href="/book_details/' + e.link + "/" + e.value + '">' + e.value + "</a></p>"].join("\n")
+                return console.log(e), console.log(e.value), ['<p><a rel="external" data-ajax="false" href="/' + e.value.replace(/\s+/g, '-') + '/book_details/' + e.link + '">' + e.value + "</a></p>"].join("\n")
             }
         }
     }), $("#shareModal").on("show.bs.modal", function (e) {
@@ -209,7 +209,7 @@ function signupClick() {
                         m.parentNode.insertBefore(a, m)
                     })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-                    ga('create', 'UA-93821751-1', 'none');
+                    ga('create', 'UA-102352169-1', 'none');
                     ga('send', 'event', 'Clicks', 'Login of user ' + username + '', 'First Screen');
 
                     logClick('Login of user ' + username + '','Login',username);
@@ -230,7 +230,7 @@ function signupClick() {
                         m.parentNode.insertBefore(a, m)
                     })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-                    ga('create', 'UA-93821751-1', 'none');
+                    ga('create', 'UA-102352169-1', 'none');
                     ga('send', 'event', 'Clicks', 'Login of user ' + username + '', 'First Screen');
 
                     logClick('Login of user ' + username + '','Login',username);
@@ -318,7 +318,7 @@ function signupClick2() {
                         m.parentNode.insertBefore(a, m)
                     })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-                    ga('create', 'UA-93821751-1', 'none');
+                    ga('create', 'UA-102352169-1', 'none');
                     ga('send', 'event', 'Clicks', 'Login of user ' + username + '', 'First Screen');
 
                     logClick('Login of user ' + username + '','Login',username);
@@ -339,7 +339,7 @@ function signupClick2() {
                         m.parentNode.insertBefore(a, m)
                     })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-                    ga('create', 'UA-93821751-1', 'none');
+                    ga('create', 'UA-102352169-1', 'none');
                     ga('send', 'event', 'Clicks', 'Login of user ' + username + '', 'First Screen');
 
                     logClick('Login of user ' + username + '','Login',username);

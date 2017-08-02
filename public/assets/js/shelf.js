@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    document.title = 'JustBooks | My Bookshelf| Favourite Books| Order Books| Add Books| Deliver Books| Track Books| Subscribe| Recommendations| Most Read';
 
     var id = localStorage.getItem("membership")
     logClick("On load", "Shelf", id);
@@ -40,8 +41,8 @@ $(document).ready(function () {
         url: "/getCurrentReading",
         success: function (data) {
             $(".spinner").hide();
-
             var new_data = JSON.parse(data);
+console.log(new_data)
             if (new_data == false) {
                 toastr.error("Session expired.Please log in to continue!").css('width', '500px');
                 localStorage.clear()
@@ -224,7 +225,7 @@ function getCard(data, visibleCardCount, ids, wishlist) {
 
         response += '<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2 sliderDIv">' +
             '<div class="item item_shadow">' +
-            '<div class="img_block_books"><a rel="external" data-ajax="false" href="/book_details/' + data[i]['_source'].title_id + '/' + data[i]['_source'].title + '"><img src="' + img + '" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
+            '<div class="img_block_books"><a rel="external" data-ajax="false" href="/' + data[i]['_source'].title.replace(/\s+/g, '-') + '-by-'+ data[i]['_source'].author.replace(/\s+/g, '-') +'/book_details/' + data[i]['_source'].title_id + '"><img src="' + img + '" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
             '<div class="carousel_body_book">' +
             '<div class="carousel_title_book"><h5 title="' + data[i]['_source'].title + '">' + data[i]['_source'].title + '</h5></div>' +
             '<div class="carousel_desc">' +
@@ -291,7 +292,7 @@ function getRecommend(data, visibleCardCount, ids, wishlist) {
 
         response += '<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2 sliderDIv">' +
             '<div class="item item_shadow">' +
-            '<div class="img_block_books"><a rel="external" data-ajax="false" href="/book_details/' + data[i]['_source'].title_id + '/' + data[i]['_source'].title + '"><img src="' + img + '" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
+            '<div class="img_block_books"><a rel="external" data-ajax="false" href="/' + data[i]['_source'].title.replace(/\s+/g, '-') + '-by-'+ data[i]['_source'].author.replace(/\s+/g, '-') +'/book_details/' + data[i]['_source'].title_id + '"><img src="' + img + '" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
             '<div class="carousel_body_book">' +
             '<div class="carousel_title_book"><h5 title="' + data[i]['_source'].title + '">' + data[i]['_source'].title + '</h5></div>' +
             '<div class="carousel_desc">' +
@@ -357,7 +358,7 @@ function getCardMostRead(data, visibleCardCount, ids, wishlist) {
 
         response += '<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">' +
             '<div class="item item_shadow">' +
-            '<div class="img_block_books"><a  rel="external" data-ajax="false" href="/book_details/' + data[i]['_source'].title_id + '/' + data[i]['_source'].title + '"><img src="' + img + '" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
+            '<div class="img_block_books"><a  rel="external" data-ajax="false" href="/' + data[i]['_source'].title.replace(/\s+/g, '-') + '-by-'+ data[i]['_source'].author.replace(/\s+/g, '-') +'/book_details/' + data[i]['_source'].title_id + '"><img src="' + img + '" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
             '<div class="carousel_body_book">' +
             '<div class="carousel_title_book"><h5 title="' + data[i]['_source'].title + '">' + data[i]['_source'].title + '</h5></div>' +
             '<div class="carousel_desc">' +
@@ -529,11 +530,17 @@ function generateDIV(arr, funcName, idName, btnTxt, style, ids, statusKey, statu
         else {
             var rate_lin = "<a class=\"shortcode_button btn_small btn_type10\"  data-toggle=\"modal\" data-id=" + arr_data["id"] + " data-title= '" + arr_data["title"] + "'  data-target=\"#rateModal\" style=\"cursor:pointer;\">Rate/Review</a>";
         }
-
+if((arr_data['author'] == null || arr_data['author'] === "null"))
+{
+    var author="Not Available";
+}
+else{
+    var author=  arr_data['author'];
+}
         response += '<div id="alertDiv" class="alert  alert-dismissable" style="display: none"><a  href="#" class="close"  aria-label="close" onclick="hideAlert()">&times;</a>' +
             '<span id="alertText"></span></div><div id="div' + arr_data['id'] + '" class="col-md-6 col-xs-6 module_cont module_shelf shadow1" style="height: 180px;">' +
             '<div class="col-md-5 col-xs-5">' +
-            '<a rel="external" data-ajax="false" href="/book_details/' + arr_data['id'] + '/' + arr_data['title'] + '">' +
+            '<a rel="external" data-ajax="false" href="/' + arr_data['title'].replace(/\s+/g, '-') + '-by-'+ author.replace(/\s+/g, '-') +'/book_details/' + arr_data['id'] + '">' +
             '<img src="' + arr_data['image_url'] + '" class="img-responsive" alt="..." style="margin-top: -20px;height: 145px" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'">' +
             '</a>' +
             '</div>' +
@@ -593,10 +600,19 @@ function generateWishDIV(arr, ids, rent, rateIds) {
         else {
             var rate_lin = "<a class=\"shortcode_button btn_small btn_type10\"  data-toggle=\"modal\" data-id=" + arr_data["id"] + " data-title= '" + arr_data["title"] + "'  data-target=\"#rateModal\" style=\"cursor:pointer;\">Rate/Review</a>";
         }
+
+
+        if((arr_data['author'] == null || arr_data['author'] === "null"))
+        {
+            var author="Not Available";
+        }
+        else{
+            var author=  arr_data['author'];
+        }
         response += '<div id="alertDiv" class="alert  alert-dismissable" style="display: none"><a  href="#" class="close"  aria-label="close" onclick="hideAlert()">&times;</a>' +
             '<span id="alertText"></span></div><div id="div' + arr_data['id'] + '" class="col-md-6 col-xs-6 module_cont module_shelf shadow1" style="height: 180px;">' +
             '<div class="col-md-5 col-xs-5">' +
-            '<a rel="external" data-ajax="false" href="/book_details/' + arr_data['id'] + '/' + arr_data['title'] + '">' +
+            '<a rel="external" data-ajax="false" href="/' + arr_data['title'].replace(/\s+/g, '-') + '-by-'+ author.replace(/\s+/g, '-') +'/book_details/' + arr_data['id'] + '">' +
             '<img src="' + arr_data['image_url'] + '" class="img-responsive" alt="..." style="margin-top: -20px;height: 145px" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'">' +
             '</a>' +
             '</div>' +

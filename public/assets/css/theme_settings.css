@@ -1151,30 +1151,59 @@ select[multiple].input-group.input-group-lg .twitter-typeahead .tt-hint, select[
     min-height: 570px!important;
 }
 
+.flickr_widget_wrapper1{
+    letter-spacing: .1em;
+    font-family: Raleway, sans-serif;
+    direction: ltr;
+    line-height: 1em;
+    color: #fff;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.frame_membership_note p{
+    font-size: 12px;
+    font-family: Arial;
+    text-align: justify;
+    margin-left: 0;
+    line-height: 14px;
+    margin-bottom: 5px;
+}
+
 @media screen and (min-width: 0px) and (max-width: 800px) {
     /*sinup form mobile*/
-.table td .input_field{
-    padding-left:0px;
-    padding-right:0px;
-}
-.table td tr .input{
-    padding-left:0px;
-    padding-right:0px;
-}
-.input_field .input{
-    padding-left:0px;
-    padding-right:0px;
-}
-.input input{
-    margin: 0px;
-    padding: 5px;
 
-}
-.module_price_table .row .col-xs-12{
-    padding-left: 0px;
-}
+    .frame_membership_note p{
+        font-size: 9px;
+        font-family: Arial;
+        text-align: justify;
+        margin-left: 0;
+        line-height: 12px;
+        margin-bottom: 5px;
+    }
 
-/*end*/
+    .table td .input_field{
+        padding-left:0px;
+        padding-right:0px;
+    }
+    .table td tr .input{
+        padding-left:0px;
+        padding-right:0px;
+    }
+    .input_field .input{
+        padding-left:0px;
+        padding-right:0px;
+    }
+    .input input{
+        margin: 0px;
+        padding: 5px;
+
+    }
+    .module_price_table .row .col-xs-12{
+        padding-left: 0px;
+    }
+
+    /*end*/
     .frame_membership_content{
         margin-left: 0%;
         margin-top: -2%;

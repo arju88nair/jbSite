@@ -56,7 +56,7 @@
                                         <div class="item item_shadow">
                                             {{#jb_info}}
                                             <div class="img_block_books">
-                                            <a rel="external" data-ajax="false" href="/book_details/{{titleid}}/{{#author}}{{name}}{{/author}}">
+                                            <a rel="external"id="linkP" data-ajax="false" href="/{{#author}}{{title}}{{/author}}-by-{{#author}}{{name}}{{/author}}/book_details/{{titleid}}">
                                             {{/jb_info}}
 
                                             <img class="img-responsive" src="{{image_url}}" onerror="this.src='../../assets/images/Default_Book_Thumbnail.png'">
@@ -223,7 +223,7 @@ data=JSON.parse(data)
                         var wish=''
                     }
                     $("#searchDiv").append( '<div><div class="col-lg-2 col-md-2 col-sm-2 col-xs-6 thumb"><div class="item item_shadow">' +
-                            '<div class="img_block_books"><a rel="external" data-ajax="false" href="/book_details/' + encodeURI(data[i]['_source']['jb_info']['titleid']) + '/' + data[i]['_source']['jb_info']['title'] + '">' +
+                            '<div class="img_block_books"><a rel="external" data-ajax="false" href="/' + data[i]['_source']['jb_info']['title'].replace(/\s+/g, '-') + '-by-' + data[i]['_source']['jb_info']['author'].name.replace(/\s+/g, '-') + '/book_details/' + encodeURI(data[i]['_source']['jb_info']['titleid']) + '">' +
                             '<img class="img-responsive" src="'+ data[i]['_source']["image_url"] +'" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'">' +
                             '</a></div><div class="carousel_body_book"><div class="carousel_title_book" style="padding-bottom: 6%">' +
                             '<h5 title="' + data[i]['_source']['jb_info']['title'] + '">' + data[i]['_source']['jb_info']['title'] + '</h5></div><div class="carousel_desc">' +

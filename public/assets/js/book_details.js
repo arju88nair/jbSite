@@ -103,9 +103,10 @@ function getCardRelated(data, visibleCardCount,ids,wishlist,flag) {
         }else{
             wishlist_opt = '';
         }
+
         response += '<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2 sliderDIv" >' +
             '<div class="item item_shadow">' +
-            '<div class="img_block_books"><a rel="external" data-ajax="false" href="/book_details/' + data[i]['_source']['jb_info'].titleid + '/' + data[i]['_source']['jb_info'].title + '"><img src="' + data[i]['_source'].image_url + '"  onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
+            '<div class="img_block_books"><a rel="external" data-ajax="false" href="/' + data[i]['_source']['jb_info'].title.replace(/\s+/g, '-') + '-by-'+ data[i]['_source']['jb_info']['author'].name.replace(/\s+/g, '-') +'/book_details/' + data[i]['_source']['jb_info'].titleid + '"><img src="' + data[i]['_source'].image_url + '"  onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
             '<div class="carousel_body_book">' +
             '<div class="carousel_title_book"><h5 title="' + data[i]['_source']['jb_info'].title + '">' + data[i]['_source']['jb_info'].title + '</h5></div>' +
             '<div class="carousel_desc">' +

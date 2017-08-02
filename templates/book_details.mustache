@@ -120,7 +120,7 @@
             m.parentNode.insertBefore(a, m)
         })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
-        //        ga('create', 'UA-93821751-1', 'none');
+        //        ga('create', 'UA-102352169-1', 'none');
         ga('create', 'UA-29459013-1', 'auto');
         ga('send', 'pageview', location.pathname);
 
@@ -785,8 +785,7 @@
 <!--});-->
 
 <!--</script>-->
-<script type="text/javascript"
-        src="../../assets/js/shorten.js"></script>
+<script type="text/javascript"  src="../../assets/js/shorten.js"></script>
 
 <style>.block-with-text {
     overflow: hidden;
@@ -894,8 +893,8 @@
                                             {{#jb_info}}
                                                 <h4 style="margin-top: -10px;">{{title}}</h4>
                                                 {{#author}}
-                                                    <p><strong>By: </strong><a rel="external" data-ajax="false"
-                                                                               href="/author_details/{{id}}/{{name}}">{{name}} </a>
+                                                    <p><strong>By: </strong><a rel="external" data-ajax="false" id="linkP"
+                                                                               href="/Books-by-{{name}}/author_details/{{id}}">{{name}} </a>
                                                     </p>
                                                 {{/author}}
                                             {{/jb_info}}
@@ -1278,16 +1277,18 @@
 <script type="text/javascript">
 
     $(document).ready(function () {
-        $('head').prepend('<meta property="og:type"               content="book" />');
-        $('head').prepend('<meta property="og:title"              content="{{#data}}{{#jb_info}}{{title}}{{/jb_info}}{{/data}}" />');
-        $('head').prepend('<meta property="og:description"        content="{{#data}}{{description}}{{/data}}" />');
-        $('head').prepend('<meta property="og:image"              content="{{#data}}{{image_url}}{{/data}}" />');
+       var linkV= $("#linkP").attr("href").replace(/\s+/g, '-')
+        $("#linkP").attr('href',linkV);
+        <!--$('head').prepend('<meta property="og:type"               content="book" />');-->
+        <!--$('head').prepend('<meta property="og:title"              content="{{#data}}{{#jb_info}}{{title}}{{/jb_info}}{{/data}}" />');-->
+        <!--$('head').prepend('<meta property="og:description"        content="{{#data}}{{description}}{{/data}}" />');-->
+        <!--$('head').prepend('<meta property="og:image"              content="{{#data}}{{image_url}}{{/data}}" />');-->
 
-        $('head').prepend('<meta name="twitter:card" content="product">');
-        $('head').prepend('<meta name="twitter:site" content="@JustBooksCLC">');
-        $('head').prepend(' <meta name="twitter:description" content="{{#data}}{{description}}{{/data}}">');
-        $('head').prepend(' <meta name="twitter:title" content="{{#data}}{{#jb_info}}{{title}}{{/jb_info}}{{/data}}" />');
-        $('head').prepend('<meta name="twitter:image"  content="{{#data}}{{image_url}}{{/data}}" />');
+        <!--$('head').prepend('<meta name="twitter:card" content="product">');-->
+        <!--$('head').prepend('<meta name="twitter:site" content="@JustBooksCLC">');-->
+        <!--$('head').prepend(' <meta name="twitter:description" content="{{#data}}{{description}}{{/data}}">');-->
+        <!--$('head').prepend(' <meta name="twitter:title" content="{{#data}}{{#jb_info}}{{title}}{{/jb_info}}{{/data}}" />');-->
+        <!--$('head').prepend('<meta name="twitter:image"  content="{{#data}}{{image_url}}{{/data}}" />');-->
 
 
         $("#myCarousel").swiperight(function () {
