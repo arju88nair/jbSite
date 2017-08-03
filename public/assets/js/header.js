@@ -70,16 +70,16 @@ $(document).ready(function () {
                 return console.log(e), console.log(e.value), ['<p><a rel="external" data-ajax="false" href="/' + e.value.replace(/\s+/g, '-') + '/book_details/' + e.link + '">' + e.value + "</a></p>"].join("\n")
             }
         }
-    }), $("#shareModal").on("show.bs.modal", function (e) {
-        var t = $(e.relatedTarget).data("id"), o = $(e.relatedTarget).data("title");
+    }),
+
         //$("#sharefb").attr("href", "http://www.facebook.com/sharer.php?u=http://justbooks.in/book_details/" + t + "/" + o + "&title=Reading " + o + ". I found"+ t +" Rented from Justbooks."), $("#sharegp").attr("href", "https://plus.google.com/share?url=http://justbooks.in/book_details/" + t + "/" + o), $("#sharetw").attr("href", "https://twitter.com/share?url=http://justbooks.in/book_details/" + t + "/" + o + "&amp;text=Reading %20" + o + ".Get%20it%20from%20JustBooks.in&amp;hashtags=justbookclc.com")
         $("#shareModal").on("show.bs.modal", function (e) {
             var t = $(e.relatedTarget).data("id"), o = $(e.relatedTarget).data("title");
-            $("#sharefb").attr("href", "http://www.facebook.com/sharer.php?u=http://justbooks.in/book_details/" + t + "/" + o + "&title=I found " + o + " on JustBooks and thought you might find it interesting! Sign up today to read"),
-            $("#sharegp").attr("href","https://plus.google.com/share?url=http://justbooks.in/book_details/" + t + "/" + o),
-            $("#sharetw").attr("href", "https://twitter.com/share?url=http://justbooks.in/book_details/" + t  + "/" + o + "&amp;text=I found" + o + "  From @JustBooksCLC&amp;hashtags=justbookclc.com")
+            $("#sharefb").attr("href", "http://www.facebook.com/sharer.php?u=http://justbooks.in/" + o + "/book_details/" + t + "&title=I found " + o + " on JustBooks and thought you might find it interesting! Sign up today to read"),
+            $("#sharegp").attr("href","https://plus.google.com/share?url=http://justbooks.in/" + o + "/book_details/" + t),
+            $("#sharetw").attr("href", "https://twitter.com/share?url=http://justbooks.in/" + o + "/book_details/" + t + "&amp;text=I found" + o + "  From @JustBooksCLC&amp;hashtags=justbookclc.com")
         });
-    });
+
     var t = window.outerWidth;
     750 > t ? toastr.options = {
         closeButton: !0,

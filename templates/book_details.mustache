@@ -29,10 +29,10 @@
 
     <meta property="og:image" content="{{#data}}{{image_url}}{{/data}}"/>
     <meta property="og:description" content="{{#data}}{{description}}{{/data}}"/>
-    <meta property="og:title" content="{{#data}}{{#jb_info}}{{title}}{{/jb_info}}{{/data}}"/>
+    <meta property="og:title" content="I found {{#data}}{{#jb_info}}{{title}}{{/jb_info}}{{/data}} on JustBooks and thought you might find it interesting! Sign up today to read"/>
     <meta property="og:type" content="book">
     <meta property="og:url"
-          content="https://www.justbooks.in/book_details/{{#data}}{{#jb_info}}{{titleid}}{{/jb_info}}{{/data}}/{{#data}}{{#jb_info}}{{title}}{{/jb_info}}{{/data}}"/>
+          content="https://www.justbooks.in/{{#data}}{{#jb_info}}{{title}}{{/jb_info}}{{/data}}-by-{{#data}}{{#jb_info}}{{#author}}{{name}}{{/author}}{{/jb_info}}{{/data}}/book_details/{{#data}}{{#jb_info}}{{titleid}}{{/jb_info}}{{/data}}/>"
 
     <meta content="text/html; charset=utf-8" http-equiv="content-type"/>
     <meta name="description" content="{{#data}}{{description}}{{/data}}"/>
@@ -95,7 +95,7 @@
 
     <script type="text/javascript" src="../../../assets/js/toastr.js"></script>
     <script type="text/javascript" src="../../../assets/js/typeahead.js"></script>
-    <script type="text/javascript" src="../../../assets/js/header.js"></script>
+    <script type="text/javascript" src="../../../assets/js/header.js?v1=6"></script>
 
 
     <!--<script  src="https://i.icomoon.io/public/temp/fe64edd509/UntitledProject/svgxuse.js"></script>-->
@@ -303,15 +303,22 @@
                             <h3><span class="smallnav menu" onclick="openNav()">☰</span></h3>
                         </div>
 
-                        <div class="col-xs-11 col-sm-9 col-md-9 col-lg-9 border_right">
+                        <div class="col-xs-7 col-sm-9 col-md-9 col-lg-9 border_right">
                             <div class="input-group">
-                                <input class="form-control flipkart-navbar-input" placeholder="Search books, authors and more..." name="srch-term" id="srch-term" type="text" value="{{query}}">
+                                <input class="form-control flipkart-navbar-input" placeholder="Search.." name="srch-term" id="srch-term" type="text" value="{{query}}">
                                 <span class="input-group-btn">
                                     <button class="btn btn-default" type="submit" onclick="searchClick()"><i class="fa fa-search" aria-hidden="true"></i></button>
                                 </span>
                             </div>
                         </div>
 
+                        <div class="cart smallnav col-sm-1 col-md-1 col-lg-1" style="margin-left: 20px;">
+                            <a class="cart-button" href="javascript:void(0)" data-toggle="modal" data-target="#catModal">
+                                <!-- Category -->
+                                CATEGORIES
+                                <!-- <span class="item-number ">3</span> -->
+                            </a>
+                        </div>
                         <div class="cart largenav col-sm-1 col-md-1 col-lg-1">
                             <a class="cart-button" href="javascript:void(0)" data-toggle="modal" data-target="#catModal" style="color: white!important; width:135px!important;">
                                 <!-- Category -->
@@ -360,10 +367,10 @@
     </div>
 
     <div id="login_popup" class="modal fade " role="dialog" style="z-index: 10000">
-        <div class="modal-dialog modalStyle" style="top:-40%;width:100%">
+        <div class="modal-dialog">
 
             <!-- Modal content-->
-            <div class="modal-content" style="padding: 0px 10px 0px 10px;">
+            <div class="modal-content">
 
                 <div class="modal-body" style="padding: 0px;">
 
@@ -395,7 +402,7 @@
                         <!-- Create div second for Signup Form-->
                         <div id="second" class="login_form_fram_second" style="display:none">
                             <form >
-                                <h2>FORGOT PASSWORD</h2>
+                                <h2>Submit your registered email ID to generate new password .</h2>
                                 <hr style="color:#000; font-size:2px; height:10px; padding-top:5px;">
                                 <div class="form-group">
                                     <input type="text" name="email" id="forgetEmail" tabindex="1" class="form-control" placeholder="Email" value="">
@@ -458,7 +465,7 @@
     </script>
 
     <div id="shareModal" class="modal fade " role="dialog" style="z-index: 10000">
-        <div class="modal-dialog modalStyle" style="top:-60%;width:100%">
+        <div class="modal-dialog">
 
             <!-- Modal content-->
             <div class="modal-content">
@@ -492,7 +499,7 @@
         </div>
     </div>
     <div id="memberModel" class="modal fade modalStyle" role="dialog" style="z-index: 10000">
-        <div class="modal-dialog" style="top:-60%;width:100%;">
+        <div class="modal-dialog">
 
             <!-- Modal content-->
             <div class="modal-content">
@@ -520,35 +527,22 @@
         </div>
     </div>
     <div id="catModal" class="modal fade modalStyle" role="dialog" style="z-index: 10000">
-        <div class="modal-dialog" style="top:-60%;width:300%;left:-100%">
+        <div class="modal-dialog">
 
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Search by category</h4>
+                    <h4 class="modal-title">Search by Category</h4>
                 </div>
 
                 <div class="modal-body">
-                    <!--<div class="row">-->
-                    <!--<div class="col-sm-2  col-md-4" style="font-size: 124%">-->
-                    <!--<label class="checkbox-inline" >-->
-                    <!--<input type="checkbox"  value="Mesmer" name="Checkbox[]">Mesmer</label>-->
-                    <!--</div>-->
-                    <!--<div class="col-sm-4">-->
-                    <!--<label class="checkbox-inline" style="font-size: 124%">-->
-                    <!--<input type="checkbox"  value="Guardian" name="Checkbox[]">Guardian</label>-->
-                    <!--</div>-->
-                    <!--<div class="col-sm-4">-->
-                    <!--<label class="checkbox-inline" style="font-size: 124%">-->
-                    <!--<input type="checkbox"  style="font-size: 120%"value="Necromancer" name="Checkbox[]">Necromancer</label>-->
-                    <!--</div>-->
-                    <!--</div>-->
-                    <div class ="row" style="margin-left: 8%">
+
+                    <div class ="row" style="margin-left: 0%">
                         {{#cat}}
-                            <div class="col-xs-6 col-md-3 col-lg-3 checkBox" style="margin-bottom: 1%;text-align: left">
-                                <label class="checkbox-inline" style="font-size: 100%">
-                                    <input type="checkbox"  style="font-size: 120%"value="{{ID}}" name="Checkbox[]">{{NAME}}</label>
+                            <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 checkBox" style="margin-bottom: 1%;text-align: left;">
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" value="{{ID}}" name="Checkbox[]">{{NAME}}</label>
                             </div>
 
                         {{/cat}}
@@ -556,17 +550,11 @@
 
                     </div>
                     <br><br>
-                    <div class="row " style="margin-left: 46%">
+                    <div class="row catModal_button">
                         <div class="col-sm-6">
                             <button class="btn shortcode_button btn_medium btn_type1" type="button" id="save_value">Search</button>
                         </div>
                     </div>
-
-
-
-
-
-
                 </div>
 
             </div>
@@ -816,13 +804,13 @@
 <div class="main_wrapper background_color_gray" id="firstDiv">
     <!-- C O N T E N T -->
     <div id="reviewModal" class="modal fade " role="dialog" style="z-index: 10000">
-        <div class="modal-dialog modalStyle" style="top:-60%;width:100%">
+        <div class="modal-dialog " >
 
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Your review</h4>
+                    <h4 class="modal-title" style="text-align: center">Your review</h4>
                 </div>
                 <div class="modal-body">
 
@@ -1161,11 +1149,11 @@
                                                 });
                                             </script>
 
-                                            {{#flag}}
-                                                    <a href="javascript:void(0)" id="availibilityCheck"
-                                                       class="shortcode_button btn_small btn_type10"
-                                                       onclick="checkAvailability({{titleid}})">Check Availability</a>
-                                            {{/flag}}
+                                            <!--{{#flag}}-->
+                                                    <!--<a href="javascript:void(0)" id="availibilityCheck"-->
+                                                       <!--class="shortcode_button btn_small btn_type10"-->
+                                                       <!--onclick="checkAvailability({{titleid}})">Check Availability</a>-->
+                                            <!--{{/flag}}-->
                                             {{#flag}}
                                                 {{#Currentflag}}
                                                     <a href="javascript:void(0)" id="{{rental}}"
@@ -1270,7 +1258,7 @@
     </div><!-- .content_wrapper -->
 
 </div><!-- .main_wrapper -->
-<script src="../../assets/js/book_details.js?v=2"></script>
+<script src="../../assets/js/book_details.js?v=3"></script>
 
 {{> footer}}
 

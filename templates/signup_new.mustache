@@ -556,10 +556,12 @@
     });
     function updateFees() {
         console.log(planid + "assas" + mon + "aasass" + book);
+        var branch_id="{{branch_id}}"
+
         if (mon != '' && book != '') {
             $.ajax({
             type: "GET",
-                url: "/getPlanFees?book=" + book + "&months=" + mon + "&planname=" + "{{planname}}",
+                url: "/getPlanFees?book=" + book + "&months=" + mon + "&planname=" + "{{planname}}&branch_id="+branch_id,
                 success: function (data_new) {
                     $(".spinner").hide();
                     console.log(data_new);
@@ -623,16 +625,19 @@
 
         $("#error").hide();
         var plannames = "{{planname}}";
-
+        var branch_id="{{branch_id}}"
         var signupID = parseInt($('.planID').attr('id'));
         var coupon = $('#coupon_code').val();
         var signup_data = $('#payment_form').serialize();
         signup_data += '&plan_id=' + signupID+'&duration=' + $('#months').val()+'&coupon_code='+coupon;
         $(".spinner").show();
+
+
+        $(".spinner").show();
         $.ajax({
             type: "POST",
             url: "/insertSignupNew",
-            data: {'signup_data': JSON.stringify(signup_data),'name':plannames},
+            data: {'signup_data': JSON.stringify(signup_data),'name':plannames,'branch_id':branch_id},
             success: function (data_new) {
                 $(".spinner").hide();
                 console.log(data_new)
@@ -641,8 +646,8 @@
 //                data_new = JSON.parse(data_new);
                 logClick("Sign up click")
                 if (data_new['success'] == 'true') {
-                    window.location.href = "/PaytmKitStaging/pgRedirect.php"
-//                    window.location.href = "/PaytmKitSignup/pgRedirect.php"
+//                    window.location.href = "/PaytmKitStaging/pgRedirect.php"
+                    window.location.href = "/PaytmKitSignup/pgRedirect.php"
 
                 }
                 else {
@@ -663,102 +668,99 @@
     });
 
 
-    $('#signupBtn').click(function (e) {
-
-        e.preventDefault();
-        if ($("#gender").val() == "") {
-            toastr.error("Please specify a gender");
-            return false;
-        }
-        if ($("#firstnameForm").val() == "") {
-            toastr.error("Please enter a proper first name");
-            return false;
-        }
-        if ($("#lastname").val() == "") {
-            toastr.error("Please enter a proper last name");
-            return false;
-        }
-        if ($("#address").val() == "") {
-            toastr.error("Please enter a proper address");
-            return false;
-        }
-        if ($("#dob").val() == "") {
-            toastr.error("Please enter a DOB");
-            return false;
-        }
-
-        if ($("#zip").val().length < 6) {
-            toastr.error("Please enter a valid zip code");
-            return false;
-        }
-        if ($("#email").val() == "") {
-            toastr.error("Please enter an E-mail address");
-            return false;
-        }
-        if ($("#mobile").val().length < 10) {
-            toastr.error("Please enter a proper mobile number");
-            return false;
-        }
-        if ($("#password1").val() !== $("#Cpassword").val()) {
-            toastr.error("Passwords do not match");
-            return false;
-        } if ($("#password1").val() <6 ) {
-            toastr.error("Password is too short");
-            return false;
-        }if ($("#Cpassword").val() <6 ) {
-            toastr.error("Password is too short");
-            return false;
-        }
-        $("#error").hide();
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-        ga('create', 'UA-102352169-1', 'none');
-        var username=$("#email").val()
-        ga('send', 'event', 'Clicks', 'Signup of user '+username+'', 'First Screen');
-        var signupID = parseInt($('.planID').attr('id'));
-
-        var signup_data = $('#signup_form').serialize();
-        signup_data += '&reg_fee=' + $('#reg_fee h5').html() + '&reading_fee=' + $('#reading_fee h5').html() + '&security_deposit=' + $('#sec_deposit_fee h5').html() + '&plan_id=' + signupID+'&duration=' + $('#months').val();
-        $(".spinner").show();
-        $.ajax({
-            type: "POST",
-            url: "/insertSignup",
-            data: {'signup_data': JSON.stringify(signup_data)},
-            success: function (data_new) {
-                $(".spinner").hide();
-                console.log(data_new)
-                console.log(JSON.parse(data_new));
-                console.log(data_new['success'])
-                data_new = JSON.parse(data_new);
-                logClick("Sign up click")
-                if (data_new['success'] == true) {
-
-
+//    $('#signupBtn').click(function (e) {
 //
-
-
-                    window.location.href = "/PaytmKitSignup/pgRedirect.php"
-
-                }
-                else {
-                    console.log(data_new['errors'])
-                    var errorString=data_new['errors'].join()
-                    $("#alertDiv").show();
-                    $("#alertMsg").text(errorString);
-                    $('html, body').animate({
-                        scrollTop: $('#alertDiv').offset().top
-                    }, 800);
-
-
-                    return false;
-                }
-            },
-
-        });
-    });
+//        e.preventDefault();
+//        if ($("#gender").val() == "") {
+//            toastr.error("Please specify a gender");
+//            return false;
+//        }
+//        if ($("#firstnameForm").val() == "") {
+//            toastr.error("Please enter a proper first name");
+//            return false;
+//        }
+//        if ($("#lastname").val() == "") {
+//            toastr.error("Please enter a proper last name");
+//            return false;
+//        }
+//        if ($("#address").val() == "") {
+//            toastr.error("Please enter a proper address");
+//            return false;
+//        }
+//        if ($("#dob").val() == "") {
+//            toastr.error("Please enter a DOB");
+//            return false;
+//        }
+//
+//        if ($("#zip").val().length < 6) {
+//            toastr.error("Please enter a valid zip code");
+//            return false;
+//        }
+//        if ($("#email").val() == "") {
+//            toastr.error("Please enter an E-mail address");
+//            return false;
+//        }
+//        if ($("#mobile").val().length < 10) {
+//            toastr.error("Please enter a proper mobile number");
+//            return false;
+//        }
+//        if ($("#password1").val() !== $("#Cpassword").val()) {
+//            toastr.error("Passwords do not match");
+//            return false;
+//        } if ($("#password1").val() <6 ) {
+//            toastr.error("Password is too short");
+//            return false;
+//        }if ($("#Cpassword").val() <6 ) {
+//            toastr.error("Password is too short");
+//            return false;
+//        }
+//        $("#error").hide();
+//        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+//                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+//                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+//        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+//
+//        ga('create', 'UA-102352169-1', 'none');
+//        var username=$("#email").val()
+//        ga('send', 'event', 'Clicks', 'Signup of user '+username+'', 'First Screen');
+//        var signupID = parseInt($('.planID').attr('id'));
+//
+//        var signup_data = $('#signup_form').serialize();
+//        signup_data += '&reg_fee=' + $('#reg_fee h5').html() + '&reading_fee=' + $('#reading_fee h5').html() + '&security_deposit=' + $('#sec_deposit_fee h5').html() + '&plan_id=' + signupID+'&duration=' + $('#months').val();
+//        $(".spinner").show();
+//        $.ajax({
+//            type: "POST",
+//            url: "/insertSignup",
+//            data: {'signup_data': JSON.stringify(signup_data)},
+//            success: function (data_new) {
+//                $(".spinner").hide();
+//                console.log(data_new)
+//                console.log(JSON.parse(data_new));
+//                console.log(data_new['success'])
+//                data_new = JSON.parse(data_new);
+//                logClick("Sign up click")
+//                die;
+//                if (data_new['success'] == true) {
+//
+//                    window.location.href = "/PaytmKitSignup/pgRedirect.php"
+//
+//                }
+//                else {
+//                    console.log(data_new['errors'])
+//                    var errorString=data_new['errors'].join()
+//                    $("#alertDiv").show();
+//                    $("#alertMsg").text(errorString);
+//                    $('html, body').animate({
+//                        scrollTop: $('#alertDiv').offset().top
+//                    }, 800);
+//
+//
+//                    return false;
+//                }
+//            },
+//
+//        });
+//    });
 
     $('#coupon_submit').click(function (e) {
         $(".spinner").show();

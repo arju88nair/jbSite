@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <link rel="apple-touch-icon" sizes="76x76" href="../../../assets/img/apple-icon.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="../../assets/img/favicon.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+
+    <title>Justbooks Admin</title>
+
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
+    <meta name="viewport" content="width=device-width"/>
+
+
+    <!-- Bootstrap core CSS     -->
+    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet"/>
+
+    <!-- Animation library for notifications   -->
+    <link href="../../assets/css/animate.min.css" rel="stylesheet"/>
+
+    <!--  Paper Dashboard core CSS    -->
+    <link href="../../assets/css/paper-dashboard.css" rel="stylesheet"/>
+
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="../../assets/css/demo.css" rel="stylesheet"/>
+
+
+    <!--  Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
+    <link href="../../assets/css/themify-icons.css" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="sidebar" data-background-color="white" data-active-color="danger">
+
+        <!--
+            Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
+            Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
+        -->
+
+        <div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="/AdminHome/" class="simple-text">
+                    Website Admin
+                </a>
+            </div>
+
+            <!--<ul class="nav">-->
+                <!--<li>-->
+                    <!--<a href="/AdminHome/">-->
+                        <!--<i class="ti-panel"></i>-->
+                        <!--<p>Dashboard</p>-->
+                    <!--</a>-->
+                <!--</li>-->
+                <!--<li class="active">-->
+                    <!--<a href="/adminCardsView">-->
+                        <!--<i class="ti-text"></i>-->
+                        <!--<p>Offer Cards</p>-->
+                    <!--</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<a href="/adminBlogs">-->
+                        <!--<i class="ti-pencil-alt2"></i>-->
+                        <!--<p>Blog</p>-->
+                    <!--</a>-->
+                <!--</li>-->
+
+                <!--&lt;!&ndash;<li>&ndash;&gt;-->
+                <!--&lt;!&ndash;<a href="typography.html">&ndash;&gt;-->
+                <!--&lt;!&ndash;<i class="ti-text"></i>&ndash;&gt;-->
+                <!--&lt;!&ndash;<p>Typography</p>&ndash;&gt;-->
+                <!--&lt;!&ndash;</a>&ndash;&gt;-->
+                <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                <!--&lt;!&ndash;<li>&ndash;&gt;-->
+                <!--&lt;!&ndash;<a href="icons.html">&ndash;&gt;-->
+                <!--&lt;!&ndash;<i class="ti-pencil-alt2"></i>&ndash;&gt;-->
+                <!--&lt;!&ndash;<p>Icons</p>&ndash;&gt;-->
+                <!--&lt;!&ndash;</a>&ndash;&gt;-->
+                <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                <!--&lt;!&ndash;<li>&ndash;&gt;-->
+                <!--&lt;!&ndash;<a href="maps.html">&ndash;&gt;-->
+                <!--&lt;!&ndash;<i class="ti-map"></i>&ndash;&gt;-->
+                <!--&lt;!&ndash;<p>Maps</p>&ndash;&gt;-->
+                <!--&lt;!&ndash;</a>&ndash;&gt;-->
+                <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                <!--&lt;!&ndash;<li>&ndash;&gt;-->
+                <!--&lt;!&ndash;<a href="notifications.html">&ndash;&gt;-->
+                <!--&lt;!&ndash;<i class="ti-bell"></i>&ndash;&gt;-->
+                <!--&lt;!&ndash;<p>Notifications</p>&ndash;&gt;-->
+                <!--&lt;!&ndash;</a>&ndash;&gt;-->
+                <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                <!--&lt;!&ndash;<li class="active-pro">&ndash;&gt;-->
+                <!--&lt;!&ndash;<a href="upgrade.html">&ndash;&gt;-->
+                <!--&lt;!&ndash;<i class="ti-export"></i>&ndash;&gt;-->
+                <!--&lt;!&ndash;<p>Upgrade to PRO</p>&ndash;&gt;-->
+                <!--&lt;!&ndash;</a>&ndash;&gt;-->
+                <!--&lt;!&ndash;</li>&ndash;&gt;-->
+            <!--</ul>-->
+        </div>
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar bar1"></span>
+                        <span class="icon-bar bar2"></span>
+                        <span class="icon-bar bar3"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Offer Cards</a>
+                </div>
+
+            </div>
+        </nav>
+
+
+        <div class="content">
+            <div class="container-fluid">
+
+                <div class="spinner" style='display: none'>
+                    <div class="double-bounce1"></div>
+                    <div class="double-bounce2"></div>
+                </div>
+            </div>
+
+
+            <div class="container">
+
+                <ul class="nav nav-pills">
+                    <li class="active"><a data-toggle="pill" href="#menu">Incomplete Payment</a></li>
+                    <li><a data-toggle="pill" href="#menu1">Incomplete Details </a></li>
+
+                </ul>
+
+                <div class="tab-content">
+                    <div id="menu" class="tab-pane fade in active">
+                        <h3>Payment</h3>
+                        <div class="row">
+                            <div class="col-md-11">
+                                <div class="card">
+                                    <div class="content table-responsive table-full-width">
+
+
+                                        <table id="expand-tablePay" class="table table-striped table-bordered" width="100%" cellspacing="0">
+                                            <thead>
+                                            <tr>
+                                                <th>Email</th>
+                                                <th>Mobile</th>
+                                                <th>Plan Name</th>
+                                                <th>Plan ID</th>
+                                                <th>Amount</th>
+                                                <th>Order Id</th>
+                                                <th>Created At</th>
+
+
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+
+                                            {{#pay}}
+                                                <tr>
+                                                    <td align="left">{{EMAIL}}</td>
+                                                    <td align="center">{{MOBILE}}</td>
+                                                    <td align="center">{{NAME}}</td>
+                                                    <td align="center">{{PLANID}}</td>
+                                                    <td align="center">{{SUB_TOTAL}}</td>
+                                                    <td align="center">{{ORDERID}}</td>
+                                                    <td align="center">{{CREATED_AT}}</td>
+
+                                                </tr>
+
+                                            {{/pay}}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div id="menu1" class="tab-pane fade">
+                        <h3>Incomplete Details</h3>
+                        <div class="row">
+                            <div class="col-md-11">
+                                <div class="card">
+                                    <div class="content table-responsive table-full-width">
+
+
+                                        <table id="expand-tabledet" class="table table-striped table-bordered" width="100%" cellspacing="0">
+                                            <thead>
+                                            <tr>
+                                                <th>Email</th>
+                                                <th>Mobile</th>
+                                                <th>Plan Name</th>
+                                                <th>Plan ID</th>
+                                                <th>Amount</th>
+                                                <th>Order Id</th>
+                                                <th>Created At</th>
+
+
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+
+                                            {{#det}}
+                                                <tr>
+                                                    <td align="left">{{EMAIL}}</td>
+                                                    <td align="center">{{MOBILE}}</td>
+                                                    <td align="center">{{NAME}}</td>
+                                                    <td align="center">{{PLANID}}</td>
+                                                    <td align="center">{{SUB_TOTAL}}</td>
+                                                    <td align="center">{{ORDERID}}</td>
+                                                    <td align="center">{{CREATED_AT}}</td>
+
+                                                </tr>
+
+                                            {{/det}}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <nav class="pull-left">
+                    <!-- <ul>
+
+                        <li>
+                            <a href="http://www.creative-tim.com">
+                                Creative Tim
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://blog.creative-tim.com">
+                               Blog
+                            </a>
+                        </li>
+                        <li>
+                            <a href="http://www.creative-tim.com/license">
+                                Licenses
+                            </a>
+                        </li>
+                    </ul> -->
+                </nav>
+                <div class="copyright pull-right">
+                    &copy;
+                    <script>document.write(new Date().getFullYear())</script>        , Justbooks Website Admin </i>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+</div>
+
+
+</body>
+
+<!--   Core JS Files   -->
+<script src="../../assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+<script src="../../assets/js/bootstrap.min.js" type="text/javascript"></script>
+
+<!--  Checkbox, Radio & Switch Plugins -->
+<script src="../../assets/js/bootstrap-checkbox-radio.js"></script>
+
+<!--  Charts Plugin -->
+<script src="../../assets/js/chartist.min.js"></script>
+
+<!--  Notifications Plugin    -->
+<script src="../../assets/js/bootstrap-notify.js"></script>
+
+<!--  Google Maps Plugin    -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+
+<!-- Paper Dashboard Core javascript and methods for Demo purpose -->
+<script src="../../assets/js/paper-dashboard.js"></script>
+
+<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
+<script src="../../assets/js/demo.js"></script>
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.13/js/jquery.dataTables.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.4/css/buttons.dataTables.min.css" />
+
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.flash.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.html5.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.print.min.js"></script>
+
+<style>
+    input[type="text"], textarea,select {
+
+        background-color : dimgrey !important;
+        color:white !important;
+
+    }
+    input[type="number"], textarea,select {
+
+        background-color : dimgrey !important;
+        color:white !important;
+
+    }
+
+    .spinner {
+
+        /*width: 40px;*/
+        /*height: 40px;*/
+
+        /*position: relative;*/
+        margin: 100px auto;
+        position: fixed;
+        z-index: 999;
+        height: 2em;
+        width: 2em;
+        overflow: show;
+        margin: auto;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
+
+    .spinner:before {
+        content: '';
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+
+    .double-bounce1, .double-bounce2 {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background-color: #333;
+        opacity: 0.6;
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        -webkit-animation: sk-bounce 2.0s infinite ease-in-out;
+        animation: sk-bounce 2.0s infinite ease-in-out;
+    }
+
+    .double-bounce2 {
+        -webkit-animation-delay: -1.0s;
+        animation-delay: -1.0s;
+    }
+
+    @-webkit-keyframes sk-bounce {
+        0%, 100% {
+            -webkit-transform: scale(0.0)
+        }
+        50% {
+            -webkit-transform: scale(1.0)
+        }
+    }
+
+    @keyframes sk-bounce {
+        0%, 100% {
+            transform: scale(0.0);
+            -webkit-transform: scale(0.0);
+        }
+        50% {
+            transform: scale(1.0);
+            -webkit-transform: scale(1.0);
+        }
+    }
+</style>
+<script>
+
+    $(document).ready(function()
+    {
+        $('#expand-tablePay').DataTable({ dom: 'Bfrtip',
+            "order": [[ 5, "desc" ]],
+            buttons: [
+                'csv', 'excel', 'print'
+            ]});
+        $('#expand-tabledet').DataTable({ dom: 'Bfrtip',
+            "order": [[ 5, "desc" ]],
+
+            buttons: [
+                'csv', 'excel', 'print'
+            ]});
+
+
+
+
+    })
+
+
+
+
+
+
+
+
+</script>
+
+<!-- <script type="text/javascript">
+    $(document).ready(function(){
+
+        demo.initChartist();
+
+        $.notify({
+            icon: 'ti-gift',
+            message: "Welcome to <b>Kiosk Dashboard</b> - a beautiful Bootstrap freebie for your next project."
+
+        },{
+            type: 'success',
+            timer: 4000
+        });
+
+    });
+</script> -->
+
+</html>

@@ -117,7 +117,7 @@ $(document).ready(function () {
 
     // Instantiate the Bootstrap carousel
 
-        document.title = 'JustBooks | Book Rental Library Service | Subscribe Rent Read| Education Reference | Genres Fiction Non-Fiction Kids Teens Children\'s Comics Classics Regional Business Management | Popular Authors| Popular Titles| New Releases | Bestsellers | Reviews';
+    document.title = 'JustBooks | Book Rental Library Service | Subscribe Rent Read| Education Reference | Genres Fiction Non-Fiction Kids Teens Children\'s Comics Classics Regional Business Management | Popular Authors| Popular Titles| New Releases | Bestsellers | Reviews';
     // for every slide in carousel, copy the next slide's item in the slide.
     // Do the same for the next, next item.
     $('.multi-item-carousel .item').each(function () {
@@ -203,22 +203,8 @@ $(document).ready(function () {
             var plans = val;
             var colors = ['block personal fl', 'block professional fl', 'block business fl', 'block third fl'];
             plans.forEach(function (arr) {
-                // response += '<div class="price_item" style="width:33.33%">' +
-                //     '<div class="price_item_wrapper">' +
-                //     '<div class="price_item_title"><h5>' + arr['PLAN_NAME'].toUpperCase() + '</h5></div>' +
-                //     '<div class="item_cost_wrapper" style="background-color: ' + colors[i] + ';">' +
-                //     '<div class="price_item_title" style="background-color: ' + colors[i] + '; padding: 10px 10px 10px 10px;"><h4>Reading fee - ₹ ' + Math.round(parseFloat(arr['READING_FEE'])) + ' </h4></div>' +
-                //     '</div>' +
-                //     '<div class="price_item_text">Number of months - '+ arr['NO_OF_MONTHS'] +' </div>' +
-                //     '<div class="price_item_text" id="price_item_text">No of books -   ' + arr['NO_OF_BOOKS'] + '</div>' +
-                //     '<div class="price_item_text">R </div>' +
-                //     '<div class="price_item_text" id="price_item_text">Security Deposit - ₹ ' + Math.round(parseFloat(arr['SECURITY_DEPOSIT'])) + ' </div>' +
-                //     '<div class="price_item_btn" id="btn" style="background-color: ' + colors[i] + '"><a href="/signup?planname=' + arr['PROMO'] + '&books=' + arr['NO_OF_BOOKS'] + '&months=' + arr['NO_OF_MONTHS'] + '">Get It Now !</a></div>' +
-                //     '</div></div>';
-
-
                 var sec_colors = ['#78CFBF', '#3EC6E0', '#E3536C', '#7470b9']
-                response += '   <div class="block personal fl">' +
+                response += '<div><div class="block personal fl">' +
                     '<h4 class="title">' + arr['PLAN_NAME'].toUpperCase() + '</h4>' +
                     ' <a href="/signup?planname=' + arr['PROMO'] + '&books=' + arr['NO_OF_BOOKS'] + '&months=' + arr['NO_OF_MONTHS'] + '"><div class="content_pt">' +
                     ' <p class="price"><sup>₹</sup><span> ' + Math.round(parseFloat(arr['READING_FEE'])) + '</span><sub></sub></p>' +
@@ -229,7 +215,7 @@ $(document).ready(function () {
                     '<li style="color: black;">' + arr['HALF_YEARLY_DISCOUNT'] + '</li>' +
                     '<li style="color: black;">' + arr['YEARLY_DISCOUNT'] + '</li>' +
                     '</ul><div class="pt-footer">' +
-                    '<a rel="external" data-ajax="false" href="/signup?planname=' + arr['PROMO'] + '&books=' + arr['NO_OF_BOOKS'] + '&months=' + arr['NO_OF_MONTHS'] + '"><h4>SIGN-UP NOW !</h4></a></div></div>'
+                    '<a rel="external" data-ajax="false" href="/signup?planname=' + arr['PROMO'] + '&books=' + arr['NO_OF_BOOKS'] + '&months=' + arr['NO_OF_MONTHS'] + '"><h4>SIGN-UP NOW !</h4></a></div></div></div>'
 
 
                 i++;
@@ -239,7 +225,20 @@ $(document).ready(function () {
             })
 
             $('#plansCard').append(response);
-        },
+
+            var w = window.outerWidth;
+
+            if (w < 750) {
+                $(".variable").slick({
+                    dots: false,
+                    infinite: true,
+                    variableWidth: true
+                });
+            }
+
+
+
+        }
 
     });
 
@@ -327,7 +326,7 @@ function placeOrder(id) {
 
                 toastr.error('Become a member to rent books!');
                 $('html, body').animate({
-                    scrollTop: $('#promo_section_desktop').offset().top - 150
+                    scrollTop: $('#membership').offset().top - 150
                 }, 800);
                 // $(window).scrollTop($('#membershipPlans').offset().top);
                 //window.location.href = '/';
@@ -364,3 +363,10 @@ function placeOrder(id) {
     });
 }
 
+
+function buttonNav() {
+    $('html, body').animate({
+        scrollTop: $('#membership').offset().top - 100
+    }, 800);
+
+}

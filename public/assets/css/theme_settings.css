@@ -1100,17 +1100,23 @@ select[multiple].input-group.input-group-lg .twitter-typeahead .tt-hint, select[
 
 .playstore_section{
     background-color: #fff;
-    width:600px;
+    width:900px;
     height: auto;
-    margin-top: 20%;
-    margin-left: 30%;
+    margin-top: 10%;
+    margin-left: 3%;
     border-radius: 5px;
 }
 
-.playstore_section a img{
-    width:200px;
-    float: right;
+.playstore_section img{
+    /*width:200px;*/
+    text-align: center!important;
     /*padding-right: 10px;*/
+}
+
+.playstore_section .content{
+    text-align: center!important;
+    width:20%!important;
+    padding: 2% 2% 2% 2%;
 }
 
 .playstore_section p{
@@ -1118,18 +1124,18 @@ select[multiple].input-group.input-group-lg .twitter-typeahead .tt-hint, select[
     color: #000;
     padding: 0px;
     margin: 0px;
-    font-size: 19px;
-    line-height: 25px;
-    font-family: copperplate;
+    font-size: 8px;
+    line-height: 16px;
+    font-family: Arial;
     text-align: center;
     font-weight: bold;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
 
 }
 
-.playstore_section .playstore_content{
+/*.playstore_section .playstore_content{
     border-right: 1px solid #404040;
-    /*margin-top: 3%;*/
+    /*margin-top: 3%;
     margin-top: 3%;
     margin-bottom: 3%;
     padding-left: 10%;
@@ -1137,9 +1143,9 @@ select[multiple].input-group.input-group-lg .twitter-typeahead .tt-hint, select[
 .playstore_section .playstore_img{
     margin-top: 1%;
     /* margin-bottom: 3%; */
-    /* padding-left: 14%; */
-    margin-left: -5%;
-}
+/* padding-left: 14%;
+margin-left: -5%;
+}*/
 
 .frame_membership_content{
     margin-left: 20%;
@@ -1170,8 +1176,116 @@ select[multiple].input-group.input-group-lg .twitter-typeahead .tt-hint, select[
     margin-bottom: 5px;
 }
 
+.catModal_button{
+    margin-left: 40%
+}
+
+.modal-title{
+    font-size: 14px;
+    text-transform: uppercase;
+    font-family: Arial;
+    letter-spacing: 1px;
+}
+.checkBox{
+    font-size: 12px!important;
+}
+
+#login_popup .modal-content{
+    padding: 0px 10px 0px 10px;
+    width: 60%;
+    margin-left: 20%;
+}
+
+#shareModal .modal-content{
+    width: 50%;
+    margin-left: 25%;
+}
+#rateModal .row{
+    margin-left: 0px;
+}
+
+
+
 @media screen and (min-width: 0px) and (max-width: 800px) {
     /*sinup form mobile*/
+
+    #category111{
+        display: none;
+    }
+    #family111{
+        display: none;
+    }
+    .playstore_section p {
+        /* font-weight: bolder; */
+        color: #000;
+        /* padding: 0px 0px 0px 10px; */
+        margin: 0px;
+        font-size: 5px;
+        font-family: copperplate;
+        text-align: center;
+        line-height: 9px;
+    }
+    .playstore_section {
+        background-color: #fff;
+        width: 286px;
+        height: auto;
+        margin-top: 18%;
+        margin-left: 0%;
+        border-radius: 5px;
+    }
+    .playstore_section .content {
+        text-align: center!important;
+        width: 33%!important;
+        padding: 2% 2% 2% 2%;
+    }
+    #shareModal .modal-content{
+        width: 100%;
+        margin-left: 0%;
+    }
+
+
+    #login_popup .modal-content{
+        padding: 0px 6px 0px 6px;
+        width: 100%;
+        margin-left: 0%;
+    }
+
+    #catModal .modal-title{
+        font-size: 12px;
+        text-transform: uppercase;
+        font-family: Arial;
+        letter-spacing: 1px;
+    }
+
+    #catModal .catModal_button{
+        margin-left: 28%
+    }
+    #catModal .modal-dialog{
+        width: 33%!important;
+        margin-left: 35%!important;
+    }
+    #catModal .checkBox{
+        font-size: 10px!important;
+    }
+    .flipkart-navbar-input{
+        font-size: 8px!important;
+        font-weight: 400!important;
+        color: #000!important;
+        letter-spacing: .2em!important;
+    }
+    .cart-button{
+        width:85px!important;
+        background-color: #fff!important;
+        border:solid 1px #ccc!important;
+        font-size: 8px!important;
+        font-weight: 400!important;
+        color: #000!important;
+        letter-spacing: .2em!important;
+        box-shadow: none!important;
+        padding: 8px 0!important;
+        text-align: center!important;
+        height: 33px!important;
+    }
 
     .frame_membership_note p{
         font-size: 9px;
@@ -1210,7 +1324,7 @@ select[multiple].input-group.input-group-lg .twitter-typeahead .tt-hint, select[
         font-family: Arial;
     }
 
-    .playstore_section {
+    /*.playstore_section {
         background-color: #fff;
         width: 250px;
         height: auto;
@@ -1236,7 +1350,7 @@ select[multiple].input-group.input-group-lg .twitter-typeahead .tt-hint, select[
     }
     .playstore_section .playstore_content{
         border-right: 1px solid #404040;
-        /*margin-top: 3%;*/
+        margin-top: 3%;
         margin-top: 3%;
         margin-bottom: 3%;
         padding-left: 5%;
@@ -1244,9 +1358,9 @@ select[multiple].input-group.input-group-lg .twitter-typeahead .tt-hint, select[
     .playstore_section .playstore_img{
         margin-top: 3%;
         /* margin-bottom: 3%; */
-        /* padding-left: 14%; */
-        margin-left: -6%;
-    }
+    /* padding-left: 14%;
+    margin-left: -6%;
+}*/
     .border_right{
         border-right: 1px solid #fff;
     }

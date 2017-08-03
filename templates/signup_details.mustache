@@ -280,6 +280,7 @@
 
         e.preventDefault();
 
+$(".spinner").show();
 
         if ($("#firstnameForm").val() == "") {
 
@@ -356,9 +357,8 @@
                 $("#signup_form :input").attr("disabled", true);
 
                 console.log(data_new)
-                logClick("Sign up click")
+                logClick("Sign up details Submit",'Sign up details',$("#firstnameForm").val()+"_"+orderid)
                 if (data_new == 'success') {
-                    $('#success_payment').show();
 
 //                    window.location.href = "/"
                     $.ajax({
@@ -366,6 +366,9 @@
                         url: "/signup_updateorderid?orderid=" + orderid,
                         success: function (data) {
                             if (data == 'success') {
+                                $(".spinner").hide();
+                                $('#success_payment').show();
+
 
                             } else {
 

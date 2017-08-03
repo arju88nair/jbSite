@@ -726,7 +726,7 @@
     }
 
     #plansCard {
-        margin-left: 5% !important
+        margin-left: 20% !important
     }
 
     #firstDivHome {
@@ -771,7 +771,7 @@
     }
 
     .pricing-table {
-        width: 80% !important;
+        width: 60% !important;
         text-align: center !important;
         padding: 0 10px !important;
         margin: 0 auto 0 5% !important
@@ -844,7 +844,7 @@
     .rs-fullscreen {
 
         margin-left: 0px;
-        width: 450px;
+        width: 700px!important;
         margin-top: 75px;
     }
 
@@ -921,8 +921,11 @@
         width: 120px !important
     }
 
-    .pricing-table, .row2 .col-xs-11 {
-        width: 80% !important
+    .pricing-table {
+        width: 80% !important;
+        text-align: center !important;
+        padding: 0 10px !important;
+        margin: 0 auto 0 5% !important
     }
 
     #plansCard {
@@ -1552,8 +1555,11 @@
         width: 120px !important
     }
 
-    .pricing-table, .row2 .col-xs-11 {
-        width: 80% !important
+    .pricing-table {
+        width: 80% !important;
+        text-align: center !important;
+        padding: 0 10px !important;
+        margin: 0 auto 0 5% !important
     }
 
     #plansCard {
@@ -1743,8 +1749,11 @@
         width: 120px !important
     }
 
-    .pricing-table, .row2 .col-xs-11 {
-        width: 80% !important
+    .pricing-table {
+        width: 80% !important;
+        text-align: center !important;
+        padding: 0 10px !important;
+        margin: 0 auto 0 5% !important
     }
 
     #plansCard {
@@ -1934,8 +1943,11 @@
         width: 120px !important
     }
 
-    .pricing-table, .row2 .col-xs-11 {
-        width: 80% !important
+    .pricing-table {
+        width: 80% !important;
+        text-align: center !important;
+        padding: 0 10px !important;
+        margin: 0 auto 0 5% !important
     }
 
     #plansCard {
@@ -2130,12 +2142,15 @@
         width: 120px !important
     }
 
-    .pricing-table, .row2 .col-xs-11 {
-        width: 86% !important
+    .pricing-table {
+        width: 79% !important;
+        text-align: center !important;
+        padding: 0 10px !important;
+        margin: 0 auto 0 5% !important
     }
 
     #plansCard {
-        margin-left: 5% !important
+        margin-left: 10% !important
     }
 
     #firstDivHome {
@@ -2325,8 +2340,11 @@
         width: 120px !important
     }
 
-    .pricing-table, .row2 .col-xs-11 {
-        width: 80% !important
+    .pricing-table {
+        width: 80% !important;
+        text-align: center !important;
+        padding: 0 10px !important;
+        margin: 0 auto 0 5% !important
     }
 
     #plansCard {
@@ -2520,8 +2538,11 @@
         width: 120px !important
     }
 
-    .pricing-table, .row2 .col-xs-11 {
-        width: 80% !important
+    .pricing-table {
+        width: 80% !important;
+        text-align: center !important;
+        padding: 0 10px !important;
+        margin: 0 auto 0 5% !important
     }
 
     #plansCard {
@@ -2714,8 +2735,11 @@
         width: 120px !important
     }
 
-    .pricing-table, .row2 .col-xs-11 {
-        width: 80% !important
+    .pricing-table {
+        width: 80% !important;
+        text-align: center !important;
+        padding: 0 10px !important;
+        margin: 0 auto 0 5% !important
     }
 
     #plansCard {
@@ -2910,12 +2934,15 @@
         width: 120px !important
     }
 
-    .pricing-table, .row2 .col-xs-11 {
-        width: 86% !important
+    .pricing-table {
+        width: 70% !important;
+        text-align: center !important;
+        padding: 0 10px !important;
+        margin: 0 auto 0 5% !important
     }
 
     #plansCard {
-        margin-left: 5% !important
+        margin-left: 15% !important
     }
 
     #firstDivHome {

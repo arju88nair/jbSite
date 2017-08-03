@@ -6086,60 +6086,7 @@ div.bhoechie-tab-content {
     padding-top: 10px
 }
 
-.modal {
-    position: fixed;
-    z-index: 1;
-    padding-top: 20%;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: #000;
-    background-color: rgba(0, 0, 0, .4)
-}
 
-.modal-content {
-    text-align: center;
-    margin: 30px auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 5px;
-    width: 30%;
-    position: relative;
-    transition: all 5s ease-in-out
-}
-
-.modal-content h2 {
-    margin-top: 0;
-    color: #333;
-    font-family: Tahoma, Arial, sans-serif
-}
-
-.content {
-    max-height: 30%;
-    overflow: auto;
-    font-family: Arial;
-    font-size: 12px;
-    font-weight: 700
-}
-
-.close {
-    position: absolute;
-    top: 5px;
-    right: 10px;
-    transition: all .2s;
-    font-size: 30px;
-    font-weight: 700;
-    text-decoration: none;
-    color: red
-}
-
-.close:focus, .close:hover {
-    color: #06D85F;
-    text-decoration: none;
-    cursor: pointer
-}
 
 /*!* carousel *!*//*!* Previous button  *!*//*!* Next button  *!*//*!* Changes the position of the indicators *!*//*!* Changes the colour of the indicators *!*/
 .carousel-control.left, .carousel-control.right {
