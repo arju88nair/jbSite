@@ -21,16 +21,9 @@
         <div class="" style="margin-left: -2%">
             <div class="fl-container span12">
                 <div class="row">
-                    <h3 id="countResult"></h3>
-                    <!--<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">-->
-                        <!--<h4 class="page-header">-->
+                    <br><br><br>
+                    <h3 id="countResult">{{text}}</h3>
 
-                            <!--<p id="countResult">You have<b> {{count}}</b>  results</p>-->
-                        <!--</h4>-->
-                    <!--</div>-->
-                    <br>
-                    <br>
-                    <br>
                     <div id="searchDiv">
                         {{# data}}
 
@@ -102,12 +95,11 @@
 <script>
     $(document).ready(function () {
         var search="{{ids}}"
-
         logClick("On load","Category Search",search);
-        var count={{count}};
-        if(parseInt(count) === 0 )
+        var count="{{text}}";
+        if(count === "No results in this category")
         {
-            $("#countResult").text("No results to show !")
+//            $("#countResult").text("No results to show !")
             $("#load").hide();
         }
         localStorage.setItem("countFlag", 2);
@@ -195,13 +187,15 @@
     function loadMore() {
         var flag= {{flag}};
         flag=parseInt(flag);
-        var ids="{{ids}}"
+        var ids="{{ids}}";
+        var branch="{{branch_id}}";
+
         $(".spinner").show();
         var count = localStorage.getItem("countFlag");
         var query = "{{query}}";
         localStorage.setItem("countFlag", parseInt(count) + 1);
         $.ajax({
-            url: "/loadMoreCatSearch?page="+count+"&categories="+ids,
+            url: "/loadMoreCatSearch?page="+count+"&categories="+ids+"&branch_id="+branch,
             type: 'GET',
 
             success: function (data) {

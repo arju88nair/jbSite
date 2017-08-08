@@ -14,8 +14,10 @@
                     <ul>
                         <!-- THE FIRST SLIDE -->
                         <li data-masterspeed="400" data-slotamount="7" data-transition="fade">
-                            <img src="/{{image1}}" alt="">
-                            <div class="caption lfr" data-autoplay="false" data-x="150" data-y="10">
+                            <!-- <img src="/{{image1}}" alt=""> -->
+                            <img src="uploads/mobile_banner.jpg" alt="" class="hide_in_desktop">
+                            <img src="uploads/desktop_banner.jpg" alt="" class="hide_in_mobile">
+                                <!-- <div class="caption lfr" data-autoplay="false" data-x="150" data-y="10">
                                 {{#slider}}
                                     <div class="row playstore_section item_shadow">
 
@@ -56,58 +58,58 @@
                                                 <img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png'/>
                                             </a>
                                         </div> -->
-                                    </div>
+                            <!--</div> -->
 
-                                    <!--<div id="main" class="login_form hide_in_mobile" >-->
-                                    <!--&lt;!&ndash; Create div first for Login Form&ndash;&gt;-->
-                                    <!--<div id="first" class="loginDIv login_form_fram_one" >-->
-                                    <!--<form action="" method="post">-->
-                                    <!--<h2>SIGN-IN</h2>-->
-                                    <!--<hr style="color:#000; font-size:2px; height:10px; padding-top:5px;">-->
-                                    <!--<div class="form-group">-->
-                                    <!--<input style="text-transform:lowercase" type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Email" value="">-->
-                                    <!--</div>-->
+                            <!--<div id="main" class="login_form hide_in_mobile" >-->
+                            <!--&lt;!&ndash; Create div first for Login Form&ndash;&gt;-->
+                            <!--<div id="first" class="loginDIv login_form_fram_one" >-->
+                            <!--<form action="" method="post">-->
+                            <!--<h2>SIGN-IN</h2>-->
+                            <!--<hr style="color:#000; font-size:2px; height:10px; padding-top:5px;">-->
+                            <!--<div class="form-group">-->
+                            <!--<input style="text-transform:lowercase" type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Email" value="">-->
+                            <!--</div>-->
 
-                                    <!--<div class="form-group">-->
-                                    <!--<input class="loginPwd form-control" type="password" name="password" id="password" tabindex="2" placeholder="Password">-->
-                                    <!--</div>-->
-                                    <!--<div class="">-->
-                                    <!--<div class="form-group col-xs-4 col-sm-4 col-md-4 col-lg-4" style="margin-bottom:0px;">-->
-                                    <!--<input type="button" class="shortcode_button btn_small btn_type1" id="login" value="Sign In" onclick="signupClick()" />-->
+                            <!--<div class="form-group">-->
+                            <!--<input class="loginPwd form-control" type="password" name="password" id="password" tabindex="2" placeholder="Password">-->
+                            <!--</div>-->
+                            <!--<div class="">-->
+                            <!--<div class="form-group col-xs-4 col-sm-4 col-md-4 col-lg-4" style="margin-bottom:0px;">-->
+                            <!--<input type="button" class="shortcode_button btn_small btn_type1" id="login" value="Sign In" onclick="signupClick()" />-->
 
-                                    <!--</div>-->
-                                    <!--<div class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-6" style="margin-bottom:0px;">-->
-                                    <!--<p id="two"><a href="#" id="signup" class="signup">Forgot Password?</a></p>-->
-                                    <!--</div>-->
-                                    <!--</div><br><br>-->
-                                    <!--<p id="one">Not a member yet? <a href="/#membershipPlans" id="signupLink" class="signup">Sign up here</a></p>-->
-                                    <!--</form>-->
-                                    <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-6" style="margin-bottom:0px;">-->
+                            <!--<p id="two"><a href="#" id="signup" class="signup">Forgot Password?</a></p>-->
+                            <!--</div>-->
+                            <!--</div><br><br>-->
+                            <!--<p id="one">Not a member yet? <a href="/#membershipPlans" id="signupLink" class="signup">Sign up here</a></p>-->
+                            <!--</form>-->
+                            <!--</div>-->
 
-                                    <!--&lt;!&ndash; Create div second for Signup Form&ndash;&gt;-->
-                                    <!--<div id="second" class="login_form_fram_second" style="display:none">-->
-                                    <!--<form >-->
-                                    <!--                                <h2>Submit your registered email ID to generate new password .</h2>-->
-                                    <!--<hr style="color:#000; font-size:2px; height:10px; padding-top:5px;">-->
-                                    <!--<div class="form-group">-->
-                                    <!--<input type="text" name="email" id="forgetEmail" tabindex="1" class="form-control" placeholder="Email" value="">-->
-                                    <!--</div>-->
-                                    <!--<div class="">-->
-                                    <!--<div class="form-group col-xs-4 col-sm-4 col-md-4 col-lg-4" style="margin-bottom:0px;">-->
-                                    <!--<input type="button" class="shortcode_button btn_small btn_type1" id="forgetpassword" value="Submit" onclick="forgotPassword()" />-->
-                                    <!--</div>-->
-                                    <!--<div class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-6" style="margin-bottom:0px;">-->
-                                    <!--<p id="two"><a href="#" id="signin_form" class="signin"> Sign-in?</a></p>-->
-                                    <!--</div>-->
-                                    <!--</div><br><br>-->
-                                    <!--<p id="one">Not a member yet? <a href="/#membershipPlans" id="signupLink" class="signup">Sign up here</a></p>-->
+                            <!--&lt;!&ndash; Create div second for Signup Form&ndash;&gt;-->
+                            <!--<div id="second" class="login_form_fram_second" style="display:none">-->
+                            <!--<form >-->
+                            <!--                                <h2>Submit your registered email ID to generate new password .</h2>-->
+                            <!--<hr style="color:#000; font-size:2px; height:10px; padding-top:5px;">-->
+                            <!--<div class="form-group">-->
+                            <!--<input type="text" name="email" id="forgetEmail" tabindex="1" class="form-control" placeholder="Email" value="">-->
+                            <!--</div>-->
+                            <!--<div class="">-->
+                            <!--<div class="form-group col-xs-4 col-sm-4 col-md-4 col-lg-4" style="margin-bottom:0px;">-->
+                            <!--<input type="button" class="shortcode_button btn_small btn_type1" id="forgetpassword" value="Submit" onclick="forgotPassword()" />-->
+                            <!--</div>-->
+                            <!--<div class="form-group col-xs-6 col-sm-6 col-md-6 col-lg-6" style="margin-bottom:0px;">-->
+                            <!--<p id="two"><a href="#" id="signin_form" class="signin"> Sign-in?</a></p>-->
+                            <!--</div>-->
+                            <!--</div><br><br>-->
+                            <!--<p id="one">Not a member yet? <a href="/#membershipPlans" id="signupLink" class="signup">Sign up here</a></p>-->
 
-                                    <!--</form>-->
-                                    <!--</div>-->
+                            <!--</form>-->
+                            <!--</div>-->
 
-                                    <!--</div>-->
-                                {{/slider}}
-                            </div>
+                            <!--</div>-->
+                                <!--{{/slider}}-->
+                            <!--</div>-->
 
 
                         </li>

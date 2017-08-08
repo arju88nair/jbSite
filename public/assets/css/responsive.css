@@ -3465,7 +3465,7 @@ a.menu_toggler {
     }
 
     .pre_footer {
-        padding: 25px 0 !important
+        padding: 10px 0 0 0 !important
     }
 
     footer .socials {
@@ -3553,9 +3553,7 @@ a.menu_toggler {
         margin-right: 0 !important
     }
 
-    aside#footer_bar .sidepanel {
-        margin-bottom: 30px !important
-    }
+
 
     aside#footer_bar .bg_title {
         margin-bottom: 15px
@@ -3893,7 +3891,7 @@ a.menu_toggler {
     }
 
     .pre_footer {
-        padding: 25px 0 !important
+        padding: 10px 0 0 0 !important;
     }
 
     .widget_flickr .flickr_badge_image, .widget_flickr .flickr_badge_image .flickr_wrapper, .widget_flickr .flickr_badge_image .wrapped_img, .widget_flickr .flickr_badge_image a, .widget_flickr .flickr_badge_image img {

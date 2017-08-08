@@ -1792,6 +1792,28 @@ function proceedRenew() {
                             var amount = data.result.transaction.transaction.amount;
                             console.log(orderNumber);
                             console.log(amount);
+                            if (parseInt(amount) == 0) {
+                                $.ajax({
+                                    type: "GET",
+                                    dataType: "json",
+                                    url: "/noAmountBreak?order=" + orderNumber,
+                                    success: function (data_new) {
+                                        $(".spinner").hide();
+
+                                        console.log(data_new);
+                                        if (data_new === 1) {
+                                            toastr.success('Successfully applied').css('width', '500px')
+                                            $("#break").collapse('hide');
+
+                                        }
+                                        else {
+                                            toastr.error('Something went wrong! ').css('width', '500px')
+
+                                        }
+                                    },
+                                });
+                                return false;
+                            }
                             saveSession(orderNumber, amount);
                         }
 
@@ -1981,7 +2003,6 @@ function proceedBreak() {
 
                             }
                             else {
-                                console.log("df")
                                 toastr.error('Something went wrong! ').css('width', '500px')
 
                             }

@@ -142,7 +142,7 @@ header ul.menu > li > a {
     display: none;
     border-radius: 38px;
     padding-top: 11px;
-    top: 84%
+    top: 78%
 }
 
 .go-top:hover {
@@ -153,7 +153,7 @@ header ul.menu > li > a {
     display: inline-block;
     font-size: 10px;
     font-weight: 400;
-    color: #000;
+    color: rgba(29, 33, 35, 0.86);
     letter-spacing: .2em;
     font-family: Arial
 }
@@ -228,16 +228,24 @@ header ul.menu > li > a {
 }
 
 .cart-button {
-    background-color: #444444;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .23), inset 1px 1px 0 0 hsla(0, 0%, 100%, .2);
-    padding: 10px 0;
-    text-align: center;
-    height: 35px;
-    border-radius: 2px;
-    width: 90px;
-    color: #FFF !important;
-    border: none;
-    outline: 0
+
+    display: inline-block;
+
+    font-family: Arial;
+
+    border-radius: 4px;
+    width: 85px!important;
+    background-color: #fff!important;
+    border: solid 1px #ccc!important;
+    font-size: 10px!important;
+    font-weight: 400!important;
+    color: rgba(0, 0, 0, 0.75)!important
+    letter-spacing: .2em!important;
+    box-shadow: none!important;
+    padding: 8px 0!important;
+    text-align: center!important;
+    height: 33px!important;
+    letter-spacing: .2em;
 }
 
 .dropdown .dropdown-menu, .sidenav {
@@ -762,20 +770,26 @@ ul.social-network li {
 
 .bottom_ul {
     list-style-type: none;
-    float: right;
-    margin-bottom: 0
+    float: left;
+    margin-top: 10px;
 }
 
 .bottom_ul li {
     float: left;
-    line-height: 40px
+
+    /*line-height: 40px*/
 }
 
 .bottom_ul li:after {
-    content: "/";
+    content: " ";
     color: #FFF;
     margin-right: 8px;
     margin-left: 8px
+}
+
+.bottom_ul_r{
+    float: right;
+    margin-bottom: 0
 }
 
 .socialCircle-center, .socialCircle-item {
@@ -1203,11 +1217,128 @@ margin-left: -5%;
 #rateModal .row{
     margin-left: 0px;
 }
+.widget_flickr .flickr_widget_wrapper h5{
+    font-family: 'Raleway Heavy';
+    direction: ltr; color: #fff;
+    font-size: 16px;
+    margin-bottom: 10px;
+    line-height: 33px;
+}
+aside#footer_bar .sidepanel {
+    margin-bottom: 30px !important
+}
+
+#memb{
+    margin-left: -5%;
+}
 
 
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 12px;
+    line-height: 1.428571429;
+    border-radius: 15px;
+}
+
+.btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    padding: 10px 13px;
+    font-size: 24px;
+    line-height: 1.33;
+    border-radius: 35px;
+}
+.allblur{
+
+    box-shadow: -3px 5px  11px #9f9f9f!important;
+    -moz-box-shadow: 0px 10px  5px  rgba(0,0,0,0.6);
+    -webkit-box-shadow: 0px 10px 5px  rgba(0,0,0,0.6);
+    -o-box-shadow: 0px 10px 5px  rgba(0,0,0,0.6);
+}
 
 @media screen and (min-width: 0px) and (max-width: 800px) {
-    /*sinup form mobile*/
+
+    #whatsNew{
+        margin-top: -3%;
+    }
+
+    #promo_section_mobile .col-xs-3{
+        width:22%;
+        padding-left: 0px;
+    }
+
+    .btn-circle.btn-xl {
+        width: 35px;
+        height: 35px;
+        padding: 10px 10px;
+        font-size: 8px;
+        line-height: 1.33;
+        border-radius: 35px;
+    }
+
+    #memb{
+        margin-left: 0%;
+    }
+
+    #membershipPlans .fl{
+        margin-left: 3%;
+    }
+
+    .flickr_widget_wrapper a {
+        font-size: 14px
+    }
+
+    aside#footer_bar .sidepanel {
+        margin-bottom: 0px !important
+    }
+
+    .widget_flickr .flickr_widget_wrapper h5{
+        font-family: 'Raleway Heavy';
+        direction: ltr;
+        color: #fff;
+        font-size: 12px;
+        margin-bottom: 10px;
+        line-height: 18px;
+    }
+
+
+    footer .copyright {
+        text-align: center;
+        display: block;
+        float: none;
+        padding: 10px 0 10px;
+    }
+
+    .bottom_ul li a {
+        color: #FFF;
+        font-size: 9px
+    }
+
+    .bottom_ul {
+        list-style-type: none;
+        /* float: left; */
+        text-align: center;
+        margin-bottom: 0;
+        margin-left: 5%;
+    }
+    .bottom_ul_r{
+        float: none;
+        margin-bottom: 0;
+    }
+
+    .bottom_ul_r p{
+        text-align: center!important;
+        font-size: 8px;
+        line-height: 8px;
+    }
+
+    .frame_membership_content p{
+        font-size: 8px;
+        line-height: 10px;
+    }
 
     #category111{
         display: none;
@@ -1285,6 +1416,7 @@ margin-left: -5%;
         padding: 8px 0!important;
         text-align: center!important;
         height: 33px!important;
+        letter-spacing: .1em;
     }
 
     .frame_membership_note p{

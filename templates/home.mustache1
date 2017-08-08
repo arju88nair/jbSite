@@ -5,7 +5,7 @@
     <!-- C O N T E N T -->
     <div class="content_wrapper">
         <div class="container">
-            <div class="spinner" style='display: none;z-index: 10000;opacity:0.55;background-color: grey'>
+            <div class="spinner"  style='display: none;z-index: 10000;opacity:0.55;background-color: grey'>
                 <div class="double-bounce1"></div>
                 <div class="double-bounce2"></div>
             </div>
@@ -26,23 +26,7 @@
 
                                         <div class="row-fluid" id="">
                                             <div class="module_cont module_feature_posts" id="promo_section_mobile">
-                                                <div class="col-xs-3 text-center">
-                                                    <p style="font-size: 10px;line-height: 11px;font-weight: bold;color: #5f5f5f;text-align: center;margin-bottom: 7%;">START READING IN 2 STEPS</p>
-                                                </div>
-                                                <div class="col-xs-1" style="border-left: solid 1px #9f9f9f; height: 25px; margin-top: 1%;">
-                                                </div>
-                                                <div class="col-xs-3 text-center">
-                                                    <p style="font-size: 7px;line-height: 11px;font-weight: bold;color: #5f5f5f;text-align: center;margin-top: 5%;">SIGN UP TO A PLAN THAT SUITS YOUR NEED</p>
-                                                </div>
-                                                <div class="col-xs-3 text-center">
-                                                    <p style="font-size: 7px;line-height: 11px;font-weight: bold;color: #5f5f5f;text-align: center;margin-top: 5%;">START RENTING. READ AND RETURN</p>
-                                                </div>
-
-                                                <div class="col-xs-2 text-center">
-                                                    <button type="button" class="btn btn-danger btn-circle btn-xl allblur" onclick="buttonNav()"><b>GO!</b></button>
-                                                </div>
-                                                <hr style="border-top: solid 1px #9f9f9f;width: 80%;margin-left: 5%;margin-top: 12px;padding-top: 1%;top: 10px;">
-                                               <!--  <a href="/#membershipPlans" class="links" rel="external" data-ajax="false" ><img src="assets/images/mobile_site_image.png" alt=""></a> -->
+                                                <!--  <a href="/#membershipPlans" class="links" rel="external" data-ajax="false" ><img src="assets/images/mobile_site_image.png" alt=""></a> -->
                                             </div><!-- .module_cont -->
                                             <div class="span12 module_cont module_feature_posts" id="promo_section_desktop">
                                                 <div class="col-sm-3 text-center">
@@ -56,7 +40,40 @@
                                                 <div class="col-sm-3 text-center">
                                                     <p style="font-size: 15px;line-height: 20px;font-weight: bold;color: #5f5f5f; text-align: center; margin-top: 5%;">START RENTING.<br> READ AND RETURN</p>
                                                 </div>
+                                                <style type="text/css">
+                                                    .btn-circle {
+                                                        width: 30px;
+                                                        height: 30px;
+                                                        text-align: center;
+                                                        padding: 6px 0;
+                                                        font-size: 12px;
+                                                        line-height: 1.428571429;
+                                                        border-radius: 15px;
+                                                    }
+                                                    .btn-circle.btn-lg {
+                                                        width: 50px;
+                                                        height: 50px;
+                                                        padding: 10px 13px;
+                                                        font-size: 18px;
+                                                        line-height: 1.33;
+                                                        border-radius: 25px;
+                                                    }
+                                                    .btn-circle.btn-xl {
+                                                        width: 70px;
+                                                        height: 70px;
+                                                        padding: 10px 13px;
+                                                        font-size: 24px;
+                                                        line-height: 1.33;
+                                                        border-radius: 35px;
+                                                    }
+                                                    .allblur{
 
+                                                        box-shadow: -3px 5px  11px #9f9f9f!important;
+                                                        -moz-box-shadow: 0px 10px  5px  rgba(0,0,0,0.6);
+                                                        -webkit-box-shadow: 0px 10px 5px  rgba(0,0,0,0.6);
+                                                        -o-box-shadow: 0px 10px 5px  rgba(0,0,0,0.6);
+                                                    }
+                                                </style>
                                                 <div class="col-sm-2 text-center">
                                                     <button type="button" class="btn btn-danger btn-circle btn-xl allblur" onclick="buttonNav()"><b>GO!</b></button>
                                                 </div>
@@ -99,12 +116,12 @@
             </div>
 
             {{> membership_plan}}
-            <iframe src="https://culture.place/iframe_culture_place/index.php" align="center" width="100%" height="380" frameborder="yes" scrolling="yes" name="CPScroll" id="cpIframe"></iframe>
+            {{> blog}}
             <!-- .Post area -->
         </div><!-- .module_line_trigger -->
     </div><!-- .container -->
 </div><!-- .content_wrapper -->
-
+<iframe src="https://culture.place/iframe_culture_place/index.php" align="center" width="100%" height="450" frameborder="yes" scrolling="yes" name="CPScroll" id="cpIframe"></iframe>
 </div><!-- .main_wrapper -->
 
     {{> preFooter}}<!-- .pre_footer -->
@@ -115,7 +132,7 @@
         interval: false
     });
 </script>
-<script src="assets/js/home_page_Api.js?v=2"></script>
+<script src="assets/js/home_page_Api.js?v=3"></script>
 <script>
     var jump=function(e)
     {
@@ -165,4 +182,3 @@
 
 
 </script>
-

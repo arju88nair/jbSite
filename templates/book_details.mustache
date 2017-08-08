@@ -55,26 +55,26 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
 
 
-    <link rel="stylesheet" type="text/css" href="../../../assets/css/bootstrap.css">
+
+    <link rel="stylesheet" type="text/css" href="../../../assets/css/bootstrap.css?v1=6.1">
     <!--<link rel="stylesheet" type="text/css" href="../../../assets/css/bootstrap.min.css">-->
-    <link rel="stylesheet" type="text/css" href="../../../assets/css/bootstrap-responsive.css">
-    <link rel="stylesheet" type="text/css" href="../../../assets/css/plugins.css">
-    <link rel="stylesheet" type="text/css" href="../../../assets/css/theme.css">
-    <link rel="stylesheet" type="text/css" href="../../../assets/css/responsive.css">
-    <link rel="stylesheet" type="text/css" href="../../../assets/css/theme_settings.css">
-    <link rel="stylesheet" type="text/css" href="../../../assets/css/color_theme.css">
-    <link rel="stylesheet" type="text/css" href="../../../assets/css/rs-settings.css">
-    <link rel="stylesheet" type="text/css" href="../../../assets/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../../assets/css/jquery-ui.css">
-    <link rel="stylesheet" href="../../../assets/css/toastr.css">
-    <link href="../../../assets/plugins/Star-Rating-Plugin-jQuery-Glyphicons/src/j-rating-advance/j-rating-advance.css"
-          type="text/css" rel="stylesheet"/>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../../assets/css/bootstrap-responsive.css?v1=6.1">
+    <link rel="stylesheet" type="text/css" href="../../../assets/css/plugins.css?v1=6.1">
+    <link rel="stylesheet" type="text/css" href="../../../assets/css/theme.css?v1=6.1">
+    <link rel="stylesheet" type="text/css" href="../../../assets/css/responsive.css?v1=6.1">
+    <link rel="stylesheet" type="text/css" href="../../../assets/css/theme_settings.css?v1=6.1">
+    <link rel="stylesheet" type="text/css" href="../../../assets/css/color_theme.css?v1=6.1">
+    <link rel="stylesheet" type="text/css" href="../../../assets/css/rs-settings.css?v1=6.1">
+    <link rel="stylesheet" type="text/css" href="../../../assets/css/font-awesome.min.css?v1=6.1">
+    <link rel="stylesheet" href="../../../assets/css/jquery-ui.css?v1=6.1">
+    <link rel="stylesheet" href="../../../assets/css/toastr.css?v1=6.1">
+    <link href="../../../assets/plugins/Star-Rating-Plugin-jQuery-Glyphicons/src/j-rating-advance/j-rating-advance.css?v1=6.1" type="text/css" rel="stylesheet"/>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css?v1=6.1" rel="stylesheet">
     <!-- price Tabel home page -->
     <!--<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.css" />-->
 
 
-    <link rel="stylesheet" href="../../../assets/css/price_table.css">
+    <link rel="stylesheet" href="../../../assets/css/price_table.css?v1=6.1">
 
 
     <!--[if IE 8 ]>
@@ -85,17 +85,18 @@
         }
     </script><![endif]-->
     <script src="../../../assets/js/jquery-1.9.1.js"></script>
-    <script src="../../../assets/js/jquery-ui.js"></script>
+    <!--<script src="../../../assets/js/jquery-ui.js"></script>-->
     <!-- Bootstrap is required -->
     <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
     <!--<script src="../../../assets/js/jquery.bcSwipe.js"></script>-->
     <!-- <script src="js/color_panel.js"></script> -->
-    <script type="text/javascript" src="../../../assets/js/jquery.isotope.min.js"></script>
+    <script type="text/javascript" src="../../../assets/js/jquery.isotope.min.js?v1=6.1"></script>
     <script type="text/javascript" src="../../../assets/js/sorting.js"></script>
 
-    <script type="text/javascript" src="../../../assets/js/toastr.js"></script>
-    <script type="text/javascript" src="../../../assets/js/typeahead.js"></script>
-    <script type="text/javascript" src="../../../assets/js/header.js?v1=6"></script>
+    <script type="text/javascript" src="../../../assets/js/toastr.js?v1=6.1"></script>
+    <script type="text/javascript" src="../../../assets/js/typeahead.js?v1=6.1"></script>
+    <script type="text/javascript" src="../../../assets/js/header.js?v1=6.1"></script>
+
 
 
     <!--<script  src="https://i.icomoon.io/public/temp/fe64edd509/UntitledProject/svgxuse.js"></script>-->
@@ -103,26 +104,17 @@
 
     </script>
     <script>
-        $(document).bind("mobileinit", function () {
+        $(document).bind("mobileinit", function() {
             $.mobile.ignoreContentEnabled = true;
             $.mobile.loadingMessage = false;
         });
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-        (function (i, s, o, g, r, a, m) {
-            i['GoogleAnalyticsObject'] = r;
-            i[r] = i[r] || function () {
-                        (i[r].q = i[r].q || []).push(arguments)
-                    }, i[r].l = 1 * new Date();
-            a = s.createElement(o),
-                    m = s.getElementsByTagName(o)[0];
-            a.async = 1;
-            a.src = g;
-            m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-        //        ga('create', 'UA-102352169-1', 'none');
-        ga('create', 'UA-29459013-1', 'auto');
-        ga('send', 'pageview', location.pathname);
+        ga('create', 'UA-102352169-1', 'auto');
+        ga('send', 'pageview');
 
 
     </script>
@@ -159,7 +151,7 @@
                         <ul class="largenav pull-left menu" id="menuHeader">
                             <li class="upper-links" id="whatsNewMenu"><a  rel="external" data-ajax="false" class="links" href="/#whatsNew">WHAT'S NEW</a></li>
                             <li class="upper-links" id="membershipPlansMenu"><a  rel="external" data-ajax="false" class="links" href="/#membershipPlans">MEMBERSHIP PLANS</a></li>
-                            <li class="upper-links" id="blogMenu"><a class="links" rel="external" data-ajax="false" href="/#blog">BLOG</a></li>
+<!--                            <li class="upper-links" id="blogMenu"><a class="links" rel="external" data-ajax="false" href="/#blog">BLOG</a></li>-->
                             <li class="upper-links" ><a class="links" target="_blank" rel="external" data-ajax="false"  href="http://culture.place">CULTURE.PLACE</a></li>
                             <li class="upper-links" id="storeMenu"><a class="links" rel="external" data-ajax="false" href="/store-locator">STORE LOCATOR</a></li>
                             <li class="upper-links" id="faqMenu"><a class="links" rel="external" data-ajax="false" href="/faq">FAQs</a></li>
@@ -167,21 +159,23 @@
                     </div>
 
                     <div class="col-sm-2 col-md-2 col-lg-2 pull-left upper-links" id="welcome_msg">
-                        <p id="welcomeId">Hi, {{name}} <a href="/logout/" rel="external" data-ajax="false" title="Logout" style="font-size: 14px; color: #1D2123; margin-left: 10px;"><i class="fa fa-sign-out" aria-hidden="true"></i></a></p>
+                        <p id="welcomeId">Hi, {{name}} <a href="/logout/" rel="external" data-ajax="false" title="Logout" style="font-size: 14px; color: rgba(29, 33, 35, 0.86); margin-left: 10px;"><i class="fa fa-sign-out" aria-hidden="true"></i></a></p>
                     </div>
                 </div>
                 <div class="row row2">
                     <div class="mobile_header col-xs-12 col-sm-3 col-md-3 col-lg-3">
-                        <div class="col-xs-4 smallnav menu" style="margin-left: -12px;" >
+                        <div class="col-xs-4 smallnav menu" style="margin-left: -15px;" >
                             <a href="/" class="logo" rel="external" data-ajax="false">
                                 <img src="../../../assets/img/logo.svg" alt=""  class="logo_def" width="190px">
                                 <img src="../../../assets/img/retina/logo.svg" alt="" class="logo_retina" width="120px">
                             </a>
                         </div>
+                        <div class="col-xs-3 smallnav" style="margin-left: -4%;margin-top: -1%;">
+                            <a rel="external" data-ajax="false" target="_blank" href="https://play.google.com/store/apps/details?id=com.justbooks.in&amp;utm_source=website&amp;utm_campaign=website&amp;pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"><img src="../../../assets/img/playstore.png" alt=""  class="logo_def" width="30px"></a>
+                        </div>
 
-                        <div class="col-xs-7 smallnav menu pull-left upper-links">
-                            <p id="welcomeId" style="float: right; font-size: 11px; font-family: Arial;">Hi, {{name}} <a href="/logout/" rel="external" data-ajax="false" title="Logout" style="color: #1D2123;"><i class="fa fa-sign-out" aria-hidden="true"></i></a></p>
-
+                        <div class="col-xs-5 smallnav menu pull-right upper-links">
+                            <p id="welcomeId" style="float: right; font-size: 10px; font-family: Arial;">Hi, {{name}} <a href="/logout/" rel="external" data-ajax="false" title="Logout" style="color: rgba(29, 33, 35, 0.86);"><i class="fa fa-sign-out" aria-hidden="true"></i></a></p>
                         </div>
 
                         <h1 style="margin:0px;">
@@ -208,23 +202,23 @@
                             </div>
                         </div>
                         <div class="cart largenav col-sm-1 col-md-1 col-lg-1">
-                            <a class="cart-button" href="javascript:void(0)" data-toggle="modal" data-target="#catModal" style="color: white!important; width:135px!important;">
+                            <a class="cart-button" href="javascript:void(0)" data-toggle="modal" data-target="#catModal" style="color: rgba(29, 33, 35, 0.86);width:135px!important;">
                                 <!-- Category -->
-                                Browse Categories
+                                CATEGORIES
                                 <!-- <span class="item-number ">3</span> -->
                             </a>
                         </div>
                     </div>
 
                     <div class="cart largenav col-sm-1 col-md-1 col-lg-1" id="shelfButton" style="margin-left: 10%;" >
-                        <a class="cart-button" rel="external" data-ajax="false" href="/shelf" style="color: white!important;">
+                        <a class="cart-button" rel="external" data-ajax="false" href="/shelf" style="color: rgba(29, 33, 35, 0.86)!important;">
                             <i class="fa fa-book" aria-hidden="true"></i> My Shelf
                             <!-- <span class="item-number ">3</span> -->
                         </a>
                     </div>
                     <div class="cart largenav col-sm-1 col-md-1 col-lg-1">
 
-                        <a rel="external" data-ajax="false" target="_blank"href='https://play.google.com/store/apps/details?id=com.justbooks.in&utm_source=website&utm_campaign=website&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
+                        <a rel="external" data-ajax="false" target="_blank" href='https://play.google.com/store/apps/details?id=com.justbooks.in&utm_source=website&utm_campaign=website&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1'>
                             <img style="width: 120px;" alt='Get it on Google Play' src='../../../assets/img/Playstore.png'/>
                         </a>
 
@@ -252,7 +246,7 @@
                         <ul class="largenav pull-left menu" id="menuHeader" style="margin-left: -13px">
                             <li class="upper-links" id="whatsNewMenu"><a  rel="external" data-ajax="false" class="links" href="/#whatsNew">WHAT'S NEW</a></li>
                             <li class="upper-links" id="membershipPlansMenu"><a rel="external" data-ajax="false" class="links" href="/#membershipPlans">MEMBERSHIP PLANS</a></li>
-                            <li class="upper-links" id="blogMenu"><a class="links" rel="external" data-ajax="false"  href="/#blog">BLOG</a></li>
+<!--                            <li class="upper-links" id="blogMenu"><a class="links" rel="external" data-ajax="false"  href="/#blog">BLOG</a></li>-->
                             <li class="upper-links" ><a class="links" target="_blank" rel="external" data-ajax="false"  href="http://culture.place">CULTURE.PLACE</a></li>
                             <li class="upper-links" id="storeMenu"><a class="links" rel="external" data-ajax="false" href="/store-locator">STORE LOCATOR</a></li>
                             <li class="upper-links" id="faqMenu"><a class="links" rel="external" data-ajax="false" href="/faq">FAQs</a></li>
@@ -261,7 +255,7 @@
 
                     <div class="col-sm-2 col-md-2 col-lg-2" id="welcome_msg">
                         <p id="welcomeId">
-                            <a href="javascript:void(0)" id="memberlogin" title="Login" style="color: #1D2123;">
+                            <a href="javascript:void(0)" id="memberlogin" title="Login" style="color: rgba(29, 33, 35, 0.86);">
                                 MEMBER LOGIN
                             </a>
                         </p>
@@ -283,14 +277,15 @@
                             </a>
 
                         </div>
-                        <div class="col-xs-8 smallnav menu">
-                            <p id="welcomeId" class="upper-links" style="float: right;">
-                                <a href="javascript:void(0)" data-toggle="modal" data-target="#login_popup" title="Login" style="color: #1D2123;">
-                                    MEMBER LOGIN
-                                </a>
-                            </p>
-
+                        <div class="col-xs-3 smallnav" style="margin-left: -4%;margin-top: -1%;">
+                            <a rel="external" data-ajax="false" target="_blank" href="https://play.google.com/store/apps/details?id=com.justbooks.in&amp;utm_source=website&amp;utm_campaign=website&amp;pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"><img src="../../../assets/img/playstore.png" alt=""  class="logo_def" width="30px"></a>
                         </div>
+                        <div class="col-xs-5 smallnav menu pull-right upper-links">
+                            <p id="welcomeId" style="float: right; font-size: 10px; font-family: Arial;"><a href="javascript:void(0)" data-toggle="modal" data-target="#login_popup" title="Login" style="color: rgba(29, 33, 35, 0.86);">
+                                MEMBER LOGIN
+                            </a></p>
+                        </div>
+
                         <span class="largenav" style="margin-top: -5%;">
                             <a href="/" class="logo" rel="external" data-ajax="false">
                                 <img src="../../../assets/img/logo.svg" alt=""  class="logo_def" width="190px">
@@ -312,7 +307,7 @@
                             </div>
                         </div>
 
-                        <div class="cart smallnav col-sm-1 col-md-1 col-lg-1" style="margin-left: 20px;">
+                        <div class="cart smallnav col-sm-1 col-md-1 col-lg-1" style="color: rgba(29, 33, 35, 0.86);margin-left: 20px;">
                             <a class="cart-button" href="javascript:void(0)" data-toggle="modal" data-target="#catModal">
                                 <!-- Category -->
                                 CATEGORIES
@@ -320,9 +315,9 @@
                             </a>
                         </div>
                         <div class="cart largenav col-sm-1 col-md-1 col-lg-1">
-                            <a class="cart-button" href="javascript:void(0)" data-toggle="modal" data-target="#catModal" style="color: white!important; width:135px!important;">
+                            <a class="cart-button" href="javascript:void(0)" data-toggle="modal" data-target="#catModal" style="color: rgba(29, 33, 35, 0.86);width:135px!important;">
                                 <!-- Category -->
-                                Browse Categories
+                                CATEGORIES
                                 <!-- <span class="item-number ">3</span> -->
                             </a>
                         </div>
@@ -354,12 +349,12 @@
         <ul id="menuHeader" style="text-align: left">
             <li class="upper-links" id="whatsNewMenu"><a class="links" rel="external" data-ajax="false" href="/#whatsNew" style="color: black!important;">WHAT'S NEW</a></li><br>
             <li class="upper-links" id="membershipPlansMenu"><a class="links" rel="external" data-ajax="false" href="/#membershipPlans" style="color: black!important;">MEMBERSHIP PLANS</a></li><br>
-            <li class="upper-links" id="blogMenu"><a class="links" rel="external" data-ajax="false" href="/#blog" style="color: black!important;">BLOG</a></li><br>
+<!--            <li class="upper-links" id="blogMenu"><a class="links" rel="external" data-ajax="false" href="/#blog" style="color: black!important;">BLOG</a></li><br>-->
             <li class="upper-links" ><a class="links" target="_blank" href="http://culture.place" style="color: black!important;">CULTURE.PLACE</a></li><br>
             <li class="upper-links" id="storeMenu"><a class="links" rel="external" data-ajax="false"href="/store-locator" style="color: black!important;">STORE LOCATOR</a></li><br>
             <li class="upper-links" id="faqMenu"><a class="links" rel="external" data-ajax="false" href="/faq" style="color: black!important;">FAQs</a></li><br>
             {{#flag}}
-                <li class="upper-links"><a class="links" rel="external" data-ajax="false" href="/shelf" style="color: black!important;">MY SHELF</a></li><br>
+                <li class="upper-links"><a class="links" rel="external" data-ajax="false" href="/shelf" style="color: rgba(29, 33, 35, 0.86)!important;">MY SHELF</a></li><br>
             {{/flag}}
             <li class="upper-links"><a class="links" rel="external" data-ajax="false" href="/logout/" style="color: black!important;">LOG OUT </a></li>
 
@@ -533,7 +528,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Search by Category</h4>
+                    <h4 class="modal-title">Search by Category</h4>{{#flag}}{{#vriFlag}}<p style="margin-left: -2%"> <label class="checkbox-inline"> <input type="checkbox" value="branch" id="branchCheck" name="branchCheck">Search in your branch</label>{{/vriFlag}}{{/flag}}</p>
                 </div>
 
                 <div class="modal-body">
@@ -542,7 +537,7 @@
                         {{#cat}}
                             <div class="col-xs-6 col-sm-3 col-md-3 col-lg-3 checkBox" style="margin-bottom: 1%;text-align: left;">
                                 <label class="checkbox-inline">
-                                    <input type="checkbox" value="{{ID}}" name="Checkbox[]">{{NAME}}</label>
+                                    <input type="checkbox" value="{{ID}}" name="Checkbox[]" class="checkCat">{{NAME}}</label>
                             </div>
 
                         {{/cat}}
@@ -560,8 +555,7 @@
             </div>
 
         </div>
-    </div>
-    <!-- Google Tag Manager (noscript) -->
+    </div>    <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TTNHG82"
                       height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
@@ -584,12 +578,17 @@
     <script>
         $(document).ready(function() {
             $('#save_value').click(function(){
+                var checkFlag=$('#branchCheck').is(':checked');
                 var val = [];
-                $(':checkbox:checked').each(function(i){
+                $('.checkCat:checked').each(function(i){
                     val[i] = $(this).val();
                 });
-                console.log(val.join());
-                window.location.href="/searchByCategory?id="+val.join();
+                if(val.length === 0)
+                {
+                    toastr.error("Please select at least one category!");
+                    return false;
+                }
+                window.location.href="/searchByCategory?id="+val.join()+"&branchFlag="+checkFlag;
             });
 
             // Add scrollspy to <body>
@@ -658,7 +657,6 @@
 
 
 </header>
-
 
 
 <!--<div id="shareModal" class="modal fade modalStyle" role="dialog" style="z-index: 10000">-->
@@ -1149,11 +1147,11 @@
                                                 });
                                             </script>
 
-                                            <!--{{#flag}}-->
-                                                    <!--<a href="javascript:void(0)" id="availibilityCheck"-->
-                                                       <!--class="shortcode_button btn_small btn_type10"-->
-                                                       <!--onclick="checkAvailability({{titleid}})">Check Availability</a>-->
-                                            <!--{{/flag}}-->
+                                            {{#flag}}
+                                                    <a href="javascript:void(0)" id="availibilityCheck"
+                                                       class="shortcode_button btn_small btn_type10"
+                                                       onclick="checkAvailability({{titleid}})">Check Availability</a>
+                                            {{/flag}}
                                             {{#flag}}
                                                 {{#Currentflag}}
                                                     <a href="javascript:void(0)" id="{{rental}}"

@@ -31,6 +31,18 @@
                     </div>
                     <br>
                     <br>
+    <p>{{#flag}}
+        {{#vriFlag}}
+        {{#bFlag}}
+            <label  style="float: right;margin-right: 2%" class="checkbox-inline"> <input type="checkbox" value="true" id="branchCheckSearch" name="branchCheckSearch" onchange="clickCheck()" checked>Search in your branch</label>
+        {{/bFlag}}
+        {{^bFlag}}
+            <label  style="float: right;margin-right: 2%" class="checkbox-inline"> <input type="checkbox" value="false" id="branchCheckSearch" name="branchCheckSearch" onchange="clickCheck()">Search in your branch </label>
+
+        {{/bFlag}}
+        {{/vriFlag}}
+    {{/flag}}</p>                    <br>
+                    <br>
                     <br>
                     <div id="searchDiv">
                     {{# data}}
@@ -101,7 +113,27 @@
         $('#home').addClass('current-menu-parent');
         <!--$("#count").text(" which have" {{result}}.length);-->
 
-    })
+    });
+    function clickCheck()
+
+    {
+        var checkFlag=$('#branchCheckSearch').val();
+
+        if(checkFlag === false || checkFlag === "false")
+        {
+            checkFlag = true;
+
+        }
+        else{
+            checkFlag = false;
+        }
+        var query = "{{query}}";
+
+        window.location.href="/search?q="+query+"&branchFlag="+checkFlag;
+
+    }
+
+
     function placeOrder(id) {
         logClick("Action","Rent",id);
 
@@ -166,7 +198,7 @@
         //            $('html, body').animate({
           //              scrollTop: $('#membershipPlans').offset().top - 150
             //        }, 800);
-			window.location.href = '/#membershipPlans';
+         window.location.href = '/#membershipPlans';
                 }
                 else {
                     $("#wish_" + id).attr("src", "../../assets/img/Added_WL_Right.png");
@@ -182,13 +214,15 @@
     function loadMore() {
         var flag= {{flag}};
         flag=parseInt(flag);
+        var checkFlag=$('#branchCheckSearch').val();
+
 
         $(".spinner").show();
         var count = localStorage.getItem("countFlag");
         var query = "{{query}}";
         localStorage.setItem("countFlag", parseInt(count) + 1);
         $.ajax({
-            url: "/loadMoreSearch?text="+query+"&page="+count,
+            url: "/loadMoreSearch?text="+query+"&page="+count+"&checkFlag="+checkFlag,
             type: 'GET',
 
             success: function (data) {

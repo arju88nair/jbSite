@@ -93,17 +93,29 @@ $app->get('/', function (Request $request, Response $response) {
     if (isset($_SESSION['username'])) {
         $username = $_SESSION['username'];
         $flag = 1;
+        $branch=$_SESSION['branchID'];
+        $vriFlag=true;
+        if($branch == "1008" || $branch == "810" ||$branch == 1008 || $branch == 810 ){
+            $vriFlag=false;
+
+        }
         $slider = 0;
         $name = $_SESSION['first_name'];
         $arr = explode(' ', trim($name));
         $name = $arr[0]; // will print name
     } else {
         $username = "";
+        $branch=$_SESSION['branchID'];
+        $vriFlag=true;
+        if($branch == "1008" || $branch == "810" ||$branch == 1008 || $branch == 810 ){
+            $vriFlag=false;
+
+        }
         $flag = 0;
         $slider = 1;
         $name = "";
     }
-    $response = $this->view->render($response, 'home.mustache', array('loggedIn' => "true", 'session' => $username, 'image1' => $image1, 'address' => $address, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories));
+    $response = $this->view->render($response, 'home.mustache', array('loggedIn' => "true", 'session' => $username, 'image1' => $image1, 'address' => $address, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories,'vriFlag'=>$vriFlag));
 //    $response = $this->view->render($response, 'home.mustache', array('loggedIn' => "true", 'session' => $_SESSION['username'], 'image1' => $image1, 'image2' => $image2, 'image3' => $image3, 'action1' => $action1, 'action2' => $action2, 'action3' => $action3, 'address' => $address, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories));
     return $response;
 });
@@ -159,11 +171,23 @@ $app->get('/{name}/book_details/{titleid}', function (Request $request, Response
         $name = $_SESSION['first_name'];
         $arr = explode(' ', trim($name));
         $name = $arr[0];
+        $branch=$_SESSION['branchID'];
+        $vriFlag=true;
+        if($branch == "1008" || $branch == "810" ||$branch == 1008 || $branch == 810 ){
+            $vriFlag=false;
+
+        }
 
     } else {
         $flag = 0;
         $slider = 1;
         $name = "";
+        $branch=$_SESSION['branchID'];
+        $vriFlag=true;
+        if($branch == "1008" || $branch == "810" ||$branch == 1008 || $branch == 810 ){
+            $vriFlag=false;
+
+        }
     }
     $con = $this->db;
 
@@ -199,7 +223,7 @@ $app->get('/{name}/book_details/{titleid}', function (Request $request, Response
         $review = $reviewArray[0];
     }
 
-    $response = $this->view->render($response, 'book_details.mustache', array('data' => $data, 'titleid' => $titleid, 'Currentflag' => $Currentflag, 'rental' => $rental_id, 'wishFlag' => $Wishflag, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories, 'review' => $review, 'rateFlag' => $rateFlag));
+    $response = $this->view->render($response, 'book_details.mustache', array('data' => $data, 'titleid' => $titleid, 'Currentflag' => $Currentflag, 'rental' => $rental_id, 'wishFlag' => $Wishflag, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories, 'review' => $review, 'rateFlag' => $rateFlag,'vriFlag'=>$vriFlag));
     return $response;
 })->setName('book_details/');
 $app->get('/book_details/{titleid}/{name}/', function (Request $request, Response $response, $args) {
@@ -381,10 +405,23 @@ $app->get('/{name}/author_details/{authorid}', function (Request $request, Respo
         $name = $_SESSION['first_name'];
         $arr = explode(' ', trim($name));
         $name = $arr[0];
+        $branch=$_SESSION['branchID'];
+        $vriFlag=true;
+        if($branch == "1008" || $branch == "810" ||$branch == 1008 || $branch == 810 ){
+            $vriFlag=false;
+
+        }
+
     } else {
         $flag = 0;
         $slider = 1;
         $name = "";
+        $branch=$_SESSION['branchID'];
+        $vriFlag=true;
+        if($branch == "1008" || $branch == "810" ||$branch == 1008 || $branch == 810 ){
+            $vriFlag=false;
+
+        }
     }
 
 
@@ -393,16 +430,44 @@ $app->get('/{name}/author_details/{authorid}', function (Request $request, Respo
     $Categories = categoriesList($con);
 
 
-    $response = $this->view->render($response, 'author_details.mustache', array('data' => $data, 'id' => $authorid, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories));
+    $response = $this->view->render($response, 'author_details.mustache', array('data' => $data, 'id' => $authorid, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories,'vriFlag'=>$vriFlag));
     return $response;
 });
 
 $app->get('/search', function (Request $request, Response $response) {
 
     $query = $request->getQueryParams()['q'];
+
+    if(isset($_GET['branchFlag']))
+    {
+        if($_GET['branchFlag'] == false || $_GET['branchFlag'] == "false" )
+        {
+            $bFlag=false;
+
+            $branchid="";
+
+        }
+       else
+        {
+            $bFlag=true;
+
+            $branch=$_SESSION['branchID'];
+            if($branch == "1008" || $branch == "810" ||$branch == 1008 || $branch == 810 ){
+                $vriFlag=false;
+
+            }
+
+
+        }
+    }
+    else{
+        $bFlag=false;
+
+        $branch = "";
+    }
 //    $result = curlFunction("8990/api/v1/search.json?q=$query&page=1&per_page=20");
 //    $count = count(json_decode($result)->result);
-    $raw_data = curlFunctionEs("/getSuggestBooksDetails?text=$query&page=1");
+    $raw_data = curlFunctionEs("/getSuggestBooksDetails?text=$query&page=1&branch_id=$branch");
     $data = json_decode($raw_data);
     $count = count($data);
     if ($data == "No Titles") {
@@ -410,10 +475,25 @@ $app->get('/search', function (Request $request, Response $response) {
     }
 
     if (isset($_SESSION['username'])) {
+        $branch=$_SESSION['branchID'];
+        $vriFlag=true;
+        if($branch == "1008" || $branch == "810" ||$branch == 1008 || $branch == 810 ){
+            $vriFlag=false;
+
+        }
         $flag = 1;
         $slider = 0;
         $name = $_SESSION['first_name'];
+        $arr = explode(' ', trim($name));
+        $name = $arr[0]; // will print name
     } else {
+        $branch=$_SESSION['branchID'];
+        $vriFlag=true;
+
+        if($branch == "1008" || $branch == "810" ||$branch == 1008 || $branch == 810 ){
+            $vriFlag=false;
+
+        }
         $flag = 0;
         $slider = 1;
         $name = "";
@@ -423,7 +503,7 @@ $app->get('/search', function (Request $request, Response $response) {
     $Categories = categoriesList($con);
 
 
-    $response = $this->view->render($response, 'search.mustache', array('data' => $data, 'query' => ucfirst($query), 'count' => $count, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories));
+    $response = $this->view->render($response, 'search.mustache', array('data' => $data, 'query' => ucfirst($query), 'count' => $count, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories,'bFlag'=>$bFlag,'vriFlag'=>$vriFlag));
     return $response;
 
 });
@@ -435,17 +515,29 @@ $app->get('/shelf', function (Request $request, Response $response) {
         $name = $_SESSION['first_name'];
         $arr = explode(' ', trim($name));
         $name = $arr[0];
+        $branch=$_SESSION['branchID'];
+        $vriFlag=true;
+        if($branch == "1008" || $branch == "810" ||$branch == 1008 || $branch == 810 ){
+            $vriFlag=false;
+
+        }
     } else {
         $flag = 0;
         $slider = 1;
         $name = "";
+        $branch=$_SESSION['branchID'];
+        $vriFlag=true;
+        if($branch == "1008" || $branch == "810" ||$branch == 1008 || $branch == 810 ){
+            $vriFlag=false;
+
+        }
     }
     $con = $this->db;
 
     $Categories = categoriesList($con);
 
 
-    $response = $this->view->render($response, 'shelf.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories));
+    $response = $this->view->render($response, 'shelf.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories,'vriFlag'=>$vriFlag));
     return $response;
 })->add($authenticate);
 
@@ -660,10 +752,23 @@ $app->get('/signup', function (Request $request, Response $response) {
                         $name = $_SESSION['first_name'];
                         $arr = explode(' ', trim($name));
                         $name = $arr[0];
+                        $branch=$_SESSION['branchID'];
+                        $vriFlag=true;
+                        if($branch == "1008" || $branch == "810" ||$branch == 1008 || $branch == 810 ){
+                            $vriFlag=false;
+
+                        }
+
                     } else {
                         $flag = 0;
                         $slider = 1;
                         $name = "";
+                        $branch=$_SESSION['branchID'];
+                        $vriFlag=true;
+                        if($branch == "1008" || $branch == "810" ||$branch == 1008 || $branch == 810 ){
+                            $vriFlag=false;
+
+                        }
                     }
 
                     $con = $this->db;
@@ -675,7 +780,7 @@ $app->get('/signup', function (Request $request, Response $response) {
                         $Categories[] = $rowCat;
                     }
 
-                    $response = $this->view->render($response, 'signup_new.mustache', array('plan_data' => $planData, 'plan_dataJ' => json_encode($array_data), 'planid' => $planid, 'plan_books' => $count, 'planname' => $planname, 'planid' => $planid, "total" => $plans['plan_duration']['totalAmount_with_convenience_fee'], 'reading_fee' => $plans['plan_duration']['reading_fee_for_term'], 'reg_fee' => $item['web_signup_plan']['registration_fee'], 'sec_deposit' => $item['web_signup_plan']['security_deposit'], 'months' => $monthsArray, 'book' => $books, 'month' => $months, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'namePlan' => $namePlan, 'monthTagText' => $monthTagText, 'cat' => $Categories,'branch_id'=>810));
+                    $response = $this->view->render($response, 'signup_new.mustache', array('plan_data' => $planData, 'plan_dataJ' => json_encode($array_data), 'planid' => $planid, 'plan_books' => $count, 'planname' => $planname, 'planid' => $planid, "total" => $plans['plan_duration']['totalAmount_with_convenience_fee'], 'reading_fee' => $plans['plan_duration']['reading_fee_for_term'], 'reg_fee' => $item['web_signup_plan']['registration_fee'], 'sec_deposit' => $item['web_signup_plan']['security_deposit'], 'months' => $monthsArray, 'book' => $books, 'month' => $months, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'namePlan' => $namePlan, 'monthTagText' => $monthTagText, 'cat' => $Categories, 'branch_id' => 810,'vriFlag'=>$vriFlag));
                     return $response;
 
                 }
@@ -711,7 +816,7 @@ $app->get('/signupCorp', function (Request $request, Response $response) {
 //        $plan_data_curl = curlFunction('get_all_plans.json');
 //
 //    }
-    $branch_id=$allGetVars['branch_id'];
+    $branch_id = $allGetVars['branch_id'];
 
     $plan_data_curl = curlFunction("get_all_plans.json?branch_id=$branch_id");
 
@@ -795,10 +900,22 @@ $app->get('/signupCorp', function (Request $request, Response $response) {
                         $name = $_SESSION['first_name'];
                         $arr = explode(' ', trim($name));
                         $name = $arr[0];
+                        $branch=$_SESSION['branchID'];
+                        $vriFlag=true;
+                        if($branch == "1008" || $branch == "810" ||$branch == 1008 || $branch == 810 ){
+                            $vriFlag=false;
+
+                        }
                     } else {
                         $flag = 0;
                         $slider = 1;
                         $name = "";
+                        $branch=$_SESSION['branchID'];
+                        $vriFlag=true;
+                        if($branch == "1008" || $branch == "810" ||$branch == 1008 || $branch == 810 ){
+                            $vriFlag=false;
+
+                        }
                     }
 
                     $con = $this->db;
@@ -810,7 +927,7 @@ $app->get('/signupCorp', function (Request $request, Response $response) {
                         $Categories[] = $rowCat;
                     }
 
-                    $response = $this->view->render($response, 'signup_new.mustache', array( 'plan_dataJ' => json_encode($array_data), 'planid' => $planid, 'plan_books' => $count, 'planname' => $planname, 'planid' => $planid, "total" => $plans['plan_duration']['totalAmount_with_convenience_fee'], 'reading_fee' => $plans['plan_duration']['reading_fee_for_term'], 'reg_fee' => $item['web_signup_plan']['registration_fee'], 'sec_deposit' => $item['web_signup_plan']['security_deposit'], 'months' => $monthsArray, 'book' => $books, 'month' => $months, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'namePlan' => $namePlan, 'monthTagText' => $monthTagText, 'cat' => $Categories,'branch_id'=>$branch_id));
+                    $response = $this->view->render($response, 'signup_new.mustache', array('plan_dataJ' => json_encode($array_data), 'planid' => $planid, 'plan_books' => $count, 'planname' => $planname, 'planid' => $planid, "total" => $plans['plan_duration']['totalAmount_with_convenience_fee'], 'reading_fee' => $plans['plan_duration']['reading_fee_for_term'], 'reg_fee' => $item['web_signup_plan']['registration_fee'], 'sec_deposit' => $item['web_signup_plan']['security_deposit'], 'months' => $monthsArray, 'book' => $books, 'month' => $months, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'namePlan' => $namePlan, 'monthTagText' => $monthTagText, 'cat' => $Categories, 'branch_id' => $branch_id,'vriFlag'=>$vriFlag));
                     return $response;
 
                 }
@@ -1030,20 +1147,32 @@ $app->get('/signup_details', function (Request $request, Response $response) {
         $name = $_SESSION['first_name'];
         $arr = explode(' ', trim($name));
         $name = $arr[0];
+        $branch=$_SESSION['branchID'];
+        $vriFlag=true;
+        if($branch == "1008" || $branch == "810" ||$branch == 1008 || $branch == 810 ){
+            $vriFlag=false;
+
+        }
     } else {
         $flag = 0;
         $slider = 1;
+        $branch=$_SESSION['branchID'];
+        $vriFlag=true;
+        if($branch == "1008" || $branch == "810" ||$branch == 1008 || $branch == 810 ){
+            $vriFlag=false;
+
+        }
         $name = "";
     }
     $con = $this->db;
 
     $Categories = categoriesList($con);
-    $orderNumber= $_SESSION['order_number'];
-    $amount=(float) $_SESSION['amount'];
-    $sku= $_SESSION['SKU'];
-    $pNmae= $_SESSION['planname'];
+    $orderNumber = $_SESSION['order_number'];
+    $amount = (float)$_SESSION['amount'];
+    $sku = $_SESSION['SKU'];
+    $pNmae = $_SESSION['planname'];
 
-    return $this->view->render($response, 'signup_details.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories, 'orderid' => $orderid,'orderNumber'=>$orderNumber,'amount'=>$amount,'sku'=>$sku,'pName'=>$pNmae));
+    return $this->view->render($response, 'signup_details.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories, 'orderid' => $orderid, 'orderNumber' => $orderNumber, 'amount' => $amount, 'sku' => $sku, 'pName' => $pNmae,'vriFlag'=>$vriFlag));
     return $response;
 });
 
@@ -1221,19 +1350,19 @@ $app->post('/insertSignupNew', function (Request $request, Response $response) {
     $data_new = json_decode($data['signup_data']);
     $pName = $data['name'];
     $branch_id = $data['branch_id'];
+    $referal = $data['refer'];
     parse_str($data_new, $output);
     $zip = valData($output['zip']);
     $email = valData($output['email']);
     $mobile = valData($output['mobile']);
     $plan_id = valData($output['plan_id']);
     $_SESSION['planname'] = $pName;
-    $_SESSION['SKU'] = "SIGNUP-" . $pName."_" . $plan_id;
+    $_SESSION['SKU'] = "SIGNUP-" . $pName . "_" . $plan_id;
     $duration = valData($output['duration']);
     $coupon_code = valData($output['coupon_code']);
     $_SESSION['mobile'] = $mobile;
     $gift_card_no = '';
     $pin = '';
-    $referal = '';
     $queryCat = "SELECT email FROM webstore.users where email='$email'";
     $resultCat = oci_parse($con, $queryCat);
     oci_execute($resultCat);
@@ -1249,13 +1378,81 @@ $app->post('/insertSignupNew', function (Request $request, Response $response) {
     $sub_total = $data->sub_total;
     $delivery_fee = $data->delivery_fee;
     $discount = $data->discount;
+    $orderid=time();
+    $_SESSION['order_number'] = $orderid;
 
-    $_SESSION['order_number'] = time();
+    if ($total_amnt == 0 || $total_amnt == "0") {
+        $con = $this->db;
+        $query_get = "select * from fn_signup_details where orderid=$orderid and trunc(tdate)=trunc(sysdate)";
+        $result_get = oci_parse($con, $query_get);
+        oci_execute($result_get);
+        while ($row = oci_fetch_assoc($result_get)) {
+            $state = valData($row['STATE_ID']);
+            $zip = valData($row['ZIP']);
+            $email = valData($row['EMAIL']);
+            $mobile = valData($row['MOBILE']);
+            $plan_id = valData($row['PLANID']);
+            $duration = valData($row['DURATION']);
+            $coupon_code = valData($row['COUPON_CODE']);
+            $gift_card_no = '';
+            $pin = '';
+            $referal = valData($row['REFERRAL']);
+            $total_amnt = valData($row['TOTAL_AMNT']);
+            $redeemed_amnt = valData($row['REDEEMED_AMNT']);
+            $sub_total = valData($row['SUB_TOTAL']);
+            $delivery_fee = valData($row['DELIVERY_FEE']);
+            $discount = valData($row['DISCOUNT']);
+            $city = valData($row['CITY_ID']);
+            $gender = valData($row['GENDER']);
+            $dob = valData($row['DOB']);
+            $firstname = valData($row['FIRST_NAME']);
+            $lastname = valData($row['LAST_NAME']);
+            $address = valData($row['ADDRESS1']);
+            $password = valData($row['PASSWORD']);
+            $branch_id = valData($row['BRANCH_ID']);
+        }
+
+        $dob_new = explode('-', $dob);
+        $raw_data = curlFunction("web_signup_create.json?city_id=$city&branch_id=$branch_id&email=$email&gender=$gender&dob_year=$dob_new[0]&dob_month=$dob_new[1]&dob_day=$dob_new[2]&first_name=$firstname&last_name=$lastname&address=$address&pincode=$zip&primary_phone=$mobile&alternate_phone=$mobile&referred_by=$referal&about_justbooks_source=11&plan_id=$plan_id&membership_duration=$duration&delivery_option=1&coupon_code=$coupon_code&gift_card_no=$gift_card_no&pin=$pin&total_amount=$total_amnt&redeemed_amount=$redeemed_amnt&qc_flag=false&sub_total=$sub_total&discount=$discount&convenience_fee=0&payment_mode=card&delivery_fees=$delivery_fee&coupon_id=$coupon_code&password=$password&password_confirmation=$password");
+        $response_data = json_decode($raw_data, true);
+//    print_r($response_data['result']);die;
+        $data = $response_data['result'];
+        if ($response_data['success'] == true) {
+
+            $_SESSION['order_number'] = $data['transaction']['transaction']['order_number'];
+            $_SESSION['amount'] = $data['transaction']['transaction']['amount'];
+            $jb_orderid = $_SESSION['order_number'];
+
+            $query_up = "update fn_signup_details set jb_orderid='$jb_orderid' where orderid='$orderid'";
+            $result_up = oci_parse($con, $query_up);
+            oci_execute($result_up);
+
+            $url = "http://justbooksclc.com/api/v1/payment_callback.json?orderid=$jb_orderid&response_code=01&payment_type=Paytm&branch_id=$branch_id";
+            echo $url;
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_HEADER, 0);            // No header in the result
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // Return, do not echo result
+            $raw_data = curl_exec($ch);
+            curl_close($ch);
+            echo "after api";
+            $query_update = "update webstore.users set created_at=trunc(sysdate) where email='$email'";
+            $result_update = oci_parse($con, $query_update);
+            oci_execute($result_update);
+
+            $data = json_decode(json_encode($data), True);
+//        echo json_encode(array("success"=>true,'order'=>$data['transaction']['transaction']['order_number'],'amount'=>$data['transaction']['transaction']['amount']));
+            echo json_encode("zeroSuccess");
+            die;
+        } else {
+            echo json_encode("Zero");
+        }
+    }
     $_SESSION['amount'] = $total_amnt;
     $orderid = $_SESSION['order_number'];
     $query_insert = "insert into fn_signup_details (orderid,planid,duration,coupon_code,zip,email,mobile,total_amnt,redeemed_amnt,
-          sub_total,discount,delivery_fee,tdate,branch_id) values ('$orderid','$plan_id','$duration','$coupon_code','$zip','$email',
-          '$mobile','$total_amnt','$redeemed_amnt','$sub_total','$discount','$delivery_fee',sysdate,'$branch_id')";
+          sub_total,discount,delivery_fee,tdate,branch_id,REFERRAL) values ('$orderid','$plan_id','$duration','$coupon_code','$zip','$email',
+          '$mobile','$total_amnt','$redeemed_amnt','$sub_total','$discount','$delivery_fee',sysdate,'$branch_id','$referal')";
     $result_insert = oci_parse($con, $query_insert);
     oci_execute($result_insert);
     return $response->withJson(array('success' => 'true'));
@@ -1572,6 +1769,7 @@ $app->get('/login/{username}/{password}', function (Request $request, Response $
         }*/
 
     $result = curlFunction("sessions_email.json?email=$username&password=$password");
+
     if (json_decode($result)->success == true) {
         $authToken = json_decode($result)->auth_token;
         $_SESSION['api_key'] = $authToken;
@@ -1891,10 +2089,22 @@ $app->get('/change_plan', function (Request $request, Response $response, $args)
                         $name = $_SESSION['first_name'];
                         $arr = explode(' ', trim($name));
                         $name = $arr[0];
+                        $branch=$_SESSION['branchID'];
+                        $vriFlag=true;
+                        if($branch == "1008" || $branch == "810" ||$branch == 1008 || $branch == 810 ){
+                            $vriFlag=false;
+
+                        }
                     } else {
                         $flag = 0;
                         $slider = 1;
                         $name = "";
+                        $branch=$_SESSION['branchID'];
+                        $vriFlag=true;
+                        if($branch == "1008" || $branch == "810" ||$branch == 1008 || $branch == 810 ){
+                            $vriFlag=false;
+
+                        }
                     }
 
                     $con = $this->db;
@@ -1906,7 +2116,7 @@ $app->get('/change_plan', function (Request $request, Response $response, $args)
                         $Categories[] = $rowCat;
                     }
 
-                    $response = $this->view->render($response, 'change_plan.mustache', array('plan_data' => strtoupper($planname), 'plan_dataJ' => json_encode($array_data), 'planid' => $planid, 'plan_books' => $count, 'planname' => $planname, 'planid' => $planid, "available_balance" => $item['change_plan_detail']['available_balance'], 'balance_due' => $item['change_plan_detail']['balance_due'], 'reading_fee' => $item['change_plan_detail']['reading_fee'], 'totalAMount' => $plans['plan_duration']['payable_amount'], 'months' => $monthsArray, 'book' => $books, 'month' => $months, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories, 'monthTag' => $monthTag, 'delFee' => $delFee, 'isset' => (int)$isset));
+                    $response = $this->view->render($response, 'change_plan.mustache', array('plan_data' => strtoupper($planname), 'plan_dataJ' => json_encode($array_data), 'planid' => $planid, 'plan_books' => $count, 'planname' => $planname, 'planid' => $planid, "available_balance" => $item['change_plan_detail']['available_balance'], 'balance_due' => $item['change_plan_detail']['balance_due'], 'reading_fee' => $item['change_plan_detail']['reading_fee'], 'totalAMount' => $plans['plan_duration']['payable_amount'], 'months' => $monthsArray, 'book' => $books, 'month' => $months, 'flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories, 'monthTag' => $monthTag, 'delFee' => $delFee, 'isset' => (int)$isset,'vriFlag'=>$vriFlag));
                     return $response;
 
                 }
@@ -1919,7 +2129,7 @@ $app->get('/change_plan', function (Request $request, Response $response, $args)
 $app->get('/getPlanYears', function (Request $request, Response $response, $args) {
     $book = $_GET['book'];
     $planname = $_GET['planname'];
-
+    $branch_id = $_GET['branchID'];
 //    if(isset($_SESSION['branchID']))
 //    {
 //        $branch_id=$_SESSION['branchID'];
@@ -1930,7 +2140,7 @@ $app->get('/getPlanYears', function (Request $request, Response $response, $args
 //        $plan_data_curl = curlFunction('get_all_plans.json');
 //
 //    }
-    $plan_data_curl = curlFunction('get_all_plans.json');
+    $plan_data_curl = curlFunction("get_all_plans.json?branch_id=$branch_id");
 
     $plan_data = json_decode($plan_data_curl);
     $data = $plan_data->result;
@@ -2316,17 +2526,29 @@ $app->get('/faq', function (Request $request, Response $response) {
         $name = $_SESSION['first_name'];
         $arr = explode(' ', trim($name));
         $name = $arr[0];
+        $branch=$_SESSION['branchID'];
+        $vriFlag=true;
+        if($branch == "1008" || $branch == "810" ||$branch == 1008 || $branch == 810 ){
+            $vriFlag=false;
+
+        }
     } else {
         $flag = 0;
         $slider = 1;
         $name = "";
+        $branch=$_SESSION['branchID'];
+        $vriFlag=true;
+        if($branch == "1008" || $branch == "810" ||$branch == 1008 || $branch == 810 ){
+            $vriFlag=false;
+
+        }
     }
 
     $con = $this->db;
 
     $Categories = categoriesList($con);
 
-    return $this->view->render($response, 'faq.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories));
+    return $this->view->render($response, 'faq.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories,'vriFlag'=>$vriFlag));
 
 });
 
@@ -2337,17 +2559,29 @@ $app->get('/privacy_policy', function (Request $request, Response $response) {
         $name = $_SESSION['first_name'];
         $arr = explode(' ', trim($name));
         $name = $arr[0];
+        $branch=$_SESSION['branchID'];
+        $vriFlag=true;
+        if($branch == "1008" || $branch == "810" ||$branch == 1008 || $branch == 810 ){
+            $vriFlag=false;
+
+        }
     } else {
         $flag = 0;
         $slider = 1;
         $name = "";
+        $branch=$_SESSION['branchID'];
+        $vriFlag=true;
+        if($branch == "1008" || $branch == "810" ||$branch == 1008 || $branch == 810 ){
+            $vriFlag=false;
+
+        }
     }
 
     $con = $this->db;
 
     $Categories = categoriesList($con);
 
-    return $this->view->render($response, 'privacy_policy.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories));
+    return $this->view->render($response, 'privacy_policy.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories,'vriFlag'=>$vriFlag));
 
 });
 
@@ -2359,17 +2593,29 @@ $app->get('/contactUs', function (Request $request, Response $response) {
         $name = $_SESSION['first_name'];
         $arr = explode(' ', trim($name));
         $name = $arr[0];
+        $branch=$_SESSION['branchID'];
+        $vriFlag=true;
+        if($branch == "1008" || $branch == "810" ||$branch == 1008 || $branch == 810 ){
+            $vriFlag=false;
+
+        }
     } else {
         $flag = 0;
         $slider = 1;
         $name = "";
+        $branch=$_SESSION['branchID'];
+        $vriFlag=true;
+        if($branch == "1008" || $branch == "810" ||$branch == 1008 || $branch == 810 ){
+            $vriFlag=false;
+
+        }
     }
 
     $con = $this->db;
 
     $Categories = categoriesList($con);
 
-    return $this->view->render($response, 'contactUs.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories));
+    return $this->view->render($response, 'contactUs.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories,'vriFlag'=>$vriFlag));
 
 });
 $app->get('/franchise', function (Request $request, Response $response) {
@@ -2380,16 +2626,28 @@ $app->get('/franchise', function (Request $request, Response $response) {
         $name = $_SESSION['first_name'];
         $arr = explode(' ', trim($name));
         $name = $arr[0];
+        $branch=$_SESSION['branchID'];
+        $vriFlag=true;
+        if($branch == "1008" || $branch == "810" ||$branch == 1008 || $branch == 810 ){
+            $vriFlag=false;
+
+        }
     } else {
         $flag = 0;
         $slider = 1;
         $name = "";
+        $branch=$_SESSION['branchID'];
+        $vriFlag=true;
+        if($branch == "1008" || $branch == "810" ||$branch == 1008 || $branch == 810 ){
+            $vriFlag=false;
+
+        }
     }
     $con = $this->db;
 
     $Categories = categoriesList($con);
 
-    return $this->view->render($response, 'franchise.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories));
+    return $this->view->render($response, 'franchise.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories,'vriFlag'=>$vriFlag));
 
 });
 $app->get('/checkAvailability', function (Request $request, Response $response) {
@@ -3071,13 +3329,25 @@ $app->get('/users/password/edit', function (Request $request, Response $response
         $name = $_SESSION['first_name'];
         $arr = explode(' ', trim($name));
         $name = $arr[0];
+        $branch=$_SESSION['branchID'];
+        $vriFlag=true;
+        if($branch == "1008" || $branch == "810" ||$branch == 1008 || $branch == 810 ){
+            $vriFlag=false;
+
+        }
     } else {
         $flag = 0;
         $slider = 1;
+        $branch=$_SESSION['branchID'];
+        $vriFlag=true;
+        if($branch == "1008" || $branch == "810" ||$branch == 1008 || $branch == 810 ){
+            $vriFlag=false;
+
+        }
         $name = "";
     }
 
-    $response = $this->view->render($response, 'forget-password.mustache', array('email' => $email, 'div' => $formFlag, 'error' => $errorFlag, 'cat' => $Categories, 'flag' => (int)$flag, 'slider' => (int)$slider, 'name' => $name));
+    $response = $this->view->render($response, 'forget-password.mustache', array('email' => $email, 'div' => $formFlag, 'error' => $errorFlag, 'cat' => $Categories, 'flag' => (int)$flag, 'slider' => (int)$slider, 'name' => $nam,'vriFlag'=>$vriFlag));
     return $response;
 
 });
@@ -3090,10 +3360,22 @@ $app->get('/store-locator', function (Request $request, Response $response) {
         $name = $_SESSION['first_name'];
         $arr = explode(' ', trim($name));
         $name = $arr[0];
+        $branch=$_SESSION['branchID'];
+        $vriFlag=true;
+        if($branch == "1008" || $branch == "810" ||$branch == 1008 || $branch == 810 ){
+            $vriFlag=false;
+
+        }
     } else {
         $flag = 0;
         $slider = 1;
         $name = "";
+        $branch=$_SESSION['branchID'];
+        $vriFlag=true;
+        if($branch == "1008" || $branch == "810" ||$branch == 1008 || $branch == 810 ){
+            $vriFlag=false;
+
+        }
     }
 
     $con = $this->db;
@@ -3101,7 +3383,7 @@ $app->get('/store-locator', function (Request $request, Response $response) {
     $Categories = categoriesList($con);
 
 
-    return $this->view->render($response, 'store_location.mustache', array('flag' => (int)$flag, 'slider' => (int)$slider, 'name' => $name, 'cat' => $Categories));
+    return $this->view->render($response, 'store_location.mustache', array('flag' => (int)$flag, 'slider' => (int)$slider, 'name' => $name, 'cat' => $Categories,'vriFlag'=>$vriFlag));
 
 
 });
@@ -3256,17 +3538,29 @@ $app->get('/terms-and-condition', function (Request $request, Response $response
         $name = $_SESSION['first_name'];
         $arr = explode(' ', trim($name));
         $name = $arr[0];
+        $branch=$_SESSION['branchID'];
+        $vriFlag=true;
+        if($branch == "1008" || $branch == "810" ||$branch == 1008 || $branch == 810 ){
+            $vriFlag=false;
+
+        }
     } else {
         $flag = 0;
         $slider = 1;
         $name = "";
+        $branch=$_SESSION['branchID'];
+        $vriFlag=true;
+        if($branch == "1008" || $branch == "810" ||$branch == 1008 || $branch == 810 ){
+            $vriFlag=false;
+
+        }
     }
     $con = $this->db;
 
     $Categories = categoriesList($con);
 
 
-    return $this->view->render($response, 'terms.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories));
+    return $this->view->render($response, 'terms.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories,'vriFlag'=>$vriFlag));
 
 
 });
@@ -3362,7 +3656,7 @@ $app->get('/change_plan_payment', function (Request $request, Response $response
     $pname = $_GET['planname'];
     $delFee = $_GET['delFee'];
     $flag = $_GET['flag'];
-    $_SESSION['SKU'] ="Upgrade - ".$pname."_".$new_plan_id ;
+    $_SESSION['SKU'] = "Upgrade - " . $pname . "_" . $new_plan_id;
     $_SESSION['planname'] = "Upgrade";
 
     $membership_no = $_SESSION['membership_no'];
@@ -3435,27 +3729,56 @@ $app->get('/noAmountBreak', function (Request $request, Response $response) {
 $app->get('/searchByCategory', function (Request $request, Response $response) {
 
     $ids = $request->getQueryParams()['id'];
-
+    $flag= $request->getQueryParams()['branchFlag'];
+    $branch=false;
 //echo "/getCategoryWise?page=1&categories=$ids";die;
-    $raw_data = curlFunctionEs("/getCategoryWise?page=1&categories=$ids");
-    $data = json_decode($raw_data);
+    if($flag === false ||$flag == "false" )
+    {
+        $raw_data = curlFunctionEs("/getCategoryWise?page=1&categories=$ids&branch_id=");
 
+    }
+    if($flag === true ||$flag == "true")
+    {
+        $branch=$_SESSION['branchID'];
+        $raw_data = curlFunctionEs("/getCategoryWise?page=1&categories=$ids&branch_id=$branch");
+
+    }
+    $data = json_decode($raw_data);
+    if($data == "No Titles")
+    {
+        $text="No results in this category";
+    }
+    else{
+        $text="";
+    }
     if (isset($_SESSION['username'])) {
         $flag = 1;
         $slider = 0;
         $name = $_SESSION['first_name'];
         $arr = explode(' ', trim($name));
         $name = $arr[0];
+        $branch=$_SESSION['branchID'];
+        $vriFlag=true;
+        if($branch == "1008" || $branch == "810" ||$branch == 1008 || $branch == 810 ){
+            $vriFlag=false;
+
+        }
     } else {
         $flag = 0;
         $slider = 1;
         $name = "";
+        $branch=$_SESSION['branchID'];
+        $vriFlag=true;
+        if($branch == "1008" || $branch == "810" ||$branch == 1008 || $branch == 810 ){
+            $vriFlag=false;
+
+        }
     }
     $con = $this->db;
 
     $Categories = categoriesList($con);
 
-    return $this->view->render($response, 'catSearch.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories, 'data' => $data, 'ids' => $ids, 'count' => count($data)));
+    return $this->view->render($response, 'catSearch.mustache', array('flag' => (int)$flag, 'name' => $name, 'slider' => $slider, 'cat' => $Categories, 'data' => $data, 'ids' => $ids, 'count' => count($data),'branch_id'=>$branch,'text'=>$text,'vriFlag'=>$vriFlag));
 
 
 });
@@ -3463,8 +3786,19 @@ $app->get('/loadMoreCatSearch', function (Request $request, Response $response) 
 
     $ids = $request->getQueryParams()['categories'];
     $page = $request->getQueryParams()['page'];
+    $branch_id = $request->getQueryParams()['branch_id'];
+    if($branch_id == false || $branch_id == "false")
+    {
+        $branch="";
+    }
+    else{
+        $branch=$_SESSION['branchID'];
+        if($branch == "1008" || $branch == "810" ||$branch == 1008 || $branch == 810 ){
+            $branch="";
 
-    $raw_data = curlFunctionEs("/getCategoryWise?page=$page&categories=$ids");
+        }
+    }
+    $raw_data = curlFunctionEs("/getCategoryWise?page=$page&categories=$ids&branch_id=$branch");
     $data = json_decode($raw_data);
     echo json_encode($data);
 
@@ -3474,8 +3808,20 @@ $app->get('/loadMoreSearch', function (Request $request, Response $response) {
 
     $text = $_GET['text'];
     $page = $_GET['page'];
+    $flag = $_GET['checkFlag'];
+    if($flag == false || $flag == "false")
+    {
+        $branch="";
+    }
+    else{
 
-    $raw_data = curlFunctionEs("/getSuggestBooksDetails?text=$text&page=$page");
+        $branch=$_SESSION['branchID'];
+        if($branch == "1008" || $branch == "810" ||$branch == 1008 || $branch == 810 ){
+            $branch="";
+
+        }
+    }
+    $raw_data = curlFunctionEs("/getSuggestBooksDetails?text=$text&page=$page&branch_id=$branch");
     $data = json_decode($raw_data);
 
 
@@ -3583,7 +3929,7 @@ $app->get('/adminSignup/', function (Request $request, Response $response) {
     while ($row_det = oci_fetch_assoc($result_det)) {
         $data_det[] = $row_det;
     }
-    return $this->view->render($response, 'adminSignup.mustache',array('pay'=>$data_pay,'det'=>$data_det));
+    return $this->view->render($response, 'adminSignup.mustache', array('pay' => $data_pay, 'det' => $data_det));
 
 
 });
