@@ -62,7 +62,7 @@
     <link rel="stylesheet" type="text/css" href="../../../assets/css/plugins.css?v1=6.1">
     <link rel="stylesheet" type="text/css" href="../../../assets/css/theme.css?v1=6.1">
     <link rel="stylesheet" type="text/css" href="../../../assets/css/responsive.css?v1=6.1">
-    <link rel="stylesheet" type="text/css" href="../../../assets/css/theme_settings.css?v1=6.1">
+    <link rel="stylesheet" type="text/css" href="../../../assets/css/theme_settings.css?v1=6.2">
     <link rel="stylesheet" type="text/css" href="../../../assets/css/color_theme.css?v1=6.1">
     <link rel="stylesheet" type="text/css" href="../../../assets/css/rs-settings.css?v1=6.1">
     <link rel="stylesheet" type="text/css" href="../../../assets/css/font-awesome.min.css?v1=6.1">
@@ -95,7 +95,7 @@
 
     <script type="text/javascript" src="../../../assets/js/toastr.js?v1=6.1"></script>
     <script type="text/javascript" src="../../../assets/js/typeahead.js?v1=6.1"></script>
-    <script type="text/javascript" src="../../../assets/js/header.js?v1=6.1"></script>
+    <script type="text/javascript" src="../../../assets/js/header.js?v1=6.2"></script>
 
 
 
@@ -528,7 +528,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Search by Category</h4>{{#flag}}{{#vriFlag}}<p style="margin-left: -2%"> <label class="checkbox-inline"> <input type="checkbox" value="branch" id="branchCheck" name="branchCheck">Search in your branch</label>{{/vriFlag}}{{/flag}}</p>
+                    <h4 class="modal-title">Search by Category</h4>{{#flag}}<p style="margin-left: -2%"> <label class="checkbox-inline"> <input type="checkbox" value="branch" id="branchCheck" name="branchCheck">Search in my branch</label>{{/flag}}</p>
                 </div>
 
                 <div class="modal-body">
@@ -580,15 +580,18 @@
             $('#save_value').click(function(){
                 var checkFlag=$('#branchCheck').is(':checked');
                 var val = [];
+                var text = [];
                 $('.checkCat:checked').each(function(i){
                     val[i] = $(this).val();
+                    text[i] = $(this)[0].nextSibling.nodeValue;
+
                 });
                 if(val.length === 0)
                 {
                     toastr.error("Please select at least one category!");
                     return false;
                 }
-                window.location.href="/searchByCategory?id="+val.join()+"&branchFlag="+checkFlag;
+                window.location.href="/searchByCategory?categories="+text.join().replace(/\s+/g, '-')+"&id="+val.join()+"&branchFlag="+checkFlag;
             });
 
             // Add scrollspy to <body>

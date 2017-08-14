@@ -8,6 +8,8 @@ function wishlistAdd(id) {
         type: "GET",
         url: "/updateWishlist?id="+id,
         success: function (data) {
+            ga('send', 'event', 'Wish list add', id , 'Success');
+
             console.log(data);
             console.log(JSON.parse(data));
             $(".spinner").hide();
@@ -43,6 +45,7 @@ function checkAvailability(id) {
         url: "/checkAvailability?id=" + id,
         success: function (data) {
             $(".spinner").hide();
+            ga('send', 'event', 'Availability check', id , 'Success');
 
             data = JSON.parse(data);
             console.log(data)
@@ -141,6 +144,8 @@ function placeOrder(id) {
         type: "GET",
         url: "/placeOrder?id=" + id,
         success: function (data) {
+            ga('send', 'event', 'Rent', id , 'Success');
+
             console.log(data);
             if (JSON.parse(data) === "failure" ) {
                 $(".spinner").hide();
@@ -153,7 +158,7 @@ function placeOrder(id) {
                 if (JSON.parse(data) === "NoStock" ) {
                     $(".spinner").hide();
 
-                    toastr.error('No stock available!').css("width","500px");
+                    toastr.error('In circulation. Please add this book to your wishlist ').css("width","500px");
                     return false;
 
                 }
@@ -187,6 +192,8 @@ function placePickup(elem, title) {
         url: "/placePickup",
         data: {'rental_id': id, 'title': title},
         success: function (data) {
+            ga('send', 'event', 'Place Pickup', id , 'Success');
+
             $(".spinner").hide();
             console.log(JSON.parse(data));
             data = JSON.parse(data);

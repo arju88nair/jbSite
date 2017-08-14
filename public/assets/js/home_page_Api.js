@@ -38,15 +38,15 @@ function getCard(data, visibleCardCount, ids, wishlist, flag) {
             image = "../../assets/img/Added_WL_50.png";
             var wish = "\'wishlistAdd(" + data[i]['_source'].title_id + ");\'";
         }
-        if(flag == 1){
+        if (flag == 1) {
             wishlist_opt = '<a href="javascript:void(0)" class="tiptip" title="Wishlist" onclick=' + wish + '><img id="wish_' + data[i]['_source'].title_id + '" class="wishlist_btn" src=' + image + ' alt="Smiley face" height="25" width="25"></a>';
-        }else{
+        } else {
             wishlist_opt = '';
         }
 
         response += '<div class="col-xs-6 col-sm-2 col-md-2 col-lg-2">' +
             '<div class="item item_shadow">' +
-            '<div class="img_block_books"><a rel="external" data-ajax="false" href="/' + data[i]['_source'].title.replace(/\s+/g, '-') + '-by-'+ data[i]['_source'].author.replace(/\s+/g, '-') +'/book_details/' + data[i]['_source'].title_id + '"><img src="' + img + '" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
+            '<div class="img_block_books"><a rel="external" data-ajax="false" href="/' + data[i]['_source'].title.replace(/\s+/g, '-') + '-by-' + data[i]['_source'].author.replace(/\s+/g, '-') + '/book_details/' + data[i]['_source'].title_id + '"><img src="' + img + '" onerror="this.src=\'../../assets/images/Default_Book_Thumbnail.png\'"></a></div>' +
             '<div class="carousel_body_book">' +
             '<div class="carousel_title_book"><h5 title="' + data[i]['_source'].title + '">' + data[i]['_source'].title + '</h5></div>' +
             '<div class="carousel_desc">' +
@@ -190,57 +190,99 @@ $(document).ready(function () {
 
     });
 
+
     $.ajax({
         type: "GET",
         url: "/getPlan",
         success: function (data) {
+            data = JSON.parse(data);
+            console.log(data.annual_plan)
+            dataAnnPlanMessage = data['annual_plan']['msg'];
+            console.log(dataAnnPlanMessage);
+            // dataAnnPlanMessage = dataAnnPlanMessage.split(",")
+            // dataQuatPlanMessage = data['quarter_plan']['msg'].split(",")
+            // dataHalfPlanMessage = data['half_year_plan']['msg'].split(",")
+            $("#annTag").text(data['annual_plan']['name'])
+            $("#quatTag").text(data['quarter_plan']['name'])
+            $("#halfTag").text(data['half_year_plan']['name'])
+            // $("#quatMsg1").text(dataQuatPlanMessage[0])
+            // $("#quatMsg2").text(dataQuatPlanMessage[1])
+            // $("#HalfMsg1").text(dataHalfPlanMessage[0])
+            // $("#HalfMsg2").text(dataHalfPlanMessage[1])
+            // $("#HalfMsg3").text(dataHalfPlanMessage[2])
+            // $("#annMsg1").text(dataAnnPlanMessage[0])
+            // $("#annMsg2").text(dataAnnPlanMessage[1])
+            // $("#annMsg3").text(dataAnnPlanMessage[2])
+            var months = data['months']
+            var books = data['books'];
+            var options = $("#bookSel");
+            $.each(books, function (key, value) {
+                options.append($("<option />").val(value).text(value + " book(s) "));
+            });
+            $.each(months, function (key, value) {
+                $("#monthTag").append($("<option />").val(value).text(value + " month(s) "));
+            });
             $("#frame_membership").hide();
             $("#loader_plan").hide();
-            var val = JSON.parse(data);
-            ;
-            var response = '';
-            var i = 0;
-            var plans = val;
-            var colors = ['block personal fl', 'block professional fl', 'block business fl', 'block third fl'];
-            plans.forEach(function (arr) {
-                var sec_colors = ['#78CFBF', '#3EC6E0', '#E3536C', '#7470b9']
-                response += '<div><div class="block personal fl">' +
-                    '<h4 class="title">' + arr['PLAN_NAME'].toUpperCase() + '</h4>' +
-                    ' <a href="/signup?planname=' + arr['PROMO'] + '&books=' + arr['NO_OF_BOOKS'] + '&months=' + arr['NO_OF_MONTHS'] + '"><div class="content_pt">' +
-                    ' <p class="price"><sup>₹</sup><span> ' + Math.round(parseFloat(arr['READING_FEE'])) + '</span><sub></sub></p>' +
-                    '<p class="hint">' + arr['MONTH_TAG'] + '</p></div></a><ul class="features">' +
-                    '<li style="color: black;">' + arr['BOOK_TAG'] + '</li>' +
-                    '<li style="color: black;">Min. ' + arr['NO_OF_MONTHS'] + ' Month(s) Duration</li>' +
-                    '<li style="color: black;">' + arr['DD_FEE'] + ' Door Delivery </li>' +
-                    '<li style="color: black;">' + arr['HALF_YEARLY_DISCOUNT'] + '</li>' +
-                    '<li style="color: black;">' + arr['YEARLY_DISCOUNT'] + '</li>' +
-                    '</ul><div class="pt-footer">' +
-                    '<a rel="external" data-ajax="false" href="/signup?planname=' + arr['PROMO'] + '&books=' + arr['NO_OF_BOOKS'] + '&months=' + arr['NO_OF_MONTHS'] + '"><h4>SIGN-UP NOW !</h4></a></div></div></div>'
-
-
-                i++;
-                if (i >= colors.length) {
-                    i = 0;
-                }
-            })
-
-            $('#plansCard').append(response);
-
-            var w = window.outerWidth;
-
-            if (w < 750) {
-                $(".variable").slick({
-                    dots: false,
-                    infinite: true,
-                    variableWidth: true
-                });
-            }
-
-
-
+            $("#bookSel").val("2");
+            $("#monthTag").val("12");
+            $("#membershipPlans").show()
         }
 
     });
+
+
+    // $.ajax({
+    //     type: "GET",
+    //     url: "/getPlan",
+    //     success: function (data) {
+    //         $("#frame_membership").hide();
+    //         $("#loader_plan").hide();
+    //         var val = JSON.parse(data);
+    //         ;
+    //         var response = '';
+    //         var i = 0;
+    //         var plans = val;
+    //         var colors = ['block personal fl', 'block professional fl', 'block business fl', 'block third fl'];
+    //         plans.forEach(function (arr) {
+    //             var sec_colors = ['#78CFBF', '#3EC6E0', '#E3536C', '#7470b9']
+    //             response += '<div><div class="block personal fl">' +
+    //                 '<h4 class="title">' + arr['PLAN_NAME'].toUpperCase() + '</h4>' +
+    //                 ' <a href="/signup?planname=' + arr['PROMO'] + '&books=' + arr['NO_OF_BOOKS'] + '&months=' + arr['NO_OF_MONTHS'] + '"><div class="content_pt">' +
+    //                 ' <p class="price"><sup>₹</sup><span> ' + Math.round(parseFloat(arr['READING_FEE'])) + '</span><sub></sub></p>' +
+    //                 '<p class="hint">' + arr['MONTH_TAG'] + '</p></div></a><ul class="features">' +
+    //                 '<li style="color: black;">' + arr['BOOK_TAG'] + '</li>' +
+    //                 '<li style="color: black;">Min. ' + arr['NO_OF_MONTHS'] + ' Month(s) Duration</li>' +
+    //                 '<li style="color: black;">' + arr['DD_FEE'] + ' Door Delivery </li>' +
+    //                 '<li style="color: black;">' + arr['HALF_YEARLY_DISCOUNT'] + '</li>' +
+    //                 '<li style="color: black;">' + arr['YEARLY_DISCOUNT'] + '</li>' +
+    //                 '</ul><div class="pt-footer">' +
+    //                 '<a rel="external" data-ajax="false" href="/signup?planname=' + arr['PROMO'] + '&books=' + arr['NO_OF_BOOKS'] + '&months=' + arr['NO_OF_MONTHS'] + '"><h4>SIGN-UP NOW !</h4></a></div></div></div>'
+    //
+    //
+    //             i++;
+    //             if (i >= colors.length) {
+    //                 i = 0;
+    //             }
+    //         })
+    //
+    //         $('#plansCard').append(response);
+    //
+    //         var w = window.outerWidth;
+    //
+    //         if (w < 750) {
+    //             $(".variable").slick({
+    //                 dots: false,
+    //                 infinite: true,
+    //                 variableWidth: true
+    //             });
+    //         }
+    //
+    //
+    //
+    //     }
+    //
+    // });
 
     $.ajax({
         type: "GET",
@@ -283,7 +325,7 @@ $(document).ready(function () {
 });
 
 function wishlistAdd(id) {
-    logClick("Action","Wishlist",id);
+    logClick("Action", "Wishlist", id);
 
     $(".spinner").show();
 
@@ -291,7 +333,8 @@ function wishlistAdd(id) {
         type: "GET",
         url: "/updateWishlist?id=" + id,
         success: function (data) {
-            ;
+            ga('send', 'event', 'Wishlist Add', id, 'Success');
+
             $(".spinner").hide();
             if (JSON.parse(data) === "failure") {
 
@@ -313,13 +356,14 @@ function wishlistAdd(id) {
 }
 
 function placeOrder(id) {
-    logClick("Action","Rent",id);
+    logClick("Action", "Rent", id);
 
     $(".spinner").show();
     $.ajax({
         type: "GET",
         url: "/placeOrder?id=" + id,
         success: function (data) {
+            ga('send', 'event', 'Rent', id, 'Success');
 
             if (JSON.parse(data) === "failure") {
                 $(".spinner").hide();
@@ -330,7 +374,7 @@ function placeOrder(id) {
                 }, 800);
                 // $(window).scrollTop($('#membershipPlans').offset().top);
                 //window.location.href = '/';
-            } else if(JSON.parse(data) === "NoDelivery"){
+            } else if (JSON.parse(data) === "NoDelivery") {
                 $(".spinner").hide();
 
                 toastr.error('Sorry! You have not opted for door delivery service. Kindly contact your branch or customer care to enable the same.');
@@ -339,10 +383,10 @@ function placeOrder(id) {
                 }, 800);
             }
             else {
-                if (JSON.parse(data) === "NoStock" ) {
+                if (JSON.parse(data) === "NoStock") {
                     $(".spinner").hide();
 
-                    toastr.error('No stock available!').css("width","500px");
+                    toastr.error('No stock available!').css("width", "500px");
                     return false;
 
                 }
@@ -368,5 +412,104 @@ function buttonNav() {
     $('html, body').animate({
         scrollTop: $('#membership').offset().top - 100
     }, 800);
+
+}
+
+
+function monthSelChange() {
+    var months = $("#monthTag").val();
+    var books = $("#bookSel").val();
+    if (parseInt(months) === 3) {
+        if(parseInt(books) === 1)
+        {
+            var amount= 900;
+            $("#amountBtn").text("Rs "+ amount+ " /-*")
+
+        }
+        else{
+            var amount= ((300 + ((parseInt(books)-1)*60))*parseInt(months));
+            $("#amountBtn").text("Rs "+ amount+ " /-*")
+        }
+    }
+    if (parseInt(months) === 6) {
+        if(parseInt(books) === 1)
+        {
+            var amount=  (1800-180);
+            $("#amountBtn").text("Rs "+ amount+ " /-*")
+
+        }
+        else{
+            var reading=(300 + ((parseInt(books)-1)*60))*parseInt(months);
+            var perce=(reading/100)*10;
+            reading=reading-perce;
+
+            var amount= (reading);
+            $("#amountBtn").text("Rs "+ amount+ " /-*")
+        }
+    }
+    if (parseInt(months) === 12) {
+        if(parseInt(books) === 1)
+        {
+            var amount= (3600-720);
+            $("#amountBtn").text("Rs "+ amount+ " /-*")
+
+        }
+        else{
+            var reading=(300 + ((parseInt(books)-1)*60))*parseInt(months);
+            var perce=(reading/100)*20;
+            reading=reading-perce;
+
+            var amount= (reading);
+            $("#amountBtn").text("Rs "+ amount+ " /-*")
+        }
+    }
+
+}
+function bookSelChange() {
+    var months = $("#monthTag").val();
+    var books = $("#bookSel").val();
+    if (parseInt(months) === 3) {
+        if(parseInt(books) === 1)
+        {
+            var amount= 900;
+            $("#amountBtn").text("Rs "+ amount+ " /-*")
+
+        }
+        else{
+            var amount= ((300 + ((parseInt(books)-1)*60))*parseInt(months));
+            $("#amountBtn").text("Rs "+ amount+ " /-*")
+        }
+    }
+    if (parseInt(months) === 6) {
+        if(parseInt(books) === 1)
+        {
+            var amount= (1800-180);
+            $("#amountBtn").text("Rs "+ amount+ " /-*")
+
+        }
+        else{
+            var reading=(300 + ((parseInt(books)-1)*60))*parseInt(months);
+            var perce=(reading/100)*10;
+            reading=reading-perce;
+
+            var amount= (reading);
+            $("#amountBtn").text("Rs "+ amount+ " /-*")
+        }
+    }
+    if (parseInt(months) === 12) {
+        if(parseInt(books) === 1)
+        {
+            var amount= 3600-720;
+            $("#amountBtn").text("Rs "+ amount+ " /-*")
+
+        }
+        else{
+            var reading=(300 + ((parseInt(books)-1)*60))*parseInt(months);
+            var perce=(reading/100)*20;
+            reading=reading-perce;
+            var amount= (reading);
+            $("#amountBtn").text("Rs "+ amount+ " /-*")
+        }
+    }
 
 }

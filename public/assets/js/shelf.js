@@ -1447,10 +1447,12 @@ function removeWishlist(elem, id) {
 
     var id = id;
     $.ajax({
+
         type: "POST",
         url: "/removeWishList",
         data: {'titleid': id},
         success: function (data) {
+            ga('send', 'event', 'Wishlist Remove', id , 'Success');
 
             $(".spinner").hide();
             $("#alertDiv").addClass("alert-success");
@@ -1483,6 +1485,8 @@ function placePickup(elem, title) {
         url: "/placePickup",
         data: {'rental_id': id, 'title': title},
         success: function (data) {
+            ga('send', 'event', 'Place Pickup', title , 'Success');
+
             $(".spinner").hide();
             console.log(JSON.parse(data));
             data = JSON.parse(data);
@@ -1520,6 +1524,8 @@ function cancelOrder(elem, id) {
         url: "/cancelOrder",
         data: {'id': id, 'cancelId': cancel},
         success: function (data) {
+            ga('send', 'event', 'Cance Order', id , 'Success');
+
             $(".spinner").hide();
             data = JSON.parse(data)
             if (data['success'] == 'true') {
@@ -1621,6 +1627,7 @@ function cancelPickup(elem, title) {
         data: {'id': id, 'title': title},
         success: function (data) {
             $(".spinner").hide();
+            ga('send', 'event', 'Cancel Pickup', title , 'Success');
 
 
             data = JSON.parse(data);
@@ -1643,6 +1650,8 @@ function addWishlist(id) {
         type: "GET",
         url: "/updateWishlist?id=" + id,
         success: function (data) {
+            ga('send', 'event', 'Wishlist Add', id , 'Success');
+
             console.log(JSON.parse(data));
             $(".spinner").hide();
             if (JSON.parse(data) === "failure") {
@@ -1671,6 +1680,8 @@ function wishlistAdd(id) {
         type: "GET",
         url: "/updateWishlist?id=" + id,
         success: function (data) {
+            ga('send', 'event', 'Wishlist Add', id , 'Success');
+
             console.log(JSON.parse(data));
             $(".spinner").hide();
             if (JSON.parse(data) === "failure") {
@@ -1788,6 +1799,8 @@ function proceedRenew() {
 
 
                         if (data.success == true) {
+                            ga('send', 'event', 'Renew', email+"_"+termSelected, 'Success');
+
                             var orderNumber = data.result.transaction.transaction.order_number;
                             var amount = data.result.transaction.transaction.amount;
                             console.log(orderNumber);
@@ -1840,8 +1853,10 @@ function saveSession(order, amount) {
     $.ajax({
         type: "GET",
         url: "/saveSession?orderNumber=" + order + "&amount=" + amount,
-        success: function (data_new) {
-            ;
+        success: function (data_new)
+        {
+            ga('send', 'event', 'Payment Gateway', order+"_"+amount, 'Success');
+
             if (data_new === "success") {
                 window.location.href = "/PaytmKit/pgRedirect.php";
                 return false;
@@ -1983,6 +1998,8 @@ function proceedBreak() {
         dataType: "json",
         url: "/confirm_sh?&no_of_months=" + month + "&holiday_start_date=" + date + "&created_in=810&holiday_end_date=" + Enddate + "&paid_amount=" + paid + "&payable_amount=" + amount + "",
         success: function (data_new) {
+            ga('send', 'event', 'Renew', email+"_"+date, 'Success');
+
             console.log(data_new);
             if (data_new.success == true) {
                 orderNumber = data_new.result.transaction.transaction.order_number;
@@ -2036,7 +2053,7 @@ function placeOrder(id) {
         type: "GET",
         url: "/placeOrder?id=" + id,
         success: function (data) {
-            ;
+            ga('send', 'event', 'Rent', id , 'Success');
             if (JSON.parse(data) === "failure") {
                 $(".spinner").hide();
 
@@ -2111,6 +2128,8 @@ function giveReviewStar() {
         data: {'rate': ratings, 'review': review, 'title': id},
 
         success: function (data) {
+            ga('send', 'event', 'Rate/Review', id , 'Success');
+
             console.log(JSON.parse(data));
             $(".spinner").hide();
             $(".spinner").hide();
@@ -2149,6 +2168,8 @@ function statusCheck(elem, id) {
         type: "GET",
         url: "/getStatusDelivery?id=" + id,
         success: function (data_new) {
+            ga('send', 'event', 'Status Check', id , 'Success');
+
             $(".spinner").hide();
             data_new = JSON.parse(data_new);
             $("#" + idTag).hide();

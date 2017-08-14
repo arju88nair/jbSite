@@ -1,7 +1,7 @@
 /**
-* Simple jQuery store locator plugin.
-* (c) Sébastien Castiel (@scastiel)
-*/
+ * Simple jQuery store locator plugin.
+ * (c) Sébastien Castiel (@scastiel)
+ */
 
 (function ($) {
     var $this = null;
@@ -341,7 +341,7 @@
         var marker = new google.maps.Marker({
             position: myLatLng,
             map: map,
-            title: 'Hello World!'
+            title: 'Store Locator !'
         });
         loadStores(map.getCenter().lat(), map.getCenter().lng());
 

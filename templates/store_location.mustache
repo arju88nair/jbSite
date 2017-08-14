@@ -13,7 +13,7 @@
 
         <link rel="stylesheet" type="text/css" href="../../assets/css/storeStyle.css">
         <div id="storeLocator" class="storeLocator col-md-12 col-xs-12">
-        <input type="text" class="input controls" placeholder="Enter an address, city...">
+            <input type="text" class="input controls" placeholder="Enter an address, city...">
             <data></data><div id="map-canvas" class="map col-xs-12 "></div>
 
             <ul id="stores" data-list-stores>
@@ -32,6 +32,7 @@
                                    data-store-attr='{"content":"name","href":"url"}'></a></strong><br>
 
                         <span data-store-attr="address"></span><br>
+                        <span data-store-attr="workinghours"></span><br>
                         <span data-store-attr="zip"></span> <span data-store-attr="city"></span>
                     </div>
                 </li>
@@ -40,20 +41,21 @@
             <div style="display: none" data-store-infowindow-template>
                 <strong><span data-store-link-to-map data-store-attr="name"></span></strong><br>
                 <span data-store-attr="address"></span><br>
+                <span data-store-attr="workinghours"></span><br>
                 <span data-store-attr="zip"></span> <span data-store-attr="city"></span>
             </div>
 
         </div>
 
         <!--
-            Remember that the plugins requires jQuery library, and the
-            Google Maps API.
-        -->
+             Remember that the plugins requires jQuery library, and the
+             Google Maps API.
+         -->
         <script src="//maps.google.com/maps/api/js?key=AIzaSyAodaNH0w9UF64G3ezMxvDLsO38uiIROHo&amp;libraries=places"></script>
 
         <!--
-            Include the jQuery plugin.
-        -->
+             Include the jQuery plugin.
+         -->
         <script src="./../assets/js/jquery.storelctr.js"></script>
 
         <script>

@@ -22,6 +22,15 @@
             <div class="fl-container span12">
                 <div class="row">
                     <br><br><br>
+                    <p>{{#flag}}
+                        {{#bFlag}}
+                            <label  style="float: right;margin-right: 2%" class="checkbox-inline"> <input type="checkbox" value="true" id="branchCheckSearch" name="branchCheckSearch" onchange="clickCheck()" checked>Search in my branch</label>
+                        {{/bFlag}}
+                        {{^bFlag}}
+                            <label  style="float: right;margin-right: 2%" class="checkbox-inline"> <input type="checkbox" value="false" id="branchCheckSearch" name="branchCheckSearch" onchange="clickCheck()">Search in my branch </label>
+
+                        {{/bFlag}}
+                    {{/flag}}</p>
                     <h3 id="countResult">{{text}}</h3>
 
                     <div id="searchDiv">
@@ -189,13 +198,14 @@
         flag=parseInt(flag);
         var ids="{{ids}}";
         var branch="{{branch_id}}";
+        var names="{{names}}";
 
         $(".spinner").show();
         var count = localStorage.getItem("countFlag");
         var query = "{{query}}";
         localStorage.setItem("countFlag", parseInt(count) + 1);
         $.ajax({
-            url: "/loadMoreCatSearch?page="+count+"&categories="+ids+"&branch_id="+branch,
+            url: "/loadMoreCatSearch?page="+count+"&categories="+ids+"&branch_id="+branch+"&names="+names,
             type: 'GET',
 
             success: function (data) {
@@ -258,6 +268,25 @@ data=JSON.parse(data)
             }
 
         });
+
+    }
+    function clickCheck()
+
+    {
+        var checkFlag=$('#branchCheckSearch').val();
+
+        if(checkFlag === false || checkFlag === "false")
+        {
+            checkFlag = true;
+
+        }
+        else{
+            checkFlag = false;
+        }
+        var search="{{ids}}"
+        var names="{{names}}"
+
+        window.location.href="/searchByCategory?categories="+names+"&id="+search+"&branchFlag="+checkFlag+"";
 
     }
 

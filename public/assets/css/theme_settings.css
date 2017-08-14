@@ -239,7 +239,7 @@ header ul.menu > li > a {
     border: solid 1px #ccc!important;
     font-size: 10px!important;
     font-weight: 400!important;
-    color: rgba(0, 0, 0, 0.75)!important
+    color: rgba(0, 0, 0, 0.75)!important;
     letter-spacing: .2em!important;
     box-shadow: none!important;
     padding: 8px 0!important;
@@ -1259,7 +1259,71 @@ aside#footer_bar .sidepanel {
     -o-box-shadow: 0px 10px 5px  rgba(0,0,0,0.6);
 }
 
+.cp_logo{
+    text-align: center;
+}
+.cp_logo img{
+    width:500px!important;
+}
+
+.cp_l_content{
+    padding-right: 0px!important;
+}
+.cp_l_content p{
+    font-weight: bold;
+    color: #5f5f5f;
+    text-align: center;
+    font-size: 22px;
+    line-height: 30px;
+    margin-top: 10%;
+    border-right: solid 1px #9f9f9f;
+    font-family: 'Playfair Display';
+}
+
+.cp_r_content p{
+    font-weight: bold;
+    color: #5f5f5f;
+    text-align: center;
+    font-size: 13px;
+    line-height: 16px;
+    margin-top: 10%;
+    width:80%;
+}
+
+.module_price_table .bg_title_price h4{
+        margin-left: -3.2%;
+    }
+
 @media screen and (min-width: 0px) and (max-width: 800px) {
+
+    .module_price_table .bg_title_price h4{
+        margin-left: 0%;
+    }
+
+    .cp_logo img{
+        width:200px!important;
+    }
+
+    .cp_l_content p {
+        font-weight: bold;
+        color: #5f5f5f;
+        text-align: center;
+        font-size: 10px;
+        line-height: 16px;
+        margin-top: 10%;
+        border-right: solid 1px #9f9f9f;
+        font-family: 'Playfair Display';
+    }
+
+    .cp_r_content p {
+        /* font-weight: bold; */
+        color: #5f5f5f;
+        text-align: center;
+        font-size: 7px;
+        line-height: 11px;
+        margin-top: 10%;
+        width: 100%;
+    }
 
     #whatsNew{
         margin-top: -3%;
@@ -1503,4 +1567,12 @@ aside#footer_bar .sidepanel {
         font-size: 19px;
         line-height: 7px;
     }
+}
+
+.toast {
+    opacity: 1 !important;
+}
+
+#toast-container > div {
+    opacity: 1 !important;
 }

@@ -3,18 +3,25 @@
   <component name="ChangeListManager">
     <list default="true" id="a5bbfcf1-cc3f-4e66-bea5-f7b3475c823b" name="Default" comment="k">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/bootstrap-responsive.css" afterPath="$PROJECT_DIR$/public/assets/css/bootstrap-responsive.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/bootstrap.css" afterPath="$PROJECT_DIR$/public/assets/css/bootstrap.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/responsive.css" afterPath="$PROJECT_DIR$/public/assets/css/responsive.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/css/theme_settings.css" afterPath="$PROJECT_DIR$/public/assets/css/theme_settings.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/book_details.js" afterPath="$PROJECT_DIR$/public/assets/js/book_details.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/header.js" afterPath="$PROJECT_DIR$/public/assets/js/header.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/home_page_Api.js" afterPath="$PROJECT_DIR$/public/assets/js/home_page_Api.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/jquery.storelctr.js" afterPath="$PROJECT_DIR$/public/assets/js/jquery.storelctr.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assets/js/shelf.js" afterPath="$PROJECT_DIR$/public/assets/js/shelf.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.php" afterPath="$PROJECT_DIR$/public/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/slick/slick-theme.css" afterPath="$PROJECT_DIR$/public/slick/slick-theme.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/book_details.mustache" afterPath="$PROJECT_DIR$/templates/book_details.mustache" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/catSearch.mustache" afterPath="$PROJECT_DIR$/templates/catSearch.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/home.mustache" afterPath="$PROJECT_DIR$/templates/home.mustache" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/partials/header.mustache" afterPath="$PROJECT_DIR$/templates/partials/header.mustache" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/partials/slider.mustache" afterPath="$PROJECT_DIR$/templates/partials/slider.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/partials/membership_plan.mustache" afterPath="$PROJECT_DIR$/templates/partials/membership_plan.mustache" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/search.mustache" afterPath="$PROJECT_DIR$/templates/search.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/shelf.mustache" afterPath="$PROJECT_DIR$/templates/shelf.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/signup_details.mustache" afterPath="$PROJECT_DIR$/templates/signup_details.mustache" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/signup_new.mustache" afterPath="$PROJECT_DIR$/templates/signup_new.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/store_location.mustache" afterPath="$PROJECT_DIR$/templates/store_location.mustache" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -39,92 +46,110 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="24710">
-              <caret line="1766" column="23" lean-forward="false" selection-start-line="1766" selection-start-column="23" selection-end-line="1766" selection-end-column="23" />
+            <state relative-caret-position="112">
+              <caret line="792" column="17" lean-forward="false" selection-start-line="792" selection-start-column="17" selection-end-line="792" selection-end-column="17" />
               <folding>
                 <element signature="e#7#63#0#PHP" expanded="true" />
-                <marker date="1502113915890" expanded="true" signature="2627:2659" ph="SELECT * FRO... website_parameters" />
-                <marker date="1502113915890" expanded="true" signature="6626:6747" ph="select * fro... rates" />
-                <marker date="1502113915890" expanded="true" signature="6696:6746" ph="select id fr... users" />
-                <marker date="1502113915890" expanded="true" signature="9771:9892" ph="select * fro... rates" />
-                <marker date="1502113915890" expanded="true" signature="9841:9891" ph="select id fr... users" />
-                <marker date="1502113915890" expanded="true" signature="21575:21650" ph="SELECT * FRO... FN_HOME_PAGE_PLANS" />
-                <marker date="1502113915890" expanded="true" signature="25326:25370" ph="SELECT id,na... categories" />
-                <marker date="1502113915890" expanded="true" signature="30590:30634" ph="SELECT id,na... categories" />
-                <marker date="1502113915890" expanded="true" signature="33985:34060" ph="SELECT * FRO... FN_HOME_PAGE_PLANS" />
-                <marker date="1502113915890" expanded="true" signature="34983:35022" ph="SELECT cityi... city" />
-                <marker date="1502113915890" expanded="true" signature="35207:35249" ph="SELECT state... state" />
-                <marker date="1502113915890" expanded="true" signature="38967:39039" ph="update webst... " />
-                <marker date="1502113915890" expanded="true" signature="39827:39897" ph="update fn_si... " />
-                <marker date="1502113915890" expanded="true" signature="41982:42200" ph="update fn_si... " />
-                <marker date="1502113915890" expanded="true" signature="42524:42610" ph="select * fro... fn_signup_details" />
-                <marker date="1502113915890" expanded="true" signature="44943:45021" ph="update fn_si... " />
-                <marker date="1502113915890" expanded="true" signature="45627:45699" ph="update webst... " />
-                <marker date="1502113915890" expanded="true" signature="46325:46411" ph="select * fro... fn_signup_details" />
-                <marker date="1502113915890" expanded="true" signature="48689:48767" ph="update fn_si... " />
-                <marker date="1502113915890" expanded="true" signature="49366:49438" ph="update webst... " />
-                <marker date="1502113915890" expanded="true" signature="50654:50707" ph="SELECT email... users" />
-                <marker date="1502113915890" expanded="true" signature="51581:51667" ph="select * fro... fn_signup_details" />
-                <marker date="1502113915890" expanded="true" signature="54144:54222" ph="update fn_si... " />
-                <marker date="1502113915890" expanded="true" signature="54876:54948" ph="update webst... " />
-                <marker date="1502113915890" expanded="true" signature="55517:55893" ph="insert into fn_signup_details... " />
-                <marker date="1502113915890" expanded="true" signature="64696:64737" ph="select stock... fn_stock" />
-                <marker date="1502113915890" expanded="true" signature="79530:79574" ph="SELECT id,na... categories" />
-                <marker date="1502113915890" expanded="true" signature="85095:85377" ph="insert into memp.logs... " />
-                <marker date="1502113915890" expanded="true" signature="86932:86992" ph="update websi... " />
-                <marker date="1502113915890" expanded="true" signature="88912:89001" ph="update websi... " />
-                <marker date="1502113915890" expanded="true" signature="90048:90115" ph="select * fro... PUSH_NOTIFICATION_TABLE" />
-                <marker date="1502113915890" expanded="true" signature="90385:90482" ph="insert into PUSH_NOTIFICATION_TABLE... " />
-                <marker date="1502113915890" expanded="true" signature="90690:90785" ph="update PUSH_... " />
-                <marker date="1502113915890" expanded="true" signature="98622:98671" ph="select id fr... users" />
-                <marker date="1502113915890" expanded="true" signature="98912:99108" ph="insert into webstore.rates... " />
-                <marker date="1502113915890" expanded="true" signature="100567:100622" ph="SELECT * FRO... FN_HOME_PAGE_PLANS" />
-                <marker date="1502113915890" expanded="true" signature="101458:101512" ph="update memp.... " />
-                <marker date="1502113915890" expanded="true" signature="101789:101846" ph="update memp.... " />
-                <marker date="1502113915890" expanded="true" signature="102625:102931" ph="insert into FN_HOME_PAGE_PLANS" />
-                <marker date="1502113915890" expanded="true" signature="103405:103522" ph="insert into ADMIN_BLOG_PARAMETERS" />
-                <marker date="1502113915890" expanded="true" signature="103865:103923" ph="SELECT * FRO... ADMIN_BLOG_PARAMETERS" />
-                <marker date="1502113915890" expanded="true" signature="104730:104819" ph="SELECT * FRO... ADMIN_BLOG_PARAMETERS" />
-                <marker date="1502113915890" expanded="true" signature="120487:120542" ph="SELECT * FRO... FN_HOME_PAGE_PLANS" />
-                <marker date="1502113915890" expanded="true" signature="121014:121082" ph="SELECT * FRO... users" />
-                <marker date="1502113915890" expanded="true" signature="124135:124686" ph="select branc... branchid" />
-                <marker date="1502113915890" expanded="true" signature="124267:124540" ph="SELECT branc... branchlocations" />
-                <marker date="1502113915890" expanded="true" signature="125808:126042" ph="insert into webstore.franchise_enquiries... " />
-                <marker date="1502113915890" expanded="true" signature="142814:142858" ph="SELECT id,na... categories" />
-                <marker date="1502113915890" expanded="true" signature="143283:143380" ph="select * fro... rates" />
-                <marker date="1502113915890" expanded="true" signature="143329:143379" ph="select id fr... users" />
-                <marker date="1502113915890" expanded="true" signature="143772:143991" ph="SELECT s.EMA... fn_signup_details" />
-                <marker date="1502113915890" expanded="true" signature="144225:144482" ph="SELECT s.EMA... fn_signup_details" />
+                <marker date="1502722213085" expanded="true" signature="2627:2659" ph="SELECT * FRO... website_parameters" />
+                <marker date="1502722213085" expanded="true" signature="6661:6782" ph="select * fro... rates" />
+                <marker date="1502722213085" expanded="true" signature="6731:6781" ph="select id fr... users" />
+                <marker date="1502722213085" expanded="true" signature="9808:9929" ph="select * fro... rates" />
+                <marker date="1502722213085" expanded="true" signature="9878:9928" ph="select id fr... users" />
+                <marker date="1502722213085" expanded="true" signature="23445:23489" ph="SELECT id,na... categories" />
+                <marker date="1502722213085" expanded="true" signature="24647:24722" ph="SELECT * FRO... FN_HOME_PAGE_PLANS" />
+                <marker date="1502722213085" expanded="true" signature="27850:27894" ph="SELECT id,na... categories" />
+                <marker date="1502722213085" expanded="true" signature="32338:32382" ph="SELECT id,na... categories" />
+                <marker date="1502722213085" expanded="true" signature="36967:37011" ph="SELECT id,na... categories" />
+                <marker date="1502722213085" expanded="true" signature="41187:41226" ph="SELECT cityi... city" />
+                <marker date="1502722213085" expanded="true" signature="41411:41453" ph="SELECT state... state" />
+                <marker date="1502722213085" expanded="true" signature="45183:45255" ph="update webst... " />
+                <marker date="1502722213085" expanded="true" signature="46043:46113" ph="update fn_si... " />
+                <marker date="1502722213085" expanded="true" signature="48217:48435" ph="update fn_si... " />
+                <marker date="1502722213085" expanded="true" signature="48759:48805" ph="select * fro... fn_signup_details" />
+                <marker date="1502722213085" expanded="true" signature="51147:51225" ph="update fn_si... " />
+                <marker date="1502722213085" expanded="true" signature="51831:51903" ph="update webst... " />
+                <marker date="1502722213085" expanded="true" signature="52529:52615" ph="select * fro... fn_signup_details" />
+                <marker date="1502722213085" expanded="true" signature="54893:54971" ph="update fn_si... " />
+                <marker date="1502722213085" expanded="true" signature="55570:55642" ph="update webst... " />
+                <marker date="1502722213085" expanded="true" signature="56870:56923" ph="SELECT email... users" />
+                <marker date="1502722213085" expanded="true" signature="57240:57295" ph="select * fro... FN_PINCODES_VBRANCH_MAP" />
+                <marker date="1502722213085" expanded="true" signature="58304:58390" ph="select * fro... fn_signup_details" />
+                <marker date="1502722213085" expanded="true" signature="60867:60945" ph="update fn_si... " />
+                <marker date="1502722213085" expanded="true" signature="61599:61671" ph="update webst... " />
+                <marker date="1502722213085" expanded="true" signature="62257:62633" ph="insert into fn_signup_details... " />
+                <marker date="1502722213085" expanded="true" signature="71628:71669" ph="select stock... fn_stock" />
+                <marker date="1502722213085" expanded="true" signature="85642:85686" ph="SELECT id,na... categories" />
+                <marker date="1502722213085" expanded="true" signature="91820:92102" ph="insert into memp.logs... " />
+                <marker date="1502722213085" expanded="true" signature="93657:93717" ph="update websi... " />
+                <marker date="1502722213085" expanded="true" signature="95637:95726" ph="update websi... " />
+                <marker date="1502722213085" expanded="true" signature="96773:96840" ph="select * fro... PUSH_NOTIFICATION_TABLE" />
+                <marker date="1502722213085" expanded="true" signature="97110:97207" ph="insert into PUSH_NOTIFICATION_TABLE... " />
+                <marker date="1502722213085" expanded="true" signature="97415:97510" ph="update PUSH_... " />
+                <marker date="1502722213085" expanded="true" signature="106400:106449" ph="select id fr... users" />
+                <marker date="1502722213085" expanded="true" signature="106690:106886" ph="insert into webstore.rates... " />
+                <marker date="1502722213085" expanded="true" signature="108345:108400" ph="SELECT * FRO... FN_HOME_PAGE_PLANS" />
+                <marker date="1502722213085" expanded="true" signature="109236:109290" ph="update memp.... " />
+                <marker date="1502722213085" expanded="true" signature="109567:109624" ph="update memp.... " />
+                <marker date="1502722213085" expanded="true" signature="110403:110709" ph="insert into FN_HOME_PAGE_PLANS" />
+                <marker date="1502722213085" expanded="true" signature="111183:111300" ph="insert into ADMIN_BLOG_PARAMETERS" />
+                <marker date="1502722213085" expanded="true" signature="111643:111701" ph="SELECT * FRO... ADMIN_BLOG_PARAMETERS" />
+                <marker date="1502722213085" expanded="true" signature="112508:112597" ph="SELECT * FRO... ADMIN_BLOG_PARAMETERS" />
+                <marker date="1502722213085" expanded="true" signature="128265:128320" ph="SELECT * FRO... FN_HOME_PAGE_PLANS" />
+                <marker date="1502722213085" expanded="true" signature="128792:128860" ph="SELECT * FRO... users" />
+                <marker date="1502722213085" expanded="true" signature="131951:132515" ph="select branc... branchid" />
+                <marker date="1502722213085" expanded="true" signature="132096:132369" ph="SELECT branc... branchlocations" />
+                <marker date="1502722213085" expanded="true" signature="133690:133924" ph="insert into webstore.franchise_enquiries... " />
+                <marker date="1502722213085" expanded="true" signature="151357:151401" ph="SELECT id,na... categories" />
+                <marker date="1502722213085" expanded="true" signature="151826:151923" ph="select * fro... rates" />
+                <marker date="1502722213085" expanded="true" signature="151872:151922" ph="select id fr... users" />
+                <marker date="1502722213085" expanded="true" signature="152315:152534" ph="SELECT s.EMA... fn_signup_details" />
+                <marker date="1502722213085" expanded="true" signature="152768:153025" ph="SELECT s.EMA... fn_signup_details" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="book_details.mustache" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/templates/book_details.mustache">
+      <file leaf-file-name="header.mustache" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/partials/header.mustache">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="1160" column="0" lean-forward="true" selection-start-line="1160" selection-start-column="0" selection-end-line="1160" selection-end-column="0" />
+            <state relative-caret-position="187">
+              <caret line="329" column="145" lean-forward="false" selection-start-line="329" selection-start-column="141" selection-end-line="329" selection-end-column="145" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="home.mustache" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/home.mustache">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="308">
+              <caret line="147" column="23" lean-forward="true" selection-start-line="147" selection-start-column="23" selection-end-line="147" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="shelf.mustache" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/shelf.mustache">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="266">
+              <caret line="541" column="46" lean-forward="true" selection-start-line="541" selection-start-column="46" selection-end-line="541" selection-end-column="46" />
               <folding>
-                <marker date="1501933128908" expanded="true" signature="4553:4766" ph="..." />
-                <marker date="1501933128908" expanded="true" signature="4700:4753" ph="{...}" />
-                <marker date="1501933128908" expanded="true" signature="49440:49759" ph="..." />
+                <marker date="1502719502108" expanded="true" signature="5800:6119" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="search.mustache" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/search.mustache">
+      <file leaf-file-name="signup_new.mustache" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/signup_new.mustache">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1680">
-              <caret line="120" column="0" lean-forward="false" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
-              <folding>
-                <marker date="1501934204743" expanded="true" signature="10596:10614" ph="..." />
-              </folding>
+            <state relative-caret-position="5914">
+              <caret line="512" column="31" lean-forward="false" selection-start-line="512" selection-start-column="19" selection-end-line="512" selection-end-column="31" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -133,46 +158,38 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>signup_update</find>
-      <find>/insert</find>
-      <find>/signup</find>
-      <find>signup_up</find>
-      <find>insert</find>
-      <find>insertSignupDetails</find>
-      <find>/insertSignupNew</find>
+      <find>int($books)</find>
+      <find>getPlan</find>
+      <find>&quot;Rs &quot;+ amount+ &quot; /-*&quot;</find>
+      <find>/sign</find>
+      <find>pland</find>
+      <find>plan_dataJ</find>
+      <find>/signupC</find>
+      <find>bookArray</find>
+      <find>namePlan</find>
+      <find>delivery_option</find>
+      <find>/insertsignup</find>
       <find>insertSignupNew</find>
-      <find>insertSignup</find>
-      <find>getPlanFees</find>
+      <find>totalReading</find>
+      <find>/change_plan</find>
+      <find>plan_books</find>
+      <find>/change</find>
+      <find>signupC</find>
+      <find>#books</find>
+      <find>/signupCorp</find>
       <find>insertS</find>
-      <find>paytm</find>
-      <find>couponValidate</find>
-      <find>signupBtn</find>
-      <find>header.</find>
-      <find>header</find>
-      <find>catse</find>
-      <find>/searc</find>
-      <find>/ren</find>
-      <find>SKU</find>
-      <find>cats</find>
-      <find>v1=6&quot;</find>
-      <find>getcate</find>
-      <find>'/'</find>
-      <find>/sear</find>
-      <find>/sea</find>
-      <find>musta</find>
-      <find>/load</find>
-      <find>login</find>
-      <find>check</find>
+      <find>alert</find>
+      <find>i</find>
+      <find>getPlanY</find>
+      <find>/getP</find>
+      <find>PRICECHANGE</find>
+      <find>getP</find>
+      <find>/signup</find>
+      <find>getPlanYears</find>
+      <find>home</find>
+      <find>/signu</find>
     </findStrings>
     <replaceStrings>
-      <replace>&lt;i class=&quot;fa fa-heart wishlist_btn&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;</replace>
-      <replace>datePickInput</replace>
-      <replace>shareModal</replace>
-      <replace>../assets/images/Default_Book_Thumbnail.png</replace>
-      <replace>_source</replace>
-      <replace>slider</replace>
-      <replace>../../assets</replace>
-      <replace>href=&quot;/book_details/' + data[i]['_source'].title_id + '/' + data[i]['_source'].title + '&quot;</replace>
       <replace>placeholder=&quot;Email&quot;</replace>
       <replace>/#membershipPlans</replace>
       <replace>id=&quot;signupLink&quot;</replace>
@@ -195,6 +212,14 @@
       <replace>$('html, body').animate({        scrollTop: $('#membership').offset().top - 100    }, 800);</replace>
       <replace>&lt;h2&gt;Submit your registered email ID to generate new password .&lt;/h2&gt;</replace>
       <replace>v1=6.1&quot;</replace>
+      <replace>Search in my branch</replace>
+      <replace>'In circulation. Please add this book to your wishlist '</replace>
+      <replace>int</replace>
+      <replace>(int)$months</replace>
+      <replace>(int)$books</replace>
+      <replace>reading_fee</replace>
+      <replace>&quot;₹ &quot;+ amount</replace>
+      <replace>NEWPLAN</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -203,13 +228,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/public/assets/js/sorting.js" />
-        <option value="$PROJECT_DIR$/public/assets/js/jquery.storelctr.js" />
         <option value="$PROJECT_DIR$/templates/author_details.mustache" />
         <option value="$PROJECT_DIR$/templates/faq.mustache" />
         <option value="$PROJECT_DIR$/templates/franchise.mustache" />
         <option value="$PROJECT_DIR$/templates/terms.mustache" />
-        <option value="$PROJECT_DIR$/templates/store_location.mustache" />
         <option value="$PROJECT_DIR$/templates/privacy_policy.mustache" />
         <option value="$PROJECT_DIR$/templates/contactUs.mustache" />
         <option value="$PROJECT_DIR$/.gitignore" />
@@ -221,38 +243,41 @@
         <option value="$PROJECT_DIR$/public/PaytmKitStaging/pgRedirect.php" />
         <option value="$PROJECT_DIR$/templates/partials/mostRead.mustache" />
         <option value="$PROJECT_DIR$/templates/partials/recommend.mustache" />
-        <option value="$PROJECT_DIR$/public/assets/js/book_details.js" />
         <option value="$PROJECT_DIR$/templates/partials/author_related_books.mustache" />
         <option value="$PROJECT_DIR$/templates/partials/related_authors.mustache" />
-        <option value="$PROJECT_DIR$/public/assets/js/shelf.js" />
         <option value="$PROJECT_DIR$/public/slick/slick-theme.css" />
         <option value="$PROJECT_DIR$/public/assets/css/price_table.css" />
-        <option value="$PROJECT_DIR$/public/assets/js/home_page_Api.js" />
-        <option value="$PROJECT_DIR$/public/assets/js/header.js" />
         <option value="$PROJECT_DIR$/templates/adminSignup.mustache" />
-        <option value="$PROJECT_DIR$/templates/signup_details.mustache" />
-        <option value="$PROJECT_DIR$/templates/signup_new.mustache" />
         <option value="$PROJECT_DIR$/public/PaytmKitSignup/pgRedirect.php" />
         <option value="$PROJECT_DIR$/public/PaytmKitSignup/pgResponse.php" />
-        <option value="$PROJECT_DIR$/templates/shelf.mustache" />
-        <option value="$PROJECT_DIR$/templates/partials/membership_plan.mustache" />
         <option value="$PROJECT_DIR$/templates/partials/newArrivals.mustache" />
         <option value="$PROJECT_DIR$/public/assets/css/theme.css" />
         <option value="$PROJECT_DIR$/templates/partials/footer.mustache" />
         <option value="$PROJECT_DIR$/templates/partials/preFooter.mustache" />
-        <option value="$PROJECT_DIR$/templates/home.mustache" />
-        <option value="$PROJECT_DIR$/templates/catSearch.mustache" />
         <option value="$PROJECT_DIR$/public/PaytmKit/pgResponse.php" />
         <option value="$PROJECT_DIR$/public/PaytmKit/pgRedirect.php" />
         <option value="$PROJECT_DIR$/templates/partials/slider.mustache" />
         <option value="$PROJECT_DIR$/public/assets/css/bootstrap.css" />
         <option value="$PROJECT_DIR$/public/assets/css/bootstrap-responsive.css" />
-        <option value="$PROJECT_DIR$/public/assets/css/theme_settings.css" />
         <option value="$PROJECT_DIR$/templates/partials/blog.mustache" />
         <option value="$PROJECT_DIR$/public/assets/css/responsive.css" />
+        <option value="$PROJECT_DIR$/public/assets/js/jquery.storelctr.js" />
+        <option value="$PROJECT_DIR$/templates/store_location.mustache" />
+        <option value="$PROJECT_DIR$/templates/success.mustache" />
+        <option value="$PROJECT_DIR$/templates/search.mustache" />
+        <option value="$PROJECT_DIR$/templates/catSearch.mustache" />
+        <option value="$PROJECT_DIR$/public/assets/css/theme_settings.css" />
         <option value="$PROJECT_DIR$/templates/partials/header.mustache" />
         <option value="$PROJECT_DIR$/templates/book_details.mustache" />
-        <option value="$PROJECT_DIR$/templates/search.mustache" />
+        <option value="$PROJECT_DIR$/public/assets/js/book_details.js" />
+        <option value="$PROJECT_DIR$/public/assets/js/header.js" />
+        <option value="$PROJECT_DIR$/public/assets/js/shelf.js" />
+        <option value="$PROJECT_DIR$/templates/signup_details.mustache" />
+        <option value="$PROJECT_DIR$/templates/signup_new.mustache" />
+        <option value="$PROJECT_DIR$/public/assets/js/home_page_Api.js" />
+        <option value="$PROJECT_DIR$/templates/partials/membership_plan.mustache" />
+        <option value="$PROJECT_DIR$/templates/home.mustache" />
+        <option value="$PROJECT_DIR$/templates/shelf.mustache" />
         <option value="$PROJECT_DIR$/public/index.php" />
       </list>
     </option>
@@ -357,6 +382,24 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="PaytmKitSignup" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Justbooks" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Justbooks" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="PaytmKit" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
@@ -397,36 +440,58 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Justbooks" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Justbooks" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="css" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../phpmyadmin" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../MIS" />
     <property name="js.eslint.eslintPackage" value="" />
     <property name="jsx.switch.disabled" value="true" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/public/PaytmKit/pgResponse.php&#10;/var/www/html/Justbooks/public/PaytmKitStaging/lib/config_paytm.php&#10;/var/www/html/Justbooks/public/PaytmKit/pgRedirect.php&#10;/var/www/html/Justbooks/public/PaytmKitSignup/pgResponse.php&#10;/var/www/html/Justbooks/public/PaytmKitStaging/pgRedirect.php&#10;/var/www/html/Justbooks/includes/functions.php&#10;/var/www/html/Justbooks/public/PaytmKitStaging/pgResponse.php&#10;/var/www/html/Justbooks/public/PaytmKitSignup/pgRedirect.php&#10;/var/www/html/Justbooks/public/PaytmKit/lib/config_paytm.php" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public" />
+      <recent name="$PROJECT_DIR$/public/assets/img" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public/assets/js" />
       <recent name="$PROJECT_DIR$/public/assets/css" />
       <recent name="$PROJECT_DIR$/templates" />
       <recent name="$PROJECT_DIR$/public/assets/img" />
       <recent name="$PROJECT_DIR$/public/assets/fonts" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/public" />
-      <recent name="$PROJECT_DIR$/public/assets/img" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -676,12 +741,16 @@
       <workItem from="1501913501473" duration="12737000" />
       <workItem from="1502083847175" duration="604000" />
       <workItem from="1502113884350" duration="1743000" />
-      <workItem from="1502169721650" duration="1334000" />
+      <workItem from="1502169721650" duration="14511000" />
+      <workItem from="1502256303305" duration="13976000" />
+      <workItem from="1502427076485" duration="5427000" />
+      <workItem from="1502531250469" duration="9065000" />
+      <workItem from="1502685969649" duration="29798000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1465269000" />
+    <option name="totallyTimeSpent" value="1536712000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -696,7 +765,7 @@
     <frame x="-1" y="-17" width="1368" height="739" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19180088" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18374817" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32649842" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -731,68 +800,31 @@
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/public/assets/js/shelf.js</url>
-          <line>571</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/public/assets/js/shelf.js</url>
-          <line>1200</line>
-          <option name="timeStamp" value="18" />
+          <url>file://$PROJECT_DIR$/public/assets/js/home_page_Api.js</url>
+          <line>193</line>
+          <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="php">
           <url>file://$PROJECT_DIR$/public/index.php</url>
-          <line>1346</line>
+          <line>1310</line>
           <option name="timeStamp" value="22" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/public/index.php</url>
+          <line>636</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/public/index.php</url>
+          <line>853</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="23" />
+      <option name="time" value="27" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/PaytmKitSignup/lib/config_paytm.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/PaytmKitStaging/lib/config_paytm.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="26" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/PaytmKitStaging/pgResponse.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="71" column="19" lean-forward="false" selection-start-line="71" selection-start-column="19" selection-end-line="71" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/franchise.mustache">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="176" column="32" lean-forward="true" selection-start-line="176" selection-start-column="32" selection-end-line="176" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/osdd.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/partials/mostRead.mustache">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="105" column="34" lean-forward="true" selection-start-line="105" selection-start-column="34" selection-end-line="105" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/partials/author_related_books.mustache">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="246">
@@ -877,21 +909,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/book_details.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="155" column="47" lean-forward="false" selection-start-line="155" selection-start-column="47" selection-end-line="155" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/header.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="4" column="72" lean-forward="false" selection-start-line="4" selection-start-column="72" selection-end-line="4" selection-end-column="72" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/adminSignup.mustache">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="432">
@@ -906,28 +923,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/shelf.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="1827" column="42" lean-forward="false" selection-start-line="1827" selection-start-column="37" selection-end-line="1827" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/PaytmKitSignup/pgResponse.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="36" column="41" lean-forward="true" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/js/home_page_Api.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="342" column="38" lean-forward="false" selection-start-line="342" selection-start-column="38" selection-end-line="342" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/PaytmKitSignup/pgRedirect.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="364">
@@ -939,20 +934,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="28">
           <caret line="2" column="35" lean-forward="false" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/shelf.mustache">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7644">
-          <caret line="546" column="22" lean-forward="false" selection-start-line="546" selection-start-column="22" selection-end-line="546" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/partials/membership_plan.mustache">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="40" column="9" lean-forward="false" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -984,32 +965,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/home.mustache">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="130" column="0" lean-forward="false" selection-start-line="130" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/catSearch.mustache">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="191" column="0" lean-forward="true" selection-start-line="191" selection-start-column="0" selection-end-line="191" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/signup_new.mustache">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="645" column="37" lean-forward="false" selection-start-line="645" selection-start-column="37" selection-end-line="645" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -1034,13 +993,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/css/theme_settings.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="1505" column="1" lean-forward="false" selection-start-line="1505" selection-start-column="1" selection-end-line="1505" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/partials/blog.mustache">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="364">
@@ -1052,27 +1004,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="5550" column="5" lean-forward="true" selection-start-line="5550" selection-start-column="5" selection-end-line="5550" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/signup_details.mustache">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="164" column="2" lean-forward="true" selection-start-line="164" selection-start-column="0" selection-end-line="209" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/PaytmKit/pgResponse.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="82" column="29" lean-forward="true" selection-start-line="50" selection-start-column="8" selection-end-line="82" selection-end-column="29" />
-          <folding>
-            <marker date="1501920785017" expanded="true" signature="2276:3786" ph="..." />
-            <marker date="1501920785017" expanded="true" signature="2318:2708" ph="{...}" />
-            <marker date="1501920785017" expanded="true" signature="2403:2490" ph="{...}" />
-            <marker date="1501920785017" expanded="true" signature="2980:3316" ph="{&quot;id&quot;: orderNumber...}" />
-            <marker date="1501920785017" expanded="true" signature="3352:3744" ph="{&quot;id&quot;: orderNumber...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1091,93 +1022,248 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/partials/header.mustache">
+    <entry file="file://$PROJECT_DIR$/public/PaytmKit/pgResponse.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="516" column="75" lean-forward="false" selection-start-line="516" selection-start-column="0" selection-end-line="517" selection-end-column="0" />
+        <state relative-caret-position="336">
+          <caret line="69" column="30" lean-forward="true" selection-start-line="69" selection-start-column="30" selection-end-line="69" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/store_location.mustache">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="29" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="95" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/jquery.storelctr.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="41" column="7" lean-forward="false" selection-start-line="41" selection-start-column="7" selection-end-line="41" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/PaytmKitSignup/pgResponse.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="38" column="45" lean-forward="false" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/success.mustache">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="102" column="1" lean-forward="false" selection-start-line="102" selection-start-column="1" selection-end-line="102" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/search.mustache">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1680">
-          <caret line="120" column="0" lean-forward="false" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
-          <folding>
-            <marker date="1501934204743" expanded="true" signature="10596:10614" ph="..." />
-          </folding>
+        <state relative-caret-position="14">
+          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.php">
+    <entry file="file://$PROJECT_DIR$/templates/catSearch.mustache">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24710">
-          <caret line="1766" column="23" lean-forward="false" selection-start-line="1766" selection-start-column="23" selection-end-line="1766" selection-end-column="23" />
-          <folding>
-            <element signature="e#7#63#0#PHP" expanded="true" />
-            <marker date="1502113915890" expanded="true" signature="2627:2659" ph="SELECT * FRO... website_parameters" />
-            <marker date="1502113915890" expanded="true" signature="6626:6747" ph="select * fro... rates" />
-            <marker date="1502113915890" expanded="true" signature="6696:6746" ph="select id fr... users" />
-            <marker date="1502113915890" expanded="true" signature="9771:9892" ph="select * fro... rates" />
-            <marker date="1502113915890" expanded="true" signature="9841:9891" ph="select id fr... users" />
-            <marker date="1502113915890" expanded="true" signature="21575:21650" ph="SELECT * FRO... FN_HOME_PAGE_PLANS" />
-            <marker date="1502113915890" expanded="true" signature="25326:25370" ph="SELECT id,na... categories" />
-            <marker date="1502113915890" expanded="true" signature="30590:30634" ph="SELECT id,na... categories" />
-            <marker date="1502113915890" expanded="true" signature="33985:34060" ph="SELECT * FRO... FN_HOME_PAGE_PLANS" />
-            <marker date="1502113915890" expanded="true" signature="34983:35022" ph="SELECT cityi... city" />
-            <marker date="1502113915890" expanded="true" signature="35207:35249" ph="SELECT state... state" />
-            <marker date="1502113915890" expanded="true" signature="38967:39039" ph="update webst... " />
-            <marker date="1502113915890" expanded="true" signature="39827:39897" ph="update fn_si... " />
-            <marker date="1502113915890" expanded="true" signature="41982:42200" ph="update fn_si... " />
-            <marker date="1502113915890" expanded="true" signature="42524:42610" ph="select * fro... fn_signup_details" />
-            <marker date="1502113915890" expanded="true" signature="44943:45021" ph="update fn_si... " />
-            <marker date="1502113915890" expanded="true" signature="45627:45699" ph="update webst... " />
-            <marker date="1502113915890" expanded="true" signature="46325:46411" ph="select * fro... fn_signup_details" />
-            <marker date="1502113915890" expanded="true" signature="48689:48767" ph="update fn_si... " />
-            <marker date="1502113915890" expanded="true" signature="49366:49438" ph="update webst... " />
-            <marker date="1502113915890" expanded="true" signature="50654:50707" ph="SELECT email... users" />
-            <marker date="1502113915890" expanded="true" signature="51581:51667" ph="select * fro... fn_signup_details" />
-            <marker date="1502113915890" expanded="true" signature="54144:54222" ph="update fn_si... " />
-            <marker date="1502113915890" expanded="true" signature="54876:54948" ph="update webst... " />
-            <marker date="1502113915890" expanded="true" signature="55517:55893" ph="insert into fn_signup_details... " />
-            <marker date="1502113915890" expanded="true" signature="64696:64737" ph="select stock... fn_stock" />
-            <marker date="1502113915890" expanded="true" signature="79530:79574" ph="SELECT id,na... categories" />
-            <marker date="1502113915890" expanded="true" signature="85095:85377" ph="insert into memp.logs... " />
-            <marker date="1502113915890" expanded="true" signature="86932:86992" ph="update websi... " />
-            <marker date="1502113915890" expanded="true" signature="88912:89001" ph="update websi... " />
-            <marker date="1502113915890" expanded="true" signature="90048:90115" ph="select * fro... PUSH_NOTIFICATION_TABLE" />
-            <marker date="1502113915890" expanded="true" signature="90385:90482" ph="insert into PUSH_NOTIFICATION_TABLE... " />
-            <marker date="1502113915890" expanded="true" signature="90690:90785" ph="update PUSH_... " />
-            <marker date="1502113915890" expanded="true" signature="98622:98671" ph="select id fr... users" />
-            <marker date="1502113915890" expanded="true" signature="98912:99108" ph="insert into webstore.rates... " />
-            <marker date="1502113915890" expanded="true" signature="100567:100622" ph="SELECT * FRO... FN_HOME_PAGE_PLANS" />
-            <marker date="1502113915890" expanded="true" signature="101458:101512" ph="update memp.... " />
-            <marker date="1502113915890" expanded="true" signature="101789:101846" ph="update memp.... " />
-            <marker date="1502113915890" expanded="true" signature="102625:102931" ph="insert into FN_HOME_PAGE_PLANS" />
-            <marker date="1502113915890" expanded="true" signature="103405:103522" ph="insert into ADMIN_BLOG_PARAMETERS" />
-            <marker date="1502113915890" expanded="true" signature="103865:103923" ph="SELECT * FRO... ADMIN_BLOG_PARAMETERS" />
-            <marker date="1502113915890" expanded="true" signature="104730:104819" ph="SELECT * FRO... ADMIN_BLOG_PARAMETERS" />
-            <marker date="1502113915890" expanded="true" signature="120487:120542" ph="SELECT * FRO... FN_HOME_PAGE_PLANS" />
-            <marker date="1502113915890" expanded="true" signature="121014:121082" ph="SELECT * FRO... users" />
-            <marker date="1502113915890" expanded="true" signature="124135:124686" ph="select branc... branchid" />
-            <marker date="1502113915890" expanded="true" signature="124267:124540" ph="SELECT branc... branchlocations" />
-            <marker date="1502113915890" expanded="true" signature="125808:126042" ph="insert into webstore.franchise_enquiries... " />
-            <marker date="1502113915890" expanded="true" signature="142814:142858" ph="SELECT id,na... categories" />
-            <marker date="1502113915890" expanded="true" signature="143283:143380" ph="select * fro... rates" />
-            <marker date="1502113915890" expanded="true" signature="143329:143379" ph="select id fr... users" />
-            <marker date="1502113915890" expanded="true" signature="143772:143991" ph="SELECT s.EMA... fn_signup_details" />
-            <marker date="1502113915890" expanded="true" signature="144225:144482" ph="SELECT s.EMA... fn_signup_details" />
-          </folding>
+        <state relative-caret-position="4032">
+          <caret line="288" column="69" lean-forward="false" selection-start-line="288" selection-start-column="69" selection-end-line="288" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/css/theme_settings.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="1559" column="18" lean-forward="false" selection-start-line="1559" selection-start-column="18" selection-end-line="1559" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/book_details.mustache">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="1160" column="0" lean-forward="true" selection-start-line="1160" selection-start-column="0" selection-end-line="1160" selection-end-column="0" />
+        <state relative-caret-position="152">
+          <caret line="1303" column="0" lean-forward="true" selection-start-line="1303" selection-start-column="0" selection-end-line="1303" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/book_details.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2632">
+          <caret line="188" column="0" lean-forward="false" selection-start-line="188" selection-start-column="0" selection-end-line="188" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/header.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1736">
+          <caret line="124" column="16" lean-forward="false" selection-start-line="124" selection-start-column="16" selection-end-line="124" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/EcmaScript.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="33" column="17" lean-forward="true" selection-start-line="33" selection-start-column="17" selection-end-line="33" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/signup_details.mustache">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="370">
+          <caret line="326" column="29" lean-forward="false" selection-start-line="326" selection-start-column="29" selection-end-line="326" selection-end-column="29" />
           <folding>
-            <marker date="1501933128908" expanded="true" signature="4553:4766" ph="..." />
-            <marker date="1501933128908" expanded="true" signature="4700:4753" ph="{...}" />
-            <marker date="1501933128908" expanded="true" signature="49440:49759" ph="..." />
+            <marker date="1502531507700" expanded="true" signature="8865:8881" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/change_plan.mustache">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="78" column="66" lean-forward="false" selection-start-line="78" selection-start-column="56" selection-end-line="78" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/partials/mostRead.mustache">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="105" column="34" lean-forward="true" selection-start-line="105" selection-start-column="34" selection-end-line="105" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/shelf.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="1104" column="50" lean-forward="false" selection-start-line="1104" selection-start-column="49" selection-end-line="1104" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assets/js/home_page_Api.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="505" column="13" lean-forward="true" selection-start-line="505" selection-start-column="13" selection-end-line="505" selection-end-column="13" />
+          <folding>
+            <marker date="1502718711905" expanded="true" signature="10622:10635" ph="..." />
+            <marker date="1502718711905" expanded="true" signature="10704:10717" ph="..." />
+            <marker date="1502718711905" expanded="true" signature="10813:10826" ph="..." />
+            <marker date="1502718711905" expanded="true" signature="10908:10921" ph="..." />
+            <marker date="1502718711905" expanded="true" signature="11002:11015" ph="..." />
+            <marker date="1502718711905" expanded="true" signature="12501:12526" ph="..." />
+            <marker date="1502718711905" expanded="true" signature="12656:12674" ph="..." />
+            <marker date="1502718711905" expanded="true" signature="12766:12834" ph="..." />
+            <marker date="1502718711905" expanded="true" signature="12996:13067" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/partials/membership_plan.mustache">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="306" column="56" lean-forward="false" selection-start-line="306" selection-start-column="56" selection-end-line="306" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/partials/header.mustache">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="329" column="145" lean-forward="false" selection-start-line="329" selection-start-column="141" selection-end-line="329" selection-end-column="145" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/home.mustache">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="147" column="23" lean-forward="true" selection-start-line="147" selection-start-column="23" selection-end-line="147" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/shelf.mustache">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="541" column="46" lean-forward="true" selection-start-line="541" selection-start-column="46" selection-end-line="541" selection-end-column="46" />
+          <folding>
+            <marker date="1502719502108" expanded="true" signature="5800:6119" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/signup_new.mustache">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5914">
+          <caret line="512" column="31" lean-forward="false" selection-start-line="512" selection-start-column="19" selection-end-line="512" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="792" column="17" lean-forward="false" selection-start-line="792" selection-start-column="17" selection-end-line="792" selection-end-column="17" />
+          <folding>
+            <element signature="e#7#63#0#PHP" expanded="true" />
+            <marker date="1502722213085" expanded="true" signature="2627:2659" ph="SELECT * FRO... website_parameters" />
+            <marker date="1502722213085" expanded="true" signature="6661:6782" ph="select * fro... rates" />
+            <marker date="1502722213085" expanded="true" signature="6731:6781" ph="select id fr... users" />
+            <marker date="1502722213085" expanded="true" signature="9808:9929" ph="select * fro... rates" />
+            <marker date="1502722213085" expanded="true" signature="9878:9928" ph="select id fr... users" />
+            <marker date="1502722213085" expanded="true" signature="23445:23489" ph="SELECT id,na... categories" />
+            <marker date="1502722213085" expanded="true" signature="24647:24722" ph="SELECT * FRO... FN_HOME_PAGE_PLANS" />
+            <marker date="1502722213085" expanded="true" signature="27850:27894" ph="SELECT id,na... categories" />
+            <marker date="1502722213085" expanded="true" signature="32338:32382" ph="SELECT id,na... categories" />
+            <marker date="1502722213085" expanded="true" signature="36967:37011" ph="SELECT id,na... categories" />
+            <marker date="1502722213085" expanded="true" signature="41187:41226" ph="SELECT cityi... city" />
+            <marker date="1502722213085" expanded="true" signature="41411:41453" ph="SELECT state... state" />
+            <marker date="1502722213085" expanded="true" signature="45183:45255" ph="update webst... " />
+            <marker date="1502722213085" expanded="true" signature="46043:46113" ph="update fn_si... " />
+            <marker date="1502722213085" expanded="true" signature="48217:48435" ph="update fn_si... " />
+            <marker date="1502722213085" expanded="true" signature="48759:48805" ph="select * fro... fn_signup_details" />
+            <marker date="1502722213085" expanded="true" signature="51147:51225" ph="update fn_si... " />
+            <marker date="1502722213085" expanded="true" signature="51831:51903" ph="update webst... " />
+            <marker date="1502722213085" expanded="true" signature="52529:52615" ph="select * fro... fn_signup_details" />
+            <marker date="1502722213085" expanded="true" signature="54893:54971" ph="update fn_si... " />
+            <marker date="1502722213085" expanded="true" signature="55570:55642" ph="update webst... " />
+            <marker date="1502722213085" expanded="true" signature="56870:56923" ph="SELECT email... users" />
+            <marker date="1502722213085" expanded="true" signature="57240:57295" ph="select * fro... FN_PINCODES_VBRANCH_MAP" />
+            <marker date="1502722213085" expanded="true" signature="58304:58390" ph="select * fro... fn_signup_details" />
+            <marker date="1502722213085" expanded="true" signature="60867:60945" ph="update fn_si... " />
+            <marker date="1502722213085" expanded="true" signature="61599:61671" ph="update webst... " />
+            <marker date="1502722213085" expanded="true" signature="62257:62633" ph="insert into fn_signup_details... " />
+            <marker date="1502722213085" expanded="true" signature="71628:71669" ph="select stock... fn_stock" />
+            <marker date="1502722213085" expanded="true" signature="85642:85686" ph="SELECT id,na... categories" />
+            <marker date="1502722213085" expanded="true" signature="91820:92102" ph="insert into memp.logs... " />
+            <marker date="1502722213085" expanded="true" signature="93657:93717" ph="update websi... " />
+            <marker date="1502722213085" expanded="true" signature="95637:95726" ph="update websi... " />
+            <marker date="1502722213085" expanded="true" signature="96773:96840" ph="select * fro... PUSH_NOTIFICATION_TABLE" />
+            <marker date="1502722213085" expanded="true" signature="97110:97207" ph="insert into PUSH_NOTIFICATION_TABLE... " />
+            <marker date="1502722213085" expanded="true" signature="97415:97510" ph="update PUSH_... " />
+            <marker date="1502722213085" expanded="true" signature="106400:106449" ph="select id fr... users" />
+            <marker date="1502722213085" expanded="true" signature="106690:106886" ph="insert into webstore.rates... " />
+            <marker date="1502722213085" expanded="true" signature="108345:108400" ph="SELECT * FRO... FN_HOME_PAGE_PLANS" />
+            <marker date="1502722213085" expanded="true" signature="109236:109290" ph="update memp.... " />
+            <marker date="1502722213085" expanded="true" signature="109567:109624" ph="update memp.... " />
+            <marker date="1502722213085" expanded="true" signature="110403:110709" ph="insert into FN_HOME_PAGE_PLANS" />
+            <marker date="1502722213085" expanded="true" signature="111183:111300" ph="insert into ADMIN_BLOG_PARAMETERS" />
+            <marker date="1502722213085" expanded="true" signature="111643:111701" ph="SELECT * FRO... ADMIN_BLOG_PARAMETERS" />
+            <marker date="1502722213085" expanded="true" signature="112508:112597" ph="SELECT * FRO... ADMIN_BLOG_PARAMETERS" />
+            <marker date="1502722213085" expanded="true" signature="128265:128320" ph="SELECT * FRO... FN_HOME_PAGE_PLANS" />
+            <marker date="1502722213085" expanded="true" signature="128792:128860" ph="SELECT * FRO... users" />
+            <marker date="1502722213085" expanded="true" signature="131951:132515" ph="select branc... branchid" />
+            <marker date="1502722213085" expanded="true" signature="132096:132369" ph="SELECT branc... branchlocations" />
+            <marker date="1502722213085" expanded="true" signature="133690:133924" ph="insert into webstore.franchise_enquiries... " />
+            <marker date="1502722213085" expanded="true" signature="151357:151401" ph="SELECT id,na... categories" />
+            <marker date="1502722213085" expanded="true" signature="151826:151923" ph="select * fro... rates" />
+            <marker date="1502722213085" expanded="true" signature="151872:151922" ph="select id fr... users" />
+            <marker date="1502722213085" expanded="true" signature="152315:152534" ph="SELECT s.EMA... fn_signup_details" />
+            <marker date="1502722213085" expanded="true" signature="152768:153025" ph="SELECT s.EMA... fn_signup_details" />
           </folding>
         </state>
       </provider>

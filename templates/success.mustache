@@ -1,0 +1,119 @@
+{{>header}}
+
+<style type="text/css">
+
+
+    .suceess .row{
+        margin-top: 5%;
+    }
+
+    .success_con {
+        background: #fff;
+        padding: 50px;
+        border-radius: 5px;
+    }
+
+    .success_con h3{
+        font-weight: bold;
+        letter-spacing: 5px;
+    }
+
+    .success_con p{
+        font-weight: bold;
+    }
+
+    .success_con h5{
+        font-weight: bold;
+    }
+
+    .panel-default{
+        box-shadow: 5px 5px 10px #888888;
+        background: #d6d6d6;
+    }
+
+    .success_container{
+        margin-left: 17%;
+    }
+
+    .panel-body3{
+        z-index: 9999;
+    }
+
+    .panel-body3 img{
+        margin-right: -70%;
+        width:200px;
+    }
+
+    @media screen and (min-width: 0px) and (max-width: 800px) {
+        .success_container{
+            margin-left: -3%;
+        }
+
+        .panel-body3 img{
+            margin-right: 0%;
+            width:200px;
+        }
+
+        panel-body3{
+            z-index: 0!important;
+        }
+
+    }
+
+
+</style>
+
+<div class="content_wrapper"  id="franchiseeDiv">
+
+    <div class="spinner" style='display: none;z-index: 100;opacity:0.55;background-color: grey'>
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+    </div>
+    <div class="container suceess">
+        <div class="row">
+
+            <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 success_container">
+
+                <div class="panel panel-default">
+
+                    <div class="panel-body">
+                        <div class="col-sm-3 col-md-3 panel-body3">
+                            <img src="uploads/book_logo.png">
+                        </div>
+
+                        <div class="col-sm-8 col-md-8 success_con">
+                            <h3>CONGRATS!</h3>
+                            <P>Welcome to JustBooks</P>
+                            <h5><a href="/">CLICK HERE TO START READING</a></h5>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><br><br><br>
+
+</div>
+
+{{>footer}}
+<script>
+    $(document).ready(function()
+    {
+        logClick("On load","success Page","User");
+        window.setTimeout(function() {
+            window.location.href = '/';
+        }, 4000);
+
+    })
+    $(document).ready(function()
+    {
+
+        $("form").submit(false)
+        $('#whatsNew').addClass('current-menu-parent');
+
+    })
+
+
+</script>
+
+

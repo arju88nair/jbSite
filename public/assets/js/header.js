@@ -15,6 +15,8 @@ function wishlistAdd(e) {
         type: "GET",
         url: "/updateWishlist?id=" + e,
         success: function (e) {
+            ga('send', 'event', 'Wishlist Add', e , 'Success');
+
             "failure" === JSON.parse(e) ? toastr.error("Please sign in to update wish list  !") : toastr.success("Successfully updated your wishlist !"), $(".spinner").hide()
         },
         error: function (e) {
@@ -35,6 +37,7 @@ function searchClick() {
 
 var membership, email;
 $(document).ready(function () {
+
     $("#memberModel").on("hidden.bs.modal", function () {
         window.location.href = "/shelf"
     }), $("#save_member_value").click(function () {
@@ -89,10 +92,10 @@ $(document).ready(function () {
         positionClass: "toast-top-center",
         preventDuplicates: !1,
         onclick: null,
-        showDuration: "300",
-        hideDuration: "1000",
-        timeOut: "5000",
-        extendedTimeOut: "1000",
+        showDuration: "0",
+        hideDuration: "0",
+        timeOut: "0",
+        extendedTimeOut: "0",
         showEasing: "swing",
         hideEasing: "linear",
         showMethod: "fadeIn",
@@ -105,10 +108,10 @@ $(document).ready(function () {
         positionClass: "toast-bottom-center",
         preventDuplicates: !1,
         onclick: null,
-        showDuration: "300",
-        hideDuration: "1000",
-        timeOut: "5000",
-        extendedTimeOut: "1000",
+        showDuration: "0",
+        hideDuration: "0",
+        timeOut: "0",
+        extendedTimeOut: "0",
         showEasing: "swing",
         hideEasing: "linear",
         showMethod: "fadeIn",
@@ -121,7 +124,8 @@ $(document).ready(function () {
         return 13 == t ? (signupClick(), !1) : void 0
     }), $.ajax({
         type: "GET", url: "/getSessions", success: function (e) {
-            e = JSON.parse(e), membership = e.session, localStorage.setItem("membership", membership), localStorage.setItem("email", e.email), console.log(membership)
+            e = JSON.parse(e), membership = e.session, localStorage.setItem("membership", membership), localStorage.setItem("email", e.email), console.log(membership),    ga('send', 'pageview', location.pathname,'WEB_VIEW');
+
         }
     })
 }), $.ajax({
@@ -210,7 +214,7 @@ function signupClick() {
                     })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
                     ga('create', 'UA-102352169-1', 'none');
-                    ga('send', 'event', 'Clicks', 'Login of user ' + username + '', 'First Screen');
+                    ga('send', 'event', 'Login', username , 'Success');
 
                     logClick('Login of user ' + username + '','Login',username);
                     window.location.href = "/shelf";
@@ -231,7 +235,7 @@ function signupClick() {
                     })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
                     ga('create', 'UA-102352169-1', 'none');
-                    ga('send', 'event', 'Clicks', 'Login of user ' + username + '', 'First Screen');
+                    ga('send', 'event', 'Login', username , 'Success');
 
                     logClick('Login of user ' + username + '','Login',username);
 

@@ -102,17 +102,17 @@
                                                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                                                             <select class="form-control" id="books">
                                                                 <option value="">Select No of Books:</option>
-                                                                {{# plan_books}}
+                                                                {{# bookArray}}
                                                                     <option value="{{.}}">{{.}}  book(s)</option>
-                                                                {{/plan_books}}
+                                                                {{/bookArray}}
                                                             </select></br>
                                                         </div>
                                                         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                                                             <select class="form-control" id="months" >
                                                                 <option value="">Select No of Months:</option>
-                                                                {{# months}}
-                                                                    <option value="{{.}}">{{.}}  {{monthTagText}}</option>
-                                                                {{/months}}
+                                                                {{# monthArray}}
+                                                                    <option value="{{.}}">{{.}}  month(s)</option>
+                                                                {{/monthArray}}
                                                             </select></br>
                                                         </div>
                                                     </th>
@@ -415,6 +415,10 @@
 <script type="application/javascript">
 
     $(document).ready(function(){
+        var book="{{book}}";var month="{{month}}";
+        $("#books").val(book);
+        $("#months").val(month)
+
         logClick("On load","Signup Page","User");
 
         var w = window.outerWidth;
@@ -424,8 +428,8 @@
         }
 
 
-        $("#books").val("{{book}}");
-        $("#months ").val("{{month}}");
+
+
 
         var mnth = $("#months option:selected").text();
         $('#readingfee_mnths').text('Reading fee for '+mnth);
@@ -645,7 +649,7 @@
                 $(".spinner").hide();
                 console.log(data_new)
 //                console.log(JSON.parse(data_new));
-                console.log(data_new['success'])
+                console.log(data_new['success']);
 //                data_new = JSON.parse(data_new);return false;
                 logClick("Sign up click")
                 if (data_new['success'] == 'true') {
